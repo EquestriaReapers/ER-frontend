@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import Dashboard from "./dashboard/Dashboard.tsx";
 import Profile from "./profile/Profile.tsx";
 import EditProfileForm from "./profile/EditProfileForm.tsx";
+import Login from "./auth/Login.tsx";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -22,7 +24,11 @@ const router = createBrowserRouter([
   {
     path: "/profile/edit/:id",
     element: <EditProfileForm />,
-  }
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
