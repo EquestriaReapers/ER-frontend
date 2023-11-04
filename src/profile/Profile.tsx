@@ -1,18 +1,35 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+import RenderSkills from "./RenderSkills";
+import RenderExperiences from "./RenderExperiences";
+import { Link } from "react-router-dom";
+
+import { ProfileInterface } from "./interfaces/ProfileInterface";
+
 const Profile = () => {
+  const profile: ProfileInterface = {
+    id: 1,
+    name: "Luis Daniel Vasquez Paniagua",
+    email: "luisvasquez8877@gmail.com",
+  };
+
   return (
-    <Box sx={{background:'red', margin:'10px'}}>
-      <Typography variant="h1" sx={{background:'yellow'}}>Perfil:</Typography>
-      <Typography variant="h2" sx={{background:'blue'}}>Nombre:</Typography>
-      <Typography variant="h3" >Luis Vasquez</Typography>
-      <Typography variant="h2" sx={{background:'blue'}}>Email:</Typography>
-      <Typography variant="h3" >8877@.com</Typography>
-      <Typography variant="h2" sx={{background:'blue'}}>Experiencia:</Typography>
-      <Typography variant="h3" sx={{background:'#FFC526'}}>UCAB Forms</Typography>
-      <Typography variant="h2" sx={{background:'#40B4E5'}}>Habilidades:</Typography>
-      <Typography variant="h3" sx={{background:'#047732'}}>Desarrollador Front</Typography>
+    <Box sx={{ margin: "10px" }}>
+      <Typography variant="h3">Perfil:</Typography>
+      <Link to={`/profile/edit/${profile.id}`}> Editar Perfil </Link>
+
+      <Typography variant="h4">Nombre:</Typography>
+      <Typography variant="h6">{profile.name}</Typography>
+      <Typography variant="h4">Email:</Typography>
+      <Typography variant="h6">{profile.email}</Typography>
+
+      <Typography variant="h4">Habilidades:</Typography>
+      <RenderSkills />
+
+      <Typography variant="h4">Experiencia:</Typography>
+      <RenderExperiences />
+      <Link to="/dashboard"> Regresar </Link>
     </Box>
   );
 };
