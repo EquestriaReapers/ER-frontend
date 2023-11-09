@@ -1,5 +1,4 @@
 import axios from "axios";
-import { AxiosResponse } from "axios";
 const BASE_URL = "http://localhost:3000/api/v1/profiles/";
 
 export function fetchOneProfile(profile_id: number) {
