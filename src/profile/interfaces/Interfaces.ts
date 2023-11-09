@@ -1,8 +1,19 @@
-export interface ProfileInterface {
+export interface UserInterface {
   id: number;
   name: string;
   email: string;
   image: string;
+}
+
+export interface ProfileInterface {
+  user: {
+    id: number;
+    name: string;
+    email: string;
+    role: string;
+  };
+  role: string;
+  description: string;
 }
 
 export interface SkillInterface {

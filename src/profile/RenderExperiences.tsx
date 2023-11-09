@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { ExperienceInterface } from "./interfaces/ProfileInterface";
+import { ExperienceInterface } from "./interfaces/Interfaces";
 
 const RenderExperiences = () => {
   const experiences: ExperienceInterface[] = [
@@ -26,7 +26,10 @@ const RenderExperiences = () => {
       {experiences.map((item) => {
         return (
           <Box>
-            <Typography variant="h5" sx={{ background: "white", fontWeight:"bold" }}>
+            <Typography
+              variant="h5"
+              sx={{ background: "white", fontWeight: "bold" }}
+            >
               {item.projectName}
             </Typography>
             <Typography variant="h6" sx={{ background: "white" }}>
