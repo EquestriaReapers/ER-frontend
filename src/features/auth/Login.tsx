@@ -9,7 +9,7 @@ import useRedirectWhenLogged from "./use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
 
-const Login: FunctionComponent<void> = () => {
+const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
 
   return (
