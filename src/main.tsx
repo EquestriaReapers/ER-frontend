@@ -1,14 +1,12 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 
 import { Provider } from "react-redux";
-import { store } from "./app/store.ts";
-import Dashboard from "./dashboard/Dashboard.tsx";
-import Profile from "./profile/Profile.tsx";
-import EditProfileForm from "./profile/EditProfileForm.tsx";
-import Login from "./auth/Login.tsx";
-import EditSkills from "./profile/EditSkils.tsx";
+import store from "app/store";
+import Dashboard from "legacy/dashboard/Dashboard.tsx";
+import Profile from "legacy/profile/Profile.tsx";
+import EditProfileForm from "legacy/profile/EditProfileForm.tsx";
+import Login from "features/auth/Login";
+import EditSkills from "legacy/profile/EditSkils.tsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -16,10 +14,6 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
-  },
-  {
-    path: "/",
-    element: <App />,
   },
   {
     path: "/profile/:id",
@@ -34,8 +28,8 @@ const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path:"/profile/edit/skills/:id",
-    element: <EditSkills/>,
+    path: "/profile/edit/skills/:id",
+    element: <EditSkills />,
   },
 ]);
 
