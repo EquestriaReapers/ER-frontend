@@ -8,6 +8,7 @@ import Dashboard from "./dashboard/Dashboard.tsx";
 import Profile from "./profile/Profile.tsx";
 import EditProfileForm from "./profile/EditProfileForm.tsx";
 import Login from "./auth/Login.tsx";
+import EditSkills from "./profile/EditSkils.tsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path:"/profile/edit/skills/:id",
+    element: <EditSkills/>,
   },
 ]);
 

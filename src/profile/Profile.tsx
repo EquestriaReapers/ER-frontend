@@ -6,7 +6,6 @@ import RenderSkills from "./RenderSkills";
 import RenderExperiences from "./RenderExperiences";
 import { Link } from "react-router-dom";
 import { fetchOneProfile } from "../services/profile.service";
-import { ProfileInterface } from "./interfaces/Interfaces";
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -42,6 +41,7 @@ const Profile = () => {
         src={profile.image}
         alt={profile.user.name}
       />
+
       <Typography variant="h4">Email:</Typography>
       <Typography variant="h6">{profile.user.email}</Typography>
 
