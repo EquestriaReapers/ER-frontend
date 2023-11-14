@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import store from "app/store";
 import Dashboard from "features/dashboard/Dashboard";
-import Profile from "legacy/profile/Profile.tsx";
+import Profile from "features/profile/Profile";
 import EditProfileForm from "legacy/profile/EditProfileForm.tsx";
 import Login from "features/auth/Login";
 import EditSkills from "legacy/profile/EditSkils.tsx";
