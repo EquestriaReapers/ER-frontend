@@ -3,11 +3,11 @@ import { BackendError } from "app/exceptions";
 import axios from "axios";
 import { Role } from "core/users/types";
 
-const URL = `${BACKEND_V1_URL}/auth/login`;
+const BASE_URL = `${BACKEND_V1_URL}/auth/login`;
 
 export default async function login(body: LoginBody): Promise<LoginResponse> {
   try {
-    const response = await axios.post(URL, body);
+    const response = await axios.post(BASE_URL, body);
     return response.data;
   } catch (error) {
     throw new BackendError(error);

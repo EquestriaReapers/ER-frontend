@@ -40,7 +40,7 @@ function useLogin() {
         dispatch(loginAction(result));
         navigate(`/profile/${result.id}`);
       } catch (error) {
-        // Monstramos mensaje de error :)
+        // Monstramos mensaje de error :^)
       } finally {
         setLoading(false);
       }
