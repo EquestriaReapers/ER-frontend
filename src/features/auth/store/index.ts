@@ -13,13 +13,16 @@ const authSlice = createSlice({
         email: payload.email,
         role: payload.role,
         name: "",
+        deletedAt: payload.deletedAt,
       };
       state.isLogged = true;
+      localStorage.setItem('auth', JSON.stringify(state))
     },
     logout: (state) => {
       state.token = null;
       state.user = null;
       state.isLogged = true;
+      localStorage.removeItem('auth');
     },
   },
 });

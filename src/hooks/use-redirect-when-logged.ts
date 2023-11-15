@@ -1,17 +1,20 @@
 import { useSelector } from "react-redux";
-import { AuthState } from "./store/types";
+import { AuthState } from "../features/auth/store/types";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function useAuthState(): AuthState {
   return useSelector<{ auth: AuthState }>((state) => state.auth) as AuthState;
 }
 
 export default function useRedirectWhenLogged() {
-  const authState = useAuthState();
+  const { isLogged, user } = useAuthState();
   const navigate = useNavigate();
 
-  if (authState.isLogged) {
-    navigate(`/profile/${authState.user.id}`);
-    return;
-  }
+  useEffect(() => {
+    if (isLogged) {
+      navigate(`/profile/${user.id}`);
+      return;
+    }
+  }, [navigate, isLogged, user]);
 }

@@ -1,9 +1,10 @@
 import ReactDOM from "react-dom/client";
 
+import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
-import store from "app/store";
+import { store, persistor } from "app/store";
 import Dashboard from "features/dashboard/Dashboard";
-import Profile from "legacy/profile/Profile.tsx";
+import Profile from "features/profile/Profile";
 import EditProfileForm from "legacy/profile/EditProfileForm.tsx";
 import Login from "features/auth/Login";
 import EditSkills from "legacy/profile/EditSkils.tsx";
@@ -35,6 +36,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-    <RouterProvider router={router} />
+    <PersistGate loading={null} persistor={persistor}>
+      <RouterProvider router={router} />
+    </PersistGate>
   </Provider>
 );
