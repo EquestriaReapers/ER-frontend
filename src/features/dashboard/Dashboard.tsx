@@ -16,6 +16,7 @@ const Dashboard = () => {
   if (!user) {
     return null
   }
+  
   return (
     <Box>
       <Typography> DASHBOARD </Typography>

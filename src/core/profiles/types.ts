@@ -1,12 +1,10 @@
+import { User } from "core/users/types";
+
 export interface Profile {
-  user: {
-    id: number;
-    name: string;
-    email: string;
-    role: string;
-  };
+  user: User
   role: string;
   description: string;
+  skills: Skill[];
 }
 
 export interface Skill {

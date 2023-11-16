@@ -2,17 +2,22 @@ import { useState } from "react";
 
 export default function useProfileState() {
   const [profile, setProfile] = useState({
+    id: 0,
     userId: null as number | null,
     image: "",
     description: "",
 
     user: {
       email: "",
-      id: 0,
       name: "",
-      role: "",
-      deletedAt: null as Date | null,
     },
+
+    skills: [
+      {
+        id: 0,
+        name: "",
+      },
+    ],
   });
 
   return {

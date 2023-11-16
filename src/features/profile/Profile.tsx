@@ -27,7 +27,6 @@ const Profile = () => {
       if (token && id) {
         const data = await fetchOneProfile(token, id);
         setProfile(data);
-        console.log(token);
       }
     } catch (error) {
       console.log(error);
@@ -42,7 +41,7 @@ const Profile = () => {
     <Box sx={{ margin: "10px" }}>
       <Typography variant="h3">Perfil:</Typography>
       {loggedUser && loggedUser.id == id && (
-        <Link to={`/profile/edit/${profile.user.id}`}>
+        <Link to={`/profile/edit/${loggedUser}`}>
           <IconButton>
             <EditIcon />
           </IconButton>
@@ -65,17 +64,17 @@ const Profile = () => {
 
       <Typography variant="h4">Habilidades:</Typography>
       {loggedUser && loggedUser.id == id && (
-        <Link to={`/profile/edit/${profile.user.id}`}>
+        <Link to={`/profile/edit/${profile.id}`}>
           <IconButton>
             <EditIcon />
           </IconButton>
         </Link>
       )}
-      <ShowSkills />
+      <ShowSkills skills={profile.skills} />
 
       <Typography variant="h4">Experiencia:</Typography>
       {loggedUser && loggedUser.id == id && (
-        <Link to={`/profile/edit/${profile.user.id}`}>
+        <Link to={`/profile/edit/${profile.id}`}>
           <IconButton>
             <EditIcon />
           </IconButton>
