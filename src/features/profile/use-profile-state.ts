@@ -18,6 +18,17 @@ export default function useProfileState() {
         name: "",
       },
     ],
+
+    experience: [
+      {
+        id: 0,
+        profileId: 0,
+        urlProyecto: "",
+        cargo: "",
+        descripcion: "",
+        nombreProyecto: "",
+      },
+    ],
   });
 
   return {

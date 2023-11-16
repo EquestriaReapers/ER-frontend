@@ -20,6 +20,7 @@ const Profile = () => {
     return useSelector<{ auth: AuthState }>((state) => state.auth) as AuthState;
   }
   const { token } = useAuthState();
+  console.log(token);
   const loggedUser = useAuthState().user;
 
   const getProfile = useCallback(async () => {
@@ -80,7 +81,7 @@ const Profile = () => {
           </IconButton>
         </Link>
       )}
-      <ShowExperiences />
+      <ShowExperiences experience={profile.experience} />
       <Link to="/dashboard"> Regresar </Link>
     </Box>
   );
