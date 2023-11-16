@@ -1,16 +1,20 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Skill } from "core/profiles/types";
 
 const ShowSkills = ({ skills }: ShowSkillsProps) => {
   return (
-    <Box>
+    <>
       {skills.map((item: Skill) => (
-        <Typography key={item.id} variant="h6">
-          {item.name}
-        </Typography>
+        <Box>
+          <Typography key={item.id} variant="h6">
+            {item.name}
+          </Typography>
+          <DeleteIcon />
+        </Box>
       ))}
-    </Box>
+    </>
   );
 };
 
