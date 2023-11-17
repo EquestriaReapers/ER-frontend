@@ -1,7 +1,7 @@
 import { BACKEND_V2_URL } from "app/config";
 import { BackendError } from "app/exceptions";
 import axios from "axios";
-import { Skill } from "core/profiles/types";
+import { Experience, Skill } from "core/profiles/types";
 
 const URL = `${BACKEND_V2_URL}/profiles`;
 
@@ -61,7 +61,7 @@ export interface updateProfileBody {
 }
 export interface updateProfileSkillBody {
   userId: number;
-  name: string
+  name: string;
 }
 
 export interface OneProfileResponse {
@@ -73,4 +73,5 @@ export interface OneProfileResponse {
     name: string;
   };
   skills: Skill[];
+  experience: Experience[];
 }
