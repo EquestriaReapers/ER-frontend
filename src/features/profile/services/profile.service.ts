@@ -57,7 +57,6 @@ export async function updateProfileSkill(
 
 export interface updateProfileBody {
   name: string;
-  email: string;
   description: string;
 }
 export interface updateProfileSkillBody {

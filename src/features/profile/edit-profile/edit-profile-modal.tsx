@@ -1,37 +1,27 @@
-import { ChangeEvent, useState } from "react";
+import { FormEvent, useState } from "react";
 import { Box, Button, TextField, Modal, IconButton } from "@mui/material";
-import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import EditIcon from "@mui/icons-material/Edit";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import { updateProfile } from "../services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
-import { modalStyle, VisuallyHiddenInput } from "./styles/styles";
+import { modalStyle } from "./styles/styles";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { token, user } = useAuthState();
 
-  const {
-    name,
-    email,
-    description,
-    onChangeName,
-    onChangeEmail,
-    onChangeImage,
-    onChangeDescription,
-  } = useEditProfileFormState();
+  const { name, description, onChangeName, onChangeDescription } =
+    useEditProfileFormState();
 
-  const onSubmitForm = async (event: ChangeEvent<HTMLInputElement>) => {
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       if (token && user) {
-        const data = await updateProfile(
-          token,
-          { name, email, description },
-          user.id
-        );
-        console.log(data);
+        console.log(token && user);
+        const data = await updateProfile(token, { name, description }, user.id);
+        setIsOpen(false)
+        return data
       }
     } catch (error) {
       console.log(error);
@@ -52,11 +42,7 @@ const EditProfileModal = () => {
         aria-describedby="used to edit profile"
       >
         <Box sx={modalStyle}>
-          <form
-            onSubmit={() => {
-              onSubmitForm;
-            }}
-          >
+          <form onSubmit={onSubmitForm}>
             <TextField
               id="name"
               value={name}
@@ -65,31 +51,11 @@ const EditProfileModal = () => {
             />
 
             <TextField
-              id="email"
-              label="Email"
-              value={email}
-              onChange={onChangeEmail}
-            />
-
-            <TextField
               id="description"
               value={description}
               label="Descripción"
               onChange={onChangeDescription}
             />
-
-            <Button
-              component="label"
-              variant="contained"
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload file
-              <VisuallyHiddenInput
-                id="fileInputElement"
-                type="file"
-                onChange={onChangeImage}
-              />
-            </Button>
 
             <Button variant="outlined" type="submit">
               Confirmar

@@ -1,23 +1,20 @@
-import { useCallback, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import useProfileState from "./use-profile-state";
-import { AuthState } from "features/auth/store/types";
-import { fetchOneProfile } from "./services/profile.service";
-import ShowSkills from "./skills/show-skills";
-import ShowExperiences from "./experiences/show-experiences";
 import EditProfileModal from "./edit-profile/edit-profile-modal";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddSkillsModal from "./skills/add-skills-modal";
+import { useCallback, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import useProfileState from "./use-profile-state";
+import { useAuthState } from "hooks/use-auth-state";
+import { fetchOneProfile } from "./services/profile.service";
+import ShowSkills from "./skills/show-skills";
+import ShowExperiences from "./experiences/show-experiences";
+
 const Profile = () => {
   const { profile, setProfile } = useProfileState();
 
   const id = parseInt(useParams<RouteParams>().id!);
 
-  function useAuthState(): AuthState {
-    return useSelector<{ auth: AuthState }>((state) => state.auth) as AuthState;
-  }
   const { token } = useAuthState();
   const loggedUser = useAuthState().user;
 
@@ -44,12 +41,6 @@ const Profile = () => {
 
       <Typography variant="h4">Nombre:</Typography>
       <Typography variant="h6">{profile.user.name}</Typography>
-      <Box
-        component="img"
-        sx={{ height: 100, width: 100, maxHeight: 100, maxWidth: 100 }}
-        src={profile.image}
-        alt={profile.user.name}
-      />
 
       <Typography variant="h4">Email:</Typography>
       <Typography variant="h6">{profile.user.email}</Typography>
