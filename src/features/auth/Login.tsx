@@ -5,7 +5,7 @@ import { FunctionComponent, useCallback, useState } from "react";
 import loginService from "features/auth/services/login.service";
 import { useDispatch } from "react-redux";
 import { login as loginAction } from "features/auth/store";
-import useRedirectWhenLogged from "../../hooks/use-redirect-when-logged";
+import useRedirectWhenLogged from "hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
 

@@ -1,9 +1,5 @@
-import { useCallback, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import useProfileState from "./use-profile-state";
-import { AuthState } from "features/auth/store/types";
-import { fetchOneProfile } from "./services/profile.service";
 import ShowSkills from "./components/show-skills";
 import ShowExperiences from "./components/show-experiences";
 import Box from "@mui/material/Box";
@@ -12,31 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 
 const Profile = () => {
-  const { profile, setProfile } = useProfileState();
-
-  const id = parseInt(useParams<RouteParams>().id!);
-
-  function useAuthState(): AuthState {
-    return useSelector<{ auth: AuthState }>((state) => state.auth) as AuthState;
-  }
-  const { token } = useAuthState();
-  const loggedUser = useAuthState().user;
-
-  const getProfile = useCallback(async () => {
-    try {
-      if (token && id) {
-        const data = await fetchOneProfile(token, id);
-        setProfile(data);
-        console.log(token);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [token, id, setProfile]);
-
-  useEffect(() => {
-    getProfile();
-  }, [getProfile]);
+  const { profile, loggedUser, id } = useProfileState();
 
   return (
     <Box sx={{ margin: "10px" }}>
@@ -86,9 +58,5 @@ const Profile = () => {
     </Box>
   );
 };
-
-interface RouteParams {
-  [key: string]: string | undefined;
-}
 
 export default Profile;

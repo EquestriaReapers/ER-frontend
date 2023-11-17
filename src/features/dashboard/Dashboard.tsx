@@ -7,15 +7,13 @@ import { useSelector } from "react-redux";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 
-
 const Dashboard = () => {
   const user = useCurrentUser();
-  
-  useRedirectWhenUnlogged()
 
-  if (!user) {
-    return null
-  }
+  useRedirectWhenUnlogged();
+
+  if (!user) return null;
+
   return (
     <Box>
       <Typography> DASHBOARD </Typography>
@@ -25,7 +23,7 @@ const Dashboard = () => {
   );
 };
 
-function useCurrentUser(): User {
+function useCurrentUser(): User | null {
   return useSelector<{ auth: AuthState }>((state) => state.auth.user) as User;
 }
 
