@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import useProfileState from "./use-profile-state";
 import ShowSkills from "./components/show-skills";
 import ShowExperiences from "./components/show-experiences";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
+import { Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
 const Profile = () => {

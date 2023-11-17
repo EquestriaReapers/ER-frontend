@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
+import { Box } from "@mui/material";
 import { FunctionComponent, useCallback, useState } from "react";
 import loginService from "features/auth/services/login.service";
 import { useDispatch } from "react-redux";

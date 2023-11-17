@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
+import { Box } from "@mui/material";
 import { AuthState } from "features/auth/store/types";
 import { useSelector } from "react-redux";
 import { User } from "core/users/types";

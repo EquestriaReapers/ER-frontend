@@ -1,6 +1,5 @@
-import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
+import { Box } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import RenderSkills from "./RenderSkills";
 import RenderExperiences from "./RenderExperiences";

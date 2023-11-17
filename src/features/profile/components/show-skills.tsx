@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 
 const ShowSkills = () => {
