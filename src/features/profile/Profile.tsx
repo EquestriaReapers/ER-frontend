@@ -7,7 +7,7 @@ import { fetchOneProfile } from "./services/profile.service";
 import ShowSkills from "./skills/show-skills";
 import ShowExperiences from "./experiences/show-experiences";
 import EditProfileModal from "./edit-profile/edit-profile-modal";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AddSkillsModal from "./skills/add-skills-modal";
 const Profile = () => {

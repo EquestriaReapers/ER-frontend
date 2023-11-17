@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 import { AuthState } from "features/auth/store/types";
