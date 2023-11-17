@@ -13,6 +13,8 @@ const useEditProfileFormState = () => {
   return {
     name,
     description,
+    setName,
+    setDescription,
     onChangeName,
     onChangeDescription,
   };

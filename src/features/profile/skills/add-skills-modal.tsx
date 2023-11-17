@@ -1,38 +1,24 @@
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
+import Select from "@mui/material/Select";
 import { Box } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import { useState, ChangeEvent } from "react";
-import { updateProfileSkill } from "../services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { style } from "./styles/styles";
-
-
+import  MenuItem  from "@mui/material/MenuItem";
 const AddSkillsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { token, user } = useAuthState();
-
-  const [name, setName] = useState("");
-  const onChangeSkillName = (event: ChangeEvent<HTMLInputElement>) => {
-    setName(event.target.value);
-  };
 
   const userId = user?.id;
 
   const onSubmitForm = async (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     try {
-      if (token && name && userId) {
-        const body = {
-          userId,
-          name,
-        };
-        const data = await updateProfileSkill(token, body, userId);
-        console.log(data);
-      }
+      console.log("hola");
     } catch (error) {
       console.log(error);
     }
@@ -42,7 +28,7 @@ const AddSkillsModal = () => {
     <div>
       <Button onClick={() => setIsOpen(true)}>
         <IconButton>
-          <EditIcon />
+          <AddIcon />
         </IconButton>
       </Button>
       <Modal
@@ -53,13 +39,11 @@ const AddSkillsModal = () => {
       >
         <Box sx={style}>
           <form onSubmit={() => onSubmitForm}>
-            <TextField
-              id="name"
-              label="Nombre de la Habilidad"
-              variant="standard"
-              onChange={onChangeSkillName}
-            />
-
+            <Select>
+              <MenuItem >Ten</MenuItem>
+              <MenuItem >Twenty</MenuItem>
+              <MenuItem >Thirty</MenuItem>
+            </Select>
             <Button variant="outlined" type="submit">
               Confirmar
             </Button>

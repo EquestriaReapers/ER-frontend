@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { Skill } from "core/profiles/types";
+import DeleteSkillModal from "./delete-skill-modal";
 
 const ShowSkills = ({ skills }: ShowSkillsProps) => {
   return (
@@ -11,7 +11,7 @@ const ShowSkills = ({ skills }: ShowSkillsProps) => {
           <Typography key={item.id} variant="h6">
             {item.name}
           </Typography>
-          <DeleteIcon />
+          <DeleteSkillModal skillId={item.id}/>
         </Box>
       ))}
     </>

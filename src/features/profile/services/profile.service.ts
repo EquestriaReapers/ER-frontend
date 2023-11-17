@@ -55,6 +55,24 @@ export async function updateProfileSkill(
   }
 }
 
+export async function deleteProfileSkill(token: string, skillId: number) {
+  try {
+    const response = await axios.post(
+      URL + "/my-profile/remove-skill",
+      { skillId },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return response.data;
+  } catch (error) {
+    throw new BackendError(error);
+  }
+}
+
 export interface updateProfileBody {
   name: string;
   description: string;

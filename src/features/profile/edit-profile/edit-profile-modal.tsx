@@ -1,8 +1,8 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useCallback, useEffect } from "react";
 import { Box, Button, TextField, Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import useEditProfileFormState from "./use-edit-profile-form-state";
-import { updateProfile } from "../services/profile.service";
+import { fetchOneProfile, updateProfile } from "../services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { modalStyle } from "./styles/styles";
 
@@ -11,8 +11,30 @@ const EditProfileModal = () => {
 
   const { token, user } = useAuthState();
 
-  const { name, description, onChangeName, onChangeDescription } =
-    useEditProfileFormState();
+  const {
+    name,
+    description,
+    setName,
+    setDescription,
+    onChangeName,
+    onChangeDescription,
+  } = useEditProfileFormState();
+
+  const getUserInfo = useCallback(async () => {
+    try {
+      if (token && user) {
+        const data = await fetchOneProfile(token, user.id);
+        setName(data.user.name);
+        setDescription(data.description);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, [setDescription, setName, token, user]);
+
+  useEffect(() => {
+    getUserInfo();
+  }, [getUserInfo]);
 
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -20,8 +42,8 @@ const EditProfileModal = () => {
       if (token && user) {
         console.log(token && user);
         const data = await updateProfile(token, { name, description }, user.id);
-        setIsOpen(false)
-        return data
+        setIsOpen(false);
+        return data;
       }
     } catch (error) {
       console.log(error);
