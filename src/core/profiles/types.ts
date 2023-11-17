@@ -1,10 +1,11 @@
 import { User } from "core/users/types";
 
 export interface Profile {
-  user: User
+  user: User;
   role: string;
   description: string;
   skills: Skill[];
+  experience: Experience[];
 }
 
 export interface Skill {
@@ -14,9 +15,9 @@ export interface Skill {
 
 export interface Experience {
   id: number;
-  url: string;
-  position: string;
-  entityName?: string;
-  description: string;
-  projectName: string;
+  profileId: number;
+  urlProyecto: string;
+  cargo: string;
+  descripcion: string;
+  nombreProyecto: string;
 }

@@ -16,6 +16,7 @@ const Profile = () => {
   const id = parseInt(useParams<RouteParams>().id!);
 
   const { token } = useAuthState();
+  console.log(token);
   const loggedUser = useAuthState().user;
 
   const getProfile = useCallback(async () => {
@@ -53,7 +54,7 @@ const Profile = () => {
 
       <Typography variant="h4">Experiencia:</Typography>
       {loggedUser && loggedUser.id == id && <EditProfileModal />}
-      <ShowExperiences />
+      <ShowExperiences experience={profile.experience} />
       <Link to="/dashboard"> Regresar </Link>
     </Box>
   );

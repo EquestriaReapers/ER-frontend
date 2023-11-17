@@ -2,47 +2,39 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Experience } from "core/profiles/types";
 
-const ShowExperiences = () => {
-  const experiences: Experience[] = [
-    {
-      id: 1,
-      url: "https://es.wikipedia.org/wiki/Wikipedia:Portada",
-      position: "Scrum Master",
-      entityName: "Wikipedia Org.",
-      description:
-        "Fui el Scrum Master de Wikipedia, una enciclopedia gratuita online.",
-      projectName: "Wikipedia",
-    },
-    {
-      id: 2,
-      url: "https://www.youtube.com/watch?v=EsELAypw_Ds",
-      position: "Desarrollador Front-End",
-      description: "Fui desarrollador Front-End con JS, TS y MaMen.js",
-      projectName: "YouPlasta",
-    },
-  ];
+const ShowExperiences = ({ experience }: ShowExperiencesProps) => {
   return (
     <Box>
-      {experiences.map((item : Experience) => {
+      {experience.map((item: Experience) => {
         return (
           <Box>
             <Typography
+              key={item.id}
               variant="h5"
               sx={{ background: "white", fontWeight: "bold" }}
             >
-              {item.projectName}
+              {item.nombreProyecto}
             </Typography>
-            <Typography variant="h6" sx={{ background: "white" }}>
-              {item.url}
+            <Typography
+              key={item.id + 1}
+              variant="h6"
+              sx={{ background: "white" }}
+            >
+              {item.urlProyecto}
             </Typography>
-            <Typography variant="h6" sx={{ background: "white" }}>
-              {item.position}
+            <Typography
+              key={item.id + 2}
+              variant="h6"
+              sx={{ background: "white" }}
+            >
+              {item.cargo}
             </Typography>
-            <Typography variant="h6" sx={{ background: "white" }}>
-              {item.entityName}
-            </Typography>
-            <Typography variant="h6" sx={{ background: "white" }}>
-              {item.description}
+            <Typography
+              key={item.id + 3}
+              variant="h6"
+              sx={{ background: "white" }}
+            >
+              {item.descripcion}
             </Typography>
           </Box>
         );
@@ -50,5 +42,9 @@ const ShowExperiences = () => {
     </Box>
   );
 };
+
+interface ShowExperiencesProps {
+  experience: Experience[];
+}
 
 export default ShowExperiences;
