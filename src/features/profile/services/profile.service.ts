@@ -23,7 +23,7 @@ export async function fetchOneProfile(
 
 export async function updateProfile(
   token: string,
-  body: updateProfileBody,
+  body: UpdateProfileBody,
   profileId: number
 ) {
   try {
@@ -40,11 +40,11 @@ export async function updateProfile(
 
 export async function updateProfileSkill(
   token: string,
-  body: updateProfileSkillBody,
-  profileId: number
+  body: UpdateProfileSkillBody
 ) {
   try {
-    const response = await axios.patch(URL + "/" + profileId, body, {
+    console.log(body)
+    const response = await axios.post(`${URL}/my-profile/add-skill`, body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -73,13 +73,12 @@ export async function deleteProfileSkill(token: string, skillId: number) {
   }
 }
 
-export interface updateProfileBody {
+export interface UpdateProfileBody {
   name: string;
   description: string;
 }
-export interface updateProfileSkillBody {
-  userId: number;
-  name: string;
+export interface UpdateProfileSkillBody {
+  skillId: number;
 }
 
 export interface OneProfileResponse {
