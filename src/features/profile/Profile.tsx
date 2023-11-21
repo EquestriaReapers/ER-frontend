@@ -1,7 +1,7 @@
 import EditProfileModal from "./edit-profile/edit-profile-modal";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import AddSkillsModal from "./skills/add-skills-modal";
+import AddSkillsModal from "./skills/add-skills/add-skills-modal";
 import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useProfileState from "./use-profile-state";
