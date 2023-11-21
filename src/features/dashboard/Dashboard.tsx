@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "features/auth/store/types";
-import { useSelector } from "react-redux";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 import { logout } from "features/auth/store";
@@ -13,6 +12,7 @@ import { logout } from "features/auth/store";
 const Dashboard = () => {
   const user = useCurrentUser();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useRedirectWhenUnlogged();
 
@@ -20,12 +20,17 @@ const Dashboard = () => {
     return null;
   }
 
+  const onLogout = () => {
+    dispatch(logout());
+    navigate('/home')
+  };
+
   return (
     <Box>
       <Typography> DASHBOARD </Typography>
       <Link to="/"> Home </Link>
       <Link to={`/profile/${user.id}`}> Perfil </Link>
-      <Button variant="contained" onClick={() => dispatch(logout())}>
+      <Button variant="contained" onClick={onLogout}>
         Logout
       </Button>
     </Box>
