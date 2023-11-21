@@ -24,10 +24,9 @@ export async function fetchOneProfile(
 export async function updateProfile(
   token: string,
   body: UpdateProfileBody,
-  profileId: number
 ) {
   try {
-    const response = await axios.patch(URL + "/" + profileId, body, {
+    const response = await axios.patch(`${URL}/my-profile`, body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -43,7 +42,6 @@ export async function updateProfileSkill(
   body: UpdateProfileSkillBody
 ) {
   try {
-    console.log(body)
     const response = await axios.post(`${URL}/my-profile/add-skill`, body, {
       headers: {
         Authorization: `Bearer ${token}`,

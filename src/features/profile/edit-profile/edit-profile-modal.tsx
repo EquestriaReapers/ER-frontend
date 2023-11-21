@@ -40,8 +40,7 @@ const EditProfileModal = () => {
     event.preventDefault();
     try {
       if (token && user) {
-        console.log(token && user);
-        const data = await updateProfile(token, { name, description }, user.id);
+        const data = await updateProfile(token, { name, description });
         setIsOpen(false);
         return data;
       }

@@ -16,7 +16,6 @@ const Profile = () => {
   const id = parseInt(useParams<RouteParams>().id!);
 
   const { token } = useAuthState();
-  console.log(token);
   const loggedUser = useAuthState().user;
 
   const getProfile = useCallback(async () => {
@@ -24,7 +23,6 @@ const Profile = () => {
       if (token && id) {
         const data = await fetchOneProfile(token, id);
         setProfile(data);
-        console.log(token);
       }
     } catch (error) {
       console.log(error);

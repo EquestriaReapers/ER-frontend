@@ -41,9 +41,9 @@ const EditProfileForm = () => {
   const onSubmitForm = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     try {
-      console.log(profile);
+      //
     } catch (error) {
-      console.log("hello");
+      //
     }
   };
 
