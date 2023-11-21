@@ -9,12 +9,17 @@ function useAuthState(): AuthState {
 
 export default function useRedirectWhenLogged() {
   const { isLogged, user } = useAuthState();
+  const state = useAuthState();
+  console.log(isLogged);
+  console.log(user);
+  console.log(state);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isLogged) {
       navigate(`/profile/${user.id}`);
       return;
-    }
+    } 
   }, [navigate, isLogged, user]);
 }
