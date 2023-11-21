@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
-import DeleteSkillModal from "./delete-skills/delete-skill-modal";
+import DeleteSkillModal from "./delete-skill-modal";
 
 const ShowSkills = ({ skills }: ShowSkillsProps) => {
   return (

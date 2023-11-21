@@ -6,11 +6,11 @@ import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
 import { useState, FormEvent, useEffect, useCallback } from "react";
 import { useAuthState } from "hooks/use-auth-state";
-import { style } from "../styles/styles";
+import { style } from "./styles/styles";
 import MenuItem from "@mui/material/MenuItem";
-import { getAllSkills } from "../../services/skills.service";
+import { getAllSkills } from "../services/skills.service";
 import { Skill } from "core/profiles/types";
-import { updateProfileSkill } from "../../services/profile.service";
+import { updateProfileSkill } from "../services/profile.service";
 const AddSkillsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
