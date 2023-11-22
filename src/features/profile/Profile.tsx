@@ -1,10 +1,11 @@
+import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import useProfileState from "./use-profile-state";
 import { useAuthState } from "hooks/use-auth-state";
 import { fetchOneProfile } from "./services/profile.service";
-import ProfileContent from "./ProfileContent";
+import ProfileContent from "./profile-content/ProfileContent";
 
 const Profile = () => {
   const { profile, setProfile } = useProfileState();
@@ -29,7 +30,12 @@ const Profile = () => {
 
   return (
     <Box>
-      <ProfileContent profile={profile} profileId={id} />
+      {!profile || !id ? (
+        <Typography> El perfil no existe!</Typography>
+      ) : (
+        <ProfileContent profile={profile} profileId={id} />
+      )}
+
       <Link to="/dashboard"> Regresar </Link>
     </Box>
   );

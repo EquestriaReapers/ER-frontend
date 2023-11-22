@@ -1,17 +1,15 @@
-import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import DeleteSkillModal from "./delete-skill-modal";
+import SkillCard from "./skill-card";
 
-const ShowSkills = ({ skills }: ShowSkillsProps) => {
+const ShowSkills = ({ skills, isEditable }: ShowSkillsProps) => {
   return (
     <>
       {skills.map((item: Skill) => (
         <Box>
-          <Typography key={item.id} variant="h6">
-            {item.name}
-          </Typography>
-          <DeleteSkillModal skillId={item.id}/>
+          <SkillCard item={item} />
+          {isEditable && <DeleteSkillModal skillId={item.id} />}
         </Box>
       ))}
     </>
@@ -20,6 +18,7 @@ const ShowSkills = ({ skills }: ShowSkillsProps) => {
 
 interface ShowSkillsProps {
   skills: Skill[];
+  isEditable: boolean;
 }
 
 export default ShowSkills;

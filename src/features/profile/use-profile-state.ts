@@ -1,34 +1,8 @@
+import { Profile } from "core/profiles/types";
 import { useState } from "react";
 
 export default function useProfileState() {
-  const [profile, setProfile] = useState({
-    id: 0,
-    userId: 0,
-    description: "",
-
-    user: {
-      email: "",
-      name: "",
-    },
-
-    skills: [
-      {
-        id: 0,
-        name: "",
-      },
-    ],
-
-    experience: [
-      {
-        id: 0,
-        profileId: 0,
-        urlProyecto: "",
-        cargo: "",
-        descripcion: "",
-        nombreProyecto: "",
-      },
-    ],
-  });
+  const [profile, setProfile] = useState<Profile | null>(null);
 
   return {
     profile,
