@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function useProfileState() {
   const [profile, setProfile] = useState({
     id: 0,
-    userId: null as number | null,
+    userId: 0,
     description: "",
 
     user: {

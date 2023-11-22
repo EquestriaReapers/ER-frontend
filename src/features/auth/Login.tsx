@@ -33,14 +33,16 @@ function useLogin() {
     async (email: string, password: string) => {
       setLoading(true);
       try {
+        if (!email || !password) return;
+
         const result = await loginService({
           email,
           password,
         });
         dispatch(loginAction(result));
-        navigate(`/profile/${result.id}`);
+        navigate(`/dashboard`);
       } catch (error) {
-        // Monstramos mensaje de error :^)
+        console.log(error);
       } finally {
         setLoading(false);
       }

@@ -2,7 +2,6 @@ import { User } from "core/users/types";
 
 export interface Profile {
   user: User;
-  role: string;
   description: string;
   skills: Skill[];
   experience: Experience[];

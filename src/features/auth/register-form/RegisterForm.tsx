@@ -25,7 +25,7 @@ const RegisterForm: FunctionComponent<props> = ({disabled, onSubmit}) =>{
         <TextField
             value={password}
             label="Contraseña"
-            type="email"
+            type="password"
             onChange={onChangePassword}
             disabled={disabled}
 
@@ -33,7 +33,7 @@ const RegisterForm: FunctionComponent<props> = ({disabled, onSubmit}) =>{
         <TextField
             value={confirmPassword}
             label="Confirmar contraseña"
-            type="confirmPassword"
+            type="password"
             onChange={onChangeConfirmPassword}
             disabled={disabled}
 
