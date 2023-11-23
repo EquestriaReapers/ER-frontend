@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import ShowSkills from "../skills/show-skills";
-import AddSkillsModal from "../skills/add-skills-modal";
+import AddSkillsModal from "../skills/add-skills/add-skills-modal";
 import { Skill } from "core/profiles/types";
 
 const ProfileSkills = ({

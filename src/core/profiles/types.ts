@@ -1,6 +1,8 @@
 import { User } from "core/users/types";
 
 export interface Profile {
+  userId: number;
+  id: number;
   user: User;
   description: string;
   skills: Skill[];

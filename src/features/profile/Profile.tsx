@@ -1,39 +1,19 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { useCallback, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import useProfileState from "./use-profile-state";
-import { useAuthState } from "hooks/use-auth-state";
-import { fetchOneProfile } from "./services/profile.service";
+import useProfile from "./use-profile";
 import ProfileContent from "./profile-content/ProfileContent";
+import { Link, useParams } from "react-router-dom";
 
 const Profile = () => {
-  const { profile, setProfile } = useProfileState();
-
   const id = parseInt(useParams<RouteParams>().id!);
 
-  const { token } = useAuthState();
-
-  const getProfile = useCallback(async () => {
-    try {
-      if (!token || !id) return;
-      const data = await fetchOneProfile(token, id);
-      setProfile(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [token, id, setProfile]);
-
-  useEffect(() => {
-    getProfile();
-  }, [getProfile]);
-
+  const profile = useProfile(id);
   return (
     <Box>
       {!profile || !id ? (
         <Typography> El perfil no existe!</Typography>
       ) : (
-        <ProfileContent profile={profile} profileId={id} />
+        <ProfileContent profile={profile} />
       )}
 
       <Link to="/dashboard"> Regresar </Link>

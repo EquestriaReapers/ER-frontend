@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
-import DeleteSkillModal from "./delete-skill-modal";
+import DeleteSkillModal from "./delete-skills/delete-skill-modal";
 import SkillCard from "./skill-card";
 
 const ShowSkills = ({ skills, isEditable }: ShowSkillsProps) => {

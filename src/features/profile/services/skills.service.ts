@@ -5,9 +5,7 @@ import { Skill } from "core/profiles/types";
 
 const URL = `${BACKEND_V1_URL}/skills`;
 
-export async function getAllSkills(
-  token: string
-): Promise<GetAllSkillsResponse> {
+export async function getAllSkills(token: string): Promise<Skill[]> {
   try {
     const response = await axios.get(URL, {
       headers: {
@@ -18,8 +16,4 @@ export async function getAllSkills(
   } catch (error) {
     throw new BackendError(error);
   }
-}
-
-export interface GetAllSkillsResponse {
-  skills: Skill[]
 }

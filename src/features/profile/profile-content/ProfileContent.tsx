@@ -7,15 +7,14 @@ import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
 import ProfileExperiences from "./profile-experience";
 
-const ProfileContent = ({ profile, profileId }: ProfileContentProps) => {
+const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
-  const isEditable = !!(loggedUser && loggedUser.id == profileId);
-
+  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   return (
     <div>
       {loggedUser ? (
         <div>
-          <Typography variant="h3">Perfil:</Typography>
+          <Typography variant="h3" sx={{color:"red"}}>Perfil:</Typography>
           {isEditable && <EditProfileModal />}
 
           <Typography variant="h4">Nombre:</Typography>
@@ -45,6 +44,5 @@ const ProfileContent = ({ profile, profileId }: ProfileContentProps) => {
 
 export interface ProfileContentProps {
   profile: Profile;
-  profileId: number;
 }
 export default ProfileContent;

@@ -81,6 +81,8 @@ export interface UpdateProfileSkillBody {
 }
 
 export interface OneProfileResponse {
+  id: number;
+  userId: number;
   user: User;
   description: string;
   skills: Skill[];

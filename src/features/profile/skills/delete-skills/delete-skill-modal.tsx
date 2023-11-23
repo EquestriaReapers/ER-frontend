@@ -5,8 +5,8 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from "react";
 import { useAuthState } from "hooks/use-auth-state";
-import { style } from "./styles/styles";
-import { deleteProfileSkill } from "../services/profile.service";
+import { style } from "../styles/styles";
+import { deleteProfileSkill } from "../../services/profile.service";
 
 const DeleteSkillModal = ({ skillId }: DeleteSkillProps) => {
   const [isOpen, setIsOpen] = useState(false);
