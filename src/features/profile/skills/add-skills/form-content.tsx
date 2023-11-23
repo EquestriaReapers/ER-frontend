@@ -17,19 +17,17 @@ const FormContent = ({ setIsOpen }: AddSkillFormContentProps) => {
   const { onSubmitForm } = useForm({ setIsOpen, selectedSkillId });
 
   return (
-    <div>
-      <form onSubmit={onSubmitForm}>
-        <Select value={selectedSkillId} onChange={onSkillChange}>
-          {allSkills &&
-            allSkills.map((item) => (
-              <MenuItem value={item.id}>{item.name}</MenuItem>
-            ))}
-        </Select>
-        <Button variant="outlined" type="submit">
-          Confirmar
-        </Button>
-      </form>
-    </div>
+    <form onSubmit={onSubmitForm}>
+      <Select value={selectedSkillId} onChange={onSkillChange}>
+        {allSkills &&
+          allSkills.map((item) => (
+            <MenuItem value={item.id}>{item.name}</MenuItem>
+          ))}
+      </Select>
+      <Button variant="outlined" type="submit">
+        Confirmar
+      </Button>
+    </form>
   );
 };
 

@@ -16,6 +16,6 @@ export default function useRedirectWhenLogged() {
     if (isLogged) {
       navigate(`/dashboard`);
       return;
-    } 
+    }
   }, [navigate, isLogged, user]);
 }

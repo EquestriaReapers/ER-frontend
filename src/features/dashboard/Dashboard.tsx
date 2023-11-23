@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "features/auth/store/types";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
-import { logout } from "features/auth/store";
+import { logout } from "features/auth/store/auth-slice";
 
 const Dashboard = () => {
   const user = useCurrentUser();

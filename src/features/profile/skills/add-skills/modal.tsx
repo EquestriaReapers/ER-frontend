@@ -1,4 +1,3 @@
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
@@ -12,11 +11,10 @@ const AddSkillsModal = () => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
-        <IconButton>
-          <AddIcon />
-        </IconButton>
-      </Button>
+      <IconButton onClick={() => setIsOpen(true)}>
+        <AddIcon />
+      </IconButton>
+
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}

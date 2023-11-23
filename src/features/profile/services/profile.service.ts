@@ -1,7 +1,7 @@
 import { BACKEND_V1_URL } from "app/config";
 import { BackendError } from "app/exceptions";
 import axios from "axios";
-import { Experience, Skill } from "core/profiles/types";
+import { Experience, Profile, Skill } from "core/profiles/types";
 import { User } from "core/users/types";
 
 const URL = `${BACKEND_V1_URL}/profiles`;
@@ -24,8 +24,8 @@ export async function fetchOneProfile(
 
 export async function updateProfile(
   token: string,
-  body: UpdateProfileBody,
-) {
+  body: UpdateProfileBody
+): Promise<OneProfileResponse> {
   try {
     const response = await axios.patch(`${URL}/my-profile`, body, {
       headers: {
@@ -38,10 +38,10 @@ export async function updateProfile(
   }
 }
 
-export async function updateProfileSkill(
+export async function addProfileSkill(
   token: string,
   body: UpdateProfileSkillBody
-) {
+): Promise<Profile> {
   try {
     const response = await axios.post(`${URL}/my-profile/add-skill`, body, {
       headers: {
@@ -54,7 +54,10 @@ export async function updateProfileSkill(
   }
 }
 
-export async function deleteProfileSkill(token: string, skillId: number) {
+export async function removeProfileSkill(
+  token: string,
+  skillId: number
+): Promise<Profile> {
   try {
     const response = await axios.post(
       URL + "/my-profile/remove-skill",

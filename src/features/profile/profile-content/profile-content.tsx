@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 
 import { useAuthState } from "hooks/use-auth-state";
 
-import EditProfileModal from "../edit-profile/edit-profile-modal";
+import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
 import ProfileExperiences from "./profile-experience";
@@ -14,7 +14,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
     <div>
       {loggedUser ? (
         <div>
-          <Typography variant="h3" sx={{color:"red"}}>Perfil:</Typography>
+          <Typography variant="h3">Perfil:</Typography>
           {isEditable && <EditProfileModal />}
 
           <Typography variant="h4">Nombre:</Typography>
