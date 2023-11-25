@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -8,6 +7,7 @@ import { AuthState } from "features/auth/store/types";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 import { logout } from "features/auth/store/auth-slice";
+import { buttonStyles, dashboardBoxStyles } from "./styles/styles";
 
 const Dashboard = () => {
   const user = useCurrentUser();
@@ -22,15 +22,15 @@ const Dashboard = () => {
 
   const onLogout = () => {
     dispatch(logout());
-    navigate('/home')
+    navigate("/home");
   };
 
   return (
-    <Box>
+    <Box sx={dashboardBoxStyles}>
       <Typography> DASHBOARD </Typography>
       <Link to="/"> Home </Link>
       <Link to={`/profile/${user.id}`}> Perfil </Link>
-      <Button variant="contained" onClick={onLogout}>
+      <Button variant="contained" onClick={onLogout} sx={buttonStyles}>
         Logout
       </Button>
     </Box>
