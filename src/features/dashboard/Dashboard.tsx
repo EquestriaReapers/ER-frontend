@@ -1,30 +1,38 @@
-import { Link } from 'react-router-dom'
-import Box  from '@mui/material/Box'
-import Typography  from '@mui/material/Typography'
-import Button from '@mui/material/Button';
-import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from "react-router-dom";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "features/auth/store/types";
-import { useSelector } from "react-redux";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
-import { logout } from 'features/auth/store';
-
+import { logout } from "features/auth/store/auth-slice";
+import { buttonStyles, dashboardBoxStyles } from "./styles/styles";
 
 const Dashboard = () => {
   const user = useCurrentUser();
   const dispatch = useDispatch();
-  
-  useRedirectWhenUnlogged()
+  const navigate = useNavigate();
+
+  useRedirectWhenUnlogged();
 
   if (!user) {
-    return null
+    return null;
   }
+
+  const onLogout = () => {
+    dispatch(logout());
+    navigate("/home");
+  };
+
   return (
-    <Box>
-        <Typography> DASHBOARD </Typography>
-        <Link to='/'>  Home  </Link>
-        <Link to={`/profile/${user.id}`}> Perfil </Link>
-        <Button variant="contained" onClick={() => dispatch(logout())}>Logout</Button>
+    <Box sx={dashboardBoxStyles}>
+      <Typography> DASHBOARD </Typography>
+      <Link to="/"> Home </Link>
+      <Link to={`/profile/${user.id}`}> Perfil </Link>
+      <Button variant="contained" onClick={onLogout} sx={buttonStyles}>
+        Logout
+      </Button>
     </Box>
   );
 };

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
@@ -41,9 +41,9 @@ const EditProfileForm = () => {
   const onSubmitForm = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     try {
-      console.log(profile);
+      //
     } catch (error) {
-      console.log("hello");
+      //
     }
   };
 

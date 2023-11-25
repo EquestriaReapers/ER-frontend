@@ -6,7 +6,7 @@ export function fetchOneProfile(profile_id: number) {
     const res = axios.get(BASE_URL + profile_id);
     return res;
   } catch (error) {
-    console.log("hay un error");
+   //
   }
 }
 
@@ -18,6 +18,6 @@ export function updateProfile(body: JSON, profile_id: number) {
     );
     return res;
   } catch (error) {
-    console.log("Hay un error");
+    //
   }
 }
