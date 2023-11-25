@@ -1,6 +1,8 @@
+import { BackendError } from "app/exceptions";
 import { getAllSkills } from "../../services/skills.service";
 import { Skill } from "core/profiles/types";
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "sonner";
 
 const useAllSkills = (token: string) => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
@@ -11,7 +13,11 @@ const useAllSkills = (token: string) => {
       const data = await getAllSkills(token);
       setAllSkills(data);
     } catch (error) {
-      console.log(error);
+      if (error instanceof BackendError) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error desconocido");
+      }
     }
   }, [token]);
 

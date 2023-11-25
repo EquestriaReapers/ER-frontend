@@ -2,6 +2,8 @@ import { useAuthState } from "hooks/use-auth-state";
 import { fetchOneProfile } from "./services/profile.service";
 import { Profile } from "core/profiles/types";
 import { useCallback, useEffect, useState } from "react";
+import { BackendError } from "app/exceptions";
+import { toast } from "sonner";
 
 export default function useProfile(id: number) {
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -14,7 +16,11 @@ export default function useProfile(id: number) {
       const data = await fetchOneProfile(token, id);
       setProfile(data);
     } catch (error) {
-      console.log(error);
+      if (error instanceof BackendError) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error desconocido");
+      }
     }
   }, [token, id, setProfile]);
 
