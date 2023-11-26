@@ -21,4 +21,5 @@ export interface Experience {
   cargo: string;
   descripcion: string;
   nombreProyecto: string;
+  
 }
