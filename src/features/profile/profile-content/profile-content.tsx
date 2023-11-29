@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-
+import { Box } from "@mui/material";
 import { useAuthState } from "hooks/use-auth-state";
 
 import EditProfileModal from "../edit-profile/modal";
@@ -10,20 +10,28 @@ import ProfileExperiences from "./profile-experience";
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+
   return (
     <div>
       {loggedUser ? (
         <div>
-          <Typography variant="h3">Perfil:</Typography>
-          {isEditable && <EditProfileModal />}
+          <Box
+            sx={{ width: "100vh", height: "80px", bgcolor: "blue" }}
+          ></Box>
+          <Box sx={{ display: "flex" }}>
+            <Box>
+              <Typography variant="h4">{profile.user.name}</Typography>
 
-          <Typography variant="h4">Nombre:</Typography>
-          <Typography variant="h6">{profile.user.name}</Typography>
+              <Typography variant="h6">Comunicador Social</Typography>
+            </Box>
 
-          <Typography variant="h4">Email:</Typography>
-          <Typography variant="h6">{profile.user.email}</Typography>
+            <Box>{isEditable && <EditProfileModal />}</Box>
+          </Box>
 
-          <Typography variant="h6">{profile.description}</Typography>
+          <Box>
+            <Typography variant="h4">Sobre Mi</Typography>
+            <Typography variant="h6">{profile.description}</Typography>
+          </Box>
 
           <ProfileSkills
             isEditable={isEditable}
