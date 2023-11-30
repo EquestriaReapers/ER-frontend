@@ -29,7 +29,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 variant="h4"
                 sx={{ fontWeight: "700", marginRight: 1 }}
               >
-                {profile.user.name} {profile.user.name}
+                {profile.user.name} {profile.user.lastname}
               </Typography>
             </Box>
 
