@@ -4,10 +4,16 @@ import Typography from "@mui/material/Typography";
 const ExperienceCard = ({ item }: { item: Experience }) => {
   return (
     <div>
-      <Typography variant="h5">{item.nombreProyecto}</Typography>
-      <Typography variant="h6">{item.urlProyecto}</Typography>
-      <Typography variant="h6">{item.cargo}</Typography>
-      <Typography variant="h6">{item.descripcion}</Typography>
+      <Typography variant="h5">{item.name}</Typography>
+      <Typography variant="h6">{item.role}</Typography>
+      <Typography variant="h6">
+        {item.startDate.toLocaleString().slice(0, 10)}
+      </Typography>
+      {item.endDate && (
+        <Typography variant="h6">
+          {item.endDate.toLocaleString().slice(0, 10)}
+        </Typography>
+      )}
     </div>
   );
 };
