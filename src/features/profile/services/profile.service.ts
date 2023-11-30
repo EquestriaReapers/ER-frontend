@@ -1,17 +1,16 @@
 import { BACKEND_V1_URL } from "app/config";
 import { BackendError } from "app/exceptions";
 import axios from "axios";
-import { Experience, Profile, Skill } from "core/profiles/types";
-import { User } from "core/users/types";
+import { Profile } from "core/profiles/types";
 
 const URL = `${BACKEND_V1_URL}/profiles`;
 
 export async function fetchOneProfile(
   token: string,
-  profile_id: number
+  profileId: number
 ): Promise<Profile> {
   try {
-    const response = await axios.get(URL + "/" + profile_id, {
+    const response = await axios.get(`${URL}/ ${profileId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -25,7 +24,7 @@ export async function fetchOneProfile(
 export async function updateProfile(
   token: string,
   body: UpdateProfileBody
-): Promise<OneProfileResponse> {
+): Promise<MessageResponse> {
   try {
     const response = await axios.patch(`${URL}/my-profile`, body, {
       headers: {
@@ -41,9 +40,9 @@ export async function updateProfile(
 export async function addProfileSkill(
   token: string,
   body: UpdateProfileSkillBody
-): Promise<Profile> {
+): Promise<MessageResponse> {
   try {
-    const response = await axios.post(`${URL}/my-profile/add-skill`, body, {
+    const response = await axios.post(`${URL}/my-profile/skill`, body, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -57,17 +56,13 @@ export async function addProfileSkill(
 export async function removeProfileSkill(
   token: string,
   skillId: number
-): Promise<Profile> {
+): Promise<MessageResponse> {
   try {
-    const response = await axios.post(
-      URL + "/my-profile/remove-skill",
-      { skillId },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await axios.delete(`${URL}/my-profile/${skillId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return response.data;
   } catch (error) {
@@ -76,18 +71,16 @@ export async function removeProfileSkill(
 }
 
 export interface UpdateProfileBody {
-  name: string;
   description: string;
-}
-export interface UpdateProfileSkillBody {
-  skillId: number;
+  mainTitle: string;
+  countryResidence: string;
+  name: string;
 }
 
-export interface OneProfileResponse {
-  id: number;
-  userId: number;
-  user: User;
-  description: string;
-  skills: Skill[];
-  experience: Experience[];
+export interface MessageResponse {
+  message: string;
+}
+
+export interface UpdateProfileSkillBody {
+  skillId: number;
 }

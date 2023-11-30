@@ -12,6 +12,7 @@ import {
 
 const ExperienceCard = ({ item }: { item: Experience }) => {
   return (
+    <div>
     <Box sx={divStyles}>
       <Box sx={boxStyles}>
         <Typography sx={projectNameStyles} variant="h5">
@@ -60,6 +61,18 @@ const ExperienceCard = ({ item }: { item: Experience }) => {
         </Typography>
       </Box>
     </Box>
+    
+      <Typography variant="h5">{item.name}</Typography>
+      <Typography variant="h6">{item.role}</Typography>
+      <Typography variant="h6">
+        {item.startDate.toLocaleString().slice(0, 10)}
+      </Typography>
+      {item.endDate && (
+        <Typography variant="h6">
+          {item.endDate.toLocaleString().slice(0, 10)}
+        </Typography>
+      )}
+    </div>
   );
 };
 

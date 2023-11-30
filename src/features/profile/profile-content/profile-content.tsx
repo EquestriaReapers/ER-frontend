@@ -18,8 +18,12 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
           {isEditable && <EditProfileModal />}
 
           <Typography variant="h4">Nombre:</Typography>
-          <Typography variant="h6">{profile.user.name}</Typography>
-
+          <Typography variant="h6">
+            {profile.user.name} {profile.user.lastname}
+          </Typography>
+          <Typography variant="h6">
+            {profile.mainTitle} {profile.countryResidence}
+          </Typography>
           <Typography variant="h4">Email:</Typography>
           <Typography variant="h6">{profile.user.email}</Typography>
 
