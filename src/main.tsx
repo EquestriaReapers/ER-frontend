@@ -5,10 +5,8 @@ import { store, persistor } from "app/store";
 import { Toaster } from "sonner";
 import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
-import EditProfileForm from "legacy/profile/EditProfileForm.tsx";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
-import EditSkills from "legacy/profile/EditSkils.tsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -34,20 +32,12 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: "/profile/edit/:id",
-    element: <EditProfileForm />,
-  },
-  {
     path: "/login",
     element: <Login />,
   },
   {
     path: "/register",
     element: <Register />,
-  },
-  {
-    path: "/profile/edit/skills/:id",
-    element: <EditSkills />,
   },
 ]);
 
