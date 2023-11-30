@@ -10,7 +10,8 @@ export async function fetchOneProfile(
   profileId: number
 ): Promise<Profile> {
   try {
-    const response = await axios.get(`${URL}/ ${profileId}`, {
+    console.log(profileId)
+    const response = await axios.get(`${URL}/${profileId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
