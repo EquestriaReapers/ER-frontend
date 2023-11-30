@@ -9,7 +9,7 @@ const URL = `${BACKEND_V1_URL}/profiles`;
 export async function fetchOneProfile(
   token: string,
   profile_id: number
-): Promise<OneProfileResponse> {
+): Promise<Profile> {
   try {
     const response = await axios.get(URL + "/" + profile_id, {
       headers: {

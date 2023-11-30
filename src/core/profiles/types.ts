@@ -5,6 +5,8 @@ export interface Profile {
   id: number;
   user: User;
   description: string;
+  mainTitle: string,
+  countryResidence: string,
   skills: Skill[];
   experience: Experience[];
 }
@@ -17,8 +19,8 @@ export interface Skill {
 export interface Experience {
   id: number;
   profileId: number;
-  urlProyecto: string;
-  cargo: string;
-  descripcion: string;
-  nombreProyecto: string;
+  name: string;
+  role: string;
+  startDate: Date;
+  endDate: Date;
 }
