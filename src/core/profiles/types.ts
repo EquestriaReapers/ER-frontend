@@ -21,7 +21,7 @@ export interface Skill {
 export interface Experience {
   id: number;
   profileId: number;
-  name: string;
+  businessName: string;
   role: string;
   startDate: Date;
   location: string;
