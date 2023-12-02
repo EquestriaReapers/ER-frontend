@@ -8,11 +8,11 @@ const ProfileSkills = ({
   currentProfileSkills,
 }: ProfileSkillProps) => {
   return (
-    <>
+    <div>
       <Typography variant="h4">Habilidades:</Typography>
       {isEditable && <AddSkillsModal />}
-      <ShowSkills skills={currentProfileSkills} isEditable={isEditable}/>
-    </>
+      <ShowSkills skills={currentProfileSkills} isEditable={isEditable} />
+    </div>
   );
 };
 
