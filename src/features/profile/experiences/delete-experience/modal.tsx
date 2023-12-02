@@ -1,11 +1,11 @@
-import Modal from '@mui/material/Modal'
-import IconButton from '@mui/material/IconButton'
-import DeleteIcon from '@mui/icons-material/Delete'
-import { useState } from 'react'
-import DeleteExperienceModalContent from './modal-content'
+import Modal from "@mui/material/Modal";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { useState } from "react";
+import DeleteExperienceModalContent from "./modal-content";
 
-const DeleteExperienceModal = ({ skillId }: DeleteSkillProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+const DeleteExperienceModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div>
@@ -15,19 +15,16 @@ const DeleteExperienceModal = ({ skillId }: DeleteSkillProps) => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby='Delete Experience'
-        aria-describedby='It is used to Experience skills'
+        aria-labelledby="Delete Experience"
+        aria-describedby="It is used to Experience skills"
       >
         <div>
           <DeleteExperienceModalContent setIsOpen={setIsOpen} />
         </div>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export interface DeleteSkillProps {
-  skillId: number
-}
 
-export default DeleteExperienceModal
+export default DeleteExperienceModal;

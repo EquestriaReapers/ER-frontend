@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { style } from "../styles/styles";
-import { Profile } from "core/profiles/types";
+import { MessageResponse } from "features/profile/services/profile.service";
 const DeleteSkillModalContent = ({
   onDeleteSkill,
   setIsOpen,
@@ -18,7 +18,7 @@ const DeleteSkillModalContent = ({
 };
 
 export interface DeleteSkillModalContentProps {
-  onDeleteSkill: () => Promise<Profile | undefined>;
+  onDeleteSkill: () => Promise<MessageResponse | undefined>;
   setIsOpen: (arg0: boolean) => void;
 }
 
