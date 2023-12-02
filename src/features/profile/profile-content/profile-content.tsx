@@ -12,22 +12,9 @@ import { Skill } from "core/profiles/types"; // Import temporal para hacer el du
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const dummySkills: Skill[] = [
-    { id: 1, name: "React" },
-    { id: 2, name: "CSS" },
-    { id: 3, name: "HTML" },
-    { id: 4, name: "React" },
-    { id: 5, name: "CSS" },
-    { id: 6, name: "HTML" },
-    { id: 7, name: "React" },
-    { id: 8, name: "CSS" },
-    { id: 9, name: "HTML" },
-    { id: 10, name: "React" },
-    { id: 11, name: "CSS" },
-    { id: 12, name: "CSS" },
-    { id: 13, name: "HTML" },
-    { id: 14, name: "React" },
-    { id: 15, name: "CSS" },
-    { id: 16, name: "HTML" },
+    { id: 1, name: "React", level: "1" },
+    { id: 2, name: "CSS", level: "1" },
+    { id: 3, name: "HTML", level: "1" },
   ];
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   return (
