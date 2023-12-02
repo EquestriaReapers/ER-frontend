@@ -8,6 +8,7 @@ const useEditProfileFormState = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [mainTitle, setMainTitle] = useState("");
+  const [countryResidence, setCountryResidence] = useState("");
 
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -18,6 +19,9 @@ const useEditProfileFormState = () => {
   const onChangeMainTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setMainTitle(event.target.value);
   };
+  const onChangeCountryResidence = (event: ChangeEvent<HTMLInputElement>) => {
+    setCountryResidence(event.target.value);
+  };
 
   const { token, user } = useAuthState();
   const getUserInfo = useCallback(async () => {
@@ -27,6 +31,7 @@ const useEditProfileFormState = () => {
       setName(data.user.name);
       setDescription(data.description);
       setMainTitle(data.mainTitle);
+      setCountryResidence(data.countryResidence);
     } catch (error) {
       if (error instanceof BackendError) {
         toast.error(error.message);
@@ -44,12 +49,15 @@ const useEditProfileFormState = () => {
     name,
     description,
     mainTitle,
+    countryResidence,
     setName,
     setDescription,
     setMainTitle,
+    setCountryResidence,
     onChangeName,
     onChangeDescription,
     onChangeMainTitle,
+    onChangeCountryResidence,
   };
 };
 

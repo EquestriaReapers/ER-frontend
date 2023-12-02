@@ -10,12 +10,14 @@ const EditProfileModalContent = ({
     name,
     description,
     mainTitle,
+    countryResidence,
     onChangeName,
     onChangeDescription,
     onChangeMainTitle,
+    onChangeCountryResidence,
   } = useEditProfileFormState();
 
-  const user = { name, description, mainTitle };
+  const user = { name, description, mainTitle, countryResidence };
   const { onSubmitForm } = useForm({ setIsOpen, user });
 
   return (
@@ -34,11 +36,19 @@ const EditProfileModalContent = ({
           label="Descripción"
           onChange={onChangeDescription}
         />
+
         <TextField
           id="mainTitle"
           value={mainTitle}
           label="Titulo"
           onChange={onChangeMainTitle}
+        />
+
+        <TextField
+          id="countryResidence"
+          value={countryResidence}
+          label="Pais de Residencia"
+          onChange={onChangeCountryResidence}
         />
 
         <Button variant="outlined" type="submit">

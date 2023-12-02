@@ -32,7 +32,7 @@ export interface EditFormProps {
     name: string;
     description: string;
     mainTitle: string;
-    residenceCountry: string;
+    countryResidence: string;
   };
 }
 export default useForm;
