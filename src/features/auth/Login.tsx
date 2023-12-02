@@ -16,12 +16,12 @@ const Login: FunctionComponent = () => {
   return (
     <Box>
       <Typography>Login</Typography>
-      <FormControl margin="normal">
+      <FormControl margin='normal'>
         <LoginForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
     </Box>
-  );
-};
+  )
+}
 
 function useLogin() {
   const dispatch = useDispatch();
@@ -31,13 +31,13 @@ function useLogin() {
 
   useRedirectWhenLogged();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
 
   const onSubmit = useCallback(
     async (email: string, password: string) => {
-      setLoading(true);
+      setLoading(true)
       try {
-        if (!email || !password) return;
+        if (!email || !password) return
 
         const result = await loginService({
           email,
@@ -49,13 +49,13 @@ function useLogin() {
       } catch (error) {
         showErrorToast(error);
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     },
     [navigate, dispatch, showSuccessToast, showErrorToast]
   );
 
-  return { onSubmit, loading };
+  return { onSubmit, loading }
 }
 
-export default Login;
+export default Login
