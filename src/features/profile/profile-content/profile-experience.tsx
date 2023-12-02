@@ -13,6 +13,7 @@ const ProfileExperience = ({
 }: ProfileExperienceProps) => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const { token } = useAuthState();
+  console.log(experiences);
   useEffect(() => {
     const fetchExperiences = async () => {
       try {
