@@ -29,17 +29,20 @@ function useRegister() {
   const onSubmit = useCallback(
     async (
       name: string,
+      lastname: string,
       email: string,
       password: string,
       confirmPassword: string
     ) => {
       setLoading(true);
       try {
-        if (!name || !email || !password || !confirmPassword) return;
+        if (!name || !lastname || !email || !password || !confirmPassword)
+          return;
 
         if (password === confirmPassword) {
           await registerService({
             name,
+            lastname,
             email,
             password,
           });
