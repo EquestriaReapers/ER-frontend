@@ -24,5 +24,7 @@ export interface Experience {
   name: string;
   role: string;
   startDate: Date;
+  location: string;
+  description: string;
   endDate: Date | null;
 }

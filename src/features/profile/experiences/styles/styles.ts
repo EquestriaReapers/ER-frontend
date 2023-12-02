@@ -12,6 +12,7 @@ export const boxStyles = {
 export const projectNameStyles = {
     fontWeight: 'bold',
     fontSize: '24px',
+    pb: 1,
 };
 
 export const projectChargeStyles = {
