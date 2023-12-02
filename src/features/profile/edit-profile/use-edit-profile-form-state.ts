@@ -7,11 +7,16 @@ import { toast } from "sonner";
 const useEditProfileFormState = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [mainTitle, setMainTitle] = useState("");
+
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
   const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
+  };
+  const onChangeMainTitle = (event: ChangeEvent<HTMLInputElement>) => {
+    setMainTitle(event.target.value);
   };
 
   const { token, user } = useAuthState();
@@ -21,6 +26,7 @@ const useEditProfileFormState = () => {
       const data = await fetchOneProfile(token, user.id);
       setName(data.user.name);
       setDescription(data.description);
+      setMainTitle(data.mainTitle);
     } catch (error) {
       if (error instanceof BackendError) {
         toast.error(error.message);
@@ -28,7 +34,7 @@ const useEditProfileFormState = () => {
         toast.error("Error desconocido");
       }
     }
-  }, [setDescription, setName, token, user]);
+  }, [setDescription, setName, setMainTitle, token, user]);
 
   useEffect(() => {
     getUserInfo();
@@ -37,10 +43,13 @@ const useEditProfileFormState = () => {
   return {
     name,
     description,
+    mainTitle,
     setName,
     setDescription,
+    setMainTitle,
     onChangeName,
     onChangeDescription,
+    onChangeMainTitle,
   };
 };
 

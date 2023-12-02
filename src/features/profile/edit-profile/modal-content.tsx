@@ -6,10 +6,16 @@ import useForm from "./use-form";
 const EditProfileModalContent = ({
   setIsOpen,
 }: EditProfileModalContentProps) => {
-  const { name, description, onChangeName, onChangeDescription } =
-    useEditProfileFormState();
+  const {
+    name,
+    description,
+    mainTitle,
+    onChangeName,
+    onChangeDescription,
+    onChangeMainTitle,
+  } = useEditProfileFormState();
 
-  const user = { name, description };
+  const user = { name, description, mainTitle };
   const { onSubmitForm } = useForm({ setIsOpen, user });
 
   return (
@@ -27,6 +33,12 @@ const EditProfileModalContent = ({
           value={description}
           label="Descripción"
           onChange={onChangeDescription}
+        />
+        <TextField
+          id="mainTitle"
+          value={mainTitle}
+          label="Titulo"
+          onChange={onChangeMainTitle}
         />
 
         <Button variant="outlined" type="submit">

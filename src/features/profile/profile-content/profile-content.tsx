@@ -1,5 +1,4 @@
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useAuthState } from "hooks/use-auth-state";
@@ -16,39 +15,48 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   const primaryGreen = theme.palette.primary.main;
 
   return (
-    <div>
+    <>
       {loggedUser ? (
-        <div>
-          <Box sx={{ width: "100vh", height: "80px", bgcolor: "black" }}></Box>
+        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
 
-          <Container
-            sx={{ display: "flex", flexWrap: "wrap", marginTop: "15px" }}
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+              marginTop: "12px",
+            }}
           >
-            <Box>
+            <Box sx={{ display: "flex" }}>
               <Typography
                 variant="h4"
                 sx={{ fontWeight: "700", marginRight: 1 }}
               >
                 {profile.user.name} {profile.user.lastname}
               </Typography>
+              {isEditable && <EditProfileModal />}
             </Box>
-
-            <Box>{isEditable && <EditProfileModal />}</Box>
             <Typography
               variant="h6"
               sx={{ fontWeight: "700", color: `${primaryGreen}` }}
             >
-              Comunicador Social
+              {profile.mainTitle}
             </Typography>
-          </Container>
-
-          <Container>
-            <Typography variant="h6" sx={{ fontWeight: "700" }}>
-              Sobre Mi
-            </Typography>
-            <Typography variant="h6">{profile.description}</Typography>
-          </Container>
-
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flexWrap:"nowrap",
+                gap: "10px",
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: "700" }}>
+                Sobre Mi
+              </Typography>
+              <Typography variant="h6">{profile.description}</Typography>
+            </Box>
+          </Box>
           <ProfileSkills
             isEditable={isEditable}
             currentProfileSkills={profile.skills}
@@ -58,11 +66,11 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
             isEditable={isEditable}
             currentProfileExperience={profile.experience}
           />
-        </div>
+        </Box>
       ) : (
         <Typography>No se encontro el perfil!</Typography>
       )}
-    </div>
+    </>
   );
 };
 

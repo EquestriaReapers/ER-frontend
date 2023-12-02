@@ -10,7 +10,6 @@ export async function fetchOneProfile(
   profileId: number
 ): Promise<Profile> {
   try {
-    console.log(profileId)
     const response = await axios.get(`${URL}/${profileId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -32,6 +31,8 @@ export async function updateProfile(
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(body);
+    console.log(response.data)
     return response.data;
   } catch (error) {
     throw new BackendError(error);
