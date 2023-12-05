@@ -2,32 +2,12 @@ import ShowExperiences from "../experiences/show-experiences/show-experiences";
 import Typography from "@mui/material/Typography";
 import EditExperienceModal from "../experiences/edit-experiences/modal";
 import { Experience } from "core/profiles/types";
-import { useEffect, useState } from "react";
-import { getAllExperiences } from "../services/experience.service";
-import { useAuthState } from "hooks/use-auth-state";
 import { boxStyles } from "./styles/styles";
 
 const ProfileExperience = ({
   isEditable,
   currentProfileExperience,
 }: ProfileExperienceProps) => {
-  const [experiences, setExperiences] = useState<Experience[]>([]);
-  const { token } = useAuthState();
-  useEffect(() => {
-    const fetchExperiences = async () => {
-      try {
-        if (!token) return;
-        const experiencesData = await getAllExperiences(token);
-        setExperiences(experiencesData.experience);
-        console.error(experiencesData.experience);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchExperiences();
-  }, []);
-
   return (
     <div>
       <Typography variant="h4" sx={ boxStyles }>Experiencia{isEditable && <EditExperienceModal />}</Typography>

@@ -1,5 +1,6 @@
 import { useEffect, useState, ChangeEvent, useCallback } from "react";
 import { useAuthState } from "hooks/use-auth-state";
+import { fetchOneProfile } from "features/profile/services/profile.service";
 
 const useEditExperienceFormState = () => {
   const [name, setName] = useState("");
@@ -15,9 +16,9 @@ const useEditExperienceFormState = () => {
   const getUserInfo = useCallback(async () => {
     try {
       if (!token || !user) return;
-    /*  // const data = await fetchOneProfile(token, user.id);
+      const data = await fetchOneProfile(token, user.id);
       setName(data.user.name);
-      setDescription(data.description); */
+      setDescription(data.description);
     } catch (error) {
       console.log(error);
     }
