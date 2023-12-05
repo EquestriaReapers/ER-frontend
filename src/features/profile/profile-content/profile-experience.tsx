@@ -5,6 +5,7 @@ import { Experience } from "core/profiles/types";
 import { useEffect, useState } from "react";
 import { getAllExperiences } from "../services/experience.service";
 import { useAuthState } from "hooks/use-auth-state";
+import { boxStyles } from "./styles/styles";
 
 const ProfileExperience = ({
   isEditable,
@@ -29,8 +30,7 @@ const ProfileExperience = ({
 
   return (
     <div>
-      <Typography variant="h4">Experiencia:</Typography>
-      {isEditable && <EditExperienceModal />}
+      <Typography variant="h4" sx={ boxStyles }>Experiencia{isEditable && <EditExperienceModal />}</Typography>
       <ShowExperiences experience={currentProfileExperience} />
     </div>
   );
