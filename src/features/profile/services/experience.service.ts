@@ -3,7 +3,7 @@ import { BackendError } from "app/exceptions";
 import axios from "axios";
 import { Experience, Profile } from "core/profiles/types";  
 
-const URL = `${BACKEND_V1_URL}/profiles/1`;  
+const URL = `${BACKEND_V1_URL}/profiles/2`;  
 
 export async function getAllExperiences(token: string): Promise<Profile> {
   try {
