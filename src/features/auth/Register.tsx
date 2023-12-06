@@ -41,21 +41,23 @@ function useRegister() {
       try {
         if (!name || !email || !password || !confirmPassword) return;
 
+        if (password != confirmPassword)
+          showErrorToast("La contraseñas no son iguales");
         if (password === confirmPassword) {
           await registerService({
             name,
             email,
             password,
           });
-          showSuccessToast('Registro exitoso')
+          showSuccessToast("Registro exitoso");
         }
       } catch (error) {
-        showErrorToast(error)
+        showErrorToast(error);
       } finally {
         setLoading(false);
       }
     },
-    []
+    [showErrorToast, showSuccessToast]
   );
 
   return { onSubmit, loading };
