@@ -5,6 +5,8 @@ import registerService from "features/auth/services/register.service";
 
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from "react-div-100vh";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -40,6 +42,8 @@ const Register: FunctionComponent = () => {
 
 function useRegister() {
   useRedirectWhenRegistered();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
 
   const [loading, setLoading] = useState(false);
 
@@ -63,14 +67,15 @@ function useRegister() {
             email,
             password,
           });
+          showSuccessToast('Registro exitoso')
         }
       } catch (error) {
-        console.log(error);
+        showErrorToast(error)
       } finally {
         setLoading(false);
       }
     },
-    []
+    [showErrorToast, showSuccessToast]
   );
 
   return { onSubmit, loading };
