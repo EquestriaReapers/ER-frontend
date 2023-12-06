@@ -5,8 +5,10 @@ export function useErrorToast() {
   const showErrorToast = (error: unknown) => {
     if (error instanceof BackendError) {
       toast.error(error.message);
+    } else if (typeof error === "string") {
+      toast.error(error);
     } else {
-      toast.error("Ocurrio un error desconocido");
+      toast.error("Ocurrió un error desconocido");
     }
   };
 
