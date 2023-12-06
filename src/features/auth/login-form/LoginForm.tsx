@@ -2,11 +2,11 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
+import { useLoader } from "hooks/use-loader";
 
 const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const { email, password, onChangeEmail, onChangePassword } =
     useLoginFormState();
-
   return (
     <>
       <TextField
