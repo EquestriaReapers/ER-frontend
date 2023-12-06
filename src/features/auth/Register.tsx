@@ -8,6 +8,8 @@ import registerService from "features/auth/services/register.service";
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -23,6 +25,8 @@ const Register: FunctionComponent = () => {
 
 function useRegister() {
   useRedirectWhenRegistered();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
 
   const [loading, setLoading] = useState(false);
 
@@ -43,14 +47,10 @@ function useRegister() {
             email,
             password,
           });
-          toast.success("Registro exitoso");
+          showSuccessToast('Registro exitoso')
         }
       } catch (error) {
-        if (error instanceof BackendError) {
-          toast.error(error.message);
-        } else {
-          toast.error("Error desconocido");
-        }
+        showErrorToast(error)
       } finally {
         setLoading(false);
       }
