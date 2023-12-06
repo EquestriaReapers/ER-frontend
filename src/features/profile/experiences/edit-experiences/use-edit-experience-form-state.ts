@@ -5,9 +5,11 @@ import { fetchOneProfile } from "features/profile/services/profile.service";
 const useEditExperienceFormState = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
+
   const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };

@@ -10,7 +10,12 @@ const ProfileExperience = ({
 }: ProfileExperienceProps) => {
   return (
     <div>
-      <Typography variant="h4" sx={ boxStyles }>Experiencia{isEditable && <EditExperienceModal />}</Typography>
+      <Typography variant="h4" sx={boxStyles}>
+        Experiencia
+        {isEditable && (
+          <EditExperienceModal experience={currentProfileExperience} />
+        )}
+      </Typography>
       <ShowExperiences experience={currentProfileExperience} />
     </div>
   );

@@ -5,6 +5,7 @@ import { fetchOneProfile } from "../services/profile.service";
 const useEditProfileFormState = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
   const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
