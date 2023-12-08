@@ -17,7 +17,6 @@ export default async function register(
 
 export interface RegisterBody {
   name: string;
-  lastname: string;
   email: string;
   password: string;
 }
@@ -25,7 +24,4 @@ export interface RegisterBody {
 export interface RegisterResponse {
   name: string;
   email: string;
-  emailVerification: {
-    message: string;
-  };
 }
