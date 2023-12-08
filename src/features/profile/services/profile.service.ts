@@ -77,6 +77,16 @@ export interface UpdateProfileBody {
   name: string;
 }
 
+export interface addExperienceBody {
+  role: string;
+  businessName: string;
+  profileId: number;
+  startDate: Date;
+  location: string;
+  description: string;
+  endDate: Date | null;
+}
+
 export interface MessageResponse {
   message: string;
 }

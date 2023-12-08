@@ -6,19 +6,6 @@ import { Experience } from "core/profiles/types";
 
 const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState(2); // 1, 2, o 3 dependiendo del contenido que quieras mostrar
-
-  const renderContent = () => {
-    switch (content) {
-      case 1:
-        return (
-          <EditExperienceModalContent setIsOpen={setIsOpen} experience={experience} />
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
     <div>
       <IconButton onClick={() => setIsOpen(true)}>
@@ -31,7 +18,12 @@ const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
         aria-labelledby="edit experience"
         aria-describedby="used to edit e"
       >
-        <div>{renderContent()}</div>
+        <div>
+          <EditExperienceModalContent
+            experience={experience}
+            setIsOpen={setIsOpen}
+          />
+        </div>
       </Modal>
     </div>
   );
