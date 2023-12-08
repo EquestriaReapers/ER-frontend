@@ -30,7 +30,7 @@ const ShowExperienceModalContent = ({
 interface ShowExperienceModalContentProps {
   experience: Experience[];
   setContent: (arg0: number) => void;
-  setAnExperience: (anExperience: Experience) => void;
+  setAnExperience: (anExperience: Experience | null) => void;
 }
 
 export default ShowExperienceModalContent;

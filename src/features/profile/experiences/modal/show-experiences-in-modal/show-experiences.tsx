@@ -23,7 +23,12 @@ const ModalShowExperiences = ({
             >
               <EditIcon />
             </IconButton>
-            <IconButton onClick={() => setContent}>
+            <IconButton
+              onClick={() => {
+                setContent(3);
+                setAnExperience(item);
+              }}
+            >
               <DeleteIcon />
             </IconButton>
           </Box>
@@ -36,7 +41,7 @@ const ModalShowExperiences = ({
 interface ShowExperiencesProps {
   experience: Experience[];
   setContent: (arg0: number) => void;
-  setAnExperience: (arg0: Experience) => void;
+  setAnExperience: (anExperience: Experience | null) => void;
 }
 
 export default ModalShowExperiences;
