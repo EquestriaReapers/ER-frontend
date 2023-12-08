@@ -1,27 +1,18 @@
 import { useState } from "react";
-import { Modal, IconButton } from "@mui/material";
+import { Modal, IconButton, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import EditExperienceModalContent from "./modal-content";
-import { Experience } from "core/profiles/types";
+import useModalContentChange from "./use-modal-content-change";
 
-const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
+const EditExperienceModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState(1); // 1, 2, o 3 dependiendo del contenido que quieras mostrar
-
-  const renderContent = () => {
-    switch (content) {
-      case 1:
-        return (
-          <EditExperienceModalContent setIsOpen={setIsOpen} experience={experience} />
-        );
-      default:
-        return null;
-    }
-  };
-
+  const { setContent, renderContent } = useModalContentChange();
   return (
     <div>
-      <IconButton onClick={() => setIsOpen(true)}>
+      <IconButton
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
         <EditIcon />
       </IconButton>
 
@@ -31,14 +22,17 @@ const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
         aria-labelledby="edit experience"
         aria-describedby="used to edit e"
       >
-        <div>{renderContent()}</div>
+        <div>
+          <Button onClick={() => setContent(0)}>Mostrar exp</Button>
+          <Button onClick={() => setContent(1)}>Agregar exp</Button>
+          <Button onClick={() => setContent(2)}>Editar exp</Button>
+          <Button onClick={() => setContent(3)}>Borrar exp</Button>
+
+          <div>{renderContent()}</div>
+        </div>
       </Modal>
     </div>
   );
 };
-
-interface EditExperienceModalProps {
-  experience: Experience[];
-}
 
 export default EditExperienceModal;
