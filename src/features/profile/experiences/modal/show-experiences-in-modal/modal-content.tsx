@@ -11,9 +11,8 @@ const ShowExperienceModalContent = () => {
           En esta seccion podras gestionar las experiencias profesionales que
           has tenido
         </Typography>
-        <form>
-          <ModalShowExperiences experience={experience} />
-        </form>
+
+        <ModalShowExperiences />
       </Box>
     </Box>
   );

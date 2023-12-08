@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button'
 import { Box, Typography } from '@mui/material'
-import { modalStyle } from '../edit-experiences/styles/styles'
+import { modalStyle } from '../modal/styles/styles'
 const DeleteExperienceModalContent = ({
   setIsOpen
 }: DeleteSkillModalContentProps) => {

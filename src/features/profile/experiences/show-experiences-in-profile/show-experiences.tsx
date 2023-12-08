@@ -3,7 +3,7 @@ import { Experience } from 'core/profiles/types'
 import ExperienceCard from './experience-card'
 import DeleteExperienceModal from '../delete-experience/modal'
 
-const ShowExperiences = ({ experience }: ShowExperiencesProps) => {
+const ShowExperiencesInProfile = ({ experience }: ShowExperiencesProps) => {
   return (
     <Box>
       {experience.map((item: Experience) => {
@@ -22,4 +22,4 @@ interface ShowExperiencesProps {
   experience: Experience[]
 }
 
-export default ShowExperiences
+export default ShowExperiencesInProfile

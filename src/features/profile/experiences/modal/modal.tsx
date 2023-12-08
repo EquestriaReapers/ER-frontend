@@ -2,9 +2,11 @@ import { useState } from "react";
 import { Modal, IconButton, Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import useModalContentChange from "./use-modal-content-change";
+import { Experience } from "core/profiles/types";
 
-const EditExperienceModal = () => {
+const ExperienceModal = ({ experience }: ExperienceModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  console.log(experience);
   const { setContent, renderContent } = useModalContentChange();
   return (
     <div>
@@ -35,4 +37,8 @@ const EditExperienceModal = () => {
   );
 };
 
-export default EditExperienceModal;
+export interface ExperienceModalProps {
+  experience: Experience[];
+}
+
+export default ExperienceModal;
