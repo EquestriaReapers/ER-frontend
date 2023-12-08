@@ -16,7 +16,9 @@ const ShowExperienceModalContent = ({
           En esta seccion podras gestionar las experiencias profesionales que
           has tenido
         </Typography>
-        <Button onClick={() => setContent(1)}></Button>
+        <Button variant="contained" onClick={() => setContent(1)}>
+          Agregar Experiencia
+        </Button>
         <ModalShowExperiences
           experience={experience}
           setContent={setContent}
