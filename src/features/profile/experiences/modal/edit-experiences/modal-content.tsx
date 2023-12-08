@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import { modalStyle } from "../styles/styles";
+import { Experience } from "core/profiles/types";
 
-const EditExperienceModalContent = () => {
+const EditExperienceModalContent = ({
+  anExperience,
+  setContent,
+}: EditExperienceModalContentProps) => {
   return (
     <Box sx={modalStyle}>
       <Typography>Editar experiencia</Typography>
@@ -10,3 +14,8 @@ const EditExperienceModalContent = () => {
 };
 
 export default EditExperienceModalContent;
+
+interface EditExperienceModalContentProps {
+  anExperience: Experience;
+  setContent: (arg0: number) => void;
+}

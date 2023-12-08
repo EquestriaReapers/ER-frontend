@@ -13,6 +13,7 @@ const ExperienceModal = ({ experience }: ExperienceModalProps) => {
       <IconButton
         onClick={() => {
           setIsOpen(true);
+          setContent(0);
         }}
       >
         <EditIcon />
@@ -30,7 +31,7 @@ const ExperienceModal = ({ experience }: ExperienceModalProps) => {
           <Button onClick={() => setContent(2)}>Editar exp</Button>
           <Button onClick={() => setContent(3)}>Borrar exp</Button>
 
-          <div>{renderContent()}</div>
+          <div>{renderContent(experience)}</div>
         </div>
       </Modal>
     </div>
