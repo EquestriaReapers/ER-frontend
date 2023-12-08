@@ -6,7 +6,7 @@ import { Experience } from "core/profiles/types";
 
 const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState(1); // 1, 2, o 3 dependiendo del contenido que quieras mostrar
+  const [content, setContent] = useState(2); // 1, 2, o 3 dependiendo del contenido que quieras mostrar
 
   const renderContent = () => {
     switch (content) {
