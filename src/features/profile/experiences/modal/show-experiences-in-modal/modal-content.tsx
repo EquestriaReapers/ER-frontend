@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import { modalStyle } from "../styles/styles";
+import { modalStyle, titleStyles, buttonStyle, inlineStyles } from "../styles/styles";
 import ModalShowExperiences from "./show-experiences";
 import { Experience } from "core/profiles/types";
 
@@ -9,23 +9,25 @@ const ShowExperienceModalContent = ({
   setAnExperience,
 }: ShowExperienceModalContentProps) => {
   return (
-    <Box sx={modalStyle}>
       <Box sx={modalStyle}>
-        <Typography>Gestión de experiencias</Typography>
-        <Typography>
-          En esta seccion podras gestionar las experiencias profesionales que
+        <Box>
+        <Typography sx={titleStyles}>Gestión de experiencias</Typography>
+        <Box sx={inlineStyles}>
+        <Typography> 
+          En esta sección podras gestionar las experiencias profesionales que
           has tenido
         </Typography>
-        <Button variant="contained" onClick={() => setContent(1)}>
+        <Button sx={buttonStyle} onClick={() => setContent(1)}>
           Agregar Experiencia
         </Button>
+        </Box>
         <ModalShowExperiences
           experience={experience}
           setContent={setContent}
           setAnExperience={setAnExperience}
         />
+        </Box>
       </Box>
-    </Box>
   );
 };
 
