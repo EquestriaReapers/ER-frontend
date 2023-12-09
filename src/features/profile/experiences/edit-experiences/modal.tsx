@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Modal, IconButton } from "@mui/material";
+import { Box, Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import EditExperienceModalContent from "./modal-content";
+import EditExperienceModalContent from "../modal/edit-experiences/modal-content";
 import { Experience } from "core/profiles/types";
+import { modalStyle } from "../modal/styles/styles";
 
 const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <Box>
       <IconButton onClick={() => setIsOpen(true)}>
         <EditIcon />
       </IconButton>
@@ -18,14 +19,14 @@ const EditExperienceModal = ({ experience }: EditExperienceModalProps) => {
         aria-labelledby="edit experience"
         aria-describedby="used to edit e"
       >
-        <div>
+        <Box>
           <EditExperienceModalContent
             experience={experience}
             setIsOpen={setIsOpen}
           />
-        </div>
+        </Box>
       </Modal>
-    </div>
+    </Box>
   );
 };
 
