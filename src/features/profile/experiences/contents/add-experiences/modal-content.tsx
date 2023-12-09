@@ -1,8 +1,9 @@
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { modalStyle } from "../styles/styles";
-import useExperienceFormState from "../../use-experience-form-state";
+import useExperienceFormState from "../../modal/use-experience-form-state";
 import useAddExperienceForm from "./use-form";
+import { ExperienceContent } from "../../modal/types";
 
 const AddExperienceModalContent = ({
   setContent,
@@ -39,7 +40,7 @@ const AddExperienceModalContent = ({
     <Box sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
         <Box>
-          <IconButton onClick={() => setContent(0)}>
+          <IconButton onClick={() => setContent(ExperienceContent.Show)}>
             <ArrowBackIcon />
           </IconButton>
         </Box>
@@ -93,7 +94,7 @@ const AddExperienceModalContent = ({
 };
 
 interface AddExperienceModalContentProps {
-  setContent: (arg0: number) => void;
+  setContent: (arg0: ExperienceContent) => void;
 }
 
 export default AddExperienceModalContent;

@@ -5,7 +5,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
-import ProfileExperiences from "./experiences";
+import ProfileExperiences from "../experiences";
 
 const ProfileContent = ({ profile }: Props) => {
   const loggedUser = useAuthState().user;

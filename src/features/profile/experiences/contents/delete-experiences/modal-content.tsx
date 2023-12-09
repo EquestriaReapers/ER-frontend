@@ -2,11 +2,9 @@ import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { modalStyle } from "../styles/styles";
 import useDeleteExperienceForm from "./use-form";
+import { ExperienceContent } from "../../modal/types";
 
-const DeleteExperienceModalContent = ({
-  setContent,
-  experienceId,
-}: DeleteExperienceModalContentProps) => {
+const DeleteExperienceModalContent = ({ setContent, experienceId }: Props) => {
   const { onSubmitForm } = useDeleteExperienceForm({
     setContent,
     experienceId,
@@ -17,7 +15,9 @@ const DeleteExperienceModalContent = ({
         <Typography>
           ¿Estás seguro de que quieres borrar la experiencia?
         </Typography>
-        <Button onClick={() => setContent(0)}>Regresar</Button>
+        <Button onClick={() => setContent(ExperienceContent.Show)}>
+          Regresar
+        </Button>
         <Button type="submit" variant="contained">
           Confirmar
         </Button>
@@ -26,8 +26,8 @@ const DeleteExperienceModalContent = ({
   );
 };
 
-export interface DeleteExperienceModalContentProps {
-  setContent: (arg0: number) => void;
+export interface Props {
+  setContent: (arg0: ExperienceContent) => void;
   experienceId: number;
 }
 

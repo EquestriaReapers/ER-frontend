@@ -3,6 +3,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
+import { ExperienceContent } from "../../modal/types";
 
 const useEditExperienceForm = ({
   setContent,
@@ -24,7 +25,7 @@ const useEditExperienceForm = ({
           experienceId
         );
         showSuccessToast("Experiencia editada con éxito");
-        setContent(0);
+        setContent(ExperienceContent.Show);
         return data;
       } catch (error) {
         showErrorToast(error);
@@ -44,7 +45,7 @@ const useEditExperienceForm = ({
 };
 
 export interface EditExperienceFormProps {
-  setContent: (arg0: number) => void;
+  setContent: (arg0: ExperienceContent) => void;
   newExperience: {
     businessName: string;
     role: string;

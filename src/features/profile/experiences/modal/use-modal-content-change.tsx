@@ -1,17 +1,20 @@
 import { useState } from "react";
-import ShowExperienceModalContent from "./show-experiences-in-modal/modal-content";
 import { Experience } from "core/profiles/types";
-import AddExperienceModalContent from "./add-experiences/modal-content";
-import EditExperienceModalContent from "./edit-experiences/modal-content";
-import DeleteExperienceModalContent from "./delete-experiences/modal-content";
+import AddExperienceModalContent from "../contents/add-experiences/modal-content";
+import ShowExperienceModalContent from "../contents/show-experiences-in-modal/modal-content";
+import EditExperienceModalContent from "../contents/edit-experiences/modal-content";
+import DeleteExperienceModalContent from "../contents/delete-experiences/modal-content";
+import { ExperienceContent } from "./types";
 
 export default function useModalContentChange() {
-  const [content, setContent] = useState(0);
+  const [content, setContent] = useState<ExperienceContent>(
+    ExperienceContent.Show
+  );
   const [anExperience, setAnExperience] = useState<Experience | null>(null);
 
   const renderContent = (experience: Experience[]) => {
     switch (content) {
-      case 0:
+      case ExperienceContent.Show:
         return (
           <ShowExperienceModalContent
             experience={experience}
@@ -19,16 +22,16 @@ export default function useModalContentChange() {
             setAnExperience={setAnExperience}
           />
         );
-      case 1:
+      case ExperienceContent.Add:
         return <AddExperienceModalContent setContent={setContent} />;
-      case 2:
+      case ExperienceContent.Edit:
         return (
           <EditExperienceModalContent
             setContent={setContent}
             anExperience={anExperience!}
           />
         );
-      case 3:
+      case ExperienceContent.Delete:
         return (
           <DeleteExperienceModalContent
             setContent={setContent}

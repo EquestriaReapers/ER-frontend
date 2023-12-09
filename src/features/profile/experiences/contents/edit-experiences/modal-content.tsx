@@ -1,15 +1,13 @@
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import useExperienceFormState from "../../use-experience-form-state";
+import useExperienceFormState from "../../modal/use-experience-form-state";
 import useEditExperienceForm from "./use-form";
 import { useCallback, useEffect } from "react";
 import { modalStyle } from "../styles/styles";
+import { ExperienceContent } from "../../modal/types";
 
-const EditExperienceModalContent = ({
-  anExperience,
-  setContent,
-}: EditExperienceModalContentProps) => {
+const EditExperienceModalContent = ({ anExperience, setContent }: Props) => {
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -74,7 +72,7 @@ const EditExperienceModalContent = ({
     <Box sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
         <Box>
-          <IconButton onClick={() => setContent(0)}>
+          <IconButton onClick={() => setContent(ExperienceContent.Show)}>
             <ArrowBackIcon />
           </IconButton>
         </Box>
@@ -138,7 +136,7 @@ const EditExperienceModalContent = ({
 
 export default EditExperienceModalContent;
 
-interface EditExperienceModalContentProps {
+interface Props {
   anExperience: Experience;
-  setContent: (arg0: number) => void;
+  setContent: (arg0: ExperienceContent) => void;
 }

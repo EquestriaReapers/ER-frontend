@@ -3,6 +3,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
+import { ExperienceContent } from "../../modal/types";
 
 const useAddExperienceForm = ({
   setContent,
@@ -18,7 +19,7 @@ const useAddExperienceForm = ({
       try {
         if (!token || !experience) return;
         const data = addAProfileExperience(experience, token);
-        setContent(0);
+        setContent(ExperienceContent.Show);
         showSuccessToast("Experiencia agregada con éxito");
         return data;
       } catch (error) {
@@ -32,7 +33,7 @@ const useAddExperienceForm = ({
 };
 
 export interface AddExperienceFormProps {
-  setContent: (arg0: number) => void;
+  setContent: (arg0: ExperienceContent) => void;
   experience: {
     businessName: string;
     role: string;

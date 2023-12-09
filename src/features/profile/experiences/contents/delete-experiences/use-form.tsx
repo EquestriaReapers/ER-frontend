@@ -3,11 +3,9 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
+import { ExperienceContent } from "../../modal/types";
 
-const useDeleteExperienceForm = ({
-  setContent,
-  experienceId,
-}: DeleteExperienceFormProps) => {
+const useDeleteExperienceForm = ({ setContent, experienceId }: Payload) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
@@ -19,7 +17,7 @@ const useDeleteExperienceForm = ({
         if (!token || !experienceId) return;
         const data = await deleteAProfileExperience(token, experienceId);
         console.log(data);
-        setContent(0);
+        setContent(ExperienceContent.Show);
         showSuccessToast("Experiencia borrada con éxito");
         return data;
       } catch (error) {
@@ -31,8 +29,8 @@ const useDeleteExperienceForm = ({
   return { onSubmitForm };
 };
 
-export interface DeleteExperienceFormProps {
-  setContent: (arg0: number) => void;
+export interface Payload {
+  setContent: (arg0: ExperienceContent) => void;
   experienceId: number;
 }
 

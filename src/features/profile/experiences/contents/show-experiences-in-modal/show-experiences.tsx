@@ -3,6 +3,7 @@ import { Experience } from "core/profiles/types";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalExperienceCard from "./modal-experience-card";
 import EditIcon from "@mui/icons-material/Edit";
+import { ExperienceContent } from "../../modal/types";
 
 const ModalShowExperiences = ({
   experience,
@@ -17,7 +18,7 @@ const ModalShowExperiences = ({
             <ModalExperienceCard item={item} />
             <IconButton
               onClick={() => {
-                setContent(2);
+                setContent(ExperienceContent.Edit);
                 setAnExperience(item);
               }}
             >
@@ -25,7 +26,7 @@ const ModalShowExperiences = ({
             </IconButton>
             <IconButton
               onClick={() => {
-                setContent(3);
+                setContent(ExperienceContent.Delete);
                 setAnExperience(item);
               }}
             >
@@ -40,7 +41,7 @@ const ModalShowExperiences = ({
 
 interface ShowExperiencesProps {
   experience: Experience[];
-  setContent: (arg0: number) => void;
+  setContent: (arg0: ExperienceContent) => void;
   setAnExperience: (anExperience: Experience | null) => void;
 }
 
