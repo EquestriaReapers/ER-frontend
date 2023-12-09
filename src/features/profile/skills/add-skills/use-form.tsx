@@ -1,6 +1,8 @@
 import { useAuthState } from "hooks/use-auth-state";
 import { addProfileSkill } from "../../services/profile.service";
 import { FormEvent } from "react";
+import { BackendError } from "app/exceptions";
+import { toast } from "sonner";
 
 const useForm = ({ setIsOpen, selectedSkillId }: useFormProps) => {
   const { token } = useAuthState();
@@ -13,7 +15,11 @@ const useForm = ({ setIsOpen, selectedSkillId }: useFormProps) => {
       setIsOpen(false);
       return data;
     } catch (error) {
-      console.log(error);
+      if (error instanceof BackendError) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error desconocido");
+      }
     }
   };
   return { onSubmitForm };
