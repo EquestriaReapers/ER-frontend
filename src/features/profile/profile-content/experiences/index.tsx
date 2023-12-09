@@ -4,7 +4,7 @@ import { boxStyles } from "./modal/styles/styles";
 import ShowProfileExperiencies from "./show-profile-experiences";
 import ExperienceModal from "./modal";
 
-const ProfileExperiences = ({ isEditable, experiences }: Props) => {
+const Experiences = ({ isEditable, experiences }: Props) => {
   return (
     <>
       <div>
@@ -23,4 +23,4 @@ export interface Props {
   experiences: Experience[];
 }
 
-export default ProfileExperiences;
+export default Experiences;
