@@ -19,14 +19,41 @@ export async function addAProfileExperience(
   }
 }
 
+export async function editAProfileExperience(
+  body: updateExperienceBody,
+  token: string,
+  experienceId: number
+): Promise<MessageResponse> {
+  try {
+    const response = await axios.patch(
+      `${URL}/my-experience/${experienceId}`,
+      body,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new BackendError(error);
+  }
+}
+
 export interface addExperienceBody {
   role: string;
   businessName: string;
-  profileId: number;
   startDate: Date;
   location: string;
   description: string;
-  endDate: Date | null;
+  endDate?: Date;
+}
+
+export interface updateExperienceBody {
+  role: string;
+  businessName: string;
+  location: string;
+  description: string;
 }
 
 export interface MessageResponse {

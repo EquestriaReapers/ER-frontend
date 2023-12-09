@@ -4,8 +4,8 @@ const useExperienceFormState = () => {
   const [businessName, setBusinessName] = useState("");
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState<null | Date>(null);
-  const [endDate, setEndDate] = useState<null | Date>(null);
+  const [startDate, setStartDate] = useState<Date>();
+  const [endDate, setEndDate] = useState<Date>();
   const [description, setDescription] = useState("");
 
   const onChangeBusinessName = (event: ChangeEvent<HTMLInputElement>) => {
