@@ -5,9 +5,9 @@ import { useAuthState } from "hooks/use-auth-state";
 import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
-import ProfileExperiences from "./profile-experience";
+import ProfileExperiences from "./experiences";
 
-const ProfileContent = ({ profile }: ProfileContentProps) => {
+const ProfileContent = ({ profile }: Props) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   const theme = useTheme();
@@ -73,7 +73,8 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   );
 };
 
-export interface ProfileContentProps {
+export interface Props {
   profile: Profile;
 }
+
 export default ProfileContent;

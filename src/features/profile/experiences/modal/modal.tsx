@@ -4,9 +4,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import useModalContentChange from "./use-modal-content-change";
 import { Experience } from "core/profiles/types";
 
-const ExperienceModal = ({ experiencies }: ExperienceModalProps) => {
+const ExperienceModal = ({ experiences }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(experiencies);
+
   const { setContent, renderContent } = useModalContentChange();
   return (
     <div>
@@ -22,7 +22,7 @@ const ExperienceModal = ({ experiencies }: ExperienceModalProps) => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby="edit experiencies"
+        aria-labelledby="edit experiences"
         aria-describedby="used to edit e"
       >
         <div>
@@ -31,15 +31,15 @@ const ExperienceModal = ({ experiencies }: ExperienceModalProps) => {
           <Button onClick={() => setContent(2)}>Editar exp</Button>
           <Button onClick={() => setContent(3)}>Borrar exp</Button>
 
-          <div>{renderContent(experiencies)}</div>
+          <div>{renderContent(experiences)}</div>
         </div>
       </Modal>
     </div>
   );
 };
 
-export interface ExperienceModalProps {
-  experiencies: Experience[];
+export interface Props {
+  experiences: Experience[];
 }
 
 export default ExperienceModal;
