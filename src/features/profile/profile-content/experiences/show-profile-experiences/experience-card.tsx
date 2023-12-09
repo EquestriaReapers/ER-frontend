@@ -8,7 +8,7 @@ import {
   roleStyles,
   inlineStyles,
   ubicationDateStyles,
-} from "../modal/styles/styles";
+} from "../modal/styles";
 
 const ExperienceCard = ({ item }: Props) => {
   return (

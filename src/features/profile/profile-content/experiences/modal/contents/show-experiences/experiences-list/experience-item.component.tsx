@@ -4,14 +4,10 @@ import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExperiencesModalContext from "../../../experiencies-modal-context/index";
-import {
-  nameStyles,
-  ubicationDateStyles,
-  descriptionStyles,
-  inlineStyles,
-} from "../styles";
 import { useContext } from "react";
 import { ExperienceContent } from "../../../experiencies-modal-context/types";
+import { nameInputStyles, ubicationDateInputStyles } from "./styles";
+import { descriptionStyles, inlineStyles } from "../../../styles";
 
 const ExperienceItem = ({ item }: Props) => {
   const { setContent, setAnExperience } = useContext(ExperiencesModalContext);
@@ -20,26 +16,24 @@ const ExperienceItem = ({ item }: Props) => {
     <>
       <div>
         <Box>
-          <Typography variant="h5" sx={nameStyles}>
-            {item.businessName}
-          </Typography>
+          <Typography sx={nameInputStyles}>{item.businessName}</Typography>
           <Box sx={inlineStyles}>
-            <Typography variant="h6">{item.role}</Typography>
-            <Box sx={ubicationDateStyles}>
-              <Typography variant="h6">{item.location}</Typography>
-              <Typography variant="h6">
+            <Typography>{item.role}</Typography>
+            <Box sx={ubicationDateInputStyles}>
+              <Typography>{item.location}</Typography>
+              <Typography>
                 {item.startDate.toLocaleString().slice(0, 10)}
               </Typography>
               {item.endDate && (
-                <Typography variant="h6">
+                <Typography>
                   {item.endDate.toLocaleString().slice(0, 10)}
                 </Typography>
               )}
             </Box>
           </Box>
-          <Typography variant="h6" sx={descriptionStyles}>
-            {item.description}
-          </Typography>
+          <div className={"exp-description-container"}>
+            <Typography sx={descriptionStyles}>{item.description}</Typography>
+          </div>
         </Box>
       </div>
       <IconButton

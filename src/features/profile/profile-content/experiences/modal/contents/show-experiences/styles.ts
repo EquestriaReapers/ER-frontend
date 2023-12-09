@@ -1,72 +1,31 @@
+const PRIMARY_DARKER = "#03652e";
+
 export const modalStyle = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  bgcolor: 'background.paper',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  bgcolor: "white",
   boxShadow: 24,
   p: 4,
-  borderRadius: '10px',
-};
-
-export const boxStyles = {
-  py: 3,
-  marginLeft: {
-    xs: 3,
-    md: 10,
-    lg: 10,
-  },
-  overflow: 'hidden',
+  borderRadius: "10px",
 };
 
 export const titleStyles = {
-  fontWeight: '800',
-  fontSize: '40px',
-  py: 3,
-}
-
-export const nameStyles = {
-  fontWeight: '800',
-  fontSize: '20px',
-  py: 3,
-}
-
-export const buttonStyle = {
-  borderRadius: '10px',
-  background: '#007935',
-  fontWeight: '500',
-  color: 'white',
-  textTransform: 'capitalize',
-  fontSize: '20px',
-}
-
-export const inlineStyles = {
-  display: 'grid',
-  gridTemplateColumns: {
-    xs: '50% 50%',
-    md: '50% 50%',
-    lg: '50% 50%',
-  },
-}
-
-export const ubicationDateStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  justifyContent: {
-    xs: 'flex-start',
-    md: 'flex-end',
-    lg: 'flex-end',
-  },  
-}
-
-export const roleStyles = {
-  fontWeight: '700',
-  fontSize: '18px',
-  color: '#535353',
-  textTransform: 'capitalize',
+  fontWeight: "800",
+  fontSize: "28px",
+  margin: "0px 0px 12px",
 };
 
-export const descriptionStyles = {
-  fontSize: '18px',
-  color: '#444444',
+export const buttonStyle = {
+  borderRadius: "6px",
+  background: "#007935",
+  fontWeight: "500",
+  color: "white",
+  textTransform: "capitalize",
+  fontSize: "16px",
+  my: 1,
+  "&:hover": {
+    backgroundColor: PRIMARY_DARKER,
+  },
 };
