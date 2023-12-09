@@ -14,9 +14,26 @@ const AddExperienceModalContent = ({
     onChangeLocation,
     onChangeRole,
     onChangeStartDate,
+    businessName,
+    description,
+    endDate,
+    location,
+    startDate,
+    role,
   } = useExperienceFormState();
 
-  const {onSubmitForm} = useAddExperienceForm({setIsOpen})
+  const startDateValue = startDate ? startDate : new Date();
+
+  const experience = {
+    businessName,
+    description,
+    endDate,
+    location,
+    startDate: startDateValue,
+    role,
+  };
+
+  const { onSubmitForm } = useAddExperienceForm({ setContent, experience });
 
   return (
     <Box sx={modalStyle}>

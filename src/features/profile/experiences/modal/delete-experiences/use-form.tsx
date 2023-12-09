@@ -1,13 +1,13 @@
-import { addAProfileExperience } from "features/profile/services/experience.service";
+import { deleteAProfileExperience } from "features/profile/services/experience.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
 
-const useAddExperienceForm = ({
+const useDeleteExperienceForm = ({
   setContent,
-  experience,
-}: AddExperienceFormProps) => {
+  experienceId,
+}: DeleteExperienceFormProps) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
@@ -16,31 +16,24 @@ const useAddExperienceForm = ({
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        if (!token || !experience) return;
-        const data = addAProfileExperience(experience, token);
+        if (!token || !experienceId) return;
+        const data = await deleteAProfileExperience(token, experienceId);
+        console.log(data);
         setContent(0);
-        showSuccessToast("Experiencia agregada con éxito");
+        showSuccessToast("Experiencia borrada con éxito");
         return data;
       } catch (error) {
         showErrorToast(error);
       }
     },
-
-    [token, experience, setContent, showErrorToast, showSuccessToast]
+    [experienceId, setContent, showErrorToast, showSuccessToast, token]
   );
   return { onSubmitForm };
 };
 
-export interface AddExperienceFormProps {
+export interface DeleteExperienceFormProps {
   setContent: (arg0: number) => void;
-  experience: {
-    businessName: string;
-    role: string;
-    location: string;
-    startDate: Date;
-    endDate?: Date;
-    description: string;
-  };
+  experienceId: number;
 }
 
-export default useAddExperienceForm;
+export default useDeleteExperienceForm;

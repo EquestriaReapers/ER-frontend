@@ -1,13 +1,14 @@
-import { addAProfileExperience } from "features/profile/services/experience.service";
+import { editAProfileExperience } from "features/profile/services/experience.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
 
-const useAddExperienceForm = ({
+const useEditExperienceForm = ({
   setContent,
-  experience,
-}: AddExperienceFormProps) => {
+  newExperience,
+  experienceId,
+}: EditExperienceFormProps) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
@@ -16,31 +17,41 @@ const useAddExperienceForm = ({
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        if (!token || !experience) return;
-        const data = addAProfileExperience(experience, token);
+        if (!token || !newExperience || !experienceId) return;
+        const data = await editAProfileExperience(
+          newExperience,
+          token,
+          experienceId
+        );
+        showSuccessToast("Experiencia editada con éxito");
         setContent(0);
-        showSuccessToast("Experiencia agregada con éxito");
         return data;
       } catch (error) {
         showErrorToast(error);
       }
     },
 
-    [token, experience, setContent, showErrorToast, showSuccessToast]
+    [
+      token,
+      setContent,
+      showErrorToast,
+      showSuccessToast,
+      experienceId,
+      newExperience,
+    ]
   );
   return { onSubmitForm };
 };
 
-export interface AddExperienceFormProps {
+export interface EditExperienceFormProps {
   setContent: (arg0: number) => void;
-  experience: {
+  newExperience: {
     businessName: string;
     role: string;
     location: string;
-    startDate: Date;
-    endDate?: Date;
     description: string;
   };
+  experienceId: number;
 }
 
-export default useAddExperienceForm;
+export default useEditExperienceForm;

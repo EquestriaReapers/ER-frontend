@@ -1,5 +1,7 @@
+import { BackendError } from "app/exceptions";
 import { removeProfileSkill } from "features/profile/services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
+import { toast } from "sonner";
 
 const useDeleteSkill = ({ skillId, setIsOpen }: UseDeleteSkillProps) => {
   const { token } = useAuthState();
@@ -10,7 +12,11 @@ const useDeleteSkill = ({ skillId, setIsOpen }: UseDeleteSkillProps) => {
       setIsOpen(false);
       return data;
     } catch (error) {
-      console.log(error);
+      if (error instanceof BackendError) {
+        toast.error(error.message);
+      } else {
+        toast.error("Error desconocido");
+      }
     }
   };
   return { onDeleteSkill };

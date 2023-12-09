@@ -32,7 +32,7 @@ export default function useModalContentChange() {
         return (
           <DeleteExperienceModalContent
             setContent={setContent}
-            anExperience={anExperience!}
+            experienceId={anExperience!.id}
           />
         );
       default:

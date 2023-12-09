@@ -1,62 +1,137 @@
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { modalStyle} from "../styles/styles";
+import useExperienceFormState from "../../use-experience-form-state";
+import useEditExperienceForm from "./use-form";
+import { useCallback, useEffect } from "react";
+import { modalStyle } from "../styles/styles";
 
 const EditExperienceModalContent = ({
   anExperience,
   setContent,
 }: EditExperienceModalContentProps) => {
+  const {
+    onChangeBusinessName,
+    onChangeDescription,
+    onChangeEndDate,
+    onChangeLocation,
+    onChangeRole,
+    onChangeStartDate,
+    setBusinessName,
+    setDescription,
+    setEndDate,
+    setLocation,
+    setRole,
+    setStartDate,
+    businessName,
+    description,
+    endDate,
+    location,
+    startDate,
+    role,
+  } = useExperienceFormState();
+
+  const startDateValue = startDate ? startDate : new Date();
+
+  const getExperienceInfo = useCallback(() => {
+    setBusinessName(anExperience.businessName);
+    setDescription(anExperience.description);
+    setEndDate(anExperience.endDate!);
+    setLocation(anExperience.location);
+    setRole(anExperience.role);
+    setStartDate(anExperience.startDate);
+  }, [
+    setBusinessName,
+    setDescription,
+    setEndDate,
+    setLocation,
+    setRole,
+    setStartDate,
+    anExperience,
+  ]);
+
+  useEffect(() => {
+    getExperienceInfo();
+  }, [getExperienceInfo]);
+
+  const newExperience = {
+    businessName,
+    description,
+    endDate,
+    location,
+    startDate: startDateValue,
+    role,
+  };
+
+  const experienceId = anExperience.id;
+
+  const { onSubmitForm } = useEditExperienceForm({
+    setContent,
+    newExperience,
+    experienceId,
+  });
   return (
     <Box sx={modalStyle}>
-      <Box>
-        <IconButton onClick={() => setContent(0)}>
-          <ArrowBackIcon />
-        </IconButton>
-      </Box>
-      <Typography>Editar experiencia</Typography>
+      <form onSubmit={onSubmitForm}>
+        <Box>
+          <IconButton onClick={() => setContent(0)}>
+            <ArrowBackIcon />
+          </IconButton>
+        </Box>
+        <Typography>Editar experiencia</Typography>
 
-      <Typography>
-        Edita los datos de la experiencia profesional que quieres modificar
-      </Typography>
+        <Typography>
+          Edita los datos de la experiencia profesional que quieres modificar
+        </Typography>
 
-      <TextField id="role" label="Cargo / Puesto" value={anExperience.role} />
+        <TextField
+          id="role"
+          label="Cargo / Puesto"
+          value={newExperience.role}
+          onChange={onChangeRole}
+        />
 
-      <TextField
-        id="businessName"
-        label="Empresa"
-        value={anExperience.businessName}
-      />
+        <TextField
+          id="businessName"
+          label="Empresa"
+          value={newExperience.businessName}
+          onChange={onChangeBusinessName}
+        />
 
-      <TextField
-        id="location"
-        label="Ubicación"
-        value={anExperience.location}
-      />
+        <TextField
+          id="location"
+          label="Ubicación"
+          value={newExperience.location}
+          onChange={onChangeLocation}
+        />
 
-      <TextField
-        id="startDate"
-        label="Fecha Inicial"
-        value={anExperience.startDate}
-      />
+        <TextField
+          id="startDate"
+          label="Fecha Inicial"
+          value={newExperience.startDate}
+          onChange={onChangeStartDate}
+        />
 
-      <TextField
-        id="endDate"
-        label="Fecha Final"
-        value={anExperience.endDate}
-      />
+        <TextField
+          id="endDate"
+          label="Fecha Final"
+          value={newExperience.endDate}
+          onChange={onChangeEndDate}
+        />
 
-      <TextField
-        id="description"
-        multiline
-        rows={4}
-        label="Descripción"
-        value={anExperience.description}
-      />
+        <TextField
+          id="description"
+          multiline
+          rows={4}
+          label="Descripción"
+          value={newExperience.description}
+          onChange={onChangeDescription}
+        />
 
-      <Button variant="outlined" type="submit">
-        Guardar
-      </Button>
+        <Button variant="outlined" type="submit">
+          Guardar
+        </Button>
+      </form>
     </Box>
   );
 };

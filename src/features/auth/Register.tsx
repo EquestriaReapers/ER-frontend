@@ -4,8 +4,9 @@ import FormControl from "@mui/material/FormControl";
 import RegisterForm from "./register-form/RegisterForm";
 import { FunctionComponent, useState, useCallback } from "react";
 import registerService from "features/auth/services/register.service";
-
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -21,6 +22,8 @@ const Register: FunctionComponent = () => {
 
 function useRegister() {
   useRedirectWhenRegistered();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
 
   const [loading, setLoading] = useState(false);
 
@@ -37,6 +40,8 @@ function useRegister() {
         if (!name || !lastname || !email || !password || !confirmPassword)
           return;
 
+        if (password != confirmPassword)
+          showErrorToast("La contraseñas no son iguales");
         if (password === confirmPassword) {
           await registerService({
             name,
@@ -44,14 +49,15 @@ function useRegister() {
             email,
             password,
           });
+          showSuccessToast("Registro exitoso");
         }
       } catch (error) {
-        console.log(error);
+        showErrorToast(error);
       } finally {
         setLoading(false);
       }
     },
-    []
+    [showErrorToast, showSuccessToast]
   );
 
   return { onSubmit, loading };
