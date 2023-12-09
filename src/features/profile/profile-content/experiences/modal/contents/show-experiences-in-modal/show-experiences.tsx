@@ -3,16 +3,18 @@ import { Experience } from "core/profiles/types";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalExperienceCard from "./modal-experience-card";
 import EditIcon from "@mui/icons-material/Edit";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import ExperiencesModalContext from "../../experiencies-modal-context";
+import { useContext } from "react";
 
-const ModalShowExperiences = ({
-  experience,
-  setContent,
-  setAnExperience,
-}: ShowExperiencesProps) => {
+const ModalShowExperiences = () => {
+  const { experiences, setContent, setAnExperience } = useContext(
+    ExperiencesModalContext
+  );
+
   return (
     <Box>
-      {experience.map((item: Experience) => {
+      {experiences.map((item: Experience) => {
         return (
           <Box key={item.id}>
             <ModalExperienceCard item={item} />
@@ -38,11 +40,5 @@ const ModalShowExperiences = ({
     </Box>
   );
 };
-
-interface ShowExperiencesProps {
-  experience: Experience[];
-  setContent: (arg0: ExperienceContent) => void;
-  setAnExperience: (anExperience: Experience | null) => void;
-}
 
 export default ModalShowExperiences;

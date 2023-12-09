@@ -2,16 +2,15 @@ import { addAProfileExperience } from "features/profile/services/experience.serv
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
-import { FormEvent, useCallback } from "react";
-import { ExperienceContent } from "../../types";
+import { FormEvent, useCallback, useContext } from "react";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const useAddExperienceForm = ({
-  setContent,
-  experience,
-}: AddExperienceFormProps) => {
+const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
+  const { setContent } = useContext(ExperiencesModalContext);
 
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
@@ -33,7 +32,6 @@ const useAddExperienceForm = ({
 };
 
 export interface AddExperienceFormProps {
-  setContent: (arg0: ExperienceContent) => void;
   experience: {
     businessName: string;
     role: string;

@@ -3,7 +3,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback } from "react";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
 
 const useDeleteExperienceForm = ({ setContent, experienceId }: Payload) => {
   const { token } = useAuthState();

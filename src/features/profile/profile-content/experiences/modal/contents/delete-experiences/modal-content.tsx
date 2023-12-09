@@ -2,9 +2,12 @@ import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { modalStyle } from "../styles/styles";
 import useDeleteExperienceForm from "./use-form";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { useContext } from "react";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const DeleteExperienceModalContent = ({ setContent, experienceId }: Props) => {
+const DeleteExperienceModalContent = ({ experienceId }: Props) => {
+  const { setContent } = useContext(ExperiencesModalContext);
   const { onSubmitForm } = useDeleteExperienceForm({
     setContent,
     experienceId,
@@ -27,7 +30,6 @@ const DeleteExperienceModalContent = ({ setContent, experienceId }: Props) => {
 };
 
 export interface Props {
-  setContent: (arg0: ExperienceContent) => void;
   experienceId: number;
 }
 

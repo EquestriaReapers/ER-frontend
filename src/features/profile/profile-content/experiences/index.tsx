@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import { Experience } from "core/profiles/types";
 import { boxStyles } from "./modal/styles/styles";
 import ShowProfileExperiencies from "./show-profile-experiences";
-import ExperienceModal from "./modal";
+import ExperienceModalWrapper from "./modal/experience-modal-wrapper";
 
 const Experiences = ({ isEditable, experiences }: Props) => {
   return (
@@ -13,7 +13,7 @@ const Experiences = ({ isEditable, experiences }: Props) => {
         </Typography>
         <ShowProfileExperiencies experiences={experiences} />
       </div>
-      {isEditable && <ExperienceModal experiences={experiences} />}
+      {isEditable && <ExperienceModalWrapper experiences={experiences} />}
     </>
   );
 };

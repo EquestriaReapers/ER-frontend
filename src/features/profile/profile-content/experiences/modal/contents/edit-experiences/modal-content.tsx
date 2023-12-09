@@ -1,13 +1,14 @@
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import useExperienceFormState from "../../use-experience-form-state";
+import useExperienceFormState from "../use-experience-form-state";
 import useEditExperienceForm from "./use-form";
-import { useCallback, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { modalStyle } from "../styles/styles";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const EditExperienceModalContent = ({ anExperience, setContent }: Props) => {
+const EditExperienceModalContent = ({ anExperience }: Props) => {
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -28,7 +29,7 @@ const EditExperienceModalContent = ({ anExperience, setContent }: Props) => {
     startDate,
     role,
   } = useExperienceFormState();
-
+  const { setContent } = useContext(ExperiencesModalContext);
   const startDateValue = startDate ? startDate : new Date();
 
   const getExperienceInfo = useCallback(() => {
@@ -138,5 +139,4 @@ export default EditExperienceModalContent;
 
 interface Props {
   anExperience: Experience;
-  setContent: (arg0: ExperienceContent) => void;
 }

@@ -1,13 +1,14 @@
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { modalStyle } from "../styles/styles";
-import useExperienceFormState from "../../use-experience-form-state";
+import useExperienceFormState from "../use-experience-form-state";
 import useAddExperienceForm from "./use-form";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { useContext } from "react";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const AddExperienceModalContent = ({
-  setContent,
-}: AddExperienceModalContentProps) => {
+const AddExperienceModalContent = () => {
+  const { setContent } = useContext(ExperiencesModalContext);
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -34,7 +35,7 @@ const AddExperienceModalContent = ({
     role,
   };
 
-  const { onSubmitForm } = useAddExperienceForm({ setContent, experience });
+  const { onSubmitForm } = useAddExperienceForm({ experience });
 
   return (
     <Box sx={modalStyle}>
@@ -92,9 +93,5 @@ const AddExperienceModalContent = ({
     </Box>
   );
 };
-
-interface AddExperienceModalContentProps {
-  setContent: (arg0: ExperienceContent) => void;
-}
 
 export default AddExperienceModalContent;

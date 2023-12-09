@@ -6,14 +6,13 @@ import {
   inlineStyles,
 } from "../styles/styles";
 import ModalShowExperiences from "./show-experiences";
-import { Experience } from "core/profiles/types";
-import { ExperienceContent } from "../../types";
+import { ExperienceContent } from "../../experiencies-modal-context/types";
+import ExperiencesModalContext from "../../experiencies-modal-context";
+import { useContext } from "react";
 
-const ShowExperienceModalContent = ({
-  experience,
-  setContent,
-  setAnExperience,
-}: ShowExperienceModalContentProps) => {
+const ShowExperienceModalContent = () => {
+  const { setContent } = useContext(ExperiencesModalContext);
+
   return (
     <Box sx={modalStyle}>
       <Box>
@@ -30,20 +29,10 @@ const ShowExperienceModalContent = ({
             Agregar Experiencia
           </Button>
         </Box>
-        <ModalShowExperiences
-          experience={experience}
-          setContent={setContent}
-          setAnExperience={setAnExperience}
-        />
+        <ModalShowExperiences />
       </Box>
     </Box>
   );
 };
-
-interface ShowExperienceModalContentProps {
-  experience: Experience[];
-  setContent: (content: ExperienceContent) => void;
-  setAnExperience: (anExperience: Experience | null) => void;
-}
 
 export default ShowExperienceModalContent;
