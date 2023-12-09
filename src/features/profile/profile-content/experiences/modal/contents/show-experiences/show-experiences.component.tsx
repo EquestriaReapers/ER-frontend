@@ -4,11 +4,11 @@ import {
   titleStyles,
   buttonStyle,
   inlineStyles,
-} from "../styles/styles";
-import { ExperienceContent } from "../../experiencies-modal-context/types";
-import ExperiencesModalContext from "../../experiencies-modal-context";
+} from "./styles.ts";
+import { ExperienceContent } from "../../experiencies-modal-context/types.ts";
+import ExperiencesModalContext from "../../experiencies-modal-context/index.tsx";
 import { useContext } from "react";
-import ExperiencesList from "./experiences-list/experiences-list";
+import ExperiencesList from "./experiences-list/experiences-list.styled.tsx";
 
 const ShowExperiences = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);

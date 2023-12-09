@@ -4,7 +4,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useExperienceFormState from "../use-experience-form-state";
 import useEditExperienceForm from "./use-form";
 import { useCallback, useContext, useEffect } from "react";
-import { modalStyle } from "../styles/styles";
+import { modalStyle } from "../show-experiences/styles";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 

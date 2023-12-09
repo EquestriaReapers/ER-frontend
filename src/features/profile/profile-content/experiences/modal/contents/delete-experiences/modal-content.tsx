@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
-import { modalStyle } from "../styles/styles";
+import { modalStyle } from "../show-experiences/styles";
 import useDeleteExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";

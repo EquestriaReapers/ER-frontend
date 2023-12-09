@@ -9,7 +9,7 @@ import {
   ubicationDateStyles,
   descriptionStyles,
   inlineStyles,
-} from "../../styles/styles";
+} from "../styles";
 import { useContext } from "react";
 import { ExperienceContent } from "../../../experiencies-modal-context/types";
 
