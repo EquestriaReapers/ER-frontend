@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ExperienceCard from "./experience-card";
 
-const ShowExperiencesInProfile = ({ experiences }: Props) => {
+const ShowProfileExperiencies = ({ experiences }: Props) => {
   return (
     <Box>
       {experiences.map((item: Experience) => {
@@ -20,4 +20,4 @@ interface Props {
   experiences: Experience[];
 }
 
-export default ShowExperiencesInProfile;
+export default ShowProfileExperiencies;

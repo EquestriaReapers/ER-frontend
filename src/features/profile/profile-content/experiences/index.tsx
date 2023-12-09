@@ -1,8 +1,8 @@
 import Typography from "@mui/material/Typography";
 import { Experience } from "core/profiles/types";
 import { boxStyles } from "../styles/styles";
-import ShowExperiencesInProfile from "../../experiences/show-experiences-in-profile/show-experiences";
-import ExperienceModal from "../../experiences/modal/modal";
+import ShowExperiencesInProfile from "./show-profile-experiences/show-experiences";
+import ExperienceModal from "features/profile/experiences/modal/modal";
 
 const ProfileExperience = ({ isEditable, experiences }: Props) => {
   return (
@@ -16,7 +16,7 @@ const ProfileExperience = ({ isEditable, experiences }: Props) => {
   );
 };
 
-interface Props {
+export interface Props {
   isEditable: boolean;
   experiences: Experience[];
 }
