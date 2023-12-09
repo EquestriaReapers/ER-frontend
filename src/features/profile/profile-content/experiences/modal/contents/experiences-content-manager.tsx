@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import AddExperienceModalContent from "./add-experiences/modal-content";
-import ShowExperienceModalContent from "./show-experiences-in-modal/modal-content";
+import AddExperience from "./add-experiences";
+import ShowExperience from "./show-experiences";
 import EditExperienceModalContent from "./edit-experiences/modal-content";
 import DeleteExperienceModalContent from "./delete-experiences/modal-content";
 import { ExperienceContent } from "../experiencies-modal-context/types";
@@ -11,9 +11,9 @@ export const ExperiencesContentManager = () => {
 
   switch (content) {
     case ExperienceContent.Show:
-      return <ShowExperienceModalContent />;
+      return <ShowExperience />;
     case ExperienceContent.Add:
-      return <AddExperienceModalContent />;
+      return <AddExperience />;
     case ExperienceContent.Edit:
       if (!anExperience) {
         debugError("anExperience is null");

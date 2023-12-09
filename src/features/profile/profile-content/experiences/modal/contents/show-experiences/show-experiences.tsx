@@ -5,16 +5,16 @@ import {
   buttonStyle,
   inlineStyles,
 } from "../styles/styles";
-import ModalShowExperiences from "./show-experiences";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 import { useContext } from "react";
+import ExperiencesList from "./experiences-list/experiences-list";
 
-const ShowExperienceModalContent = () => {
+const ShowExperiences = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
 
   return (
-    <Box sx={modalStyle}>
+    <Box sx={modalStyle} className={className}>
       <Box>
         <Typography sx={titleStyles}>Gestión de experiencias</Typography>
         <Box sx={inlineStyles}>
@@ -29,10 +29,14 @@ const ShowExperienceModalContent = () => {
             Agregar Experiencia
           </Button>
         </Box>
-        <ModalShowExperiences />
+        <ExperiencesList />
       </Box>
     </Box>
   );
 };
 
-export default ShowExperienceModalContent;
+interface Props {
+  className?: string;
+}
+
+export default ShowExperiences;

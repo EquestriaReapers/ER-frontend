@@ -7,7 +7,7 @@ import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const AddExperienceModalContent = () => {
+const AddExperienceModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
   const {
     onChangeBusinessName,
@@ -38,7 +38,7 @@ const AddExperienceModalContent = () => {
   const { onSubmitForm } = useAddExperienceForm({ experience });
 
   return (
-    <Box sx={modalStyle}>
+    <Box sx={modalStyle} className={className}>
       <form onSubmit={onSubmitForm}>
         <Box>
           <IconButton onClick={() => setContent(ExperienceContent.Show)}>
@@ -93,5 +93,9 @@ const AddExperienceModalContent = () => {
     </Box>
   );
 };
+
+interface Props {
+  className?: string;
+}
 
 export default AddExperienceModalContent;
