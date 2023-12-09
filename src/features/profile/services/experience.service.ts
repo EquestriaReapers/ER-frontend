@@ -40,6 +40,25 @@ export async function editAProfileExperience(
   }
 }
 
+export async function deleteAProfileExperience(
+  token: string,
+  experienceId: number
+): Promise<MessageResponse> {
+  try {
+    const response = await axios.delete(
+      `${URL}/my-experience/${experienceId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new BackendError(error);
+  }
+}
+
 export interface addExperienceBody {
   role: string;
   businessName: string;
