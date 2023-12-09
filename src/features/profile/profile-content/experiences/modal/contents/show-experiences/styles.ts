@@ -7,7 +7,11 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  p: 4,
+  p: {
+    xs: 2,
+    sm: 3,
+    md: 4,
+  },
   borderRadius: "10px",
 };
 
