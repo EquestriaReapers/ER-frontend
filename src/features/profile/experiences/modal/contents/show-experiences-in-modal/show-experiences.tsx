@@ -3,7 +3,7 @@ import { Experience } from "core/profiles/types";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalExperienceCard from "./modal-experience-card";
 import EditIcon from "@mui/icons-material/Edit";
-import { ExperienceContent } from "../../modal/types";
+import { ExperienceContent } from "../../types";
 
 const ModalShowExperiences = ({
   experience,

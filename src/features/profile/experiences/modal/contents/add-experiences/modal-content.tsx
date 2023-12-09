@@ -1,9 +1,9 @@
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { modalStyle } from "../styles/styles";
-import useExperienceFormState from "../../modal/use-experience-form-state";
+import useExperienceFormState from "../../use-experience-form-state";
 import useAddExperienceForm from "./use-form";
-import { ExperienceContent } from "../../modal/types";
+import { ExperienceContent } from "../../types";
 
 const AddExperienceModalContent = ({
   setContent,

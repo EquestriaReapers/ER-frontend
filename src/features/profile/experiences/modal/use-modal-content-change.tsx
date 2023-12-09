@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Experience } from "core/profiles/types";
-import AddExperienceModalContent from "../contents/add-experiences/modal-content";
-import ShowExperienceModalContent from "../contents/show-experiences-in-modal/modal-content";
-import EditExperienceModalContent from "../contents/edit-experiences/modal-content";
-import DeleteExperienceModalContent from "../contents/delete-experiences/modal-content";
+import AddExperienceModalContent from "./contents/add-experiences/modal-content";
+import ShowExperienceModalContent from "./contents/show-experiences-in-modal/modal-content";
+import EditExperienceModalContent from "./contents/edit-experiences/modal-content";
+import DeleteExperienceModalContent from "./contents/delete-experiences/modal-content";
 import { ExperienceContent } from "./types";
 
 export default function useModalContentChange() {

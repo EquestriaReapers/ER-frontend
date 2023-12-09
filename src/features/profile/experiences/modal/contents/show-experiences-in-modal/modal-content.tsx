@@ -7,7 +7,7 @@ import {
 } from "../styles/styles";
 import ModalShowExperiences from "./show-experiences";
 import { Experience } from "core/profiles/types";
-import { ExperienceContent } from "../../modal/types";
+import { ExperienceContent } from "../../types";
 
 const ShowExperienceModalContent = ({
   experience,

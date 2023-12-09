@@ -1,11 +1,11 @@
 import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import useExperienceFormState from "../../modal/use-experience-form-state";
+import useExperienceFormState from "../../use-experience-form-state";
 import useEditExperienceForm from "./use-form";
 import { useCallback, useEffect } from "react";
 import { modalStyle } from "../styles/styles";
-import { ExperienceContent } from "../../modal/types";
+import { ExperienceContent } from "../../types";
 
 const EditExperienceModalContent = ({ anExperience, setContent }: Props) => {
   const {
