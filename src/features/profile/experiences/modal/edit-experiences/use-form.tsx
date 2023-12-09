@@ -1,6 +1,8 @@
 import { editAProfileExperience } from "features/profile/services/experience.service";
 import { useAuthState } from "hooks/use-auth-state";
-import { FormEvent } from "react";
+import { useErrorToast } from "hooks/use-error-toast";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { FormEvent, useCallback } from "react";
 
 const useEditExperienceForm = ({
   setContent,
@@ -8,17 +10,36 @@ const useEditExperienceForm = ({
   experienceId,
 }: EditExperienceFormProps) => {
   const { token } = useAuthState();
-  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      if (!token || !newExperience || !experienceId) return;
-      const data = editAProfileExperience(newExperience, token, experienceId);
-      setContent(0);
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
+
+  const onSubmitForm = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        if (!token || !newExperience || !experienceId) return;
+        const data = await editAProfileExperience(
+          newExperience,
+          token,
+          experienceId
+        );
+        showSuccessToast("Experiencia editada con éxito");
+        setContent(0);
+        return data;
+      } catch (error) {
+        showErrorToast(error);
+      }
+    },
+
+    [
+      token,
+      setContent,
+      showErrorToast,
+      showSuccessToast,
+      experienceId,
+      newExperience,
+    ]
+  );
   return { onSubmitForm };
 };
 
