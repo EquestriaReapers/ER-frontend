@@ -1,13 +1,20 @@
 import { Experience } from "core/profiles/types";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import { nameStyles, modalStyle, titleStyles, buttonStyle,ubicationDateStyles, descriptionStyles, inlineStyles } from "../styles/styles";
+import {
+  nameStyles,
+  ubicationDateStyles,
+  descriptionStyles,
+  inlineStyles,
+} from "../styles/styles";
 
 const ModalExperienceCard = ({ item }: { item: Experience }) => {
   return (
     <div>
       <Box>
-        <Typography variant="h5" sx={nameStyles}>{item.businessName}</Typography>
+        <Typography variant="h5" sx={nameStyles}>
+          {item.businessName}
+        </Typography>
         <Box sx={inlineStyles}>
           <Typography variant="h6">{item.role}</Typography>
           <Box sx={ubicationDateStyles}>
@@ -22,7 +29,9 @@ const ModalExperienceCard = ({ item }: { item: Experience }) => {
             )}
           </Box>
         </Box>
-        <Typography variant="h6" sx={descriptionStyles}>{item.description}</Typography>
+        <Typography variant="h6" sx={descriptionStyles}>
+          {item.description}
+        </Typography>
       </Box>
     </div>
   );
