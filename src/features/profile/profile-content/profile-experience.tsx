@@ -4,26 +4,21 @@ import { boxStyles } from "./styles/styles";
 import ShowExperiencesInProfile from "../experiences/show-experiences-in-profile/show-experiences";
 import ExperienceModal from "../experiences/modal/modal";
 
-const ProfileExperience = ({
-  isEditable,
-  currentProfileExperience,
-}: ProfileExperienceProps) => {
+const ProfileExperience = ({ isEditable, experiencies }: Props) => {
   return (
     <div>
       <Typography variant="h4" sx={boxStyles}>
         Experiencia
-        {isEditable && (
-          <ExperienceModal experience={currentProfileExperience} />
-        )}
+        {isEditable && <ExperienceModal experiencies={experiencies} />}
       </Typography>
-      <ShowExperiencesInProfile experience={currentProfileExperience} />
+      <ShowExperiencesInProfile experiencies={experiencies} />
     </div>
   );
 };
 
-export interface ProfileExperienceProps {
+export interface Props {
   isEditable: boolean;
-  currentProfileExperience: Experience[];
+  experiencies: Experience[];
 }
 
 export default ProfileExperience;

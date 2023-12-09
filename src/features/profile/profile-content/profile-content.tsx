@@ -46,7 +46,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                flexWrap:"nowrap",
+                flexWrap: "nowrap",
                 gap: "10px",
               }}
             >
@@ -63,7 +63,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 
           <ProfileExperiences
             isEditable={isEditable}
-            currentProfileExperience={profile.experience}
+            experiencies={profile.experience}
           />
         </Box>
       ) : (
