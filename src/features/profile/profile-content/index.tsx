@@ -63,7 +63,7 @@ const ProfileContent = ({ profile }: Props) => {
 
           <ProfileExperiences
             isEditable={isEditable}
-            experiencies={profile.experience}
+            experiences={profile.experience}
           />
         </Box>
       ) : (
