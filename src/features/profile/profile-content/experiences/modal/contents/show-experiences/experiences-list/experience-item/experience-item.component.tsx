@@ -3,20 +3,38 @@ import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ExperiencesModalContext from "../../../experiencies-modal-context/index";
+import ExperiencesModalContext from "../../../../experiencies-modal-context/index";
 import { useContext } from "react";
-import { ExperienceContent } from "../../../experiencies-modal-context/types";
-import { nameInputStyles, ubicationDateInputStyles } from "./styles";
-import { descriptionStyles, inlineStyles } from "../../../styles";
+import { ExperienceContent } from "../../../../experiencies-modal-context/types";
+import { nameInputStyles, ubicationDateInputStyles } from "../styles";
+import { descriptionStyles, inlineStyles } from "../../../../styles";
 
-const ExperienceItem = ({ item }: Props) => {
+const ExperienceItem = ({ item, className }: Props) => {
   const { setContent, setAnExperience } = useContext(ExperiencesModalContext);
 
   return (
-    <>
+    <div className={className}>
       <div>
         <Box>
-          <Typography sx={nameInputStyles}>{item.businessName}</Typography>
+          <Box className='titleIconStyles'>
+            <Typography sx={nameInputStyles}>{item.businessName}</Typography>
+            <IconButton
+              onClick={() => {
+                setContent(ExperienceContent.Edit);
+                setAnExperience(item);
+              }}
+            >
+              <EditIcon sx={{ color: "#007935" }} />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                setContent(ExperienceContent.Delete);
+                setAnExperience(item);
+              }}
+            >
+              <DeleteIcon sx={{ color: "#007935" }} />
+            </IconButton>
+          </Box>
           <Box sx={inlineStyles}>
             <Typography>{item.role}</Typography>
             <Box sx={ubicationDateInputStyles}>
@@ -36,28 +54,13 @@ const ExperienceItem = ({ item }: Props) => {
           </div>
         </Box>
       </div>
-      <IconButton
-        onClick={() => {
-          setContent(ExperienceContent.Edit);
-          setAnExperience(item);
-        }}
-      >
-        <EditIcon />
-      </IconButton>
-      <IconButton
-        onClick={() => {
-          setContent(ExperienceContent.Delete);
-          setAnExperience(item);
-        }}
-      >
-        <DeleteIcon />
-      </IconButton>
-    </>
+    </div>
   );
 };
 
 interface Props {
   item: Experience;
+  className ?: string;
 }
 
 export default ExperienceItem;

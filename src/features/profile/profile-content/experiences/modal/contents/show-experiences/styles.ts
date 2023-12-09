@@ -16,7 +16,7 @@ export const modalStyle = {
 };
 
 export const titleStyles = {
-  fontWeight: "800",
+  fontWeight: "bold",
   fontSize: "28px",
   margin: "0px 0px 12px",
 };
@@ -24,7 +24,7 @@ export const titleStyles = {
 export const buttonStyle = {
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "500",
+  fontWeight: "bold",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
