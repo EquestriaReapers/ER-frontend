@@ -7,7 +7,7 @@ import useRedirectWhenLogged from "../../hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
 import Div100vh from 'react-div-100vh';
-import { div100LoginStyles } from "./styles/LoginStyles";
+import { loginProfileStyles } from "./styles/LoginStyles";
 import "../../styles/index.css";
 
 const Login: FunctionComponent = () => {
@@ -23,10 +23,7 @@ const Login: FunctionComponent = () => {
   };
 
   return (
-    <Div100vh style={{
-      ...div100LoginStyles,
-      mediaQueryStyles,
-    }}>
+    <Div100vh style={loginProfileStyles}>
       
         <FormControl>
           <LoginForm disabled={loading} onSubmit={onSubmit} />
