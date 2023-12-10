@@ -1,40 +1,56 @@
-import Typography from "@mui/material/Typography";
+import Typography from '@mui/material/Typography'
 
-import { useAuthState } from "hooks/use-auth-state";
+import { useAuthState } from 'hooks/use-auth-state'
 
-import EditProfileModal from "../edit-profile/modal";
-import { Profile } from "core/profiles/types";
-import ProfileSkills from "./profile-skills";
-import ProfileExperiences from "./profile-experience";
-import { Skill } from "core/profiles/types"; // Import temporal para hacer el dummy.
+import EditProfileModal from '../edit-profile/modal'
+import { Profile } from 'core/profiles/types'
+import ProfileSkills from './profile-skills'
+import ProfileExperiences from './profile-experience'
+import { Skill } from 'core/profiles/types' // Import temporal para hacer el dummy.
 // Eliminar de linea 14 a 17
 
 const ProfileContent = ({ profile }: ProfileContentProps) => {
-  const loggedUser = useAuthState().user;
+  const loggedUser = useAuthState().user
   const dummySkills: Skill[] = [
-    { id: 1, name: "React", level: "1" },
-    { id: 2, name: "CSS", level: "1" },
-    { id: 3, name: "HTML", level: "1" },
-  ];
-  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+    { id: 1, name: 'React', level: '1' },
+    { id: 2, name: 'CSS', level: '1' },
+    { id: 3, name: 'HTML', level: '1' },
+    { id: 4, name: 'React', level: '1' },
+    { id: 5, name: 'CSS', level: '1' },
+    { id: 6, name: 'HTML', level: '1' },
+    { id: 7, name: 'React', level: '1' },
+    { id: 8, name: 'CSS', level: '1' },
+    { id: 9, name: 'HTML', level: '1' },
+    { id: 10, name: 'React', level: '1' },
+    { id: 22, name: 'CSS', level: '1' },
+    { id: 33, name: 'HTML', level: '1' },
+    { id: 13, name: 'React', level: '1' },
+    { id: 24, name: 'CSS', level: '1' },
+    { id: 35, name: 'HTML', level: '1' },
+    { id: 33, name: 'HTML', level: '1' },
+    { id: 13, name: 'React', level: '1' },
+    { id: 24, name: 'CSS', level: '1' },
+    { id: 35, name: 'HTML', level: '1' }
+  ]
+  const isEditable = !!(loggedUser && loggedUser.id == profile.userId)
   return (
     <div>
       {loggedUser ? (
         <div>
-          <Typography variant="h3">Perfil:</Typography>
+          <Typography variant='h3'>Perfil:</Typography>
           {isEditable && <EditProfileModal />}
 
-          <Typography variant="h4">Nombre:</Typography>
-          <Typography variant="h6">
+          <Typography variant='h4'>Nombre:</Typography>
+          <Typography variant='h6'>
             {profile.user.name} {profile.user.lastname}
           </Typography>
-          <Typography variant="h6">
+          <Typography variant='h6'>
             {profile.mainTitle} {profile.countryResidence}
           </Typography>
-          <Typography variant="h4">Email:</Typography>
-          <Typography variant="h6">{profile.user.email}</Typography>
+          <Typography variant='h4'>Email:</Typography>
+          <Typography variant='h6'>{profile.user.email}</Typography>
 
-          <Typography variant="h6">{profile.description}</Typography>
+          <Typography variant='h6'>{profile.description}</Typography>
 
           <ProfileSkills
             isEditable={isEditable}
@@ -50,10 +66,10 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
         <Typography>No se encontro el perfil!</Typography>
       )}
     </div>
-  );
-};
+  )
+}
 
 export interface ProfileContentProps {
-  profile: Profile;
+  profile: Profile
 }
-export default ProfileContent;
+export default ProfileContent
