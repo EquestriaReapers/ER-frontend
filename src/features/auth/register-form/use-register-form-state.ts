@@ -1,10 +1,19 @@
 import { useState, ChangeEvent } from "react";
 
 export default function useRegisterFormState() {
-    const [name, setName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [confirmPassword, setConfirmPassword] = useState<string>("");
+
+  //type InputText = string | null;
+  const [name, setName] = useState<string>("");
+  const [lastname, setLastname] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
+  //const [name, setName] = useState<InputText>(null);
+  //const [lastname, setLastname] = useState<InputText>(null);
+  //const [email, setEmail] = useState<InputText>(null);
+  //const [password, setPassword] = useState<InputText>(null);
+  //const [confirmPassword, setConfirmPassword] = useState<InputText>(null);
 
     const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
