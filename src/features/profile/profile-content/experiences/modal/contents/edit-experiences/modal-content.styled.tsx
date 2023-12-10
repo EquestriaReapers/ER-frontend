@@ -11,6 +11,11 @@ export default styled(EditExperienceModalContent)`
     margin-left: auto;
     margin-right: auto;
 
+.inputStyles {
+    font-size: 16px;
+    display: flex;
+}
+
 .exp-header-container {
     margin-bottom: 12px;
 }
