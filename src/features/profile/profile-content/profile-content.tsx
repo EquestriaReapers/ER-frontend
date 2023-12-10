@@ -7,7 +7,7 @@ import EditProfileModal from '../edit-profile/modal'
 import { Profile } from 'core/profiles/types'
 import ProfileSkills from './profile-skills'
 import ProfileExperiences from './profile-experience'
-import { bannerStyles } from '../styles/styles'
+import { bannerStyles, nameSectionStyles } from '../styles/styles'
 
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user
@@ -21,19 +21,12 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
         <Box>
           <Box sx={bannerStyles}></Box>
           <Box>
-            <Box
-              sx={{
-                witdh: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                px: 16
-              }}
-            >
+            <Box sx={nameSectionStyles}>
               <Box>
-                <Typography>
+                <Typography variant='h4'>
                   {profile.user.name} {profile.user.lastname}
                 </Typography>
-                <Typography> {profile.mainTitle}</Typography>
+                <Typography> {profile.mainTitle} Comunicador Social</Typography>
               </Box>
               <Box>
                 <Button>Boton descargar</Button>

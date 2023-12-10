@@ -9,3 +9,15 @@ export const bannerStyles = {
   },
   bgcolor: 'black'
 }
+
+export const nameSectionStyles = {
+  width: {
+    md: '60%',
+    lg: '95%'
+  },
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  px: 4,
+  py: 3
+}
