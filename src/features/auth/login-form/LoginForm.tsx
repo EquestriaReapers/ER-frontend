@@ -24,15 +24,24 @@ import { TextFieldTypography,
 const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const { email, password, onChangeEmail, onChangePassword } =
     useLoginFormState();
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  
     const [keepLogged, setKeepLogged] = useState(false);
 
+
+    
+
+    const handleKeepLoggedChange = () => {
+      setKeepLogged(!keepLogged); 
+    };
+
+    const LOGIN_BORDER_RADIUS = '11px';
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const FormBoxStyles = {
-        width: isSmallScreen ? '250px' : '350px',
+        width: isSmallScreen ? '85%' : '350px',
         height: '480px',
         margin: 'auto', 
-        padding: isSmallScreen ? '25px' : '40px',
+        padding: isSmallScreen ? '18px' : '40px',
         backgroundColor:'white',
         display: 'flex',
         flexDirection:'column',
@@ -41,6 +50,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         borderRadius:'8px',
         marginBottom:'16px',
     };
+
 
     const FormBottomStyles = {
       marginBottom:'36px', 
@@ -65,29 +75,6 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
       fontSize: '0.9rem',
     }
   
-
-    
-
-    const handleKeepLoggedChange = () => {
-      setKeepLogged(!keepLogged); 
-    };
-
-    const LOGIN_BORDER_RADIUS = '11px';
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const FormBoxStyles = {
-        width: isSmallScreen ? '85%' : '350px',
-        height: '480px',
-        margin: 'auto', 
-        padding: isSmallScreen ? '18px' : '40px',
-        backgroundColor:'white',
-        display: 'flex',
-        flexDirection:'column',
-        alignItemns:'center',
-        justifyContent:'center',
-        borderRadius:'8px',
-        marginBottom:'16px',
-    };
 
   return (
     <>

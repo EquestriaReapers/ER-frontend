@@ -30,6 +30,7 @@ function useRegister() {
   const onSubmit = useCallback(
     async (
       name: string,
+      lastname: string,
       email: string,
       password: string,
       confirmPassword: string
@@ -44,6 +45,7 @@ function useRegister() {
         if (password === confirmPassword) {
           await registerService({
             name,
+            lastname,
             email,
             password,
           });
