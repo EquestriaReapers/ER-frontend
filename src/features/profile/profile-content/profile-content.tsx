@@ -1,37 +1,13 @@
 import Typography from '@mui/material/Typography'
 
 import { useAuthState } from 'hooks/use-auth-state'
-
 import EditProfileModal from '../edit-profile/modal'
 import { Profile } from 'core/profiles/types'
 import ProfileSkills from './profile-skills'
 import ProfileExperiences from './profile-experience'
-import { Skill } from 'core/profiles/types' // Import temporal para hacer el dummy.
-// Eliminar de linea 14 a 17
 
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user
-  const dummySkills: Skill[] = [
-    { id: 1, name: 'React', level: '1' },
-    { id: 2, name: 'CSS', level: '1' },
-    { id: 3, name: 'HTML', level: '1' },
-    { id: 4, name: 'React', level: '1' },
-    { id: 5, name: 'CSS', level: '1' },
-    { id: 6, name: 'HTML', level: '1' },
-    { id: 7, name: 'React', level: '1' },
-    { id: 8, name: 'CSS', level: '1' },
-    { id: 9, name: 'HTML', level: '1' },
-    { id: 10, name: 'React', level: '1' },
-    { id: 22, name: 'CSS', level: '1' },
-    { id: 33, name: 'HTML', level: '1' },
-    { id: 13, name: 'React', level: '1' },
-    { id: 24, name: 'CSS', level: '1' },
-    { id: 35, name: 'HTML', level: '1' },
-    { id: 33, name: 'HTML', level: '1' },
-    { id: 13, name: 'React', level: '1' },
-    { id: 24, name: 'CSS', level: '1' },
-    { id: 35, name: 'HTML', level: '1' }
-  ]
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId)
   return (
     <div>
@@ -54,7 +30,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 
           <ProfileSkills
             isEditable={isEditable}
-            currentProfileSkills={dummySkills}
+            currentProfileSkills={profile.skills}
           />
 
           <ProfileExperiences
