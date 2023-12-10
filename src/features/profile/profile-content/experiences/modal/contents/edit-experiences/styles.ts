@@ -35,11 +35,6 @@ export const buttonStyle = {
     },
 };
 
-export const boxStyles = {
-    background: 'orange',
-    py: 3,
-}
-
 export const headerStyles = {
     padding: 2,
 }
@@ -50,5 +45,5 @@ export const textFieldStyles = {
 }
 
 export const boxButtonStyles = {
-    background: 'white',
+    px: 2,
 }

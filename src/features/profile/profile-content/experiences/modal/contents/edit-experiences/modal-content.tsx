@@ -11,7 +11,6 @@ import {
   modalStyle,
   titleStyles,
   buttonStyle,
-  boxStyles,
 } from "./styles";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
@@ -146,7 +145,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
           </Box>
 
           <Box sx={boxButtonStyles}>
-            <Button sx={buttonStyle} variant="outlined" type="submit">
+            <Button sx={buttonStyle} type="submit">
               Guardar
             </Button>
           </Box>
