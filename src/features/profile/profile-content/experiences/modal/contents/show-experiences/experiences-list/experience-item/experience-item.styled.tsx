@@ -4,10 +4,7 @@ import ExperienceItem from "./experience-item.component.tsx";
 export default styled(ExperienceItem)`
 
 .titleIconStyles {
-    background: pink;
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-
-
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
 `;

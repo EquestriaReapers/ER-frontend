@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import AddExperience from "./add-experiences";
 import ShowExperience from "./show-experiences/show-experiences.styled";
-import EditExperienceModalContent from "./edit-experiences/modal-content";
+import EditExperienceModalContent from "./edit-experiences/modal-content.styled";
 import DeleteExperienceModalContent from "./delete-experiences/modal-content";
 import { ExperienceContent } from "../experiencies-modal-context/types";
 import ExperiencesModalContext from "../experiencies-modal-context";

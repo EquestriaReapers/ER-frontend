@@ -28,6 +28,7 @@ export const buttonStyle = {
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
+  px: 3,
   my: 1,
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,

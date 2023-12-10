@@ -4,11 +4,11 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useExperienceFormState from "../use-experience-form-state";
 import useEditExperienceForm from "./use-form";
 import { useCallback, useContext, useEffect } from "react";
-import { modalStyle } from "../show-experiences/styles";
+import { boxButtonStyles, textFieldStyles, modalStyle, titleStyles, buttonStyle, boxStyles } from "./styles";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const EditExperienceModalContent = ({ anExperience }: Props) => {
+const EditExperienceModalContent = ({ anExperience, className }: Props) => {
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -70,66 +70,76 @@ const EditExperienceModalContent = ({ anExperience }: Props) => {
     experienceId,
   });
   return (
-    <Box sx={modalStyle}>
+    <Box sx={modalStyle} className={className}>
       <form onSubmit={onSubmitForm}>
-        <Box>
-          <IconButton onClick={() => setContent(ExperienceContent.Show)}>
-            <ArrowBackIcon />
-          </IconButton>
+        <Box sx={boxStyles}>
+          <Box>
+            <IconButton onClick={() => setContent(ExperienceContent.Show)}>
+              <ArrowBackIcon />
+            </IconButton>
+          </Box>
+          <Typography sx={titleStyles}>Editar experiencia</Typography>
+
+          <Typography className="exp-show-description">
+            Edita los datos de la experiencia profesional que quieres modificar
+          </Typography>
         </Box>
-        <Typography>Editar experiencia</Typography>
+        <Box sx={boxStyles}>
+          <TextField
+            sx={textFieldStyles}
+            id="role"
+            label="Cargo / Puesto"
+            value={newExperience.role}
+            onChange={onChangeRole}
+          />
 
-        <Typography>
-          Edita los datos de la experiencia profesional que quieres modificar
-        </Typography>
+          <TextField
+            sx={textFieldStyles}
+            id="businessName"
+            label="Empresa"
+            value={newExperience.businessName}
+            onChange={onChangeBusinessName}
+          />
 
-        <TextField
-          id="role"
-          label="Cargo / Puesto"
-          value={newExperience.role}
-          onChange={onChangeRole}
-        />
+          <TextField
+            sx={textFieldStyles}
+            id="location"
+            label="Ubicación"
+            value={newExperience.location}
+            onChange={onChangeLocation}
+          />
 
-        <TextField
-          id="businessName"
-          label="Empresa"
-          value={newExperience.businessName}
-          onChange={onChangeBusinessName}
-        />
+          <TextField
+            sx={textFieldStyles}
+            id="startDate"
+            label="Fecha Inicial"
+            value={newExperience.startDate}
+            onChange={onChangeStartDate}
+          />
 
-        <TextField
-          id="location"
-          label="Ubicación"
-          value={newExperience.location}
-          onChange={onChangeLocation}
-        />
+          <TextField
+            sx={textFieldStyles}
+            id="endDate"
+            label="Fecha Final"
+            value={newExperience.endDate}
+            onChange={onChangeEndDate}
+          />
 
-        <TextField
-          id="startDate"
-          label="Fecha Inicial"
-          value={newExperience.startDate}
-          onChange={onChangeStartDate}
-        />
-
-        <TextField
-          id="endDate"
-          label="Fecha Final"
-          value={newExperience.endDate}
-          onChange={onChangeEndDate}
-        />
-
-        <TextField
-          id="description"
-          multiline
-          rows={4}
-          label="Descripción"
-          value={newExperience.description}
-          onChange={onChangeDescription}
-        />
-
-        <Button variant="outlined" type="submit">
-          Guardar
-        </Button>
+          <TextField
+            sx={textFieldStyles}
+            id="description"
+            multiline
+            rows={4}
+            label="Descripción"
+            value={newExperience.description}
+            onChange={onChangeDescription}
+          />
+        </Box>
+        <Box sx={boxButtonStyles}>
+          <Button sx={buttonStyle} variant="outlined" type="submit">
+            Guardar
+          </Button>
+        </Box>
       </form>
     </Box>
   );
@@ -139,4 +149,5 @@ export default EditExperienceModalContent;
 
 interface Props {
   anExperience: Experience;
+  className?: string;
 }
