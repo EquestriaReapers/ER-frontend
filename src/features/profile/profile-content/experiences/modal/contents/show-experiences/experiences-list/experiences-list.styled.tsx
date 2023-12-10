@@ -9,6 +9,7 @@ const XS_SIZE = 380;
 export default styled(ExperiencesList)`
   background: #f4f4f4;
   padding: 24px;
+  padding-top: 0;
   max-height: 400px;
   overflow-y: auto;
   border-radius: 10px;

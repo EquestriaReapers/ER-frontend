@@ -7,7 +7,10 @@ import ExperiencesModalContext from "../../../../experiencies-modal-context/inde
 import { useContext } from "react";
 import { ExperienceContent } from "../../../../experiencies-modal-context/types";
 import { nameInputStyles, ubicationDateInputStyles } from "../styles";
-import { descriptionStyles, inlineStyles } from "../../../../styles";
+import {
+  descriptionStyles,
+  inlineStyles,
+} from "../../../../styles";
 
 const ExperienceItem = ({ item, className }: Props) => {
   const { setContent, setAnExperience } = useContext(ExperiencesModalContext);
@@ -16,24 +19,26 @@ const ExperienceItem = ({ item, className }: Props) => {
     <div className={className}>
       <div>
         <Box>
-          <Box className='titleIconStyles'>
+          <Box className="titleIconStyles">
             <Typography sx={nameInputStyles}>{item.businessName}</Typography>
-            <IconButton
-              onClick={() => {
-                setContent(ExperienceContent.Edit);
-                setAnExperience(item);
-              }}
-            >
-              <EditIcon sx={{ color: "#007935" }} />
-            </IconButton>
-            <IconButton
-              onClick={() => {
-                setContent(ExperienceContent.Delete);
-                setAnExperience(item);
-              }}
-            >
-              <DeleteIcon sx={{ color: "#007935" }} />
-            </IconButton>
+            <Box>
+              <IconButton
+                onClick={() => {
+                  setContent(ExperienceContent.Edit);
+                  setAnExperience(item);
+                }}
+              >
+                <EditIcon sx={{ color: "#007935" }} />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setContent(ExperienceContent.Delete);
+                  setAnExperience(item);
+                }}
+              >
+                <DeleteIcon sx={{ color: "#007935" }} />
+              </IconButton>
+            </Box>
           </Box>
           <Box sx={inlineStyles}>
             <Typography>{item.role}</Typography>
@@ -60,7 +65,7 @@ const ExperienceItem = ({ item, className }: Props) => {
 
 interface Props {
   item: Experience;
-  className ?: string;
+  className?: string;
 }
 
 export default ExperienceItem;
