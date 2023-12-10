@@ -1,10 +1,11 @@
 import { getAllSkills } from "../../services/skills.service";
 import { Skill } from "core/profiles/types";
+import { useAuthState } from "hooks/use-auth-state";
 import { useCallback, useEffect, useState } from "react";
 
-const useAllSkills = (token: string) => {
+const useAllSkills = () => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
-
+  const { token } = useAuthState();
   const getSkills = useCallback(async () => {
     try {
       if (!token) return;
@@ -19,7 +20,7 @@ const useAllSkills = (token: string) => {
     getSkills();
   }, [getSkills]);
 
-  return { allSkills };
+  return allSkills;
 };
 
 export default useAllSkills;

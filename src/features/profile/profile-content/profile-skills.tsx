@@ -7,7 +7,7 @@ import { boxStyles } from './styles/styles'
 const ProfileSkills = ({
   isEditable,
   currentProfileSkills
-}: ProfileSkillProps) => {
+}: Props) => {
   return (
     <div>
       <Typography sx={boxStyles} variant='h4'>
@@ -19,7 +19,7 @@ const ProfileSkills = ({
   )
 }
 
-export interface ProfileSkillProps {
+export interface Props {
   isEditable: boolean
   currentProfileSkills: Skill[]
 }

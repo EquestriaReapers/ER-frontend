@@ -18,8 +18,6 @@ const AddSkillsModal = () => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby='agregar habilidades'
-        aria-describedby='se usa para agregar habilidades'
       >
         <Box sx={style}>
           <FormContent setIsOpen={setIsOpen} />

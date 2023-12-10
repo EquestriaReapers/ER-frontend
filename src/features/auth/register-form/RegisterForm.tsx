@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
 
-const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
+const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
     name,
     lastname,
@@ -66,7 +66,7 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
   );
 };
 
-export interface props {
+export interface Props {
   disabled: boolean;
   onSubmit: (
     name: string,
