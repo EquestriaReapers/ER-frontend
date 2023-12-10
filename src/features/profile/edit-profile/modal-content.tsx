@@ -5,7 +5,7 @@ import useForm from "./use-form";
 
 const EditProfileModalContent = ({
   setIsOpen,
-}: EditProfileModalContentProps) => {
+}: Props) => {
   const { name, description, onChangeName, onChangeDescription } =
     useEditProfileFormState();
 
@@ -37,8 +37,8 @@ const EditProfileModalContent = ({
   );
 };
 
-export interface EditProfileModalContentProps {
-  setIsOpen: (arg0: boolean) => void;
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default EditProfileModalContent;

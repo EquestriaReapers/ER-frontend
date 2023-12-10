@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Skill } from "core/profiles/types";
 
-const SkillCard = ({ item }: { item: Skill }) => {
+const SkillCard = ({ item }: Props) => {
   return (
     <div>
       <Typography variant="h6">{item.name}</Typography>
@@ -9,4 +9,7 @@ const SkillCard = ({ item }: { item: Skill }) => {
   );
 };
 
+interface Props {
+  item: Skill;
+}
 export default SkillCard;

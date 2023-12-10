@@ -6,7 +6,7 @@ import { Skill } from "core/profiles/types";
 const ProfileSkills = ({
   isEditable,
   currentProfileSkills,
-}: ProfileSkillProps) => {
+}: Props) => {
   return (
     <>
       <Typography variant="h4">Habilidades:</Typography>
@@ -16,7 +16,7 @@ const ProfileSkills = ({
   );
 };
 
-export interface ProfileSkillProps {
+export interface Props {
   isEditable: boolean;
   currentProfileSkills: Skill[];
 }

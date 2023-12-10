@@ -36,18 +36,21 @@ const EditProfileModal = () => {
     getUserInfo();
   }, [getUserInfo]);
 
-  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      if (token && user) {
-        const data = await updateProfile(token, { name, description }, user.id);
-        setIsOpen(false);
-        return data;
+  const onSubmitForm = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        if (token && user) {
+          const data = await updateProfile(token, { name, description });
+          setIsOpen(false);
+          return data;
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    },
+    [description, name, token, user]
+  );
 
   return (
     <div>
@@ -59,8 +62,6 @@ const EditProfileModal = () => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby="edit profile"
-        aria-describedby="used to edit profile"
       >
         <Box sx={modalStyle}>
           <form onSubmit={onSubmitForm}>

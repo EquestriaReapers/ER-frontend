@@ -7,7 +7,7 @@ import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
 import ProfileExperiences from "./profile-experience";
 
-const ProfileContent = ({ profile }: ProfileContentProps) => {
+const ProfileContent = ({ profile }: Props) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   return (
@@ -46,7 +46,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   );
 };
 
-export interface ProfileContentProps {
+export interface Props {
   profile: Profile;
 }
 export default ProfileContent;
