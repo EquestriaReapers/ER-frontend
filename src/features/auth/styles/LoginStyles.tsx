@@ -7,7 +7,7 @@ const mediaQueryStyles = {
     '@media (minWidth: 900px)': {
       minHeight: '600px',
     },
-};
+  };
 
 export const loginProfileStyles = {
     display: 'flex',

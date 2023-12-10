@@ -13,14 +13,7 @@ import "../../styles/index.css";
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
 
-  const mediaQueryStyles = {
-    '@media (minWidth: 600px)': {
-      minHeight: '500px',
-    },
-    '@media (minWidth: 900px)': {
-      minHeight: '600px',
-    },
-  };
+
 
   return (
     <Div100vh style={loginProfileStyles}>
