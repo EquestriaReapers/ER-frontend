@@ -19,53 +19,64 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
       {loggedUser ? (
         <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
           <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
+          <Box sx={{display:"flex", justifyContent:"center"}}>
+            <Box>
 
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "10px",
-              marginTop: "12px",
-            }}
-          >
-            <Box sx={{ display: "flex" }}>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: "700", marginRight: 1 }}
-              >
-                {profile.user.name} {profile.user.lastname}
-              </Typography>
-              {isEditable && <EditProfileModal />}
-            </Box>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: "700", color: `${primaryGreen}` }}
-            >
-              {profile.mainTitle}
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexWrap:"nowrap",
-                gap: "10px",
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: "700" }}>
-                Sobre Mi
-              </Typography>
-              <Typography variant="h6">{profile.description}</Typography>
+              <Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "10px",
+                    marginTop: "12px",
+                  }}
+                >
+                  <Box >
+                    <Box sx={{ display: "flow" }}>
+                      <Typography
+                        variant="h4"
+                        sx={{ fontWeight: "700", marginRight: 1 }}
+                      >
+                        {profile.user.name} {profile.user.lastname}
+                      </Typography>
+                      {isEditable && <EditProfileModal />}
+                    </Box>
+                    <Typography
+                      variant="h6"
+                      sx={{ fontWeight: "700", color: `${primaryGreen}` }}
+                    >
+                      {profile.mainTitle}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        flexWrap:"nowrap",
+                        gap: "10px",
+                      }}
+                    >
+                      <Typography variant="h6" sx={{ fontWeight: "700" }}>
+                        Sobre Mi
+                      </Typography>
+                      <Typography variant="h6">{profile.description}</Typography>
+                    </Box>
+                  </Box>
+                  <Box>
+                    hola
+                  </Box>
+                </Box>
+              </Box>
+              <ProfileSkills
+                isEditable={isEditable}
+                currentProfileSkills={profile.skills}
+              />
+
+              <ProfileExperiences
+                isEditable={isEditable}
+                currentProfileExperience={profile.experience}
+              />
             </Box>
           </Box>
-          <ProfileSkills
-            isEditable={isEditable}
-            currentProfileSkills={profile.skills}
-          />
-
-          <ProfileExperiences
-            isEditable={isEditable}
-            currentProfileExperience={profile.experience}
-          />
         </Box>
       ) : (
         <Typography>No se encontro el perfil!</Typography>
