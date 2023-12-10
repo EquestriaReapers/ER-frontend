@@ -1,6 +1,6 @@
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { modalStyle } from "../show-experiences/styles";
+import { modalStyle, titleStyles } from "../show-experiences/styles";
 import useExperienceFormState from "../use-experience-form-state";
 import useAddExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
@@ -46,46 +46,53 @@ const AddExperienceModalContent = ({ className }: Props) => {
           </IconButton>
         </Box>
 
-        <Typography>Agregar experiencia</Typography>
+        <Typography sx={titleStyles}>Agregar experiencia</Typography>
 
         <Typography>
           Escribe acerca de la experiencia profesional que quieres agregar
         </Typography>
 
-        <TextField id="role" label="Cargo / Puesto" onChange={onChangeRole} />
+        <Box>
+          <TextField id="role" label="Cargo / Puesto" onChange={onChangeRole} />
+        </Box>
 
-        <TextField
-          id="businessName"
-          label="Empresa"
-          onChange={onChangeBusinessName}
-        />
+        <Box>
+          <TextField
+            id="businessName"
+            label="Empresa"
+            onChange={onChangeBusinessName}
+          />
 
-        <TextField
-          id="location"
-          label="Ubicación"
-          onChange={onChangeLocation}
-        />
+          <TextField
+            id="location"
+            label="Ubicación"
+            onChange={onChangeLocation}
+          />
+        </Box>
 
-        <TextField
-          id="startDate"
-          label="Fecha Inicial"
-          onChange={onChangeStartDate}
-        />
+        <Box>
+          <TextField
+            id="startDate"
+            label="Fecha Inicial"
+            onChange={onChangeStartDate}
+          />
 
-        <TextField
-          id="endDate"
-          label="Fecha Final"
-          onChange={onChangeEndDate}
-        />
+          <TextField
+            id="endDate"
+            label="Fecha Final"
+            onChange={onChangeEndDate}
+          />
+        </Box>
 
-        <TextField
-          id="description"
-          multiline
-          rows={4}
-          label="Descripción"
-          onChange={onChangeDescription}
-        />
-
+        <Box>
+          <TextField
+            id="description"
+            multiline
+            rows={4}
+            label="Descripción"
+            onChange={onChangeDescription}
+          />
+        </Box>
         <Button variant="outlined" type="submit">
           Guardar
         </Button>
