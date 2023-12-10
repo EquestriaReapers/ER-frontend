@@ -1,5 +1,6 @@
 export const boxStyles = {
     fontWeight: 'bold',
+    fontFamily: 'Inter',
     display: 'flex',
     flexWrap: 'wrap',
     py: 3,
