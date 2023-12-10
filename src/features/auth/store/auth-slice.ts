@@ -15,7 +15,7 @@ const authSlice = createSlice({
         name: "",
         lastname: "",
         verified: false,
-        deletedAt: payload.deletedAt,
+        deletedAt: null,
       };
       state.isLogged = true;
       localStorage.setItem("auth", JSON.stringify(state));
