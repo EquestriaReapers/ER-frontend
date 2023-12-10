@@ -1,12 +1,13 @@
 export const TextFieldTypography = { 
     fontFamily: 'Inter, sans-serif', 
-    color:'#979899' 
+    color:'#979899' ,
+    fontSize: '0.9rem',
 }
 
 export const ImageBoxStyles = { 
     display: 'flex', 
     flexDirection: 'column', 
-    alignItems: 'center' 
+    alignItems: 'center',
 
 }
 
@@ -15,6 +16,8 @@ export const TextFieldStyles = {
     marginBottom: '16px', 
     "& .MuiOutlinedInput-notchedOutline": {
     borderColor: '#979899', 
+    padding: '13px',
+    height: '24px',
   },
 }
 
@@ -24,19 +27,14 @@ export const ButtonStyles = {
     color:'white',
     marginBottom:'16px',
     borderRadius:'8px',
-    height:'47px',
+    minHeight:'50px',
     textTransform: 'capitalize',
+    fontSize: '0.rem',
 }
 
-export const UnderFormStyles = {
-    width:'100%', 
-    display: 'flex', 
-    alignItems: 'center', 
-    justifyContent:'center' 
-}
 
 export const UcabLogoStyles = { 
-    height: '100px', 
-    width: '100px', 
+    height: '85px', 
+    width: '85px', 
     marginBottom:'16px'
 }

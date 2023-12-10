@@ -1,9 +1,13 @@
+import Background from "../images/background.jpeg";
+
 export const div100LoginStyles = {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'blue',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: '800px',
-    minWidth: '300px', 
+    minHeight: '600px',
+    minWidth: '350px', 
+    backgroundImage: `url(${Background})`,
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center',
 }

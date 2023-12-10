@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
 import Div100vh from 'react-div-100vh';
 import { div100LoginStyles } from "./styles/LoginStyles";
+import "../../styles/index.css";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
@@ -45,7 +46,10 @@ function useLogin() {
     async (email: string, password: string) => {
       setLoading(true);
       try {
-        if (!email || !password) return;
+        if (!email || !password) {
+          alert("Por favor introduce el usuario y la contraseña.");
+          return;
+        }
 
         const result = await loginService({
           email,
@@ -54,6 +58,7 @@ function useLogin() {
         dispatch(loginAction(result));
         navigate(`/dashboard`);
       } catch (error) {
+        alert("El login ha fallado.");
         console.log(error);
       } finally {
         setLoading(false);

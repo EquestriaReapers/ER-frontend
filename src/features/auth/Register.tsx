@@ -5,26 +5,16 @@ import registerService from "features/auth/services/register.service";
 
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from 'react-div-100vh';
-import { div100RegisterStyles } from "./styles/RegisterStyles";
+import { registerProfileStyles } from "./styles/RegisterStyles";
+import "../../styles/index.css";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
 
-
-  const mediaQueryStyles = {
-    '@media (minWidth: 600px)': {
-      minHeight: '500px',
-    },
-    '@media (minWidth: 900px)': {
-      minHeight: '600px',
-    },
-  };
-
   return (
-    <Div100vh style={ {
-      ...div100RegisterStyles, 
-      mediaQueryStyles,
-    }}>
+    <Div100vh style={ 
+      registerProfileStyles
+    }>
       <FormControl margin="normal">
         <RegisterForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
@@ -47,7 +37,10 @@ function useRegister() {
     ) => {
       setLoading(true);
       try {
-        if (!name || !lastname || !email || !password || !confirmPassword) return;
+        if (!name || !lastname || !email || !password || !confirmPassword) {
+          alert("Todos los campos son obligatorios.");
+          return;
+        }
 
         if (password === confirmPassword) {
           await registerService({
@@ -56,9 +49,13 @@ function useRegister() {
             email,
             password,
           });
+        } else {
+          alert("Las contraseñas no coinciden.");      
+          return;
         }
       } catch (error) {
-        console.log(error)
+        console.log(error);
+        alert("El registro ha fallado.");
       } finally {
         setLoading(false);
       }

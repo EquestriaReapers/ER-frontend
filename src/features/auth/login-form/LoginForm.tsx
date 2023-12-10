@@ -1,38 +1,38 @@
+import { useState } from 'react';
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Checkbox from '@mui/material/Checkbox';
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
-import CheckKeepLogged from "./CheckKeepLogged.tsx";
 import Box from "@mui/material/Box";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Link from '@mui/material/Link';
 import ucabLogo from "../images/ucabLogo.webp";
-import "./LoginForm.css";
+import "../../../styles/index.css";
 import { TextFieldTypography, 
   UcabLogoStyles, 
   ImageBoxStyles,
-  FormBottomStyles,
-  InsideFormBottomStyles,
   FormBottomTypographyStyles,
-  ForgotPaswordStyles,
-  UnderFormStyles,
   TextFieldStyles, 
-  ButtonStyles
+  ButtonStyles,
+  CheckBoxStyles,
 
-} from "./styles/LoginFormStyles.tsx";
+} from "./LoginFormStyles.tsx";
 
 const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const { email, password, onChangeEmail, onChangePassword } =
     useLoginFormState();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const [keepLogged, setKeepLogged] = useState(false);
+
     const FormBoxStyles = {
-        width: isSmallScreen ? '85%' : '350px',
+        width: isSmallScreen ? '250px' : '350px',
         height: '480px',
         margin: 'auto', 
-        padding: isSmallScreen ? '18px' : '40px',
+        padding: isSmallScreen ? '25px' : '40px',
         backgroundColor:'white',
         display: 'flex',
         flexDirection:'column',
@@ -41,6 +41,38 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         borderRadius:'8px',
         marginBottom:'16px',
     };
+
+    const FormBottomStyles = {
+      marginBottom:'36px', 
+      height: '50px',
+      display: isSmallScreen ? 'grid' : 'flex',
+      justifyContent:'center', 
+      aligItems: 'center',
+    }
+
+    const InsideFormBottomStyles = {
+      width: isSmallScreen ? '100%' : '50%',
+      display:'flex',
+      justifyContent:'center', 
+      alignItems:'center'
+    }
+
+    const ForgotPaswordStyles = { 
+      fontFamily: 'Inter, sans-serif', 
+      width: isSmallScreen ? '90%' : '50%',
+      margin: 'auto',
+      display:'inline-block',
+      fontSize: '0.9rem',
+    }
+  
+
+    
+
+    const handleKeepLoggedChange = () => {
+      setKeepLogged(!keepLogged); 
+    };
+
+    const LOGIN_BORDER_RADIUS = '11px';
 
   return (
     <>
@@ -58,7 +90,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             onChange={onChangeEmail}
             disabled={disabled}
             sx={TextFieldStyles}
-            InputProps={{ sx: { borderRadius: '11px' } }}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
           <Typography sx={TextFieldTypography}>Contraseña</Typography>
           <TextField
@@ -68,7 +100,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             onChange={onChangePassword}
             disabled={disabled}
             sx={{ ...TextFieldStyles, marginBottom: '26px' }}
-            InputProps={{ sx: { borderRadius: '11px' } }}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
           <Box>
             <Button
@@ -86,7 +118,12 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           </Box>
           <Box sx={FormBottomStyles}>
             <Box sx={InsideFormBottomStyles}>
-              <CheckKeepLogged/> 
+            <Checkbox
+              checked={keepLogged}
+              onChange={handleKeepLoggedChange}
+              inputProps={{ 'aria-label': 'Checkbox' }}
+              sx={CheckBoxStyles}
+            />
               <Typography sx={FormBottomTypographyStyles}>Permanecer conectado</Typography>
             </Box>
             <Box sx={ForgotPaswordStyles}>
@@ -95,12 +132,6 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
               </Link>
             </Box>
 
-          </Box>
-          <Box sx={FormBottomStyles}>
-            <Box sx={UnderFormStyles}> 
-              <Box sx={{display:'inline-block',}}>¿Aún no tienes cuenta?</Box>   &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;
-              <Box sx={{display:'inline-block', color:'#007BFF'}}><Link href='/register/'>Registrate aquí</Link></Box>  
-            </Box>
           </Box>
         </Box>
       </Box>
