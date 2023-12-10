@@ -3,7 +3,7 @@ import { removeProfileSkill } from "features/profile/services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { toast } from "sonner";
 
-const useDeleteSkill = ({ skillId, setIsOpen }: UseDeleteSkillProps) => {
+const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
   const { token } = useAuthState();
   const onDeleteSkill = async () => {
     try {
@@ -22,8 +22,8 @@ const useDeleteSkill = ({ skillId, setIsOpen }: UseDeleteSkillProps) => {
   return { onDeleteSkill };
 };
 
-export interface UseDeleteSkillProps {
+export interface Props {
   skillId: number;
-  setIsOpen: (arg0: boolean) => void;
+  setIsOpen: (isOpen: boolean) => void;
 }
 export default useDeleteSkill;

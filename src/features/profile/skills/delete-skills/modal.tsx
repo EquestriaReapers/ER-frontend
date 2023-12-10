@@ -5,7 +5,7 @@ import { useState } from "react";
 import DeleteSkillModalContent from "./modal-content";
 import useDeleteSkill from "./use-delete-skill";
 
-const DeleteSkillModal = ({ skillId }: DeleteSkillProps) => {
+const DeleteSkillModal = ({ skillId }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { onDeleteSkill } = useDeleteSkill({ skillId, setIsOpen });
@@ -18,8 +18,6 @@ const DeleteSkillModal = ({ skillId }: DeleteSkillProps) => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby="Delete Skills"
-        aria-describedby="It is used to delete skills"
       >
         <div>
           <DeleteSkillModalContent
@@ -32,7 +30,7 @@ const DeleteSkillModal = ({ skillId }: DeleteSkillProps) => {
   );
 };
 
-export interface DeleteSkillProps {
+export interface Props {
   skillId: number;
 }
 

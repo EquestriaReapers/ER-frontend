@@ -2,13 +2,12 @@ import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useAuthState } from "hooks/use-auth-state";
-
 import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
 import ProfileExperiences from "./profile-experience";
 
-const ProfileContent = ({ profile }: ProfileContentProps) => {
+const ProfileContent = ({ profile }: Props) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   const theme = useTheme();
@@ -17,8 +16,21 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   return (
     <>
       {loggedUser ? (
-        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
+        <div>
+          <Typography variant="h3">Perfil:</Typography>
+          {isEditable && <EditProfileModal />}
+
+          <Typography variant="h4">Nombre:</Typography>
+          <Typography variant="h6">
+            {profile.user.name} {profile.user.lastname}
+          </Typography>
+          <Typography variant="h6">
+            {profile.mainTitle} {profile.countryResidence}
+          </Typography>
+          <Typography variant="h4">Email:</Typography>
+          <Typography variant="h6">{profile.user.email}</Typography>
+
+          <Typography variant="h6">{profile.description}</Typography>
 
           <Box
             sx={{
@@ -47,7 +59,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                flexWrap:"nowrap",
+                flexWrap: "nowrap",
                 gap: "10px",
               }}
             >
@@ -66,7 +78,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
             isEditable={isEditable}
             currentProfileExperience={profile.experience}
           />
-        </Box>
+        </div>
       ) : (
         <Typography>No se encontro el perfil!</Typography>
       )}
@@ -74,7 +86,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   );
 };
 
-export interface ProfileContentProps {
+export interface Props {
   profile: Profile;
 }
 export default ProfileContent;

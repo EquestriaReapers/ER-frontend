@@ -10,7 +10,7 @@ import EditExperienceModal from "../experiences/edit-experiences/modal";
 const ProfileExperience = ({
   isEditable,
   currentProfileExperience,
-}: ProfileExperienceProps) => {
+}: Props) => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const { token } = useAuthState();
   console.log(experiences);
@@ -38,7 +38,7 @@ const ProfileExperience = ({
   );
 };
 
-export interface ProfileExperienceProps {
+export interface Props {
   isEditable: boolean;
   currentProfileExperience: Experience[];
 }

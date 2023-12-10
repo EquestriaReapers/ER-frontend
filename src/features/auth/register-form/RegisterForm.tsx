@@ -17,7 +17,7 @@ import {
   UcabLogoStyles,
 } from "./styles/RegisterFormStyles.tsx";
 
-const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
+const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
     name,
     lastname,
@@ -126,7 +126,7 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
   );
 };
 
-export interface props {
+export interface Props {
   disabled: boolean;
   onSubmit: (
     name: string,
