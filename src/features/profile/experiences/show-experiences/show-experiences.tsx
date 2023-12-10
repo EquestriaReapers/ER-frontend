@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ExperienceCard from "./experience-card";
-import DeleteExperienceModal from "../delete-experience/modal";
 
 const ShowExperiences = ({ experience }: Props) => {
   return (
@@ -10,7 +9,6 @@ const ShowExperiences = ({ experience }: Props) => {
         return (
           <Box key={item.id}>
             <ExperienceCard item={item} />
-            {<DeleteExperienceModal />}
           </Box>
         );
       })}
