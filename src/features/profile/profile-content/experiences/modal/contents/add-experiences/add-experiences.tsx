@@ -1,6 +1,10 @@
 import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { modalStyle, titleStyles } from "../show-experiences/styles";
+import {
+  modalStyle,
+  titleStyles,
+  textFieldStyleA,
+} from "../show-experiences/styles";
 import useExperienceFormState from "../use-experience-form-state";
 import useAddExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
@@ -52,7 +56,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
           Escribe acerca de la experiencia profesional que quieres agregar
         </Typography>
 
-        <Box>
+        <Box sx={textFieldStyleA}>
           <TextField id="role" label="Cargo / Puesto" onChange={onChangeRole} />
         </Box>
 
@@ -93,6 +97,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
             onChange={onChangeDescription}
           />
         </Box>
+
         <Button variant="outlined" type="submit">
           Guardar
         </Button>

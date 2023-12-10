@@ -33,3 +33,7 @@ export const buttonStyle = {
     backgroundColor: PRIMARY_DARKER,
   },
 };
+
+export const textFieldStyleA = {
+  marginBottom: "20px",
+};
