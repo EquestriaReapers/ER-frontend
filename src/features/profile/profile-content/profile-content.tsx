@@ -1,69 +1,91 @@
-import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { useAuthState } from "hooks/use-auth-state";
+import Typography from '@mui/material/Typography'
+import { Box, Button } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
+import { useAuthState } from 'hooks/use-auth-state'
 
-import EditProfileModal from "../edit-profile/modal";
-import { Profile } from "core/profiles/types";
-import ProfileSkills from "./profile-skills";
-import ProfileExperiences from "./profile-experience";
+import EditProfileModal from '../edit-profile/modal'
+import { Profile } from 'core/profiles/types'
+import ProfileSkills from './profile-skills'
+import ProfileExperiences from './profile-experience'
+import { bannerStyles } from '../styles/styles'
 
 const ProfileContent = ({ profile }: ProfileContentProps) => {
-  const loggedUser = useAuthState().user;
-  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
-  const theme = useTheme();
-  const primaryGreen = theme.palette.primary.main;
+  const loggedUser = useAuthState().user
+  const isEditable = !!(loggedUser && loggedUser.id == profile.userId)
+  const theme = useTheme()
+  const primaryGreen = theme.palette.primary.main
 
   return (
     <>
       {loggedUser ? (
-        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
-          <Box sx={{display:"flex", justifyContent:"center"}}>
-            <Box>
-
+        <Box>
+          <Box sx={bannerStyles}></Box>
+          <Box>
+            <Box
+              sx={{
+                witdh: '100%',
+                display: 'flex',
+                justifyContent: 'space-between',
+                px: 16
+              }}
+            >
               <Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "10px",
-                    marginTop: "12px",
-                  }}
-                >
-                  <Box >
-                    <Box sx={{ display: "flow" }}>
+                <Typography>
+                  {profile.user.name} {profile.user.lastname}
+                </Typography>
+                <Typography> {profile.mainTitle}</Typography>
+              </Box>
+              <Box>
+                <Button>Boton descargar</Button>
+              </Box>
+            </Box>
+            <Box>
+              <Box>
+                <Typography>sobremi</Typography>
+                <Typography>descripcion</Typography>
+              </Box>
+              <Box>
+                <Typography>ubicacion</Typography>
+                <Typography>website</Typography>
+              </Box>
+            </Box>
+
+            <Box>
+              <Box>
+                <Box>
+                  <Box>
+                    <Box sx={{ display: 'flow' }}>
                       <Typography
-                        variant="h4"
-                        sx={{ fontWeight: "700", marginRight: 1 }}
+                        variant='h4'
+                        sx={{ fontWeight: '700', marginRight: 1 }}
                       >
                         {profile.user.name} {profile.user.lastname}
                       </Typography>
                       {isEditable && <EditProfileModal />}
                     </Box>
                     <Typography
-                      variant="h6"
-                      sx={{ fontWeight: "700", color: `${primaryGreen}` }}
+                      variant='h6'
+                      sx={{ fontWeight: '700', color: `${primaryGreen}` }}
                     >
                       {profile.mainTitle}
                     </Typography>
                     <Box
                       sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        flexWrap:"nowrap",
-                        gap: "10px",
+                        display: 'flex',
+                        flexDirection: 'column',
+                        flexWrap: 'nowrap',
+                        gap: '10px'
                       }}
                     >
-                      <Typography variant="h6" sx={{ fontWeight: "700" }}>
+                      <Typography variant='h6' sx={{ fontWeight: '700' }}>
                         Sobre Mi
                       </Typography>
-                      <Typography variant="h6">{profile.description}</Typography>
+                      <Typography variant='h6'>
+                        {profile.description}
+                      </Typography>
                     </Box>
                   </Box>
-                  <Box>
-                    hola
-                  </Box>
+                  <Box>hola</Box>
                 </Box>
               </Box>
               <ProfileSkills
@@ -82,10 +104,10 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
         <Typography>No se encontro el perfil!</Typography>
       )}
     </>
-  );
-};
+  )
+}
 
 export interface ProfileContentProps {
-  profile: Profile;
+  profile: Profile
 }
-export default ProfileContent;
+export default ProfileContent
