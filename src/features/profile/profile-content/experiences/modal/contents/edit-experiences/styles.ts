@@ -35,12 +35,14 @@ export const buttonStyle = {
     },
 };
 
+
+
 export const headerStyles = {
     padding: 2,
 }
 
 export const textFieldStyles = {
-    padding: 2,
+
     display: 'flex',
 }
 

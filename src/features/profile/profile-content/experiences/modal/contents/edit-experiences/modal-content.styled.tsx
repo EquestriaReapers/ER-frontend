@@ -14,6 +14,7 @@ export default styled(EditExperienceModalContent)`
 .inputStyles {
     font-size: 16px;
     display: flex;
+    background: pink;
 }
 
 .exp-header-container {
