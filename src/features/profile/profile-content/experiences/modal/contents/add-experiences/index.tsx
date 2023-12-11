@@ -53,11 +53,7 @@ export default styled(AddExperienceModalContent)`
       margin-bottom: 12px;
       
     }
-    
-    .last-children-box {
-      margin-bottom: 12px;
-      flex-grow: 1;
-  }
+  
 
 `;
 

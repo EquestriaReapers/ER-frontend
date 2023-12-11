@@ -58,10 +58,10 @@ const AddExperienceModalContent = ({ className }: Props) => {
 
         <Box className={"single-typefield-box"}>
           <TextField
-            className={"enlargement-textfield"}
             id="role"
             label="Cargo / Puesto"
             onChange={onChangeRole}
+            className={"enlargement-textfield"}
           />
         </Box>
 
@@ -105,13 +105,14 @@ const AddExperienceModalContent = ({ className }: Props) => {
           </Box>
         </Box>
 
-        <Box>
+        <Box className={"single-typefield-box"}>
           <TextField
             id="description"
             multiline
             rows={4}
             label="Descripción"
             onChange={onChangeDescription}
+            className={"enlargement-textfield"}
           />
         </Box>
 
