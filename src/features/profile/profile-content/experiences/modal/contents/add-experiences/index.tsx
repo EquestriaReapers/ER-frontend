@@ -22,7 +22,22 @@ export default styled(AddExperienceModalContent)`
 
   .multiple-typefield-box {
     display: flex;
+    flex-direction: row;
     margin-bottom: 12px;
+  }
+
+  .multiple-typefield-box {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+  }
+
+  .children-box {
+    margin-right: 12px;
+  }
+
+  .last-children-box {
+    flex-grow: 1;
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {
@@ -30,9 +45,20 @@ export default styled(AddExperienceModalContent)`
       display: flex;
       flex-direction: column;
       margin-bottom: 12px;
-      background: green;
     }
+
+    .children-box {
+      flex-grow: 1;
+      margin-right: 0px;
+      margin-bottom: 12px;
+      
+    }
+    
+    .last-children-box {
+      margin-bottom: 12px;
+      flex-grow: 1;
   }
+
 `;
 
 //classname = "nombre"

@@ -66,16 +66,16 @@ const AddExperienceModalContent = ({ className }: Props) => {
         </Box>
 
         <Box className={"multiple-typefield-box"}>
-          <Box sx={{}}>
+          <Box className={"children-box"}>
             <TextField
               id="businessName"
               label="Empresa"
               onChange={onChangeBusinessName}
-              className={"enlargement-textfield"}
+              sx={{ width: "100%" }}
             />
           </Box>
 
-          <Box sx={{}}>
+          <Box className={"last-children-box"}>
             <TextField
               id="location"
               label="Ubicación"
@@ -85,18 +85,24 @@ const AddExperienceModalContent = ({ className }: Props) => {
           </Box>
         </Box>
 
-        <Box>
-          <TextField
-            id="startDate"
-            label="Fecha Inicial"
-            onChange={onChangeStartDate}
-          />
+        <Box className={"multiple-typefield-box"}>
+          <Box className={"children-box"}>
+            <TextField
+              id="startDate"
+              label="Fecha Inicial"
+              onChange={onChangeStartDate}
+              className={"enlargement-textfield"}
+            />
+          </Box>
 
-          <TextField
-            id="endDate"
-            label="Fecha Final"
-            onChange={onChangeEndDate}
-          />
+          <Box className={"last-children-box"}>
+            <TextField
+              id="endDate"
+              label="Fecha Final"
+              onChange={onChangeEndDate}
+              className={"enlargement-textfield"}
+            />
+          </Box>
         </Box>
 
         <Box>
