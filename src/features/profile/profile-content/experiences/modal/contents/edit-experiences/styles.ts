@@ -36,14 +36,19 @@ export const buttonStyle = {
 };
 
 export const headerStyles = {
-    padding: 2,
+    py: 2,
 }
 
 export const textFieldStyles = {
-    padding: 2,
+    width: '100%',
     display: 'flex',
 }
 
 export const boxButtonStyles = {
-    px: 2,
+    display: 'flex',
+        
+    justifyContent: {
+        xs: 'center',
+        md: 'flex-start',
+    },
 }

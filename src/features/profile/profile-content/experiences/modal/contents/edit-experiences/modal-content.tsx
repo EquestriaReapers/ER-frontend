@@ -90,58 +90,69 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
           Edita los datos de la experiencia profesional que quieres modificar
         </Typography>
       </Box>
-      <Box >
+      <Box>
         <form onSubmit={onSubmitForm}>
           <Box>
-            <TextField
-              sx={textFieldStyles}
-              id="role"
-              label="Cargo / Puesto"
-              value={newExperience.role}
-              onChange={onChangeRole}
-            />
-            <Box className="inputStyles">
+            <Box className="inputContainer">
               <TextField
                 sx={textFieldStyles}
-                id="businessName"
-                label="Empresa"
-                value={newExperience.businessName}
-                onChange={onChangeBusinessName}
-              />
-
-              <TextField
-                sx={textFieldStyles}
-                id="location"
-                label="Ubicación"
-                value={newExperience.location}
-                onChange={onChangeLocation}
+                id="role"
+                label="Cargo / Puesto"
+                value={newExperience.role}
+                onChange={onChangeRole}
               />
             </Box>
             <Box className="inputStyles">
+              <Box className="inputContainer pr-5px">
+                <TextField
+                  sx={textFieldStyles}
+                  id="businessName"
+                  label="Empresa"
+                  value={newExperience.businessName}
+                  onChange={onChangeBusinessName}
+                />
+              </Box>
+              <Box className="inputContainer pl-5px">
+                <TextField
+                  sx={textFieldStyles}
+                  id="location"
+                  label="Ubicación"
+                  value={newExperience.location}
+                  onChange={onChangeLocation}
+                />
+              </Box>
+            </Box>
+            <Box className="inputStyles">
+              <Box className="inputContainer pr-5px">
+                <TextField
+                  sx={textFieldStyles}
+                  id="startDate"
+                  label="Fecha Inicial"
+                  value={newExperience.startDate}
+                  onChange={onChangeStartDate}
+                />
+              </Box>
+              <Box className="inputContainer  pl-5px">
+                <TextField
+                  sx={textFieldStyles}
+                  id="endDate"
+                  label="Fecha Final"
+                  value={newExperience.endDate}
+                  onChange={onChangeEndDate}
+                />
+              </Box>
+            </Box>
+            <Box className="inputContainer">
               <TextField
                 sx={textFieldStyles}
-                id="startDate"
-                label="Fecha Inicial"
-                value={newExperience.startDate}
-                onChange={onChangeStartDate}
-              />
-              <TextField
-                sx={textFieldStyles}
-                id="endDate"
-                label="Fecha Final"
-                value={newExperience.endDate}
-                onChange={onChangeEndDate}
+                id="description"
+                multiline
+                rows={4}
+                label="Descripción"
+                value={newExperience.description}
+                onChange={onChangeDescription}
               />
             </Box>
-            <TextField
-              sx={textFieldStyles}
-              id="description"
-              multiline
-              rows={4}
-              label="Descripción"
-              value={newExperience.description}
-              onChange={onChangeDescription}
-            />
           </Box>
 
           <Box sx={boxButtonStyles}>

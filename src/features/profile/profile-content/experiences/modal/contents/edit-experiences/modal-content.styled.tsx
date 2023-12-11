@@ -7,44 +7,70 @@ const SM_SIZE = 480;
 const XS_SIZE = 380;
 
 export default styled(EditExperienceModalContent)`
-    width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 
-.inputStyles {
+  .inputStyles {
     font-size: 16px;
     display: flex;
-}
+    justify-content: space-between;
+  }
 
-.exp-header-container {
+  .inputContainer {
+    padding: 5px 0px 5px 0px;
+    flex: 1;
+  }
+
+  .pr-5px {
+    padding-right: 5px;
+  }
+  .pl-5px {
+    padding-left: 5px;
+  }
+
+  .exp-header-container {
     margin-bottom: 12px;
-}
+  }
 
-.exp-show-description {
+  .exp-show-description {
     max-width: 350px;
-}
+  }
 
-@media screen and (max-width: ${LG_SIZE}px) {
+  @media screen and (max-width: ${LG_SIZE}px) {
     width: 650px;
-}
+  }
 
-@media screen and (max-width: ${MD_SIZE}px) {
+  @media screen and (max-width: ${MD_SIZE}px) {
     width: 400px;
-    
+
     .exp-show-description {
-        max-width: none;
+      max-width: none;
     }
 
     .exp-show-button {
-        width: 100%;
+      width: 100%;
     }
-}
+  }
 
-@media screen and (max-width: ${SM_SIZE}px) {
-        width: 300px;
-}
+  @media screen and (max-width: ${SM_SIZE}px) {
+    width: 300px;
+    
+    .inputStyles {
+        display: flex;
+        flex-direction: column;
+      }
 
-@media screen and (max-width: ${XS_SIZE}px) {
-        width: 250px;
-}
+      .pr-5px {
+        padding-right: 0px;
+      }
+      .pl-5px {
+        padding-left: 0px;
+      }
+    
+  }
+
+  @media screen and (max-width: ${XS_SIZE}px) {
+    width: 250px;
+  }
 `;
