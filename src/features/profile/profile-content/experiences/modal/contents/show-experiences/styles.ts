@@ -37,4 +37,5 @@ export const buttonStyle = {
 
 export const textFieldStyleA = {
   marginBottom: "20px",
+  width: "100%",
 };

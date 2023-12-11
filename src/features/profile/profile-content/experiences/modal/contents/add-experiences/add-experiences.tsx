@@ -42,7 +42,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
   const { onSubmitForm } = useAddExperienceForm({ experience });
 
   return (
-    <Box sx={modalStyle} className={className}>
+    <Box className={className} sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
         <Box>
           <IconButton onClick={() => setContent(ExperienceContent.Show)}>
@@ -56,22 +56,33 @@ const AddExperienceModalContent = ({ className }: Props) => {
           Escribe acerca de la experiencia profesional que quieres agregar
         </Typography>
 
-        <Box sx={textFieldStyleA}>
-          <TextField id="role" label="Cargo / Puesto" onChange={onChangeRole} />
+        <Box className={"single-typefield-box"}>
+          <TextField
+            className={"enlargement-textfield"}
+            id="role"
+            label="Cargo / Puesto"
+            onChange={onChangeRole}
+          />
         </Box>
 
-        <Box>
-          <TextField
-            id="businessName"
-            label="Empresa"
-            onChange={onChangeBusinessName}
-          />
+        <Box className={"multiple-typefield-box"}>
+          <Box sx={{}}>
+            <TextField
+              id="businessName"
+              label="Empresa"
+              onChange={onChangeBusinessName}
+              className={"enlargement-textfield"}
+            />
+          </Box>
 
-          <TextField
-            id="location"
-            label="Ubicación"
-            onChange={onChangeLocation}
-          />
+          <Box sx={{}}>
+            <TextField
+              id="location"
+              label="Ubicación"
+              onChange={onChangeLocation}
+              className={"enlargement-textfield"}
+            />
+          </Box>
         </Box>
 
         <Box>
