@@ -1,9 +1,5 @@
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
-import { Experience } from "core/profiles/types";
+import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import useExperienceFormState from "../use-experience-form-state";
-import useEditExperienceForm from "./use-form";
-import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -12,10 +8,14 @@ import {
   titleStyles,
   buttonStyle,
 } from "./styles";
+import useExperienceFormState from "../use-experience-form-state";
+import useAddExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const EditExperienceModalContent = ({ anExperience, className }: Props) => {
+const AddExperienceModalContent = ({ className }: Props) => {
+  const { setContent } = useContext(ExperiencesModalContext);
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -23,12 +23,6 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     onChangeLocation,
     onChangeRole,
     onChangeStartDate,
-    setBusinessName,
-    setDescription,
-    setEndDate,
-    setLocation,
-    setRole,
-    setStartDate,
     businessName,
     description,
     endDate,
@@ -36,31 +30,10 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     startDate,
     role,
   } = useExperienceFormState();
-  const { setContent } = useContext(ExperiencesModalContext);
+
   const startDateValue = startDate ? startDate : new Date();
 
-  const getExperienceInfo = useCallback(() => {
-    setBusinessName(anExperience.businessName);
-    setDescription(anExperience.description);
-    setEndDate(anExperience.endDate!);
-    setLocation(anExperience.location);
-    setRole(anExperience.role);
-    setStartDate(anExperience.startDate);
-  }, [
-    setBusinessName,
-    setDescription,
-    setEndDate,
-    setLocation,
-    setRole,
-    setStartDate,
-    anExperience,
-  ]);
-
-  useEffect(() => {
-    getExperienceInfo();
-  }, [getExperienceInfo]);
-
-  const newExperience = {
+  const experience = {
     businessName,
     description,
     endDate,
@@ -69,25 +42,20 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     role,
   };
 
-  const experienceId = anExperience.id;
+  const { onSubmitForm } = useAddExperienceForm({ experience });
 
-  const { onSubmitForm } = useEditExperienceForm({
-    setContent,
-    newExperience,
-    experienceId,
-  });
   return (
-    <Box sx={modalStyle} className={className}>
+    <Box className={className} sx={modalStyle}>
       <Box sx={headerStyles}>
         <Box>
           <IconButton onClick={() => setContent(ExperienceContent.Show)}>
             <ArrowBackIcon />
           </IconButton>
         </Box>
-        <Typography sx={titleStyles}>Editar experiencia</Typography>
+        <Typography sx={titleStyles}>Agregar experiencia</Typography>
 
-        <Typography className="exp-show-description">
-          Edita los datos de la experiencia profesional que quieres modificar
+        <Typography>
+          Escribe acerca de la experiencia profesional que quieres agregar
         </Typography>
       </Box>
       <Box>
@@ -98,37 +66,36 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                 sx={textFieldStyles}
                 id="role"
                 label="Cargo / Puesto"
-                value={newExperience.role}
                 onChange={onChangeRole}
               />
             </Box>
+
             <Box className="inputStyles">
               <Box className="inputContainer pr-5px">
                 <TextField
                   sx={textFieldStyles}
                   id="businessName"
                   label="Empresa"
-                  value={newExperience.businessName}
                   onChange={onChangeBusinessName}
                 />
               </Box>
+
               <Box className="inputContainer pl-5px">
                 <TextField
                   sx={textFieldStyles}
                   id="location"
                   label="Ubicación"
-                  value={newExperience.location}
                   onChange={onChangeLocation}
                 />
               </Box>
             </Box>
+
             <Box className="inputStyles">
               <Box className="inputContainer pr-5px">
                 <TextField
                   sx={textFieldStyles}
                   id="startDate"
                   label="Fecha Inicial"
-                  value={newExperience.startDate}
                   onChange={onChangeStartDate}
                 />
               </Box>
@@ -137,11 +104,11 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                   sx={textFieldStyles}
                   id="endDate"
                   label="Fecha Final"
-                  value={newExperience.endDate}
                   onChange={onChangeEndDate}
                 />
               </Box>
             </Box>
+
             <Box className="inputContainer">
               <TextField
                 sx={textFieldStyles}
@@ -149,14 +116,12 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                 multiline
                 rows={4}
                 label="Descripción"
-                value={newExperience.description}
                 onChange={onChangeDescription}
               />
             </Box>
           </Box>
-
           <Box sx={boxButtonStyles}>
-            <Button sx={buttonStyle} type="submit">
+            <Button type="submit" sx={buttonStyle}>
               Guardar
             </Button>
           </Box>
@@ -166,9 +131,8 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
   );
 };
 
-export default EditExperienceModalContent;
-
 interface Props {
-  anExperience: Experience;
   className?: string;
 }
+
+export default AddExperienceModalContent;
