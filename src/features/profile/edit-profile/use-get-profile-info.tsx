@@ -3,7 +3,9 @@ import { useCallback } from "react";
 import { fetchOneProfile } from "../services/profile/fetch-one-profile.service";
 import { useErrorToast } from "hooks/use-error-toast";
 
-const useGetProfileInfo = ({ setName, setDescription }: Props) => {
+const useGetProfileInfo = ({ setName, setDescription,
+  setLastname,
+  setMainTitle }: Props) => {
   const { token, user } = useAuthState();
   const { showErrorToast } = useErrorToast();
   const getUserInfo = useCallback(async () => {
@@ -25,4 +27,6 @@ export default useGetProfileInfo;
 interface Props {
   setName: (name: string) => void;
   setDescription: (description: string) => void;
+  setLastname: (lastname: string) => void;
+  setMainTitle: (title: string) => void;
 }

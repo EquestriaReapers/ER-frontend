@@ -16,14 +16,25 @@ const EditProfileModal = () => {
 
   const {
     name,
-    description,
+    lastname,
     setName,
+    mainTitle,
+    description,
+    setLastname,
+    setMainTitle,
     setDescription,
     onChangeName,
+    onChangeLastname,
+    onChangeMainTitle,
     onChangeDescription,
   } = useEditProfileFormState();
 
-  const { getUserInfo } = useGetProfileInfo({ setName, setDescription });
+  const { getUserInfo } = useGetProfileInfo({
+    setName,
+    setDescription,
+    setLastname,
+    setMainTitle,
+  });
 
   useEffect(() => {
     getUserInfo();
