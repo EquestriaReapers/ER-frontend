@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import EditExperienceModalContent from "./modal-content";
+import EditExperienceModalContent from "./modal-content.component";
 
 const LG_SIZE = 1200;
 const MD_SIZE = 767;
