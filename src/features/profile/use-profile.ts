@@ -1,5 +1,5 @@
 import { useAuthState } from "hooks/use-auth-state";
-import { fetchOneProfile } from "./services/profile.service";
+import { fetchOneProfile } from "./services/profile/fetch-one-profile.service";
 import { Profile } from "core/profiles/types";
 import { useCallback, useEffect, useState } from "react";
 import { BackendError } from "app/exceptions";

@@ -3,7 +3,7 @@ import { Skill } from "core/profiles/types";
 import DeleteSkillModal from "../delete-skills/modal";
 import SkillCard from "./skill-card";
 
-const ShowSkills = ({ skills, isEditable }: ShowSkillsProps) => {
+const ShowSkills = ({ skills, isEditable }: Props) => {
   return (
     <>
       {skills.map((item: Skill) => (
@@ -16,7 +16,7 @@ const ShowSkills = ({ skills, isEditable }: ShowSkillsProps) => {
   );
 };
 
-interface ShowSkillsProps {
+interface Props {
   skills: Skill[];
   isEditable: boolean;
 }

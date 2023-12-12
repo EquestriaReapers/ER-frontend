@@ -28,13 +28,13 @@ function useRegister() {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = useCallback(
-    async (
-      name: string,
-      lastname: string,
-      email: string,
-      password: string,
-      confirmPassword: string
-    ) => {
+    async ({
+      name,
+      lastname,
+      email,
+      password,
+      confirmPassword,
+    }: RegisterPayload) => {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword)
@@ -61,6 +61,14 @@ function useRegister() {
   );
 
   return { onSubmit, loading };
+}
+
+export interface RegisterPayload {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default Register;

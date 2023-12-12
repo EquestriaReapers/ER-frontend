@@ -5,19 +5,15 @@ import EditProfileModalContent from "./modal-content";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
   return (
     <div>
-      <IconButton onClick={() => setIsOpen(true)}>
+      <IconButton onClick={openModal}>
         <EditIcon />
       </IconButton>
 
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        aria-labelledby="edit profile"
-        aria-describedby="used to edit profile"
-      >
+      <Modal open={isOpen} onClose={closeModal}>
         <div>
           <EditProfileModalContent setIsOpen={setIsOpen} />
         </div>

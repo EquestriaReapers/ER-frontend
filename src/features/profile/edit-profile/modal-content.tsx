@@ -1,16 +1,14 @@
 import { Box, Button, TextField } from "@mui/material";
 import { modalStyle } from "./styles/styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
-import useForm from "./use-form";
+import useOnSubmitForm from "./use-on-submit-form";
 
-const EditProfileModalContent = ({
-  setIsOpen,
-}: EditProfileModalContentProps) => {
+const EditProfileModalContent = ({ setIsOpen }: Props) => {
   const { name, description, onChangeName, onChangeDescription } =
     useEditProfileFormState();
 
   const user = { name, description };
-  const { onSubmitForm } = useForm({ setIsOpen, user });
+  const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
 
   return (
     <Box sx={modalStyle}>
@@ -37,8 +35,8 @@ const EditProfileModalContent = ({
   );
 };
 
-export interface EditProfileModalContentProps {
-  setIsOpen: (arg0: boolean) => void;
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default EditProfileModalContent;

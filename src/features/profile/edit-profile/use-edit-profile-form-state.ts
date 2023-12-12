@@ -1,8 +1,5 @@
-import { useEffect, useState, ChangeEvent, useCallback } from "react";
-import { useAuthState } from "hooks/use-auth-state";
-import { fetchOneProfile } from "../services/profile.service";
-import { BackendError } from "app/exceptions";
-import { toast } from "sonner";
+import { useEffect, useState, ChangeEvent } from "react";
+import useGetProfileInfo from "./use-get-profile-info";
 
 const useEditProfileFormState = () => {
   const [name, setName] = useState("");
@@ -15,21 +12,7 @@ const useEditProfileFormState = () => {
     setDescription(event.target.value);
   };
 
-  const { token, user } = useAuthState();
-  const getUserInfo = useCallback(async () => {
-    try {
-      if (!token || !user) return;
-      const data = await fetchOneProfile(token, user.id);
-      setName(data.user.name);
-      setDescription(data.description);
-    } catch (error) {
-      if (error instanceof BackendError) {
-        toast.error(error.message);
-      } else {
-        toast.error("Error desconocido");
-      }
-    }
-  }, [setDescription, setName, token, user]);
+  const { getUserInfo } = useGetProfileInfo({ setName, setDescription });
 
   useEffect(() => {
     getUserInfo();
