@@ -18,6 +18,7 @@ export const nameSectionStyles = {
   display: 'flex',
   flexWrap: 'wrap',
   justifyContent: 'space-between',
-  px: 4,
-  py: 3
+  //px: 4,
+  //py: 3
+  p: 0,
 }
