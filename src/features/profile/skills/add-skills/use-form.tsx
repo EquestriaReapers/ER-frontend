@@ -1,5 +1,5 @@
+import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
-import { addProfileSkill } from "../../services/profile.service";
 import { FormEvent, useCallback } from "react";
 
 const useForm = ({ setIsOpen, selectedSkillId }: Props) => {

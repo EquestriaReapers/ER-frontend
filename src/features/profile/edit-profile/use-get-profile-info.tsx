@@ -1,6 +1,7 @@
 import { useAuthState } from "hooks/use-auth-state";
 import { useCallback } from "react";
-import { fetchOneProfile } from "../services/profile.service";
+import { fetchOneProfile } from "../services/profile/fetch-one-profile.service";
+
 
 const useGetProfileInfo = ({ setName, setDescription }: Props) => {
   const { token, user } = useAuthState();

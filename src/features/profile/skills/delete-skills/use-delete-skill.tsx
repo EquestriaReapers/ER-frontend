@@ -1,4 +1,4 @@
-import { removeProfileSkill } from "features/profile/services/profile.service";
+import { removeProfileSkill } from "features/profile/services/profile/remove-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 
 const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {

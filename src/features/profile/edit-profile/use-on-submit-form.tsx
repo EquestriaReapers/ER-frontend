@@ -1,5 +1,5 @@
 import { useAuthState } from "hooks/use-auth-state";
-import { updateProfile } from "../services/profile.service";
+import { updateProfile } from "../services/profile/update-profile.service";
 import { FormEvent } from "react";
 
 const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
