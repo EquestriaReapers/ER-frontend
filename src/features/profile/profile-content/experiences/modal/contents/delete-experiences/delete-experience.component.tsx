@@ -6,16 +6,16 @@ import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const DeleteExperienceModalContent = ({ experienceId }: Props) => {
+const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
   const { onSubmitForm } = useDeleteExperienceForm({
     setContent,
     experienceId,
   });
   return (
-    <Box sx={modalStyle}>
+    <Box className={className} sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
-        <Typography>
+        <Typography className={"testingStyled"}>
           ¿Estás seguro de que quieres borrar la experiencia?
         </Typography>
         <Button onClick={() => setContent(ExperienceContent.Show)}>
@@ -31,6 +31,7 @@ const DeleteExperienceModalContent = ({ experienceId }: Props) => {
 
 export interface Props {
   experienceId: number;
+  className?: string;
 }
 
 export default DeleteExperienceModalContent;
