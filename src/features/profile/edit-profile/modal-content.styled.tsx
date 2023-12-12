@@ -38,7 +38,7 @@ export default styled(EditProfileModalContent)`
   }
 
   @media screen and (max-width: ${LG_SIZE}px) {
-    width: 650px;
+    width: 550px;
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {

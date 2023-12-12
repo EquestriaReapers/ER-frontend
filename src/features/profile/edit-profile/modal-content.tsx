@@ -1,9 +1,11 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, IconButton, Typography } from "@mui/material";
 import {
   modalStyle,
   buttonStyle,
   boxButtonStyles,
   textFieldStyles,
+  headerStyles,
+  titleStyles,
 } from "./styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
@@ -17,6 +19,13 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
 
   return (
     <Box className={className} sx={modalStyle}>
+      <Box sx={headerStyles}>
+        <Typography sx={titleStyles}>Datos de Perfil</Typography>
+
+        <Typography>
+          Puedes editar los datos de tu perfil en esta sección
+        </Typography>
+      </Box>
       <form onSubmit={onSubmitForm}>
         <Box>
           <TextField
