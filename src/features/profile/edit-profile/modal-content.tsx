@@ -1,4 +1,4 @@
-import { Box, Button, TextField, IconButton, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import {
   modalStyle,
   buttonStyle,
@@ -28,24 +28,28 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
       </Box>
       <form onSubmit={onSubmitForm}>
         <Box>
-          <TextField
-            sx={textFieldStyles}
-            id="name"
-            value={name}
-            label="Nombre"
-            onChange={onChangeName}
-          />
+          <Box className="inputContainer">
+            <TextField
+              sx={textFieldStyles}
+              id="name"
+              value={name}
+              label="Nombre"
+              onChange={onChangeName}
+            />
+          </Box>
         </Box>
         <Box>
-          <TextField
-            sx={textFieldStyles}
-            id="description"
-            value={description}
-            label="Descripción"
-            multiline
-            rows={4}
-            onChange={onChangeDescription}
-          />
+          <Box className="inputContainer">
+            <TextField
+              sx={textFieldStyles}
+              id="description"
+              value={description}
+              label="Descripción"
+              multiline
+              rows={4}
+              onChange={onChangeDescription}
+            />
+          </Box>
         </Box>
 
         <Box sx={boxButtonStyles}>
@@ -60,7 +64,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
 
 export interface Props {
   setIsOpen: (isOpen: boolean) => void;
-  className ?: string;
+  className?: string;
 }
 
 export default EditProfileModalContent;
