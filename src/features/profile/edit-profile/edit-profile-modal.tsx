@@ -3,7 +3,7 @@ import { Box, Button, TextField, Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import { useAuthState } from "hooks/use-auth-state";
-import { modalStyle } from "./styles/styles";
+import { modalStyle } from "./styles";
 import { updateProfile } from "../services/profile/update-profile.service";
 import useGetProfileInfo from "./use-get-profile-info";
 

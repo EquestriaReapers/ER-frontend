@@ -1,9 +1,14 @@
 import { Box, Button, TextField } from "@mui/material";
-import { modalStyle } from "./styles/styles";
+import {
+  modalStyle,
+  buttonStyle,
+  boxButtonStyles,
+  textFieldStyles,
+} from "./styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 
-const EditProfileModalContent = ({ setIsOpen }: Props) => {
+const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   const { name, description, onChangeName, onChangeDescription } =
     useEditProfileFormState();
 
@@ -11,25 +16,34 @@ const EditProfileModalContent = ({ setIsOpen }: Props) => {
   const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
 
   return (
-    <Box sx={modalStyle}>
+    <Box className={className} sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
-        <TextField
-          id="name"
-          value={name}
-          label="Nombre"
-          onChange={onChangeName}
-        />
+        <Box>
+          <TextField
+            sx={textFieldStyles}
+            id="name"
+            value={name}
+            label="Nombre"
+            onChange={onChangeName}
+          />
+        </Box>
+        <Box>
+          <TextField
+            sx={textFieldStyles}
+            id="description"
+            value={description}
+            label="Descripción"
+            multiline
+            rows={4}
+            onChange={onChangeDescription}
+          />
+        </Box>
 
-        <TextField
-          id="description"
-          value={description}
-          label="Descripción"
-          onChange={onChangeDescription}
-        />
-
-        <Button variant="outlined" type="submit">
-          Confirmar
-        </Button>
+        <Box sx={boxButtonStyles}>
+          <Button sx={buttonStyle} type="submit">
+            Confirmar
+          </Button>
+        </Box>
       </form>
     </Box>
   );
@@ -37,6 +51,7 @@ const EditProfileModalContent = ({ setIsOpen }: Props) => {
 
 export interface Props {
   setIsOpen: (isOpen: boolean) => void;
+  className ?: string;
 }
 
 export default EditProfileModalContent;

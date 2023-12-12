@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import EditProfileModalContent from "./modal-content";
+import EditProfileModalContent from "./modal-content.styled";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
