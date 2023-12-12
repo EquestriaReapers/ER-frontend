@@ -15,7 +15,7 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
   return (
     <Box className={className} sx={modalStyle}>
       <form onSubmit={onSubmitForm}>
-        <Typography className={"testingStyled"}>
+        <Typography className="testingStyled">
           ¿Estás seguro de que quieres borrar la experiencia?
         </Typography>
         <Button onClick={() => setContent(ExperienceContent.Show)}>

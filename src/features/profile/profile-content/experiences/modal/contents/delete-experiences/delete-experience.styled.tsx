@@ -4,7 +4,8 @@ import DeleteExperienceModalContent from "./delete-experience.component";
 export default styled(DeleteExperienceModalContent)`
   width: 1100px;
 
-  .testingStyled 
+  .testingStyled { 
     color: blue;
-  
+    background: green;
+  }
 `;
