@@ -8,6 +8,8 @@ import { modalStyle } from "./styles/styles";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const { token, user } = useAuthState();
 
@@ -54,15 +56,12 @@ const EditProfileModal = () => {
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={openModal}>
         <IconButton>
           <EditIcon />
         </IconButton>
       </Button>
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
+      <Modal open={isOpen} onClose={closeModal}>
         <Box sx={modalStyle}>
           <form onSubmit={onSubmitForm}>
             <TextField

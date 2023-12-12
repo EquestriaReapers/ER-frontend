@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
+import { RegisterPayload } from "../Register";
 
 const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
@@ -57,7 +58,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         type="submit"
         disabled={disabled}
         onClick={() => {
-          onSubmit(name, lastname, email, password, confirmPassword);
+          onSubmit({ name, lastname, email, password, confirmPassword });
         }}
       >
         Registrarse
@@ -68,13 +69,13 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
 export interface Props {
   disabled: boolean;
-  onSubmit: (
-    name: string,
-    lastname: string,
-    email: string,
-    password: string,
-    confirmPassword: string
-  ) => void;
+  onSubmit: ({
+    name,
+    lastname,
+    email,
+    password,
+    confirmPassword,
+  }: RegisterPayload) => void;
 }
 
 export default RegisterForm;
