@@ -50,3 +50,20 @@ export const inlineStyles = {
   },
   justifyContent: "space-between",
 };
+
+export const boxWithButton = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "flex-start",
+  py: 3,
+  marginLeft: {
+    xs: 3,
+    md: 10,
+    lg: 10,
+  },
+  overflow: "hidden",
+  width: {
+    md: "60%",
+    lg: "60%",
+  },
+};

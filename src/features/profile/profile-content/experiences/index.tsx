@@ -1,6 +1,6 @@
-import Typography from "@mui/material/Typography";
+import { Typography, Box } from "@mui/material";
 import { Experience } from "core/profiles/types";
-import { boxStyles } from "./modal/styles";
+import { boxWithButton } from "./modal/styles";
 import ShowProfileExperiencies from "./show-profile-experiences";
 import ExperienceModalWrapper from "./modal/experience-modal-wrapper";
 
@@ -8,10 +8,10 @@ const Experiences = ({ isEditable, experiences }: Props) => {
   return (
     <>
       <div>
-        <Typography variant="h4" sx={boxStyles}>
-          Experiencia
-        </Typography>
-        {isEditable && <ExperienceModalWrapper experiences={experiences} />}
+        <Box sx={boxWithButton}>
+          <Typography variant="h4">Experiencia</Typography>
+          {isEditable && <ExperienceModalWrapper experiences={experiences} />}
+        </Box>
         <ShowProfileExperiencies experiences={experiences} />
       </div>
     </>
