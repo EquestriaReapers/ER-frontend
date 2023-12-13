@@ -11,9 +11,9 @@ const Experiences = ({ isEditable, experiences }: Props) => {
         <Typography variant="h4" sx={boxStyles}>
           Experiencia
         </Typography>
+        {isEditable && <ExperienceModalWrapper experiences={experiences} />}
         <ShowProfileExperiencies experiences={experiences} />
       </div>
-      {isEditable && <ExperienceModalWrapper experiences={experiences} />}
     </>
   );
 };
