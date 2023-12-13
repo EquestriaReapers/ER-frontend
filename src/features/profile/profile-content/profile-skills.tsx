@@ -9,7 +9,9 @@ const ProfileSkills = ({ isEditable, currentProfileSkills }: Props) => {
     <div>
       <Typography sx={boxStyles} variant="h4">
         Habilidades
-        {isEditable && <AddSkillsModal />}
+        {isEditable && (
+          <AddSkillsModal currentProfileSkills={currentProfileSkills} />
+        )}
       </Typography>
       <ShowSkills skills={currentProfileSkills} />
     </div>

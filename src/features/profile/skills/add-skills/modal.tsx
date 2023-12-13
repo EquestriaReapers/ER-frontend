@@ -5,8 +5,9 @@ import IconButton from "@mui/material/IconButton";
 import { modalStyle } from "../../styles";
 import FormContent from "./modal-content";
 import { useState } from "react";
+import { Skill } from "core/profiles/types";
 
-const AddSkillsModal = () => {
+const AddSkillsModal = ({ currentProfileSkills }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -15,16 +16,20 @@ const AddSkillsModal = () => {
         <AddIcon />
       </IconButton>
 
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Box sx={modalStyle}>
-          <FormContent setIsOpen={setIsOpen} />
+          <FormContent
+            setIsOpen={setIsOpen}
+            currentProfileSkills={currentProfileSkills}
+          />
         </Box>
       </Modal>
     </div>
   );
 };
+
+export interface Props {
+  currentProfileSkills: Skill[];
+}
 
 export default AddSkillsModal;

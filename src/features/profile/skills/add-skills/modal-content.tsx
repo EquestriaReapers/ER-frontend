@@ -11,8 +11,10 @@ import {
   headerStyles,
   titleStyles,
 } from "../../styles";
+import { Skill } from "core/profiles/types";
+import ShowSkills from "../show-skills/show-skills";
 
-const FormContent = ({ setIsOpen }: Props) => {
+const FormContent = ({ setIsOpen, currentProfileSkills }: Props) => {
   const [selectedSkillId, setSelectedSkillId] = useState("");
   const allSkills = useAllSkills();
   const onSkillChange = (event: SelectChangeEvent) => {
@@ -54,6 +56,7 @@ const FormContent = ({ setIsOpen }: Props) => {
         >
           Habilidades
         </Typography>
+        <ShowSkills skills={currentProfileSkills} />
         <Button sx={buttonStyle} type="submit">
           Guardar Cambios
         </Button>
@@ -64,5 +67,6 @@ const FormContent = ({ setIsOpen }: Props) => {
 
 export interface Props {
   setIsOpen: (arg0: boolean) => void;
+  currentProfileSkills: Skill[];
 }
 export default FormContent;
