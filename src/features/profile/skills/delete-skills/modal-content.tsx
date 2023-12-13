@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
-import { style } from "../styles/styles";
+import { style } from "../../styles";
 import { Profile } from "core/profiles/types";
 const DeleteSkillModalContent = ({ onDeleteSkill, setIsOpen }: Props) => {
   const closeModal = () => setIsOpen(false);
