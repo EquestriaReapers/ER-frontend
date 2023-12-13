@@ -8,6 +8,7 @@ import ProfileExperiences from "./profile-experience/profile-experience";
 import { bannerStyles, nameSectionStyles } from "../styles/styles";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
+import LanguageIcon from "@mui/icons-material/Language";
 import { mainTitleStyles } from "./styles/styles";
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
@@ -64,30 +65,35 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                     display: "flex",
                     width: "40%",
                     backgroundColor: "#F4F4F4",
+                    justifyContent: "space-between",
+                    padding: "10px",
+                    flexDirection: "column",
                   }}
                 >
                   <Box
-                    sx={{ display: "flex", justifyContent: "space-between" }}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginBottom: "10px",
+                    }}
                   >
-                    <Box sx={{ display: "flex" }}>
-                      <LocationOnIcon />
-                      <Typography>ubicacion</Typography>
-                    </Box>
-                    <Box sx={{ display: "flex" }}>
-                      <EditIcon />
-                    </Box>
+                    <LocationOnIcon />
+                    <Typography sx={{ marginLeft: "10px" }}>
+                      Puerto Ordaz, Venezuela
+                    </Typography>
+                    <EditIcon />
+                  </Box>
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    <LanguageIcon />
+                    <Typography sx={{ marginLeft: "10px" }}>
+                      www.abcdefge.com
+                    </Typography>
                   </Box>
                 </Box>
               </Box>
             </Box>
             <Box>
-              <Box>
-                <Box>
-                  <Box>
-                    <Box sx={{ display: "flow" }}></Box>
-                  </Box>
-                </Box>
-              </Box>
+
               <ProfileSkills
                 isEditable={isEditable}
                 currentProfileSkills={profile.skills}
