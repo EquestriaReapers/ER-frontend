@@ -17,7 +17,7 @@ const useGetProfileInfo = ({
       const data = await fetchOneProfile(token, user.id);
       setName(data.user.name);
       setLastname(data.user.lastname);
-      setMainTitle(data.user.role);
+      setMainTitle(data.mainTitle);
       setDescription(data.description);
     } catch (error) {
       showErrorToast(error);

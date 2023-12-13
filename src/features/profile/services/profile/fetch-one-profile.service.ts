@@ -13,6 +13,10 @@ export async function fetchOneProfile(
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(response.data);
+    console.log(response.data.user);
+    console.log(response.data.user.mainTitle);
+
     return response.data;
   } catch (error) {
     throw new BackendError(error);

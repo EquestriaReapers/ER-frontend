@@ -35,8 +35,8 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
         </Typography>
       </Box>
       <form onSubmit={onSubmitForm}>
-        <Box>
-          <Box className="inputContainer">
+        <Box className="inputStyles">
+          <Box className="inputContainer pr-5px">
             <TextField
               sx={textFieldStyles}
               id="name"
@@ -45,9 +45,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
               onChange={onChangeName}
             />
           </Box>
-        </Box>
-        <Box>
-          <Box className="inputContainer">
+          <Box className="inputContainer pl-5px">
             <TextField
               sx={textFieldStyles}
               id="lastname"
@@ -74,17 +72,22 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
               sx={textFieldStyles}
               id="description"
               value={description}
-              label="Descripción"
+              label="Sobre mi"
               multiline
               rows={4}
               onChange={onChangeDescription}
             />
           </Box>
         </Box>
-
+        <Box>
+          <Typography >
+            Sólo se mostraran 140 palabras en tu perfil, luego tendrás que darle
+            a "leer más"
+          </Typography>
+        </Box>
         <Box sx={boxButtonStyles}>
           <Button sx={buttonStyle} type="submit">
-            Confirmar
+            Guardar Cambios
           </Button>
         </Box>
       </form>
