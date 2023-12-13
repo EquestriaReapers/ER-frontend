@@ -1,0 +1,19 @@
+import Typography from "@mui/material/Typography";
+import { Skill } from "core/profiles/types";
+import { skillTitleStyles } from "./styles";
+
+const SkillCard = ({ item }: Props) => {
+  console.log(item);
+  return (
+    <div>
+      <Typography sx={skillTitleStyles} variant="h6">
+        {item.name}
+      </Typography>
+    </div>
+  );
+};
+
+interface Props {
+  item: Skill;
+}
+export default SkillCard;

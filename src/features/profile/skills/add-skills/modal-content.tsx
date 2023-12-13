@@ -12,7 +12,7 @@ import {
   titleStyles,
 } from "../../styles";
 import { Skill } from "core/profiles/types";
-import ShowSkills from "../show-skills/show-skills";
+import ShowSkills from "./show-profile-skills/show-skills";
 
 const FormContent = ({ setIsOpen, currentProfileSkills }: Props) => {
   const [selectedSkillId, setSelectedSkillId] = useState("");
