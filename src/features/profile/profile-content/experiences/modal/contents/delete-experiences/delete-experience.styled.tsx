@@ -3,18 +3,22 @@ import DeleteExperienceModalContent from "./delete-experience.component";
 
 export default styled(DeleteExperienceModalContent)`
 
-    .ButtonBox {
+    .button-box {
         display: flex;
         justify-content: space-evenly;
         margin-top: 12px;
     }
 
-    .LeftButton {
-        background-color: rgba(230,0,0,1);
+    .left-button {
+        background-color: #b8b8b8;
         color: white;
         border-radius: 5px;
         padding: 10px 20px;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .right-button {
+        background-color: #007935;
     }
 
     .message {

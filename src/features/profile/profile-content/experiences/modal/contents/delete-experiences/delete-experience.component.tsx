@@ -18,14 +18,14 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
         <Typography className={"message"}>
           ¿Estás seguro de que quieres borrar la experiencia?
         </Typography>
-        <Box className={"ButtonBox"}>
+        <Box className={"button-box"}>
           <Button
             onClick={() => setContent(ExperienceContent.Show)}
-            className={"LeftButton"}
+            className={"left-button"}
           >
             Regresar
           </Button>
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" className={"right-button"}>
             Confirmar
           </Button>
         </Box>
