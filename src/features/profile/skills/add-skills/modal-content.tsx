@@ -29,7 +29,7 @@ const FormContent = ({ setIsOpen }: Props) => {
         duras que muestres al público
       </Typography>
       <Typography sx={{ fontWeight: "600" }}>Nueva habilidad</Typography>
-      <TextField label="Ej: Desarrollador de software" value="newSkill" />
+      <TextField value="newSkill" />
 
       <form onSubmit={onSubmitForm}>
         <Select value={selectedSkillId} onChange={onSkillChange}>
