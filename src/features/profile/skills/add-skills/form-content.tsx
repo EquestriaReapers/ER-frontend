@@ -30,6 +30,6 @@ const FormContent = ({ setIsOpen }: Props) => {
 };
 
 export interface Props {
-  setIsOpen: (isOpen: boolean) => void;
+  setIsOpen: (arg0: boolean) => void;
 }
 export default FormContent;

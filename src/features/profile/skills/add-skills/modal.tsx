@@ -8,16 +8,17 @@ import { useState } from "react";
 
 const AddSkillsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const openModal = () => setIsOpen(true);
-  const closeModal = () => setIsOpen(false);
 
   return (
     <div>
-      <IconButton onClick={openModal}>
+      <IconButton onClick={() => setIsOpen(true)}>
         <AddIcon />
       </IconButton>
 
-      <Modal open={isOpen} onClose={closeModal}>
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
         <Box sx={style}>
           <FormContent setIsOpen={setIsOpen} />
         </Box>

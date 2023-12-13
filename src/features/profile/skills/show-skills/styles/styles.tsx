@@ -18,7 +18,7 @@ export const skillTitleStyles = {
   fontWeight: '400',
   color: '#000',
   fontSize: '16px',
-  borderRadius: '2px',
+  borderRadius: '5px',
   paddingTop: '3px',
   paddingBottom: '3px',
   paddingLeft: 2,
