@@ -31,9 +31,9 @@ const EditProfileModal = () => {
 
   const { getUserInfo } = useGetProfileInfo({
     setName,
-    setDescription,
     setLastname,
     setMainTitle,
+    setDescription,
   });
 
   useEffect(() => {
@@ -44,15 +44,20 @@ const EditProfileModal = () => {
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        if (!token || !name || !description) return;
-        const data = await updateProfile(token, { name, description });
+        if (!token || !name || !description || !lastname || !mainTitle) return;
+        const data = await updateProfile(token, {
+          name,
+          description,
+          mainTitle,
+          lastname,
+        });
         setIsOpen(false);
         return data;
       } catch (error) {
         console.log(error);
       }
     },
-    [description, name, token]
+    [description, name, setMainTitle, setLastname, token]
   );
 
   return (
@@ -71,7 +76,18 @@ const EditProfileModal = () => {
               label="Nombre"
               onChange={onChangeName}
             />
-
+            <TextField
+              id="lastname"
+              value={lastname}
+              label="Apellido"
+              onChange={onChangeLastname}
+            />
+            <TextField
+              id="mainTitle"
+              value={mainTitle}
+              label="Titulación"
+              onChange={onChangeMainTitle}
+            />
             <TextField
               id="description"
               value={description}
@@ -79,9 +95,7 @@ const EditProfileModal = () => {
               onChange={onChangeDescription}
             />
 
-            <Button variant="outlined" type="submit">
-              Confirmar
-            </Button>
+            <Button type="submit">Confirmar</Button>
           </form>
         </Box>
       </Modal>

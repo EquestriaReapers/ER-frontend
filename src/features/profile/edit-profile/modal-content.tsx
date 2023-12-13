@@ -11,8 +11,16 @@ import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
-  const { name, description, onChangeName, onChangeDescription } =
-    useEditProfileFormState();
+  const {
+    name,
+    description,
+    mainTitle,
+    lastname,
+    onChangeName,
+    onChangeDescription,
+    onChangeLastname,
+    onChangeMainTitle,
+  } = useEditProfileFormState();
 
   const user = { name, description };
   const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
@@ -35,6 +43,28 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
               value={name}
               label="Nombre"
               onChange={onChangeName}
+            />
+          </Box>
+        </Box>
+        <Box>
+          <Box className="inputContainer">
+            <TextField
+              sx={textFieldStyles}
+              id="lastname"
+              value={lastname}
+              label="Apellido"
+              onChange={onChangeLastname}
+            />
+          </Box>
+        </Box>
+        <Box>
+          <Box className="inputContainer">
+            <TextField
+              sx={textFieldStyles}
+              id="mainTitle"
+              value={mainTitle}
+              label="Titulación"
+              onChange={onChangeMainTitle}
             />
           </Box>
         </Box>

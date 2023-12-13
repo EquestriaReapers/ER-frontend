@@ -5,7 +5,7 @@ export const PROFILES_URL = `${BACKEND_V1_URL}/profiles`;
 export interface UpdateProfileBody {
   description: string;
   mainTitle: string;
-  countryResidence: string;
+  lastname: string;
   name: string;
 }
 

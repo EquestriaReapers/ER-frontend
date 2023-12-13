@@ -13,17 +13,17 @@ const useEditProfileFormState = () => {
   const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };
-  
+
   const onChangeLastname = (event: ChangeEvent<HTMLInputElement>) => {
     setLastname(event.target.value);
   };
   const onChangeMainTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setMainTitle(event.target.value);
   };
-  
 
 
-  const { getUserInfo } = useGetProfileInfo({ setName, setDescription });
+
+  const { getUserInfo } = useGetProfileInfo({ setName, setDescription, setLastname, setMainTitle });
 
   useEffect(() => {
     getUserInfo();

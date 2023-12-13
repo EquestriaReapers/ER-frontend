@@ -3,9 +3,12 @@ import { useCallback } from "react";
 import { fetchOneProfile } from "../services/profile/fetch-one-profile.service";
 import { useErrorToast } from "hooks/use-error-toast";
 
-const useGetProfileInfo = ({ setName, setDescription,
+const useGetProfileInfo = ({
+  setName,
+  setDescription,
   setLastname,
-  setMainTitle }: Props) => {
+  setMainTitle,
+}: Props) => {
   const { token, user } = useAuthState();
   const { showErrorToast } = useErrorToast();
   const getUserInfo = useCallback(async () => {
@@ -13,11 +16,21 @@ const useGetProfileInfo = ({ setName, setDescription,
       if (!token || !user) return;
       const data = await fetchOneProfile(token, user.id);
       setName(data.user.name);
+      setLastname(data.user.lastname);
+      setMainTitle(data.user.role);
       setDescription(data.description);
     } catch (error) {
       showErrorToast(error);
     }
-  }, [setDescription, setName, token, user, showErrorToast]);
+  }, [
+    setDescription,
+    setName,
+    setLastname,
+    setMainTitle,
+    token,
+    user,
+    showErrorToast,
+  ]);
 
   return { getUserInfo };
 };
