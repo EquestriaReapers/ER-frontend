@@ -1,24 +1,27 @@
-import Typography from "@mui/material/Typography";
-import ShowSkills from "../skills/show-skills/show-skills";
-import AddSkillsModal from "../skills/add-skills/modal";
-import { Skill } from "core/profiles/types";
+import Typography from '@mui/material/Typography'
+import ShowSkills from '../skills/show-skills/show-skills'
+import AddSkillsModal from '../skills/add-skills/modal'
+import { Skill } from 'core/profiles/types'
+import { boxStyles } from './styles/styles'
 
 const ProfileSkills = ({
   isEditable,
-  currentProfileSkills,
+  currentProfileSkills
 }: Props) => {
   return (
-    <>
-      <Typography variant="h4">Habilidades:</Typography>
-      {isEditable && <AddSkillsModal />}
-      <ShowSkills skills={currentProfileSkills} isEditable={isEditable}/>
-    </>
-  );
-};
-
-export interface Props {
-  isEditable: boolean;
-  currentProfileSkills: Skill[];
+    <div>
+      <Typography sx={boxStyles} variant='h4'>
+        Habilidades
+        {isEditable && <AddSkillsModal />}
+      </Typography>
+      <ShowSkills skills={currentProfileSkills} isEditable={isEditable} />
+    </div>
+  )
 }
 
-export default ProfileSkills;
+export interface Props {
+  isEditable: boolean
+  currentProfileSkills: Skill[]
+}
+
+export default ProfileSkills
