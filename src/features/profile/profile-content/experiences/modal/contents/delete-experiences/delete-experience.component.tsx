@@ -25,7 +25,7 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
           >
             Regresar
           </Button>
-          <Button type="submit" variant="contained">
+          <Button type="submit" variant="contained" className={"right-button"}>
             Confirmar
           </Button>
         </Box>
