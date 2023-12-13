@@ -28,16 +28,24 @@ const FormContent = ({ setIsOpen }: Props) => {
         En esta sección podrás modificar las habilidades tanto blandas como
         duras que muestres al público
       </Typography>
-      <Typography sx={{ fontWeight: "600" }}>Nueva habilidad</Typography>
-      <TextField value="newSkill" />
+      <Typography sx={{ fontWeight: "600", padding: "12px 0px 12px 0px" }}>
+        Nueva habilidad
+      </Typography>
 
       <form onSubmit={onSubmitForm}>
-        <Select value={selectedSkillId} onChange={onSkillChange}>
-          {allSkills &&
-            allSkills.map((item) => (
-              <MenuItem value={item.id}>{item.name}</MenuItem>
-            ))}
-        </Select>
+        <Box sx={{ display: "flex" }}>
+          <TextField
+            placeholder="Ej. Desarrollador de software"
+            sx={{ width: "100%", padding: "12px 12px 12px 0px" }}
+          />
+
+          <Select value={selectedSkillId} onChange={onSkillChange}>
+            {allSkills &&
+              allSkills.map((item) => (
+                <MenuItem value={item.id}>{item.name}</MenuItem>
+              ))}
+          </Select>
+        </Box>
 
         <Typography
           sx={{
