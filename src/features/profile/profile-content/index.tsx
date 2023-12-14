@@ -5,11 +5,16 @@ import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills/profile-skills";
 import ProfileExperiences from "./profile-experience/profile-experience";
-import { bannerStyles, nameSectionStyles } from "../styles/styles";
+
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
-import { mainTitleStyles } from "./styles/styles";
+import {
+  bannerStyles,
+  buttonStyles,
+  mainTitleStyles,
+  nameSectionStyles,
+} from "./styles/styles";
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
@@ -32,17 +37,27 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   <Typography
                     variant="h4"
                     sx={{
+                      paddingBottom: "12px",
                       display: "flex",
                       fontWeight: "700",
-                      fontSize: "2.5rem",
+                      fontFamily: "inter",
                     }}
                   >
                     {profile.user.name} {profile.user.lastname}{" "}
-                    <Box sx={{ marginLeft: "16px" }}>
+                    <Box
+                      sx={{
+                        marginLeft: {
+                          xs: "0px",
+                          lg: "24px",
+                          md: "24px",
+                          sm: "24px",
+                        },
+                      }}
+                    >
                       {isEditable && <EditProfileModal />}
                     </Box>
                   </Typography>
-                  <Typography sx={mainTitleStyles}>
+                  <Typography variant="h4" sx={mainTitleStyles}>
                     {profile.mainTitle}
                   </Typography>
                 </Box>
@@ -51,7 +66,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                     variant="contained"
                     color="primary"
                     type="submit"
-                    sx={{ backgroundColor: "#007935", color: "white" }}
+                    sx={buttonStyles}
                   >
                     Descargar CV
                   </Button>
@@ -68,9 +83,16 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   },
                 }}
               >
-                <Box>
-                  <Typography sx={{ fontWeight: "700", fontSize: "2.2rem" }}>
-                    Sobre Mi
+                <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      fontWeight: "700",
+                      fontFamily: "inter",
+                      paddingBottom:"12px"
+                    }}
+                  >
+                    Sobre Mí
                   </Typography>
                   <Typography
                     sx={{
@@ -78,6 +100,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                       fontStyle: "normal",
                       fontWeight: "400",
                       lineHeight: "normal",
+                      fontFamily: "inter",
                     }}
                   >
                     {profile.description}
@@ -86,12 +109,12 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 <Box
                   sx={{
                     display: "flex",
-                    width: { lg: "40%", md: "40%", sm: "40%", xs: "70%" },
+                    width: { xs: "90%", sm: "40%" },
                     height: "30%",
                     backgroundColor: "#F4F4F4",
                     justifyContent: "space-between",
-                    px: "24px",
-                    py: "20px",
+                    px: { xs: "6px", sm: "24px" },
+                    py: { xs: "8px", sm: "20px" },
                     flexDirection: "column",
                     gap: "12px",
                   }}
@@ -99,13 +122,10 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   <Box
                     sx={{
                       display: "flex",
-                      alignItems: "center",
                       flexWrap: "wrap",
                     }}
                   >
-                    <Box
-                      sx={{ display: "flex", justifyContent: "space-between" }}
-                    >
+                    <Box sx={{ display: "flex" }}>
                       <Box
                         sx={{
                           display: "flex",
@@ -116,7 +136,13 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                         }}
                       >
                         <LocationOnIcon />
-                        <Typography sx={{ marginLeft: "4px" }}>
+                        <Typography
+                          sx={{
+                            marginLeft: "4px",
+                            fontFamily: "inter",
+                            fontWeight: "600",
+                          }}
+                        >
                           Ubicación
                         </Typography>
                       </Box>
@@ -125,8 +151,13 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                       </Box>
                     </Box>
 
-                    <Typography sx={{ marginLeft: "10px" }}>
-                      GABRIEL BOLAS GIANNIS, ANTETOKOUNMPO
+                    <Typography
+                      sx={{
+                        marginLeft: "10px",
+                        fontFamily: "inter",
+                      }}
+                    >
+                      Puerto Ordaz, Venezuela
                     </Typography>
                   </Box>
                   <Box
@@ -146,12 +177,20 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                       }}
                     >
                       <LanguageIcon />{" "}
-                      <Typography sx={{ marginLeft: "5px" }}>
+                      <Typography
+                        sx={{
+                          marginLeft: "5px",
+                          fontFamily: "inter",
+                          fontWeight: "600",
+                        }}
+                      >
                         Website
                       </Typography>
                     </Box>
 
-                    <Typography sx={{ marginLeft: "10px" }}>
+                    <Typography
+                      sx={{ marginLeft: "10px", fontFamily: "inter" }}
+                    >
                       www.abcdefge.com
                     </Typography>
                   </Box>
