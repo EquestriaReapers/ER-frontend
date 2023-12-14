@@ -45,7 +45,7 @@ export const buttonStyles = {
   borderRadius: "2px",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: "20px",
+  fontSize: "16px",
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
