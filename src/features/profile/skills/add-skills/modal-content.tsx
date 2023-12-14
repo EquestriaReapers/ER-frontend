@@ -3,10 +3,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import useAllSkills from "./use-all-skills";
 import useForm from "./use-form";
 import { useState } from "react";
-import {
-  buttonStyle,
-  titleStyles,
-} from "../../styles";
+import { buttonStyle, titleStyles } from "../../styles";
 import { Skill } from "core/profiles/types";
 import ShowSkills from "./show-profile-skills/show-skills";
 
@@ -17,7 +14,41 @@ const FormContent = ({ setIsOpen, currentProfileSkills }: Props) => {
     setSelectedSkillId(event.target.value);
   };
 
+  const [newSkill, setNewSkill] = useState("");
+  const [skills, setSkills] = useState<string[]>([]);
+  const [selectOptions, setSelectOptions] = useState<string[]>([
+    "Javascript",
+    "React",
+  ]);
+  const [isCustomInput, setIsCustomInput] = useState(false);
   const { onSubmitForm } = useForm({ setIsOpen, selectedSkillId });
+
+  const handleAddSkill = () => {
+    if (newSkill !== "") {
+      setSkills([...skills, newSkill]);
+      setNewSkill("");
+      setSelectOptions([...selectOptions, newSkill]);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleAddSkill();
+    }
+  };
+
+  const handleSelectChange = (e: SelectChangeEvent) => {
+    const selectedOption = e.target.value as string;
+    if (selectedOption === "addMoreOptions") {
+      setIsCustomInput(true);
+    } else {
+      setIsCustomInput(false);
+      if (selectedOption !== "") {
+        // Agregar la opción seleccionada como nueva habilidad
+        setSkills([...skills, selectedOption]);
+      }
+    }
+  };
 
   return (
     <Box>
@@ -32,10 +63,26 @@ const FormContent = ({ setIsOpen, currentProfileSkills }: Props) => {
 
       <form onSubmit={onSubmitForm}>
         <Box sx={{ display: "flex" }}>
-          <TextField
-            placeholder="Ej. Desarrollador de software"
-            sx={{ width: "100%", padding: "12px 12px 12px 0px" }}
-          />
+
+          
+          <Select
+            value=""
+            onChange={handleSelectChange}
+            sx={{ width: "100%", marginBottom: "16px" }}
+          >
+            <MenuItem value={selectedSkillId} disabled>
+              Seleccione una opción
+            </MenuItem>
+            {selectOptions.map((option, index) => (
+              <MenuItem key={index} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+            <MenuItem value="addMoreOptions">Agregar más opciones</MenuItem>
+          </Select>
+
+
+
 
           <Select value={selectedSkillId} onChange={onSkillChange}>
             {allSkills &&
