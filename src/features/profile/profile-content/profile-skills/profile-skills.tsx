@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
-import ShowSkills from "../skills/show-skills/show-skills";
-import AddSkillsModal from "../skills/add-skills/modal";
+import ShowSkills from "../../skills/show-skills/show-skills";
+import AddSkillsModal from "../../skills/add-skills/modal";
 import { Skill } from "core/profiles/types";
 import { boxStyles } from "./styles/styles";
 
