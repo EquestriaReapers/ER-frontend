@@ -3,7 +3,6 @@ import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles/styles";
 
 const SkillCard = ({ item }: Props) => {
-  console.log(item);
   return (
     <div>
       <Typography sx={skillTitleStyles} variant="h6">

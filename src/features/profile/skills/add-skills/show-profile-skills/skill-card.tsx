@@ -4,7 +4,6 @@ import { skillTitleStyles } from "./styles";
 import ClearIcon from "@mui/icons-material/Clear";
 
 const SkillCard = ({ item }: Props) => {
-  console.log(item);
   return (
     <Box>
         <Typography sx={skillTitleStyles} variant="h6">
