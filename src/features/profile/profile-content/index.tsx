@@ -10,10 +10,19 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
 import {
+  aboutMeSection,
   bannerStyles,
   buttonStyles,
+  contactSectionStyles,
+  contactTitlesStyles,
+  descriptionStyles,
+  editIconStyles,
+  locationBoxStyles,
   mainTitleStyles,
   nameSectionStyles,
+  nameStyles,
+  websiteBoxStyles,
+  websiteTitleContainerStyles,
 } from "./styles/styles";
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
@@ -34,26 +43,9 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
             >
               <Box sx={nameSectionStyles}>
                 <Box>
-                  <Typography
-                    variant="h4"
-                    sx={{
-                      paddingBottom: "12px",
-                      display: "flex",
-                      fontWeight: "700",
-                      fontFamily: "inter",
-                    }}
-                  >
+                  <Typography variant="h4" sx={nameStyles}>
                     {profile.user.name} {profile.user.lastname}{" "}
-                    <Box
-                      sx={{
-                        marginLeft: {
-                          xs: "0px",
-                          lg: "24px",
-                          md: "24px",
-                          sm: "24px",
-                        },
-                      }}
-                    >
+                    <Box sx={editIconStyles}>
                       {isEditable && <EditProfileModal />}
                     </Box>
                   </Typography>
@@ -72,53 +64,22 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   </Button>
                 </Box>
               </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: {
-                    lg: "nowrap",
-                    md: "nowrap",
-                    sm: "nowrap",
-                    xs: "wrap",
-                  },
-                }}
-              >
+              <Box sx={aboutMeSection}>
                 <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
                   <Typography
                     variant="h5"
                     sx={{
                       fontWeight: "700",
                       fontFamily: "inter",
-                      paddingBottom:"12px"
                     }}
                   >
                     Sobre Mí
                   </Typography>
-                  <Typography
-                    sx={{
-                      width: "90%",
-                      fontStyle: "normal",
-                      fontWeight: "400",
-                      lineHeight: "normal",
-                      fontFamily: "inter",
-                    }}
-                  >
+                  <Typography sx={descriptionStyles}>
                     {profile.description}
                   </Typography>
                 </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    width: { xs: "90%", sm: "40%" },
-                    height: "30%",
-                    backgroundColor: "#F4F4F4",
-                    justifyContent: "space-between",
-                    px: { xs: "6px", sm: "24px" },
-                    py: { xs: "8px", sm: "20px" },
-                    flexDirection: "column",
-                    gap: "12px",
-                  }}
-                >
+                <Box sx={contactSectionStyles}>
                   <Box
                     sx={{
                       display: "flex",
@@ -126,23 +87,9 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                     }}
                   >
                     <Box sx={{ display: "flex" }}>
-                      <Box
-                        sx={{
-                          display: "flex",
-                          pr: {
-                            lg: "160px",
-                            xs: "20px",
-                          },
-                        }}
-                      >
+                      <Box sx={locationBoxStyles}>
                         <LocationOnIcon />
-                        <Typography
-                          sx={{
-                            marginLeft: "4px",
-                            fontFamily: "inter",
-                            fontWeight: "600",
-                          }}
-                        >
+                        <Typography sx={contactTitlesStyles}>
                           Ubicación
                         </Typography>
                       </Box>
@@ -160,32 +107,10 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                       Puerto Ordaz, Venezuela
                     </Typography>
                   </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        pr: {
-                          lg: "160px",
-                          xs: "20px",
-                        },
-                      }}
-                    >
+                  <Box sx={websiteBoxStyles}>
+                    <Box sx={websiteTitleContainerStyles}>
                       <LanguageIcon />{" "}
-                      <Typography
-                        sx={{
-                          marginLeft: "5px",
-                          fontFamily: "inter",
-                          fontWeight: "600",
-                        }}
-                      >
-                        Website
-                      </Typography>
+                      <Typography sx={contactTitlesStyles}>Website</Typography>
                     </Box>
 
                     <Typography
