@@ -30,6 +30,7 @@ const Dashboard = () => {
       <Typography> DASHBOARD </Typography>
       <Link to="/"> Home </Link>
       <Link to={`/profile/${user.id}`}> Perfil </Link>
+      <Link to={`/catalogue`}> Catalogo </Link>
       <Button variant="contained" onClick={onLogout} sx={buttonStyles}>
         Logout
       </Button>
