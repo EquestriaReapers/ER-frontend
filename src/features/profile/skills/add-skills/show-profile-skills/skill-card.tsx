@@ -1,15 +1,17 @@
-import Typography from "@mui/material/Typography";
+import { Typography, Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const SkillCard = ({ item }: Props) => {
   console.log(item);
   return (
-    <div>
-      <Typography sx={skillTitleStyles} variant="h6">
-        {item.name}
-      </Typography>
-    </div>
+    <Box>
+        <Typography sx={skillTitleStyles} variant="h6">
+          {item.name}
+          <ClearIcon />
+        </Typography>
+    </Box>
   );
 };
 

@@ -4,11 +4,7 @@ import useAllSkills from "./use-all-skills";
 import useForm from "./use-form";
 import { useState } from "react";
 import {
-  modalStyle,
   buttonStyle,
-  boxButtonStyles,
-  textFieldStyles,
-  headerStyles,
   titleStyles,
 } from "../../styles";
 import { Skill } from "core/profiles/types";

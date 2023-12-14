@@ -21,5 +21,12 @@ export const skillTitleStyles = {
   paddingRight: 2,
   backgroundColor: '#D9D9D9',
   marginRight: 2,
-  marginBottom: 1
+  marginBottom: 1,
+  display: "flex",
+  flexWrap: {
+    xs: "wrap",
+    md: "nowrap",
+    lg: "nowrap",
+  },
 }
+
