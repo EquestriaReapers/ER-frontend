@@ -32,7 +32,7 @@ export async function updateProfile(
       },
     });
     console.log(body);
-    console.log(response.data)
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -67,6 +67,21 @@ export async function removeProfileSkill(
     });
 
     return response.data;
+  } catch (error) {
+    throw new BackendError(error);
+  }
+}
+
+export async function exportCurriculumPDF(token: string, profileId: number) {
+  try {
+    const response = await axios.get(`${URL}/export-pdf/${profileId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      responseType: "blob",
+    });
+
+    return response;
   } catch (error) {
     throw new BackendError(error);
   }
