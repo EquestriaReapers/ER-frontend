@@ -26,7 +26,6 @@ const useDownloadCurriculumPDF = (profile: Profile) => {
       URL.revokeObjectURL(fileURL);
 
       showSuccessToast("La descarga de su currículum ya inició");
-      console.log(response);
       return response;
     } catch (error) {
       showErrorToast(error);
