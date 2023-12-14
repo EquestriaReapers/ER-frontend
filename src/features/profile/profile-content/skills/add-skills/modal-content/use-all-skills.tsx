@@ -8,6 +8,7 @@ const useAllSkills = () => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
   const { showErrorToast } = useErrorToast();
   const { token } = useAuthState();
+
   const getSkills = useCallback(async () => {
     try {
       if (!token) return;

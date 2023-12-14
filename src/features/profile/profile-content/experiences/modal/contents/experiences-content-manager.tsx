@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { FunctionComponent, useContext } from "react";
 import AddExperience from "./add-experiences/add-experience.styled";
 import ShowExperience from "./show-experiences/show-experiences.styled";
 import EditExperienceModalContent from "./edit-experiences/modal-content.styled";
@@ -6,7 +6,7 @@ import DeleteExperienceModalContent from "./delete-experiences/delete-experience
 import { ExperienceContent } from "../experiencies-modal-context/types";
 import ExperiencesModalContext from "../experiencies-modal-context";
 
-export const ExperiencesContentManager = () => {
+export const ExperiencesContentManager: FunctionComponent = () => {
   const { content, anExperience } = useContext(ExperiencesModalContext);
 
   switch (content) {

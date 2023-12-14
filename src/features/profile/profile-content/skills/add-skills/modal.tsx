@@ -2,10 +2,10 @@ import Modal from "@mui/material/Modal";
 import { Box } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import IconButton from "@mui/material/IconButton";
-import { modalStyle } from "../../styles";
-import FormContent from "./modal-content";
+import ModalContent from "./modal-content";
 import { useState } from "react";
 import { Skill } from "core/profiles/types";
+import { modalStyle } from "features/profile/styles";
 
 const AddSkillsModal = ({ currentProfileSkills }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const AddSkillsModal = ({ currentProfileSkills }: Props) => {
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Box sx={modalStyle}>
-          <FormContent
+          <ModalContent
             setIsOpen={setIsOpen}
             currentProfileSkills={currentProfileSkills}
           />

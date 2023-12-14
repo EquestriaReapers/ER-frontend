@@ -1,4 +1,4 @@
-import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
+/*import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { FormEvent, useCallback } from "react";
 
@@ -27,4 +27,6 @@ export interface Props {
   setIsOpen: (isOpen: boolean) => void;
   selectedSkillId: string;
 }
+
 export default useForm;
+*/

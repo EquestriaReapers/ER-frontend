@@ -1,11 +1,10 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
-import { style } from "../../styles";
-import { Profile } from "core/profiles/types";
+
 const DeleteSkillModalContent = ({ onDeleteSkill, setIsOpen }: Props) => {
   const closeModal = () => setIsOpen(false);
   return (
-    <Box sx={style}>
+    <Box>
       <Typography>¿Estás seguro de que quieres borrar la habilidad?</Typography>
       <Button onClick={closeModal}>Regresar</Button>
       <Button variant="contained" onClick={onDeleteSkill}>
@@ -16,7 +15,7 @@ const DeleteSkillModalContent = ({ onDeleteSkill, setIsOpen }: Props) => {
 };
 
 export interface Props {
-  onDeleteSkill: () => Promise<Profile | undefined>;
+  onDeleteSkill: () => Promise<void>;
   setIsOpen: (isOpen: boolean) => void;
 }
 

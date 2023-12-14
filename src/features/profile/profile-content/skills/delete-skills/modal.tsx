@@ -10,7 +10,7 @@ const DeleteSkillModal = ({ skillId }: Props) => {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
-  const { onDeleteSkill } = useDeleteSkill({ skillId, setIsOpen });
+  const deleteSkill = useDeleteSkill({ skillId, setIsOpen });
 
   return (
     <div>
@@ -20,7 +20,7 @@ const DeleteSkillModal = ({ skillId }: Props) => {
       <Modal open={isOpen} onClose={closeModal}>
         <div>
           <DeleteSkillModalContent
-            onDeleteSkill={onDeleteSkill}
+            onDeleteSkill={deleteSkill}
             setIsOpen={setIsOpen}
           />
         </div>

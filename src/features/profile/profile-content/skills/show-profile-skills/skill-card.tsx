@@ -16,4 +16,5 @@ const SkillCard = ({ item }: Props) => {
 interface Props {
   item: Skill;
 }
+
 export default SkillCard;

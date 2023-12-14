@@ -1,8 +1,9 @@
 import { BackendError } from "app/exceptions";
+import { useCallback } from "react";
 import { toast } from "sonner";
 
 export function useErrorToast() {
-  const showErrorToast = (error: unknown) => {
+  const showErrorToast = useCallback((error: unknown) => {
     if (error instanceof BackendError) {
       toast.error(error.message);
     } else if (typeof error === "string") {
@@ -10,7 +11,7 @@ export function useErrorToast() {
     } else {
       toast.error("Ocurrió un error desconocido");
     }
-  };
+  }, []);
 
   return { showErrorToast };
 }
