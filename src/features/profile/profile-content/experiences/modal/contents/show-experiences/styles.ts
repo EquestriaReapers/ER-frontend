@@ -1,7 +1,7 @@
 const PRIMARY_DARKER = "#03652e";
 
 export const modalStyle = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
