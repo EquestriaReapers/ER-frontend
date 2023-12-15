@@ -14,6 +14,7 @@ export default function useProfile(id: number) {
     try {
       if (!token || !id) return;
       const data = await fetchOneProfile(token, id);
+      console.log(token);
       setProfile(data);
     } catch (error) {
       if (error instanceof BackendError) {

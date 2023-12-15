@@ -1,8 +1,8 @@
-/*import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
+import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { FormEvent, useCallback } from "react";
 
-const useForm = ({ setIsOpen, selectedSkillId }: Props) => {
+const useAddSkillForm = (selectedSkillId: number) => {
   const { token } = useAuthState();
 
   const onSubmitForm = useCallback(
@@ -10,15 +10,14 @@ const useForm = ({ setIsOpen, selectedSkillId }: Props) => {
       event.preventDefault();
       try {
         if (!token || !selectedSkillId) return;
-        const skillId = parseInt(selectedSkillId);
+        const skillId = selectedSkillId;
         const data = await addProfileSkill(token, { skillId });
-        setIsOpen(false);
         return data;
       } catch (error) {
         console.log(error);
       }
     },
-    [selectedSkillId, setIsOpen, token]
+    [selectedSkillId, token]
   );
   return { onSubmitForm };
 };
@@ -28,5 +27,4 @@ export interface Props {
   selectedSkillId: string;
 }
 
-export default useForm;
-*/
+export default useAddSkillForm;

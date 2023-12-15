@@ -3,6 +3,11 @@ import useAllSkills from "./use-all-skills";
 //import useForm from "./use-form";
 import { useCallback } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
+import {
+  useCreateNewSkillState,
+  handleOptionSelected,
+  Option,
+} from "../use-skill-form-state";
 import { Skill } from "core/profiles/types";
 import ShowSkills from "./show-modal-skills/show-skills";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -39,7 +44,11 @@ const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
             disablePortal
             id="combo-box-demo"
             options={skillsOptions}
-            renderInput={(params) => <TextField {...params} label="Buscar Habilidades" />}
+            getOptionLabel={(option) => option.label}
+            onChange={handleOptionSelected}
+            renderInput={(params) => (
+              <TextField {...params} label="Buscar Habilidades" />
+            )}
           />
         </Box>
 
@@ -58,11 +67,6 @@ const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
     </Box>
   );
 };
-
-interface Option {
-  value: number;
-  label: string;
-}
 
 function useCloseModal(setIsOpen: (open: boolean) => void) {
   return useCallback(() => {
