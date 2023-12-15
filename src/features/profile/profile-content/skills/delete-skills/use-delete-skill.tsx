@@ -4,27 +4,28 @@ import { useCallback } from "react";
 import { removeProfileSkill } from "features/profile/services/profile/remove-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
+import { useSuccessToast } from "hooks/use-success-toast";
 
-const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
+const useDeleteSkill = ({ skillId }: Props) => {
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
+  const { showSuccessToast } = useSuccessToast();
 
   const deleteSkill = useCallback(async () => {
     try {
       if (!token || !skillId) return;
-      await removeProfileSkill(token, skillId);
-      setIsOpen(false);
+      const data = await removeProfileSkill(token, skillId);
+      showSuccessToast(data.message);
       return;
     } catch (error) {
       showErrorToast(error);
     }
-  }, [setIsOpen, showErrorToast, skillId, token]);
+  }, [showSuccessToast, showErrorToast, skillId, token]);
 
   return deleteSkill;
 };
 
 export interface Props {
   skillId: number;
-  setIsOpen: (isOpen: boolean) => void;
 }
 export default useDeleteSkill;

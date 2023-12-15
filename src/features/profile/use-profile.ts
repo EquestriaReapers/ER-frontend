@@ -4,10 +4,10 @@ import { Profile } from "core/profiles/types";
 import { useCallback, useEffect, useState } from "react";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
+import { createContext } from 'react';
 
 export default function useProfile(id: number) {
   const [profile, setProfile] = useState<Profile | null>(null);
-
   const { token } = useAuthState();
 
   const getProfile = useCallback(async () => {

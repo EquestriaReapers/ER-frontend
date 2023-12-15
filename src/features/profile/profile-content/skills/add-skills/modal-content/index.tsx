@@ -39,7 +39,7 @@ const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
             disablePortal
             id="combo-box-demo"
             options={skillsOptions}
-            renderInput={(params) => <TextField {...params} label="Movie" />}
+            renderInput={(params) => <TextField {...params} label="Buscar Habilidades" />}
           />
         </Box>
 

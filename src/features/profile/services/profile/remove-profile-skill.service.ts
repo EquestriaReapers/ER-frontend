@@ -9,7 +9,7 @@ export async function removeProfileSkill(
 ): Promise<MessageResponse> {
   try {
     const response = await axios.delete(
-      `${PROFILES_URL}/my-profile/${skillId}`,
+      `${PROFILES_URL}/my-profile/skill/${skillId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
