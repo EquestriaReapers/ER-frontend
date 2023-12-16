@@ -2,10 +2,11 @@ import { Profile } from "core/profiles/types";
 import ProfileCard from "./profile-card";
 
 const ShowProfiles = ({ profileList }: Props) => {
+  console.log(profileList);
   return (
     <>
-      {profileList.map((item: Profile) => {
-        <ProfileCard profile={item} />;
+      {profileList.profiles.map((item: Profile) => {
+        return <ProfileCard profile={item} />
       })}
     </>
   );
