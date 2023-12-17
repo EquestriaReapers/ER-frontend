@@ -1,5 +1,7 @@
-import { Box } from '@mui/material'
-import CatalogueContent from './catalogue-content'
+import { Box, Typography, Link } from "@mui/material";
+import CatalogueContent from "./catalogue-content";
+import ucabLogo from "./images/ucabLogo.webp"
+
 const Catalogue = () => {
   const profileList = {
     profiles: [
@@ -7,42 +9,42 @@ const Catalogue = () => {
         id: 0,
         userId: 0,
         user: {
-          name: 'string',
-          lastname: 'string',
-          email: 'string'
+          name: "string",
+          lastname: "string",
+          email: "string",
         },
-        description: 'string',
-        mainTitle: 'string',
-        countryResidence: 'string',
+        description: "string",
+        mainTitle: "string",
+        countryResidence: "string",
         experience: [
           {
             id: 0,
             profileId: 0,
-            businessName: 'string',
-            role: 'string',
-            location: 'string',
-            description: 'string',
-            startDate: '2023-12-15T13:11:19.385Z',
-            endDate: '2023-12-15T13:11:19.385Z'
-          }
+            businessName: "string",
+            role: "string",
+            location: "string",
+            description: "string",
+            startDate: "2023-12-15T13:11:19.385Z",
+            endDate: "2023-12-15T13:11:19.385Z",
+          },
         ],
         skills: [
           {
             id: 0,
-            name: 'string',
-            level: 'string'
-          }
+            name: "string",
+            level: "string",
+          },
         ],
         languageProfile: [
           {
             id: 0,
             profileId: 0,
-            level: 'string',
-            languageId: 0
-          }
+            level: "string",
+            languageId: 0,
+          },
         ],
-        deletedAt: '2023-12-15T13:11:19.385Z'
-      }
+        deletedAt: "2023-12-15T13:11:19.385Z",
+      },
     ],
     pagination: {
       itemCount: 0,
@@ -50,33 +52,34 @@ const Catalogue = () => {
       itemsPerPage: 0,
       totalPages: 0,
       currentPage: 0,
-      randomSeed: 0
-    }
-  }
+      randomSeed: 0,
+    },
+  };
   return (
     <>
-      navbar
-      <Box>
-        {' '}
-        Background
+      <Box sx={{backgroundColor:"#EAEAEA", height:"100vh",}}>
+        {" "}
+        {/*Background*/}
         <Box>
-          {' '}
-          Contenedor de Filtros y buscador
-          <Box>Filtros</Box>
-          <Box
-            sx={{
-              width: '90%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center'
-            }}
-          >
-            <CatalogueContent profileList={profileList} />
+          
+        </Box>
+        <Box sx={{height:"75px", width:'100%', backgroundColor:'#FFFFFF', display:'flex', justifyContent:'space-between', alignItems:'center'}}> <Box sx={{marginLeft:'100px'}}><img src={ucabLogo} style={{height:'40px', width:'125px'}}alt="" /></Box> <Box sx={{marginRight:'100px'}}> <a href="#">Home</a> <a href="#">Catalogo</a> <a href="#">Mi perfil</a> <a href="#">Salir</a></Box> </Box>
+        <Box sx={{width:'100%', display:'flex', justifyContent:'center', alignItems:'center', height:'90%'}}>
+          <Box sx={{width:'1000px', height:'600px', backgroundColor:'#FFFFFF', display:'flex'}}>
+            {" "}
+            {/*Contenedor de Filtros y buscador*/}
+            <Box sx={{width:'250px', backgroundColor:'#F4F4F4', height:'100%'}}>
+              <Typography sx={{fontWeight:'700', fontSize:'1rem'}}>Filtros</Typography>
+            </Box>
+            <Box>
+              <CatalogueContent profileList={profileList} />
+            </Box>
           </Box>
         </Box>
+
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Catalogue
+export default Catalogue;
