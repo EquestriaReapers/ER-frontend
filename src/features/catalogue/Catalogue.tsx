@@ -9,12 +9,12 @@ const Catalogue = () => {
         id: 0,
         userId: 0,
         user: {
-          name: "string",
-          lastname: "string",
-          email: "string",
+          name: "Meredith",
+          lastname: "Smith",
+          email: "meredithsmith@gmail.com",
         },
-        description: "string",
-        mainTitle: "string",
+        description: "Soy emprendedor y un apasionado por la tecnología e innovación, en 2019 co-funde Nextscale, consultora de la que me desempeñe principalmente como product manager y líder técnico",
+        mainTitle: "Ingeniero informático",
         countryResidence: "string",
         experience: [
           {
@@ -31,7 +31,17 @@ const Catalogue = () => {
         skills: [
           {
             id: 0,
-            name: "string",
+            name: "HTML",
+            level: "string",
+          },
+          {
+            id: 1,
+            name: "CSS",
+            level: "string",
+          },
+          {
+            id: 2,
+            name: "React",
             level: "string",
           },
         ],
@@ -68,10 +78,10 @@ const Catalogue = () => {
           <Box sx={{width:'1000px', height:'600px', backgroundColor:'#FFFFFF', display:'flex'}}>
             {" "}
             {/*Contenedor de Filtros y buscador*/}
-            <Box sx={{width:'250px', backgroundColor:'#F4F4F4', height:'100%'}}>
+            <Box sx={{width:'350px', backgroundColor:'#F4F4F4', height:'100%'}}>
               <Typography sx={{fontWeight:'700', fontSize:'1rem'}}>Filtros</Typography>
             </Box>
-            <Box>
+            <Box sx={{width:'100%'}}>
               <CatalogueContent profileList={profileList} />
             </Box>
           </Box>
