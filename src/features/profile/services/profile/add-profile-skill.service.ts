@@ -1,6 +1,6 @@
 import { PROFILES_URL } from "./config/config";
 import axios from "axios";
-import { MessageResponse, UpdateProfileSkillBody } from "./config/config";
+import { MessageResponse } from "./config/config";
 import { BackendError } from "app/exceptions";
 
 export async function addProfileSkill(
@@ -21,4 +21,8 @@ export async function addProfileSkill(
   } catch (error) {
     throw new BackendError(error);
   }
+}
+
+export interface UpdateProfileSkillBody {
+  skillId: number;
 }

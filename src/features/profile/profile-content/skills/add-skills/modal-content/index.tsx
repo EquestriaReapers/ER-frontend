@@ -1,19 +1,19 @@
 import { Button, Box, Typography, TextField } from "@mui/material";
 import useAllSkills from "./use-all-skills";
 //import useForm from "./use-form";
-import { useCallback } from "react";
+import { useCallback, ChangeEvent, SyntheticEvent } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
-import {
-  useCreateNewSkillState,
-  handleOptionSelected,
-  Option,
-} from "../use-skill-form-state";
+import { useCreateNewSkillState, Option } from "../use-skill-form-state";
 import { Skill } from "core/profiles/types";
 import ShowSkills from "./show-modal-skills/show-skills";
 import Autocomplete from "@mui/material/Autocomplete";
+import useAddSkill from "../modal-content/use-add-skill";
 
 const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
   const closeModal = useCloseModal(setIsOpen);
+
+  const addSkill = useAddSkill();
+
   //const { onSubmitForm } = useForm({ setIsOpen });
 
   const skillsOptions = useSkillsOptions();
@@ -45,7 +45,12 @@ const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
             id="combo-box-demo"
             options={skillsOptions}
             getOptionLabel={(option) => option.label}
-            onChange={handleOptionSelected}
+            onChange={(
+              _: SyntheticEvent<Element, Event>,
+              option: Option | null
+            ) => {
+              if (option?.value) addSkill(option.value);
+            }}
             renderInput={(params) => (
               <TextField {...params} label="Buscar Habilidades" />
             )}

@@ -12,7 +12,3 @@ export interface UpdateProfileBody {
 export interface MessageResponse {
   message: string;
 }
-
-export interface UpdateProfileSkillBody {
-  skillId: number;
-}

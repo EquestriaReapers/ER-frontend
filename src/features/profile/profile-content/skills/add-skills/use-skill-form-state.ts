@@ -1,5 +1,4 @@
 import { useState, ChangeEvent } from "react";
-import useAddSkillForm from "./modal-content/use-form";
 
 export const useCreateNewSkillState = () => {
   const [newSkill, setNewSkill] = useState("");
@@ -14,15 +13,6 @@ export const useCreateNewSkillState = () => {
     setNewSkill,
     onChangeNewSkill,
   };
-};
-
-export const handleOptionSelected = (
-  event: ChangeEvent<{}>,
-  value: Option | null
-) => {
-  if (value) {
-    const { onSubmitForm } = useAddSkillForm(value.value);
-  }
 };
 
 export interface Option {
