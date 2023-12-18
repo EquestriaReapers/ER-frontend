@@ -1,41 +1,49 @@
 import Typography from "@mui/material/Typography";
-import Chip from "@mui/material/Chip";
 import { Profile } from "core/profiles/types";
+import { Box } from "@mui/material/";
+import { skillTitleStyles } from "./styles/styles";
 
 const ProfileCard = ({ profile }: Props) => {
-  console.log(profile);
   return (
-    <div style={{width:'500px', margin:'auto'}}>
-      <div style={{display:'flex', justifyContent:'space-between'}}>
-        <div style={{width:'max-content'}}>
-          <Typography sx={{color:'#007934', fontWeight:'700'}}>
+    <Box
+      sx={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "10px",
+        paddingBottom: "10px",
+        width: "90%",
+        margin: "auto",
+      }}
+    >
+      <Box
+        sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
+      >
+        <Box>
+          <Typography variant="h5" sx={{ color: "#007934", fontWeight: "700" }}>
             {profile.user.name} {profile.user.lastname}
           </Typography>
-        </div>
-        <div style={{width:'max-content'}}>
-          <Typography sx={{fontWeight:'700'}}>{profile.mainTitle}</Typography>
-        </div>
-      </div>
-      <Typography>{profile.description}</Typography>
-      <div>
-        {profile.skills.map((skill, index) => (
-          <Chip 
-            sx={{
-              backgroundColor:'#A6D6A8', 
-              borderRadius: 0,
-              borderColor:'#A6D6A8',
-              marginRight: 2, 
-              marginBottom: 2, 
-
-            }} 
-            key={index} 
-            label={skill.name} 
-            variant="outlined" 
-            color="primary"
-            />
+        </Box>
+        <Box>
+          <Typography sx={{ fontWeight: "600" }}>
+            {profile.mainTitle}
+          </Typography>
+        </Box>
+      </Box>
+      <Typography
+        sx={{
+          fontStyle: "normal",
+          fontWeight: "400",
+          lineHeight: "24px",
+        }}
+      >
+        {profile.description}
+      </Typography>
+      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+        {profile.skills.slice(0, 12).map((skill) => (
+          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
         ))}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
