@@ -1,7 +1,7 @@
 import { Profile } from "core/profiles/types";
 import ShowProfiles from "./profiles/show-profiles";
 
-const CatalogueContent = ({ profileList }: Props) => {
+const CatalogueContent = (profileList: Profile[]) => {
   return (
     <>
       <ShowProfiles profileList={profileList} />
@@ -10,6 +10,3 @@ const CatalogueContent = ({ profileList }: Props) => {
 };
 
 export default CatalogueContent;
-interface Props {
-  profileList: Profile[];
-}
