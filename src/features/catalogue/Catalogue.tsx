@@ -1,12 +1,12 @@
 import {
   Box,
   Typography,
-  IconButton,
   Paper,
   InputBase,
   Checkbox,
   FormGroup,
   FormControlLabel,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CatalogueContent from "./catalogue-content";
@@ -333,7 +333,7 @@ const Catalogue = () => {
           height: "60px",
         }}
       >
-        fakenabar por ahora
+        fakenavbar por ahora
       </Box>
       <Box sx={{ backgroundColor: "#EAEAEA", height: "100%" }}>
         <Box
@@ -343,31 +343,34 @@ const Catalogue = () => {
             justifyContent: "center",
             alignItems: "center",
             height: "100%",
-            paddingTop: 8,
+            py: 8,
           }}
         >
           <Box
             sx={{
               width: "80%",
-              height: "100%",
+              height: "80%",
               backgroundColor: "#FFFFFF",
               display: "flex",
+              boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
             }}
           >
             <Box
               sx={{
-                width: "30%",
+                width: "40%",
                 backgroundColor: "#FFFFFF",
                 height: "100%",
               }}
             >
               <Box
                 sx={{
-                  paddingTop: 2,
+                  
                   backgroundColor: "#F4F4F4",
                   borderRadius: "0px 4px 4px 0px",
-                  boxShadow: "4px 4px 10px -1px rgba(0, 0, 0, 0.25)",
+                  boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
                   height: "100%",
+                  paddingTop: "40px", 
+                  paddingLeft:"50px"
                 }}
               >
                 <Typography sx={{ fontWeight: "700", fontSize: "1.25rem" }}>
@@ -403,28 +406,47 @@ const Catalogue = () => {
               </Box>
             </Box>
             <Box sx={{ width: "100%", height: "90%" }}>
-              <Paper
-                component="form"
+              <Box
                 sx={{
-                  p: "0px 4px",
                   display: "flex",
-                  alignItems: "center",
-                  width: 375,
-                  margin: 8,
-                  marginTop: "40px",
-                  marginBottom: "30px",
-                  border: "1px solid #000",
+                  marginLeft: "50px",
+                  marginTop: "50px",
+                  marginBottom: "20px",
                 }}
               >
-                <IconButton type="button">
-                  <SearchIcon />
-                </IconButton>
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Buscador"
-                  inputProps={{ "aria-label": "search google maps" }}
-                />
-              </Paper>
+                <Paper
+                  component="form"
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: 375,
+                    paddingLeft: "4px",
+                    backgroundColor: "white",
+                    border: "1px solid #000",
+                    borderRadius: "2px",
+                  }}
+                >
+                  <SearchIcon sx={{ color: "gray" }} />
+                  <InputBase
+                    sx={{ ml: 1, flex: 1 }}
+                    placeholder="Buscador"
+                    inputProps={{ "aria-label": "search google maps" }}
+                  />
+                </Paper>
+                <Button
+                  variant="text"
+                  sx={{
+                    color: "#000",
+                    fontStyle: "normal",
+                    fontWeight: "400",
+                    lineHeight: "normal",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  Buscar
+                </Button>
+              </Box>
+
               <CatalogueContent profileList={profileList} />
             </Box>
           </Box>

@@ -12,7 +12,7 @@ const ProfileCard = ({ profile }: Props) => {
         gap: "10px",
         paddingBottom: "10px",
         width: "90%",
-        margin: "auto",
+        marginLeft:"50px"
       }}
     >
       <Box

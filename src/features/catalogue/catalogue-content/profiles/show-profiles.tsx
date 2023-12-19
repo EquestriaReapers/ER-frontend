@@ -8,10 +8,12 @@ const ShowProfiles = ({ profileList }: Props) => {
     <>
       {profileList.profiles.map((item: Profile) => {
         return (
-          <Box sx={{ paddingTop: "10px" }}>
-            <ProfileCard profile={item} />
-            <Divider sx={{width: "90%", mx:"auto"}} />
-          </Box>
+          <>
+            <Box sx={{ paddingTop: "30px", paddingBottom: "10px" }}>
+              <ProfileCard profile={item} />
+            </Box>
+            <Divider sx={{ width: "90%", mx: "auto" }} />
+          </>
         );
       })}
     </>
