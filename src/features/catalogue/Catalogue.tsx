@@ -357,7 +357,7 @@ const Catalogue = () => {
             <Box
               sx={{
                 width: "30%",
-                backgroundColor: "#EAEAEA",
+                backgroundColor: "#FFFFFF",
                 height: "100%",
               }}
             >
@@ -365,6 +365,9 @@ const Catalogue = () => {
                 sx={{
                   paddingTop: 2,
                   backgroundColor: "#F4F4F4",
+                  borderRadius: "0px 4px 4px 0px",
+                  boxShadow: "4px 4px 10px -1px rgba(0, 0, 0, 0.25)",
+                  height: "100%",
                 }}
               >
                 <Typography sx={{ fontWeight: "700", fontSize: "1.25rem" }}>
@@ -399,7 +402,7 @@ const Catalogue = () => {
                 </Typography>
               </Box>
             </Box>
-            <Box sx={{ width: "100%", height: "90%",  }}>
+            <Box sx={{ width: "100%", height: "90%" }}>
               <Paper
                 component="form"
                 sx={{
