@@ -11,12 +11,15 @@ const ProfileCard = ({ profile }: Props) => {
         sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
       >
         <Box>
-          <Typography variant="h5" sx={{ color: "#007934", fontWeight: "700" }}>
+          <Typography
+            variant="h5"
+            sx={{ color: "#007934", fontWeight: "700", fontFamily: "inter" }}
+          >
             {profile.user.name} {profile.user.lastname}
           </Typography>
         </Box>
         <Box>
-          <Typography sx={{ fontWeight: "600" }}>
+          <Typography sx={{ fontWeight: "600", fontFamily: "inter" }}>
             {profile.mainTitle}
           </Typography>
         </Box>

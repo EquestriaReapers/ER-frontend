@@ -25,4 +25,5 @@ export const profileCardTypography = {
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "24px",
+  fontFamily: "inter",
 };
