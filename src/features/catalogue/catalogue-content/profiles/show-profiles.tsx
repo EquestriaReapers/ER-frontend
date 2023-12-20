@@ -3,11 +3,10 @@ import ProfileCard from "./profile-card";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/system";
 
-const ShowProfiles = (profileList: Profile[]) => {
-  console.log(profileList);
+const ShowProfiles = ({ profileList }: Props) => {
   return (
     <>
-      {profileList.profileList.profileList.map((item: Profile) => {
+      {profileList.map((item: Profile) => {
         return (
           <>
             <Box sx={{ paddingTop: "30px", paddingBottom: "10px" }}>
@@ -20,5 +19,7 @@ const ShowProfiles = (profileList: Profile[]) => {
     </>
   );
 };
-
+interface Props {
+  profileList: Profile[];
+}
 export default ShowProfiles;

@@ -12,3 +12,17 @@ export const skillTitleStyles = {
   marginRight: 2,
   marginBottom: 1,
 };
+export const profileContainer = {
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px",
+  paddingBottom: "10px",
+  width: "90%",
+  marginLeft: "50px",
+};
+
+export const profileCardTypography = {
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "24px",
+};

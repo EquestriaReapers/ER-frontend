@@ -9,10 +9,8 @@ const useForm = ({ setIsOpen, user }: EditFormProps) => {
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      console.log(user);
       if (!token || !user) return;
       const data = await updateProfile(token, user);
-      console.log(data)
       setIsOpen(false);
       return data;
     } catch (error) {

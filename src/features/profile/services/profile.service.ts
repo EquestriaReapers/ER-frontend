@@ -31,8 +31,6 @@ export async function updateProfile(
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(body);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new BackendError(error);

@@ -1,20 +1,12 @@
 import Typography from "@mui/material/Typography";
 import { Profile } from "core/profiles/types";
 import { Box } from "@mui/material/";
-import { skillTitleStyles } from "./styles/styles";
+import { profileCardTypography, profileContainer } from "./styles/styles";
+import ShowProfileCardSkills from "./show-profile-card-skills";
 
 const ProfileCard = ({ profile }: Props) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "10px",
-        paddingBottom: "10px",
-        width: "90%",
-        marginLeft:"50px"
-      }}
-    >
+    <Box sx={profileContainer}>
       <Box
         sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}
       >
@@ -29,20 +21,8 @@ const ProfileCard = ({ profile }: Props) => {
           </Typography>
         </Box>
       </Box>
-      <Typography
-        sx={{
-          fontStyle: "normal",
-          fontWeight: "400",
-          lineHeight: "24px",
-        }}
-      >
-        {profile.description}
-      </Typography>
-      <Box sx={{ display: "flex", flexWrap: "wrap" }}>
-        {profile.skills.slice(0, 12).map((skill) => (
-          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
-        ))}
-      </Box>
+      <Typography sx={profileCardTypography}>{profile.description}</Typography>
+      <ShowProfileCardSkills skills={profile.skills} />
     </Box>
   );
 };
