@@ -10,31 +10,11 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import CatalogueContent from "./catalogue-content";
-import { useCallback, useEffect, useState } from "react";
-import { fetchPaginatedProfiles } from "./services/get-paginated-profiles.service";
-import { useAuthState } from "hooks/use-auth-state";
-import { Profile } from "core/profiles/types";
+import usePaginatedProfilesState from "./catalogue-content/profiles/use-paginated-profiles-state";
 
 const Catalogue = () => {
-  const { token } = useAuthState();
-  const [profileList, setProfileList] = useState<Profile[] | null>(null);
-
-  const getProfileList = useCallback(async () => {
-    try {
-      if (!token) return;
-      const response = await fetchPaginatedProfiles(token, 1, 4);
-      setProfileList(response.profiles);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [token]);
-
-  useEffect(() => {
-    getProfileList();
-  }, [getProfileList]);
-
-  console.log(profileList);
+  const { profileList, pagination } = usePaginatedProfilesState();
+  console.log(pagination);
   return (
     <>
       {profileList ? (
