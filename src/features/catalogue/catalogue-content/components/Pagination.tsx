@@ -1,5 +1,5 @@
 const Pagination = () => {
-  return <div>Pagination</div>;
+  return;
 };
 
 export default Pagination;

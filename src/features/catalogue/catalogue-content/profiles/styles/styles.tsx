@@ -23,7 +23,8 @@ export const profileContainer = {
 
 export const profileCardTypography = {
   fontStyle: "normal",
-  fontWeight: "400",
+  fontWeight: "600",
   lineHeight: "24px",
   fontFamily: "inter",
+  color: "#303030",
 };

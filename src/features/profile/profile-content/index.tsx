@@ -5,7 +5,6 @@ import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills/profile-skills";
 import ProfileExperiences from "./profile-experience/profile-experience";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -112,7 +111,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   </Box>
                   <Box sx={websiteBoxStyles}>
                     <Box sx={websiteTitleContainerStyles}>
-                      <LanguageIcon />{" "}
+                      <LanguageIcon />
                       <Typography sx={contactTitlesStyles}>Website</Typography>
                     </Box>
 

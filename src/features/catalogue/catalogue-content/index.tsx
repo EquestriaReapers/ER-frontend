@@ -6,7 +6,7 @@ import {
   filtersContainerBackground,
   navBarStyles,
   pageContainer,
-  profileListContainer,
+  catalogueContainer,
   searchBarContainer,
 } from "./styles/styles";
 import Filters from "./filters";
@@ -18,7 +18,7 @@ const CatalogueContent = ({ profileList }: Props) => {
       <Box sx={navBarStyles}>fakenavbar por ahora</Box>
 
       <Box sx={pageContainer}>
-        <Box sx={profileListContainer}>
+        <Box sx={catalogueContainer}>
           <Box sx={filtersContainerBackground}>
             <Box sx={filtersContainer}>
               <Filters />
@@ -29,6 +29,11 @@ const CatalogueContent = ({ profileList }: Props) => {
             <Box sx={searchBarContainer}>
               <CatalogueSearchBar />
             </Box>
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
             <ShowProfiles profileList={profileList} />
           </Box>
         </Box>
