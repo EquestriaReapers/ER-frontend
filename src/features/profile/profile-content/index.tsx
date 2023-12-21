@@ -17,59 +17,49 @@ const ProfileContent = () => {
 
   return (
     <>
-      {loggedUser ? (
-        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
+      <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+        <Box sx={{ width: "100%", height: "80px", bgcolor: "black" }}></Box>
 
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            marginTop: "12px",
+          }}
+        >
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="h4" sx={{ fontWeight: "700", marginRight: 1 }}>
+              {profile.user.name} {profile.user.lastname}
+            </Typography>
+            {isEditable && <EditProfileModal />}
+          </Box>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: "700", color: `${primaryGreen}` }}
+          >
+            {profile.mainTitle}
+          </Typography>
           <Box
             sx={{
               display: "flex",
               flexDirection: "column",
+              flexWrap: "nowrap",
               gap: "10px",
-              marginTop: "12px",
             }}
           >
-            <Box sx={{ display: "flex" }}>
-              <Typography
-                variant="h4"
-                sx={{ fontWeight: "700", marginRight: 1 }}
-              >
-                {profile.user.name} {profile.user.lastname}
-              </Typography>
-              {isEditable && <EditProfileModal />}
-            </Box>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: "700", color: `${primaryGreen}` }}
-            >
-              {profile.mainTitle}
+            <Typography variant="h6" sx={{ fontWeight: "700" }}>
+              Sobre Mi
             </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "nowrap",
-                gap: "10px",
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: "700" }}>
-                Sobre Mi
-              </Typography>
-              <Typography variant="h6">{profile.description}</Typography>
-            </Box>
+            <Typography variant="h6">{profile.description}</Typography>
           </Box>
-          <ProfileSkills
-            isEditable={isEditable}
-            currentProfileSkills={profile.skills}
-          />
-          <Experiences
-            isEditable={isEditable}
-            experiences={profile.experience}
-          />
         </Box>
-      ) : (
-        <Typography>No se encontro el perfil!</Typography>
-      )}
+        <ProfileSkills
+          isEditable={isEditable}
+          currentProfileSkills={profile.skills}
+        />
+        <Experiences isEditable={isEditable} experiences={profile.experience} />
+      </Box>
     </>
   );
 };
