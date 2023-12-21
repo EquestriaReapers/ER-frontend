@@ -9,8 +9,6 @@ const ShowProfileCardSkills = ({ skills }: Props) => {
       {skills.slice(0, 12).map((skill) => (
         <>
           <Typography sx={skillTitleStyles}>{skill.name}</Typography>
-          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
-          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
         </>
       ))}
     </Box>

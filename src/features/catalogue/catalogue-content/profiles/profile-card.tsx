@@ -5,8 +5,10 @@ import { profileCardTypography, profileContainer } from "./styles/styles";
 import ShowProfileCardSkills from "./show-profile-card-skills";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Link } from "react-router-dom";
+import useTransformCareerEnum from "hooks/use-transform-career-enum";
 
 const ProfileCard = ({ profile }: Props) => {
+  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
   return (
     <Box sx={profileContainer}>
       <Box sx={{ display: "flex", width: "100%" }}>
@@ -37,7 +39,7 @@ const ProfileCard = ({ profile }: Props) => {
             </Typography>
           </Link>
 
-          {!profile.mainTitle ? (
+          {!transformedCareerName ? (
             <Typography
               sx={{ fontWeight: "600", fontFamily: "inter", fontSize: "16px" }}
             >
@@ -47,7 +49,7 @@ const ProfileCard = ({ profile }: Props) => {
             <Typography
               sx={{ fontWeight: "600", fontFamily: "inter", fontSize: "16px" }}
             >
-              {profile.mainTitle}
+              {transformedCareerName}
             </Typography>
           )}
         </Box>
