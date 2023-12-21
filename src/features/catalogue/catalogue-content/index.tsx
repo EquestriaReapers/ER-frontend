@@ -58,6 +58,8 @@ const CatalogueContent = ({ profileList }: Props) => {
               <CatalogueSearchBar />
             </Box>
             <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
             <Box
               sx={{
                 display: 'flex',
