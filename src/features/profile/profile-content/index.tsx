@@ -6,8 +6,10 @@ import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills";
 import Experiences from "./experiences";
+import useProfileContext from "../profile-context/use-profile-context";
 
-const ProfileContent = ({ profile }: Props) => {
+const ProfileContent = () => {
+  const { profile } = useProfileContext();
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   const theme = useTheme();

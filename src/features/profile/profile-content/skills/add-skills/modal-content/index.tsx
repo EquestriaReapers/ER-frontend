@@ -1,9 +1,9 @@
 import { Button, Box, Typography, TextField } from "@mui/material";
 import useAllSkills from "./use-all-skills";
 //import useForm from "./use-form";
-import { useCallback, ChangeEvent, SyntheticEvent } from "react";
+import { useCallback, SyntheticEvent } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
-import { useCreateNewSkillState, Option } from "../use-skill-form-state";
+import { Option } from "../use-skill-form-state";
 import { Skill } from "core/profiles/types";
 import ShowSkills from "./show-modal-skills/show-skills";
 import Autocomplete from "@mui/material/Autocomplete";
