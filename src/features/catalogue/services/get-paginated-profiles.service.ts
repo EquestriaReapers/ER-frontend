@@ -8,14 +8,18 @@ const URL = `${BACKEND_V1_URL}/profiles`;
 export async function fetchPaginatedProfiles(
   token: string,
   page: number,
-  limit: number
+  limit: number,
+  currentSeed: number | null
 ): Promise<Response> {
   try {
-    const response = await axios.get(`${URL}?page=${page}&limit=${limit}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(
+      `${URL}?page=${page}&limit=${limit}&random=${currentSeed}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw new BackendError(error);
