@@ -1,5 +1,5 @@
 import { Profile } from "core/profiles/types";
-import { Box } from "@mui/material";
+import { Box, Pagination, Stack } from "@mui/material";
 import ShowProfiles from "./profiles/show-profiles";
 import {
   filtersContainer,
@@ -30,11 +30,22 @@ const CatalogueContent = ({ profileList }: Props) => {
               <CatalogueSearchBar />
             </Box>
             <ShowProfiles profileList={profileList} />
-            <ShowProfiles profileList={profileList} />
-            <ShowProfiles profileList={profileList} />
-            <ShowProfiles profileList={profileList} />
-            <ShowProfiles profileList={profileList} />
-            <ShowProfiles profileList={profileList} />
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                my:"46px"
+              }}
+            >
+              <Stack spacing={2}>
+                <Pagination
+                  count={100}
+                  shape="rounded"
+                  color="primary"
+                  size="large"
+                />
+              </Stack>
+            </Box>
           </Box>
         </Box>
       </Box>

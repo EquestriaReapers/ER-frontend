@@ -23,13 +23,13 @@ const ProfileCard = ({ profile }: Props) => {
               color: '#007934',
               fontWeight: '700',
               fontFamily: 'inter',
-              fontSize: '20px'
+              fontSize: '24px'
             }}
           >
             {profile.user.name} {profile.user.lastname}
           </Typography>
           <Typography
-            sx={{ fontWeight: '600', fontFamily: 'inter', fontSize: '14px' }}
+            sx={{ fontWeight: '600', fontFamily: 'inter', fontSize: '16px' }}
           >
             {profile.mainTitle}
           </Typography>

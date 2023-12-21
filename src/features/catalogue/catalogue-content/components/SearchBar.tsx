@@ -8,10 +8,13 @@ const StyledPaper = styled(Paper)`
   display: flex;
   align-items: center;
   width: 375px;
-  padding-left: 4px;
-  background-color: white;
-  border: 1px solid #000;
-  border-radius: 2px;
+  background-color: #f4f4f4;
+  border-radius: 5px;
+  height: 36px;
+  padding-top: 3px;
+  padding-left: 6px;
+  flex-shrink: 0;
+  box-shadow: none;
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
@@ -19,28 +22,35 @@ const StyledSearchIcon = styled(SearchIcon)`
 `;
 
 const StyledInputBase = styled(InputBase)`
-  margin-left: 1px;
+  color: black;
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
   flex: 1;
 `;
 
 const StyledButton = styled(Button)`
-  color: #000;
+  font-family: Inter;
+  font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   text-transform: capitalize;
+  margin-left: 12px;
+  border-radius: 5px;
+  box-shadow: none;
 `;
 
 const SearchBar = () => (
   <>
     <StyledPaper>
       <StyledSearchIcon />
-      <StyledInputBase
-        placeholder="Buscador"
-        inputProps={{ "aria-label": "search google maps" }}
-      />
+      <StyledInputBase placeholder="Buscador" />
     </StyledPaper>
-    <StyledButton>Buscar</StyledButton>
+    <StyledButton variant="contained">Buscar</StyledButton>
   </>
 );
 
