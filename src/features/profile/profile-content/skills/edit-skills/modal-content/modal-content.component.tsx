@@ -4,7 +4,7 @@ import useAllSkills from "./use-all-skills";
 import { useCallback, SyntheticEvent } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
 import { Option } from "../use-skill-form-state";
-import ShowSkills from "./show-modal-skills/show-skills";
+import ShowSkills from "./show-skills/show-skills.component";
 import Autocomplete from "@mui/material/Autocomplete";
 import useAddSkill from "./use-add-skill";
 import useProfileContext from "../../../../profile-context/use-profile-context";
