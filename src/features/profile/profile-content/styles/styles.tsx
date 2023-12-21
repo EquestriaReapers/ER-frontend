@@ -18,8 +18,7 @@ export const bannerStyles = {
 
 export const nameSectionStyles = {
   width: {
-    md: "60%",
-    lg: "95%",
+    lg: "100%",
   },
   display: "flex",
   flexWrap: "wrap",
@@ -69,6 +68,8 @@ export const aboutMeSection = {
     sm: "nowrap",
     xs: "wrap",
   },
+  width: "100%",
+  justifyContent: "space-between",
 };
 
 export const descriptionStyles = {

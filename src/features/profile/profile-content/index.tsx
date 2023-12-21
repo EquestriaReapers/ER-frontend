@@ -30,114 +30,112 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 
   return (
     <>
-      {loggedUser ? (
+      <Box>
+        <Box sx={bannerStyles}></Box>
         <Box>
-          <Box sx={bannerStyles}></Box>
-          <Box>
-            <Box
-              sx={{
-                width: "90%",
-                mx: { lg: "auto", md: "auto", xs: "20px" },
-                mt: "30px",
-              }}
-            >
-              <Box sx={nameSectionStyles}>
-                <Box>
-                  <Typography variant="h4" sx={nameStyles}>
-                    {profile.user.name} {profile.user.lastname}{" "}
-                    <Box sx={editIconStyles}>
-                      {isEditable && <EditProfileModal />}
-                    </Box>
-                  </Typography>
-                  <Typography variant="h4" sx={mainTitleStyles}>
-                    {profile.mainTitle}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    sx={buttonStyles}
-                  >
-                    Descargar CV
-                  </Button>
-                </Box>
+          <Box
+            sx={{
+              width: "90%",
+              mx: { lg: "auto", md: "auto", xs: "20px" },
+              mt: "30px",
+            }}
+          >
+            <Box sx={nameSectionStyles}>
+              <Box>
+                <Typography variant="h4" sx={nameStyles}>
+                  {profile.user.name} {profile.user.lastname}{" "}
+                  <Box sx={editIconStyles}>
+                    {isEditable && <EditProfileModal />}
+                  </Box>
+                </Typography>
+                <Typography variant="h4" sx={mainTitleStyles}>
+                  {profile.mainTitle}
+                </Typography>
               </Box>
-              <Box sx={aboutMeSection}>
-                <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: "700",
-                      fontFamily: "inter",
-                    }}
-                  >
-                    Sobre Mí
-                  </Typography>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={buttonStyles}
+                >
+                  Descargar CV
+                </Button>
+              </Box>
+            </Box>
+            <Box sx={aboutMeSection}>
+              <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: "700",
+                    fontFamily: "inter",
+                  }}
+                >
+                  Sobre Mí
+                </Typography>
+                {!profile.description ? (
+                  <Typography>El perfil no tiene descripción.</Typography>
+                ) : (
                   <Typography sx={descriptionStyles}>
                     {profile.description}
                   </Typography>
-                </Box>
-                <Box sx={contactSectionStyles}>
-                  <Box
+                )}
+              </Box>
+              <Box sx={contactSectionStyles}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Box sx={{ display: "flex" }}>
+                    <Box sx={locationBoxStyles}>
+                      <LocationOnIcon />
+                      <Typography sx={contactTitlesStyles}>
+                        Ubicación
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex" }}>
+                      <EditIcon />
+                    </Box>
+                  </Box>
+
+                  <Typography
                     sx={{
-                      display: "flex",
-                      flexWrap: "wrap",
+                      marginLeft: "10px",
+                      fontFamily: "inter",
                     }}
                   >
-                    <Box sx={{ display: "flex" }}>
-                      <Box sx={locationBoxStyles}>
-                        <LocationOnIcon />
-                        <Typography sx={contactTitlesStyles}>
-                          Ubicación
-                        </Typography>
-                      </Box>
-                      <Box sx={{ display: "flex" }}>
-                        <EditIcon />
-                      </Box>
-                    </Box>
-
-                    <Typography
-                      sx={{
-                        marginLeft: "10px",
-                        fontFamily: "inter",
-                      }}
-                    >
-                      Puerto Ordaz, Venezuela
-                    </Typography>
+                    Puerto Ordaz, Venezuela
+                  </Typography>
+                </Box>
+                <Box sx={websiteBoxStyles}>
+                  <Box sx={websiteTitleContainerStyles}>
+                    <LanguageIcon />{" "}
+                    <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
-                  <Box sx={websiteBoxStyles}>
-                    <Box sx={websiteTitleContainerStyles}>
-                      <LanguageIcon />{" "}
-                      <Typography sx={contactTitlesStyles}>Website</Typography>
-                    </Box>
 
-                    <Typography
-                      sx={{ marginLeft: "10px", fontFamily: "inter" }}
-                    >
-                      www.abcdefge.com
-                    </Typography>
-                  </Box>
+                  <Typography sx={{ marginLeft: "10px", fontFamily: "inter" }}>
+                    www.abcdefge.com
+                  </Typography>
                 </Box>
               </Box>
             </Box>
-            <Box>
-              <ProfileSkills
-                isEditable={isEditable}
-                currentProfileSkills={profile.skills}
-              />
+          </Box>
+          <Box>
+            <ProfileSkills
+              isEditable={isEditable}
+              currentProfileSkills={profile.skills}
+            />
 
-              <ProfileExperiences
-                isEditable={isEditable}
-                currentProfileExperience={profile.experience}
-              />
-            </Box>
+            <ProfileExperiences
+              isEditable={isEditable}
+              currentProfileExperience={profile.experience}
+            />
           </Box>
         </Box>
-      ) : (
-        <Typography>No se encontro el perfil!</Typography>
-      )}
+      </Box>
     </>
   );
 };
