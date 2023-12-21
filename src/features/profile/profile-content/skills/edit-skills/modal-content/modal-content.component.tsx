@@ -1,20 +1,13 @@
-import { Button, Box, Typography, TextField } from "@mui/material";
-import useAllSkills from "./use-all-skills";
-//import useForm from "./use-form";
-import { useCallback, SyntheticEvent } from "react";
+import { Button, Box, Typography } from "@mui/material";
+import { useCallback } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
-import { Option } from "../use-skill-form-state";
 import ShowSkills from "./show-skills/show-skills.component";
-import Autocomplete from "@mui/material/Autocomplete";
-import useAddSkill from "./use-add-skill";
 import useProfileContext from "../../../../profile-context/use-profile-context";
+import AddSkillField from "./add-skill-field";
 
 const ModalContent = ({ setIsOpen }: Props) => {
   const { profile } = useProfileContext();
   const closeModal = useCloseModal(setIsOpen);
-
-  const addSkill = useAddSkill();
-  const skillsOptions = useSkillsOptions();
 
   return (
     <Box>
@@ -28,32 +21,8 @@ const ModalContent = ({ setIsOpen }: Props) => {
       </Typography>
 
       <form>
-        <Box sx={{ display: "flex" }}>
-          <Autocomplete
-            sx={{ width: "100%", marginBottom: "16px" }}
-            disablePortal
-            id="combo-box-demo"
-            options={skillsOptions}
-            getOptionLabel={(option) => option.label}
-            onChange={(
-              _: SyntheticEvent<Element, Event>,
-              option: Option | null
-            ) => {
-              if (option?.value) addSkill(option.value);
-            }}
-            renderInput={(params) => (
-              <TextField {...params} label="Buscar Habilidades" />
-            )}
-          />
-        </Box>
-
-        <Typography
-          sx={{
-            fontWeight: "600",
-          }}
-        >
-          Habilidades
-        </Typography>
+        <AddSkillField />
+        <Typography sx={{ fontWeight: "600" }}>Habilidades</Typography>
         <ShowSkills skills={profile.skills} />
         <Button sx={buttonStyle} type="submit" onClick={closeModal}>
           Listo
@@ -67,16 +36,6 @@ function useCloseModal(setIsOpen: (open: boolean) => void) {
   return useCallback(() => {
     setIsOpen(false);
   }, [setIsOpen]);
-}
-
-function useSkillsOptions(): Option[] {
-  const allSkills = useAllSkills();
-
-  if (!allSkills?.length) return [];
-
-  return allSkills.map((item) => {
-    return { value: item.id, label: item.name };
-  });
 }
 
 export interface Props {
