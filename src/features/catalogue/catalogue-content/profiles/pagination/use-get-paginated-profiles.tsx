@@ -23,7 +23,6 @@ const useGetPaginatedProfiles = ({
         itemsPerPage,
         currentSeed
       );
-      console.log("Pagina actual en el servicio: ", currentPage);
       setProfileList(response.profiles);
       setPagination(response.pagination);
       setCurrentSeed(response.pagination.randomSeed);

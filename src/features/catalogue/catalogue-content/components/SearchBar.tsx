@@ -7,7 +7,7 @@ import Paper from "@mui/material/Paper";
 const StyledPaper = styled(Paper)`
   display: flex;
   align-items: center;
-  width: 375px;
+  width: 50%;
   background-color: #f4f4f4;
   border-radius: 5px;
   height: 36px;

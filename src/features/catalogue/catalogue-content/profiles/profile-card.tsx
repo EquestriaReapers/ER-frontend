@@ -35,22 +35,36 @@ const ProfileCard = ({ profile }: Props) => {
             </Typography>
           </Link>
 
-          <Typography
-            sx={{ fontWeight: "600", fontFamily: "inter", fontSize: "16px" }}
-          >
-            {profile.mainTitle}
-          </Typography>
+          {!profile.mainTitle ? (
+            <Typography
+              sx={{ fontWeight: "600", fontFamily: "inter", fontSize: "16px" }}
+            >
+              Egresado sin carrera asociada
+            </Typography>
+          ) : (
+            <Typography
+              sx={{ fontWeight: "600", fontFamily: "inter", fontSize: "16px" }}
+            >
+              {profile.mainTitle}
+            </Typography>
+          )}
         </Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-        <Box sx={{ display: "flex" }}>
-          <Typography sx={profileCardTypography}>
-            {profile.countryResidence}, Bolivar
-          </Typography>
-          <LocationOnIcon sx={{ color: "#545454", marginLeft: "2px" }} />
-        </Box>
+        {profile.countryResidence ? (
+          <Box sx={{ display: "flex" }}>
+            <Typography sx={profileCardTypography}>
+              {profile.countryResidence}, Bolivar
+            </Typography>
+            <LocationOnIcon sx={{ color: "#545454", marginLeft: "2px" }} />
+          </Box>
+        ) : null}
         <Box>
-          <ShowProfileCardSkills skills={profile.skills} />
+          {profile.skills.length === 0 ? (
+            <Typography>Egresado sin habilidades especificadas.</Typography>
+          ) : (
+            <ShowProfileCardSkills skills={profile.skills} />
+          )}
         </Box>
       </Box>
     </Box>
