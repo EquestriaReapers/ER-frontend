@@ -76,6 +76,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     newExperience,
     experienceId,
   });
+
   return (
     <Box sx={modalStyle} className={className}>
       <Box sx={headerStyles}>
