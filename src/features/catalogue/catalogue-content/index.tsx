@@ -30,11 +30,13 @@ const CatalogueContent = ({ profileList }: Props) => {
               <CatalogueSearchBar />
             </Box>
             <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
+            <ShowProfiles profileList={profileList} />
             <Box
               sx={{
                 display: "flex",
                 justifyContent: "center",
-                my:"46px"
+                my: "46px",
               }}
             >
               <Stack spacing={2}>
