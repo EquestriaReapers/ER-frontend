@@ -17,8 +17,7 @@ export const profileContainer = {
   flexWrap: "wrap",
   gap: "10px",
   paddingBottom: "10px",
-  width: "90%",
-  marginLeft: "50px",
+  width: "100%",
 };
 
 export const profileCardTypography = {

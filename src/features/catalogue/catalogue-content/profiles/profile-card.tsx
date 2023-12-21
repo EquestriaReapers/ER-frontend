@@ -13,6 +13,8 @@ const ProfileCard = ({ profile }: Props) => {
         <Box
           sx={{
             display: "flex",
+            flexWrap: { xs: "wrap" },
+            gap: { xs: "10px" },
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",

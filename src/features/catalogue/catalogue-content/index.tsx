@@ -13,16 +13,17 @@ import CatalogueSearchBar from "./components/SearchBar";
 import useSetCatalogueProfiles from "./profiles/use-set-catalogue-profiles";
 import useCataloguePagination from "./profiles/pagination/use-catalogue-pagination";
 
-const CatalogueContent = () => {
+const Catalogue = () => {
   const { profileList, pagination, currentPage, setCurrentPage } =
     useSetCatalogueProfiles();
   const { onPageChange } = useCataloguePagination({ setCurrentPage });
 
   return (
     <>
-      {profileList && pagination ? (
+      {!profileList || !pagination ? (
+        <Typography>PAPA PAPA </Typography>
+      ) : (
         <>
-          {" "}
           <Box sx={navBarStyles}>fakenavbar por ahora</Box>
           <Box sx={pageContainer}>
             <Box sx={catalogueContainer}>
@@ -32,7 +33,7 @@ const CatalogueContent = () => {
                 </Box>
               </Box>
 
-              <Box sx={{ width: "100%", height: "90%" }}>
+              <Box sx={{ width: "100%", height: "90%", mx:{xs:"30px",sm:"50px"} }}>
                 <Box sx={searchBarContainer}>
                   <CatalogueSearchBar />
                 </Box>
@@ -60,11 +61,9 @@ const CatalogueContent = () => {
             </Box>
           </Box>
         </>
-      ) : (
-        <Typography>PAPA PAPA </Typography>
       )}
     </>
   );
 };
 
-export default CatalogueContent;
+export default Catalogue;

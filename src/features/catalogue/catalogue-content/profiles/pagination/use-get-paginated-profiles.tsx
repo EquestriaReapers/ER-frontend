@@ -1,6 +1,5 @@
 import { Pagination, Profile } from "core/profiles/types";
 import { fetchPaginatedProfiles } from "features/catalogue/services/get-paginated-profiles.service";
-import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 
@@ -11,14 +10,11 @@ const useGetPaginatedProfiles = ({
   currentPage,
   currentSeed,
 }: Props) => {
-  const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
   const itemsPerPage: number = 6;
   const getProfileList = useCallback(async () => {
     try {
-      if (!token) return;
       const response = await fetchPaginatedProfiles(
-        token,
         currentPage,
         itemsPerPage,
         currentSeed
@@ -30,7 +26,6 @@ const useGetPaginatedProfiles = ({
       showErrorToast(error);
     }
   }, [
-    token,
     currentPage,
     currentSeed,
     setPagination,

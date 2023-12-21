@@ -6,19 +6,13 @@ import { Profile } from "core/profiles/types";
 const URL = `${BACKEND_V1_URL}/profiles`;
 
 export async function fetchPaginatedProfiles(
-  token: string,
   page: number,
   limit: number,
   currentSeed: number | null
 ): Promise<Response> {
   try {
     const response = await axios.get(
-      `${URL}?page=${page}&limit=${limit}&random=${currentSeed}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
+      `${URL}?page=${page}&limit=${limit}&random=${currentSeed}`
     );
     return response.data;
   } catch (error) {

@@ -10,7 +10,7 @@ import Register from "features/auth/Register";
 import "typeface-inter";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Catalogue from "features/catalogue/Catalogue";
+import Catalogue from "features/catalogue/catalogue-content";
 
 const theme = createTheme({
   palette: {

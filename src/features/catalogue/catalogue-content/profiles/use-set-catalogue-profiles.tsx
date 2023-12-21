@@ -5,6 +5,7 @@ import usePaginatedProfilesState from "./pagination/use-paginated-profiles-state
 const useSetCatalogueProfiles = () => {
   const { profileList, pagination, setProfileList, setPagination } =
     usePaginatedProfilesState();
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSeed, setCurrentSeed] = useState<number | null>(null);
 
@@ -19,6 +20,7 @@ const useSetCatalogueProfiles = () => {
   useEffect(() => {
     getProfileList();
   }, [getProfileList]);
+
   return { profileList, currentPage, pagination, setCurrentPage };
 };
 

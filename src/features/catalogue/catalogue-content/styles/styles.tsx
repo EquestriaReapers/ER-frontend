@@ -1,13 +1,13 @@
 export const navBarStyles = {
-  boxShadow: "0px 0px 64px 0px rgba(0, 0, 0, 0.07)",
   width: "100%",
   height: "60px",
+  boxShadow: "0px 15px 15px 0px rgba(0, 0, 0, 0.07)",
 };
 
 export const pageContainer = {
   width: "100%",
   height: "auto",
-  backgroundColor: "#EAEAEA",
+  backgroundColor: { xs: "#FFFFFF", sm: "#EAEAEA" },
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -15,16 +15,16 @@ export const pageContainer = {
 
 export const catalogueContainer = {
   display: "flex",
-  width: "80%",
+  width: { xs: "100%", sm: "80%" },
   height: "auto",
   backgroundColor: "#FFFFFF",
-  boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+  boxShadow: { xs: "none", sm: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" },
   borderRadius: "8px",
-  my: 10,
+  my: { xs: 0, sm: 10 },
 };
 
 export const filtersContainer = {
-  display: "flex",
+  display: { xs: "none", md: "flex" },
   backgroundColor: "#F4F4F4",
   boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
   paddingTop: "40px",
@@ -32,19 +32,18 @@ export const filtersContainer = {
   borderRadius: "8px",
   flexDirection: "column",
   height: "auto",
-  width:'100%'
+  width: "100%",
 };
 
 export const filtersContainerBackground = {
   width: "40%",
   backgroundColor: "#FFFFFF",
   borderRadius: "8px 0px 0px 8px",
-  display: "flex",
+  display: { xs: "none", md: "flex" },
 };
 
 export const searchBarContainer = {
   display: "flex",
-  marginLeft: "50px",
   marginTop: "50px",
   marginBottom: "20px",
 };

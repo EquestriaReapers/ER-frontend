@@ -4,11 +4,14 @@ import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles/styles";
 
 const ShowProfileCardSkills = ({ skills }: Props) => {
-  console.log(skills);
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap" }}>
       {skills.slice(0, 12).map((skill) => (
-        <Typography sx={skillTitleStyles}>{skill.name}</Typography>
+        <>
+          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
+          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
+          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
+        </>
       ))}
     </Box>
   );
