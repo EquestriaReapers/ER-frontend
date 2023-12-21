@@ -1,3 +1,39 @@
+import { useMediaQuery, useTheme } from "@mui/material";
+
+export const QuestionBoxStylesFunct = () =>  {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const QuestionBoxStyles = {
+        marginRight: isSmallScreen ? '3px' : '15px', 
+        fontSize: isSmallScreen ? '0.9rem' : '1rem', 
+        fontFamily: 'Inter, sans-serif', 
+
+    }
+
+    return { QuestionBoxStyles };
+
+}
+
+export const LinkBoxStylesFunct = () => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const LinkBoxStyles = {
+        marginLeft: isSmallScreen ? '3px' : 
+        '15px', fontSize: isSmallScreen ? '0.9rem' : '1rem', 
+        fontFamily: 'Inter, sans-serif',
+    }
+
+    return { LinkBoxStyles };
+}
+
+export const RedirectBoxStyles = {
+    display:'flex', 
+    justifyContent: 'center', 
+    fontFamily: 'Inter, sans-serif', 
+}
+
 export const TextFieldTypography = { 
     fontFamily: 'Inter, sans-serif', 
     color:'#979899',
@@ -34,8 +70,8 @@ export const TextFieldStyles = {
     marginBottom: '16px', 
     "& .MuiOutlinedInput-notchedOutline": {
     borderColor: '#979899', 
-    padding: '13px',
-    height: '24px',
+    //padding: '13px',
+    height: '56px',
   },
 }
 

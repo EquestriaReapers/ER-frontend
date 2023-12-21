@@ -2,9 +2,8 @@ import { FunctionComponent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
-import useTheme from "@mui/material/styles/useTheme";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucabLogo.webp";
 import "../../../styles/index.css";
@@ -14,6 +13,10 @@ import {
   TextFieldStyles,
   ButtonStyles,
   UcabLogoStyles,
+  FormBoxStylesFunct,
+  RedirectBoxStyles,
+  QuestionBoxStylesFunct,
+  LinkBoxStylesFunct,
 } from "./RegisterFormStyles.tsx";
 
 const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
@@ -30,24 +33,14 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
     onChangeConfirmPassword,
   } = useRegisterFormState();
 
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const FormBoxStyles = {
 
-    width: isSmallScreen ? "250px" : "350px",
-    height: "680px",
-    margin: "auto",
-    padding: isSmallScreen ? "18px" : "40px",
-    backgroundColor: "white",
-    display: "flex",
-    flexDirection: "column",
-    alignItemns: "center",
-    justifyContent: "center",
-    borderRadius: "8px",
-    marginBottom: "16px",
-  };
+
 
   const LOGIN_BORDER_RADIUS = '11px';
+
+  const {FormBoxStyles}  = FormBoxStylesFunct(); 
+  const {QuestionBoxStyles} = QuestionBoxStylesFunct();
+  const {LinkBoxStyles} = LinkBoxStylesFunct();
 
   return (
     <>
@@ -117,6 +110,9 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
         >
           Registrarse
         </Button>
+        <Box sx={RedirectBoxStyles}>
+            <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography> <Link href="/login" sx={LinkBoxStyles}>Inicia sesion</Link>
+          </Box>
       </Box>
     </>
   );

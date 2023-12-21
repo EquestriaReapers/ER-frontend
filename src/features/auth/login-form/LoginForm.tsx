@@ -18,6 +18,9 @@ import { TextFieldTypography,
   TextFieldStyles, 
   ButtonStyles,
   CheckBoxStyles,
+  QuestionBoxStylesFunct,
+  LinkBoxStylesFunct,
+  RedirectBoxStyles,
 
 } from "./LoginFormStyles.tsx";
 
@@ -34,12 +37,15 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
       setKeepLogged(!keepLogged); 
     };
 
+    const {QuestionBoxStyles} = QuestionBoxStylesFunct();
+    const {LinkBoxStyles} = LinkBoxStylesFunct();
+
     const LOGIN_BORDER_RADIUS = '11px';
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const FormBoxStyles = {
-        width: isSmallScreen ? '85%' : '350px',
-        height: '480px',
+        width: isSmallScreen ? '88%' : '350px',
+        height: '520px',
         margin: 'auto', 
         padding: isSmallScreen ? '18px' : '40px',
         backgroundColor:'white',
@@ -53,7 +59,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
 
     const FormBottomStyles = {
-      marginBottom:'36px', 
+      marginBottom:'20px', 
       height: '50px',
       display: isSmallScreen ? 'grid' : 'flex',
       justifyContent:'center', 
@@ -73,6 +79,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
       margin: 'auto',
       display:'inline-block',
       fontSize: '0.9rem',
+      textAlign:'end',
     }
   
 
@@ -133,7 +140,9 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
                 ¿Olvidó la contraseña?
               </Link>
             </Box>
-
+          </Box>
+          <Box sx={RedirectBoxStyles}>
+            <Typography sx={QuestionBoxStyles}>¿Aun no tienes cuenta?</Typography> <Link href="/register" sx={LinkBoxStyles}>Registrate</Link>
           </Box>
         </Box>
       </Box>
