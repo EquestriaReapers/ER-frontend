@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { SkillInterface } from "./interfaces/ProfileInterface";
+import { SkillInterface } from "./interfaces/Interfaces";
 
 const RenderSkills = () => {
   const skills: SkillInterface[] = [

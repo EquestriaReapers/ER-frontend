@@ -1,9 +1,13 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import Dashboard from "./dashboard/Dashboard.tsx";
-import Profile from "./profile/Profile.tsx";
-import EditProfileForm from "./profile/EditProfileForm.tsx";
+
+import { Provider } from "react-redux";
+import store from "app/store";
+import Dashboard from "features/dashboard/Dashboard";
+import Profile from "legacy/profile/Profile.tsx";
+import EditProfileForm from "legacy/profile/EditProfileForm.tsx";
+import Login from "features/auth/Login";
+import EditSkills from "legacy/profile/EditSkils.tsx";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -12,21 +16,25 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: "/",
-    element: <App />,
-  },
-  {
     path: "/profile/:id",
     element: <Profile />,
   },
   {
     path: "/profile/edit/:id",
     element: <EditProfileForm />,
-  }
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/profile/edit/skills/:id",
+    element: <EditSkills />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <Provider store={store}>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </Provider>
 );
