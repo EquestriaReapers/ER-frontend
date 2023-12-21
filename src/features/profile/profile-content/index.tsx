@@ -1,17 +1,14 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useAuthState } from "hooks/use-auth-state";
 import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
-import ProfileSkills from "./profile-skills";
+import ProfileSkills from "./skills";
 import Experiences from "./experiences";
 import useProfileContext from "../profile-context/use-profile-context";
 
 const ProfileContent = () => {
-  const { profile } = useProfileContext();
-  const loggedUser = useAuthState().user;
-  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+  const { profile, isEditable } = useProfileContext();
   const theme = useTheme();
   const primaryGreen = theme.palette.primary.main;
 
@@ -54,11 +51,8 @@ const ProfileContent = () => {
             <Typography variant="h6">{profile.description}</Typography>
           </Box>
         </Box>
-        <ProfileSkills
-          isEditable={isEditable}
-          currentProfileSkills={profile.skills}
-        />
-        <Experiences isEditable={isEditable} experiences={profile.experience} />
+        <ProfileSkills />
+        <Experiences />
       </Box>
     </>
   );

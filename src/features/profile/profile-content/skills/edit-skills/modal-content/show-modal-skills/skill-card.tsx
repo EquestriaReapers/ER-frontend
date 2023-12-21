@@ -2,7 +2,7 @@ import { Typography, Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles";
 import ClearIcon from "@mui/icons-material/Clear";
-import useDeleteSkill from "../../../delete-skills/use-delete-skill";
+import useDeleteSkill from "../../use-delete-skill";
 
 const SkillCard = ({ item }: Props) => {
   const deleteSkill = useDeleteSkill({ skillId: item.id });

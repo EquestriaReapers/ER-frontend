@@ -4,27 +4,17 @@ import useAllSkills from "./use-all-skills";
 import { useCallback, SyntheticEvent } from "react";
 import { buttonStyle, titleStyles } from "../../../../styles";
 import { Option } from "../use-skill-form-state";
-import { Skill } from "core/profiles/types";
 import ShowSkills from "./show-modal-skills/show-skills";
 import Autocomplete from "@mui/material/Autocomplete";
-import useAddSkill from "../modal-content/use-add-skill";
+import useAddSkill from "./use-add-skill";
+import useProfileContext from "../../../../profile-context/use-profile-context";
 
-const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
+const ModalContent = ({ setIsOpen }: Props) => {
+  const { profile } = useProfileContext();
   const closeModal = useCloseModal(setIsOpen);
 
   const addSkill = useAddSkill();
-
-  //const { onSubmitForm } = useForm({ setIsOpen });
-
   const skillsOptions = useSkillsOptions();
-
-  /*const handleAddSkill = () => {
-    if (newSkill !== "") {
-      setSkills([...skills, newSkill]);
-      setNewSkill("");
-      setSelectOptions([...selectOptions, newSkill]);
-    }
-  };*/
 
   return (
     <Box>
@@ -64,7 +54,7 @@ const ModalContent = ({ setIsOpen, currentProfileSkills }: Props) => {
         >
           Habilidades
         </Typography>
-        <ShowSkills skills={currentProfileSkills} />
+        <ShowSkills skills={profile.skills} />
         <Button sx={buttonStyle} type="submit" onClick={closeModal}>
           Listo
         </Button>
@@ -91,7 +81,6 @@ function useSkillsOptions(): Option[] {
 
 export interface Props {
   setIsOpen: (open: boolean) => void;
-  currentProfileSkills: Skill[];
 }
 
 export default ModalContent;

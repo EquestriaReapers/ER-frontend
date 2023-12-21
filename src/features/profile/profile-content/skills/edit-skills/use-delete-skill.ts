@@ -28,4 +28,5 @@ const useDeleteSkill = ({ skillId }: Props) => {
 export interface Props {
   skillId: number;
 }
+
 export default useDeleteSkill;

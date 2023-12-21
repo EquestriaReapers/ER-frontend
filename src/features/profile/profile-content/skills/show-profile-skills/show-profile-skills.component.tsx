@@ -1,9 +1,9 @@
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import SkillCard from "./skill-card";
-import { boxStyles } from "./styles/styles";
+import { boxStyles } from "./styles";
 
-const ShowSkills = ({ skills }: Props) => {
+const ShowProfileSkills = ({ skills }: Props) => {
   return (
     <Box sx={boxStyles}>
       {skills.map((item: Skill) => {
@@ -21,4 +21,4 @@ interface Props {
   skills: Skill[];
 }
 
-export default ShowSkills;
+export default ShowProfileSkills;

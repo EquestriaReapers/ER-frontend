@@ -1,6 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { Skill } from "core/profiles/types";
-import { skillTitleStyles } from "./styles/styles";
+import { skillTitleStyles } from "./styles";
 
 const SkillCard = ({ item }: Props) => {
   return (

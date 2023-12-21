@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileContext from "./profile-context";
 import { Profile } from "core/profiles/types";
+import { useAuthState } from "hooks/use-auth-state";
 
 export const ProfileContextProvider = ({
   children,
@@ -8,10 +9,14 @@ export const ProfileContextProvider = ({
   profile,
   fetchProfile,
 }: Props) => {
+  const loggedUser = useAuthState().user;
+  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+
   const contextValue = {
     profile,
     fetchProfile,
     profileId,
+    isEditable,
   };
 
   return (
