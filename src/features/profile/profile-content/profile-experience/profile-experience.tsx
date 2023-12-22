@@ -1,16 +1,15 @@
-import ShowExperiences from "../../experiences/show-experiences/show-experiences";
 import Typography from "@mui/material/Typography";
-import EditProfileModal from "../../edit-profile/modal";
 import { Experience } from "core/profiles/types";
+import { boxStyles } from "../styles/styles";
+import ShowExperiences from "features/profile/experiences/show-experiences/show-experiences";
+import EditProfileModal from "features/profile/edit-profile/modal";
 
-const ProfileExperience = ({
-  isEditable,
-  currentProfileExperience,
-}: Props) => {
+const ProfileExperience = ({ isEditable, currentProfileExperience }: Props) => {
   return (
     <div>
-      <Typography variant="h4">Experiencia:</Typography>
-      {isEditable && <EditProfileModal />}
+      <Typography variant="h4" sx={boxStyles}>
+        Experiencia{isEditable && <EditProfileModal />}
+      </Typography>
       <ShowExperiences experience={currentProfileExperience} />
     </div>
   );

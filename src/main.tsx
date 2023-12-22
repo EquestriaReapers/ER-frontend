@@ -25,24 +25,24 @@ const theme = createTheme({
 
 const router = createBrowserRouter([
   {
-    path: "/dashboard",
-    element: <Dashboard />,
+    path: '/dashboard',
+    element: <Dashboard />
   },
   {
-    path: "/profile/:id",
-    element: <Profile />,
+    path: '/profile/:id',
+    element: <Profile />
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: '/login',
+    element: <Login />
   },
   {
-    path: "/register",
-    element: <Register />,
-  },
-]);
+    path: '/register',
+    element: <Register />
+  }
+])
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider theme={theme}>
@@ -51,4 +51,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       </ThemeProvider>
     </PersistGate>
   </Provider>
-);
+)
