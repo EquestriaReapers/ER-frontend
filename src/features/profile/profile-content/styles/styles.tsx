@@ -6,11 +6,6 @@ export const boxStyles = {
   display: "flex",
   flexWrap: "wrap",
   py: 3,
-  marginLeft: {
-    xs: 3,
-    md: 10,
-    lg: 10,
-  },
 };
 
 export const bannerStyles = {
@@ -22,8 +17,9 @@ export const bannerStyles = {
   },
   height: {
     xs: "90px",
-    md: "110px",
+    md: "150px",
   },
+  boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
   backgroundImage: `url(${bannerImage})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -40,7 +36,6 @@ export const nameSectionStyles = {
     lg: "space-between",
   },
   gap: "30px",
-  mx: "auto",
 };
 
 export const buttonStyles = {
@@ -48,11 +43,12 @@ export const buttonStyles = {
     xs: "100%",
     sm: "100%",
   },
+  height: { xs: "100%", sm: "45%" },
   color: "#FCFEFE",
   borderRadius: "2px",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: "16px",
+  fontSize: { xs: "15px", sm: "20px" },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -63,6 +59,7 @@ export const mainTitleStyles = {
   color: "#007934",
   fontWeight: "600",
   fontFamily: "inter",
+  fontSize: { xs: "22px", sm: "36px" },
 };
 
 export const nameStyles = {
@@ -70,6 +67,7 @@ export const nameStyles = {
   display: "flex",
   fontWeight: "700",
   fontFamily: "inter",
+  fontSize: { xs: "32px", sm: "48px" },
 };
 
 export const editIconStyles = {
@@ -102,11 +100,12 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
+  fontSize: { xs: "15px", sm: "18px" },
 };
 
 export const contactSectionStyles = {
   display: "flex",
-  width: { xs: "70%", sm: "27%" },
+  width: { xs: "100%", sm: "27%" },
   height: "30%",
   backgroundColor: "#F4F4F4",
   justifyContent: "space-between",

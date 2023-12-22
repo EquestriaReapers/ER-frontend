@@ -1,18 +1,33 @@
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { Skill } from "core/profiles/types";
 import AddSkillsModal from "features/profile/skills/add-skills/modal";
 import ShowSkills from "features/profile/skills/show-skills/show-skills";
-import { boxStyles } from "features/profile/skills/show-skills/styles/styles";
 
 const ProfileSkills = ({ isEditable, currentProfileSkills }: Props) => {
   return (
-    <div>
-      <Typography sx={boxStyles} variant="h4">
-        Habilidades
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
+      >
+        <Typography
+          sx={{
+            color: "#000",
+            fontFamily: "inter",
+            fontSize: { xs: "22px", sm: "35px" },
+            fontStyle: "normal",
+            fontWeight: "700",
+            lineHeight: "normal",
+          }}
+          variant="h4"
+        >
+          Habilidades
+        </Typography>
         {isEditable && <AddSkillsModal />}
-      </Typography>
+      </Box>
+
       <ShowSkills skills={currentProfileSkills} isEditable={isEditable} />
-    </div>
+    </Box>
   );
 };
 
