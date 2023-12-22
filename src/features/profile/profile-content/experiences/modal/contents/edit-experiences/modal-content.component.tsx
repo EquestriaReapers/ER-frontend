@@ -14,6 +14,14 @@ import {
 } from "./styles";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
+
+
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import esLocale from "date-fns/locale/es";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import React from "react";
+import { Dayjs } from "dayjs";
 
 const EditExperienceModalContent = ({ anExperience, className }: Props) => {
   const {
@@ -37,7 +45,10 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     role,
   } = useExperienceFormState();
   const { setContent } = useContext(ExperiencesModalContext);
+  const { fetchProfile } = useProfileContext();
   const startDateValue = startDate ? startDate : new Date();
+
+  const [value, setValue] = React.useState<Dayjs | null>(null); //cosas del DatePicker
 
   const getExperienceInfo = useCallback(() => {
     setBusinessName(anExperience.businessName);
@@ -75,6 +86,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     setContent,
     newExperience,
     experienceId,
+    fetchProfile
   });
 
   return (
@@ -132,6 +144,19 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                   value={newExperience.startDate}
                   onChange={onChangeStartDate}
                 />
+                <LocalizationProvider
+                  dateAdapter={AdapterDateFns}
+                  adapterLocale={esLocale}
+                >
+                  <DatePicker
+                    sx={textFieldStyles}
+                    label="Fecha Inicial"
+                    value={value}
+                    onChange={(newValue) => {
+                      setValue(newValue);
+                    }}
+                  />
+                </LocalizationProvider>
               </Box>
               <Box className="inputContainer pl-5px">
                 <TextField

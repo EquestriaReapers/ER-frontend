@@ -9,6 +9,7 @@ const useEditExperienceForm = ({
   setContent,
   newExperience,
   experienceId,
+  fetchProfile,
 }: EditExperienceFormProps) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
@@ -26,6 +27,7 @@ const useEditExperienceForm = ({
         );
         showSuccessToast("Experiencia editada con éxito");
         setContent(ExperienceContent.Show);
+        fetchProfile();
         return data;
       } catch (error) {
         showErrorToast(error);
@@ -53,6 +55,7 @@ export interface EditExperienceFormProps {
     description: string;
   };
   experienceId: number;
+  fetchProfile: () => void;
 }
 
 export default useEditExperienceForm;

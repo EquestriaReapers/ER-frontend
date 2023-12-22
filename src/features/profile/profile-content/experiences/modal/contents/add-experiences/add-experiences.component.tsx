@@ -17,7 +17,7 @@ import useProfileContext from "features/profile/profile-context/use-profile-cont
 
 const AddExperienceModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
-  const {fetchProfile} = useProfileContext();
+  const { fetchProfile } = useProfileContext();
   const {
     onChangeBusinessName,
     onChangeDescription,
