@@ -6,8 +6,6 @@ import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import useTheme from "@mui/material/styles/useTheme";
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Link from '@mui/material/Link';
 import ucabLogo from "../images/ucabLogo.webp";
 import "../../../styles/index.css";
@@ -21,6 +19,10 @@ import { TextFieldTypography,
   QuestionBoxStylesFunct,
   LinkBoxStylesFunct,
   RedirectBoxStyles,
+  FormBoxStylesFunct,
+  FormBottomStylesFunct,
+  InsideFormBottomStylesFunct,
+  ForgotPasswordStylesFunct,
 
 } from "./LoginFormStyles.tsx";
 
@@ -29,59 +31,24 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
     useLoginFormState();
   
     const [keepLogged, setKeepLogged] = useState(false);
-
-
     
-
     const handleKeepLoggedChange = () => {
       setKeepLogged(!keepLogged); 
     };
 
     const {QuestionBoxStyles} = QuestionBoxStylesFunct();
     const {LinkBoxStyles} = LinkBoxStylesFunct();
+    const {FormBoxStyles} = FormBoxStylesFunct();
+    const {FormBottomStyles} = FormBottomStylesFunct();
+    const {InsideFormBottomStyles} = InsideFormBottomStylesFunct();
+    const {ForgotPasswordStyles} = ForgotPasswordStylesFunct();
 
     const LOGIN_BORDER_RADIUS = '11px';
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const FormBoxStyles = {
-        width: isSmallScreen ? '88%' : '350px',
-        height: '520px',
-        margin: 'auto', 
-        padding: isSmallScreen ? '18px' : '40px',
-        backgroundColor:'white',
-        display: 'flex',
-        flexDirection:'column',
-        alignItemns:'center',
-        justifyContent:'center',
-        borderRadius:'8px',
-        marginBottom:'16px',
-    };
 
 
-    const FormBottomStyles = {
-      marginBottom:'20px', 
-      height: '50px',
-      display: isSmallScreen ? 'grid' : 'flex',
-      justifyContent:'center', 
-      aligItems: 'center',
-    }
 
-    const InsideFormBottomStyles = {
-      width: isSmallScreen ? '100%' : '50%',
-      display:'flex',
-      justifyContent:'center', 
-      alignItems:'center'
-    }
 
-    const ForgotPaswordStyles = { 
-      fontFamily: 'Inter, sans-serif', 
-      width: isSmallScreen ? '90%' : '50%',
-      margin: 'auto',
-      display:'inline-block',
-      fontSize: '0.9rem',
-      textAlign:'end',
-    }
-  
+
 
   return (
     <>
@@ -135,7 +102,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             />
               <Typography sx={FormBottomTypographyStyles}>Permanecer conectado</Typography>
             </Box>
-            <Box sx={ForgotPaswordStyles}>
+            <Box sx={ForgotPasswordStyles}>
               <Link href="#" rel="noopener noreferrer">
                 ¿Olvidó la contraseña?
               </Link>

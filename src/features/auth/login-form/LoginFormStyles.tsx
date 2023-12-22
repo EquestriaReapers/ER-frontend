@@ -15,6 +15,78 @@ export const QuestionBoxStylesFunct = () =>  {
 
 }
 
+export const FormBoxStylesFunct = () =>  {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const FormBoxStyles = {
+        width: isSmallScreen ? '88%' : '350px',
+        height: '520px',
+        margin: 'auto', 
+        padding: isSmallScreen ? '18px' : '40px',
+        backgroundColor:'white',
+        display: 'flex',
+        flexDirection:'column',
+        alignItemns:'center',
+        justifyContent:'center',
+        borderRadius:'8px',
+        marginBottom:'16px',
+    };
+
+    return { FormBoxStyles };
+
+}
+
+export const FormBottomStylesFunct = () =>  {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const FormBottomStyles = {
+        marginBottom:'20px', 
+        height: '50px',
+        display: isSmallScreen ? 'grid' : 'flex',
+        justifyContent:'center', 
+        aligItems: 'center',
+      }
+
+    return { FormBottomStyles };
+
+}
+
+export const InsideFormBottomStylesFunct = () =>  {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const InsideFormBottomStyles = {
+        width: isSmallScreen ? '100%' : '50%',
+        display:'flex',
+        justifyContent:'center', 
+        alignItems:'center'
+    }
+
+    return { InsideFormBottomStyles };
+
+}
+
+
+export const ForgotPasswordStylesFunct = () =>  {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const ForgotPasswordStyles = { 
+        fontFamily: 'Inter, sans-serif', 
+        width: isSmallScreen ? '90%' : '50%',
+        margin: 'auto',
+        display:'inline-block',
+        fontSize: '0.9rem',
+        textAlign:'end',
+      }
+
+    return { ForgotPasswordStyles };
+
+}
+
+
 export const LinkBoxStylesFunct = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
