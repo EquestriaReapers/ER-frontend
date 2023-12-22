@@ -14,13 +14,13 @@ import useSetCatalogueProfiles from "./profiles/use-set-catalogue-profiles";
 import useCataloguePagination from "./profiles/pagination/use-catalogue-pagination";
 
 const Catalogue = () => {
-  const { profileList, pagination, currentPage, setCurrentPage } =
+  const { profileList, pagination, currentPage, seed, setCurrentPage } =
     useSetCatalogueProfiles();
   const { onPageChange } = useCataloguePagination({ setCurrentPage });
 
   return (
     <>
-      {!profileList || !pagination ? (
+      {!profileList || !pagination || !seed ? (
         <Typography>PAPA PAPA </Typography>
       ) : (
         <>
@@ -33,7 +33,13 @@ const Catalogue = () => {
                 </Box>
               </Box>
 
-              <Box sx={{ width: "100%", height: "90%", mx:{xs:"30px",sm:"50px"} }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "90%",
+                  mx: { xs: "30px", sm: "50px" },
+                }}
+              >
                 <Box sx={searchBarContainer}>
                   <CatalogueSearchBar />
                 </Box>

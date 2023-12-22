@@ -58,7 +58,7 @@ const ProfileCard = ({ profile }: Props) => {
         {profile.countryResidence ? (
           <Box sx={{ display: "flex" }}>
             <Typography sx={profileCardTypography}>
-              {profile.countryResidence}, Bolivar
+              {profile.countryResidence}
             </Typography>
             <LocationOnIcon sx={{ color: "#545454", marginLeft: "2px" }} />
           </Box>

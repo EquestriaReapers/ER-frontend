@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
 import useGetPaginatedProfiles from "./pagination/use-get-paginated-profiles";
 import usePaginatedProfilesState from "./pagination/use-paginated-profiles-state";
+import useSeed from "features/catalogue/catalogue-content/hooks/use-seed";
 
 const useSetCatalogueProfiles = () => {
   const { profileList, pagination, setProfileList, setPagination } =
     usePaginatedProfilesState();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [currentSeed, setCurrentSeed] = useState<number | null>(null);
+  const seed = useSeed();
 
   const { getProfileList } = useGetPaginatedProfiles({
     setProfileList,
     setPagination,
-    setCurrentSeed,
     currentPage,
-    currentSeed,
+    seed,
   });
 
   useEffect(() => {
     getProfileList();
   }, [getProfileList]);
 
-  return { profileList, currentPage, pagination, setCurrentPage };
+  return { profileList, currentPage, seed, pagination, setCurrentPage };
 };
 
 export default useSetCatalogueProfiles;

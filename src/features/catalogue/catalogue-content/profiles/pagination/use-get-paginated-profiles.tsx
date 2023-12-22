@@ -6,33 +6,25 @@ import { useCallback } from "react";
 const useGetPaginatedProfiles = ({
   setProfileList,
   setPagination,
-  setCurrentSeed,
   currentPage,
-  currentSeed,
+  seed,
 }: Props) => {
   const { showErrorToast } = useErrorToast();
   const itemsPerPage: number = 6;
   const getProfileList = useCallback(async () => {
     try {
+      if (!seed) return;
       const response = await fetchPaginatedProfiles(
         currentPage,
         itemsPerPage,
-        currentSeed
+        seed
       );
       setProfileList(response.profiles);
       setPagination(response.pagination);
-      setCurrentSeed(response.pagination.randomSeed);
     } catch (error) {
       showErrorToast(error);
     }
-  }, [
-    currentPage,
-    currentSeed,
-    setPagination,
-    setProfileList,
-    setCurrentSeed,
-    showErrorToast,
-  ]);
+  }, [currentPage, seed, setPagination, setProfileList, showErrorToast]);
 
   return { getProfileList };
 };
@@ -40,8 +32,7 @@ const useGetPaginatedProfiles = ({
 interface Props {
   setProfileList: (profileList: Profile[]) => void;
   setPagination: (pagination: Pagination) => void;
-  setCurrentSeed: (seed: number) => void;
   currentPage: number;
-  currentSeed: number | null;
+  seed: number | null;
 }
 export default useGetPaginatedProfiles;
