@@ -1,20 +1,23 @@
 import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { modalStyle } from "../show-experiences/styles";
-import useDeleteExperienceForm from "./use-form";
+import useDeleteExperience from "./use-delete-experience";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
 
 const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
-  const { onSubmitForm } = useDeleteExperienceForm({
+  const {fetchProfile} = useProfileContext();
+  const deleteExperience = useDeleteExperience({
     setContent,
     experienceId,
+    fetchProfile,
   });
   return (
     <Box className={className} sx={modalStyle}>
-      <form onSubmit={onSubmitForm}>
+      <form>
         <Typography className={"message"}>
           ¿Estás seguro de que quieres borrar la experiencia?
         </Typography>
@@ -25,7 +28,7 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
           >
             Regresar
           </Button>
-          <Button type="submit" variant="contained" className={"right-button"}>
+          <Button onClick={deleteExperience} variant="contained" className={"right-button"}>
             Confirmar
           </Button>
         </Box>

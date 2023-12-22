@@ -6,7 +6,7 @@ import { FormEvent, useCallback, useContext } from "react";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
+const useAddExperienceForm = ({ experience, fetchProfile }: AddExperienceFormProps) => {
   const { token } = useAuthState();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
@@ -20,6 +20,7 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
         const data = addAProfileExperience(experience, token);
         setContent(ExperienceContent.Show);
         showSuccessToast("Experiencia agregada con éxito");
+        fetchProfile();
         return data;
       } catch (error) {
         showErrorToast(error);
@@ -40,6 +41,7 @@ export interface AddExperienceFormProps {
     endDate?: Date;
     description: string;
   };
+  fetchProfile: () => void;
 }
 
 export default useAddExperienceForm;

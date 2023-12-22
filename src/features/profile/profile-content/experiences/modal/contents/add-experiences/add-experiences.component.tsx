@@ -13,9 +13,11 @@ import useAddExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
 
 const AddExperienceModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
+  const {fetchProfile} = useProfileContext();
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -42,7 +44,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
     role,
   };
 
-  const { onSubmitForm } = useAddExperienceForm({ experience });
+  const { onSubmitForm } = useAddExperienceForm({ experience, fetchProfile });
 
   return (
     <Box className={className} sx={modalStyle}>
