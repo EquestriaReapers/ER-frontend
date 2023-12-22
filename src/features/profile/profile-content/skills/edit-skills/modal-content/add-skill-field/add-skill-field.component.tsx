@@ -4,9 +4,11 @@ import Autocomplete from "@mui/material/Autocomplete";
 import useAllSkills from "../use-all-skills";
 import { Option } from "../../use-skill-form-state";
 import useAddSkill from "../use-add-skill";
+import useProfileContext from "../../../../../profile-context/use-profile-context";
 
 const AddSkillField = () => {
-  const addSkill = useAddSkill();
+  const { fetchProfile } = useProfileContext();
+  const addSkill = useAddSkill({ fetchProfile });
   const skillsOptions = useSkillsOptions();
 
   return (

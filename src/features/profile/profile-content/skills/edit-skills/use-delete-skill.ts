@@ -6,7 +6,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 
-const useDeleteSkill = ({ skillId }: Props) => {
+const useDeleteSkill = ({ skillId, fetchProfile }: Props) => {
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
   const { showSuccessToast } = useSuccessToast();
@@ -16,6 +16,7 @@ const useDeleteSkill = ({ skillId }: Props) => {
       if (!token || !skillId) return;
       const data = await removeProfileSkill(token, skillId);
       showSuccessToast(data.message);
+      fetchProfile();
       return;
     } catch (error) {
       showErrorToast(error);
@@ -27,6 +28,7 @@ const useDeleteSkill = ({ skillId }: Props) => {
 
 export interface Props {
   skillId: number;
+  fetchProfile: () => void;
 }
 
 export default useDeleteSkill;

@@ -2,7 +2,7 @@ import { addProfileSkill } from "features/profile/services/profile/add-profile-s
 import { useAuthState } from "hooks/use-auth-state";
 import { useCallback } from "react";
 
-const useAddSkill = () => {
+const useAddSkill = ({ fetchProfile }: Payload) => {
   const { token } = useAuthState();
 
   const addSkill = useCallback(
@@ -10,6 +10,7 @@ const useAddSkill = () => {
       try {
         if (!token) return;
         const data = await addProfileSkill(token, { skillId });
+        fetchProfile();
         return data;
       } catch (error) {
         console.log(error);
@@ -19,5 +20,9 @@ const useAddSkill = () => {
   );
   return addSkill;
 };
+
+export interface Payload {
+  fetchProfile: () => void;
+}
 
 export default useAddSkill;
