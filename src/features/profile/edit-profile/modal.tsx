@@ -15,8 +15,6 @@ const EditProfileModal = () => {
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}
-        aria-labelledby="edit profile"
-        aria-describedby="used to edit profile"
       >
         <div>
           <EditProfileModalContent setIsOpen={setIsOpen} />

@@ -6,7 +6,7 @@ import { Experience } from "core/profiles/types";
 const ProfileExperience = ({
   isEditable,
   currentProfileExperience,
-}: ProfileExperienceProps) => {
+}: Props) => {
   return (
     <div>
       <Typography variant="h4">Experiencia:</Typography>
@@ -16,7 +16,7 @@ const ProfileExperience = ({
   );
 };
 
-export interface ProfileExperienceProps {
+export interface Props {
   isEditable: boolean;
   currentProfileExperience: Experience[];
 }

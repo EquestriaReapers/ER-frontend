@@ -4,7 +4,7 @@ import { FormEvent } from "react";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
 
-const useForm = ({ setIsOpen, user }: EditFormProps) => {
+const useForm = ({ setIsOpen, user }: Props) => {
   const { token } = useAuthState();
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,8 +26,8 @@ const useForm = ({ setIsOpen, user }: EditFormProps) => {
   return { onSubmitForm };
 };
 
-export interface EditFormProps {
-  setIsOpen: (arg0: boolean) => void;
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
   user: {
     name: string;
     description: string;

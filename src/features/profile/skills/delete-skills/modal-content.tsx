@@ -5,7 +5,7 @@ import { Profile } from "core/profiles/types";
 const DeleteSkillModalContent = ({
   onDeleteSkill,
   setIsOpen,
-}: DeleteSkillModalContentProps) => {
+}: Props) => {
   return (
     <Box sx={style}>
       <Typography>¿Estás seguro de que quieres borrar la habilidad?</Typography>
@@ -17,9 +17,9 @@ const DeleteSkillModalContent = ({
   );
 };
 
-export interface DeleteSkillModalContentProps {
+export interface Props {
   onDeleteSkill: () => Promise<Profile | undefined>;
-  setIsOpen: (arg0: boolean) => void;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default DeleteSkillModalContent;
