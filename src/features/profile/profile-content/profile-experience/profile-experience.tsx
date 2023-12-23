@@ -1,6 +1,6 @@
-import ShowExperiences from "../experiences/show-experiences/show-experiences";
+import ShowExperiences from "../../experiences/show-experiences/show-experiences";
 import Typography from "@mui/material/Typography";
-import EditProfileModal from "../edit-profile/modal";
+import EditProfileModal from "../../edit-profile/modal";
 import { Experience } from "core/profiles/types";
 
 const ProfileExperience = ({

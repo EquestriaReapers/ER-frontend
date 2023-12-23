@@ -1,8 +1,10 @@
 import { removeProfileSkill } from "features/profile/services/profile/remove-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
   const { token } = useAuthState();
+  const { showErrorToast } = useErrorToast();
   const onDeleteSkill = async () => {
     try {
       if (!token || !skillId) return;
@@ -10,7 +12,7 @@ const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
       setIsOpen(false);
       return data;
     } catch (error) {
-      console.log(error);
+      showErrorToast(error);
     }
   };
   return { onDeleteSkill };

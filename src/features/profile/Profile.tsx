@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import useProfile from "./use-profile";
-import ProfileContent from "./profile-content/profile-content";
+import ProfileContent from "./profile-content";
 import { Link, useParams } from "react-router-dom";
 
 const Profile = () => {

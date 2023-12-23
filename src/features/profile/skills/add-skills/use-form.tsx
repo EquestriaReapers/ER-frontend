@@ -1,10 +1,11 @@
 import { addProfileSkill } from "features/profile/services/profile/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
+import { useErrorToast } from "hooks/use-error-toast";
 import { FormEvent, useCallback } from "react";
 
 const useForm = ({ setIsOpen, selectedSkillId }: Props) => {
   const { token } = useAuthState();
-
+  const { showErrorToast } = useErrorToast();
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -15,10 +16,10 @@ const useForm = ({ setIsOpen, selectedSkillId }: Props) => {
         setIsOpen(false);
         return data;
       } catch (error) {
-        console.log(error);
+        showErrorToast(error);
       }
     },
-    [selectedSkillId, setIsOpen, token]
+    [selectedSkillId, setIsOpen, token, showErrorToast]
   );
   return { onSubmitForm };
 };
