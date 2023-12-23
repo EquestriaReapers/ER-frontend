@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   const onLogout = () => {
     dispatch(logout());
-    navigate("/home");
+    navigate("/login");
   };
 
   return (

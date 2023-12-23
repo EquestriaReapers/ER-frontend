@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 //Own
 import ProfileContextProvider from "./profile-context/ProfileContextProvider";
