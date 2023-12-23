@@ -1,24 +1,24 @@
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
-import DeleteSkillModal from "../delete-skills/modal";
 import SkillCard from "./skill-card";
+import { boxStyles } from "./styles/styles";
 
-const ShowSkills = ({ skills, isEditable }: Props) => {
+const ShowSkills = ({ skills }: Props) => {
   return (
-    <>
-      {skills.map((item: Skill) => (
-        <Box key={item.id}>
-          <SkillCard item={item} />
-          {isEditable && <DeleteSkillModal skillId={item.id} />}
-        </Box>
-      ))}
-    </>
+    <Box sx={boxStyles}>
+      {skills.map((item: Skill) => {
+        return (
+          <Box key={item.id}>
+            <SkillCard item={item} />
+          </Box>
+        );
+      })}
+    </Box>
   );
 };
 
 interface Props {
   skills: Skill[];
-  isEditable: boolean;
 }
 
 export default ShowSkills;

@@ -1,133 +1,145 @@
-import bannerImage from '../images/bannerImage.png'
+import bannerImage from "../images/bannerImage.png";
 
 export const bannerStyles = {
   width: {
-    xs: '100%',
-    sm: '100%',
-    md: '100%',
-    lg: '100%'
+    xs: "100%",
+    sm: "100%",
+    md: "100%",
+    lg: "100%",
   },
   height: {
-    xs: '90px',
-    md: '110px'
+    xs: "90px",
+    md: "110px",
   },
   backgroundImage: `url(${bannerImage})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center'
-}
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+};
 
 export const nameSectionStyles = {
   width: {
-    lg: '100%'
+    lg: "100%",
   },
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
   justifyContent: {
-    sm: 'space-between',
-    lg: 'space-between'
+    sm: "space-between",
+    lg: "space-between",
   },
-  gap: '30px',
-  mx: 'auto'
-}
+  gap: "30px",
+  mx: "auto",
+};
 
 export const buttonStyles = {
   width: {
-    xs: '100%',
-    sm: '100%'
+    xs: "100%",
+    sm: "100%",
   },
-  color: '#FCFEFE',
-  borderRadius: '2px',
-  textTransform: 'capitalize',
-  textAlign: 'center',
-  fontSize: '16px',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: 'normal',
-  fontFamily: 'inter'
-}
+  color: "#FCFEFE",
+  borderRadius: "2px",
+  textTransform: "capitalize",
+  textAlign: "center",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  fontFamily: "inter",
+};
 
 export const mainTitleStyles = {
-  color: '#007934',
-  fontWeight: '600',
-  fontFamily: 'inter'
-}
+  color: "#007934",
+  fontWeight: "600",
+  fontFamily: "inter",
+};
 
 export const nameStyles = {
-  paddingBottom: '12px',
-  display: 'flex',
-  fontWeight: '700',
-  fontFamily: 'inter'
-}
+  paddingBottom: "12px",
+  display: "flex",
+  fontWeight: "700",
+  fontFamily: "inter",
+};
 
 export const editIconStyles = {
   marginLeft: {
-    xs: '0px',
-    lg: '24px',
-    md: '24px',
-    sm: '24px'
-  }
-}
+    xs: "0px",
+    lg: "24px",
+    md: "24px",
+    sm: "24px",
+  },
+};
 
 export const aboutMeSection = {
-  display: 'flex',
+  display: "flex",
   flexWrap: {
-    lg: 'nowrap',
-    md: 'nowrap',
-    sm: 'nowrap',
-    xs: 'wrap'
+    lg: "nowrap",
+    md: "nowrap",
+    sm: "nowrap",
+    xs: "wrap",
   },
-  width: '100%',
-  justifyContent: 'space-between'
-}
+  width: "100%",
+  justifyContent: "space-between",
+};
 
 export const descriptionStyles = {
   width: {
-    xs: '100%',
-    sm: '90%'
+    xs: "100%",
+    sm: "90%",
   },
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: 'normal',
-  fontFamily: 'inter'
-}
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  fontFamily: "inter",
+};
 
 export const contactSectionStyles = {
-  display: 'flex',
-  width: { xs: '70%', sm: '27%' },
-  height: '30%',
-  backgroundColor: '#F4F4F4',
-  justifyContent: 'space-between',
-  px: { xs: '6px', sm: '24px' },
-  py: { xs: '8px', sm: '20px' },
-  flexDirection: 'column',
-  gap: '12px'
-}
+  display: "flex",
+  width: { xs: "70%", sm: "27%" },
+  height: "30%",
+  backgroundColor: "#F4F4F4",
+  justifyContent: "space-between",
+  px: { xs: "6px", sm: "24px" },
+  py: { xs: "8px", sm: "20px" },
+  flexDirection: "column",
+  gap: "12px",
+};
 
 export const locationBoxStyles = {
-  display: 'flex',
+  display: "flex",
   pr: {
-    lg: '160px',
-    xs: '20px'
-  }
-}
+    lg: "160px",
+    xs: "20px",
+  },
+};
 
 export const contactTitlesStyles = {
-  marginLeft: '4px',
-  fontFamily: 'inter',
-  fontWeight: '600'
-}
+  marginLeft: "4px",
+  fontFamily: "inter",
+  fontWeight: "600",
+};
 
 export const websiteBoxStyles = {
-  display: 'flex',
-  alignItems: 'center',
-  flexWrap: 'wrap'
-}
+  display: "flex",
+  alignItems: "center",
+  flexWrap: "wrap",
+};
 
 export const websiteTitleContainerStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
   pr: {
-    lg: '160px',
-    xs: '20px'
-  }
-}
+    lg: "160px",
+    xs: "20px",
+  },
+};
+export const boxStyles = {
+  fontWeight: "bold",
+  fontFamily: "Inter",
+  display: "flex",
+  flexWrap: "wrap",
+  py: 3,
+  marginLeft: {
+    xs: 3,
+    md: 10,
+    lg: 10,
+  },
+};
