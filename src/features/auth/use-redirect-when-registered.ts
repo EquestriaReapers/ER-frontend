@@ -10,8 +10,5 @@ export default function useRedirectWhenRegistered() {
   const authState = useAuthState();
   const navigate = useNavigate();
 
-  if (authState.isLogged) {
-    navigate(`/profile/${authState.user.id}`);
-    return;
-  }
+  if (authState.isLogged) navigate(`/profile/${authState.user.id}`);
 }

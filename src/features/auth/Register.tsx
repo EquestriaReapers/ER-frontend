@@ -6,6 +6,8 @@ import { FunctionComponent, useState, useCallback } from "react";
 import registerService from "features/auth/services/register.service";
 
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
+import { BackendError } from "app/exceptions";
+import { toast } from "sonner";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -25,13 +27,13 @@ function useRegister() {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = useCallback(
-    async (
-      name: string,
-      lastname: string,
-      email: string,
-      password: string,
-      confirmPassword: string
-    ) => {
+    async ({
+      name,
+      lastname,
+      email,
+      password,
+      confirmPassword,
+    }: RegisterPayload) => {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword)
@@ -44,9 +46,14 @@ function useRegister() {
             email,
             password,
           });
+          toast.success("Registro exitoso");
         }
       } catch (error) {
-        console.log(error);
+        if (error instanceof BackendError) {
+          toast.error(error.message);
+        } else {
+          toast.error("Error desconocido");
+        }
       } finally {
         setLoading(false);
       }
@@ -55,6 +62,14 @@ function useRegister() {
   );
 
   return { onSubmit, loading };
+}
+
+export interface RegisterPayload {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default Register;

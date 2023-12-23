@@ -1,16 +1,20 @@
 import { Box, Button, TextField } from "@mui/material";
 import { modalStyle } from "./styles/styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
-import useForm from "./use-form";
+import useOnSubmitForm from "./use-on-submit-form";
 
-const EditProfileModalContent = ({
-  setIsOpen,
-}: EditProfileModalContentProps) => {
-  const { name, description, onChangeName, onChangeDescription } =
-    useEditProfileFormState();
+const EditProfileModalContent = ({ setIsOpen }: Props) => {
+  const {
+    name,
+    description,
+    mainTitle,
+    onChangeName,
+    onChangeDescription,
+    onChangeMainTitle,
+  } = useEditProfileFormState();
 
-  const user = { name, description };
-  const { onSubmitForm } = useForm({ setIsOpen, user });
+  const user = { name, description, mainTitle };
+  const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
 
   return (
     <Box sx={modalStyle}>
@@ -28,6 +32,12 @@ const EditProfileModalContent = ({
           label="Descripción"
           onChange={onChangeDescription}
         />
+        <TextField
+          id="mainTitle"
+          value={mainTitle}
+          label="Titulo"
+          onChange={onChangeMainTitle}
+        />
 
         <Button variant="outlined" type="submit">
           Confirmar
@@ -37,8 +47,8 @@ const EditProfileModalContent = ({
   );
 };
 
-export interface EditProfileModalContentProps {
-  setIsOpen: (arg0: boolean) => void;
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default EditProfileModalContent;
