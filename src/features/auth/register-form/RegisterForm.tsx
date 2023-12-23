@@ -33,14 +33,11 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
     onChangeConfirmPassword,
   } = useRegisterFormState();
 
+  const LOGIN_BORDER_RADIUS = "11px";
 
-
-
-  const LOGIN_BORDER_RADIUS = '11px';
-
-  const {FormBoxStyles}  = FormBoxStylesFunct(); 
-  const {QuestionBoxStyles} = QuestionBoxStylesFunct();
-  const {LinkBoxStyles} = LinkBoxStylesFunct();
+  const { FormBoxStyles } = FormBoxStylesFunct();
+  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
+  const { LinkBoxStyles } = LinkBoxStylesFunct();
 
   return (
     <>
@@ -111,16 +108,25 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
           Registrarse
         </Button>
         <Box sx={RedirectBoxStyles}>
-            <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography> <Link href="/login" sx={LinkBoxStyles}>Inicia sesion</Link>
-          </Box>
+          <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
+          <Link href="/login" sx={LinkBoxStyles}>
+            Inicia sesión
+          </Link>
+        </Box>
       </Box>
     </>
   );
 };
 
 export interface props {
-    disabled: boolean;
-    onSubmit: (name: string, email: string, password: string, confirmPassword: string) => void;
+  disabled: boolean;
+  onSubmit: (
+    name: string,
+    lastname: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+  ) => void;
 }
 
 export default RegisterForm;
