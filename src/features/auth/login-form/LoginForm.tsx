@@ -1,19 +1,20 @@
-import { useState } from 'react';
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Link from '@mui/material/Link';
+
 import ucabLogo from "../images/ucabLogo.webp";
 import "../../../styles/index.css";
-import { TextFieldTypography, 
-  UcabLogoStyles, 
+import {
+  TextFieldTypography,
+  UcabLogoStyles,
   ImageBoxStyles,
   FormBottomTypographyStyles,
-  TextFieldStyles, 
+  TextFieldStyles,
   ButtonStyles,
   CheckBoxStyles,
   QuestionBoxStylesFunct,
@@ -23,36 +24,30 @@ import { TextFieldTypography,
   FormBottomStylesFunct,
   InsideFormBottomStylesFunct,
   ForgotPasswordStylesFunct,
-
 } from "./LoginFormStyles.tsx";
+import { Link } from "react-router-dom";
 
 const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const { email, password, onChangeEmail, onChangePassword } =
     useLoginFormState();
-  
-    const [keepLogged, setKeepLogged] = useState(false);
-    
-    const handleKeepLoggedChange = () => {
-      setKeepLogged(!keepLogged); 
-    };
 
-    const {QuestionBoxStyles} = QuestionBoxStylesFunct();
-    const {LinkBoxStyles} = LinkBoxStylesFunct();
-    const {FormBoxStyles} = FormBoxStylesFunct();
-    const {FormBottomStyles} = FormBottomStylesFunct();
-    const {InsideFormBottomStyles} = InsideFormBottomStylesFunct();
-    const {ForgotPasswordStyles} = ForgotPasswordStylesFunct();
+  const [keepLogged, setKeepLogged] = useState(false);
 
-    const LOGIN_BORDER_RADIUS = '11px';
+  const handleKeepLoggedChange = () => {
+    setKeepLogged(!keepLogged);
+  };
 
+  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
+  const { LinkBoxStyles } = LinkBoxStylesFunct();
+  const { FormBoxStyles } = FormBoxStylesFunct();
+  const { FormBottomStyles } = FormBottomStylesFunct();
+  const { InsideFormBottomStyles } = InsideFormBottomStylesFunct();
+  const { ForgotPasswordStyles } = ForgotPasswordStylesFunct();
 
-
-
-
+  const LOGIN_BORDER_RADIUS = "11px";
 
   return (
     <>
-
       <Box sx={FormBoxStyles}>
         <Box sx={ImageBoxStyles}>
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
@@ -75,7 +70,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             type="password"
             onChange={onChangePassword}
             disabled={disabled}
-            sx={{ ...TextFieldStyles, marginBottom: '26px' }}
+            sx={{ ...TextFieldStyles, marginBottom: "26px" }}
             InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
           <Box>
@@ -94,13 +89,15 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           </Box>
           <Box sx={FormBottomStyles}>
             <Box sx={InsideFormBottomStyles}>
-            <Checkbox
-              checked={keepLogged}
-              onChange={handleKeepLoggedChange}
-              inputProps={{ 'aria-label': 'Checkbox' }}
-              sx={CheckBoxStyles}
-            />
-              <Typography sx={FormBottomTypographyStyles}>Permanecer conectado</Typography>
+              <Checkbox
+                checked={keepLogged}
+                onChange={handleKeepLoggedChange}
+                inputProps={{ "aria-label": "Checkbox" }}
+                sx={CheckBoxStyles}
+              />
+              <Typography sx={FormBottomTypographyStyles}>
+                Permanecer conectado
+              </Typography>
             </Box>
             <Box sx={ForgotPasswordStyles}>
               <Link href="#" rel="noopener noreferrer">
@@ -109,7 +106,12 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             </Box>
           </Box>
           <Box sx={RedirectBoxStyles}>
-            <Typography sx={QuestionBoxStyles}>¿Aun no tienes cuenta?</Typography> <Link href="/register" sx={LinkBoxStyles}>Registrate</Link>
+            <Typography sx={QuestionBoxStyles}>
+              ¿Aun no tienes cuenta?
+            </Typography>{" "}
+            <Link to="/register" style={LinkBoxStyles}>
+              Registrate
+            </Link>
           </Box>
         </Box>
       </Box>

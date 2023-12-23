@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucabLogo.webp";
 import "../../../styles/index.css";
@@ -109,7 +109,7 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
         </Button>
         <Box sx={RedirectBoxStyles}>
           <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
-          <Link href="/login" sx={LinkBoxStyles}>
+          <Link to="/login" style={LinkBoxStyles}>
             Inicia sesión
           </Link>
         </Box>
