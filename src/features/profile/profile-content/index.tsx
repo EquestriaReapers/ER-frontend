@@ -50,7 +50,6 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 </Typography>
                 <Typography variant='h4' sx={mainTitleStyles}>
                   {profile.mainTitle}
-                  Ingenieria Informatica
                 </Typography>
               </Box>
               <Box sx={{ width: { xs: '100%', sm: '30%', md: '20%' } }}>
