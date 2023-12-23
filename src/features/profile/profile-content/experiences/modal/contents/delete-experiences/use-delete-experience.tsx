@@ -1,20 +1,24 @@
-import { deleteAProfileExperience } from "features/profile/services/experience.service";
+import { deleteAProfileExperience } from "features/profile/services/experience/delete-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { useNavigate } from "react-router";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
-const useDeleteExperience = ({ setContent, experienceId, fetchProfile }: Payload) => {
-  const { token } = useAuthState();
+const useDeleteExperience = ({ experienceId }: Payload) => {
+  const { setContent } = useContext(ExperiencesModalContext);
+  const { fetchProfile } = useProfileContext();
+  const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
 
   const deleteExperience = useCallback(async () => {
     try {
-      if (!token || !experienceId) return;
+      const token = getToken();
       const data = await deleteAProfileExperience(token, experienceId);
-      console.log(data);
       setContent(ExperienceContent.Show);
       showSuccessToast("Experiencia borrada con éxito");
       fetchProfile();
@@ -22,14 +26,36 @@ const useDeleteExperience = ({ setContent, experienceId, fetchProfile }: Payload
     } catch (error) {
       showErrorToast(error);
     }
-  }, [experienceId, setContent, showErrorToast, showSuccessToast, token]);
+  }, [
+    experienceId,
+    fetchProfile,
+    getToken,
+    setContent,
+    showErrorToast,
+    showSuccessToast,
+  ]);
+
   return deleteExperience;
 };
 
 export interface Payload {
-  setContent: (arg0: ExperienceContent) => void;
   experienceId: number;
-  fetchProfile: () => void;
+}
+
+function useGetToken() {
+  const navigate = useNavigate();
+  const { token } = useAuthState();
+
+  return useCallback(() => {
+    if (!token) {
+      navigate("/login");
+      throw new Error(
+        "No se ha encontrado un token local para hacer la peticion"
+      );
+    }
+
+    return token;
+  }, [navigate, token]);
 }
 
 export default useDeleteExperience;

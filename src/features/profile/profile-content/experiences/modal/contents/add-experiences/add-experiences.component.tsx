@@ -13,11 +13,11 @@ import useAddExperienceForm from "./use-form";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
-import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 
 const AddExperienceModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
-  const { fetchProfile } = useProfileContext();
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -33,18 +33,16 @@ const AddExperienceModalContent = ({ className }: Props) => {
     role,
   } = useExperienceFormState();
 
-  const startDateValue = startDate ? startDate : new Date();
-
   const experience = {
     businessName,
     description,
     endDate,
     location,
-    startDate: startDateValue,
+    startDate,
     role,
   };
 
-  const { onSubmitForm } = useAddExperienceForm({ experience, fetchProfile });
+  const { onSubmitForm } = useAddExperienceForm({ experience });
 
   return (
     <Box className={className} sx={modalStyle}>
@@ -94,20 +92,22 @@ const AddExperienceModalContent = ({ className }: Props) => {
 
             <Box className="inputStyles">
               <Box className="inputContainer pr-5px">
-                <TextField
-                  sx={textFieldStyles}
-                  id="startDate"
-                  label="Fecha Inicial"
-                  onChange={onChangeStartDate}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    sx={textFieldStyles}
+                    label="Fecha Inicial"
+                    onChange={onChangeStartDate}
+                  />
+                </LocalizationProvider>
               </Box>
               <Box className="inputContainer pl-5px">
-                <TextField
-                  sx={textFieldStyles}
-                  id="endDate"
-                  label="Fecha Final"
-                  onChange={onChangeEndDate}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    sx={textFieldStyles}
+                    label="Fecha Final"
+                    onChange={onChangeEndDate}
+                  />
+                </LocalizationProvider>
               </Box>
             </Box>
 

@@ -2,7 +2,7 @@ import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Experience } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import useExperienceFormState from "../use-experience-form-state";
-import useEditExperienceForm from "./use-form";
+import useForm from "./use-form";
 import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
@@ -13,17 +13,13 @@ import {
   buttonStyle,
 } from "./styles";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
-import ExperiencesModalContext from "../../experiencies-modal-context";
-import useProfileContext from "features/profile/profile-context/use-profile-context";
-
-
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import esLocale from "date-fns/locale/es";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import React from "react";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
+import ExperiencesModalContext from "../../experiencies-modal-context";
 
 const EditExperienceModalContent = ({ anExperience, className }: Props) => {
+  const { setContent } = useContext(ExperiencesModalContext);
   const {
     onChangeBusinessName,
     onChangeDescription,
@@ -44,19 +40,14 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     startDate,
     role,
   } = useExperienceFormState();
-  const { setContent } = useContext(ExperiencesModalContext);
-  const { fetchProfile } = useProfileContext();
-  const startDateValue = startDate ? startDate : new Date();
-
-  const [value, setValue] = React.useState<Dayjs | null>(null); //cosas del DatePicker
 
   const getExperienceInfo = useCallback(() => {
     setBusinessName(anExperience.businessName);
     setDescription(anExperience.description);
-    setEndDate(anExperience.endDate!);
     setLocation(anExperience.location);
     setRole(anExperience.role);
-    setStartDate(anExperience.startDate);
+    setEndDate(toDateOrNull(anExperience.endDate));
+    setStartDate(toDateOrNull(anExperience.startDate));
   }, [
     setBusinessName,
     setDescription,
@@ -71,22 +62,20 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
     getExperienceInfo();
   }, [getExperienceInfo]);
 
-  const newExperience = {
+  const anExperiencieState = {
     businessName,
     description,
     endDate,
     location,
-    startDate: startDateValue,
+    startDate,
     role,
   };
 
   const experienceId = anExperience.id;
 
-  const { onSubmitForm } = useEditExperienceForm({
-    setContent,
-    newExperience,
+  const onSubmitForm = useForm({
+    anExperience: anExperiencieState,
     experienceId,
-    fetchProfile
   });
 
   return (
@@ -111,7 +100,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                 sx={textFieldStyles}
                 id="role"
                 label="Cargo / Puesto"
-                value={newExperience.role}
+                value={role}
                 onChange={onChangeRole}
               />
             </Box>
@@ -121,7 +110,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                   sx={textFieldStyles}
                   id="businessName"
                   label="Empresa"
-                  value={newExperience.businessName}
+                  value={businessName}
                   onChange={onChangeBusinessName}
                 />
               </Box>
@@ -130,42 +119,31 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                   sx={textFieldStyles}
                   id="location"
                   label="Ubicación"
-                  value={newExperience.location}
+                  value={location}
                   onChange={onChangeLocation}
                 />
               </Box>
             </Box>
             <Box className="inputStyles">
               <Box className="inputContainer pr-5px">
-                <TextField
-                  sx={textFieldStyles}
-                  id="startDate"
-                  label="Fecha Inicial"
-                  value={newExperience.startDate}
-                  onChange={onChangeStartDate}
-                />
-                <LocalizationProvider
-                  dateAdapter={AdapterDateFns}
-                  adapterLocale={esLocale}
-                >
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                     sx={textFieldStyles}
                     label="Fecha Inicial"
-                    value={value}
-                    onChange={(newValue) => {
-                      setValue(newValue);
-                    }}
+                    value={startDate}
+                    onChange={onChangeStartDate}
                   />
                 </LocalizationProvider>
               </Box>
               <Box className="inputContainer pl-5px">
-                <TextField
-                  sx={textFieldStyles}
-                  id="endDate"
-                  label="Fecha Final"
-                  value={newExperience.endDate}
-                  onChange={onChangeEndDate}
-                />
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                    sx={textFieldStyles}
+                    label="Fecha Final"
+                    value={endDate}
+                    onChange={onChangeEndDate}
+                  />
+                </LocalizationProvider>
               </Box>
             </Box>
             <Box className="inputContainer">
@@ -175,7 +153,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
                 multiline
                 rows={4}
                 label="Descripción"
-                value={newExperience.description}
+                value={description}
                 onChange={onChangeDescription}
               />
             </Box>
@@ -197,4 +175,9 @@ export default EditExperienceModalContent;
 interface Props {
   anExperience: Experience;
   className?: string;
+}
+
+function toDateOrNull(date: string | Date | null): Dayjs | null {
+  if (date) return dayjs(date);
+  return null;
 }

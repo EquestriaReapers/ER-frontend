@@ -5,16 +5,11 @@ import useDeleteExperience from "./use-delete-experience";
 import { ExperienceContent } from "../../experiencies-modal-context/types";
 import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
-import useProfileContext from "features/profile/profile-context/use-profile-context";
 
 const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
-  const {fetchProfile} = useProfileContext();
-  const deleteExperience = useDeleteExperience({
-    setContent,
-    experienceId,
-    fetchProfile,
-  });
+  const deleteExperience = useDeleteExperience({ experienceId });
+
   return (
     <Box className={className} sx={modalStyle}>
       <form>
@@ -28,7 +23,11 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
           >
             Regresar
           </Button>
-          <Button onClick={deleteExperience} variant="contained" className={"right-button"}>
+          <Button
+            onClick={deleteExperience}
+            variant="contained"
+            className={"right-button"}
+          >
             Confirmar
           </Button>
         </Box>

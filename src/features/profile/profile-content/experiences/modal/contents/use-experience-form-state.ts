@@ -1,11 +1,12 @@
 import { useState, ChangeEvent } from "react";
+import { Dayjs } from "dayjs";
 
 const useExperienceFormState = () => {
   const [businessName, setBusinessName] = useState("");
   const [role, setRole] = useState("");
   const [location, setLocation] = useState("");
-  const [startDate, setStartDate] = useState<Date>();
-  const [endDate, setEndDate] = useState<Date>();
+  const [startDate, setStartDate] = useState<Dayjs | null>(null);
+  const [endDate, setEndDate] = useState<Dayjs | null>(null);
   const [description, setDescription] = useState("");
 
   const onChangeBusinessName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,14 +18,14 @@ const useExperienceFormState = () => {
   const onChangeLocation = (event: ChangeEvent<HTMLInputElement>) => {
     setLocation(event.target.value);
   };
-  const onChangeStartDate = (event: ChangeEvent<HTMLInputElement>) => {
-    setStartDate(new Date(event.target.value));
+  const onChangeStartDate = (date: Dayjs | null) => {
+    setStartDate(date);
   };
   const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
   };
-  const onChangeEndDate = (event: ChangeEvent<HTMLInputElement>) => {
-    setEndDate(new Date(event.target.value));
+  const onChangeEndDate = (date: Dayjs | null) => {
+    setEndDate(date);
   };
 
   return {
