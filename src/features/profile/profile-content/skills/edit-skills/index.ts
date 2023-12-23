@@ -1,1 +1,1 @@
-export { default } from "./edit-skills.component";
+export { default } from "./edit-skills.styled";

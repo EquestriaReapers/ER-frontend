@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import EditProfileModal from "../edit-profile/modal";
+import EditProfileModal from "./profile-data/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./skills";
 import Experiences from "./experiences";

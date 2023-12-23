@@ -1,5 +1,5 @@
 import { PROFILES_URL } from "./config/config";
-import { MessageResponse, UpdateProfileBody } from "./config/config";
+import { MessageResponse } from "./config/config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 
@@ -17,4 +17,11 @@ export async function updateProfile(
   } catch (error) {
     throw new BackendError(error);
   }
+}
+
+export interface UpdateProfileBody {
+  description: string;
+  mainTitle: string;
+  lastname: string;
+  name: string;
 }

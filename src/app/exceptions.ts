@@ -72,4 +72,8 @@ export class BackendError extends Error implements AppError {
   public getDetails(): string[] {
     return this.details;
   }
+
+  public haveDetails(): boolean {
+    return this.details.length > 0;
+  }
 }
