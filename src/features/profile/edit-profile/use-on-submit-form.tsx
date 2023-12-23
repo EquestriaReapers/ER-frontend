@@ -12,9 +12,6 @@ const useOnSubmitForm = ({ setIsOpen, user, fetchProfile }: Props) => {
       if (!token || !user) return;
       const data = await updateProfile(token, user);
       setIsOpen(false);
-      console.log(user.lastname);
-      console.log(user.name);
-
       fetchProfile();
       return data;
     } catch (error) {

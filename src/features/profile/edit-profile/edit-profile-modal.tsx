@@ -6,11 +6,15 @@ import { useAuthState } from "hooks/use-auth-state";
 import { modalStyle } from "./styles";
 import { updateProfile } from "../services/profile/update-profile.service";
 import useGetProfileInfo from "./use-get-profile-info";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
 
   const { token } = useAuthState();
 
@@ -44,7 +48,11 @@ const EditProfileModal = () => {
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        if (!token || !name || !description || !lastname || !mainTitle) return;
+        if (!token || !name || !description || !lastname || !mainTitle) {
+          showErrorToast("Debe rellenar todos los campos");
+          return;
+        }
+
         const data = await updateProfile(token, {
           name,
           description,
@@ -52,12 +60,21 @@ const EditProfileModal = () => {
           lastname,
         });
         setIsOpen(false);
+        showSuccessToast("Perfil editado con éxito");
         return data;
       } catch (error) {
-        console.log(error);
+        showErrorToast(error);
       }
     },
-    [description, name, setMainTitle, setLastname, token]
+    [
+      description,
+      lastname,
+      mainTitle,
+      name,
+      showErrorToast,
+      showSuccessToast,
+      token,
+    ]
   );
 
   return (

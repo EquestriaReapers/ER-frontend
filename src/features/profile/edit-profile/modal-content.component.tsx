@@ -24,7 +24,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   } = useEditProfileFormState();
 
   const user = { name, description, lastname, mainTitle };
-  const {fetchProfile} = useProfileContext();
+  const { fetchProfile } = useProfileContext();
   const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user, fetchProfile });
 
   return (
@@ -36,23 +36,23 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           Puedes editar los datos de tu perfil en esta sección
         </Typography>
       </Box>
-      <form onSubmit={onSubmitForm}>
+      <form onSubmit={onSubmitForm} autoComplete="off">
         <Box className="inputStyles">
           <Box className="inputContainer pr-5px">
             <TextField
               sx={textFieldStyles}
-              id="name"
               value={name}
               label="Nombre"
+              autoComplete="off"
               onChange={onChangeName}
             />
           </Box>
           <Box className="inputContainer pl-5px">
             <TextField
               sx={textFieldStyles}
-              id="lastname"
               value={lastname}
               label="Apellido"
+              autoComplete="off"
               onChange={onChangeLastname}
             />
           </Box>
@@ -61,9 +61,9 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           <Box className="inputContainer">
             <TextField
               sx={textFieldStyles}
-              id="mainTitle"
               value={mainTitle}
               label="Titulación"
+              autoComplete="off"
               onChange={onChangeMainTitle}
             />
           </Box>
@@ -72,17 +72,17 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           <Box className="inputContainer">
             <TextField
               sx={textFieldStyles}
-              id="description"
               value={description}
               label="Sobre mi"
               multiline
               rows={4}
+              autoComplete="off"
               onChange={onChangeDescription}
             />
           </Box>
         </Box>
         <Box>
-          <Typography >
+          <Typography>
             Sólo se mostraran 140 palabras en tu perfil, luego tendrás que darle
             a "leer más"
           </Typography>

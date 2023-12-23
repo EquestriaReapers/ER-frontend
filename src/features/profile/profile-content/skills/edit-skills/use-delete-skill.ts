@@ -5,8 +5,10 @@ import { removeProfileSkill } from "features/profile/services/profile/remove-pro
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
 
-const useDeleteSkill = ({ skillId, fetchProfile }: Props) => {
+const useDeleteSkill = (skillId: number) => {
+  const { fetchProfile } = useProfileContext();
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
   const { showSuccessToast } = useSuccessToast();
@@ -21,14 +23,9 @@ const useDeleteSkill = ({ skillId, fetchProfile }: Props) => {
     } catch (error) {
       showErrorToast(error);
     }
-  }, [showSuccessToast, showErrorToast, skillId, token]);
+  }, [token, skillId, showSuccessToast, fetchProfile, showErrorToast]);
 
   return deleteSkill;
 };
-
-export interface Props {
-  skillId: number;
-  fetchProfile: () => void;
-}
 
 export default useDeleteSkill;

@@ -5,7 +5,6 @@ export const useCreateNewSkillState = () => {
 
   const onChangeNewSkill = (event: ChangeEvent<HTMLInputElement>) => {
     setNewSkill(event.target.value);
-    console.log(event.target.value);
   };
 
   return {
