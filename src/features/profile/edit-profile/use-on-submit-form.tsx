@@ -4,7 +4,7 @@ import { FormEvent } from "react";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
 
-const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
+const useOnSubmitForm = ({ setIsOpen, user, fetchProfile }: Props) => {
   const { token } = useAuthState();
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -12,6 +12,10 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
       if (!token || !user) return;
       const data = await updateProfile(token, user);
       setIsOpen(false);
+      console.log(user.lastname);
+      console.log(user.name);
+
+      fetchProfile();
       return data;
     } catch (error) {
       if (error instanceof BackendError) {
@@ -27,8 +31,11 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
 export interface Props {
   setIsOpen: (isOpen: boolean) => void;
   user: {
-    name: string;
     description: string;
+    mainTitle: string;
+    lastname: string;
+    name: string;
   };
+  fetchProfile: () => void;
 }
 export default useOnSubmitForm;

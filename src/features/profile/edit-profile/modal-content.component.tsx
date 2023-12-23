@@ -9,6 +9,7 @@ import {
 } from "./styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
+import useProfileContext from "../profile-context/use-profile-context";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   const {
@@ -22,8 +23,9 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
     onChangeMainTitle,
   } = useEditProfileFormState();
 
-  const user = { name, description };
-  const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
+  const user = { name, description, lastname, mainTitle };
+  const {fetchProfile} = useProfileContext();
+  const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user, fetchProfile });
 
   return (
     <Box className={className} sx={modalStyle}>
