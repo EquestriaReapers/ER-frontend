@@ -13,7 +13,7 @@ export const boxStyles = {
 };
 
 export const nameStyles = {
-  fontSize: "22px",
+  fontSize: { xs: "18px", sm: "22px" },
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
@@ -55,4 +55,5 @@ export const descriptionStyles = {
   fontWeight: "400",
   color: "#444444",
   fontFamily: "Inter",
+  wordWrap: "break-word",
 };

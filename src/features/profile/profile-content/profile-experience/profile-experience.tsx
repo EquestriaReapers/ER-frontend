@@ -3,6 +3,7 @@ import { Experience } from "core/profiles/types";
 import ShowExperiences from "features/profile/experiences/show-experiences/show-experiences";
 import EditProfileModal from "features/profile/edit-profile/modal";
 import { Box } from "@mui/material";
+import { experienceTitleTypographyStyles } from "./styles/styles";
 
 const ProfileExperience = ({ isEditable, currentProfileExperience }: Props) => {
   return (
@@ -14,17 +15,7 @@ const ProfileExperience = ({ isEditable, currentProfileExperience }: Props) => {
       }}
     >
       <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-        <Typography
-          variant="h4"
-          sx={{
-            color: "#000",
-            fontFamily: "inter",
-            fontSize: { xs: "22px", sm: "35px" },
-            fontStyle: "normal",
-            fontWeight: "700",
-            lineHeight: "normal",
-          }}
-        >
+        <Typography variant="h4" sx={experienceTitleTypographyStyles}>
           Experiencia
         </Typography>
         {isEditable && <EditProfileModal />}

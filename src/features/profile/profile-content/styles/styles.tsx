@@ -1,145 +1,177 @@
-import bannerImage from '../images/bannerImage.png'
+import bannerImage from "../images/bannerImage.png";
 
 export const boxStyles = {
-  fontWeight: 'bold',
-  fontFamily: 'Inter',
-  display: 'flex',
-  flexWrap: 'wrap',
-  py: 3
-}
+  fontWeight: "bold",
+  fontFamily: "Inter",
+  display: "flex",
+  flexWrap: "wrap",
+  py: 3,
+};
 
 export const bannerStyles = {
   width: {
-    xs: '100%',
-    sm: '100%',
-    md: '100%',
-    lg: '100%'
+    xs: "100%",
+    sm: "100%",
+    md: "100%",
+    lg: "100%",
   },
   height: {
-    xs: '90px',
-    md: '150px'
+    xs: "90px",
+    md: "150px",
   },
-  boxShadow: '0px 2px 4px 0px rgba(0, 0, 0, 0.25)',
+  boxShadow: {
+    xs: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
+    lg: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
+  },
   backgroundImage: `url(${bannerImage})`,
-  backgroundSize: 'cover',
-  backgroundPosition: 'center'
-}
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+};
 
 export const nameSectionStyles = {
   width: {
-    lg: '100%'
+    lg: "100%",
   },
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
   justifyContent: {
-    sm: 'space-between',
-    lg: 'space-between'
+    sm: "space-between",
+    lg: "space-between",
   },
-  gap: '30px'
-}
+  gap: "30px",
+};
 
 export const buttonStyles = {
   width: {
-    xs: '100%',
-    sm: '100%'
+    xs: "100%",
+    sm: "100%",
   },
-  height: { xs: '100%', sm: '80%', md: '40%' },
-  color: '#FCFEFE',
-  borderRadius: '2px',
-  textTransform: 'capitalize',
-  textAlign: 'center',
-  fontSize: { xs: '15px', sm: '18px' },
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: 'normal',
-  fontFamily: 'inter'
-}
+  height: { xs: "100%", sm: "50%", md: "45%" },
+  color: "#FCFEFE",
+  borderRadius: "2px",
+  textTransform: "capitalize",
+  textAlign: "center",
+  fontSize: { xs: "15px", sm: "18px", md: "20px" },
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  fontFamily: "inter",
+};
 
 export const mainTitleStyles = {
-  color: '#007934',
-  fontWeight: '600',
-  fontFamily: 'inter',
-  fontSize: { xs: '22px', sm: '32px' }
-}
+  color: "#007934",
+  fontWeight: "600",
+  fontFamily: "inter",
+  fontSize: { xs: "22px", sm: "32px" },
+};
 
 export const nameStyles = {
-  paddingBottom: '12px',
-  display: 'flex',
-  fontWeight: '700',
-  fontFamily: 'inter',
-  fontSize: { xs: '32px', sm: '42px' }
-}
+  paddingBottom: "12px",
+  display: "flex",
+  fontWeight: "700",
+  fontFamily: "inter",
+  fontSize: { xs: "32px", sm: "42px" },
+};
 
 export const editIconStyles = {
   marginLeft: {
-    xs: '0px',
-    lg: '24px',
-    md: '24px',
-    sm: '24px'
-  }
-}
+    xs: "0px",
+    lg: "24px",
+    md: "24px",
+    sm: "24px",
+  },
+};
 
 export const aboutMeSection = {
-  display: 'flex',
+  display: "flex",
   flexWrap: {
-    lg: 'nowrap',
-    md: 'nowrap',
-    sm: 'nowrap',
-    xs: 'wrap'
+    lg: "nowrap",
+    md: "nowrap",
+    sm: "nowrap",
+    xs: "wrap",
   },
-  width: '100%',
-  justifyContent: 'space-between'
-}
+  width: "100%",
+  justifyContent: "space-between",
+  gap: { xs: "22px", sm: "0" },
+};
 
 export const descriptionStyles = {
   width: {
-    xs: '100%',
-    sm: '90%'
+    xs: "100%",
+    sm: "90%",
   },
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: 'normal',
-  fontFamily: 'inter',
-  fontSize: { xs: '15px', sm: '18px' }
-}
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  fontFamily: "inter",
+  fontSize: { xs: "15px", sm: "18px" },
+};
 
 export const contactSectionStyles = {
-  display: 'flex',
-  width: { xs: '100%', sm: '27%' },
-  height: '30%',
-  backgroundColor: '#F4F4F4',
-  justifyContent: 'space-between',
-  px: { xs: '6px', sm: '24px' },
-  py: { xs: '8px', sm: '20px' },
-  flexDirection: 'column',
-  gap: '12px'
-}
+  display: "flex",
+  width: { xs: "100%", sm: "25%" },
+  height: "30%",
+  backgroundColor: "#F4F4F4",
+  justifyContent: "space-between",
+  flexDirection: "column",
+  py: { xs: "11px", sm: "15px", md: "25px" },
+  px: { xs: "8px", sm: "15px", md: "25px" },
+};
 
 export const locationBoxStyles = {
-  display: 'flex',
-  pr: {
-    lg: '140px',
-    xs: '20px'
-  }
-}
+  display: "flex",
+};
 
 export const contactTitlesStyles = {
-  marginLeft: '4px',
-  fontFamily: 'inter',
-  fontWeight: '600'
-}
+  fontFamily: "inter",
+  fontWeight: "600",
+};
 
 export const websiteBoxStyles = {
-  display: 'flex',
-  alignItems: 'center',
-  flexWrap: 'wrap'
-}
+  display: "flex",
+  flexDirection: "column",
+};
 
 export const websiteTitleContainerStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  pr: {
-    lg: '160px',
-    xs: '20px'
-  }
-}
+  display: "flex",
+};
+
+export const topSectionStyles = {
+  width: "100%",
+  mt: "30px",
+  display: "flex",
+  flexDirection: "column",
+  gap: { xs: "16px", sm: "31px" },
+};
+
+export const pageContainerStyles = {
+  mx: { xs: "24px", md: "120px" },
+  display: "flex",
+  flexDirection: "column",
+  gap: { xs: "16px", sm: "37px" },
+};
+
+export const descriptionBoxStyles = {
+  gap: "17px",
+  display: "flex",
+  flexDirection: "column",
+  width: { xs: "100%", sm: "70%" },
+};
+
+export const aboutMeTypographyStyles = {
+  fontWeight: "700",
+  fontFamily: "inter",
+  fontSize: { xs: "20px", sm: "35px" },
+};
+
+export const skillsAndExperiencesBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  gap: { xs: "29px", sm: "37px" },
+};
+
+export const locationAndEditButtonStyles = {
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
+};
