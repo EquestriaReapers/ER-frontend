@@ -116,6 +116,7 @@ export const contactSectionStyles = {
   flexDirection: "column",
   py: { xs: "11px", sm: "15px", md: "25px" },
   px: { xs: "8px", sm: "15px", md: "25px" },
+  gap: "10px",
 };
 
 export const locationBoxStyles = {
