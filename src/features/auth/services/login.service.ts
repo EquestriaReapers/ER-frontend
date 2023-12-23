@@ -24,4 +24,5 @@ export interface LoginResponse {
   email: string;
   role: Role;
   id: number;
+  deletedAt: Date | null;
 }

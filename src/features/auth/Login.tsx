@@ -1,6 +1,4 @@
-import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
-import { Box } from "@mui/material";
 import { FunctionComponent, useCallback, useState } from "react";
 import loginService from "features/auth/services/login.service";
 import { useDispatch } from "react-redux";
@@ -8,18 +6,20 @@ import { login as loginAction } from "features/auth/store/auth-slice";
 import useRedirectWhenLogged from "hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
+import Div100vh from "react-div-100vh";
+import { loginProfileStyles } from "./styles/LoginStyles";
+import "../../styles/index.css";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
   return (
-    <Box>
-      <Typography>Login</Typography>
-      <FormControl margin="normal">
+    <Div100vh style={loginProfileStyles}>
+      <FormControl>
         <LoginForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
-    </Box>
+    </Div100vh>
   );
 };
 
@@ -37,7 +37,10 @@ function useLogin() {
     async (email: string, password: string) => {
       setLoading(true);
       try {
-        if (!email || !password) return;
+        if (!email || !password) {
+          alert("Por favor introduce el usuario y la contraseña.");
+          return;
+        }
 
         const result = await loginService({
           email,
