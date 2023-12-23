@@ -106,10 +106,10 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           </Box>
           <Box sx={RedirectBoxStyles}>
             <Typography sx={QuestionBoxStyles}>
-              ¿Aun no tienes cuenta?
+              ¿Aún no tienes cuenta?
             </Typography>{" "}
             <Link href="/register" sx={LinkBoxStyles}>
-              Registrate
+              Regístrate
             </Link>
           </Box>
         </Box>

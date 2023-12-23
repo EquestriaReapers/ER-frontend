@@ -40,7 +40,7 @@ function useRegister() {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword) {
-          alert("Todos los campos son obligatorios.");
+          showErrorToast("Todos los campos son obligatorios");
           return;
         }
         if (password != confirmPassword)
