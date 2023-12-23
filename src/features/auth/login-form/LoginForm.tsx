@@ -17,13 +17,13 @@ import {
   TextFieldStyles,
   ButtonStyles,
   CheckBoxStyles,
-  QuestionBoxStylesFunct,
-  LinkBoxStylesFunct,
+  useQuestionBoxStylesFunct,
+  useLinkBoxStylesFunct,
   RedirectBoxStyles,
-  FormBoxStylesFunct,
-  FormBottomStylesFunct,
-  InsideFormBottomStylesFunct,
-  ForgotPasswordStylesFunct,
+  useFormBoxStylesFunct,
+  useFormBottomStylesFunct,
+  useInsideFormBottomStylesFunct,
+  useForgotPasswordStylesFunct,
 } from "./LoginFormStyles.tsx";
 import { Link } from "react-router-dom";
 
@@ -37,12 +37,12 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
     setKeepLogged(!keepLogged);
   };
 
-  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
-  const { LinkBoxStyles } = LinkBoxStylesFunct();
-  const { FormBoxStyles } = FormBoxStylesFunct();
-  const { FormBottomStyles } = FormBottomStylesFunct();
-  const { InsideFormBottomStyles } = InsideFormBottomStylesFunct();
-  const { ForgotPasswordStyles } = ForgotPasswordStylesFunct();
+  const QuestionBoxStyles = useQuestionBoxStylesFunct();
+  const LinkBoxStyles = useLinkBoxStylesFunct();
+  const FormBoxStyles = useFormBoxStylesFunct();
+  const FormBottomStyles = useFormBottomStylesFunct();
+  const InsideFormBottomStyles = useInsideFormBottomStylesFunct();
+  const ForgotPasswordStyles = useForgotPasswordStylesFunct();
 
   const LOGIN_BORDER_RADIUS = "11px";
 

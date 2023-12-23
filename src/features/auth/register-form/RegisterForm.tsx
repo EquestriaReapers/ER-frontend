@@ -13,10 +13,10 @@ import {
   TextFieldStyles,
   ButtonStyles,
   UcabLogoStyles,
-  FormBoxStylesFunct,
+  useFormBoxStylesFunct,
   RedirectBoxStyles,
-  QuestionBoxStylesFunct,
-  LinkBoxStylesFunct,
+  useQuestionBoxStylesFunct,
+  useLinkBoxStylesFunct,
 } from "./RegisterFormStyles.tsx";
 
 const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
@@ -35,9 +35,9 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
 
   const LOGIN_BORDER_RADIUS = "11px";
 
-  const { FormBoxStyles } = FormBoxStylesFunct();
-  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
-  const { LinkBoxStyles } = LinkBoxStylesFunct();
+  const FormBoxStyles = useFormBoxStylesFunct();
+  const QuestionBoxStyles = useQuestionBoxStylesFunct();
+  const LinkBoxStyles = useLinkBoxStylesFunct();
 
   return (
     <>
