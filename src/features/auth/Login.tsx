@@ -6,35 +6,17 @@ import { login as loginAction } from "features/auth/store/auth-slice";
 import useRedirectWhenLogged from "../../hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
-import Div100vh from "react-div-100vh";
 import { useErrorToast } from "../../hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
+import Div100vh from "react-div-100vh";
+import { loginProfileStyles } from "./styles/LoginStyles";
+import "../../styles/index.css";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
 
-  const mediaQueryStyles = {
-    "@media (minWidth: 600px)": {
-      minHeight: "500px",
-    },
-    "@media (minWidth: 900px)": {
-      minHeight: "600px",
-    },
-  };
-
   return (
-    <Div100vh
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "pink",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "800px",
-        minWidth: "300px",
-        ...mediaQueryStyles,
-      }}
-    >
+    <Div100vh style={loginProfileStyles}>
       <FormControl>
         <LoginForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
@@ -55,7 +37,10 @@ function useLogin() {
     async (email: string, password: string) => {
       setLoading(true);
       try {
-        if (!email || !password) return;
+        if (!email || !password) {
+          alert("Por favor introduce el usuario y la contraseña.");
+          return;
+        }
 
         const result = await loginService({
           email,

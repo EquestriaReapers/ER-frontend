@@ -2,20 +2,22 @@ import { FunctionComponent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
-import useTheme from "@mui/material/styles/useTheme";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucabLogo.webp";
-import Link from "@mui/material/Link";
+import "../../../styles/index.css";
 import {
   TextFieldTypography,
   ImageBoxStyles,
   TextFieldStyles,
   ButtonStyles,
-  UnderFormStyles,
   UcabLogoStyles,
-} from "./styles/RegisterFormStyles.tsx";
+  FormBoxStylesFunct,
+  RedirectBoxStyles,
+  QuestionBoxStylesFunct,
+  LinkBoxStylesFunct,
+} from "./RegisterFormStyles.tsx";
 
 const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
@@ -31,21 +33,11 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
     onChangeConfirmPassword,
   } = useRegisterFormState();
 
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const FormBoxStyles = {
-    width: isSmallScreen ? "85%" : "350px",
-    height: "550px",
-    margin: "auto",
-    padding: isSmallScreen ? "18px" : "40px",
-    backgroundColor: "white",
-    display: "flex",
-    flexDirection: "column",
-    alignItemns: "center",
-    justifyContent: "center",
-    borderRadius: "8px",
-    marginBottom: "16px",
-  };
+  const LOGIN_BORDER_RADIUS = "11px";
+
+  const { FormBoxStyles } = FormBoxStylesFunct();
+  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
+  const { LinkBoxStyles } = LinkBoxStylesFunct();
 
   return (
     <>
@@ -61,8 +53,9 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           onChange={onChangeName}
           disabled={disabled}
           sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: "11px" } }}
+          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
+        <Typography sx={TextFieldTypography}>Apellido</Typography>
         <TextField
           value={lastname}
           label=""
@@ -70,7 +63,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           onChange={onChangeLastname}
           disabled={disabled}
           sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: "11px" } }}
+          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
         <Typography sx={TextFieldTypography}>Correo electronico</Typography>
         <TextField
@@ -80,7 +73,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           onChange={onChangeEmail}
           disabled={disabled}
           sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: "11px" } }}
+          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
         <Typography sx={TextFieldTypography}>Contraseña</Typography>
         <TextField
@@ -90,7 +83,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           onChange={onChangePassword}
           disabled={disabled}
           sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: "11px" } }}
+          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
         <Typography sx={TextFieldTypography}>Confirmar contraseña</Typography>
         <TextField
@@ -100,7 +93,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           onChange={onChangeConfirmPassword}
           disabled={disabled}
           sx={{ ...TextFieldStyles, marginBottom: "26px" }}
-          InputProps={{ sx: { borderRadius: "11px" } }}
+          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
         <Button
           variant="contained"
@@ -114,12 +107,11 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         >
           Registrarse
         </Button>
-        <Box sx={UnderFormStyles}>
-          <Box sx={{ display: "inline-block" }}>¿Ya tienes cuenta?</Box> &nbsp;
-          &nbsp; &nbsp;
-          <Box sx={{ display: "inline-block", color: "#007BFF" }}>
-            <Link href="/login/">Inicie sesion aquí</Link>
-          </Box>
+        <Box sx={RedirectBoxStyles}>
+          <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
+          <Link href="/login" sx={LinkBoxStyles}>
+            Inicia sesión
+          </Link>
         </Box>
       </Box>
     </>

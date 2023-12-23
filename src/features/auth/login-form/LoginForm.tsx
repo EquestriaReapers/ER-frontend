@@ -1,50 +1,52 @@
+import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import Checkbox from "@mui/material/Checkbox";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
-import CheckKeepLogged from "./CheckKeepLogged.tsx";
-import Box from "@mui/material/Box";
-import useTheme from "@mui/material/styles/useTheme";
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Link from '@mui/material/Link';
+import { Box } from "@mui/material";
+import Link from "@mui/material/Link";
 import ucabLogo from "../images/ucabLogo.webp";
-import "./LoginForm.css";
-import { TextFieldTypography, 
-  UcabLogoStyles, 
+import "../../../styles/index.css";
+import {
+  TextFieldTypography,
+  UcabLogoStyles,
   ImageBoxStyles,
-  FormBottomStyles,
-  FormBottonStyles1,
   FormBottomTypographyStyles,
-  ForgotPaswordStyles,
-  UnderFormStyles,
-  TextFieldStyles, 
-  ButtonStyles
-
-} from "./styles/LoginFormStyles.tsx";
+  TextFieldStyles,
+  ButtonStyles,
+  CheckBoxStyles,
+  QuestionBoxStylesFunct,
+  LinkBoxStylesFunct,
+  RedirectBoxStyles,
+  FormBoxStylesFunct,
+  FormBottomStylesFunct,
+  InsideFormBottomStylesFunct,
+  ForgotPasswordStylesFunct,
+} from "./LoginFormStyles.tsx";
 
 const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const { email, password, onChangeEmail, onChangePassword } =
     useLoginFormState();
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const FormBoxStyles = {
-        width: isSmallScreen ? '85%' : '350px',
-        height: '480px',
-        margin: 'auto', 
-        padding: isSmallScreen ? '18px' : '40px',
-        backgroundColor:'white',
-        display: 'flex',
-        flexDirection:'column',
-        alignItemns:'center',
-        justifyContent:'center',
-        borderRadius:'8px',
-        marginBottom:'16px',
-    };
+
+  const [keepLogged, setKeepLogged] = useState(false);
+
+  const handleKeepLoggedChange = () => {
+    setKeepLogged(!keepLogged);
+  };
+
+  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
+  const { LinkBoxStyles } = LinkBoxStylesFunct();
+  const { FormBoxStyles } = FormBoxStylesFunct();
+  const { FormBottomStyles } = FormBottomStylesFunct();
+  const { InsideFormBottomStyles } = InsideFormBottomStylesFunct();
+  const { ForgotPasswordStyles } = ForgotPasswordStylesFunct();
+
+  const LOGIN_BORDER_RADIUS = "11px";
 
   return (
     <>
-
       <Box sx={FormBoxStyles}>
         <Box sx={ImageBoxStyles}>
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
@@ -58,7 +60,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             onChange={onChangeEmail}
             disabled={disabled}
             sx={TextFieldStyles}
-            InputProps={{ sx: { borderRadius: '11px' } }}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
           <Typography sx={TextFieldTypography}>Contraseña</Typography>
           <TextField
@@ -67,8 +69,8 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             type="password"
             onChange={onChangePassword}
             disabled={disabled}
-            sx={{ ...TextFieldStyles, marginBottom: '26px' }}
-            InputProps={{ sx: { borderRadius: '11px' } }}
+            sx={{ ...TextFieldStyles, marginBottom: "26px" }}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
           <Box>
             <Button
@@ -85,21 +87,32 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
             </Button>
           </Box>
           <Box sx={FormBottomStyles}>
-            <Box sx={FormBottonStyles1}>
-              <CheckKeepLogged/> 
-              <Typography sx={FormBottomTypographyStyles}>Permanecer conectado</Typography>
+            <Box sx={InsideFormBottomStyles}>
+              <Checkbox
+                checked={keepLogged}
+                onChange={handleKeepLoggedChange}
+                inputProps={{ "aria-label": "Checkbox" }}
+                sx={CheckBoxStyles}
+              />
+              <Typography sx={FormBottomTypographyStyles}>
+                Permanecer conectado
+              </Typography>
             </Box>
-            <Box sx={ForgotPaswordStyles}>
+            <Box sx={ForgotPasswordStyles}>
               <Link href="#" rel="noopener noreferrer">
                 ¿Olvidó la contraseña?
               </Link>
             </Box>
           </Box>
+          <Box sx={RedirectBoxStyles}>
+            <Typography sx={QuestionBoxStyles}>
+              ¿Aun no tienes cuenta?
+            </Typography>{" "}
+            <Link href="/register" sx={LinkBoxStyles}>
+              Registrate
+            </Link>
+          </Box>
         </Box>
-      </Box>
-      <Box sx={UnderFormStyles}> 
-          <Box sx={{display:'inline-block',}}>¿Aún no tienes cuenta?</Box>   &nbsp;  &nbsp;  &nbsp;
-          <Box sx={{display:'inline-block', color:'#007BFF'}}><Link href='/register/'>Registrate aquí</Link></Box>  
       </Box>
     </>
   );
