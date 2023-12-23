@@ -7,6 +7,8 @@ import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from "react-div-100vh";
 import { registerProfileStyles } from "./styles/RegisterStyles";
 import "../../styles/index.css";
+import { useErrorToast } from "hooks/use-error-toast";
+import { useSuccessToast } from "hooks/use-success-toast";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -24,15 +26,16 @@ function useRegister() {
   useRedirectWhenRegistered();
 
   const [loading, setLoading] = useState(false);
-
+  const { showErrorToast } = useErrorToast();
+  const { showSuccessToast } = useSuccessToast();
   const onSubmit = useCallback(
-    async (
-      name: string,
-      lastname: string,
-      email: string,
-      password: string,
-      confirmPassword: string
-    ) => {
+    async ({
+      name,
+      lastname,
+      email,
+      password,
+      confirmPassword,
+    }: RegisterPayload) => {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword) {
@@ -46,17 +49,26 @@ function useRegister() {
             email,
             password,
           });
+          showSuccessToast("Registro exitoso");
         }
       } catch (error) {
-        console.log(error);
+        showErrorToast(error);
       } finally {
         setLoading(false);
       }
     },
-    []
+    [showErrorToast, showSuccessToast]
   );
 
   return { onSubmit, loading };
+}
+
+export interface RegisterPayload {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default Register;

@@ -8,19 +8,16 @@ import { useState } from "react";
 
 const AddSkillsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   return (
     <div>
-      <IconButton onClick={() => setIsOpen(true)}>
+      <IconButton onClick={openModal}>
         <AddIcon />
       </IconButton>
 
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        aria-labelledby="agregar habilidades"
-        aria-describedby="se usa para agregar habilidades"
-      >
+      <Modal open={isOpen} onClose={closeModal}>
         <Box sx={style}>
           <FormContent setIsOpen={setIsOpen} />
         </Box>

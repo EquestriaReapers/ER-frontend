@@ -2,14 +2,17 @@ import { FormEvent, useState, useCallback, useEffect } from "react";
 import { Box, Button, TextField, Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import useEditProfileFormState from "./use-edit-profile-form-state";
-import { fetchOneProfile, updateProfile } from "../services/profile.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { modalStyle } from "./styles/styles";
+import { updateProfile } from "../services/profile/update-profile.service";
+import useGetProfileInfo from "./use-get-profile-info";
 
 const EditProfileModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
-  const { token, user } = useAuthState();
+  const { token } = useAuthState();
 
   const {
     name,
@@ -20,48 +23,35 @@ const EditProfileModal = () => {
     onChangeDescription,
   } = useEditProfileFormState();
 
-  const getUserInfo = useCallback(async () => {
-    try {
-      if (token && user) {
-        const data = await fetchOneProfile(token, user.id);
-        setName(data.user.name);
-        setDescription(data.description);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [setDescription, setName, token, user]);
+  const { getUserInfo } = useGetProfileInfo({ setName, setDescription });
 
   useEffect(() => {
     getUserInfo();
   }, [getUserInfo]);
 
-  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    try {
-      if (token && user) {
-        const data = await updateProfile(token, { name, description }, user.id);
+  const onSubmitForm = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        if (!token || !name || !description) return;
+        const data = await updateProfile(token, { name, description });
         setIsOpen(false);
         return data;
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    },
+    [description, name, token]
+  );
 
   return (
     <div>
-      <Button onClick={() => setIsOpen(true)}>
+      <Button onClick={openModal}>
         <IconButton>
           <EditIcon />
         </IconButton>
       </Button>
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        aria-labelledby="edit profile"
-        aria-describedby="used to edit profile"
-      >
+      <Modal open={isOpen} onClose={closeModal}>
         <Box sx={modalStyle}>
           <form onSubmit={onSubmitForm}>
             <TextField

@@ -18,8 +18,9 @@ import {
   useQuestionBoxStylesFunct,
   useLinkBoxStylesFunct,
 } from "./RegisterFormStyles.tsx";
+import { RegisterPayload } from "../Register";
 
-const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
+const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
     name,
     lastname,
@@ -118,15 +119,15 @@ const RegisterForm: FunctionComponent<props> = ({ disabled, onSubmit }) => {
   );
 };
 
-export interface props {
+export interface Props {
   disabled: boolean;
-  onSubmit: (
-    name: string,
-    lastname: string,
-    email: string,
-    password: string,
-    confirmPassword: string
-  ) => void;
+  onSubmit: ({
+    name,
+    lastname,
+    email,
+    password,
+    confirmPassword,
+  }: RegisterPayload) => void;
 }
 
 export default RegisterForm;

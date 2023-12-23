@@ -3,24 +3,22 @@ import { FunctionComponent, useCallback, useState } from "react";
 import loginService from "features/auth/services/login.service";
 import { useDispatch } from "react-redux";
 import { login as loginAction } from "features/auth/store/auth-slice";
-import useRedirectWhenLogged from "../../hooks/use-redirect-when-logged";
+import useRedirectWhenLogged from "hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
-import Div100vh from 'react-div-100vh';
+import Div100vh from "react-div-100vh";
 import { loginProfileStyles } from "./styles/LoginStyles";
 import "../../styles/index.css";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
-
-
-
   return (
     <Div100vh style={loginProfileStyles}>
-      
-        <FormControl>
-          <LoginForm disabled={loading} onSubmit={onSubmit} />
-        </FormControl>
+      <FormControl>
+        <LoginForm disabled={loading} onSubmit={onSubmit} />
+      </FormControl>
     </Div100vh>
   );
 };
@@ -28,6 +26,9 @@ const Login: FunctionComponent = () => {
 function useLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
+
   useRedirectWhenLogged();
 
   const [loading, setLoading] = useState(false);
@@ -46,15 +47,15 @@ function useLogin() {
           password,
         });
         dispatch(loginAction(result));
+        showSuccessToast("Inicio de Sesion Exitoso");
         navigate(`/dashboard`);
       } catch (error) {
-        alert("El login ha fallado.");
-        console.log(error);
+        showErrorToast(error);
       } finally {
         setLoading(false);
       }
     },
-    [navigate, dispatch]
+    [navigate, dispatch, showSuccessToast, showErrorToast]
   );
 
   return { onSubmit, loading };
