@@ -89,6 +89,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   <Box sx={locationAndEditButtonStyles}>
                     <Box sx={locationBoxStyles}>
                       <LocationOnIcon />
+                      &nbsp;
                       <Typography sx={contactTitlesStyles}>
                         Ubicación
                       </Typography>
@@ -101,6 +102,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   <Typography
                     sx={{
                       fontFamily: "inter",
+                      fontSize: "18px",
                     }}
                   >
                     Puerto Ordaz, Venezuela
@@ -109,10 +111,11 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 <Box sx={websiteBoxStyles}>
                   <Box sx={websiteTitleContainerStyles}>
                     <LanguageIcon />
+                    &nbsp;
                     <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
 
-                  <Typography sx={{ fontFamily: "inter" }}>
+                  <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
                     www.abcdefge.com
                   </Typography>
                 </Box>

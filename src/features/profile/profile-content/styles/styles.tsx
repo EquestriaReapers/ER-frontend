@@ -126,6 +126,7 @@ export const locationBoxStyles = {
 export const contactTitlesStyles = {
   fontFamily: "inter",
   fontWeight: "600",
+  fontSize: { xs: "18px", sm: "22px" },
 };
 
 export const websiteBoxStyles = {
