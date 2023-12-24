@@ -4,6 +4,10 @@ import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
+import { searchPaginatedProfiles } from "features/catalogue/services/search/search.service";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
+import { useErrorToast } from "hooks/use-error-toast";
+import usePaginatedProfilesState from "../profiles/pagination/use-paginated-profiles-state";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -56,17 +60,33 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const SearchBar = () => (
-  <>
-    <StyledPaper>
-      <StyledSearchIcon />
-      <StyledInputBase placeholder="Buscador" />
-    </StyledPaper>
-    <StyledButton variant="contained">
-      <SearchIcon sx={{ display: { sm: "none" } }} />
-      <Typography sx={{ display: { xs: "none", sm:"flex" }, fontFamily:"Inter" }}>Buscar</Typography>
-    </StyledButton>
-  </>
-);
+const SearchBar = ({ onClick }: Props) => {
+  const [text, setText] = useState("");
+  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
+    setText(event.target.value);
+  };
 
+  return (
+    <>
+      <StyledPaper>
+        <StyledSearchIcon />
+        <StyledInputBase placeholder="Buscador" onChange={onChangeText} />
+      </StyledPaper>
+      <StyledButton variant="contained" onClick={onClick(text)}>
+        <SearchIcon sx={{ display: { sm: "none" } }} />
+        <Typography
+          sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "Inter" }}
+        >
+          Buscar
+        </Typography>
+      </StyledButton>
+    </>
+  );
+};
+interface Props {
+  page: number;
+  limit: number;
+  seed: number;
+  onClick: (text: string) => void;
+}
 export default SearchBar;

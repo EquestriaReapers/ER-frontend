@@ -26,7 +26,7 @@ const useGetPaginatedProfiles = ({
     }
   }, [currentPage, seed, setPagination, setProfileList, showErrorToast]);
 
-  return { getProfileList };
+  return getProfileList;
 };
 
 interface Props {
