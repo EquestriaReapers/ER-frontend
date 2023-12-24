@@ -1,44 +1,45 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
 import {
   aboutMeSection,
+  aboutMeTypographyStyles,
   bannerStyles,
   buttonStyles,
   contactSectionStyles,
   contactTitlesStyles,
+  descriptionBoxStyles,
   descriptionStyles,
   editIconStyles,
+  locationAndEditButtonStyles,
   locationBoxStyles,
   mainTitleStyles,
   nameSectionStyles,
   nameStyles,
+  pageContainerStyles,
+  skillsAndExperiencesBoxStyles,
+  topSectionStyles,
   websiteBoxStyles,
   websiteTitleContainerStyles,
 } from "./styles/styles";
-import useProfileContext from "../profile-context/use-profile-context";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
 import Skills from "./skills";
+import useTransformCareerEnum from "hooks/use-transform-career-enum";
+import useProfileContext from "../profile-context/use-profile-context";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
+  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
 
   return (
     <>
       <Box>
         <Box sx={bannerStyles}></Box>
-        <Box>
-          <Box
-            sx={{
-              width: "90%",
-              mx: { lg: "auto", md: "auto", xs: "20px" },
-              mt: "30px",
-            }}
-          >
+        <Box sx={pageContainerStyles}>
+          <Box sx={topSectionStyles}>
             <Box sx={nameSectionStyles}>
               <Box>
                 <Typography variant="h4" sx={nameStyles}>
@@ -48,11 +49,12 @@ const ProfileContent = () => {
                   </Box>
                 </Typography>
                 <Typography variant="h4" sx={mainTitleStyles}>
-                  {profile.mainTitle}
-                  Ingenieria Informatica
+                  {transformedCareerName}
                 </Typography>
               </Box>
-              <Box sx={{ width: { xs: "100%", sm: "30%", md: "20%" } }}>
+              <Box
+                sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
@@ -64,14 +66,8 @@ const ProfileContent = () => {
               </Box>
             </Box>
             <Box sx={aboutMeSection}>
-              <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "700",
-                    fontFamily: "inter",
-                  }}
-                >
+              <Box sx={descriptionBoxStyles}>
+                <Typography variant="h5" sx={aboutMeTypographyStyles}>
                   Sobre Mí
                 </Typography>
                 {!profile.description ? (
@@ -89,9 +85,10 @@ const ProfileContent = () => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Box sx={{ display: "flex" }}>
+                  <Box sx={locationAndEditButtonStyles}>
                     <Box sx={locationBoxStyles}>
                       <LocationOnIcon />
+                      &nbsp;
                       <Typography sx={contactTitlesStyles}>
                         Ubicación
                       </Typography>
@@ -103,8 +100,8 @@ const ProfileContent = () => {
 
                   <Typography
                     sx={{
-                      marginLeft: "10px",
                       fontFamily: "inter",
+                      fontSize: "18px",
                     }}
                   >
                     Puerto Ordaz, Venezuela
@@ -112,20 +109,31 @@ const ProfileContent = () => {
                 </Box>
                 <Box sx={websiteBoxStyles}>
                   <Box sx={websiteTitleContainerStyles}>
-                    <LanguageIcon />{" "}
+                    <LanguageIcon />
+                    &nbsp;
                     <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
 
-                  <Typography sx={{ marginLeft: "10px", fontFamily: "inter" }}>
+                  <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
                     www.abcdefge.com
                   </Typography>
                 </Box>
               </Box>
             </Box>
           </Box>
-          <Box>
+          <Box sx={skillsAndExperiencesBoxStyles}>
             <Skills />
             <Experiences />
+          </Box>
+          <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={buttonStyles}
+            >
+              Descargar CV
+            </Button>
           </Box>
         </Box>
       </Box>

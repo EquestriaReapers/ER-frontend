@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { Modal, IconButton } from "@mui/material";
+import Modal from "@mui/material/Modal";
+import { Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import EditProfileModalContent from "./modal-content.styled";
+import IconButton from "@mui/material/IconButton";
+import { style } from "../styles/styles";
+import FormContent from "./form-content";
+import { useState } from "react";
 
-const EditProfileModal = () => {
+const AddSkillsModal = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <IconButton
@@ -18,10 +22,12 @@ const EditProfileModal = () => {
       </IconButton>
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <EditProfileModalContent setIsOpen={setIsOpen} />
+        <Box sx={style}>
+          <FormContent setIsOpen={setIsOpen} />
+        </Box>
       </Modal>
     </>
   );
 };
 
-export default EditProfileModal;
+export default AddSkillsModal;
