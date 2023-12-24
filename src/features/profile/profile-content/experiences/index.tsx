@@ -1,23 +1,30 @@
 import { Typography, Box } from "@mui/material";
-import { boxWithButton } from "./modal/styles";
 import ShowProfileExperiencies from "./show-profile-experiences";
 import ExperienceModalWrapper from "./modal/experience-modal-wrapper";
 import useProfileContext from "../../profile-context/use-profile-context";
+import { experienceTitleTypographyStyles } from "./styles";
 
 const Experiences = () => {
-  const { profile, isEditable } = useProfileContext();
+  const { isEditable, profile } = useProfileContext();
 
   return (
     <>
-      <div>
-        <Box sx={boxWithButton}>
-          <Typography variant="h4">Experiencia</Typography>
-          {isEditable && (
-            <ExperienceModalWrapper experiences={profile.experience} />
-          )}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: { xs: "18px", sm: "45px" },
+        }}
+      >
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+          <Typography variant="h4" sx={experienceTitleTypographyStyles}>
+            Experiencia
+          </Typography>
+          {isEditable && <ExperienceModalWrapper />}
         </Box>
+
         <ShowProfileExperiencies experiences={profile.experience} />
-      </div>
+      </Box>
     </>
   );
 };
