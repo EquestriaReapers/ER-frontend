@@ -12,17 +12,11 @@ import Filters from "./filters";
 import CatalogueSearchBar from "./components/SearchBar";
 import useSetCatalogueProfiles from "./profiles/use-set-catalogue-profiles";
 import useCataloguePagination from "./profiles/pagination/use-catalogue-pagination";
-import { useCallback } from "react";
 
 const Catalogue = () => {
-  const {
-    profileList,
-    pagination,
-    currentPage,
-    seed,
-    setCurrentPage,
-    searchProfileList,
-  } = useSetCatalogueProfiles();
+  const { profileList, pagination, currentPage, seed, setCurrentPage } =
+    useSetCatalogueProfiles();
+
   const { onPageChange } = useCataloguePagination({ setCurrentPage });
 
   return (
@@ -48,12 +42,7 @@ const Catalogue = () => {
                 }}
               >
                 <Box sx={searchBarContainer}>
-                  <CatalogueSearchBar
-                    page={currentPage}
-                    limit={6}
-                    seed={seed}
-                    onClick={searchProfileList}
-                  />
+                  <CatalogueSearchBar />
                 </Box>
                 <ShowProfiles profileList={profileList!} />
 

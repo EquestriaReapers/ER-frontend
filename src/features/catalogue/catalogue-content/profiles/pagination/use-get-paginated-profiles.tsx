@@ -1,5 +1,6 @@
 import { Pagination, Profile } from "core/profiles/types";
 import { fetchPaginatedProfiles } from "features/catalogue/services/get-paginated-profiles.service";
+import { searchPaginatedProfiles } from "features/catalogue/services/search/search.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 
@@ -8,6 +9,8 @@ const useGetPaginatedProfiles = ({
   setPagination,
   currentPage,
   seed,
+  text,
+  setText,
 }: Props) => {
   const { showErrorToast } = useErrorToast();
   const itemsPerPage: number = 6;
@@ -26,7 +29,30 @@ const useGetPaginatedProfiles = ({
     }
   }, [currentPage, seed, setPagination, setProfileList, showErrorToast]);
 
-  return getProfileList;
+  const searchProfileList = useCallback(async () => {
+    try {
+      if (text === null) setText("");
+      const response = await searchPaginatedProfiles(
+        currentPage,
+        6,
+        null,
+        text
+      );
+      setProfileList(response.profiles);
+      setPagination(response.pagination);
+    } catch (error) {
+      showErrorToast(error);
+    }
+  }, [
+    setPagination,
+    setProfileList,
+    showErrorToast,
+    currentPage,
+    text,
+    setText,
+  ]);
+
+  return { getProfileList, searchProfileList };
 };
 
 interface Props {
@@ -34,5 +60,7 @@ interface Props {
   setPagination: (pagination: Pagination) => void;
   currentPage: number;
   seed: number | null;
+  text: string;
+  setText: (text: string) => void;
 }
 export default useGetPaginatedProfiles;

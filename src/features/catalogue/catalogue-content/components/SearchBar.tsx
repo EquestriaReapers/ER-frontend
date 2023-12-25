@@ -4,10 +4,13 @@ import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
-import { searchPaginatedProfiles } from "features/catalogue/services/search/search.service";
-import { ChangeEvent, useCallback, useEffect, useState } from "react";
-import { useErrorToast } from "hooks/use-error-toast";
+
 import usePaginatedProfilesState from "../profiles/pagination/use-paginated-profiles-state";
+import useSearchBarState from "../profiles/use-search-bar-state";
+import { useState } from "react";
+import useSeed from "../hooks/use-seed";
+import useSetCatalogueProfiles from "../profiles/use-set-catalogue-profiles";
+import useGetPaginatedProfiles from "../profiles/pagination/use-get-paginated-profiles";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -60,19 +63,26 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const SearchBar = ({ onClick }: Props) => {
-  const [text, setText] = useState("");
-  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
-    setText(event.target.value);
-  };
-
+const SearchBar = () => {
+  const { setProfileList, setPagination } = usePaginatedProfilesState();
+  const { text, setText, onChangeText } = useSearchBarState();
+  const seed = useSeed();
+  const { currentPage } = useSetCatalogueProfiles();
+  const { searchProfileList } = useGetPaginatedProfiles({
+    setProfileList,
+    setPagination,
+    currentPage,
+    seed,
+    text,
+    setText,
+  });
   return (
     <>
       <StyledPaper>
         <StyledSearchIcon />
         <StyledInputBase placeholder="Buscador" onChange={onChangeText} />
       </StyledPaper>
-      <StyledButton variant="contained" onClick={onClick(text)}>
+      <StyledButton variant="contained" onClick={searchProfileList}>
         <SearchIcon sx={{ display: { sm: "none" } }} />
         <Typography
           sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "Inter" }}
@@ -83,10 +93,5 @@ const SearchBar = ({ onClick }: Props) => {
     </>
   );
 };
-interface Props {
-  page: number;
-  limit: number;
-  seed: number;
-  onClick: (text: string) => void;
-}
+
 export default SearchBar;
