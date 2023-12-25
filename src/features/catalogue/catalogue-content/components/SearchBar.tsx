@@ -4,13 +4,12 @@ import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
-
 import usePaginatedProfilesState from "../profiles/pagination/use-paginated-profiles-state";
 import useSearchBarState from "../profiles/use-search-bar-state";
-import { useState } from "react";
 import useSeed from "../hooks/use-seed";
 import useSetCatalogueProfiles from "../profiles/use-set-catalogue-profiles";
 import useGetPaginatedProfiles from "../profiles/pagination/use-get-paginated-profiles";
+import useSearchedValues from "../profiles/use-searched-values";
 
 const StyledPaper = styled(Paper)`
   display: flex;
@@ -68,7 +67,7 @@ const SearchBar = () => {
   const { text, setText, onChangeText } = useSearchBarState();
   const seed = useSeed();
   const { currentPage } = useSetCatalogueProfiles();
-  const { searchProfileList } = useGetPaginatedProfiles({
+  const searchProfileList = useSearchedValues({
     setProfileList,
     setPagination,
     currentPage,

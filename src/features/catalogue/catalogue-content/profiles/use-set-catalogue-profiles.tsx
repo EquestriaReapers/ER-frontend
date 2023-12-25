@@ -3,6 +3,7 @@ import useGetPaginatedProfiles from "./pagination/use-get-paginated-profiles";
 import usePaginatedProfilesState from "./pagination/use-paginated-profiles-state";
 import useSeed from "features/catalogue/catalogue-content/hooks/use-seed";
 import useSearchBarState from "./use-search-bar-state";
+import useSearchedValues from "./use-searched-values";
 
 const useSetCatalogueProfiles = () => {
   const { profileList, pagination, setProfileList, setPagination } =
@@ -11,7 +12,14 @@ const useSetCatalogueProfiles = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const seed = useSeed();
 
-  const { getProfileList, searchProfileList } = useGetPaginatedProfiles({
+  const getProfileList = useGetPaginatedProfiles({
+    setProfileList,
+    setPagination,
+    currentPage,
+    seed,
+  });
+
+  const searchProfileList = useSearchedValues({
     setProfileList,
     setPagination,
     currentPage,
@@ -21,8 +29,8 @@ const useSetCatalogueProfiles = () => {
   });
 
   useEffect(() => {
-    getProfileList();
     searchProfileList();
+    getProfileList();
   }, [getProfileList, searchProfileList]);
 
   return {
