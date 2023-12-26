@@ -7,6 +7,7 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
+import Home from "features/home/Home"
 import "typeface-inter";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
     path: "/catalogue/:seed",
     element: <Catalogue />,
   },
+  {
+    path:"/home",
+    element: <Home/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
