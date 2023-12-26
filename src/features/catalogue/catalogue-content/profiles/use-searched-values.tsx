@@ -9,12 +9,10 @@ const useSearchedValues = ({
   currentPage,
   seed,
   text,
-  setText,
 }: Props) => {
   const { showErrorToast } = useErrorToast();
   const searchProfileList = useCallback(async () => {
     try {
-      if (text === null) setText("");
       console.log(text);
       const response = await searchPaginatedProfiles(
         currentPage,
@@ -28,14 +26,7 @@ const useSearchedValues = ({
     } catch (error) {
       showErrorToast(error);
     }
-  }, [
-    setPagination,
-    setProfileList,
-    showErrorToast,
-    currentPage,
-    text,
-    setText,
-  ]);
+  }, [setPagination, setProfileList, showErrorToast, currentPage, text]);
   return searchProfileList;
 };
 interface Props {
@@ -44,6 +35,5 @@ interface Props {
   currentPage: number;
   seed: number | null;
   text: string;
-  setText: (text: string) => void;
 }
 export default useSearchedValues;

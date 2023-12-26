@@ -64,7 +64,7 @@ const StyledButton = styled(Button)`
 
 const SearchBar = () => {
   const { setProfileList, setPagination } = usePaginatedProfilesState();
-  const { text, setText, onChangeText } = useSearchBarState();
+  const { text, onChangeText } = useSearchBarState();
   const seed = useSeed();
   const { currentPage } = useSetCatalogueProfiles();
   const searchProfileList = useSearchedValues({
@@ -73,8 +73,8 @@ const SearchBar = () => {
     currentPage,
     seed,
     text,
-    setText,
   });
+  console.log("homo sexo =>")
   return (
     <>
       <StyledPaper>

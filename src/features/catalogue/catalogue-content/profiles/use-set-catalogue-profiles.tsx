@@ -8,7 +8,7 @@ import useSearchedValues from "./use-searched-values";
 const useSetCatalogueProfiles = () => {
   const { profileList, pagination, setProfileList, setPagination } =
     usePaginatedProfilesState();
-  const { text, setText } = useSearchBarState();
+  const { text } = useSearchBarState();
   const [currentPage, setCurrentPage] = useState(1);
   const seed = useSeed();
 
@@ -25,7 +25,6 @@ const useSetCatalogueProfiles = () => {
     currentPage,
     seed,
     text,
-    setText,
   });
 
   useEffect(() => {
