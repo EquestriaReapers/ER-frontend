@@ -15,9 +15,8 @@ const useCatalogue = (seed: number | null) => {
     setPagination,
     currentPage: pagination.currentPage,
     seed,
-    text: "lu",
+    text,
   });
-  console.log(text);
   useEffect(() => {
     searchProfileList();
   }, [searchProfileList]);

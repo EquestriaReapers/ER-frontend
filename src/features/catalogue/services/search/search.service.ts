@@ -9,7 +9,7 @@ export async function searchPaginatedProfiles(
   page: number,
   limit: number,
   seed: number | null,
-  text: string
+  text: string | null
 ): Promise<Response> {
   try {
     const response = await axios.post(`${URL}?page=${page}&limit=${limit}`, {

@@ -1,14 +1,14 @@
 import { ChangeEvent, useState } from "react";
 
 const useSearchBarState = () => {
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string | null>("");
   const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
     if (text === "") {
-      text;
+      setText(null);
     }
   };
-  return { text, onChangeText };
+  return { text, setText, onChangeText };
 };
 
 export default useSearchBarState;

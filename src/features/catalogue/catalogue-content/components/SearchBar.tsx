@@ -64,8 +64,8 @@ const SearchBar = ({
   setPagination,
   currentPage,
   seed,
-  text,
 }: Props) => {
+  const { onChangeText, text, setText } = useSearchBarState();
   const searchProfileList = useSearchProfileList({
     setProfileList,
     setPagination,
@@ -73,7 +73,8 @@ const SearchBar = ({
     seed,
     text,
   });
-  const { onChangeText } = useSearchBarState();
+  if (text === "") setText(null);
+
   return (
     <>
       <StyledPaper>
@@ -96,6 +97,6 @@ interface Props {
   setPagination: (pagination: Pagination) => void;
   currentPage: number;
   seed: number;
-  text: string ;
+  text: string | null;
 }
 export default SearchBar;
