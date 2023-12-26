@@ -7,7 +7,7 @@ import {
   pageContainer,
   catalogueContainer,
   searchBarContainer,
-} from "./styles/styles";
+} from "./styles";
 import Filters from "./filters";
 import CatalogueSearchBar from "./components/SearchBar";
 import useCatalogueProfiles from "./profiles/use-catalogue";

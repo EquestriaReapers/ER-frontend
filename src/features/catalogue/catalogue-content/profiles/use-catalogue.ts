@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import useProfileList from "./pagination/use-profile-list";
 import usePaginationState from "./pagination/use-pagination-state";
-import useSearchProfileList from "./use-search-profile-list";
-import useSearchBarState from "./use-search-bar-state";
+import useSearchProfileList from "./search/use-search-profile-list";
+import useSearchBarState from "./search/use-search-bar-state";
 
 const useCatalogue = (seed: number | null) => {
   const { profileList, setProfileList } = useProfileList();

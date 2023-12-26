@@ -12,9 +12,12 @@ export async function searchPaginatedProfiles(
   text: string | null
 ): Promise<Response> {
   try {
-    const response = await axios.post(`${URL}?page=${page}&limit=${limit}`, {
-      text,
-    });
+    const response = await axios.post(
+      `${URL}?page=${page}&limit=${limit}&random=${seed}`,
+      {
+        text,
+      }
+    );
     return response.data;
   } catch (error) {
     throw new BackendError(error);
