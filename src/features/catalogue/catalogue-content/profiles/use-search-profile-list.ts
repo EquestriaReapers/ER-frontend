@@ -3,6 +3,8 @@ import { searchPaginatedProfiles } from "features/catalogue/services/search/sear
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 
+const PER_PAGE = 6;
+
 const useSearchedValues = ({
   setProfileList,
   setPagination,
@@ -16,8 +18,8 @@ const useSearchedValues = ({
       console.log(text);
       const response = await searchPaginatedProfiles(
         currentPage,
-        6,
-        null,
+        PER_PAGE,
+        seed,
         text
       );
       console.log(response.profiles);
@@ -26,9 +28,10 @@ const useSearchedValues = ({
     } catch (error) {
       showErrorToast(error);
     }
-  }, [setPagination, setProfileList, showErrorToast, currentPage, text]);
+  }, [text, currentPage, seed, setProfileList, setPagination, showErrorToast]);
   return searchProfileList;
 };
+
 interface Props {
   setProfileList: (profileList: Profile[]) => void;
   setPagination: (pagination: Pagination) => void;
@@ -36,4 +39,5 @@ interface Props {
   seed: number | null;
   text: string;
 }
+
 export default useSearchedValues;

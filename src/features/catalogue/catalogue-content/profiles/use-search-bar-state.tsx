@@ -5,7 +5,7 @@ const useSearchBarState = () => {
   const onChangeText = (event: ChangeEvent<HTMLInputElement>) => {
     setText(event.target.value);
   };
-  return { text, setText, onChangeText };
+  return { text, onChangeText };
 };
 
 export default useSearchBarState;

@@ -4,14 +4,13 @@ import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
-import usePaginatedProfilesState from "../profiles/pagination/use-paginated-profiles-state";
+import usePaginatedProfilesState from "../profiles/pagination/use-pagination-state";
 import useSearchBarState from "../profiles/use-search-bar-state";
 import useSeed from "../hooks/use-seed";
-import useSetCatalogueProfiles from "../profiles/use-set-catalogue-profiles";
-import useGetPaginatedProfiles from "../profiles/pagination/use-get-paginated-profiles";
-import useSearchedValues from "../profiles/use-searched-values";
+import useCatalogueProfiles from "../profiles/use-catalogue";
+import useSearchedValues from "../profiles/use-search-profile-list";
 
-const StyledPaper = styled(Paper)`
+export const StyledPaper = styled(Paper)`
   display: flex;
   align-items: center;
   width: 70%;
@@ -28,14 +27,14 @@ const StyledPaper = styled(Paper)`
   }
 `;
 
-const StyledSearchIcon = styled(SearchIcon)`
+export const StyledSearchIcon = styled(SearchIcon)`
   color: gray;
   @media (max-width: 600px) {
     display: none;
   }
 `;
 
-const StyledInputBase = styled(InputBase)`
+export const StyledInputBase = styled(InputBase)`
   color: black;
   text-align: center;
   font-family: Inter;
@@ -46,7 +45,7 @@ const StyledInputBase = styled(InputBase)`
   flex: 1;
 `;
 
-const StyledButton = styled(Button)`
+export const StyledButton = styled(Button)`
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
@@ -62,11 +61,11 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const SearchBar = () => {
+const SearchBar = ({}) => {
   const { setProfileList, setPagination } = usePaginatedProfilesState();
   const { text, onChangeText } = useSearchBarState();
   const seed = useSeed();
-  const { currentPage } = useSetCatalogueProfiles();
+  const { currentPage } = useCatalogueProfiles();
   const searchProfileList = useSearchedValues({
     setProfileList,
     setPagination,
@@ -74,7 +73,7 @@ const SearchBar = () => {
     seed,
     text,
   });
-  console.log("homo sexo =>")
+
   return (
     <>
       <StyledPaper>

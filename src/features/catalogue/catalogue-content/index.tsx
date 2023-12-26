@@ -10,18 +10,18 @@ import {
 } from "./styles/styles";
 import Filters from "./filters";
 import CatalogueSearchBar from "./components/SearchBar";
-import useSetCatalogueProfiles from "./profiles/use-set-catalogue-profiles";
-import useCataloguePagination from "./profiles/pagination/use-catalogue-pagination";
+import useCatalogueProfiles from "./profiles/use-catalogue";
+import { ChangeEvent } from "react";
+import useSeed from "./hooks/use-seed";
 
 const Catalogue = () => {
-  const { profileList, pagination, currentPage, seed, setCurrentPage } =
-    useSetCatalogueProfiles();
-
-  const { onPageChange } = useCataloguePagination({ setCurrentPage });
+  const seed = useSeed();
+  const { profileList, pagination, setCurrentPage } =
+    useCatalogueProfiles(seed);
 
   return (
     <>
-      {!profileList || !pagination || !seed ? (
+      {!seed ? (
         <Typography>PAPA PAPA </Typography>
       ) : (
         <>
@@ -44,7 +44,7 @@ const Catalogue = () => {
                 <Box sx={searchBarContainer}>
                   <CatalogueSearchBar />
                 </Box>
-                <ShowProfiles profileList={profileList!} />
+                <ShowProfiles profileList={profileList} />
 
                 <Box
                   sx={{
@@ -56,11 +56,13 @@ const Catalogue = () => {
                   <Stack spacing={2}>
                     <Pagination
                       count={pagination.totalPages}
-                      page={currentPage}
+                      page={pagination.currentPage}
                       shape="rounded"
                       color="primary"
                       size="large"
-                      onChange={onPageChange}
+                      onChange={(_: ChangeEvent<unknown>, value: number) => {
+                        setCurrentPage(value);
+                      }}
                     />
                   </Stack>
                 </Box>

@@ -7,14 +7,21 @@ function useSeedParam() {
   if (isNaN(+seed)) return null;
   return +seed;
 }
+
+function generateRandomSeed() {
+  return Math.floor(Math.random() * 1000);
+}
+
 const useSeed = () => {
   const seed = useSeedParam();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!seed) {
-      navigate(`/catalogue/${Math.random()}`);
+      navigate(`/catalogue/${generateRandomSeed()}`);
     }
   }, [seed, navigate]);
+
   return seed;
 };
 
