@@ -15,7 +15,7 @@ const ProfileSkills = ({ isEditable, currentProfileSkills }: Props) => {
         {isEditable && <AddSkillsModal />}
       </Box>
 
-      <ShowSkills skills={currentProfileSkills} isEditable={isEditable} />
+      <ShowSkills skills={currentProfileSkills} />
     </Box>
   );
 };

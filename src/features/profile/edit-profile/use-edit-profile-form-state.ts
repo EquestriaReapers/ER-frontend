@@ -27,7 +27,7 @@ const useEditProfileFormState = () => {
   const getUserInfo = useCallback(async () => {
     try {
       if (!token || !user) return;
-      const data = await fetchOneProfile(token, user.id);
+      const data = await fetchOneProfile(user.id);
       setName(data.user.name);
       setDescription(data.description);
       setMainTitle(data.mainTitle);
