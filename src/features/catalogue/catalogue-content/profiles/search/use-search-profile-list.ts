@@ -15,6 +15,7 @@ const useSearchProfileList = ({
   const { showErrorToast } = useErrorToast();
   const searchProfileList = useCallback(async () => {
     try {
+      console.log(text);
       const response = await searchPaginatedProfiles(
         currentPage,
         PER_PAGE,
@@ -36,7 +37,7 @@ interface Props {
   setPagination: (pagination: Pagination) => void;
   currentPage: number;
   seed: number | null;
-  text: string | null;
+  text: string;
 }
 
 export default useSearchProfileList;

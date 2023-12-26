@@ -35,7 +35,7 @@ const SearchBar = ({
   currentPage,
   seed,
 }: Props) => {
-  const { onChangeText, text, setText } = useSearchBarState();
+  const { onChangeText, text } = useSearchBarState();
   const searchProfileList = useSearchProfileList({
     setProfileList,
     setPagination,
@@ -43,7 +43,6 @@ const SearchBar = ({
     seed,
     text,
   });
-  if (text === "") setText(null);
 
   return (
     <>
