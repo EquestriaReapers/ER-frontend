@@ -5,7 +5,7 @@ import { useCallback } from "react";
 
 const PER_PAGE = 6;
 
-const useSearchedValues = ({
+const useSearchProfileList = ({
   setProfileList,
   setPagination,
   currentPage,
@@ -40,4 +40,4 @@ interface Props {
   text: string;
 }
 
-export default useSearchedValues;
+export default useSearchProfileList;

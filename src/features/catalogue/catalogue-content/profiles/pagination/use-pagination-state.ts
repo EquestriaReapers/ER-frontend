@@ -25,6 +25,7 @@ const usePaginationState = () => {
     },
     setPagination,
     setCurrentPage,
+    currentPage,
   };
 };
 

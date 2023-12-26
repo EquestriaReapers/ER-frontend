@@ -16,8 +16,15 @@ import useSeed from "./hooks/use-seed";
 
 const Catalogue = () => {
   const seed = useSeed();
-  const { profileList, pagination, setCurrentPage } =
-    useCatalogueProfiles(seed);
+  const {
+    profileList,
+    pagination,
+    setCurrentPage,
+    setProfileList,
+    setPagination,
+    text,
+    currentPage,
+  } = useCatalogueProfiles(seed);
 
   return (
     <>
@@ -42,7 +49,13 @@ const Catalogue = () => {
                 }}
               >
                 <Box sx={searchBarContainer}>
-                  <CatalogueSearchBar />
+                  <CatalogueSearchBar
+                    setProfileList={setProfileList}
+                    setPagination={setPagination}
+                    currentPage={currentPage}
+                    seed={seed}
+                    text={text}
+                  />
                 </Box>
                 <ShowProfiles profileList={profileList} />
 

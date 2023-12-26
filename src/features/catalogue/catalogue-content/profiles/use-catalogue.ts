@@ -6,18 +6,18 @@ import useSearchBarState from "./use-search-bar-state";
 
 const useCatalogue = (seed: number | null) => {
   const { profileList, setProfileList } = useProfileList();
-  const { setCurrentPage, pagination, setPagination } = usePaginationState();
+  const { setCurrentPage, pagination, setPagination, currentPage } =
+    usePaginationState();
   const { text } = useSearchBarState();
-  text;
 
   const searchProfileList = useSearchProfileList({
     setProfileList,
     setPagination,
     currentPage: pagination.currentPage,
     seed,
-    text: "luis",
+    text: "lu",
   });
-
+  console.log(text);
   useEffect(() => {
     searchProfileList();
   }, [searchProfileList]);
@@ -26,6 +26,10 @@ const useCatalogue = (seed: number | null) => {
     profileList,
     pagination,
     setCurrentPage,
+    setProfileList,
+    text,
+    setPagination,
+    currentPage,
   };
 };
 
