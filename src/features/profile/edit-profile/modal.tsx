@@ -1,27 +1,28 @@
-import { useState } from 'react'
-import { Modal, IconButton } from '@mui/material'
-import EditIcon from '@mui/icons-material/Edit'
-import EditProfileModalContent from './modal-content'
+import { useState } from "react";
+import { Modal, IconButton } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import EditProfileModalContent from "./modal-content";
 
 const EditProfileModal = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      <IconButton style={{ marginLeft: '8px' }} onClick={() => setIsOpen(true)}>
+    <>
+      <IconButton
+        sx={{
+          height: { xs: "20px", sm: "40px" },
+          width: { xs: "20px", sm: "40px" },
+        }}
+        onClick={() => setIsOpen(true)}
+      >
         <EditIcon />
       </IconButton>
 
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
-        <div>
-          <EditProfileModalContent setIsOpen={setIsOpen} />
-        </div>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <EditProfileModalContent setIsOpen={setIsOpen} />
       </Modal>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default EditProfileModal
+export default EditProfileModal;
