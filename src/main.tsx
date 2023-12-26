@@ -8,6 +8,7 @@ import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import NewPassword from "features/auth/NewPassword";
+import Home from "features/home/Home"
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -81,11 +82,11 @@ const routerConfig: RouteObject[] = [
     path: "loader",
     element: <Loader />,
   },
-];
-
-const router = createBrowserRouter(routerConfig);
-
-export default router;
+  {
+    path:"/home",
+    element: <Home/>
+  }
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
