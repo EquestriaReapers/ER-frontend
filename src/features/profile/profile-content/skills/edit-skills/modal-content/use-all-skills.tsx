@@ -4,19 +4,19 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 
-const useAllSkills = () => {
+const useAllSkills = (name: string) => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
   const { showErrorToast } = useErrorToast();
   const { token } = useAuthState();
   const getSkills = useCallback(async () => {
     try {
       if (!token) return;
-      const data = await getAllSkills(token);
+      const data = await getAllSkills(token, name);
       setAllSkills(data);
     } catch (error) {
       showErrorToast(error);
     }
-  }, [token, showErrorToast]);
+  }, [token, name, showErrorToast]);
 
   useEffect(() => {
     getSkills();

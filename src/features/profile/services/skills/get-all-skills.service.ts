@@ -3,9 +3,12 @@ import { Skill } from "core/profiles/types";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 
-export async function getAllSkills(token: string): Promise<Skill[]> {
+export async function getAllSkills(
+  token: string,
+  name: string
+): Promise<Skill[]> {
   try {
-    const response = await axios.get(SKILLS_URL, {
+    const response = await axios.get(`${SKILLS_URL}?name=${name}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

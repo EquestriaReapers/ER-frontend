@@ -61,6 +61,7 @@ const AddSkillField = () => {
 };
 
 function useSkillsOptions(): Option[] {
+  
   const allSkills = useAllSkills();
 
   if (!allSkills?.length) return [];

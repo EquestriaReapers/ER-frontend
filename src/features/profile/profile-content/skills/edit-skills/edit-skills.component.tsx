@@ -11,11 +11,10 @@ const EditSkills = ({ className }: Props) => {
 
   return (
     <div>
-      {/* Button */}
       <IconButton onClick={() => setIsOpen(true)}>
         <AddIcon />
       </IconButton>
-      {/* Modal */}
+
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Box className={className} sx={modalStyle}>
           <ModalContent setIsOpen={setIsOpen} />
