@@ -1,6 +1,4 @@
 import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
@@ -10,9 +8,7 @@ import { useState } from "react";
 import Chip from "@mui/material/Chip";
 
 const Filters = () => {
-
   const [selectedCarreras, setSelectedCarreras] = useState([]);
-
 
   const handleCarreraChange = (event) => {
     const value = event.target.value;
@@ -37,8 +33,6 @@ const Filters = () => {
     console.log(value);
   };
 
-
-
   return (
     <>
       <Typography sx={{ fontWeight: "700", fontSize: "1.25rem" }}>
@@ -49,21 +43,22 @@ const Filters = () => {
         sx={{
           fontWeight: "700",
           paddingTop: 2,
+          fontFamily: "inter",
         }}
       >
         Carrera
       </Typography>
-    { /* <FormGroup>
+      {/* <FormGroup>
         <FormControlLabel
           control={<Checkbox defaultChecked />}
-          label="Carrera 1"
+          label='Carrera 1'
         />
         <FormControlLabel control={<Checkbox />} label="Carrera 2" />
         <FormControlLabel control={<Checkbox />} label="Carrera 3" />
         <FormControlLabel control={<Checkbox />} label="Carrera 4" />
       </FormGroup>*/}
 
-      <Select 
+      <Select
         label="Carrera"
         multiple
         displayEmpty
@@ -75,19 +70,31 @@ const Filters = () => {
         <MenuItem value="" disabled>
           Todas las carreras
         </MenuItem>
-        <MenuItem value="Carrera 1" onClick={() => handleCheckboxClick("Carrera 1")}>
+        <MenuItem
+          value="Carrera 1"
+          onClick={() => handleCheckboxClick("Carrera 1")}
+        >
           <Checkbox checked={selectedCarreras.includes("Carrera 1")} />
           Carrera 1
         </MenuItem>
-        <MenuItem value="Carrera 2" onClick={() => handleCheckboxClick("Carrera 2")}>
+        <MenuItem
+          value="Carrera 2"
+          onClick={() => handleCheckboxClick("Carrera 2")}
+        >
           <Checkbox checked={selectedCarreras.includes("Carrera 2")} />
           Carrera 2
         </MenuItem>
-        <MenuItem value="Carrera 3" onClick={() => handleCheckboxClick("Carrera 3")}>
+        <MenuItem
+          value="Carrera 3"
+          onClick={() => handleCheckboxClick("Carrera 3")}
+        >
           <Checkbox checked={selectedCarreras.includes("Carrera 3")} />
           Carrera 3
         </MenuItem>
-        <MenuItem value="Carrera 4" onClick={() => handleCheckboxClick("Carrera 4")}>
+        <MenuItem
+          value="Carrera 4"
+          onClick={() => handleCheckboxClick("Carrera 4")}
+        >
           <Checkbox checked={selectedCarreras.includes("Carrera 4")} />
           Carrera 4
         </MenuItem>
@@ -100,7 +107,6 @@ const Filters = () => {
             onDelete={() => handleCheckboxClick(carrera)}
             color="primary"
             sx={{ marginRight: 1, marginBottom: 1 }}
-
           />
         ))}
       </Box>

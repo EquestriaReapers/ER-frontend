@@ -1,28 +1,38 @@
 import { Pagination, Profile } from "core/profiles/types";
 import { fetchPaginatedProfiles } from "features/catalogue/services/get-paginated-profiles.service";
-import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 
-const useGetPaginatedProfiles = ({ setProfileList, setPagination }: Props) => {
-  const { token } = useAuthState();
+const useGetPaginatedProfiles = ({
+  setProfileList,
+  setPagination,
+  currentPage,
+  seed,
+}: Props) => {
   const { showErrorToast } = useErrorToast();
+  const itemsPerPage: number = 6;
   const getProfileList = useCallback(async () => {
     try {
-      if (!token) return;
-      const response = await fetchPaginatedProfiles(token, 1, 4);
+      if (!seed) return;
+      const response = await fetchPaginatedProfiles(
+        currentPage,
+        itemsPerPage,
+        seed
+      );
       setProfileList(response.profiles);
       setPagination(response.pagination);
     } catch (error) {
       showErrorToast(error);
     }
-  }, [token, setPagination, setProfileList, showErrorToast]);
+  }, [currentPage, seed, setPagination, setProfileList, showErrorToast]);
 
-  return { getProfileList };
+  return getProfileList;
 };
 
 interface Props {
   setProfileList: (profileList: Profile[]) => void;
   setPagination: (pagination: Pagination) => void;
+  currentPage: number;
+  seed: number | null;
 }
 export default useGetPaginatedProfiles;

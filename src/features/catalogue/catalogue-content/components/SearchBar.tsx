@@ -1,47 +1,71 @@
-import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
+import { Typography, styled } from "@mui/material";
+import useSearchBarState from "../profiles/search/use-search-bar-state";
+import { Pagination, Profile } from "core/profiles/types";
+import useSearchProfileList from "../profiles/search/use-search-profile-list";
+import {
+  InputBaseStyles,
+  PaperStyles,
+  SearchButtonStyles,
+  SearchIconStyles,
+} from "./styles";
 
 const StyledPaper = styled(Paper)`
-  display: flex;
-  align-items: center;
-  width: 375px;
-  padding-left: 4px;
-  background-color: white;
-  border: 1px solid #000;
-  border-radius: 2px;
+  ${PaperStyles}
 `;
 
 const StyledSearchIcon = styled(SearchIcon)`
-  color: gray;
+  ${SearchIconStyles}
 `;
 
 const StyledInputBase = styled(InputBase)`
-  margin-left: 1px;
-  flex: 1;
+  ${InputBaseStyles}
 `;
 
 const StyledButton = styled(Button)`
-  color: #000;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: capitalize;
+  ${SearchButtonStyles}
 `;
 
-const SearchBar = () => (
-  <>
-    <StyledPaper>
-      <StyledSearchIcon />
-      <StyledInputBase
-        placeholder="Buscador"
-        inputProps={{ "aria-label": "search google maps" }}
-      />
-    </StyledPaper>
-    <StyledButton>Buscar</StyledButton>
-  </>
-);
+const SearchBar = ({
+  setProfileList,
+  setPagination,
+  currentPage,
+  seed,
+}: Props) => {
+  const { onChangeText, text } = useSearchBarState();
+  const searchProfileList = useSearchProfileList({
+    setProfileList,
+    setPagination,
+    currentPage,
+    seed,
+    text,
+  });
 
+  return (
+    <>
+      <StyledPaper>
+        <StyledSearchIcon />
+        <StyledInputBase placeholder="Buscador" onChange={onChangeText} />
+      </StyledPaper>
+      <StyledButton variant="contained" onClick={searchProfileList}>
+        <SearchIcon sx={{ display: { sm: "none" } }} />
+        <Typography
+          sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "Inter" }}
+        >
+          Buscar
+        </Typography>
+      </StyledButton>
+    </>
+  );
+};
+interface Props {
+  setProfileList: (profileList: Profile[]) => void;
+  setPagination: (pagination: Pagination) => void;
+  currentPage: number;
+  seed: number;
+  text: string | null;
+}
 export default SearchBar;

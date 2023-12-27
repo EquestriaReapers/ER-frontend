@@ -5,16 +5,9 @@ import { Profile } from "core/profiles/types";
 
 const URL = `${BACKEND_V1_URL}/profiles`;
 
-export async function fetchOneProfile(
-  token: string,
-  profileId: number
-): Promise<Profile> {
+export async function fetchOneProfile(profileId: number): Promise<Profile> {
   try {
-    const response = await axios.get(`${URL}/${profileId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await axios.get(`${URL}/${profileId}`);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
