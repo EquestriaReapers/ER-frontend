@@ -1,4 +1,14 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import {
   modalStyle,
   buttonStyle,
@@ -10,11 +20,14 @@ import {
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 import useProfileContext from "../../profile-context/use-profile-context";
+import { CareersOption } from "features/profile/services/profile/get-careers-options.service";
+import useCareersOptions from "./use-careers-options";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   const { profile } = useProfileContext();
 
   const {
+    loaded,
     name,
     description,
     mainTitle,
@@ -27,6 +40,9 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
 
   const user = { name, description, lastname, mainTitle };
   const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
+  const options = useCareersOptions();
+
+  if (!loaded) return null;
 
   return (
     <Box className={className} sx={modalStyle}>
@@ -60,13 +76,32 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
         </Box>
         <Box>
           <Box className="inputContainer">
-            <TextField
-              sx={textFieldStyles}
-              value={mainTitle}
-              label="Titulación"
-              autoComplete="off"
-              onChange={onChangeMainTitle}
-            />
+            <FormControl sx={{ width: "100%" }}>
+              <InputLabel
+                id="demo-simple-select-required-label"
+                sx={{ width: "100%" }}
+              >
+                Carrera
+              </InputLabel>
+              <Select
+                sx={textFieldStyles}
+                placeholder="Carrera"
+                label="Carrera"
+                value={mainTitle}
+                onChange={onChangeMainTitle}
+                input={<OutlinedInput label="Name" />}
+              >
+                {options.map(({ label, value }: CareersOption) => (
+                  <MenuItem
+                    selected={value === mainTitle}
+                    key={value}
+                    value={value}
+                  >
+                    {label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           </Box>
         </Box>
         <Box>
