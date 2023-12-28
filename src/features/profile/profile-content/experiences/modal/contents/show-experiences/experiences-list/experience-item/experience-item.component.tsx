@@ -6,14 +6,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ExperiencesModalContext from "../../../../experiencies-modal-context/index";
 import { useContext } from "react";
 import { ExperienceContent } from "../../../../experiencies-modal-context/types";
-import { nameInputStyles, ubicationDateInputStyles } from "../styles";
-import {
-  descriptionStyles,
-  inlineStyles,
-} from "../../../../styles";
+import { nameInputStyles } from "../styles";
+import { descriptionStyles } from "../../../../styles";
 
 const ExperienceItem = ({ item, className }: Props) => {
   const { setContent, setAnExperience } = useContext(ExperiencesModalContext);
+  const getYear = (date) => new Date(date).getFullYear();
+  const startYear = getYear(item.startDate);
+  const endYear = item.endDate ? getYear(item.endDate) : "Presente";
+  const endDate = endYear === startYear ? "Presente" : endYear;
+  const dateItem = `(${startYear} - ${endDate})`;
 
   return (
     <div className={className}>
@@ -41,26 +43,12 @@ const ExperienceItem = ({ item, className }: Props) => {
             </Box>
           </Box>
           <Box
-          sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-        >
-          <Typography variant="h6">
-            {item.role},
-          </Typography>
-          <Typography  variant="h6">
-            {item.location},
-          </Typography>
-          <Typography variant="h6">
-            {"("}
-            {new Date(item.startDate).getFullYear()} {" - "}
-            {item.endDate
-              ? new Date(item.endDate).getFullYear() ===
-                new Date().getFullYear()
-                ? "Presente"
-                : new Date(item.endDate).toLocaleString().slice(0, 10)
-              : "Presente"}
-            {")"}
-          </Typography>
-        </Box>
+            sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
+          >
+            <Typography variant="h6">{item.role},</Typography>
+            <Typography variant="h6">{item.location},</Typography>
+            <Typography variant="h6">{dateItem}</Typography>
+          </Box>
           <div className={"exp-description-container"}>
             <Typography sx={descriptionStyles}>{item.description}</Typography>
           </div>
