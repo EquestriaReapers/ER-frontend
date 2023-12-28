@@ -35,10 +35,8 @@ const Catalogue = () => {
           <Box sx={navBarStyles}>fakenavbar por ahora</Box>
           <Box sx={pageContainer}>
             <Box sx={catalogueContainer}>
-              <Box sx={filtersContainerBackground}>
-                <Box sx={filtersContainer}>
-                  <Filters />
-                </Box>
+              <Box sx={filtersContainer}>
+                <Filters />
               </Box>
 
               <Box
