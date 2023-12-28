@@ -1,11 +1,7 @@
 import { Experience } from "core/profiles/types";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
-import {
-  nameStyles,
-  descriptionStyles,
-  subtitleStyles,
-} from "../../../experiences/styles/styles";
+import { nameStyles, descriptionStyles, subtitleStyles } from "./styles";
 
 const ExperienceCard = ({ item }: Props) => {
   return (
