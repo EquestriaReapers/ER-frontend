@@ -4,6 +4,14 @@ import { Box } from "@mui/material";
 import { nameStyles, descriptionStyles, subtitleStyles } from "./styles";
 
 const ExperienceCard = ({ item }: Props) => {
+  const getYear = (date: string | number | Date) =>
+    new Date(date).getFullYear();
+
+  const startYear = getYear(item.startDate);
+  const endYear = item.endDate ? getYear(item.endDate) : "Presente";
+  const endDate = endYear === getYear(item.startDate) ? "Presente" : endYear;
+
+  const dateItem = `(${startYear} - ${endDate})`;
   return (
     <Box
       sx={{
@@ -34,15 +42,9 @@ const ExperienceCard = ({ item }: Props) => {
             {item.location},
           </Typography>
           <Typography sx={subtitleStyles} variant="h6">
-            {"("}
-            {new Date(item.startDate).getFullYear()} {" - "}
-            {item.endDate
-              ? new Date(item.endDate).getFullYear() ===
-                new Date().getFullYear()
-                ? "Presente"
-                : new Date(item.endDate).toLocaleString().slice(0, 10)
-              : "Presente"}
-            {")"}
+            <Typography sx={subtitleStyles} variant="h6">
+              {dateItem}
+            </Typography>
           </Typography>
         </Box>
       </Box>
