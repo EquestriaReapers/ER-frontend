@@ -20,14 +20,13 @@ const ModalContent = ({ setIsOpen }: Props) => {
         Nueva habilidad
       </Typography>
 
-      <form>
-        <AddSkillField />
-        <Typography sx={{ fontWeight: "600" }}>Habilidades</Typography>
-        <ShowSkills skills={profile.skills} />
-        <Button sx={buttonStyle} type="submit" onClick={closeModal}>
-          Listo
-        </Button>
-      </form>
+      <AddSkillField />
+
+      <Typography sx={{ fontWeight: "600" }}>Habilidades</Typography>
+      <ShowSkills skills={profile.skills} />
+      <Button sx={buttonStyle} type="submit" onClick={closeModal}>
+        Listo
+      </Button>
     </Box>
   );
 };

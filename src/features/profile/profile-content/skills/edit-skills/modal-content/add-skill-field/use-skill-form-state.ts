@@ -15,6 +15,6 @@ export const useCreateNewSkillState = () => {
 };
 
 export interface Option {
-  value: number;
+  value: number | string;
   label: string;
 }

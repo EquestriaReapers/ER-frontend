@@ -13,6 +13,6 @@ export interface ProfileContextI {
   profileId: number;
   fetchProfile: () => void;
   isEditable: boolean;
-} 
+}
 
 export default ProfileContext;

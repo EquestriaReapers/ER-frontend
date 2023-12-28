@@ -1,19 +1,24 @@
 import { Box, TextField } from "@mui/material";
-import { SyntheticEvent } from "react";
+import { SyntheticEvent, useState } from "react";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-import useAllSkills from "../use-all-skills";
-import { Option } from "../../use-skill-form-state";
-import useAddSkill from "../use-add-skill";
-import useProfileContext from "../../../../../profile-context/use-profile-context";
-import useAddNewSkill from "../use-add-new-skill";
+import useAllSkills from "./use-all-skills";
+import { Option } from "./use-skill-form-state";
+import useAddSkill from "./use-add-skill";
+import useAddUnexistsSkill from "./use-add-unexists-skill";
+import { debounce } from "lodash";
 
 const filter = createFilterOptions<Option>();
 
 const AddSkillField = () => {
-  const { fetchProfile } = useProfileContext();
-  const addSkill = useAddSkill({ fetchProfile });
-  const addNewSkill = useAddNewSkill({ fetchProfile });
-  const skillsOptions = useSkillsOptions();
+  const [loading, setLoading] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const addSkill = useAddSkill({ setLoading });
+  const addUnexistsSkill = useAddUnexistsSkill({ setLoading });
+  const skillsOptions = useSkillsSuggestions(searchText);
+
+  const debouncedSetSearchText = debounce((value: string) => {
+    setSearchText(value);
+  }, 350);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -21,32 +26,39 @@ const AddSkillField = () => {
         sx={{ width: "100%", marginBottom: "16px" }}
         disablePortal
         id="combo-box-demo"
+        disabled={loading}
         options={skillsOptions}
-        getOptionLabel={(option) => option.label}
+        onInputChange={(event) => {
+          const text = event.target as unknown as HTMLInputElement;
+          debouncedSetSearchText(text.value || "");
+        }}
         onChange={(
           _: SyntheticEvent<Element, Event>,
           option: Option | null
         ) => {
-          if (option?.value) {
-            if (option.value >= 0) {
-              addSkill(option.value);
-            } else {
-              console.log(`probando new skill: "${option.label}"`);
-              addNewSkill(option.label);
-            }
+          if (!option?.value) return;
+
+          if (typeof option.value === "string") {
+            // Create and asign new skill
+            addUnexistsSkill(option.value);
+            return;
           }
+
+          // Asign existing skill
+          addSkill(option.value);
         }}
         filterOptions={(options, params) => {
           const filtered = filter(options, params);
 
           const { inputValue } = params;
           const isExisting = options.some(
-            (option) => inputValue === option.label
+            (option) => inputValue.toLowerCase() === option.label.toLowerCase()
           );
+
           if (inputValue !== "" && !isExisting) {
             filtered.push({
-              value: -1,
-              label: `${inputValue}`,
+              value: inputValue,
+              label: `Agregar "${inputValue}"`,
             });
           }
 
@@ -60,9 +72,8 @@ const AddSkillField = () => {
   );
 };
 
-function useSkillsOptions(): Option[] {
-  
-  const allSkills = useAllSkills();
+function useSkillsSuggestions(name: string): Option[] {
+  const allSkills = useAllSkills(name);
 
   if (!allSkills?.length) return [];
 
