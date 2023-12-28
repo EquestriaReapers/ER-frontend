@@ -1,79 +1,38 @@
-import { Box, TextField } from "@mui/material";
-import { SyntheticEvent, useState } from "react";
-import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
+import { Box } from "@mui/material";
+import { useState } from "react";
 import useAllSkills from "./use-all-skills";
 import { Option } from "./use-skill-form-state";
 import useAddSkill from "./use-add-skill";
 import useAddUnexistsSkill from "./use-add-unexists-skill";
-import { debounce } from "lodash";
-
-const filter = createFilterOptions<Option>();
+import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 
 const AddSkillField = () => {
   const [loading, setLoading] = useState(false);
-  const [searchText, setSearchText] = useState("");
   const addSkill = useAddSkill({ setLoading });
   const addUnexistsSkill = useAddUnexistsSkill({ setLoading });
-  const skillsOptions = useSkillsSuggestions(searchText);
-
-  const debouncedSetSearchText = debounce((value: string) => {
-    setSearchText(value);
-  }, 350);
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Autocomplete
+      <AutoCompleteFieldComponent
         sx={{ width: "100%", marginBottom: "16px" }}
-        disablePortal
-        id="combo-box-demo"
         disabled={loading}
-        options={skillsOptions}
-        onInputChange={(event) => {
-          const text = event.target as unknown as HTMLInputElement;
-          debouncedSetSearchText(text.value || "");
+        debounceTime={350}
+        useOptions={useSkillsSuggestions}
+        label="Buscar Habilidades"
+        onSelectOption={(option: Option) => {
+          addSkill(+option.value);
         }}
-        onChange={(
-          _: SyntheticEvent<Element, Event>,
-          option: Option | null
-        ) => {
-          if (!option?.value) return;
-
-          if (typeof option.value === "string") {
-            // Create and asign new skill
-            addUnexistsSkill(option.value);
-            return;
-          }
-
-          // Asign existing skill
-          addSkill(option.value);
+        onCreateNewOption={(option: Option) => {
+          addUnexistsSkill(option.value + "");
         }}
-        filterOptions={(options, params) => {
-          const filtered = filter(options, params);
-
-          const { inputValue } = params;
-          const isExisting = options.some(
-            (option) => inputValue.toLowerCase() === option.label.toLowerCase()
-          );
-
-          if (inputValue !== "" && !isExisting) {
-            filtered.push({
-              value: inputValue,
-              label: `Agregar "${inputValue}"`,
-            });
-          }
-
-          return filtered;
-        }}
-        renderInput={(params) => (
-          <TextField {...params} label="Buscar Habilidades" />
-        )}
+        allowNewUserOptions={true}
       />
     </Box>
   );
 };
 
-function useSkillsSuggestions(name: string): Option[] {
-  const allSkills = useAllSkills(name);
+function useSkillsSuggestions(name?: string | null): Option[] {
+  const allSkills = useAllSkills(name || "");
 
   if (!allSkills?.length) return [];
 
