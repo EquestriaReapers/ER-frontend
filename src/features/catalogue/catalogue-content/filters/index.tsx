@@ -200,13 +200,11 @@ const Filters = () => {
           >
             Ubicación
           </Typography>
-
           <Select
             label="Carrera"
-            value={selectedCarreras}
+            value={selectedCareers}
             //onChange={handleCarreraChange}
             variant="standard"
-            renderValue={(selected) => "Todas las carreras"}
             sx={{
               display: "flex",
               width: "100%",
@@ -225,37 +223,23 @@ const Filters = () => {
               value="Carrera 1"
               onClick={() => handleCheckboxClick("Carrera 1")}
             >
-              <Checkbox checked={selectedCarreras.includes("Carrera 1")} />
+              <Checkbox checked={selectedCareers.includes("Carrera 1")} />
               Carrera 1
             </MenuItem>
             <MenuItem
               value="Carrera 2"
               onClick={() => handleCheckboxClick("Carrera 2")}
             >
-              <Checkbox checked={selectedCarreras.includes("Carrera 2")} />
+              <Checkbox checked={selectedCareers.includes("Carrera 2")} />
               Carrera 2
-            </MenuItem>
-            <MenuItem
-              value="Carrera 3"
-              onClick={() => handleCheckboxClick("Carrera 3")}
-            >
-              <Checkbox checked={selectedCarreras.includes("Carrera 3")} />
-              Carrera 3
-            </MenuItem>
-            <MenuItem
-              value="Carrera 4"
-              onClick={() => handleCheckboxClick("Carrera 4")}
-            >
-              <Checkbox checked={selectedCarreras.includes("Carrera 4")} />
-              Carrera 4
             </MenuItem>
           </Select>
           <Box>
-            {selectedCarreras.map((carrera) => (
+            {selectedCareers.map((career) => (
               <Chip
-                key={carrera}
-                label={carrera}
-                onDelete={() => handleCheckboxClick(carrera)}
+                key={career}
+                label={career}
+                onDelete={() => handleCheckboxClick(career)}
                 color="primary"
                 sx={{
                   borderRadius: "5px",
@@ -266,7 +250,7 @@ const Filters = () => {
                   fontStyle: "normal",
                   fontWeight: "400",
                   lineHeight: "normal",
-                  marginBottom: "4px",
+                  my: "4px",
                   mx: "4px",
                 }}
               />
