@@ -2,24 +2,31 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import curriculum from "./images/curriculum.jpeg"
+import curriculum from "./images/curriculum.jpeg";
+import background from "./images/background.jpeg"
+import SearchIcon from '@mui/icons-material/Search'; 
+import InputAdornment from '@mui/material/InputAdornment'; 
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { useMediaQuery, Theme } from '@mui/material';
 
 const Home = () => {
+    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+    const isMediumScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+
     return (
-        <Box sx={{height:'270vh'}}>
-            <Box sx={{width:'100%', height:'65px', backgroundColor:'blue'}}>NavBar falsa</Box>
-            <Box sx={{width:'100%', height:'calc(270vh - 65px)'}}>
-                <Box sx={{width: '100%', height: '33%', backgroundColor:'white'}}>
+        <Box sx={{height:'270vh', minHeight:'2200px', minWidth:'1000px', width: '100%'}}>
+            <Box sx={{width:'100%', height:'65px', backgroundColor:'blue', fontSize:'3rem'}}>NavBar falsa</Box>
+            <Box sx={{width:'100%', height:'calc(270vh - 65px)', minHeight:'2140px'}}>
+                <Box sx={{width: '100%', height: '33%', backgroundColor:'white', maxWidth:'2000px', margin: 'auto'}}>
                     <Box sx={{width:'80%', margin:'auto', height:'90%'}}>
                         <Box sx={{width:'100%', height:'50%', display:'flex', alignItems:'center'}}>
-                            <Box sx={{margin:'auto'}}>
+                            <Box sx={{margin:'auto auto 0 auto'}}>
                                 <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
-                                    <Typography sx={{fontWeight:'600', fontSize:'2rem'}}>¡Busca a tus Egresados!</Typography>
+                                    <Typography sx={{fontWeight:'600', fontSize:'3rem'}}>¡Busca a tus Egresados!</Typography>
                                 </Box>
-                                <Box sx={{ display: 'flex', alignItems: 'center', width: '400px', margin: 'auto', marginBottom:'40px'}}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', width: '500px', margin: 'auto', marginBottom:'40px'}}>
                                     <TextField
                                         id="search"
-                                        label="Buscar"
                                         variant="outlined"
                                         fullWidth
                                         InputLabelProps={{
@@ -27,16 +34,35 @@ const Home = () => {
                                         }}
                                         sx={{
                                             backgroundColor: '#F4F4F4',
-                                            marginRight: '5px'
-                                          }}
+                                            marginRight: '10px',
+                                            border:'none',
+                                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+                                            "& fieldset": { border: 'none' },
+                                            "& .MuiInputBase-root.MuiOutlinedInput-root ::placeholder": {
+                                                color: "#000000"
+                                            }
+
+                                        }}
+                                        InputProps={{
+                                            startAdornment: (
+                                                <InputAdornment position="start">
+                                                    <SearchIcon color="primary" style={{ color: '#3C3C43', opacity: '0.6' }} /> 
+                                                </InputAdornment>
+                                            ),
+
+                                            style: {
+                                                height: "50px",
+                                                color: 'black',
+                                            },
+                                        }}
                                         placeholder="Ej: ingeniería informática"
                                     />
-                                    <Button variant="contained" color="primary" sx={{backgroundColor:'#007934'}}>
+                                    <Button variant="contained" color="primary" sx={{backgroundColor:'#007934', height:'50px', fontWeight:'300', fontSize: '0.8rem'}}>
                                         Buscar
                                     </Button>
                                 </Box>
-                                <Box sx={{width:'80%', margin:'auto'}}>
-                                    <Typography>
+                                <Box sx={{width:'90%', margin:'auto'}}>
+                                    <Typography sx={{fontWeight:'500', fontSize:'1rem', textAlign:'center'}}>
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                         Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur
                                     </Typography>
@@ -53,7 +79,7 @@ const Home = () => {
                                         </Typography>
                                     </Box>
                                     <Box>
-                                        <Typography>
+                                        <Typography sx={{fontWeight:'500', fontSize:'0.9rem'}}>
                                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum 
                                             numquam 
@@ -63,35 +89,58 @@ const Home = () => {
 
                             </Box>
                             <Box sx={{width:'55%', height:'50%',  transform: 'rotate(3deg)', display:'flex', justifyContent:'center'}}>
-                                <img src={curriculum} alt="" style={ {height: '50vh', width:'auto', border:'1px solid black'}} />
+                                <img src={curriculum} alt="" style={ {minHeight: '500px', height:'50vh', maxHeight:'800px', width:'auto', border:'1px solid black'}} />
                             </Box>
 
                         </Box>
                     </Box>
                     
                 </Box>
-                
-                <Box sx={{width: '100%', height:'22%' , backgroundColor:'#F4F4F4'}}>
-                    <Box sx={{width:'80%', height: '90%', display:'flex', margin:'auto'}}>
+
+                <Box sx={{
+                    width: '100%', 
+                    height:'22%', 
+                    position: 'relative',
+                    '&::before': {
+                    content: '""',
+                    position:'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: `url(${background})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    filter: 'blur(3.3px)',
+                    zIndex: -1,
+                    },
+                }}>
+                    <Box sx={{width:'80%', height: '90%', display:'flex', margin:'auto', position:'relative', zIndex:1, maxWidth: '2000px'}}>
                         <Box sx={{width:'50%', height:'100%', display:'flex', alignItems:'center'}}>
-                            <Box sx={{height:'300px', width:'250px', backgroundColor:'#FFB2A4',  transform: 'rotate(9deg)', display:'flex', alignItems:'center', margin:'auto'}}>
+                            <Box sx={{height:'300px', width:'250px', backgroundColor:'#72C4E8',  transform: 'rotate(8deg)', display:'flex', alignItems:'center', margin:'auto'}}>
                                 <Box sx={{height:'110%', width:'98%', backgroundColor:'white', transform: 'rotate(-9deg)', marginBottom:'40px'}}>
 
                                 </Box>
                             </Box>
                         </Box>
                         <Box sx={{width:'50%', height:'40%', marginTop:'auto', marginBottom:'60px'}}>
-                            <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px'}}>Lorem</Typography>
-                            <Typography sx={{marginBottom:'40px'}}>
+                            <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px', color:'#FFFFFF'}}>Lorem</Typography>
+                            <Typography sx={{marginBottom:'40px', fontWeight:'500', fontSize:'0.9rem', color:'#FFFFFF'}}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam 
                             </Typography>
-                            <Typography sx={{marginBottom:'40px'}}>Descarga tus CV</Typography>
+                            <Box sx={{display:'flex', alignItems:'center'}}>
+                                <FileDownloadOutlinedIcon sx={{ fontSize: '1.5rem', marginTop:'auto', marginBottom:'auto', marginRight:'2px', color:'#FFFFFF'}} />
+                                <Typography sx={{marginBottom:'40px', fontSize:'0.8rem', fontWeight:'500', color:'#FFFFFF', margin: 'auto 0 0 0'}}>  Descarga tus CV</Typography>
+                            </Box>
+                                    
                         </Box>
                     </Box>
                 </Box>
+
+
                 <Box sx={{width:'100%', height:'33%', backgroundColor:'white'}}>
-                    <Box sx={{width:'80%', height:'90%', margin:'auto'}}>
+                    <Box sx={{width:'80%', height:'90%', margin:'auto', maxWidth:'2000px'}}>
                         <Box sx={{height:'30%', width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
                             <Box>
                                 <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
@@ -100,7 +149,7 @@ const Home = () => {
                                     </Typography>
                                 </Box>
                                 <Box sx={{width:'max-content', margin:'auto'}}>
-                                    <Typography sx={{width:'400px'}}>
+                                    <Typography sx={{width:'400px', textAlign: 'center'}}>
                                         Lorem ipsum dolor sit amet consectetur 
                                         adipisicing elit. Maxime mollitia, 
                                         molestiae quas vel sint commodi 
@@ -110,22 +159,22 @@ const Home = () => {
                         </Box>
                         <Box sx={{height:'70%', width: '100%', display:'flex'}}>
                             <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-                                <Box sx={{width:'250px', height:'250px', backgroundColor: '#FFE298', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
-                                    <Box sx={{backgroundColor:'white', height:'94%', width:'94%', transform: 'skew(5deg)' }}>
+                                <Box sx={{width:'250px', height:'250px', backgroundColor: '#FFE298', transform: 'skew(-2.8deg) rotate(90.5deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
+                                    <Box sx={{backgroundColor:'white', height:'96%', width:'96%', transform: 'rotate(-2.5deg)' }}>
 
                                     </Box>
                                 </Box>
                                 <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px'}}>
                                     Lorem
                                 </Typography>
-                                <Typography>
+                                <Typography sx={{fontWeight:'500', fontSize:'0.9rem', textAlign: 'center'}}>
                                     Lorem ipsum dolor sit amet consectetur adipisicing 
                                     elit. Maxime mollitia, 
                                     molestiae quas vel sint commodi 
                                 </Typography>
                             </Box>
                             <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
-                                <Box sx={{width:'300px', height:'250px', backgroundColor: '#BBA4FF', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
+                                <Box sx={{width:'300px', height:'250px', backgroundColor: '#A6D6A8', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
                                     <Box sx={{backgroundColor:'white', height:'94%', width:'94%', transform: 'skew(5deg)' }}>
 
                                     </Box>
@@ -134,7 +183,7 @@ const Home = () => {
                                 <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px'}}>
                                     Lorem
                                 </Typography>
-                                <Typography>
+                                <Typography sx={{fontWeight:'500', fontSize:'0.9rem', textAlign: 'center'}}>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                     Maxime mollitia, molestiae quas vel sint commodi 
                                 </Typography>
@@ -146,9 +195,9 @@ const Home = () => {
                     </Box>
                 </Box>
                 <Box sx={{width:'100%', height:'12%', backgroundColor:'#A6D6A8'}}>
-                    <Box sx={{width:'80%', height: '90%', margin:'auto', display: 'flex', alignItems: 'center'}}>
+                    <Box sx={{width:'80%', height: '90%', margin:'auto', display: 'flex', alignItems: 'center', maxWidth:'2000px'}}>
                         <Box sx={{margin: 'auto', width:'100%', textAlign:'center'}}>
-                            <Typography>
+                            <Typography sx={{fontWeight:'500', fontSize:'1rem'}}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                 molestiae quas vel sint commodi repudiandae consequuntur
                             </Typography>
