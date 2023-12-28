@@ -23,7 +23,7 @@ export const skillTitleStyles = {
   paddingBottom: "3px",
   paddingLeft: 2,
   paddingRight: 2,
-  backgroundColor: "#D9D9D9",
+  backgroundColor: "#A6D6A8",
   marginRight: 2,
   marginBottom: 1,
 };

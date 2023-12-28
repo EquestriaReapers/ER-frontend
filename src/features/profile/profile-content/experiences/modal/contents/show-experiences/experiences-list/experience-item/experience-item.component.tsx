@@ -40,20 +40,27 @@ const ExperienceItem = ({ item, className }: Props) => {
               </IconButton>
             </Box>
           </Box>
-          <Box sx={inlineStyles}>
-            <Typography>{item.role}</Typography>
-            <Box sx={ubicationDateInputStyles}>
-              <Typography>{item.location}</Typography>
-              <Typography>
-                {item.startDate.toLocaleString().slice(0, 10)}
-              </Typography>
-              {item.endDate && (
-                <Typography>
-                  {item.endDate.toLocaleString().slice(0, 10)}
-                </Typography>
-              )}
-            </Box>
-          </Box>
+          <Box
+          sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
+        >
+          <Typography variant="h6">
+            {item.role},
+          </Typography>
+          <Typography  variant="h6">
+            {item.location},
+          </Typography>
+          <Typography variant="h6">
+            {"("}
+            {new Date(item.startDate).getFullYear()} {" - "}
+            {item.endDate
+              ? new Date(item.endDate).getFullYear() ===
+                new Date().getFullYear()
+                ? "Presente"
+                : new Date(item.endDate).toLocaleString().slice(0, 10)
+              : "Presente"}
+            {")"}
+          </Typography>
+        </Box>
           <div className={"exp-description-container"}>
             <Typography sx={descriptionStyles}>{item.description}</Typography>
           </div>

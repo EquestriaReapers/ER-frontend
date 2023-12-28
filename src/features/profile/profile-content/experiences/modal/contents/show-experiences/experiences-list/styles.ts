@@ -12,3 +12,4 @@ export const nameInputStyles = {
   fontWeight: "800",
   fontSize: "20px",
 };
+
