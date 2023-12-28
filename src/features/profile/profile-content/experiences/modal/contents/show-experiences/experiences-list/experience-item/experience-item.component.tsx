@@ -11,7 +11,7 @@ import { descriptionStyles } from "../../../../styles";
 
 const ExperienceItem = ({ item, className }: Props) => {
   const { setContent, setAnExperience } = useContext(ExperiencesModalContext);
-  const getYear = (date) => new Date(date).getFullYear();
+  const getYear = (date: string | number | Date) => new Date(date).getFullYear();
   const startYear = getYear(item.startDate);
   const endYear = item.endDate ? getYear(item.endDate) : "Presente";
   const endDate = endYear === startYear ? "Presente" : endYear;
