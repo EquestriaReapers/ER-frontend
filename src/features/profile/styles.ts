@@ -56,8 +56,7 @@ export const descriptionStyles = {
   color: "#444444",
   fontFamily: "Inter",
   wordWrap: "break-word",
-  pt: 1,
-  pb: 2,
+  py: 2,
 };
 
 export const skillTitleStyle = { 

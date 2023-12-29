@@ -36,11 +36,11 @@ export const buttonStyles = {
     xs: "100%",
     sm: "100%",
   },
-  height: { xs: "100%", sm: "50%", md: "45%" },
+  height: { md: "45%" },
   color: "#FCFEFE",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: { xs: "16px", sm: "18px", md: "20px" },
+  fontSize: { xs: "16px", sm: "16px", md: "18px" },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -93,7 +93,7 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
-  fontSize: { xs: "16px", sm: "18px" },
+  fontSize: '16px',
 };
 
 export const contactSectionStyles = {
@@ -116,7 +116,7 @@ export const locationBoxStyles = {
 export const contactTitlesStyles = {
   fontFamily: "inter",
   fontWeight: "600",
-  fontSize: { xs: "18px", sm: "22px" },
+  fontSize: { xs: "16px", sm: "22px" },
 };
 
 export const websiteBoxStyles = {
@@ -126,11 +126,12 @@ export const websiteBoxStyles = {
 
 export const websiteTitleContainerStyles = {
   display: "flex",
-  flexWrap: "wrap",
+  flexWrap: "wrap",  
   pr: {
-    lg: "160px",
+    lg: "150px",
     xs: "20px",
   },
+  alignItems: "center",
 };
 
 export const topSectionStyles = {

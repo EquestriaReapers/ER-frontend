@@ -28,7 +28,7 @@ export const boxStyles = {
 };
 
 export const nameStyles = {
-  fontSize: "20px", 
+  fontSize: "20px",
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
@@ -37,7 +37,7 @@ export const nameStyles = {
 
 export const inlineStyles = {
   display: 'flex',
-  flexWrap:'wrap',
+  flexWrap: 'wrap',
 };
 
 export const subtitleStyles = {
@@ -48,7 +48,7 @@ export const subtitleStyles = {
   fontFamily: "Inter",
   fontStyle: "normal",
   lineHeight: "normal",
-  pr:1,
+  pr: 1,
 };
 
 export const descriptionStyles = {
@@ -58,4 +58,9 @@ export const descriptionStyles = {
   fontFamily: "Inter",
   wordWrap: "break-word",
   pt: 2,
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 };

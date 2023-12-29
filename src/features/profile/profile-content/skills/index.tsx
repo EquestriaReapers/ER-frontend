@@ -2,16 +2,16 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import ShowSkills from "./show-profile-skills";
 import useProfileContext from "../../profile-context/use-profile-context";
-import { skillTitleTypographyStyles } from "./styles";
+import { skillTitleStyles, boxWrapperStyles, boxStyles } from "./styles";
 import EditSkills from "./edit-skills";
 
 const ProfileSkills = () => {
   const { profile, isEditable } = useProfileContext();
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <Typography sx={skillTitleTypographyStyles} variant="h4">
+      <Box sx={boxWrapperStyles}>
+        <Box sx={boxStyles}>
+          <Typography sx={skillTitleStyles} variant="h4">
             Habilidades
           </Typography>
           {isEditable && <EditSkills />}

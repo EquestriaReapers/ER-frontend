@@ -1,17 +1,17 @@
-export const boxStyles = {
-  fontWeight: "bold",
-  fontFamily: "Inter",
+export const boxWrapperStyles = {
   display: "flex",
-  flexWrap: "wrap",
+  flexDirection: "column"
+}
+
+export const boxStyles = {
+  display: "flex", 
+  flexWrap: "wrap", 
+  gap: "10px", 
   py: 3,
-  marginLeft: {
-    xs: 3,
-    md: 10,
-    lg: 10,
-  },
+  alignItems: "center",
 };
 
-export const skillTitleTypographyStyles = {
+export const skillTitleStyles = {
   color: "#000",
   fontFamily: "inter",
   fontSize: { xs: "22px", sm: "35px" },
