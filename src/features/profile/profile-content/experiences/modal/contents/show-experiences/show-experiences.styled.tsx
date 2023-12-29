@@ -17,7 +17,7 @@ export default styled(ShowExperiences)`
 
   .exp-show-description {
     max-width: 550px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     color: #444444;
     font-family: Inter;
