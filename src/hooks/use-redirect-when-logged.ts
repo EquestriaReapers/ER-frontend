@@ -13,9 +13,6 @@ export default function useRedirectWhenLogged() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLogged) {
-      navigate(`/dashboard`);
-      return;
-    }
+    if (isLogged) navigate(`/dashboard`);
   }, [navigate, isLogged, user]);
 }

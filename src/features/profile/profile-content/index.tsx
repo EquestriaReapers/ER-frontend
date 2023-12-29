@@ -152,4 +152,5 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 export interface ProfileContentProps {
   profile: Profile;
 }
+
 export default ProfileContent;

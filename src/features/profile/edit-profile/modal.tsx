@@ -17,7 +17,6 @@ const EditProfileModal = () => {
       >
         <EditIcon />
       </IconButton>
-
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <EditProfileModalContent setIsOpen={setIsOpen} />
       </Modal>

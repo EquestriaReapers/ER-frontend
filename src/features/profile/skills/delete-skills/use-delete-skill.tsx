@@ -1,10 +1,10 @@
-import { BackendError } from "app/exceptions";
-import { removeProfileSkill } from "features/profile/services/profile.service";
+import { removeProfileSkill } from "features/profile/services/profile/remove-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
-import { toast } from "sonner";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
   const { token } = useAuthState();
+  const { showErrorToast } = useErrorToast();
   const onDeleteSkill = async () => {
     try {
       if (!token || !skillId) return;
@@ -12,11 +12,7 @@ const useDeleteSkill = ({ skillId, setIsOpen }: Props) => {
       setIsOpen(false);
       return data;
     } catch (error) {
-      if (error instanceof BackendError) {
-        toast.error(error.message);
-      } else {
-        toast.error("Error desconocido");
-      }
+      showErrorToast(error);
     }
   };
   return { onDeleteSkill };

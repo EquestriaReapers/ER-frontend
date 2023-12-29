@@ -7,18 +7,17 @@ import useDeleteSkill from "./use-delete-skill";
 
 const DeleteSkillModal = ({ skillId }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const { onDeleteSkill } = useDeleteSkill({ skillId, setIsOpen });
 
   return (
     <div>
-      <IconButton onClick={() => setIsOpen(true)}>
+      <IconButton onClick={openModal}>
         <DeleteIcon />
       </IconButton>
-      <Modal
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      >
+      <Modal open={isOpen} onClose={closeModal}>
         <div>
           <DeleteSkillModalContent
             onDeleteSkill={onDeleteSkill}
