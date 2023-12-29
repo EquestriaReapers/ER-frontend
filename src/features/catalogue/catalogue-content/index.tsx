@@ -40,10 +40,10 @@ const Catalogue = () => {
 
               <Box
                 sx={{
-                  width: "100%",
-                  maxWidth: "700px",
-                  height: "90%",
-                  mx: { xs: "30px", sm: "50px" },
+                  width: '100%',
+                  maxWidth: { lg: 500, xl: 700 },
+                  height: '90%',
+                  mx: { xs: '30px', sm: '50px' }
                 }}
               >
                 <Box sx={searchBarContainer}>
