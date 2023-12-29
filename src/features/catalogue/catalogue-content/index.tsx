@@ -42,7 +42,7 @@ const Catalogue = () => {
               <Box
                 sx={{
                   width: '100%',
-                  maxWidth: { lg: 500, xl: 700 },
+                  maxWidth: { lg: 590, xl: 790 },
                   height: '90%',
                   mx: { xs: '30px', sm: '50px' }
                 }}
