@@ -10,7 +10,6 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      console.log(user);
       if (!token || !user) return;
       const data = await updateProfile(
         token,

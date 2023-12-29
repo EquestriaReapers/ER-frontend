@@ -16,7 +16,11 @@ const useEditProfileFormState = () => {
     setMainTitle(event.target.value);
   };
 
-  const { getUserInfo } = useGetProfileInfo({ setName, setDescription });
+  const { getUserInfo } = useGetProfileInfo({
+    setName,
+    setDescription,
+    setMainTitle,
+  });
 
   useEffect(() => {
     getUserInfo();
