@@ -96,7 +96,8 @@ const ProfileContent = () => {
                         Ubicación
                       </Typography>
                     </Box>
-                    <Box sx={{ display: "flex" }}>
+                    <Box sx={{ editIconStyles }}>
+                      {/*{isEditable && <EditContactModal />}*/}
                       <EditIcon />
                     </Box>
                   </Box>
