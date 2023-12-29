@@ -24,7 +24,6 @@ import {
   websiteTitleContainerStyles,
 } from "./styles/styles";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
-
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
@@ -33,39 +32,26 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   return (
     <>
       <Box>
+        <Box sx={bannerStyles}></Box>
         <Box>
-          <Box sx={bannerStyles}></Box>
-          <Box>
-            <Box
-              sx={{
-                width: "90%",
-                mx: { lg: "auto", md: "auto", xs: "20px" },
-                mt: "30px",
-              }}
-            >
-              <Box sx={nameSectionStyles}>
-                <Box>
-                  <Typography variant="h4" sx={nameStyles}>
-                    {profile.user.name} {profile.user.lastname}{" "}
-                    <Box sx={editIconStyles}>
-                      {isEditable && <EditProfileModal />}
-                    </Box>
-                  </Typography>
-                  <Typography variant="h4" sx={mainTitleStyles}>
-                    {profile.mainTitle}
-                  </Typography>
-                </Box>
-                <Box>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    sx={buttonStyles}
-                    onClick={downloadCurriculumPDF}
-                  >
-                    Descargar CV
-                  </Button>
-                </Box>
+          <Box
+            sx={{
+              width: "90%",
+              mx: { lg: "auto", md: "auto", xs: "20px" },
+              mt: "30px",
+            }}
+          >
+            <Box sx={nameSectionStyles}>
+              <Box>
+                <Typography variant="h4" sx={nameStyles}>
+                  {profile.user.name} {profile.user.lastname}{" "}
+                  <Box sx={editIconStyles}>
+                    {isEditable && <EditProfileModal />}
+                  </Box>
+                </Typography>
+                <Typography variant="h4" sx={mainTitleStyles}>
+                  {profile.mainTitle}
+                </Typography>
               </Box>
               <Box sx={{ width: { xs: "100%", sm: "30%", md: "20%" } }}>
                 <Button
@@ -73,6 +59,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   color="primary"
                   type="submit"
                   sx={buttonStyles}
+                  onClick={downloadCurriculumPDF}
                 >
                   Descargar CV
                 </Button>
