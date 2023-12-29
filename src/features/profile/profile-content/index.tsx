@@ -76,9 +76,13 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 >
                   Sobre Mí
                 </Typography>
-                <Typography sx={descriptionStyles}>
-                  {profile.description}
-                </Typography>
+                {!profile.description ? (
+                  <Typography>El perfil no tiene descripción.</Typography>
+                ) : (
+                  <Typography sx={descriptionStyles}>
+                    {profile.description}
+                  </Typography>
+                )}
               </Box>
               <Box sx={contactSectionStyles}>
                 <Box
@@ -110,7 +114,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 </Box>
                 <Box sx={websiteBoxStyles}>
                   <Box sx={websiteTitleContainerStyles}>
-                    <LanguageIcon />
+                    <LanguageIcon />{" "}
                     <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
 
@@ -141,4 +145,5 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 export interface ProfileContentProps {
   profile: Profile;
 }
+
 export default ProfileContent;

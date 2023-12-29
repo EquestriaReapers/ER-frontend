@@ -22,7 +22,6 @@ const authSlice = createSlice({
       state.token = null;
       state.user = null;
       state.isLogged = false;
-      localStorage.removeItem('auth');
     },
   },
 });

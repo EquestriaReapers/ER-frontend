@@ -16,9 +16,7 @@ const Dashboard = () => {
 
   useRedirectWhenUnlogged();
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   const onLogout = () => {
     dispatch(logout());
@@ -38,7 +36,7 @@ const Dashboard = () => {
   );
 };
 
-function useCurrentUser(): User {
+function useCurrentUser(): User | null {
   return useSelector<{ auth: AuthState }>((state) => state.auth.user) as User;
 }
 
