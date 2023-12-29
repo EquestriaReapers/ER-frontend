@@ -1,6 +1,6 @@
 import Modal from "@mui/material/Modal";
 import { Box, Typography } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 //import ModalContent from "./modal-content";
 import { useState } from "react";
@@ -12,7 +12,7 @@ const EditCardContent = ({ className }: Props) => {
   return (
     <div>
       <IconButton onClick={() => setIsOpen(true)}>
-        <AddIcon />
+        <EditIcon />
       </IconButton>
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>

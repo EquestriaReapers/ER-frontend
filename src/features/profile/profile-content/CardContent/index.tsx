@@ -1,18 +1,56 @@
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LanguageIcon from "@mui/icons-material/Language";
 import useProfileContext from "../../profile-context/use-profile-context";
-//import { skillTitleTypographyStyles } from "./styles";
+import {
+  contactTitlesStyles,
+  locationAndEditButtonStyles,
+  locationBoxStyles,
+  websiteBoxStyles,
+  websiteTitleContainerStyles,
+  editIconStyles,
+} from "../styles/styles";
 import EditCardContent from "./edit-cardcontent/edit-cardcontent.component";
 
 const ProfileLocation = () => {
-  const { profile, isEditable } = useProfileContext();
+  const { isEditable } = useProfileContext();
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-          <Typography variant="h4">Modal abiertito uwu</Typography>
-          {isEditable && <EditCardContent />}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        <Box sx={locationAndEditButtonStyles}>
+          <Box sx={locationBoxStyles}>
+            <LocationOnIcon />
+            &nbsp;
+            <Typography sx={contactTitlesStyles}>Ubicación</Typography>
+          </Box>
+          <Box sx={{ editIconStyles }}>{isEditable && <EditCardContent />}</Box>
         </Box>
+
+        <Typography
+          sx={{
+            fontFamily: "inter",
+            fontSize: "18px",
+          }}
+        >
+          Puerto Ordaz, Venezuela
+        </Typography>
+      </Box>
+      <Box sx={websiteBoxStyles}>
+        <Box sx={websiteTitleContainerStyles}>
+          <LanguageIcon />
+          &nbsp;
+          <Typography sx={contactTitlesStyles}>Website</Typography>
+        </Box>
+
+        <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
+          www.abcdefge.com
+        </Typography>
       </Box>
     </>
   );

@@ -1,28 +1,20 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import EditIcon from "@mui/icons-material/Edit";
-import LanguageIcon from "@mui/icons-material/Language";
 import {
   aboutMeSection,
   aboutMeTypographyStyles,
   bannerStyles,
   buttonStyles,
   contactSectionStyles,
-  contactTitlesStyles,
   descriptionBoxStyles,
   descriptionStyles,
   editIconStyles,
-  locationAndEditButtonStyles,
-  locationBoxStyles,
   mainTitleStyles,
   nameSectionStyles,
   nameStyles,
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
   topSectionStyles,
-  websiteBoxStyles,
-  websiteTitleContainerStyles,
 } from "./styles/styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
@@ -83,46 +75,7 @@ const ProfileContent = () => {
                 )}
               </Box>
               <Box sx={contactSectionStyles}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Box sx={locationAndEditButtonStyles}>
-                    <Box sx={locationBoxStyles}>
-                      <LocationOnIcon />
-                      &nbsp;
-                      <Typography sx={contactTitlesStyles}>
-                        Ubicación
-                      </Typography>
-                    </Box>
-                    <Box sx={{ editIconStyles }}>
-                      {/*{isEditable && <EditContactModal />}*/}
-                      <EditIcon />
-                    </Box>
-                  </Box>
-
-                  <Typography
-                    sx={{
-                      fontFamily: "inter",
-                      fontSize: "18px",
-                    }}
-                  >
-                    Puerto Ordaz, Venezuela
-                  </Typography>
-                </Box>
-                <Box sx={websiteBoxStyles}>
-                  <Box sx={websiteTitleContainerStyles}>
-                    <LanguageIcon />
-                    &nbsp;
-                    <Typography sx={contactTitlesStyles}>Website</Typography>
-                  </Box>
-
-                  <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
-                    www.abcdefge.com
-                  </Typography>
-                </Box>
+                <CardContent />
               </Box>
             </Box>
           </Box>
