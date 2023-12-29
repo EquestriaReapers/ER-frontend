@@ -14,19 +14,21 @@ const Home = () => {
 
     const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
     const isMediumScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+    const isExtraSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(550));
+    const isExtraExtraSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(400));
 
     return (
-        <Box sx={{height: isMediumScreen ? '370vh' : '270vh', minHeight: isSmallScreen ? '4300px': (isMediumScreen ? '4390px': '2200px'), minWidth: isSmallScreen ? '200px' : (isMediumScreen ? '600px' : '900px'), width: '100%'}}>
+        <Box sx={{height: isMediumScreen ? '370vh' : '270vh', minHeight: isSmallScreen ? '4300px': (isMediumScreen ? '4390px': '2200px'), minWidth: isSmallScreen ? '250px' : (isMediumScreen ? '600px' : '900px'), width: '100%'}}>
             <Box sx={{width:'100%', height:'65px', backgroundColor:'blue', fontSize:'3rem'}}>NavBar falsa</Box>
             <Box sx={{width:'100%', height: isMediumScreen ?  'calc(370vh - 60px)' : 'calc(270vh - 65px)', minHeight: isSmallScreen ? '4240px' : (isMediumScreen ? '4350px' : '2140px')}}>
                 <Box sx={{width: '100%', height: '33%', backgroundColor:'white', maxWidth:'2000px', margin: 'auto'}}>
                     <Box sx={{width: isMediumScreen ? '90%' : '80%', margin:'auto', height:'90%'}}>
                         <Box sx={{width:'100%', height:'50%', display:'flex', alignItems:'center'}}>
                             <Box sx={{margin: isMediumScreen ? 'auto' : 'auto auto 0 auto'}}>
-                                <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
-                                    <Typography sx={{fontWeight:'600', fontSize: isSmallScreen ? '2.5rem' : '3rem'}}>¡Busca a tus Egresados!</Typography>
+                                <Box sx={{width: isExtraSmallScreen ? '90%' :'max-content', margin:'auto', marginBottom:'40px'}}>
+                                    <Typography sx={{fontWeight:'600', fontSize: isExtraSmallScreen ? '2rem' : (isSmallScreen ? '2.5rem' : '3rem'), textAlign: 'center'}}>¡Busca a tus Egresados!</Typography>
                                 </Box>
-                                <Box sx={{ display: 'flex', alignItems: 'center', width: isSmallScreen ? '400px' :'500px', margin: 'auto', marginBottom:'40px'}}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', width: isExtraSmallScreen ? '80%' :  (isSmallScreen ? '400px' :'500px'), margin: 'auto', marginBottom:'40px'}}>
                                     <TextField
                                         id="search"
                                         variant="outlined"
@@ -91,7 +93,7 @@ const Home = () => {
 
                             </Box>
                             <Box sx={{width:'55%', height:'50%',  transform: 'rotate(3deg)', display:'flex', justifyContent:'center', margin: isMediumScreen ? 'auto' : 0}}>
-                                <img src={curriculum} alt="" style={ {minHeight: isSmallScreen ? '480px': (isMediumScreen ? '600px' : '450px'), height: isMediumScreen ? '80vh': '50vh', maxHeight: isSmallScreen ? '520px' : (isMediumScreen ? '650px' : '600px'), width:'auto', border:'1px solid black'}} />
+                                <img src={curriculum} alt="" style={ {minHeight: isExtraSmallScreen ? '0px' : (isSmallScreen ? '480px': (isMediumScreen ? '600px' : '450px')), height: isExtraExtraSmallScreen ? '60vh': (isMediumScreen ? '80vh': '50vh'), maxHeight: isExtraExtraSmallScreen ? '400px' : isExtraSmallScreen ? '480px' : (isSmallScreen ? '520px' : (isMediumScreen ? '650px' : '600px')), width: isExtraExtraSmallScreen ? '85vw': 'auto', border:'1px solid black'}} />
                             </Box>
 
                         </Box>
@@ -126,7 +128,7 @@ const Home = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box sx={{width: isSmallScreen ? '100%' :'50%', height:'40%', marginTop:'auto', marginBottom:'60px'}}>
+                        <Box sx={{width: isSmallScreen ? '100%' :'50%', height:'40%', margin: isSmallScreen ? 'auto' : 'auto 0 60px 0'}}>
                             <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' :'left'}}>Lorem</Typography>
                             <Typography sx={{marginBottom:'40px', fontWeight:'500', fontSize:'0.9rem', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' : 'left'}}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
@@ -151,8 +153,8 @@ const Home = () => {
                                         Lorem
                                     </Typography>
                                 </Box>
-                                <Box sx={{width:'max-content', margin:'auto'}}>
-                                    <Typography sx={{width:'400px', textAlign: 'center'}}>
+                                <Box sx={{width:'80%', margin:'auto'}}>
+                                    <Typography sx={{textAlign: 'center'}}>
                                         Lorem ipsum dolor sit amet consectetur 
                                         adipisicing elit. Maxime mollitia, 
                                         molestiae quas vel sint commodi 
@@ -162,7 +164,7 @@ const Home = () => {
                         </Box>
                         <Box sx={{height:'70%', width: '100%', display: isMediumScreen ? 'grid' : 'flex'}}>
                             <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', margin: isMediumScreen ? 'auto' : 0}}>
-                                <Box sx={{width:'250px', height:'250px', backgroundColor: '#FFE298', transform: 'skew(-2.8deg) rotate(90.5deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
+                                <Box sx={{width: isExtraExtraSmallScreen ? '200px' : '250px', height: isExtraExtraSmallScreen ? '200px':  '250px', backgroundColor: '#FFE298', transform: 'skew(-2.8deg) rotate(90.5deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
                                     <Box sx={{backgroundColor:'white', height:'96%', width:'96%', transform: 'rotate(-2.5deg)' }}>
 
                                     </Box>
@@ -177,7 +179,7 @@ const Home = () => {
                                 </Typography>
                             </Box>
                             <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', margin: isMediumScreen ? '40px auto auto auto' : 0}}>
-                                <Box sx={{width:'300px', height:'250px', backgroundColor: '#A6D6A8', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
+                                <Box sx={{width: isExtraExtraSmallScreen ? '210px' : '300px', height: isExtraExtraSmallScreen ? '200px' : '250px', backgroundColor: '#A6D6A8', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '25px'  }}>
                                     <Box sx={{backgroundColor:'white', height:'94%', width:'94%', transform: 'skew(5deg)' }}>
 
                                     </Box>
