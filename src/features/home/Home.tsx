@@ -16,17 +16,17 @@ const Home = () => {
     const isMediumScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
     return (
-        <Box sx={{height: isMediumScreen ? '370vh' : '270vh', minHeight: isMediumScreen ? '4390px': '2200px', minWidth: isMediumScreen ? '600px' : '900px', width: '100%'}}>
+        <Box sx={{height: isMediumScreen ? '370vh' : '270vh', minHeight: isSmallScreen ? '4300px': (isMediumScreen ? '4390px': '2200px'), minWidth: isSmallScreen ? '200px' : (isMediumScreen ? '600px' : '900px'), width: '100%'}}>
             <Box sx={{width:'100%', height:'65px', backgroundColor:'blue', fontSize:'3rem'}}>NavBar falsa</Box>
-            <Box sx={{width:'100%', height: isMediumScreen ?  'calc(370vh - 60px)' : 'calc(270vh - 65px)', minHeight:isMediumScreen ? '4350px' : '2140px'}}>
+            <Box sx={{width:'100%', height: isMediumScreen ?  'calc(370vh - 60px)' : 'calc(270vh - 65px)', minHeight: isSmallScreen ? '4240px' : (isMediumScreen ? '4350px' : '2140px')}}>
                 <Box sx={{width: '100%', height: '33%', backgroundColor:'white', maxWidth:'2000px', margin: 'auto'}}>
                     <Box sx={{width: isMediumScreen ? '90%' : '80%', margin:'auto', height:'90%'}}>
                         <Box sx={{width:'100%', height:'50%', display:'flex', alignItems:'center'}}>
                             <Box sx={{margin: isMediumScreen ? 'auto' : 'auto auto 0 auto'}}>
                                 <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
-                                    <Typography sx={{fontWeight:'600', fontSize:'3rem'}}>¡Busca a tus Egresados!</Typography>
+                                    <Typography sx={{fontWeight:'600', fontSize: isSmallScreen ? '2.5rem' : '3rem'}}>¡Busca a tus Egresados!</Typography>
                                 </Box>
-                                <Box sx={{ display: 'flex', alignItems: 'center', width: '500px', margin: 'auto', marginBottom:'40px'}}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', width: isSmallScreen ? '400px' :'500px', margin: 'auto', marginBottom:'40px'}}>
                                     <TextField
                                         id="search"
                                         variant="outlined"
@@ -91,7 +91,7 @@ const Home = () => {
 
                             </Box>
                             <Box sx={{width:'55%', height:'50%',  transform: 'rotate(3deg)', display:'flex', justifyContent:'center', margin: isMediumScreen ? 'auto' : 0}}>
-                                <img src={curriculum} alt="" style={ {minHeight: isMediumScreen ? '600px' : '450px', height: isMediumScreen ? '80vh': '50vh', maxHeight: isMediumScreen ? '700px' : '600px', width:'auto', border:'1px solid black'}} />
+                                <img src={curriculum} alt="" style={ {minHeight: isSmallScreen ? '480px': (isMediumScreen ? '600px' : '450px'), height: isMediumScreen ? '80vh': '50vh', maxHeight: isSmallScreen ? '520px' : (isMediumScreen ? '650px' : '600px'), width:'auto', border:'1px solid black'}} />
                             </Box>
 
                         </Box>
@@ -115,23 +115,24 @@ const Home = () => {
                     backgroundPosition: 'center',
                     filter: 'blur(3.3px)',
                     zIndex: -1,
+                    display: 'flex'
                     },
                 }}>
-                    <Box sx={{width: isMediumScreen ? '90%' : '80%', height: '90%', display:'flex', margin:'auto', position:'relative', zIndex:1, maxWidth: '2000px'}}>
-                        <Box sx={{width:'50%', height:'100%', display:'flex', alignItems:'center'}}>
-                            <Box sx={{height:'300px', width:'250px', backgroundColor:'#72C4E8',  transform: 'rotate(8deg)', display:'flex', alignItems:'center', margin:'auto'}}>
+                    <Box sx={{width: isMediumScreen ? '90%' : '80%', height: '90%', display: isSmallScreen ? 'grid' : 'flex', margin:'auto', position:'relative', zIndex:1, maxWidth: '2000px'}}>
+                        <Box sx={{width:'50%', height:'100%', display:'flex', alignItems:'center', margin: 'auto'}}>
+                            <Box sx={{height:'300px', width:'250px', backgroundColor:'#72C4E8',  transform: 'rotate(8deg)', display:'flex', alignItems:'center', margin: isSmallScreen ? 'auto auto 0 auto':'auto'}}>
                                 <Box sx={{height:'110%', width:'98%', backgroundColor:'white', transform: 'rotate(-9deg)', marginBottom:'40px'}}>
 
                                 </Box>
                             </Box>
                         </Box>
-                        <Box sx={{width:'50%', height:'40%', marginTop:'auto', marginBottom:'60px'}}>
-                            <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px', color:'#FFFFFF'}}>Lorem</Typography>
-                            <Typography sx={{marginBottom:'40px', fontWeight:'500', fontSize:'0.9rem', color:'#FFFFFF'}}>
+                        <Box sx={{width: isSmallScreen ? '100%' :'50%', height:'40%', marginTop:'auto', marginBottom:'60px'}}>
+                            <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' :'left'}}>Lorem</Typography>
+                            <Typography sx={{marginBottom:'40px', fontWeight:'500', fontSize:'0.9rem', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' : 'left'}}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam 
                             </Typography>
-                            <Box sx={{display:'flex', alignItems:'center'}}>
+                            <Box sx={{display:'flex', alignItems:'center', justifyContent: isSmallScreen ? 'center' : 'left'}}>
                                 <FileDownloadOutlinedIcon sx={{ fontSize: '1.5rem', marginTop:'auto', marginBottom:'auto', marginRight:'2px', color:'#FFFFFF'}} />
                                 <Typography sx={{marginBottom:'40px', fontSize:'0.8rem', fontWeight:'500', color:'#FFFFFF', margin: 'auto 0 0 0'}}>  Descarga tus CV</Typography>
                             </Box>
