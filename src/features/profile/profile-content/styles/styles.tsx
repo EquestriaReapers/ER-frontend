@@ -106,6 +106,7 @@ export const contactSectionStyles = {
   py: { xs: "11px", sm: "15px", md: "25px" },
   px: { xs: "8px", sm: "15px", md: "25px" },
   gap: "10px",
+  borderRadius: "6px",
 };
 
 export const locationBoxStyles = {
