@@ -1,11 +1,5 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
-import { useAuthState } from "hooks/use-auth-state";
-import EditProfileModal from "../edit-profile/modal";
-import { Profile } from "core/profiles/types";
-import ProfileSkills from "./profile-skills/profile-skills";
-import ProfileExperiences from "./profile-experience/profile-experience";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -30,11 +24,15 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
 } from "./styles/styles";
+import EditProfileModal from "./profile-data/modal";
+import Experiences from "./experiences";
+import Skills from "./skills";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
+import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
-const ProfileContent = ({ profile }: ProfileContentProps) => {
-  const loggedUser = useAuthState().user;
-  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+
+const ProfileContent = () => {
+  const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
   const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
 
@@ -127,15 +125,8 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <ProfileSkills
-              isEditable={isEditable}
-              currentProfileSkills={profile.skills}
-            />
-
-            <ProfileExperiences
-              isEditable={isEditable}
-              currentProfileExperience={profile.experience}
-            />
+            <Skills />
+            <Experiences />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
             <Button
@@ -154,7 +145,4 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   );
 };
 
-export interface ProfileContentProps {
-  profile: Profile;
-}
 export default ProfileContent;

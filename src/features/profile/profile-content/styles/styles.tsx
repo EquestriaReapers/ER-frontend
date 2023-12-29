@@ -1,13 +1,5 @@
 import bannerImage from "../images/bannerImage.png";
 
-export const boxStyles = {
-  fontWeight: "bold",
-  fontFamily: "Inter",
-  display: "flex",
-  flexWrap: "wrap",
-  py: 3,
-};
-
 export const bannerStyles = {
   width: {
     xs: "100%",
@@ -18,10 +10,6 @@ export const bannerStyles = {
   height: {
     xs: "90px",
     md: "150px",
-  },
-  boxShadow: {
-    xs: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-    lg: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
   },
   backgroundImage: `url(${bannerImage})`,
   backgroundSize: "cover",
@@ -42,16 +30,17 @@ export const nameSectionStyles = {
 };
 
 export const buttonStyles = {
+  boxShadow: "none",
+  borderRadius: "6px",
   width: {
     xs: "100%",
     sm: "100%",
   },
   height: { xs: "100%", sm: "50%", md: "45%" },
   color: "#FCFEFE",
-  borderRadius: "2px",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: { xs: "15px", sm: "18px", md: "20px" },
+  fontSize: { xs: "16px", sm: "18px", md: "20px" },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -104,7 +93,7 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
-  fontSize: { xs: "15px", sm: "18px" },
+  fontSize: { xs: "16px", sm: "18px" },
 };
 
 export const contactSectionStyles = {
@@ -117,6 +106,7 @@ export const contactSectionStyles = {
   py: { xs: "11px", sm: "15px", md: "25px" },
   px: { xs: "8px", sm: "15px", md: "25px" },
   gap: "10px",
+  borderRadius: "6px",
 };
 
 export const locationBoxStyles = {
@@ -136,6 +126,11 @@ export const websiteBoxStyles = {
 
 export const websiteTitleContainerStyles = {
   display: "flex",
+  flexWrap: "wrap",
+  pr: {
+    lg: "160px",
+    xs: "20px",
+  },
 };
 
 export const topSectionStyles = {

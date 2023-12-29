@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
 import Box from "@mui/material/Box";
-import Link from "@mui/material/Link";
+import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucabLogo.webp";
 import "../../../styles/index.css";
@@ -13,11 +13,12 @@ import {
   TextFieldStyles,
   ButtonStyles,
   UcabLogoStyles,
-  FormBoxStylesFunct,
+  useFormBoxStylesFunct,
   RedirectBoxStyles,
-  QuestionBoxStylesFunct,
-  LinkBoxStylesFunct,
+  useQuestionBoxStylesFunct,
+  useLinkBoxStylesFunct,
 } from "./RegisterFormStyles.tsx";
+import { RegisterPayload } from "../Register";
 
 const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
@@ -35,9 +36,9 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
   const LOGIN_BORDER_RADIUS = "11px";
 
-  const { FormBoxStyles } = FormBoxStylesFunct();
-  const { QuestionBoxStyles } = QuestionBoxStylesFunct();
-  const { LinkBoxStyles } = LinkBoxStylesFunct();
+  const FormBoxStyles = useFormBoxStylesFunct();
+  const QuestionBoxStyles = useQuestionBoxStylesFunct();
+  const LinkBoxStyles = useLinkBoxStylesFunct();
 
   return (
     <>
@@ -101,7 +102,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           type="submit"
           disabled={disabled}
           onClick={() => {
-            onSubmit(name, lastname, email, password, confirmPassword);
+            onSubmit({ name, lastname, email, password, confirmPassword });
           }}
           sx={ButtonStyles}
         >
@@ -109,7 +110,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         </Button>
         <Box sx={RedirectBoxStyles}>
           <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
-          <Link href="/login" sx={LinkBoxStyles}>
+          <Link to="/login" style={LinkBoxStyles}>
             Inicia sesión
           </Link>
         </Box>
@@ -120,13 +121,13 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
 export interface Props {
   disabled: boolean;
-  onSubmit: (
-    name: string,
-    lastname: string,
-    email: string,
-    password: string,
-    confirmPassword: string
-  ) => void;
+  onSubmit: ({
+    name,
+    lastname,
+    email,
+    password,
+    confirmPassword,
+  }: RegisterPayload) => void;
 }
 
 export default RegisterForm;

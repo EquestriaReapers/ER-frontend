@@ -2,7 +2,6 @@ import FormControl from "@mui/material/FormControl";
 import RegisterForm from "./register-form/RegisterForm";
 import { FunctionComponent, useState, useCallback } from "react";
 import registerService from "features/auth/services/register.service";
-
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from "react-div-100vh";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -26,17 +25,15 @@ function useRegister() {
   useRedirectWhenRegistered();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
-
   const [loading, setLoading] = useState(false);
-
   const onSubmit = useCallback(
-    async (
-      name: string,
-      lastname: string,
-      email: string,
-      password: string,
-      confirmPassword: string
-    ) => {
+    async ({
+      name,
+      lastname,
+      email,
+      password,
+      confirmPassword,
+    }: RegisterPayload) => {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword) {
@@ -54,6 +51,14 @@ function useRegister() {
           });
           showSuccessToast("Registro exitoso");
         }
+
+        await registerService({
+          name,
+          lastname,
+          email,
+          password,
+        });
+        showSuccessToast("Registro exitoso");
       } catch (error) {
         showErrorToast(error);
       } finally {
@@ -64,6 +69,14 @@ function useRegister() {
   );
 
   return { onSubmit, loading };
+}
+
+export interface RegisterPayload {
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export default Register;

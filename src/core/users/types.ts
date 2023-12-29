@@ -2,6 +2,7 @@ export interface User {
   id: number;
   name: string;
   lastname: string;
+  mainTitle: string;
   email: string;
   verified: boolean;
   role: Role;
