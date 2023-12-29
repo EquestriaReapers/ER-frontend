@@ -1,12 +1,14 @@
 import { useAuthState } from "hooks/use-auth-state";
 import { useCallback } from "react";
 import { fetchOneProfile } from "../services/profile/fetch-one-profile.service";
+import { useErrorToast } from "hooks/use-error-toast";
 
 const useGetProfileInfo = ({
   setName,
   setDescription,
   setMainTitle,
 }: Props) => {
+  const { showErrorToast } = useErrorToast();
   const { user } = useAuthState();
   const getUserInfo = useCallback(async () => {
     try {
@@ -16,9 +18,9 @@ const useGetProfileInfo = ({
       setDescription(data.description);
       setMainTitle(data.mainTitle);
     } catch (error) {
-      console.log(error);
+      showErrorToast(error);
     }
-  }, [setDescription, setMainTitle, setName, user]);
+  }, [setDescription, setMainTitle, setName, showErrorToast, user]);
 
   return { getUserInfo };
 };
