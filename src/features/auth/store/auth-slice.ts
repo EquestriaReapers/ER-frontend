@@ -15,6 +15,7 @@ const authSlice = createSlice({
         name: "",
         lastname: "",
         verified: false,
+        mainTitle: "",
         deletedAt: null,
       };
       state.isLogged = true;
