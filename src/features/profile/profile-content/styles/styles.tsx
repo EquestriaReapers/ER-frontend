@@ -11,10 +11,6 @@ export const bannerStyles = {
     xs: "90px",
     md: "150px",
   },
-  boxShadow: {
-    xs: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-    lg: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-  },
   backgroundImage: `url(${bannerImage})`,
   backgroundSize: "cover",
   backgroundPosition: "center",
@@ -34,13 +30,14 @@ export const nameSectionStyles = {
 };
 
 export const buttonStyles = {
+  boxShadow: "none",
+  borderRadius: "6px",
   width: {
     xs: "100%",
     sm: "100%",
   },
   height: { xs: "100%", sm: "50%", md: "45%" },
   color: "#FCFEFE",
-  borderRadius: "2px",
   textTransform: "capitalize",
   textAlign: "center",
   fontSize: { xs: "15px", sm: "18px", md: "20px" },
