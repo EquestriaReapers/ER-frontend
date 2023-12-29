@@ -33,7 +33,6 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   return (
     <>
       <Box>
-        <Box sx={bannerStyles}></Box>
         <Box>
           <Box sx={bannerStyles}></Box>
           <Box>
