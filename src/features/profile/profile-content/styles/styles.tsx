@@ -51,7 +51,7 @@ export const mainTitleStyles = {
   color: "#007934",
   fontWeight: "600",
   fontFamily: "inter",
-  fontSize: { xs: "22px", sm: "32px" },
+  fontSize: { xs: "22px", sm: "30px" },
 };
 
 export const nameStyles = {
@@ -59,7 +59,7 @@ export const nameStyles = {
   display: "flex",
   fontWeight: "700",
   fontFamily: "inter",
-  fontSize: { xs: "32px", sm: "42px" },
+  fontSize: { xs: "30px", sm: "42px" },
 };
 
 export const editIconStyles = {
@@ -116,7 +116,7 @@ export const locationBoxStyles = {
 export const contactTitlesStyles = {
   fontFamily: "inter",
   fontWeight: "600",
-  fontSize: { xs: "16px", sm: "22px" },
+  fontSize: { xs: "16px", sm: "18px" },
 };
 
 export const websiteBoxStyles = {
@@ -159,7 +159,7 @@ export const descriptionBoxStyles = {
 export const aboutMeTypographyStyles = {
   fontWeight: "700",
   fontFamily: "inter",
-  fontSize: { xs: "20px", sm: "35px" },
+  fontSize: { xs: "22px", sm: "30px" },
 };
 
 export const skillsAndExperiencesBoxStyles = {
