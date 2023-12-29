@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, IconButton } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -10,7 +10,9 @@ const SkillCard = ({ item }: Props) => {
     <Box>
       <Typography sx={skillTitleStyles} variant="h6">
         {item.name}
-        <ClearIcon onClick={deleteSkill} />
+        <IconButton>
+          <ClearIcon sx={{ color: '#545454' }} onClick={deleteSkill}/>
+        </IconButton>
       </Typography>
     </Box>
   );

@@ -27,7 +27,7 @@ export const useFormBoxStylesFunct = () => {
     flexDirection: "column",
     alignItemns: "center",
     justifyContent: "center",
-    borderRadius: "8px",
+    borderRadius: "6px",
     marginBottom: "16px",
   };
 
@@ -142,7 +142,7 @@ export const ButtonStyles = {
   width: "100%",
   color: "white",
   marginBottom: "22px",
-  borderRadius: "8px",
+  borderRadius: "6px",
   minHeight: "50px",
   textTransform: "capitalize",
   fontSize: "0.9rem",

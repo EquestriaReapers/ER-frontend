@@ -12,7 +12,7 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
+  borderRadius: "6px",
 };
 
 export const titleStyles = {
@@ -22,6 +22,7 @@ export const titleStyles = {
 };
 
 export const buttonStyle = {
+  fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",
   fontWeight: "bold",

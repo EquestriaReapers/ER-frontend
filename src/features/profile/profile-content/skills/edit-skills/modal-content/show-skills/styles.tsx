@@ -7,14 +7,12 @@ export const boxStyles = {
 
 export const skillTitleStyles = {
   fontFamily: "Inter",
+  alignItems: "center",
   fontWeight: "400",
   color: "#000",
   fontSize: "16px",
-  borderRadius: "5px",
-  paddingTop: "3px",
-  paddingBottom: "3px",
-  paddingLeft: 2,
-  paddingRight: 2,
+  borderRadius: "6px",
+  px: "12px",
   backgroundColor: "#D9D9D9",
   marginRight: 2,
   marginBottom: 1,

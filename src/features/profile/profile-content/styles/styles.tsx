@@ -40,7 +40,7 @@ export const buttonStyles = {
   color: "#FCFEFE",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: { xs: "15px", sm: "18px", md: "20px" },
+  fontSize: { xs: "16px", sm: "18px", md: "20px" },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -93,7 +93,7 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
-  fontSize: { xs: "15px", sm: "18px" },
+  fontSize: { xs: "16px", sm: "18px" },
 };
 
 export const contactSectionStyles = {

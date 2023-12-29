@@ -26,7 +26,7 @@ export default styled(DeleteExperienceModalContent)`
     .message {
         color: #444444;
         text-align: center;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 400;
         font-family: Inter;
         word-wrap: break-word,

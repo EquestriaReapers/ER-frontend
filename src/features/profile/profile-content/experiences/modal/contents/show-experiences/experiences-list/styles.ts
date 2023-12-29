@@ -28,7 +28,7 @@ export const boxStyles = {
 };
 
 export const nameStyles = {
-  fontSize: { xs: "18px", sm: "22px" },
+  fontSize: "20px", 
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
@@ -42,7 +42,7 @@ export const inlineStyles = {
 
 export const subtitleStyles = {
   fontWeight: "700",
-  fontSize: "18px",
+  fontSize: "16px",
   color: "#535353",
   textTransform: "capitalize",
   fontFamily: "Inter",
@@ -52,9 +52,10 @@ export const subtitleStyles = {
 };
 
 export const descriptionStyles = {
-  fontSize: "18px",
+  fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
   fontFamily: "Inter",
   wordWrap: "break-word",
+  pt: 2,
 };
