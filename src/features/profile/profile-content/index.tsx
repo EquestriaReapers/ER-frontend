@@ -5,7 +5,6 @@ import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills/profile-skills";
 import ProfileExperiences from "./profile-experience/profile-experience";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -30,11 +29,15 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
 } from "./styles/styles";
+import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
+
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+
   return (
     <>
       <Box>
@@ -61,6 +64,7 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   color="primary"
                   type="submit"
                   sx={buttonStyles}
+                  onClick={downloadCurriculumPDF}
                 >
                   Descargar CV
                 </Button>

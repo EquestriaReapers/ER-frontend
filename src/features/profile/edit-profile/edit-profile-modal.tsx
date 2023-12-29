@@ -34,7 +34,12 @@ const EditProfileModal = () => {
       event.preventDefault();
       try {
         if (!token || !name || !description) return;
-        const data = await updateProfile(token, { name, description });
+        const data = await updateProfile(token, {
+          name,
+          description,
+          mainTitle: "",
+          countryResidence: "",
+        });
         setIsOpen(false);
         return data;
       } catch (error) {
