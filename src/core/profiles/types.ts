@@ -12,6 +12,15 @@ export interface Profile {
   deletedAt: Date | null;
 }
 
+export interface Pagination {
+  itemCount: number;
+  totalItems: number;
+  itemsPerPage: number;
+  totalPages: number;
+  currentPage: number;
+  randomSeed: number;
+}
+
 export interface Skill {
   id: number;
   name: string;

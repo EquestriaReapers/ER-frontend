@@ -8,9 +8,9 @@ import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import "typeface-inter";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Catalogue from "features/catalogue/catalogue-content";
 
 const theme = createTheme({
   palette: {
@@ -39,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/catalogue",
+    element: <Catalogue />,
+  },
+  {
+    path: "/catalogue/:seed",
+    element: <Catalogue />,
   },
 ]);
 
