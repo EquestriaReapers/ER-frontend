@@ -1,4 +1,4 @@
-import { SKILLS_URL } from "./config/config";
+import { SKILLS_URL } from "./config";
 import { Skill } from "core/profiles/types";
 import axios from "axios";
 import { BackendError } from "app/exceptions";

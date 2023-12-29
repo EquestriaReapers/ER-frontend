@@ -1,4 +1,4 @@
-import { PROFILES_URL } from "./config/config";
+import { PROFILES_URL } from "./config";
 import axios from "axios";
 import { Profile } from "core/profiles/types";
 import { BackendError } from "app/exceptions";

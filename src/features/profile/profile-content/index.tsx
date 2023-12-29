@@ -29,17 +29,28 @@ import Experiences from "./experiences";
 import Skills from "./skills";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
+import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
 
   return (
     <>
       <Box>
         <Box sx={bannerStyles}></Box>
         <Box sx={pageContainerStyles}>
-          <Box sx={topSectionStyles}>
+          <Box
+            sx={{
+              ...{
+                width: "90%",
+                mx: { lg: "auto", md: "auto", xs: "20px" },
+                mt: "30px",
+              },
+              ...topSectionStyles,
+            }}
+          >
             <Box sx={nameSectionStyles}>
               <Box>
                 <Typography variant="h4" sx={nameStyles}>
@@ -60,6 +71,7 @@ const ProfileContent = () => {
                   color="primary"
                   type="submit"
                   sx={buttonStyles}
+                  onClick={downloadCurriculumPDF}
                 >
                   Descargar CV
                 </Button>

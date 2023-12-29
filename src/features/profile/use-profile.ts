@@ -15,7 +15,7 @@ export default function useProfile(id: number | null) {
     } catch (error) {
       showErrorToast(error);
     }
-  }, [id, showErrorToast]);
+  }, [id, setProfile, showErrorToast]);
 
   useEffect(() => {
     fetchProfile();
