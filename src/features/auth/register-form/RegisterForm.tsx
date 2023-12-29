@@ -102,7 +102,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           type="submit"
           disabled={disabled}
           onClick={() => {
-            onSubmit(name, lastname, email, password, confirmPassword);
+            onSubmit({ name, lastname, email, password, confirmPassword });
           }}
           sx={ButtonStyles}
         >

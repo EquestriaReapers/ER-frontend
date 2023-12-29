@@ -23,9 +23,11 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
 } from "./styles/styles";
+import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
+  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
 
   return (
     <>
@@ -51,12 +53,13 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   {profile.mainTitle}
                 </Typography>
               </Box>
-              <Box>
+              <Box sx={{ width: { xs: "100%", sm: "30%", md: "20%" } }}>
                 <Button
                   variant="contained"
                   color="primary"
                   type="submit"
                   sx={buttonStyles}
+                  onClick={downloadCurriculumPDF}
                 >
                   Descargar CV
                 </Button>

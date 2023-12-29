@@ -13,7 +13,7 @@ const EditProfileModalContent = ({ setIsOpen }: Props) => {
     onChangeMainTitle,
   } = useEditProfileFormState();
 
-  const user = { name, description, mainTitle };
+  const user = { name, description, mainTitle, residenceCountry: "" };
   const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
 
   return (
