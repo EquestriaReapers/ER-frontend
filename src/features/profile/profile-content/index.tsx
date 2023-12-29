@@ -30,6 +30,7 @@ import Skills from "./skills";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
+import CardContent from "./CardContent";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
