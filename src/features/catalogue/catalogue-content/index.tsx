@@ -1,21 +1,20 @@
-import { Box, Pagination, Stack, Typography } from '@mui/material'
-import ShowProfiles from './profiles/show-profiles'
+import { Box, Pagination, Stack, Typography } from "@mui/material";
+import ShowProfiles from "./profiles/show-profiles";
 import {
   filtersContainer,
-  filtersContainerBackground,
   navBarStyles,
   pageContainer,
   catalogueContainer,
-  searchBarContainer
-} from './styles'
-import Filters from './filters'
-import CatalogueSearchBar from './components/SearchBar'
-import useCatalogueProfiles from './profiles/use-catalogue'
-import { ChangeEvent } from 'react'
-import useSeed from './hooks/use-seed'
+  searchBarContainer,
+} from "./styles";
+import Filters from "./filters";
+import CatalogueSearchBar from "./components/SearchBar";
+import useCatalogueProfiles from "./profiles/use-catalogue";
+import { ChangeEvent } from "react";
+import useSeed from "./hooks/use-seed";
 
 const Catalogue = () => {
-  const seed = useSeed()
+  const seed = useSeed();
   const {
     profileList,
     pagination,
@@ -23,8 +22,8 @@ const Catalogue = () => {
     setProfileList,
     setPagination,
     text,
-    currentPage
-  } = useCatalogueProfiles(seed)
+    currentPage,
+  } = useCatalogueProfiles(seed);
 
   return (
     <>
@@ -41,10 +40,10 @@ const Catalogue = () => {
 
               <Box
                 sx={{
-                  width: '100%',
-                  maxWidth: '700px',
-                  height: '90%',
-                  mx: { xs: '30px', sm: '50px' }
+                  width: "100%",
+                  maxWidth: "700px",
+                  height: "90%",
+                  mx: { xs: "30px", sm: "50px" },
                 }}
               >
                 <Box sx={searchBarContainer}>
@@ -60,20 +59,20 @@ const Catalogue = () => {
 
                 <Box
                   sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    my: '46px'
+                    display: "flex",
+                    justifyContent: "center",
+                    my: "46px",
                   }}
                 >
                   <Stack spacing={2}>
                     <Pagination
                       count={pagination.totalPages}
                       page={pagination.currentPage}
-                      shape='rounded'
-                      color='primary'
-                      size='large'
+                      shape="rounded"
+                      color="primary"
+                      size="large"
                       onChange={(_: ChangeEvent<unknown>, value: number) => {
-                        setCurrentPage(value)
+                        setCurrentPage(value);
                       }}
                     />
                   </Stack>
@@ -84,7 +83,7 @@ const Catalogue = () => {
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default Catalogue
+export default Catalogue;
