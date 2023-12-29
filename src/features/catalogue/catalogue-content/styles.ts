@@ -30,7 +30,7 @@ export const filtersContainer = {
   borderRadius: "5px",
   flexDirection: "column",
   height: "auto",
-  width: "30%",
+  width: "58%",
 };
 
 
