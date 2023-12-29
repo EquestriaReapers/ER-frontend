@@ -41,16 +41,7 @@ const ProfileContent = () => {
       <Box>
         <Box sx={bannerStyles}></Box>
         <Box sx={pageContainerStyles}>
-          <Box
-            sx={{
-              ...{
-                width: "90%",
-                mx: { lg: "auto", md: "auto", xs: "20px" },
-                mt: "30px",
-              },
-              ...topSectionStyles,
-            }}
-          >
+          <Box sx={topSectionStyles}>
             <Box sx={nameSectionStyles}>
               <Box>
                 <Typography variant="h4" sx={nameStyles}>
@@ -62,17 +53,6 @@ const ProfileContent = () => {
                 <Typography variant="h4" sx={mainTitleStyles}>
                   {transformedCareerName}
                 </Typography>
-              </Box>
-              <Box>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  sx={buttonStyles}
-                  onClick={downloadCurriculumPDF}
-                >
-                  Descargar CV
-                </Button>
               </Box>
               <Box
                 sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
