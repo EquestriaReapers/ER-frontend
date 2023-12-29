@@ -16,12 +16,16 @@ export const modalStyle = {
 };
 
 export const titleStyles = {
-  fontWeight: "bold",
-  fontSize: "28px",
-  margin: "0px 0px 12px",
+  fontSize: { xs: "24px", sm: "30px", md: "36px"},
+  fontFamily: "Inter",
+  lineHeight: "normal",
+  fontStyle: "normal",
+  fontWeight: "700",
+  pb: 2,
 };
 
 export const buttonStyle = {
+  fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",
   fontWeight: "bold",
@@ -39,3 +43,4 @@ export const textFieldStyleA = {
   marginBottom: "20px",
   width: "100%",
 };
+

@@ -16,12 +16,16 @@ export const modalStyle = {
 };
 
 export const titleStyles = {
-  fontWeight: "bold",
-  fontSize: "28px",
   margin: "0px 0px 12px",
+  fontSize:{ xs: "24px", sm: "22px", md: "36px"},
+  fontFamily: "Inter",
+  lineHeight: "normal",
+  fontStyle: "normal",
+  fontWeight: "700",
 };
 
 export const buttonStyle = {
+  fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",
   fontWeight: "bold",
@@ -42,6 +46,7 @@ export const headerStyles = {
 export const textFieldStyles = {
   width: "100%",
   display: "flex",
+  fontFamily: "Inter",
 };
 
 export const boxButtonStyles = {
@@ -51,4 +56,12 @@ export const boxButtonStyles = {
     xs: "center",
     md: "flex-start",
   },
+};
+
+export const descriptionStyles = {
+  fontSize: "18px",
+  fontWeight: "400",
+  color: "#444444",
+  fontFamily: "Inter",
+  wordWrap: "break-word",
 };

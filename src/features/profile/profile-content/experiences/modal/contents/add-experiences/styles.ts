@@ -16,12 +16,14 @@ export const modalStyle = {
 };
 
 export const titleStyles = {
+  fontFamily: "Inter",
   fontWeight: "bold",
   fontSize: "28px",
   margin: "0px 0px 12px",
 };
 
 export const buttonStyle = {
+  fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",
   fontWeight: "bold",
@@ -40,6 +42,7 @@ export const headerStyles = {
 };
 
 export const textFieldStyles = {
+  fontFamily: "Inter",
   width: "100%",
   display: "flex",
 };
@@ -52,3 +55,6 @@ export const boxButtonStyles = {
     md: "flex-start",
   },
 };
+
+
+

@@ -16,8 +16,7 @@ const ShowExperiences = ({ className }: Props) => {
           <Typography sx={titleStyles}>Gestión de experiencias</Typography>
           <Box sx={inlineStyles}>
             <Typography className={"exp-show-description"}>
-              En esta sección podras gestionar las experiencias profesionales
-              que has tenido
+              En esta sección podrás gestionar las experiencias profesionales que has tenido
             </Typography>
             <Button
               sx={buttonStyle}

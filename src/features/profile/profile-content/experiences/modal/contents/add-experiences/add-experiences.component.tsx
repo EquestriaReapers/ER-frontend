@@ -15,6 +15,7 @@ import { useContext } from "react";
 import ExperiencesModalContext from "../../experiencies-modal-context";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { descriptionStyles } from "../../styles";
 
 const AddExperienceModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);
@@ -54,7 +55,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
         </Box>
         <Typography sx={titleStyles}>Agregar experiencia</Typography>
 
-        <Typography>
+        <Typography sx={descriptionStyles}>
           Escribe acerca de la experiencia profesional que quieres agregar
         </Typography>
       </Box>

@@ -36,6 +36,7 @@ export const roleStyles = {
 };
 
 export const descriptionStyles = {
+  fontFamily: "Inter",
   fontSize: "16px",
   color: "#444444",
 };
