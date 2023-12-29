@@ -27,7 +27,7 @@ const ModalContent = ({ setIsOpen }: Props) => {
 
       <Typography sx={skillTitleStyle}>Habilidades</Typography>
       <ShowSkills skills={profile.skills} />
-      <Button sx={buttonStyle} type="submit" onClick={closeModal}>
+      <Button sx={buttonStyle} className="exp-show-button" type="submit" onClick={closeModal}>
         Listo
       </Button>
     </Box>

@@ -126,7 +126,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           </Typography>
         </Box>
         <Box sx={boxButtonStyles}>
-          <Button sx={buttonStyle} type="submit">
+          <Button sx={buttonStyle} className="exp-show-button" type="submit">
             Guardar Cambios
           </Button>
         </Box>
