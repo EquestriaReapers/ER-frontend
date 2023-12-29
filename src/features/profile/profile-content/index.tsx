@@ -134,6 +134,7 @@ const ProfileContent = () => {
               color="primary"
               type="submit"
               sx={buttonStyles}
+              onClick={downloadCurriculumPDF}
             >
               Descargar CV
             </Button>
