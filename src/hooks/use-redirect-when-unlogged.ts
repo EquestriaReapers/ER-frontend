@@ -8,9 +8,7 @@ export default function useRedirectWhenUnlogged() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLogged) {
-      navigate(`/login`);
-    }
+    if (!isLogged) navigate(`/login`);
   }, [navigate, isLogged]);
 }
 

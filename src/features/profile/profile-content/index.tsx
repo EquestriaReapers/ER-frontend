@@ -5,7 +5,6 @@ import EditProfileModal from "../edit-profile/modal";
 import { Profile } from "core/profiles/types";
 import ProfileSkills from "./profile-skills/profile-skills";
 import ProfileExperiences from "./profile-experience/profile-experience";
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -25,6 +24,7 @@ import {
   websiteTitleContainerStyles,
 } from "./styles/styles";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
+
 const ProfileContent = ({ profile }: ProfileContentProps) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
@@ -32,7 +32,8 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 
   return (
     <>
-      {loggedUser ? (
+      <Box>
+        <Box sx={bannerStyles}></Box>
         <Box>
           <Box sx={bannerStyles}></Box>
           <Box>
@@ -67,80 +68,90 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   </Button>
                 </Box>
               </Box>
-              <Box sx={aboutMeSection}>
-                <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: "700",
-                      fontFamily: "inter",
-                    }}
-                  >
-                    Sobre Mí
-                  </Typography>
+              <Box sx={{ width: { xs: "100%", sm: "30%", md: "20%" } }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={buttonStyles}
+                >
+                  Descargar CV
+                </Button>
+              </Box>
+            </Box>
+            <Box sx={aboutMeSection}>
+              <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: "700",
+                    fontFamily: "inter",
+                  }}
+                >
+                  Sobre Mí
+                </Typography>
+                {!profile.description ? (
+                  <Typography>El perfil no tiene descripción.</Typography>
+                ) : (
                   <Typography sx={descriptionStyles}>
                     {profile.description}
                   </Typography>
-                </Box>
-                <Box sx={contactSectionStyles}>
-                  <Box
+                )}
+              </Box>
+              <Box sx={contactSectionStyles}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Box sx={{ display: "flex" }}>
+                    <Box sx={locationBoxStyles}>
+                      <LocationOnIcon />
+                      <Typography sx={contactTitlesStyles}>
+                        Ubicación
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: "flex" }}>
+                      <EditIcon />
+                    </Box>
+                  </Box>
+
+                  <Typography
                     sx={{
-                      display: "flex",
-                      flexWrap: "wrap",
+                      marginLeft: "10px",
+                      fontFamily: "inter",
                     }}
                   >
-                    <Box sx={{ display: "flex" }}>
-                      <Box sx={locationBoxStyles}>
-                        <LocationOnIcon />
-                        <Typography sx={contactTitlesStyles}>
-                          Ubicación
-                        </Typography>
-                      </Box>
-                      <Box sx={{ display: "flex" }}>
-                        <EditIcon />
-                      </Box>
-                    </Box>
-
-                    <Typography
-                      sx={{
-                        marginLeft: "10px",
-                        fontFamily: "inter",
-                      }}
-                    >
-                      Puerto Ordaz, Venezuela
-                    </Typography>
+                    Puerto Ordaz, Venezuela
+                  </Typography>
+                </Box>
+                <Box sx={websiteBoxStyles}>
+                  <Box sx={websiteTitleContainerStyles}>
+                    <LanguageIcon />{" "}
+                    <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
-                  <Box sx={websiteBoxStyles}>
-                    <Box sx={websiteTitleContainerStyles}>
-                      <LanguageIcon />{" "}
-                      <Typography sx={contactTitlesStyles}>Website</Typography>
-                    </Box>
 
-                    <Typography
-                      sx={{ marginLeft: "10px", fontFamily: "inter" }}
-                    >
-                      www.abcdefge.com
-                    </Typography>
-                  </Box>
+                  <Typography sx={{ marginLeft: "10px", fontFamily: "inter" }}>
+                    www.abcdefge.com
+                  </Typography>
                 </Box>
               </Box>
             </Box>
-            <Box>
-              <ProfileSkills
-                isEditable={isEditable}
-                currentProfileSkills={profile.skills}
-              />
+          </Box>
+          <Box>
+            <ProfileSkills
+              isEditable={isEditable}
+              currentProfileSkills={profile.skills}
+            />
 
-              <ProfileExperiences
-                isEditable={isEditable}
-                currentProfileExperience={profile.experience}
-              />
-            </Box>
+            <ProfileExperiences
+              isEditable={isEditable}
+              currentProfileExperience={profile.experience}
+            />
           </Box>
         </Box>
-      ) : (
-        <Typography>No se encontro el perfil!</Typography>
-      )}
+      </Box>
     </>
   );
 };
@@ -148,4 +159,5 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 export interface ProfileContentProps {
   profile: Profile;
 }
+
 export default ProfileContent;

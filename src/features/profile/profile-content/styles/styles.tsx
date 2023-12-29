@@ -18,16 +18,23 @@ export const bannerStyles = {
 
 export const nameSectionStyles = {
   width: {
-    md: "60%",
-    lg: "95%",
+    lg: "100%",
   },
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "space-between",
+  justifyContent: {
+    sm: "space-between",
+    lg: "space-between",
+  },
   gap: "30px",
+  mx: "auto",
 };
 
 export const buttonStyles = {
+  width: {
+    xs: "100%",
+    sm: "100%",
+  },
   color: "#FCFEFE",
   borderRadius: "2px",
   textTransform: "capitalize",
@@ -69,10 +76,15 @@ export const aboutMeSection = {
     sm: "nowrap",
     xs: "wrap",
   },
+  width: "100%",
+  justifyContent: "space-between",
 };
 
 export const descriptionStyles = {
-  width: "90%",
+  width: {
+    xs: "100%",
+    sm: "90%",
+  },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -81,7 +93,7 @@ export const descriptionStyles = {
 
 export const contactSectionStyles = {
   display: "flex",
-  width: { xs: "90%", sm: "40%" },
+  width: { xs: "70%", sm: "27%" },
   height: "30%",
   backgroundColor: "#F4F4F4",
   justifyContent: "space-between",
@@ -113,8 +125,21 @@ export const websiteBoxStyles = {
 
 export const websiteTitleContainerStyles = {
   display: "flex",
+  flexWrap: "wrap",
   pr: {
     lg: "160px",
     xs: "20px",
+  },
+};
+export const boxStyles = {
+  fontWeight: "bold",
+  fontFamily: "Inter",
+  display: "flex",
+  flexWrap: "wrap",
+  py: 3,
+  marginLeft: {
+    xs: 3,
+    md: 10,
+    lg: 10,
   },
 };

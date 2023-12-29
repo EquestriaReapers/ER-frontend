@@ -1,10 +1,10 @@
 import { useAuthState } from "hooks/use-auth-state";
-import { updateProfile } from "../services/profile.service";
+import { updateProfile } from "../services/profile/update-profile.service";
 import { FormEvent } from "react";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
 
-const useForm = ({ setIsOpen, user }: EditFormProps) => {
+const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
   const { token } = useAuthState();
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,8 +26,8 @@ const useForm = ({ setIsOpen, user }: EditFormProps) => {
   return { onSubmitForm };
 };
 
-export interface EditFormProps {
-  setIsOpen: (arg0: boolean) => void;
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
   user: {
     name: string;
     description: string;
@@ -35,4 +35,4 @@ export interface EditFormProps {
     residenceCountry: string;
   };
 }
-export default useForm;
+export default useOnSubmitForm;
