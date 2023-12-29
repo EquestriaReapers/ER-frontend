@@ -63,6 +63,17 @@ const ProfileContent = () => {
                   {transformedCareerName}
                 </Typography>
               </Box>
+              <Box>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  sx={buttonStyles}
+                  onClick={downloadCurriculumPDF}
+                >
+                  Descargar CV
+                </Button>
+              </Box>
               <Box
                 sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
               >
