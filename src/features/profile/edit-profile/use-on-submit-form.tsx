@@ -3,6 +3,7 @@ import { updateProfile } from "../services/profile/update-profile.service";
 import { FormEvent } from "react";
 import { BackendError } from "app/exceptions";
 import { toast } from "sonner";
+import { UpdateProfileBody } from "../services/profile/config/config";
 
 const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
   const { token } = useAuthState();
@@ -11,8 +12,11 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
     try {
       console.log(user);
       if (!token || !user) return;
-      const data = await updateProfile(token, user);
-      console.log(data)
+      const data = await updateProfile(
+        token,
+        user as unknown as UpdateProfileBody
+      );
+      console.log(data);
       setIsOpen(false);
       return data;
     } catch (error) {
