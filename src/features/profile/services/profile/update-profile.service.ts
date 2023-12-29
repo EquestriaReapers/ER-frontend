@@ -1,5 +1,5 @@
-import { PROFILES_URL } from "./config/config";
-import { MessageResponse } from "./config/config";
+import { PROFILES_URL } from "./config";
+import { MessageResponse } from "./config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 

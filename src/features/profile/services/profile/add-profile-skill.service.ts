@@ -1,6 +1,6 @@
-import { PROFILES_URL } from "./config/config";
+import { PROFILES_URL } from "./config";
 import axios from "axios";
-import { MessageResponse } from "./config/config";
+import { MessageResponse } from "./config";
 import { BackendError } from "app/exceptions";
 import { BACKEND_V1_URL } from "app/config";
 
