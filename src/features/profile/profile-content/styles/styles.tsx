@@ -1,5 +1,13 @@
 import bannerImage from "../images/bannerImage.png";
 
+export const boxStyles = {
+  fontWeight: "bold",
+  fontFamily: "Inter",
+  display: "flex",
+  flexWrap: "wrap",
+  py: 3,
+};
+
 export const bannerStyles = {
   width: {
     xs: "100%",
@@ -9,7 +17,11 @@ export const bannerStyles = {
   },
   height: {
     xs: "90px",
-    md: "110px",
+    md: "150px",
+  },
+  boxShadow: {
+    xs: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
+    lg: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
   },
   backgroundImage: `url(${bannerImage})`,
   backgroundSize: "cover",
@@ -27,7 +39,6 @@ export const nameSectionStyles = {
     lg: "space-between",
   },
   gap: "30px",
-  mx: "auto",
 };
 
 export const buttonStyles = {
@@ -35,11 +46,12 @@ export const buttonStyles = {
     xs: "100%",
     sm: "100%",
   },
+  height: { xs: "100%", sm: "50%", md: "45%" },
   color: "#FCFEFE",
   borderRadius: "2px",
   textTransform: "capitalize",
   textAlign: "center",
-  fontSize: "16px",
+  fontSize: { xs: "15px", sm: "18px", md: "20px" },
   fontStyle: "normal",
   fontWeight: "400",
   lineHeight: "normal",
@@ -50,6 +62,7 @@ export const mainTitleStyles = {
   color: "#007934",
   fontWeight: "600",
   fontFamily: "inter",
+  fontSize: { xs: "22px", sm: "32px" },
 };
 
 export const nameStyles = {
@@ -57,6 +70,7 @@ export const nameStyles = {
   display: "flex",
   fontWeight: "700",
   fontFamily: "inter",
+  fontSize: { xs: "32px", sm: "42px" },
 };
 
 export const editIconStyles = {
@@ -78,6 +92,7 @@ export const aboutMeSection = {
   },
   width: "100%",
   justifyContent: "space-between",
+  gap: { xs: "22px", sm: "0" },
 };
 
 export const descriptionStyles = {
@@ -89,57 +104,76 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
+  fontSize: { xs: "15px", sm: "18px" },
 };
 
 export const contactSectionStyles = {
   display: "flex",
-  width: { xs: "70%", sm: "27%" },
+  width: { xs: "100%", sm: "25%" },
   height: "30%",
   backgroundColor: "#F4F4F4",
   justifyContent: "space-between",
-  px: { xs: "6px", sm: "24px" },
-  py: { xs: "8px", sm: "20px" },
   flexDirection: "column",
-  gap: "12px",
+  py: { xs: "11px", sm: "15px", md: "25px" },
+  px: { xs: "8px", sm: "15px", md: "25px" },
+  gap: "10px",
 };
 
 export const locationBoxStyles = {
   display: "flex",
-  pr: {
-    lg: "160px",
-    xs: "20px",
-  },
 };
 
 export const contactTitlesStyles = {
-  marginLeft: "4px",
   fontFamily: "inter",
   fontWeight: "600",
+  fontSize: { xs: "18px", sm: "22px" },
 };
 
 export const websiteBoxStyles = {
   display: "flex",
-  alignItems: "center",
-  flexWrap: "wrap",
+  flexDirection: "column",
 };
 
 export const websiteTitleContainerStyles = {
   display: "flex",
-  flexWrap: "wrap",
-  pr: {
-    lg: "160px",
-    xs: "20px",
-  },
 };
-export const boxStyles = {
-  fontWeight: "bold",
-  fontFamily: "Inter",
+
+export const topSectionStyles = {
+  width: "100%",
+  mt: "30px",
   display: "flex",
-  flexWrap: "wrap",
-  py: 3,
-  marginLeft: {
-    xs: 3,
-    md: 10,
-    lg: 10,
-  },
+  flexDirection: "column",
+  gap: { xs: "16px", sm: "31px" },
+};
+
+export const pageContainerStyles = {
+  mx: { xs: "24px", md: "120px" },
+  display: "flex",
+  flexDirection: "column",
+  gap: { xs: "16px", sm: "37px" },
+};
+
+export const descriptionBoxStyles = {
+  gap: "17px",
+  display: "flex",
+  flexDirection: "column",
+  width: { xs: "100%", sm: "70%" },
+};
+
+export const aboutMeTypographyStyles = {
+  fontWeight: "700",
+  fontFamily: "inter",
+  fontSize: { xs: "20px", sm: "35px" },
+};
+
+export const skillsAndExperiencesBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  gap: { xs: "29px", sm: "37px" },
+};
+
+export const locationAndEditButtonStyles = {
+  display: "flex",
+  width: "100%",
+  justifyContent: "space-between",
 };

@@ -1,11 +1,11 @@
 import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import SkillCard from "./skill-card";
-import { boxStyles } from "./styles/styles";
+import { skillBoxStyles } from "./styles/styles";
 
 const ShowSkills = ({ skills }: Props) => {
   return (
-    <Box sx={boxStyles}>
+    <Box sx={skillBoxStyles}>
       {skills.map((item: Skill) => {
         return (
           <Box key={item.id}>
