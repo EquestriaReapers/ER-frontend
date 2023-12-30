@@ -13,7 +13,11 @@ const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
 
   return (
-    <Div100vh style={registerProfileStyles}>
+    <Div100vh
+      style={
+        registerProfileStyles as unknown as Record<string, number | string>
+      }
+    >
       <FormControl margin="normal">
         <RegisterForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>

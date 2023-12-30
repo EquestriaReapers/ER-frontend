@@ -13,6 +13,9 @@ const authSlice = createSlice({
         email: payload.email,
         role: payload.role,
         name: "",
+        lastname: "",
+        mainTitle: "",
+        verified: true,
         deletedAt: payload.deletedAt,
       };
       state.isLogged = true;

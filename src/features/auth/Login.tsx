@@ -15,7 +15,9 @@ import { useErrorToast } from "hooks/use-error-toast";
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
   return (
-    <Div100vh style={loginProfileStyles}>
+    <Div100vh
+      style={loginProfileStyles as unknown as Record<string, number | string>}
+    >
       <FormControl>
         <LoginForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
