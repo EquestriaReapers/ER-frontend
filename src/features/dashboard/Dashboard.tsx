@@ -7,7 +7,7 @@ import { AuthState } from "core/auth/store/types";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 import { logout } from "core/auth/store/auth-slice";
-import { buttonStyles, dashboardBoxStyles } from "./styles/styles";
+import { buttonStyles, dashboardBoxStyles } from "./styles";
 
 const Dashboard = () => {
   const user = useCurrentUser();
