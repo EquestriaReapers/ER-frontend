@@ -23,7 +23,7 @@ import {
   topSectionStyles,
   websiteBoxStyles,
   websiteTitleContainerStyles,
-} from "./styles/styles";
+} from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
 import Skills from "./skills";
@@ -34,7 +34,7 @@ import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
-  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+  const downloadCurriculumPDF = useDownloadCurriculumPDF(profile);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import { Skill } from "core/profiles/types";
-import { getAllSkills } from "features/profile/services/skills/get-all-skills.service";
+import { getAllSkills } from "core/skills/get-all-skills.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";

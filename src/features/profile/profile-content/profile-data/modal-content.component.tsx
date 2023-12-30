@@ -22,7 +22,7 @@ import {
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 import useProfileContext from "../../profile-context/use-profile-context";
-import { CareersOption } from "features/profile/services/profile/get-careers-options.service";
+import { CareersOption } from "core/profiles/get-careers-options.service";
 import useCareersOptions from "./use-careers-options";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {

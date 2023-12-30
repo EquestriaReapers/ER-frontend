@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { AuthState } from "./store/types";
+import { AuthState } from "../../core/auth/store/types";
 import { useNavigate } from "react-router-dom";
 
 function useAuthState(): AuthState {
