@@ -6,8 +6,6 @@ import curriculum from "./images/curriculum.jpeg";
 import SearchIcon from '@mui/icons-material/Search'; 
 import InputAdornment from '@mui/material/InputAdornment'; 
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import { Theme } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
 import {  
     fakeNavbarStyles,
     useHomePageContainerStyles, 
