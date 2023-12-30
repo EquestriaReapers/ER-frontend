@@ -1,5 +1,5 @@
 import { Pagination, Profile } from "core/profiles/types";
-import { fetchPaginatedProfiles } from "features/catalogue/services/get-paginated-profiles.service";
+import { fetchPaginatedProfiles } from "core/profiles/get-paginated-profiles.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 
