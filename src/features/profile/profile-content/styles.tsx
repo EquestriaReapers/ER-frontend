@@ -1,4 +1,4 @@
-import bannerImage from "../images/bannerImage.png";
+import bannerImage from "./images/bannerImage.png";
 
 export const bannerStyles = {
   width: {
@@ -93,7 +93,7 @@ export const descriptionStyles = {
   fontWeight: "400",
   lineHeight: "normal",
   fontFamily: "inter",
-  fontSize: '16px',
+  fontSize: "16px",
 };
 
 export const contactSectionStyles = {
@@ -126,7 +126,7 @@ export const websiteBoxStyles = {
 
 export const websiteTitleContainerStyles = {
   display: "flex",
-  flexWrap: "wrap",  
+  flexWrap: "wrap",
   pr: {
     lg: "150px",
     xs: "20px",
@@ -160,7 +160,7 @@ export const aboutMeTypographyStyles = {
   fontWeight: "700",
   fontFamily: "inter",
   fontSize: { xs: "22px", sm: "30px" },
-  py:2,
+  py: 2,
 };
 
 export const skillsAndExperiencesBoxStyles = {
