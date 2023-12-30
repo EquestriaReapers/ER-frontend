@@ -41,14 +41,32 @@ import {
     DownlodCVTypography,
     ThirdSectionStyles,
     useInsideThirdSectionStyles,
+    InsideThirdSectionTextStyles,
+    InsideThirdSectionBoxTextStyles,
+    InsideThirdSectionTypographytStyles,
+    ThirdSectionTextStyles,
+    ThirdSectionTypographyStyles,
+    useThirdSectionFiguresSectionStyles,
+    useThirdSectionFirstFiguresSectionStyles,
+    useThirdSectionFirstFigureStyles,
+    ThirdSectionInsideFirstFigureStyles,
+    useThirdSectionFirstFigureTypographyStyles,
+    ThirdSectionFirstFigureTextStyles,
+    useThirdSectionSecondFiguresSectionStyles,
+    useThirdSectionSecondFigureStyles,
+    ThirdSectionInsideSecondFigureStyles,
+    useThirdSectionSecondFigureTypographyStyles,
+    ThirdSectionSecondFigureTextStyles,
+    FourthSectionStyles,
+    useInsideFourthSectionStyles,
+    InsideFourthSectionTextStyles,
+    FourthSectionTextStyles,
+    TextFieldSearchBarStyles,
+    SearchIconStyles,
+    TextFieldSearchBarPropStyles,
 } from "./HomeStyles";
 
 const Home = () => {
-
-    const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-    const isMediumScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
-    const isExtraExtraSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(400));
-    const isMinimunWidthScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(300));
 
     const HomePageStyles = useHomePageContainerStyles();
     const MainContainerStyles = useMainContainerStyles();
@@ -70,6 +88,14 @@ const Home = () => {
     const SecondSectionDownloadCVTextStyles = useSecondSectionDownloadCVTextStyles();
     const SecondSectionDownloadCVBoxStyles = useSecondSectionDownloadCVBoxStyles();
     const InsideThirdSectionStyles = useInsideThirdSectionStyles();
+    const ThirdSectionFiguresSectionStyles = useThirdSectionFiguresSectionStyles();
+    const ThirdSectionFirstFiguresSectionStyles = useThirdSectionFirstFiguresSectionStyles();
+    const ThirdSectionFirstFigureStyles = useThirdSectionFirstFigureStyles();
+    const ThirdSectionFirstFigureTypographyStyles = useThirdSectionFirstFigureTypographyStyles();
+    const ThirdSectionSecondFiguresSectionStyles = useThirdSectionSecondFiguresSectionStyles();
+    const ThirdSectionSecondFigureStyles = useThirdSectionSecondFigureStyles();
+    const ThirdSectionSecondFigureTypographyStyles = useThirdSectionSecondFigureTypographyStyles();
+    const InsideFourthSectionStyles = useInsideFourthSectionStyles();
 
     return (
         <Box sx={HomePageStyles}>
@@ -90,28 +116,15 @@ const Home = () => {
                                         InputLabelProps={{
                                             shrink: true,
                                         }}
-                                        sx={{
-                                            backgroundColor: '#F4F4F4',
-                                            marginRight: '10px',
-                                            border:'none',
-                                            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-                                            "& fieldset": { border: 'none' },
-                                            "& .MuiInputBase-root.MuiOutlinedInput-root ::placeholder": {
-                                                color: "#000000"
-                                            }
-
-                                        }}
+                                        sx={TextFieldSearchBarStyles}
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start">
-                                                    <SearchIcon color="primary" style={{ color: '#3C3C43', opacity: '0.6' }} /> 
+                                                    <SearchIcon color="primary" style={SearchIconStyles} /> 
                                                 </InputAdornment>
                                             ),
 
-                                            style: {
-                                                height: "50px",
-                                                color: 'black',
-                                            },
+                                            style: TextFieldSearchBarPropStyles,
                                         }}
                                         placeholder="Ej: ingeniería informática"
                                     />
@@ -182,15 +195,15 @@ const Home = () => {
 
                 <Box sx={ThirdSectionStyles}>
                     <Box sx={InsideThirdSectionStyles}>
-                        <Box sx={{height:'30%', width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
+                        <Box sx={InsideThirdSectionTextStyles}>
                             <Box>
-                                <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
-                                    <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px'}}>
+                                <Box sx={InsideThirdSectionBoxTextStyles}>
+                                    <Typography sx={InsideThirdSectionTypographytStyles}>
                                         Lorem
                                     </Typography>
                                 </Box>
-                                <Box sx={{width:'80%', margin:'auto'}}>
-                                    <Typography sx={{textAlign: 'center'}}>
+                                <Box sx={ThirdSectionTextStyles}>
+                                    <Typography sx={ThirdSectionTypographyStyles}>
                                         Lorem ipsum dolor sit amet consectetur 
                                         adipisicing elit. Maxime mollitia, 
                                         molestiae quas vel sint commodi 
@@ -198,33 +211,33 @@ const Home = () => {
                                 </Box>
                             </Box>
                         </Box>
-                        <Box sx={{height:'70%', width: '100%', display: isMediumScreen ? 'grid' : 'flex'}}>
-                            <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', margin: isMediumScreen ? 'auto' : 0, marginTop: isSmallScreen ? '-10px': 'auto'}}>
-                                <Box sx={{width: isExtraExtraSmallScreen ? '200px' : '250px', height: isExtraExtraSmallScreen ? '200px':  '250px', backgroundColor: '#FFE298', transform: 'skew(-2.8deg) rotate(90.5deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
-                                    <Box sx={{backgroundColor:'white', height:'96%', width:'96%', transform: 'rotate(-2.5deg)' }}>
+                        <Box sx={ThirdSectionFiguresSectionStyles}>
+                            <Box sx={ThirdSectionFirstFiguresSectionStyles}>
+                                <Box sx={ThirdSectionFirstFigureStyles}>
+                                    <Box sx={ThirdSectionInsideFirstFigureStyles}>
 
                                     </Box>
                                 </Box>
-                                <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom: isMinimunWidthScreen ? '20px':'40px'}}>
+                                <Typography sx={ThirdSectionFirstFigureTypographyStyles}>
                                     Lorem
                                 </Typography>
-                                <Typography sx={{fontWeight:'500', fontSize:'0.9rem', textAlign: 'center'}}>
+                                <Typography sx={ThirdSectionFirstFigureTextStyles}>
                                     Lorem ipsum dolor sit amet consectetur adipisicing 
                                     elit. Maxime mollitia, 
                                     molestiae quas vel sint commodi 
                                 </Typography>
                             </Box>
-                            <Box sx={{width: '50%', height:'100%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', margin: isSmallScreen ? '10px auto auto auto' : (isMediumScreen ? '40px auto auto auto' : 0)}}>
-                                <Box sx={{width: isExtraExtraSmallScreen ? '210px' : '300px', height: isExtraExtraSmallScreen ? '200px' : '250px', backgroundColor: '#A6D6A8', transform: 'skew(-4deg)', display: 'flex', justifyContent:'center', alignItems: 'center', marginBottom: '40px'  }}>
-                                    <Box sx={{backgroundColor:'white', height:'94%', width:'94%', transform: 'skew(5deg)' }}>
+                            <Box sx={ThirdSectionSecondFiguresSectionStyles}>
+                                <Box sx={ThirdSectionSecondFigureStyles}>
+                                    <Box sx={ThirdSectionInsideSecondFigureStyles}>
 
                                     </Box>
                                 </Box>
 
-                                <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom: isMinimunWidthScreen ? '20px' : '40px'}}>
+                                <Typography sx={ThirdSectionSecondFigureTypographyStyles}>
                                     Lorem
                                 </Typography>
-                                <Typography sx={{fontWeight:'500', fontSize:'0.9rem', textAlign: 'center'}}>
+                                <Typography sx={ThirdSectionSecondFigureTextStyles}>
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                     Maxime mollitia, molestiae quas vel sint commodi 
                                 </Typography>
@@ -232,10 +245,10 @@ const Home = () => {
                         </Box>
                     </Box>
                 </Box>
-                <Box sx={{width:'100%', height:'12%', backgroundColor:'#A6D6A8'}}>
-                    <Box sx={{width: isMediumScreen ? '90%': '80%', height: '90%', margin:'auto', display: 'flex', alignItems: 'center', maxWidth:'2000px'}}>
-                        <Box sx={{margin: 'auto', width:'100%', textAlign:'center'}}>
-                            <Typography sx={{fontWeight:'500', fontSize:'1rem'}}>
+                <Box sx={FourthSectionStyles}>
+                    <Box sx={InsideFourthSectionStyles}>
+                        <Box sx={InsideFourthSectionTextStyles}>
+                            <Typography sx={FourthSectionTextStyles}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                 molestiae quas vel sint commodi repudiandae consequuntur
                             </Typography>
