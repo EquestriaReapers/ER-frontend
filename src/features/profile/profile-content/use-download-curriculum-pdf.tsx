@@ -1,20 +1,22 @@
 import { useCallback } from "react";
 import { useErrorToast } from "hooks/use-error-toast";
-import { useAuthState } from "hooks/use-auth-state";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { Profile } from "core/profiles/types";
-import { exportCurriculumPDF } from "../services/profile/export-curriculum-pdf.service";
+import { exportCurriculumPDF } from "core/profiles/export-curriculum-pdf.service";
+import useLoaderState from "hooks/use-loader-state";
 
 const useDownloadCurriculumPDF = (profile: Profile) => {
   const { showErrorToast } = useErrorToast();
   const { showSuccessToast } = useSuccessToast();
-  const { token } = useAuthState();
-  const downloadCurriculumPDF = useCallback(async () => {
+  const loader = useLoaderState();
+
+  return useCallback(async () => {
     try {
-      if (!token || !profile) return;
+      if (!profile) return;
 
       const response = await exportCurriculumPDF(profile.userId);
 
+      console.log(loader);
       const file = new Blob([response.data], { type: "application/pdf" });
       const fileURL = URL.createObjectURL(file);
       const link = document.createElement("a");
@@ -24,15 +26,12 @@ const useDownloadCurriculumPDF = (profile: Profile) => {
       link.click();
 
       URL.revokeObjectURL(fileURL);
-
       showSuccessToast("La descarga de su currículum ya inició");
-
       return response;
     } catch (error) {
       showErrorToast(error);
     }
-  }, [profile, showErrorToast, showSuccessToast, token]);
-  return { downloadCurriculumPDF };
+  }, [profile, showErrorToast, showSuccessToast, loader]);
 };
 
 export default useDownloadCurriculumPDF;

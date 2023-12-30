@@ -1,22 +1,27 @@
-import Typography from "@mui/material/Typography";
 import { Box } from "@mui/material";
+import { useParams } from "react-router-dom";
+import ProfileContextProvider from "./profile-context/ProfileContextProvider";
 import useProfile from "./use-profile";
 import ProfileContent from "./profile-content";
-import { Link, useParams } from "react-router-dom";
+import Loader from "hooks/use-loader";
 
 const Profile = () => {
-  const id = parseInt(useParams<RouteParams>().id!);
+  const profileId = parseInt(useParams<RouteParams>().id!);
+  const { profile, fetchProfile } = useProfile(profileId);
 
-  const profile = useProfile(id);
   return (
     <Box>
-      {!profile || !id ? (
-        <Typography> El perfil no existe!</Typography>
+      {!profile || !profileId ? (
+        <Loader />
       ) : (
-        <ProfileContent profile={profile} />
+        <ProfileContextProvider
+          profileId={profileId}
+          profile={profile}
+          fetchProfile={fetchProfile}
+        >
+          <ProfileContent />
+        </ProfileContextProvider>
       )}
-
-      <Link to="/dashboard"> Regresar </Link>
     </Box>
   );
 };
