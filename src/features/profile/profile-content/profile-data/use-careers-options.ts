@@ -5,7 +5,7 @@ import { useErrorToast } from "hooks/use-error-toast";
 import {
   CareersOption,
   getCareersOptions,
-} from "features/profile/services/profile/get-careers-options.service";
+} from "core/profiles/get-careers-options.service";
 
 export default function useCareersOptions() {
   const [careersOptions, setCareersOptions] = useState<CareersOption[]>([]);

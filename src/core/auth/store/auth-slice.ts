@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { INITIAL_STATE } from "./types";
-import { LoginResponse } from "../services/login.service";
+import { LoginResponse } from "core/auth/login.service";
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,10 +13,13 @@ const authSlice = createSlice({
         email: payload.email,
         role: payload.role,
         name: "",
+        lastname: "",
+        mainTitle: "",
+        verified: true,
         deletedAt: payload.deletedAt,
       };
       state.isLogged = true;
-      localStorage.setItem('auth', JSON.stringify(state))
+      localStorage.setItem("auth", JSON.stringify(state));
     },
     logout: (state) => {
       state.token = null;

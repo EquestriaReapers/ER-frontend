@@ -3,7 +3,7 @@ import { useErrorToast } from "hooks/use-error-toast";
 import { useAuthState } from "hooks/use-auth-state";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { Profile } from "core/profiles/types";
-import { exportCurriculumPDF } from "../services/profile/export-curriculum-pdf.service";
+import { exportCurriculumPDF } from "../../../core/profiles/export-curriculum-pdf.service";
 
 const useDownloadCurriculumPDF = (profile: Profile) => {
   const { showErrorToast } = useErrorToast();

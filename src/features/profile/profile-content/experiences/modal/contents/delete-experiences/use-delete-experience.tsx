@@ -1,4 +1,4 @@
-import { deleteAProfileExperience } from "features/profile/services/experience/delete-profile-experience";
+import { deleteAProfileExperience } from "core/experience/delete-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";

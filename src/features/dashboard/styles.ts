@@ -4,8 +4,8 @@ export const dashboardBoxStyles = {
   padding: 10,
 };
 
-export const buttonStyles = { 
-  backgroundColor: "red", 
-  padding: 2,  
-  fontFamily: "Inter", 
+export const buttonStyles = {
+  backgroundColor: "red",
+  padding: 2,
+  fontFamily: "Inter",
 };

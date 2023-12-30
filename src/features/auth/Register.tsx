@@ -1,11 +1,11 @@
 import FormControl from "@mui/material/FormControl";
 import RegisterForm from "./register-form/RegisterForm";
 import { FunctionComponent, useState, useCallback } from "react";
-import registerService from "features/auth/services/register.service";
+import registerService from "core/auth/register.service";
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from "react-div-100vh";
 import { registerProfileStyles } from "./styles/RegisterStyles";
-import "../../styles/index.css";
+import "styles/index.css";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 
@@ -13,7 +13,11 @@ const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
 
   return (
-    <Div100vh style={registerProfileStyles}>
+    <Div100vh
+      style={
+        registerProfileStyles as unknown as Record<string, number | string>
+      }
+    >
       <FormControl margin="normal">
         <RegisterForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
