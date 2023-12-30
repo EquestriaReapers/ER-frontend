@@ -8,6 +8,7 @@ import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import "typeface-inter";
+import Navbar from "features/navbar/navbar";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -57,12 +58,15 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider theme={theme}>
-        <Toaster richColors position="top-center" />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </PersistGate>
-  </Provider>
+  <>
+    <Navbar />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <Toaster richColors position="top-center" />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  </>
 );

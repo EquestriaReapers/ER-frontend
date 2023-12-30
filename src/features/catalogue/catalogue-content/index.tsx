@@ -3,7 +3,6 @@ import ShowProfiles from "./profiles/show-profiles";
 import {
   filtersContainer,
   filtersContainerBackground,
-  navBarStyles,
   pageContainer,
   catalogueContainer,
   searchBarContainer,
@@ -32,7 +31,6 @@ const Catalogue = () => {
         <Typography>PAPA PAPA </Typography>
       ) : (
         <>
-          <Box sx={navBarStyles}>fakenavbar por ahora</Box>
           <Box sx={pageContainer}>
             <Box sx={catalogueContainer}>
               <Box sx={filtersContainerBackground}>
