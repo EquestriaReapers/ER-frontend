@@ -1,4 +1,4 @@
-import { fetchOneProfile } from "./services/profile/fetch-one-profile.service";
+import { fetchOneProfile } from "../../core/profiles/fetch-one-profile.service";
 import { Profile } from "core/profiles/types";
 import { useCallback, useEffect, useState } from "react";
 import { useErrorToast } from "hooks/use-error-toast";

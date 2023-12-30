@@ -1,6 +1,6 @@
 import FormControl from "@mui/material/FormControl";
 import { FunctionComponent, useCallback, useState } from "react";
-import loginService from "features/auth/services/login.service";
+import loginService from "core/auth/login.service";
 import { useDispatch } from "react-redux";
 import { login as loginAction } from "features/auth/store/auth-slice";
 import useRedirectWhenLogged from "hooks/use-redirect-when-logged";

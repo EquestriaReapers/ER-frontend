@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 
 // Own
-import { removeProfileSkill } from "features/profile/services/profile/remove-profile-skill.service";
+import { removeProfileSkill } from "core/profiles/remove-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
