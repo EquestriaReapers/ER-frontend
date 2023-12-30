@@ -160,6 +160,7 @@ export const aboutMeTypographyStyles = {
   fontWeight: "700",
   fontFamily: "inter",
   fontSize: { xs: "22px", sm: "30px" },
+  py:2,
 };
 
 export const skillsAndExperiencesBoxStyles = {
