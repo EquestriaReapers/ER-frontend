@@ -6,7 +6,7 @@ export const bannerStyles = {
     sm: "100%",
     md: "100%",
     lg: "100%",
-  },  
+  },
   height: {
     xs: "90px",
     md: "150px",
@@ -36,7 +36,8 @@ export const buttonStyles = {
     xs: "100%",
     sm: "100%",
   },
-  height: { md: "45%" },
+  height: { xs: "40px", sm: "50 px" },
+  maxHeight: "50px",
   color: "#FCFEFE",
   textTransform: "capitalize",
   textAlign: "center",
