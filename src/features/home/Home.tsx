@@ -3,12 +3,26 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import curriculum from "./images/curriculum.jpeg";
-import background from "./images/background.jpeg"
+import background from "./images/background.jpeg";
 import SearchIcon from '@mui/icons-material/Search'; 
 import InputAdornment from '@mui/material/InputAdornment'; 
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import { Theme } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {  
+    fakeNavbarStyles,
+    useHomePageContainerStyles, 
+    useMainContainerStyles,
+    FirstSectionStyles,
+    useInsideFirstSectionStyles,
+    SearchBarSectionStyles,
+    useInsideSearchBarSectionStyles,
+    useSearchEgresatesSectionStyles,
+    useSearchEgresatesTypographyStyles,
+    useSearchBoxStyles,
+    SearchButtomStyles,
+    InsideSearchBarTextSectionStyles,
+} from "./HomeStyles";
 
 const Home = () => {
 
@@ -17,18 +31,26 @@ const Home = () => {
     const isExtraSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(550));
     const isExtraExtraSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.down(400));
 
+    const HomePageStyles = useHomePageContainerStyles();
+    const MainContainerStyles = useMainContainerStyles();
+    const InsideFirstSectionStyles = useInsideFirstSectionStyles();
+    const InsideSearchBarSectionStyles = useInsideSearchBarSectionStyles();
+    const SearchEgresatesSectionStyles = useSearchEgresatesSectionStyles();
+    const SearchEgresatesTypographyStyles = useSearchEgresatesTypographyStyles();
+    const SearchBoxStyles = useSearchBoxStyles();
+
     return (
-        <Box sx={{height: isMediumScreen ? '370vh' : '270vh', minHeight: isSmallScreen ? '4300px': (isMediumScreen ? '4390px': '2200px'), minWidth: isSmallScreen ? '250px' : (isMediumScreen ? '600px' : '900px'), width: '100%'}}>
-            <Box sx={{width:'100%', height:'65px', backgroundColor:'blue', fontSize:'3rem'}}>NavBar falsa</Box>
-            <Box sx={{width:'100%', height: isMediumScreen ?  'calc(370vh - 60px)' : 'calc(270vh - 65px)', minHeight: isSmallScreen ? '4240px' : (isMediumScreen ? '4350px' : '2140px')}}>
-                <Box sx={{width: '100%', height: '33%', backgroundColor:'white', maxWidth:'2000px', margin: 'auto'}}>
-                    <Box sx={{width: isMediumScreen ? '90%' : '80%', margin:'auto', height:'90%'}}>
-                        <Box sx={{width:'100%', height:'50%', display:'flex', alignItems:'center'}}>
-                            <Box sx={{margin: isMediumScreen ? 'auto' : 'auto auto 0 auto'}}>
-                                <Box sx={{width: isExtraSmallScreen ? '90%' :'max-content', margin:'auto', marginBottom:'40px'}}>
-                                    <Typography sx={{fontWeight:'600', fontSize: isExtraSmallScreen ? '2rem' : (isSmallScreen ? '2.5rem' : '3rem'), textAlign: 'center'}}>¡Busca a tus Egresados!</Typography>
+        <Box sx={HomePageStyles}>
+            <Box sx={fakeNavbarStyles}>NavBar falsa</Box>
+            <Box sx={MainContainerStyles}>
+                <Box sx={FirstSectionStyles}>
+                    <Box sx={InsideFirstSectionStyles}>
+                        <Box sx={SearchBarSectionStyles}>
+                            <Box sx={InsideSearchBarSectionStyles}>
+                                <Box sx={SearchEgresatesSectionStyles}>
+                                    <Typography sx={SearchEgresatesTypographyStyles}>¡Busca a tus Egresados!</Typography>
                                 </Box>
-                                <Box sx={{ display: 'flex', alignItems: 'center', width: isExtraSmallScreen ? '80%' :  (isSmallScreen ? '400px' :'500px'), margin: 'auto', marginBottom:'40px'}}>
+                                <Box sx={SearchBoxStyles}>
                                     <TextField
                                         id="search"
                                         variant="outlined"
@@ -61,11 +83,11 @@ const Home = () => {
                                         }}
                                         placeholder="Ej: ingeniería informática"
                                     />
-                                    <Button variant="contained" color="primary" sx={{backgroundColor:'#007934', height:'50px', fontWeight:'300', fontSize: '0.8rem'}}>
+                                    <Button variant="contained" color="primary" sx={SearchButtomStyles}>
                                         Buscar
                                     </Button>
                                 </Box>
-                                <Box sx={{width:'90%', margin:'auto'}}>
+                                <Box sx={InsideSearchBarTextSectionStyles}>
                                     <Typography sx={{fontWeight:'500', fontSize:'1rem', textAlign:'center'}}>
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                                         Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur
