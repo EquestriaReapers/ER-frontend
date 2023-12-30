@@ -34,6 +34,13 @@ import {
     useSecondSectionFigureStyles,
     SecondSectionFigureBackgroundStyles,
     useSecondSectionDownloadCVSectionStyles,
+    useSecondSectionDownloadCVTypographyStyles,
+    useSecondSectionDownloadCVTextStyles,
+    useSecondSectionDownloadCVBoxStyles,
+    DownloadIconStyles,
+    DownlodCVTypography,
+    ThirdSectionStyles,
+    useInsideThirdSectionStyles,
 } from "./HomeStyles";
 
 const Home = () => {
@@ -59,6 +66,10 @@ const Home = () => {
     const InsideSecondSectionStyles = useInsideSecondSectionStyles();
     const SecondSectionFigureStyles = useSecondSectionFigureStyles();
     const SecondSectionDownloadCVSectionStyles = useSecondSectionDownloadCVSectionStyles();
+    const SecondSectionDownloadCVTypographyStyles = useSecondSectionDownloadCVTypographyStyles();
+    const SecondSectionDownloadCVTextStyles = useSecondSectionDownloadCVTextStyles();
+    const SecondSectionDownloadCVBoxStyles = useSecondSectionDownloadCVBoxStyles();
+    const InsideThirdSectionStyles = useInsideThirdSectionStyles();
 
     return (
         <Box sx={HomePageStyles}>
@@ -154,14 +165,14 @@ const Home = () => {
                             </Box>
                         </Box>
                         <Box sx={SecondSectionDownloadCVSectionStyles}>
-                            <Typography sx={{fontWeight:'600', fontSize:'2rem', marginBottom:'40px', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' :'left'}}>Lorem</Typography>
-                            <Typography sx={{marginBottom:'40px', fontWeight:'500', fontSize:'0.9rem', color:'#FFFFFF', textAlign: isSmallScreen ? 'center' : 'left'}}>
+                            <Typography sx={SecondSectionDownloadCVTypographyStyles}>Lorem</Typography>
+                            <Typography sx={SecondSectionDownloadCVTextStyles}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, 
                                 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam 
                             </Typography>
-                            <Box sx={{display:'flex', alignItems:'center', justifyContent: isSmallScreen ? 'center' : 'left'}}>
-                                <FileDownloadOutlinedIcon sx={{ fontSize: '1.5rem', marginTop:'auto', marginBottom:'auto', marginRight:'2px', color:'#FFFFFF'}} />
-                                <Typography sx={{marginBottom:'40px', fontSize:'0.8rem', fontWeight:'500', color:'#FFFFFF', margin: 'auto 0 0 0'}}>  Descarga tus CV</Typography>
+                            <Box sx={SecondSectionDownloadCVBoxStyles}>
+                                <FileDownloadOutlinedIcon sx={DownloadIconStyles} />
+                                <Typography sx={DownlodCVTypography}>Descarga tus CV</Typography>
                             </Box>
                                     
                         </Box>
@@ -169,8 +180,8 @@ const Home = () => {
                 </Box>
 
 
-                <Box sx={{width:'100%', height:'33%', backgroundColor:'white'}}>
-                    <Box sx={{width: isMediumScreen ? '90%': '80%', height:'90%', margin:'auto', maxWidth:'2000px'}}>
+                <Box sx={ThirdSectionStyles}>
+                    <Box sx={InsideThirdSectionStyles}>
                         <Box sx={{height:'30%', width: '100%', display:'flex', justifyContent:'center', alignItems:'center'}}>
                             <Box>
                                 <Box sx={{width:'max-content', margin:'auto', marginBottom:'40px'}}>
@@ -219,9 +230,6 @@ const Home = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                    </Box>
-                    <Box>
-                        
                     </Box>
                 </Box>
                 <Box sx={{width:'100%', height:'12%', backgroundColor:'#A6D6A8'}}>
