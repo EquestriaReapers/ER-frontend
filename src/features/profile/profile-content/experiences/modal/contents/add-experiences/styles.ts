@@ -20,6 +20,10 @@ export const titleStyles = {
   fontWeight: "bold",
   fontSize:{ xs: "20px", sm: "22px", md: "30px"},
   margin: "0px 0px 12px",
+  width: {
+    xs: "100%",
+    sm: "100%",
+  },
 };
 
 export const buttonStyle = {

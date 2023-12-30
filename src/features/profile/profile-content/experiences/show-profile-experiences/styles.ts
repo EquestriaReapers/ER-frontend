@@ -42,7 +42,7 @@ export const ubicationDateStyles = {
 
 export const subtitleStyles = {
   fontWeight: "700",
-  fontSize: "18px",
+  fontSize: "16px",
   color: "#535353",
   textTransform: "capitalize",
   fontFamily: "Inter",
@@ -51,7 +51,7 @@ export const subtitleStyles = {
 };
 
 export const descriptionStyles = {
-  fontSize: "18px",
+  fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
   fontFamily: "Inter",

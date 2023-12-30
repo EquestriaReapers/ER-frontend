@@ -13,7 +13,7 @@ const useDownloadCurriculumPDF = (profile: Profile) => {
     try {
       if (!token || !profile) return;
 
-      const response = await exportCurriculumPDF(token, profile.userId);
+      const response = await exportCurriculumPDF(profile.userId);
 
       const file = new Blob([response.data], { type: "application/pdf" });
       const fileURL = URL.createObjectURL(file);

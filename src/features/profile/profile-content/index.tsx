@@ -104,7 +104,7 @@ const ProfileContent = () => {
                   <Typography
                     sx={{
                       fontFamily: "inter",
-                      fontSize: "18px",
+                      fontSize: "16px",
                     }}
                   >
                     Puerto Ordaz, Venezuela
@@ -117,7 +117,7 @@ const ProfileContent = () => {
                     <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
 
-                  <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
+                  <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
                     www.abcdefge.com
                   </Typography>
                 </Box>
