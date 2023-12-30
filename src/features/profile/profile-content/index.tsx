@@ -23,7 +23,7 @@ import {
   topSectionStyles,
   websiteBoxStyles,
   websiteTitleContainerStyles,
-} from "./styles/styles";
+} from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
 import Skills from "./skills";
