@@ -10,7 +10,7 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
   editIconStyles,
-} from "../styles/styles";
+} from "../styles";
 import EditCardContent from "./edit-cardcontent/edit-cardcontent.component";
 
 const ProfileLocation = () => {
@@ -35,7 +35,7 @@ const ProfileLocation = () => {
         <Typography
           sx={{
             fontFamily: "inter",
-            fontSize: "18px",
+            fontSize: "16px",
           }}
         >
           Puerto Ordaz, Venezuela
@@ -48,7 +48,7 @@ const ProfileLocation = () => {
           <Typography sx={contactTitlesStyles}>Website</Typography>
         </Box>
 
-        <Typography sx={{ fontFamily: "inter", fontSize: "18px" }}>
+        <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
           www.abcdefge.com
         </Typography>
       </Box>
