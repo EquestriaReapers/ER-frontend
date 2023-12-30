@@ -6,7 +6,7 @@ export const bannerStyles = {
     sm: "100%",
     md: "100%",
     lg: "100%",
-  },
+  },  
   height: {
     xs: "90px",
     md: "150px",
