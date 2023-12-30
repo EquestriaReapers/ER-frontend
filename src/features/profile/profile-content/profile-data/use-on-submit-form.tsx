@@ -2,7 +2,7 @@ import { useAuthState } from "hooks/use-auth-state";
 import {
   UpdateProfileBody,
   updateProfile,
-} from "../../services/profile/update-profile.service";
+} from "../../../../core/profiles/update-profile.service";
 import { FormEvent, useCallback } from "react";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";

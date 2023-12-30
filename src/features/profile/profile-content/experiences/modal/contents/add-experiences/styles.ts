@@ -12,14 +12,18 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
+  borderRadius: "6px",
 };
 
 export const titleStyles = {
   fontFamily: "Inter",
   fontWeight: "bold",
-  fontSize: "28px",
+  fontSize:{ xs: "20px", sm: "22px", md: "30px"},
   margin: "0px 0px 12px",
+  width: {
+    xs: "100%",
+    sm: "100%",
+  },
 };
 
 export const buttonStyle = {
@@ -45,6 +49,7 @@ export const textFieldStyles = {
   fontFamily: "Inter",
   width: "100%",
   display: "flex",
+  fontSize: "17px",
 };
 
 export const boxButtonStyles = {

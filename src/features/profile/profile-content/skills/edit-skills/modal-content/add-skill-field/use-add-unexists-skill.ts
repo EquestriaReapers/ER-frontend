@@ -1,5 +1,5 @@
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import { addProfileNewSkill } from "features/profile/services/profile/add-profile-skill.service";
+import { addProfileNewSkill } from "core/profiles/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";

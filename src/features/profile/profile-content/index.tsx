@@ -15,7 +15,7 @@ import {
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
   topSectionStyles,
-} from "./styles/styles";
+} from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
 import Skills from "./skills";
@@ -27,7 +27,7 @@ import CardContent from "./CardContent";
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
-  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+  const downloadCurriculumPDF = useDownloadCurriculumPDF(profile);
 
   return (
     <>
@@ -89,6 +89,7 @@ const ProfileContent = () => {
               color="primary"
               type="submit"
               sx={buttonStyles}
+              onClick={downloadCurriculumPDF}
             >
               Descargar CV
             </Button>

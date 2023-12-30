@@ -12,19 +12,20 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
+  borderRadius: "6px",
 };
 
 export const titleStyles = {
-  fontWeight: "bold",
-  fontSize: "28px",
-  margin: "0px 0px 12px",
+  fontSize: { xs: "20px", sm: "22px", md: "30px" },
+  fontFamily: "Inter",
+  fontWeight: "700",
 };
 
 export const buttonStyle = {
+  fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "bold",
+  fontWeight: "700",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
@@ -33,10 +34,6 @@ export const buttonStyle = {
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
   },
-};
-
-export const headerStyles = {
-  py: 2,
 };
 
 export const textFieldStyles = {
@@ -52,3 +49,19 @@ export const boxButtonStyles = {
     md: "flex-start",
   },
 };
+
+export const descriptionStyles = {
+  fontSize: "16px",
+  fontWeight: "400",
+  color: "#444444",
+  fontFamily: "Inter",
+  wordWrap: "break-word",
+  py: 2,
+};
+
+export const skillTitleStyle = { 
+  fontFamily: "Inter",
+  fontWeight: "700",
+  fontSize: "16px",
+  pb: 2,
+}

@@ -12,11 +12,11 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
+  borderRadius: "6px",
 };
 
 export const titleStyles = {
-  fontSize: { xs: "24px", sm: "30px", md: "36px"},
+  fontSize:{ xs: "20px", sm: "22px", md: "30px"},
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",

@@ -14,7 +14,7 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
     <Box className={className} sx={modalStyle}>
       <form>
         <Typography className={"message"}>
-          ¿Estás seguro de que quieres borrar esta experiencia?
+          ¿Estás seguro de que quieres eliminar esta experiencia?
         </Typography>
         <Box className={"button-box"}>
           <Button

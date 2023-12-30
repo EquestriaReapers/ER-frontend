@@ -35,7 +35,7 @@ export default styled(EditExperienceModalContent)`
 
   .exp-show-description {
     max-width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #444444;
     font-family: Inter;

@@ -100,7 +100,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
               </Typography>
             </Box>
             <Box sx={ForgotPasswordStyles}>
-              <Link href="#" rel="noopener noreferrer">
+              <Link rel="noopener noreferrer" to={""}>
                 ¿Olvidó la contraseña?
               </Link>
             </Box>

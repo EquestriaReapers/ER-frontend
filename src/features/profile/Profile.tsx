@@ -1,18 +1,18 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-
-//Own
 import ProfileContextProvider from "./profile-context/ProfileContextProvider";
 import useProfile from "./use-profile";
 import ProfileContent from "./profile-content";
+import Loader from "hooks/use-loader";
 
 const Profile = () => {
   const profileId = parseInt(useParams<RouteParams>().id!);
   const { profile, fetchProfile } = useProfile(profileId);
+
   return (
     <Box>
       {!profile || !profileId ? (
-        <Typography> El perfil no existe!</Typography>
+        <Loader />
       ) : (
         <ProfileContextProvider
           profileId={profileId}

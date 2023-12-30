@@ -16,11 +16,13 @@ import {
   textFieldStyles,
   headerStyles,
   titleStyles,
+  infoStyles,
+  descriptionStyles,
 } from "./styles";
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 import useProfileContext from "../../profile-context/use-profile-context";
-import { CareersOption } from "features/profile/services/profile/get-careers-options.service";
+import { CareersOption } from "core/profiles/get-careers-options.service";
 import useCareersOptions from "./use-careers-options";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
@@ -49,7 +51,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
       <Box sx={headerStyles}>
         <Typography sx={titleStyles}>Datos de Perfil</Typography>
 
-        <Typography>
+        <Typography sx={descriptionStyles}>
           Puedes editar los datos de tu perfil en esta sección
         </Typography>
       </Box>
@@ -117,14 +119,14 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
             />
           </Box>
         </Box>
-        <Box>
-          <Typography>
-            Sólo se mostraran 140 palabras en tu perfil, luego tendrás que darle
+        <Box sx={infoStyles}>
+          <Typography sx={descriptionStyles}>
+            Sólo se mostrarán 140 palabras en tu perfil, luego tendrás que darle
             a "leer más"
           </Typography>
         </Box>
         <Box sx={boxButtonStyles}>
-          <Button sx={buttonStyle} type="submit">
+          <Button sx={buttonStyle} className="exp-show-button" type="submit">
             Guardar Cambios
           </Button>
         </Box>

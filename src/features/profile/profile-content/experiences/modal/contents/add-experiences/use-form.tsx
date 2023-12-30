@@ -1,4 +1,4 @@
-import { addAProfileExperience } from "features/profile/services/experience/add-profile-experience";
+import { addAProfileExperience } from "core/experience/add-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";

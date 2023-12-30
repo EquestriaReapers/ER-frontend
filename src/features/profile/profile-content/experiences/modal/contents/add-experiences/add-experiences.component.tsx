@@ -124,7 +124,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>
-            <Button type="submit" sx={buttonStyle}>
+            <Button type="submit" sx={buttonStyle} className="exp-show-button">
               Guardar
             </Button>
           </Box>

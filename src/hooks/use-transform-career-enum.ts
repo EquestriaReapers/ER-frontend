@@ -1,42 +1,23 @@
-const useTransformCareerEnum = (careerName: string) => {
-  switch (careerName) {
-    case "ingenieria-industrial":
-      return "Ingeniería Industrial";
-    case "ingenieria-informatica":
-      return "Ingeniería Informática";
-    case "ingenieria-civil":
-      return "Ingeniería Civil";
-    case "ingenieria-telecomunicaciones":
-      return "Ingeniería en Telecomunicaciones";
-    case "arquitectura":
-      return "Arquitectura";
-    case "derecho":
-      return "Derecho";
-    case "psicologia":
-      return "Psicología";
-    case "filosofia":
-      return "Filosofía";
-    case "teologia":
-      return "Teología";
-    case "letras":
-      return "Letras";
-    case "educacion":
-      return "Educación";
-    case "comunicacion-social":
-      return "Comunicación Social";
-    case "administracion":
-      return "Administración";
-    case "contaduria":
-      return "Contaduría";
-    case "relaciones-industriales":
-      return "Relaciones Industriales";
-    case "sociologia":
-      return "Sociología";
-    case "economia":
-      return "Economía";
-    default:
-      return null;
-  }
+const careerEnum: Record<string, string> = {
+  "ingenieria-industrial": "Ingeniería Industrial",
+  "ingenieria-informatica": "Ingeniería Informática",
+  "ingenieria-civil": "Ingeniería Civil",
+  "ingenieria-telecomunicaciones": "Ingeniería en Telecomunicaciones",
+  arquitectura: "Arquitectura",
+  derecho: "Derecho",
+  psicologia: "Psicología",
+  filosofia: "Filosofía",
+  teologia: "Teología",
+  letras: "Letras",
+  educacion: "Educación",
+  "comunicacion-social": "Comunicación Social",
+  administracion: "Administración",
+  contaduria: "Contaduría",
+  "relaciones-industriales": "Relaciones Industriales",
+  sociologia: "Sociología",
+  economia: "Economía",
 };
+const useTransformCareerEnum = (careerName: string) =>
+  careerEnum[careerName] || null;
 
 export default useTransformCareerEnum;
