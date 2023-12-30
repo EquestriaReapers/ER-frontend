@@ -34,7 +34,7 @@ import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
-  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+  const downloadCurriculumPDF = useDownloadCurriculumPDF(profile);
 
   return (
     <>
