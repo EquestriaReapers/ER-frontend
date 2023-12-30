@@ -5,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 //import ModalContent from "./modal-content";
 import { useState } from "react";
 import { modalStyle } from "./styles";
+import ModalContent from "./modal-content/modal-content.component";
 
 const EditCardContent = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,7 @@ const EditCardContent = ({ className }: Props) => {
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Box className={className} sx={modalStyle}>
-          <Typography> lo logró señor lo abrio</Typography>
+          <ModalContent setIsOpen={setIsOpen} />
         </Box>
       </Modal>
     </div>

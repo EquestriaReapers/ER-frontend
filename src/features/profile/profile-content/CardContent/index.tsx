@@ -11,7 +11,7 @@ import {
   websiteTitleContainerStyles,
   editIconStyles,
 } from "../styles";
-import EditCardContent from "./edit-cardcontent/edit-cardcontent.component";
+import EditCardContent from "./edit-cardcontent";
 
 const ProfileLocation = () => {
   const { isEditable } = useProfileContext();
