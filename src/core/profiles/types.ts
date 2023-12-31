@@ -28,6 +28,12 @@ export interface Skill {
   level: string;
 }
 
+export interface ContactMethod {
+  id: number;
+  profileId: number;
+  name: string;
+}
+
 export interface Location {
   id: number;
   name: string;
