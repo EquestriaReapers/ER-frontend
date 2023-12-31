@@ -9,10 +9,14 @@ import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import Home from "features/home/Home";
 import "typeface-inter";
-
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
+import Layout from "layout/Layout";
 
 const theme = createTheme({
   palette: {
@@ -25,44 +29,57 @@ const theme = createTheme({
   },
 });
 
-const router = createBrowserRouter([
+const routerConfig: RouteObject[] = [
   {
-    path: "/dashboard",
-    element: <Dashboard />,
+    path: "",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        path: "dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "profile/:id",
+        element: <Profile />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+      {
+        path: "catalogue",
+        element: <Catalogue />,
+      },
+      {
+        path: "catalogue/:seed",
+        element: <Catalogue />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
   },
-  {
-    path: "/profile/:id",
-    element: <Profile />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/catalogue",
-    element: <Catalogue />,
-  },
-  {
-    path: "/catalogue/:seed",
-    element: <Catalogue />,
-  },
-  {
-    path: "/home",
-    element: <Home />,
-  },
-]);
+];
+
+const router = createBrowserRouter(routerConfig);
+
+export default router;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <ThemeProvider theme={theme}>
-        <Toaster richColors position="top-center" />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </PersistGate>
-  </Provider>
+  <>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <Toaster richColors position="top-center" />
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  </>
 );
