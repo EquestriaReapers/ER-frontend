@@ -1,18 +1,20 @@
 import { Button, Box, Typography } from "@mui/material";
-import { useCallback } from "react";
 import { buttonStyle, titleStyles, subTitleStyles } from "../../../../styles";
 import { descriptionStyles } from "./styles";
-//import useProfileContext from "../../../../profile-context/use-profile-context";
-import Ubicacion from "./location";
-import Lenguaje from "./lenguage";
-import Website from "./website";
-import Email from "./email";
+import Email from "./contact-methods";
+import useContactCardContext from "../contact-card-context/use-contact-card-context";
+import BasicDataForm from "./basic-data/basic-data-form";
+import useUpdateContactData from "./basic-data/use-update-basic-data";
+import Language from "./lenguage";
+import SpinnerAbsolute from "components/spinner-absolute";
 
-const ModalContent = ({ setIsOpen }: Props) => {
-  const closeModal = useCloseModal(setIsOpen);
+const ModalContent = () => {
+  const { basicData, setBasicData, loading } = useContactCardContext();
+  const updateContactData = useUpdateContactData(basicData);
 
   return (
     <div>
+      {loading && <SpinnerAbsolute />}
       <Box sx={{ marginBottom: "32px" }}>
         <Typography sx={titleStyles}>Datos de contacto</Typography>
       </Box>
@@ -30,11 +32,9 @@ const ModalContent = ({ setIsOpen }: Props) => {
             Estos datos básicos aparecerán en el perfil y en el CV
           </Typography>
 
-          <Ubicacion />
-          <Website />
-          <Lenguaje />
+          <BasicDataForm externalState={basicData} onChange={setBasicData} />
+          <Language />
         </Box>
-
         <Box sx={{ width: "48%" }}>
           <Typography sx={subTitleStyles}>Medios de contacto</Typography>
           <Typography sx={descriptionStyles}>
@@ -49,7 +49,10 @@ const ModalContent = ({ setIsOpen }: Props) => {
         <Button
           sx={buttonStyle}
           className="exp-show-button"
-          onClick={closeModal}
+          onClick={() => {
+            //setIsOpen(false);
+            updateContactData();
+          }}
         >
           Guardar Cambios
         </Button>
@@ -57,15 +60,5 @@ const ModalContent = ({ setIsOpen }: Props) => {
     </div>
   );
 };
-
-function useCloseModal(setIsOpen: (open: boolean) => void) {
-  return useCallback(() => {
-    setIsOpen(false);
-  }, [setIsOpen]);
-}
-
-export interface Props {
-  setIsOpen: (open: boolean) => void;
-}
 
 export default ModalContent;

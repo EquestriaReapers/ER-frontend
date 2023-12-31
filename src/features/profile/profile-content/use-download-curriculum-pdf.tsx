@@ -17,7 +17,6 @@ const useDownloadCurriculumPDF = (profile: Profile) => {
       setLoading(true);
       const response = await exportCurriculumPDF(profile.userId);
 
-      console.log(loader);
       const file = new Blob([response.data], { type: "application/pdf" });
       const fileURL = URL.createObjectURL(file);
       const link = document.createElement("a");

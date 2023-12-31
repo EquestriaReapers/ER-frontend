@@ -2,7 +2,7 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import { FormTitleStyles, buttonStyle } from "../styles";
 import EmailIcon from "@mui/icons-material/Email";
 
-const eMailContent = () => {
+const ContactMethods = () => {
   return (
     <div>
       <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
@@ -32,4 +32,4 @@ const eMailContent = () => {
   );
 };
 
-export default eMailContent;
+export default ContactMethods;

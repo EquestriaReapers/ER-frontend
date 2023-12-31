@@ -1,1 +1,1 @@
-export { default } from "./Lenguaje.component";
+export { default } from "./lenguage.component";

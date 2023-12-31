@@ -2,7 +2,7 @@ import { Box, Typography, TextField } from "@mui/material";
 import { FormTitleStyles } from "../styles";
 import TranslateIcon from "@mui/icons-material/Translate";
 
-const LenguageContent = () => {
+const Lenguage = () => {
   return (
     <div>
       <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
@@ -37,4 +37,4 @@ const LenguageContent = () => {
   );
 };
 
-export default LenguageContent;
+export default Lenguage;

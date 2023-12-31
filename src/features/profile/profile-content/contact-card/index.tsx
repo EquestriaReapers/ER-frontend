@@ -49,7 +49,7 @@ const ContactCard = () => {
         </Box>
 
         <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
-          www.abcdefge.com
+          {profile.website}
         </Typography>
       </Box>
     </>

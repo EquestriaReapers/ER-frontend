@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import { useState } from "react";
 import { modalStyle } from "./styles";
 import ModalContent from "./modal-content/modal-content.component";
+import ContactCardContextProvider from "./contact-card-context/ContactCardContextProvider";
 
 const EditContactCard = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,9 @@ const EditContactCard = ({ className }: Props) => {
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <Box className={className} sx={modalStyle}>
-          <ModalContent setIsOpen={setIsOpen} />
+          <ContactCardContextProvider isOpen={isOpen} setIsOpen={setIsOpen}>
+            <ModalContent />
+          </ContactCardContextProvider>
         </Box>
       </Modal>
     </div>

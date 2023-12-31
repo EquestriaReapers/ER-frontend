@@ -7,6 +7,7 @@ export interface Profile {
   description: string;
   mainTitle: string;
   countryResidence: string;
+  website: string;
   experience: Experience[];
   skills: Skill[];
   languageProfile: Lenguage[];

@@ -9,10 +9,6 @@ const useAllLocations = (name: string) => {
 
   const getLocations = useCallback(async () => {
     try {
-      if (!name) {
-        setAllLocations([]);
-        return;
-      }
       const data = await getAllLocations(name);
       setAllLocations(data);
     } catch (error) {

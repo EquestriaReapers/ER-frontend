@@ -1,24 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContactCardContext from "./contact-card-context";
-import { Profile } from "core/profiles/types";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
 
 export const ContactCardContextProvider = ({
   children,
-  profileId,
-  profile,
-  fetchProfile,
+  isOpen,
+  setIsOpen,
 }: Props) => {
+  const { profile, profileId, fetchProfile } = useProfileContext();
   const [loading, setLoading] = useState(false);
+  const [basicData, setBasicData] = useState({
+    countryResidence: "",
+    website: "",
+  });
+
+  useEffect(() => {
+    setBasicData({
+      countryResidence: profile.countryResidence || "",
+      website: profile.website || "",
+    });
+  }, [profile.countryResidence, profile.website]);
 
   const contextValue = {
     profileId,
-    countryResidence: profile.countryResidence,
-    website: "",
-    languagues: profile.languageProfile,
+    basicData,
+    languagues: [],
     contactMethods: [],
     fetchProfile,
     loading,
     setLoading,
+    isOpen,
+    setIsOpen,
+    setBasicData,
   };
 
   return (
@@ -29,10 +42,9 @@ export const ContactCardContextProvider = ({
 };
 
 export interface Props {
-  children: React.ReactNode;
-  profileId: number;
-  profile: Profile;
-  fetchProfile: () => void;
+  children?: React.ReactNode;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 export default ContactCardContextProvider;

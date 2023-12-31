@@ -3,9 +3,9 @@ import { MessageResponse } from "./config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 
-export async function updateProfileLocation(
+export default async function updateContactData(
   token: string,
-  body: UpdateProfileLocation
+  body: UpdateContactData
 ): Promise<MessageResponse> {
   try {
     const response = await axios.patch(`${PROFILES_URL}/my-profile`, body, {
@@ -19,6 +19,7 @@ export async function updateProfileLocation(
   }
 }
 
-export interface UpdateProfileLocation {
-  countryResidence: string;
+export interface UpdateContactData {
+  countryResidence?: string;
+  website?: string;
 }
