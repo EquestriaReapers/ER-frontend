@@ -11,7 +11,6 @@ export const ProfileContextProvider = ({
 }: Props) => {
   const loggedUser = useAuthState().user;
   const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
-  console.log(useAuthState().token);
 
   const contextValue = {
     profile,

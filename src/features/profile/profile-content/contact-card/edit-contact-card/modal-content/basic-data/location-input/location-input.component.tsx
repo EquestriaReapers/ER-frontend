@@ -51,6 +51,11 @@ const LocationInput = ({ value, onChange }: Props) => {
           label="Carrera"
           value={value}
           onChange={onChangeLocation}
+          MenuProps={{
+            style: {
+              maxHeight: 300,
+            },
+          }}
           input={<OutlinedInput label="Name" />}
         >
           {options.map(({ label, value: _value }: Option) => (
