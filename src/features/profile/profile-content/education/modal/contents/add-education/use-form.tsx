@@ -62,7 +62,7 @@ export interface AddEducationFormProps {
   education: {
     title: string
     entity: string
-    endDate?: Dayjs
+    endDate: Dayjs | null
   }
 }
 

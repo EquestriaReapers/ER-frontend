@@ -8,7 +8,7 @@ import {
   titleStyles,
   buttonStyle
 } from './styles'
-import useAddExperienceForm from './use-form'
+
 import { EducationContent } from '../../education-modal-context/types'
 import { useContext } from 'react'
 import ExperiencesModalContext from '../../education-modal-context'
@@ -16,6 +16,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { descriptionStyles } from '../../styles'
 import useEducationFormState from '../use-education-form-state'
+import useAddEducationForm from './use-form'
 
 const AddEducationModalContent = ({ className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext)
