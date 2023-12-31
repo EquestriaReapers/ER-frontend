@@ -6,7 +6,6 @@ import LanguageIcon from "@mui/icons-material/Language";
 import {
   aboutMeSection,
   aboutMeTypographyStyles,
-  bannerStyles,
   buttonStyles,
   contactSectionStyles,
   contactTitlesStyles,
