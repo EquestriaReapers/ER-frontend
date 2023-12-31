@@ -1,4 +1,4 @@
-import { Toolbar, Box, AppBar, Button } from "@mui/material/";
+import { Toolbar, Box, AppBar, Button, IconButton } from "@mui/material/";
 import { navbarStyles, titleStyles, inlineStyles } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,7 +27,9 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar sx={navbarStyles}>
           <Box>
-            <SvgComponent />
+            <Link to="/">
+              <SvgComponent />
+            </Link>
           </Box>
           <Box sx={inlineStyles}>
             <Link to="/">
