@@ -1,6 +1,6 @@
 import { FunctionComponent, useContext } from 'react'
 import AddExperience from './add-education/add-education.styled.tsx'
-import ShowExperience from './show-experiences/show-education.styled.tsx'
+import ShowExperience from './show-education/show-education.styled.tsx'
 import { EducationContent } from '../education-modal-context/types.ts'
 import EducationModalContext from '../education-modal-context/index.tsx'
 import EditEducationModalContent from './edit-education/modal-content.component.tsx'

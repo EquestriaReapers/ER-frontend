@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button'
 import { Box, Typography } from '@mui/material'
-import { modalStyle } from '../show-experiences/styles'
+import { modalStyle } from '../show-education/styles'
 import useDeleteEducation from './use-delete-education'
 import { EducationContent } from '../../education-modal-context/types'
 import { useContext } from 'react'

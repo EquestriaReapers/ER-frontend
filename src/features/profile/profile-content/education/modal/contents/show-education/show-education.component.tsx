@@ -3,7 +3,7 @@ import { modalStyle, titleStyles, buttonStyle } from './styles.ts'
 import { EducationContent } from '../../education-modal-context/types.ts'
 import ExperiencesModalContext from '../../education-modal-context/index.tsx'
 import { useContext } from 'react'
-import ExperiencesList from './experiences-list/education-list.styled.tsx'
+import ExperiencesList from './experiencies-list/education-list.styled.tsx'
 import { inlineStyles } from '../../styles.ts'
 
 const ShowExperiences = ({ className }: Props) => {
