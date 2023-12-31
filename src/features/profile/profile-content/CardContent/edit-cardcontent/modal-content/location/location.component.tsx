@@ -13,21 +13,23 @@ const LocationContent = () => {
   return (
     <div>
       <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-        <FmdGoodIcon
-          sx={{
-            fontSize: "16px",
-          }}
-        />
+        <FmdGoodIcon className={"iconStyle"} />
         <Typography sx={FormTitleStyles}>Ubicación</Typography>
       </Box>
 
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <AutoCompleteFieldComponent
-          sx={{ width: "100%", marginBottom: "16px" }}
+          sx={{
+            width: "100%",
+            height: "55px",
+            border: "2px solid #000000",
+            borderRadius: "5px",
+            marginBottom: "16px",
+          }}
           disabled={loading}
           debounceTime={350}
           useOptions={useLocationsSuggestions}
-          label="Buscar Habilidades"
+          label=""
           onSelectOption={(option: Option) => {
             updateLocation(option.label);
           }}
@@ -41,7 +43,6 @@ const LocationContent = () => {
 
 function useLocationsSuggestions(name?: string | null): Option[] {
   const allLocations = useAllLocations(name || "");
-  console.log(allLocations);
 
   if (!allLocations?.length) return [];
 
@@ -54,11 +55,5 @@ export interface Option {
   value: number;
   label: string;
 }
-
-const opcionesMock: Option[] = [
-  { value: 1, label: "gay1" },
-  { value: 2, label: "gay2" },
-  { value: 3, label: "gay3" },
-];
 
 export default LocationContent;

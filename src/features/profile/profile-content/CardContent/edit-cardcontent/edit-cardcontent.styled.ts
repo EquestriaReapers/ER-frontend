@@ -7,7 +7,7 @@ const SM_SIZE = 480;
 const XS_SIZE = 380;
 
 export default styled(EditCardComponent)`
-  width: 1180px;
+  width: 1000px;
   margin-left: auto;
   margin-right: auto;
 
@@ -20,6 +20,18 @@ export default styled(EditCardComponent)`
   .inputContainer {
     padding: 5px 0px 5px 0px;
     flex: 1;
+  }
+
+  .fieldsStyle {
+    height: 55px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 16px;
+  }
+
+  .iconStyle {
+    font-size: 20px;
+    margin-right: 2px;
   }
 
   .pr-5px {
