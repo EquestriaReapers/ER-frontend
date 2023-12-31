@@ -26,7 +26,7 @@ export const titleStyles = {
   },
 };
 
-export const  = {
+export const buttonStyle = {
   fontFamily: "Inter",
   borderRadius: "6px",
   background: "#007935",

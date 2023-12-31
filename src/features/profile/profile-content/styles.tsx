@@ -29,7 +29,7 @@ export const nameSectionStyles = {
   gap: "30px",
 };
 
-export const s = {
+export const buttonStyles = {
   boxShadow: "none",
   borderRadius: "6px",
   width: {
