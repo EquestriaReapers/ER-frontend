@@ -1,19 +1,19 @@
 import { Button, Typography, Toolbar, Box, AppBar } from "@mui/material/";
 import { navbarStyles } from "./styles";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={navbarStyles} >
-          <Link to="/"> 
+        <Toolbar sx={navbarStyles}>
+          <Link to="/dashboard">
             <Typography>Home</Typography>
           </Link>
-          <Link to="/perfil"> 
+          <Link to="/perfil">
             <Typography>Perfil</Typography>
           </Link>
-          <Link to="/catalogo"> 
+          <Link to="/catalogo">
             <Typography>Catálogo</Typography>
           </Link>
           <Link to="/logout">
