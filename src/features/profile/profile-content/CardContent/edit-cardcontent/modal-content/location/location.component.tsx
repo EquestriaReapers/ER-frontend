@@ -20,7 +20,7 @@ const LocationContent = () => {
       </Box>
 
       <Box sx={{ display: "flex", flexDirection: "column" }}>
-        {/*<AutoCompleteFieldComponent
+        <AutoCompleteFieldComponent
           sx={{ width: "100%", marginBottom: "16px" }}
           disabled={loading}
           debounceTime={350}
@@ -33,7 +33,6 @@ const LocationContent = () => {
           allowNewUserOptions={false}
         />
         ;
-        */}
       </Box>
     </div>
   );
