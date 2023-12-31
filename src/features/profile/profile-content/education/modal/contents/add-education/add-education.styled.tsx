@@ -7,7 +7,7 @@ const SM_SIZE = 480
 const XS_SIZE = 380
 
 export default styled(AddExperienceModalContent)`
-  width: 800px;
+  width: 400px;
   margin-left: auto;
   margin-right: auto;
 

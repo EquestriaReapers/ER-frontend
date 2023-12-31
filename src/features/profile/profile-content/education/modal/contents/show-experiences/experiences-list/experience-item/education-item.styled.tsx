@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import ExperienceItem from "./experience-item.component.tsx";
+import styled from 'styled-components'
+import ExperienceItem from './education-item.component.tsx'
 
 export default styled(ExperienceItem)`
 
@@ -7,4 +7,4 @@ export default styled(ExperienceItem)`
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
-`;
+`

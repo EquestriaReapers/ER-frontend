@@ -3,7 +3,7 @@ import { modalStyle, titleStyles, buttonStyle } from './styles.ts'
 import { EducationContent } from '../../education-modal-context/types.ts'
 import ExperiencesModalContext from '../../education-modal-context/index.tsx'
 import { useContext } from 'react'
-import ExperiencesList from './experiences-list/experiences-list.styled.tsx'
+import ExperiencesList from './experiences-list/education-list.styled.tsx'
 import { inlineStyles } from '../../styles.ts'
 
 const ShowExperiences = ({ className }: Props) => {
@@ -16,8 +16,8 @@ const ShowExperiences = ({ className }: Props) => {
           <Typography sx={titleStyles}>Gestión de educacion</Typography>
           <Box sx={inlineStyles}>
             <Typography className={'exp-show-description'}>
-              En esta sección podrás gestionar las educaciones profesionales
-              que has tenido
+              En esta sección podrás gestionar las educaciones profesionales que
+              has tenido
             </Typography>
             <Button
               sx={buttonStyle}

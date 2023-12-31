@@ -1,7 +1,7 @@
 import { Box } from '@mui/material'
 import { Education } from 'core/profiles/types'
 import { useContext } from 'react'
-import ExperienceItem from './experience-item/experience-item.styled'
+import ExperienceItem from './experience-item/education-item.styled'
 import EducationModalContext from '../../../education-modal-context'
 
 const ExperiencesList = ({ className }: Props) => {

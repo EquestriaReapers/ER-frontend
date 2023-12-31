@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import ExperiencesList from "./experiences-list.component";
+import styled from 'styled-components'
+import ExperiencesList from './education-list.component'
 
-const LG_SIZE = 1200;
-const MD_SIZE = 767;
-const SM_SIZE = 480;
-const XS_SIZE = 380;
+const LG_SIZE = 1200
+const MD_SIZE = 767
+const SM_SIZE = 480
+const XS_SIZE = 380
 
 export default styled(ExperiencesList)`
   background: #f4f4f4;
@@ -36,4 +36,4 @@ export default styled(ExperiencesList)`
   @media screen and (max-width: ${XS_SIZE}px) {
     max-height: 300px;
   }
-`;
+`

@@ -1,14 +1,14 @@
 import Button from '@mui/material/Button'
 import { Box, Typography } from '@mui/material'
 import { modalStyle } from '../show-experiences/styles'
-import useDeleteExperience from './use-delete-experience'
-import { ExperienceContent } from '../../education-modal-context/types'
+import useDeleteEducation from './use-delete-education'
+import { EducationContent } from '../../education-modal-context/types'
 import { useContext } from 'react'
-import ExperiencesModalContext from '../../education-modal-context'
+import EducationModalContext from '../../education-modal-context'
 
-const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
-  const { setContent } = useContext(ExperiencesModalContext)
-  const deleteExperience = useDeleteExperience({ experienceId })
+const DeleteEducationModalContent = ({ educationId, className }: Props) => {
+  const { setContent } = useContext(EducationModalContext)
+  const deleteEducation = useDeleteEducation({ educationId })
 
   return (
     <Box className={className} sx={modalStyle}>
@@ -18,13 +18,13 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
         </Typography>
         <Box className={'button-box'}>
           <Button
-            onClick={() => setContent(ExperienceContent.Show)}
+            onClick={() => setContent(EducationContent.Show)}
             className={'left-button'}
           >
             Regresar
           </Button>
           <Button
-            onClick={deleteExperience}
+            onClick={deleteEducation}
             variant='contained'
             className={'right-button'}
           >
@@ -37,8 +37,8 @@ const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
 }
 
 export interface Props {
-  experienceId: number
+  educationId: number
   className?: string
 }
 
-export default DeleteExperienceModalContent
+export default DeleteEducationModalContent

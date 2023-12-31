@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import DeleteExperienceModalContent from "./delete-experience.component";
+import styled from 'styled-components'
+import DeleteExperienceModalContent from './delete-education.component'
 
 export default styled(DeleteExperienceModalContent)`
 
@@ -32,4 +32,4 @@ export default styled(DeleteExperienceModalContent)`
         word-wrap: break-word,
     }
   }
-`;
+`

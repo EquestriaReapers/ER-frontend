@@ -3,17 +3,17 @@ import { useErrorToast } from 'hooks/use-error-toast'
 import { useSuccessToast } from 'hooks/use-success-toast'
 import { FormEvent, useCallback, useContext } from 'react'
 import { EducationContent } from '../../education-modal-context/types'
-import ExperiencesModalContext from '../../education-modal-context'
 import { Dayjs } from 'dayjs'
 import { useNavigate } from 'react-router'
 import useProfileContext from 'features/profile/profile-context/use-profile-context'
 import { addAProfileEducation } from 'features/profile/services/education/add-profile-education'
+import EducationModalContext from '../../education-modal-context'
 
 const useAddEducationForm = ({ education }: AddEducationFormProps) => {
   const getToken = useGetToken()
   const { showSuccessToast } = useSuccessToast()
   const { showErrorToast } = useErrorToast()
-  const { setContent } = useContext(ExperiencesModalContext)
+  const { setContent } = useContext(EducationModalContext)
   const { fetchProfile } = useProfileContext()
 
   const onSubmitForm = useCallback(
@@ -37,7 +37,7 @@ const useAddEducationForm = ({ education }: AddEducationFormProps) => {
         )
 
         setContent(EducationContent.Show)
-        showSuccessToast('Experiencia agregada con éxito')
+        showSuccessToast('Educacion agregada con éxito')
         fetchProfile()
 
         return data

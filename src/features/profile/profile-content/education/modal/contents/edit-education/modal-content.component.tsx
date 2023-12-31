@@ -1,5 +1,9 @@
-import { Box, Typography, TextField, Button, IconButton } from '@mui/material'
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material'
+import { Education } from 'core/profiles/types'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+
+import useForm from './use-form'
+import { useCallback, useContext, useEffect } from 'react'
 import {
   boxButtonStyles,
   headerStyles,
@@ -8,17 +12,14 @@ import {
   titleStyles,
   buttonStyle
 } from './styles'
-
 import { EducationContent } from '../../education-modal-context/types'
-import { useContext } from 'react'
-import ExperiencesModalContext from '../../education-modal-context'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
-import { descriptionStyles } from '../../styles'
+import dayjs, { Dayjs } from 'dayjs'
+import ExperiencesModalContext from '../../education-modal-context'
 import useEducationFormState from '../use-education-form-state'
-import useAddEducationForm from './use-form'
 
-const AddEducationModalContent = ({ className }: Props) => {
+const EditEducationModalContent = ({ anEducation, className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext)
   const {
     onChangeTitle,
@@ -26,29 +27,47 @@ const AddEducationModalContent = ({ className }: Props) => {
     onChangeEndDate,
     title,
     entity,
-    endDate
+    endDate,
+    setTitle,
+    setEntity,
+    setEndDate
   } = useEducationFormState()
 
-  const education = {
+  const getEducationInfo = useCallback(() => {
+    setTitle(anEducation.title)
+    setEntity(anEducation.entity)
+    setEndDate(toDateOrNull(anEducation.endDate))
+  }, [setTitle, setEntity, setEndDate, anEducation])
+
+  useEffect(() => {
+    getEducationInfo()
+  }, [getEducationInfo])
+
+  const anEducationState = {
     title,
     entity,
     endDate
   }
 
-  const { onSubmitForm } = useAddEducationForm({ education })
+  const educationId = anEducation.id
+
+  const onSubmitForm = useForm({
+    anEducation: anEducationState,
+    educationId
+  })
 
   return (
-    <Box className={className} sx={modalStyle}>
+    <Box sx={modalStyle} className={className}>
       <Box sx={headerStyles}>
         <Box>
           <IconButton onClick={() => setContent(EducationContent.Show)}>
             <ArrowBackIcon />
           </IconButton>
         </Box>
-        <Typography sx={titleStyles}>Agregar educacion</Typography>
+        <Typography sx={titleStyles}>Editar experiencia</Typography>
 
-        <Typography sx={descriptionStyles}>
-          Escribe acerca de la educacion profesional que quieres agregar
+        <Typography className='exp-show-description'>
+          Edita los datos de la experiencia profesional que quieres modificar
         </Typography>
       </Box>
       <Box>
@@ -59,6 +78,7 @@ const AddEducationModalContent = ({ className }: Props) => {
                 sx={textFieldStyles}
                 id='role'
                 label='Titulo'
+                value={title}
                 onChange={onChangeTitle}
               />
             </Box>
@@ -67,6 +87,7 @@ const AddEducationModalContent = ({ className }: Props) => {
                 sx={textFieldStyles}
                 id='businessName'
                 label='Entidad'
+                value={entity}
                 onChange={onChangeEntity}
               />
             </Box>
@@ -75,13 +96,15 @@ const AddEducationModalContent = ({ className }: Props) => {
                 <DatePicker
                   sx={textFieldStyles}
                   label='Fecha de Finalizacion'
+                  value={endDate}
                   onChange={onChangeEndDate}
                 />
               </LocalizationProvider>
             </Box>
           </Box>
+
           <Box sx={boxButtonStyles}>
-            <Button type='submit' sx={buttonStyle}>
+            <Button sx={buttonStyle} type='submit'>
               Guardar
             </Button>
           </Box>
@@ -91,8 +114,14 @@ const AddEducationModalContent = ({ className }: Props) => {
   )
 }
 
+export default EditEducationModalContent
+
 interface Props {
+  anEducation: Education
   className?: string
 }
 
-export default AddEducationModalContent
+function toDateOrNull(date: string | Date | null): Dayjs | null {
+  if (date) return dayjs(date)
+  return null
+}

@@ -1,16 +1,16 @@
-import { updateProfileExperience } from 'features/profile/services/experience/update-profile-experience'
+import { updateProfileEducation } from 'features/profile/services/education/update-profile-education'
 import { useAuthState } from 'hooks/use-auth-state'
 import { useErrorToast } from 'hooks/use-error-toast'
 import { useSuccessToast } from 'hooks/use-success-toast'
 import { FormEvent, useCallback, useContext } from 'react'
-import { ExperienceContent } from '../../education-modal-context/types'
+import { EducationContent } from '../../education-modal-context/types'
 import { useNavigate } from 'react-router-dom'
-import ExperiencesModalContext from '../../education-modal-context'
 import useProfileContext from 'features/profile/profile-context/use-profile-context'
 import { Dayjs } from 'dayjs'
+import EducationModalContext from '../../education-modal-context'
 
-const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
-  const { setContent } = useContext(ExperiencesModalContext)
+const useForm = ({ anEducation, educationId }: EditEducationFormProps) => {
+  const { setContent } = useContext(EducationModalContext)
   const { fetchProfile } = useProfileContext()
   const getToken = useGetToken()
   const { showSuccessToast } = useSuccessToast()
@@ -22,31 +22,22 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
 
       try {
         const token = getToken()
-        if (
-          !anExperience.businessName ||
-          !anExperience.role ||
-          !anExperience.location ||
-          !anExperience.startDate ||
-          !anExperience.description
-        ) {
+        if (!anEducation.title || !anEducation.entity || !anEducation.endDate) {
           showErrorToast('Por favor, rellena todos los campos')
           return
         }
 
-        const data = await updateProfileExperience(
+        const data = await updateProfileEducation(
           {
-            businessName: anExperience.businessName,
-            role: anExperience.role,
-            location: anExperience.location,
-            description: anExperience.description,
-            startDate: anExperience.startDate.format('YYYY-MM-DD'),
-            endDate: anExperience.endDate?.format('YYYY-MM-DD') ?? null
+            title: anEducation.title,
+            entity: anEducation.entity,
+            endDate: anEducation.endDate?.format('YYYY-MM-DD') ?? null
           },
           token,
-          experienceId
+          educationId
         )
-        showSuccessToast('Experiencia editada con éxito')
-        setContent(ExperienceContent.Show)
+        showSuccessToast('Educacion editada con éxito')
+        setContent(EducationContent.Show)
         fetchProfile()
         return data
       } catch (error) {
@@ -55,8 +46,8 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
     },
     [
       getToken,
-      anExperience,
-      experienceId,
+      anEducation,
+      educationId,
       showSuccessToast,
       setContent,
       fetchProfile,
@@ -67,16 +58,13 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
   return onSubmitForm
 }
 
-export interface EditExperienceFormProps {
-  anExperience: {
-    businessName: string | null
-    role: string | null
-    location: string | null
-    startDate: Dayjs | null
+export interface EditEducationFormProps {
+  anEducation: {
+    title: string
+    entity: string | null
     endDate?: Dayjs | null
-    description: string | null
   }
-  experienceId: number
+  educationId: number
 }
 
 function useGetToken() {

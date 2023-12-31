@@ -1,33 +1,33 @@
-import { deleteAProfileExperience } from 'features/profile/services/experience/delete-profile-experience'
+import { deleteAProfileEducation } from 'features/profile/services/education/delete-profile-education'
 import { useAuthState } from 'hooks/use-auth-state'
 import { useErrorToast } from 'hooks/use-error-toast'
 import { useSuccessToast } from 'hooks/use-success-toast'
 import { useCallback, useContext } from 'react'
-import { ExperienceContent } from '../../education-modal-context/types'
+import { EducationContent } from '../../education-modal-context/types'
 import { useNavigate } from 'react-router'
 import useProfileContext from 'features/profile/profile-context/use-profile-context'
-import ExperiencesModalContext from '../../education-modal-context'
+import EducationModalContext from '../../education-modal-context'
 
-const useDeleteExperience = ({ experienceId }: Payload) => {
-  const { setContent } = useContext(ExperiencesModalContext)
+const useDeleteEducation = ({ educationId }: Payload) => {
+  const { setContent } = useContext(EducationModalContext)
   const { fetchProfile } = useProfileContext()
   const getToken = useGetToken()
   const { showSuccessToast } = useSuccessToast()
   const { showErrorToast } = useErrorToast()
 
-  const deleteExperience = useCallback(async () => {
+  const deleteEducation = useCallback(async () => {
     try {
       const token = getToken()
-      const data = await deleteAProfileExperience(token, experienceId)
-      setContent(ExperienceContent.Show)
-      showSuccessToast('Experiencia borrada con éxito')
+      const data = await deleteAProfileEducation(token, educationId)
+      setContent(EducationContent.Show)
+      showSuccessToast('Educacion borrada con éxito')
       fetchProfile()
       return data
     } catch (error) {
       showErrorToast(error)
     }
   }, [
-    experienceId,
+    educationId,
     fetchProfile,
     getToken,
     setContent,
@@ -35,11 +35,11 @@ const useDeleteExperience = ({ experienceId }: Payload) => {
     showSuccessToast
   ])
 
-  return deleteExperience
+  return deleteEducation
 }
 
 export interface Payload {
-  experienceId: number
+  educationId: number
 }
 
 function useGetToken() {
@@ -58,4 +58,4 @@ function useGetToken() {
   }, [navigate, token])
 }
 
-export default useDeleteExperience
+export default useDeleteEducation
