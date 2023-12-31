@@ -11,10 +11,10 @@ import {
   websiteTitleContainerStyles,
   editIconStyles,
 } from "../styles";
-import EditCardContent from "./edit-cardcontent";
+import EditContactCard from "./edit-contact-card";
 
-const ProfileLocation = () => {
-  const { isEditable } = useProfileContext();
+const ContactCard = () => {
+  const { isEditable, profile } = useProfileContext();
   return (
     <>
       <Box
@@ -29,7 +29,7 @@ const ProfileLocation = () => {
             &nbsp;
             <Typography sx={contactTitlesStyles}>Ubicación</Typography>
           </Box>
-          <Box sx={{ editIconStyles }}>{isEditable && <EditCardContent />}</Box>
+          <Box sx={{ editIconStyles }}>{isEditable && <EditContactCard />}</Box>
         </Box>
 
         <Typography
@@ -38,7 +38,7 @@ const ProfileLocation = () => {
             fontSize: "16px",
           }}
         >
-          Puerto Ordaz, Venezuela
+          {profile.countryResidence}
         </Typography>
       </Box>
       <Box sx={websiteBoxStyles}>
@@ -56,4 +56,4 @@ const ProfileLocation = () => {
   );
 };
 
-export default ProfileLocation;
+export default ContactCard;

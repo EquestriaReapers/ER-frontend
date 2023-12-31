@@ -1,5 +1,5 @@
 import Modal from "@mui/material/Modal";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 //import ModalContent from "./modal-content";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { modalStyle } from "./styles";
 import ModalContent from "./modal-content/modal-content.component";
 
-const EditCardContent = ({ className }: Props) => {
+const EditContactCard = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -29,4 +29,4 @@ interface Props {
   className?: string;
 }
 
-export default EditCardContent;
+export default EditContactCard;
