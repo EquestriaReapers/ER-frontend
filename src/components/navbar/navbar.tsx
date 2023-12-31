@@ -1,5 +1,5 @@
-import { Typography, Toolbar, Box, AppBar, IconButton } from "@mui/material/";
-import { navbarStyles, titleStyles,inlineStyles } from "./styles";
+import { Typography, Toolbar, Box, AppBar, Button } from "@mui/material/";
+import { navbarStyles, titleStyles, inlineStyles } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "core/auth/store/types";
@@ -27,21 +27,21 @@ const Navbar = () => {
       <AppBar position="static">
         <Toolbar sx={navbarStyles}>
           <Box>
-            <SvgComponent/>
+            <SvgComponent />
           </Box>
           <Box sx={inlineStyles}>
             <Link to="/">
-              <Typography sx={titleStyles}>Home</Typography>
+              <Button sx={titleStyles}>Home</Button>
             </Link>
             <Link to={`/profile/${user.id}`}>
-              <Typography sx={titleStyles}>Perfil</Typography>
+              <Button sx={titleStyles}>Perfil</Button>
             </Link>
             <Link to={`/catalogue`}>
-              <Typography sx={titleStyles}>Catálogo</Typography>
+              <Button sx={titleStyles}>Catálogo</Button>
             </Link>
-            <Typography onClick={onLogout} sx={titleStyles}>
+            <Button onClick={onLogout} sx={titleStyles}>
               Salir
-            </Typography>
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
