@@ -1,7 +1,8 @@
 import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
+import { Portfolio } from "core/profiles/types";
 import { useState } from "react";
 
-function PortfolioCard({ portfolio }) {
+function PortfolioCard({ aPortfolio }: Props) {
   const [hover, setHover] = useState(false);
   const showPortfolioText = () => setHover(true);
   const hidePortfolioText = () => setHover(false);
@@ -17,13 +18,11 @@ function PortfolioCard({ portfolio }) {
       }}
       onMouseEnter={showPortfolioText}
       onMouseLeave={hidePortfolioText}
-      component="a"
-      href={portfolio.url}
     >
       <CardMedia
         sx={{ height: "300px", position: "relative" }}
-        image={portfolio.image1}
-        title={portfolio.title}
+        image={aPortfolio.imagePrincipal}
+        title={aPortfolio.title}
       >
         <Box sx={{ width: "300px" }}></Box>
         {hover && (
@@ -53,7 +52,7 @@ function PortfolioCard({ portfolio }) {
                 textTransform: "capitalize",
               }}
             >
-              {portfolio.title}
+              {aPortfolio.title}
             </Typography>
             <Typography
               sx={{
@@ -66,7 +65,7 @@ function PortfolioCard({ portfolio }) {
                 textTransform: "capitalize",
               }}
             >
-              {portfolio.description}
+              {aPortfolio.description}
             </Typography>
           </CardContent>
         )}
@@ -75,4 +74,7 @@ function PortfolioCard({ portfolio }) {
   );
 }
 
+interface Props {
+  aPortfolio: Portfolio;
+}
 export default PortfolioCard;

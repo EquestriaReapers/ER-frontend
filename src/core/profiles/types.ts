@@ -9,6 +9,7 @@ export interface Profile {
   countryResidence: string;
   education: Education[];
   experience: Experience[];
+  portfolio: Portfolio[];
   skills: Skill[];
   deletedAt: Date | null;
 }
@@ -48,4 +49,16 @@ export interface Education {
   entity: string;
   endDate: Date;
   deleteAt: Date | null;
+}
+
+export interface Portfolio {
+  id: number;
+  profileId: number;
+  title: string;
+  description: string;
+  location: string;
+  dateEnd: Date;
+  imagePrincipal: string;
+  image: [string];
+  deletedAt: Date | null;
 }

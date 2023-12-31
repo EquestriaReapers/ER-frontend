@@ -1,14 +1,17 @@
+import { Portfolio } from "core/profiles/types";
 import PortfolioCard from "./portfolio-card";
 
-const ShowPortfolios = ({ portfolios }) => {
-  console.log(portfolios);
+const ShowPortfolios = ({ portfolio }: Props) => {
   return (
     <>
-      {portfolios.map((portfolio) => {
-        return <PortfolioCard portfolio={portfolio} />;
+      {portfolio.map((aPortfolio) => {
+        return <PortfolioCard aPortfolio={aPortfolio} />;
       })}
     </>
   );
 };
+interface Props {
+  portfolio: Portfolio[];
+}
 
 export default ShowPortfolios;
