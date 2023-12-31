@@ -8,7 +8,11 @@ export const titleStyles = {
     color: 'black',
     ml: 2,
     fontFamily: 'Inter',
-    fontSize: '',
+    fontSize: '16px',
+    textTransform: 'Capitalize',
+    "&:hover": {
+        color:'#007935',
+    },
 }
 
 export const inlineStyles = {
