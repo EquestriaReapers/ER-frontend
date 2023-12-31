@@ -28,6 +28,11 @@ export interface Skill {
   level: string;
 }
 
+export interface Location {
+  id: number;
+  name: string;
+}
+
 export interface Lenguage {
   id: number;
   profileId: number;

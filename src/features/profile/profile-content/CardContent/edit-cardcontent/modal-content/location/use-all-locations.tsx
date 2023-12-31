@@ -1,9 +1,10 @@
+import { Location } from "core/profiles/types";
 import { getAllLocations } from "core/cardcontent/get-all-locations.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 
 const useAllLocations = (name: string) => {
-  const [allLocations, setAllLocations] = useState<String[] | null>(null);
+  const [allLocations, setAllLocations] = useState<Location[] | null>(null);
   const { showErrorToast } = useErrorToast();
 
   const getLocations = useCallback(async () => {

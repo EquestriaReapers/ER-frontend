@@ -1,11 +1,16 @@
 import { Button, Box, Typography } from "@mui/material";
+import { useState } from "react";
 import { FormTitleStyles } from "../styles";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import useAllLocations from "./use-all-locations";
+import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 
-const UbicacionContent = () => {
+const LocationContent = () => {
+  const [loading, setLoading] = useState(false);
+
   return (
     <div>
-      <Box sx={{ display: "flex", flexDirection: "row" }}>
+      <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
         <FmdGoodIcon
           sx={{
             fontSize: "16px",
@@ -13,8 +18,47 @@ const UbicacionContent = () => {
         />
         <Typography sx={FormTitleStyles}>Ubicación</Typography>
       </Box>
+
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        {/*<AutoCompleteFieldComponent
+          sx={{ width: "100%", marginBottom: "16px" }}
+          disabled={loading}
+          debounceTime={350}
+          useOptions={useLocationsSuggestions}
+          label="Buscar Habilidades"
+          onSelectOption={(option: Option) => {
+            console.log(+option.value);
+          }}
+          onCreateNewOption={(option: Option) => {}}
+          allowNewUserOptions={false}
+        />
+        ;
+        */}
+      </Box>
     </div>
   );
 };
 
-export default UbicacionContent;
+function useLocationsSuggestions(name?: string | null): Option[] {
+  const allLocations = useAllLocations(name || "");
+  console.log(allLocations);
+
+  if (!allLocations?.length) return [];
+
+  return allLocations.map((item) => {
+    return { value: item.id, label: item.name };
+  });
+}
+
+export interface Option {
+  value: number;
+  label: string;
+}
+
+const opcionesMock: Option[] = [
+  { value: 1, label: "gay1" },
+  { value: 2, label: "gay2" },
+  { value: 3, label: "gay3" },
+];
+
+export default LocationContent;
