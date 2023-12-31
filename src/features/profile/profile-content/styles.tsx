@@ -170,6 +170,14 @@ export const skillsAndExperiencesBoxStyles = {
   gap: { xs: "29px", sm: "37px" },
 };
 
+export const EducationBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  with: "100%",
+  gap: { xs: "29px", sm: "37px" },
+  mt: 2,
+};
+
 export const locationAndEditButtonStyles = {
   display: "flex",
   width: "100%",
