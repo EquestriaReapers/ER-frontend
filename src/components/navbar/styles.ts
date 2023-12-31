@@ -1,7 +1,18 @@
 export const navbarStyles = {
-    background: "white",
-    color: "black",
-    mr: 2,
+    background: 'white',
     display: 'flex',
-    justifyContent: "right",
+    justifyContent: 'space-between',
 };
+
+export const titleStyles = {
+    color: 'black',
+    ml: 2,
+    fontFamily: 'Inter',
+    fontSize: '',
+}
+
+export const inlineStyles = {
+    display: 'flex',
+    flexWrap: 'wrap'
+}
+

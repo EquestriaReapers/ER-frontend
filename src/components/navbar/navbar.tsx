@@ -1,12 +1,12 @@
-import { Button, Typography, Toolbar, Box, AppBar } from "@mui/material/";
-import { navbarStyles } from "./styles";
+import { Typography, Toolbar, Box, AppBar, IconButton } from "@mui/material/";
+import { navbarStyles, titleStyles,inlineStyles } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "core/auth/store/types";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 import { logout } from "core/auth/store/auth-slice";
+import SvgComponent from "./SvgComponent";
 
 const Navbar = () => {
   const user = useCurrentUser();
@@ -26,18 +26,23 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar sx={navbarStyles}>
-          <Link to="/">
-            <Typography>Home</Typography>
-          </Link>
-          <Link to={`/profile/${user.id}`}>
-            <Typography>Perfil</Typography>
-          </Link>
-          <Link to={`/catalogue`}>
-            <Typography>Catálogo</Typography>
-          </Link>
-          <Button onClick={onLogout}>
-            <Typography>Logout</Typography>
-          </Button>
+          <Box>
+            <SvgComponent/>
+          </Box>
+          <Box sx={inlineStyles}>
+            <Link to="/">
+              <Typography sx={titleStyles}>Home</Typography>
+            </Link>
+            <Link to={`/profile/${user.id}`}>
+              <Typography sx={titleStyles}>Perfil</Typography>
+            </Link>
+            <Link to={`/catalogue`}>
+              <Typography sx={titleStyles}>Catálogo</Typography>
+            </Link>
+            <Typography onClick={onLogout} sx={titleStyles}>
+              Salir
+            </Typography>
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>
