@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  CircularProgress,
   FormControl,
   InputLabel,
   MenuItem,
