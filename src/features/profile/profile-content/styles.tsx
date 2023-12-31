@@ -137,7 +137,6 @@ export const websiteTitleContainerStyles = {
 
 export const topSectionStyles = {
   width: "100%",
-  mt: "30px",
   display: "flex",
   flexDirection: "column",
   gap: { xs: "16px", sm: "31px" },
@@ -145,6 +144,7 @@ export const topSectionStyles = {
 
 export const pageContainerStyles = {
   mx: { xs: "24px", md: "120px" },
+  my: { xs: "24px", md: "34px" },
   display: "flex",
   flexDirection: "column",
   gap: { xs: "16px", sm: "37px" },
@@ -174,7 +174,7 @@ export const EducationBoxStyles = {
   display: "flex",
   flexDirection: "column",
   with: "100%",
-  gap: { xs: "29px", sm: "37px" },
+  gap: { xs: "29px", sm: "34px" },
   mt: 2,
 };
 

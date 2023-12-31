@@ -32,6 +32,7 @@ import Education from "./education";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
+import Portfolio from "./portfolio";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
@@ -132,6 +133,16 @@ const ProfileContent = () => {
           </Box>
           <Box sx={EducationBoxStyles}>
             <Education />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+              gap: "34px",
+            }}
+          >
+            <Portfolio />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
             <Button
