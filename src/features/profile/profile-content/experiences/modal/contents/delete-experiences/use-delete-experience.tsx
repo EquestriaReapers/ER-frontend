@@ -3,10 +3,10 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useCallback, useContext } from "react";
-import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { ExperienceContent } from "../../experiences-modal-context/types";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import ExperiencesModalContext from "../../experiencies-modal-context";
+import ExperiencesModalContext from "../../experiences-modal-context";
 
 const useDeleteExperience = ({ experienceId }: Payload) => {
   const { setContent } = useContext(ExperiencesModalContext);

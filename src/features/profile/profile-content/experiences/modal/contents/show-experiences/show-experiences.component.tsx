@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { modalStyle, titleStyles, buttonStyle } from "./styles.ts";
-import { ExperienceContent } from "../../experiencies-modal-context/types.ts";
-import ExperiencesModalContext from "../../experiencies-modal-context/index.tsx";
+import { ExperienceContent } from "../../experiences-modal-context/types.ts";
+import ExperiencesModalContext from "../../experiences-modal-context/index.tsx";
 import { useContext } from "react";
 import ExperiencesList from "./experiences-list/experiences-list.styled.tsx";
 import { inlineStyles } from "../../styles.ts";

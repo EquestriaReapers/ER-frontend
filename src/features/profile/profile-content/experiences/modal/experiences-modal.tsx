@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { Modal, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import { ExperienceContent } from "./experiencies-modal-context/types";
-import ExperiencesModalContext from "./experiencies-modal-context";
+import { ExperienceContent } from "./experiences-modal-context/types";
+import ExperiencesModalContext from "./experiences-modal-context";
 import { ExperiencesContentManager } from "./contents/experiences-content-manager";
 
 const ExperiencesModal = () => {
