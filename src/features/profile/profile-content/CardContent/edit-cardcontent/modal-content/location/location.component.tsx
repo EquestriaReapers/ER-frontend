@@ -4,9 +4,11 @@ import { FormTitleStyles } from "../styles";
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import useAllLocations from "./use-all-locations";
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
+import useUpdateLocation from "./use-add-location";
 
 const LocationContent = () => {
   const [loading, setLoading] = useState(false);
+  const updateLocation = useUpdateLocation({ setLoading });
 
   return (
     <div>
@@ -27,12 +29,11 @@ const LocationContent = () => {
           useOptions={useLocationsSuggestions}
           label="Buscar Habilidades"
           onSelectOption={(option: Option) => {
-            console.log(+option.value);
+            updateLocation(option.label);
           }}
-          onCreateNewOption={(option: Option) => {}}
+          onCreateNewOption={() => {}}
           allowNewUserOptions={false}
         />
-        ;
       </Box>
     </div>
   );
