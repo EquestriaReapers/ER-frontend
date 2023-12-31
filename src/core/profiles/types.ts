@@ -7,8 +7,10 @@ export interface Profile {
   description: string;
   mainTitle: string;
   countryResidence: string;
+  website: string;
   experience: Experience[];
   skills: Skill[];
+  languageProfile: Lenguage[];
   deletedAt: Date | null;
 }
 
@@ -25,6 +27,24 @@ export interface Skill {
   id: number;
   name: string;
   level: string;
+}
+
+export interface ContactMethod {
+  id: number;
+  profileId: number;
+  name: string;
+}
+
+export interface Location {
+  id: number;
+  name: string;
+}
+
+export interface Lenguage {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
 }
 
 export interface Experience {

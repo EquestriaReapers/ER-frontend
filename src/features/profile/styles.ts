@@ -21,6 +21,12 @@ export const titleStyles = {
   fontWeight: "700",
 };
 
+export const subTitleStyles = {
+  fontSize: { xs: "16px", sm: "18.5px", md: "24px" },
+  fontFamily: "Inter",
+  fontWeight: "700",
+};
+
 export const buttonStyle = {
   fontFamily: "Inter",
   borderRadius: "6px",
@@ -59,9 +65,9 @@ export const descriptionStyles = {
   py: 2,
 };
 
-export const skillTitleStyle = { 
+export const skillTitleStyle = {
   fontFamily: "Inter",
   fontWeight: "700",
   fontSize: "16px",
   pb: 2,
-}
+};

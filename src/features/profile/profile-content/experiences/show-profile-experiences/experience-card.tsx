@@ -42,9 +42,7 @@ const ExperienceCard = ({ item }: Props) => {
             {item.location},
           </Typography>
           <Typography sx={subtitleStyles} variant="h6">
-            <Typography sx={subtitleStyles} variant="h6">
-              {dateItem}
-            </Typography>
+            <span>{dateItem}</span>
           </Typography>
         </Box>
       </Box>

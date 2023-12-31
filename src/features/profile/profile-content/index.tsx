@@ -1,27 +1,19 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import EditIcon from "@mui/icons-material/Edit";
-import LanguageIcon from "@mui/icons-material/Language";
 import {
   aboutMeSection,
   aboutMeTypographyStyles,
   buttonStyles,
   contactSectionStyles,
-  contactTitlesStyles,
   descriptionBoxStyles,
   descriptionStyles,
   editIconStyles,
-  locationAndEditButtonStyles,
-  locationBoxStyles,
   mainTitleStyles,
   nameSectionStyles,
   nameStyles,
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
   topSectionStyles,
-  websiteBoxStyles,
-  websiteTitleContainerStyles,
 } from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
@@ -29,6 +21,7 @@ import Skills from "./skills";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
+import ContactCard from "./contact-card";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
@@ -82,45 +75,7 @@ const ProfileContent = () => {
                 )}
               </Box>
               <Box sx={contactSectionStyles}>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  <Box sx={locationAndEditButtonStyles}>
-                    <Box sx={locationBoxStyles}>
-                      <LocationOnIcon />
-                      &nbsp;
-                      <Typography sx={contactTitlesStyles}>
-                        Ubicación
-                      </Typography>
-                    </Box>
-                    <Box sx={{ display: "flex" }}>
-                      <EditIcon />
-                    </Box>
-                  </Box>
-
-                  <Typography
-                    sx={{
-                      fontFamily: "inter",
-                      fontSize: "16px",
-                    }}
-                  >
-                    Puerto Ordaz, Venezuela
-                  </Typography>
-                </Box>
-                <Box sx={websiteBoxStyles}>
-                  <Box sx={websiteTitleContainerStyles}>
-                    <LanguageIcon />
-                    &nbsp;
-                    <Typography sx={contactTitlesStyles}>Website</Typography>
-                  </Box>
-
-                  <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
-                    www.abcdefge.com
-                  </Typography>
-                </Box>
+                <ContactCard />
               </Box>
             </Box>
           </Box>

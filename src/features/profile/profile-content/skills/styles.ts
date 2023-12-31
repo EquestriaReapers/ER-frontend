@@ -1,12 +1,12 @@
 export const boxWrapperStyles = {
   display: "flex",
-  flexDirection: "column"
-}
+  flexDirection: "column",
+};
 
 export const boxStyles = {
-  display: "flex", 
-  flexWrap: "wrap", 
-  gap: "10px", 
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px",
   py: 3,
   alignItems: "center",
 };

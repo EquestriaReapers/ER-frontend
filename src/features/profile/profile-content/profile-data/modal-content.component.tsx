@@ -97,6 +97,11 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
                 value={mainTitle}
                 onChange={onChangeMainTitle}
                 input={<OutlinedInput label="Name" />}
+                MenuProps={{
+                  style: {
+                    maxHeight: 300,
+                  },
+                }}
               >
                 {options.map(({ label, value }: CareersOption) => (
                   <MenuItem
