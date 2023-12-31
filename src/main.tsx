@@ -13,6 +13,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
 import Loader from "hooks/use-loader";
+import ForgotPassword from "features/auth/ForgotPassword";
 
 const theme = createTheme({
   palette: {
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
   {
     path: "/loader",
     element: <Loader />,
+  },
+  {
+    path: "/forgot-password/",
+    element: <ForgotPassword />,
   },
 ]);
 
