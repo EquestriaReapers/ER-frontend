@@ -3,7 +3,7 @@ import {
   UpdateProfileBody,
   updateProfile,
 } from "../../../../core/profiles/update-profile.service";
-import { FormEvent, useCallback } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
@@ -13,6 +13,7 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
   const { fetchProfile } = useProfileContext();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
+  const [loading, setLoading] = useState(false);
   const getToken = useGetToken();
 
   const onSubmitForm = useCallback(
@@ -24,20 +25,22 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
           showErrorToast("Debe rellenar todos los campos");
           return;
         }
-
+        setLoading(true);
         const data = await updateProfile(token, user);
 
-        setIsOpen(false);
         showSuccessToast("Perfil editado con éxito");
-        fetchProfile();
+        await fetchProfile();
+        setIsOpen(false);
         return data;
       } catch (error) {
         showErrorToast(error);
+      } finally {
+        setLoading(false);
       }
     },
     [fetchProfile, getToken, setIsOpen, showErrorToast, showSuccessToast, user]
   );
-  return { onSubmitForm };
+  return { onSubmitForm, loading };
 };
 
 function validatePayload(

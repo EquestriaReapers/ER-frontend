@@ -14,13 +14,12 @@ export const modalStyle = {
 };
 
 export const nameStyles = {
-  fontSize: "20px", 
+  fontSize: "20px",
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
 };
-
 
 export const descriptionStyles = {
   fontSize: "16px",

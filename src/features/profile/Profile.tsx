@@ -3,25 +3,31 @@ import { useParams } from "react-router-dom";
 import ProfileContextProvider from "./profile-context/ProfileContextProvider";
 import useProfile from "./use-profile";
 import ProfileContent from "./profile-content";
-import Loader from "hooks/use-loader";
+import { bannerStyles } from "./profile-content/styles";
+import SpinnerBlock from "components/spinner-block";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const Profile = () => {
   const profileId = parseInt(useParams<RouteParams>().id!);
-  const { profile, fetchProfile } = useProfile(profileId);
+  const { profile, fetchProfile, loading } = useProfile(profileId);
 
   return (
     <Box>
-      {!profile || !profileId ? (
-        <Loader />
-      ) : (
-        <ProfileContextProvider
-          profileId={profileId}
-          profile={profile}
-          fetchProfile={fetchProfile}
-        >
-          <ProfileContent />
-        </ProfileContextProvider>
-      )}
+      <Box sx={bannerStyles}></Box>
+      <>
+        {!profile || !profileId ? (
+          <SpinnerBlock style={{ mt: 16 }} />
+        ) : (
+          <ProfileContextProvider
+            profileId={profileId}
+            profile={profile}
+            fetchProfile={fetchProfile}
+          >
+            {loading && <SpinnerAbsolute />}
+            <ProfileContent />
+          </ProfileContextProvider>
+        )}
+      </>
     </Box>
   );
 };

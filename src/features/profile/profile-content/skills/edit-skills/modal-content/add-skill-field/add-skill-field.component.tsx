@@ -1,13 +1,11 @@
 import { Box } from "@mui/material";
-import { useState } from "react";
 import useAllSkills from "./use-all-skills";
 import { Option } from "./use-skill-form-state";
 import useAddSkill from "./use-add-skill";
 import useAddUnexistsSkill from "./use-add-unexists-skill";
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 
-const AddSkillField = () => {
-  const [loading, setLoading] = useState(false);
+const AddSkillField = ({ loading, setLoading }: Props) => {
   const addSkill = useAddSkill({ setLoading });
   const addUnexistsSkill = useAddUnexistsSkill({ setLoading });
 
@@ -42,7 +40,8 @@ function useSkillsSuggestions(name?: string | null): Option[] {
 }
 
 export interface Props {
-  setIsOpen: (open: boolean) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export default AddSkillField;
