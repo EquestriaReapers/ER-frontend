@@ -7,8 +7,8 @@ import {
   subTitleStyles,
 } from "../../../../styles";
 import useProfileContext from "../../../../profile-context/use-profile-context";
-import Ubicacion from "./Ubicacion";
-import Lenguaje from "./Lenguaje";
+import Ubicacion from "./location";
+import Lenguaje from "./lenguage";
 import Website from "./Website";
 
 const ModalContent = ({ setIsOpen }: Props) => {
