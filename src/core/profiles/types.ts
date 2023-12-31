@@ -9,6 +9,7 @@ export interface Profile {
   countryResidence: string;
   experience: Experience[];
   skills: Skill[];
+  languageProfile: Lenguage[];
   deletedAt: Date | null;
 }
 
@@ -25,6 +26,13 @@ export interface Skill {
   id: number;
   name: string;
   level: string;
+}
+
+export interface Lenguage {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
 }
 
 export interface Experience {

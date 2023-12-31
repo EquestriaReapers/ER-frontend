@@ -22,7 +22,7 @@ export const titleStyles = {
 };
 
 export const subTitleStyles = {
-  fontSize: { xs: "18px", sm: "20px", md: "28px" },
+  fontSize: { xs: "16px", sm: "18.5px", md: "24px" },
   fontFamily: "Inter",
   fontWeight: "700",
 };

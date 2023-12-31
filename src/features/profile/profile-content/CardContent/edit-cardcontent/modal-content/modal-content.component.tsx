@@ -3,29 +3,43 @@ import { useCallback } from "react";
 import {
   buttonStyle,
   titleStyles,
-  skillTitleStyle,
   descriptionStyles,
   subTitleStyles,
 } from "../../../../styles";
 import useProfileContext from "../../../../profile-context/use-profile-context";
+import Ubicacion from "./Ubicacion";
+import Lenguaje from "./Lenguaje";
+import Website from "./Website";
 
 const ModalContent = ({ setIsOpen }: Props) => {
-  const { profile } = useProfileContext();
   const closeModal = useCloseModal(setIsOpen);
 
   return (
-    <Box>
-      <Typography sx={titleStyles}>Datos de contacto</Typography>
-      <Typography sx={subTitleStyles}>Datos Generales</Typography>
-      <Typography sx={descriptionStyles}>
-        Estos datos básicos aparecerán en el perfil y en el CV
-      </Typography>
+    <div>
+      <Box sx={{ marginBottom: "32px" }}>
+        <Typography sx={titleStyles}>Datos de contacto</Typography>
+      </Box>
 
-      <Typography sx={skillTitleStyle}>Habilidades</Typography>
-      <Button sx={buttonStyle} className="exp-show-button" onClick={closeModal}>
-        Listo
-      </Button>
-    </Box>
+      <Box sx={{ display: "flex", flexDirection: "row" }}>
+        <Box sx={{ marginRight: "10px" }}>
+          <Typography sx={subTitleStyles}>Datos Generales</Typography>
+          <Typography sx={descriptionStyles}>
+            Estos datos básicos aparecerán en el perfil y en el CV
+          </Typography>
+          <Ubicacion />
+        </Box>
+      </Box>
+
+      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Button
+          sx={buttonStyle}
+          className="exp-show-button"
+          onClick={closeModal}
+        >
+          Guardar Cambios
+        </Button>
+      </Box>
+    </div>
   );
 };
 

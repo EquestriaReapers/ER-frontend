@@ -11,4 +11,7 @@ export const modalStyle = {
     md: 4,
   },
   borderRadius: "10px",
+  width: {
+    md: "1000px",
+  },
 };
