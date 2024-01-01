@@ -8,9 +8,12 @@ export const PortfolioModalContext = createContext<PortfolioModalContextI>({
   portfolio: [],
   aPortfolio: null,
   setAPortfolio: () => {},
+  loading: false,
+  setLoading: () => {},
 });
 
 export const PortfolioContentProvider = ({ children, portfolio }: Props) => {
+  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<PortfolioContent>(
     PortfolioContent.Show
   );
@@ -22,6 +25,8 @@ export const PortfolioContentProvider = ({ children, portfolio }: Props) => {
     portfolio,
     aPortfolio,
     setAPortfolio,
+    loading,
+    setLoading,
   };
   return (
     <PortfolioModalContext.Provider value={contextValue}>
@@ -41,6 +46,8 @@ export interface PortfolioModalContextI {
   portfolio: Portfolio[];
   aPortfolio: Portfolio | null;
   setAPortfolio: (aPortfolio: Portfolio | null) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export default PortfolioModalContext;
