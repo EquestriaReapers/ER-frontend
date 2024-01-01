@@ -19,7 +19,7 @@ export const catalogueContainer = {
   height: "auto",
   backgroundColor: "#FFFFFF",
   boxShadow: { xs: "none", sm: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)" },
-  borderRadius: "5px",
+  borderRadius: "6px",
   my: { xs: 0, sm: 10 },
 };
 
@@ -27,13 +27,10 @@ export const filtersContainer = {
   display: { xs: "none", md: "flex" },
   backgroundColor: "#F4F4F4",
   boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-  borderRadius: "5px",
-  flexDirection: "column",
+  borderRadius: "6px",
   height: "auto",
   width: "58%",
 };
-
-
 
 export const searchBarContainer = {
   display: "flex",

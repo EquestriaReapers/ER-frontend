@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { AuthState } from "../features/auth/store/types";
+import { AuthState } from "../core/auth/store/types";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -13,9 +13,6 @@ export default function useRedirectWhenLogged() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLogged) {
-      navigate(`/dashboard`);
-      return;
-    }
+    if (isLogged) navigate(`/dashboard`);
   }, [navigate, isLogged, user]);
 }
