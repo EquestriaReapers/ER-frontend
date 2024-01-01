@@ -5,6 +5,8 @@ import ProfileContent from "./profile-content";
 import NotFoundProfile from "./not-found-profile/NotFoundProfile";
 import SpinnerBlock from "components/spinner-block";
 import SpinnerAbsolute from "components/spinner-absolute";
+import { bannerStyles } from "./profile-content/styles";
+import { Box } from "@mui/material";
 
 const Profile = () => {
   const profileId = parseInt(useParams<RouteParams>().id!);
@@ -13,6 +15,7 @@ const Profile = () => {
 
   return (
     <>
+      <Box sx={bannerStyles}></Box>
       {!isFirstTimeLoaded ? (
         <SpinnerBlock style={{ mt: 16 }} />
       ) : profile && profileId ? (
