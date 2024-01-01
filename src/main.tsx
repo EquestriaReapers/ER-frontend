@@ -17,6 +17,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
 import Loader from "hooks/use-loader";
 import Layout from "layout/Layout";
+import NotFound from "features/not-found/NotFound";
 
 const theme = createTheme({
   palette: {
@@ -58,6 +59,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "catalogue/:seed",
         element: <Catalogue />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
