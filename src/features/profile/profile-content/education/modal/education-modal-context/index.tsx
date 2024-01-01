@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react'
-import { Education } from 'core/profiles/types'
-import { EducationContent } from './types'
+import React, { createContext, useState } from "react";
+import { Education } from "core/profiles/types";
+import { EducationContent } from "./types";
 
 // Creamos un contexto
 const EducationModalContext = createContext<EducationModalContextI>({
@@ -8,15 +8,18 @@ const EducationModalContext = createContext<EducationModalContextI>({
   setContent: () => {},
   educations: [],
   anEducation: null,
-  setAnEducation: () => {}
-})
+  setAnEducation: () => {},
+  loading: false,
+  setLoading: () => {},
+});
 
 // Proveedor del contexto
 export const EducationContentProvider = ({ children, educations }: Props) => {
+  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<EducationContent>(
     EducationContent.Show
-  )
-  const [anEducation, setAnEducation] = useState<Education | null>(null)
+  );
+  const [anEducation, setAnEducation] = useState<Education | null>(null);
 
   // Proporcionamos el valor del contexto
   const contextValue = {
@@ -24,26 +27,30 @@ export const EducationContentProvider = ({ children, educations }: Props) => {
     setContent,
     anEducation,
     educations,
-    setAnEducation
-  }
+    setAnEducation,
+    loading,
+    setLoading,
+  };
   return (
     <EducationModalContext.Provider value={contextValue}>
       {children}
     </EducationModalContext.Provider>
-  )
-}
+  );
+};
 
 interface Props {
-  educations: Education[]
-  children?: React.ReactNode
+  educations: Education[];
+  children?: React.ReactNode;
 }
 
 export interface EducationModalContextI {
-  content: EducationContent
-  setContent: (content: EducationContent) => void
-  educations: Education[]
-  anEducation: Education | null
-  setAnEducation: (anExperience: Education | null) => void
+  content: EducationContent;
+  setContent: (content: EducationContent) => void;
+  educations: Education[];
+  anEducation: Education | null;
+  setAnEducation: (anExperience: Education | null) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
-export default EducationModalContext
+export default EducationModalContext;
