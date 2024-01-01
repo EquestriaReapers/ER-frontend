@@ -19,6 +19,7 @@ import Catalogue from "features/catalogue/catalogue-content";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
+import Loader from "hooks/use-loader";
 
 const theme = createTheme({
   palette: {
@@ -65,7 +66,15 @@ const routerConfig: RouteObject[] = [
         path: "*",
         element: <NotFound />,
       },
+      {
+        path: "/home",
+        element: <Home />,
+      },
     ],
+  },
+  {
+    path: "loader",
+    element: <Loader />,
   },
 ];
 
