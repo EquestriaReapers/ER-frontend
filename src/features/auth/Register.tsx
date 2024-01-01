@@ -5,9 +5,9 @@ import registerService from "core/auth/register.service";
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import Div100vh from "react-div-100vh";
 import { registerProfileStyles } from "./styles/RegisterStyles";
-import "styles/index.css";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
@@ -18,6 +18,7 @@ const Register: FunctionComponent = () => {
         registerProfileStyles as unknown as Record<string, number | string>
       }
     >
+      {loading && <SpinnerAbsolute />}
       <FormControl margin="normal">
         <RegisterForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
@@ -41,12 +42,12 @@ function useRegister() {
       setLoading(true);
       try {
         if (!name || !lastname || !email || !password || !confirmPassword) {
-          showErrorToast("Todos los campos son obligatorios.");
+          showErrorToast(getFieldsRandomErrorPhrase());
           return;
         }
 
         if (password !== confirmPassword) {
-          showErrorToast("La contraseñas no son iguales");
+          showErrorToast(getPasswordRandomErrorPhrase());
           return;
         }
 
@@ -56,7 +57,7 @@ function useRegister() {
           email,
           password,
         });
-        showSuccessToast("Registro exitoso");
+        showSuccessToast(getRandomWelcomePhrase());
       } catch (error) {
         showErrorToast(error);
       } finally {
@@ -75,6 +76,39 @@ export interface RegisterPayload {
   email: string;
   password: string;
   confirmPassword: string;
+}
+
+function getRandomWelcomePhrase() {
+  const phrases = [
+    "¡Bienvenido a UCAB Profile 👋!",
+    "¡Te haz registrado con exito 🥳!",
+    "¡Un nuevo egresado en la comunidad 🎉!",
+    "Logro desbloqueado: ¡Te registraste en UCAB Profile 🎮!",
+    "Bienvenido a nuestra red de egresados 🌐",
+  ];
+  return phrases[Math.floor(Math.random() * phrases.length)];
+}
+
+function getFieldsRandomErrorPhrase() {
+  const phrases = [
+    "Recuerda debes introducir todos los campos 😬!",
+    "Si no introduces todos los campos no podras registrarte 😣!",
+    "Por favor introduce todos los campos 🙏!",
+    "Por favor introduce todos los campos 😅!",
+    "Oye!, no olvides introducir todos los campos 😖!",
+    "No olvides todos los campos antes 😁!",
+  ];
+  return phrases[Math.floor(Math.random() * phrases.length)];
+}
+
+function getPasswordRandomErrorPhrase() {
+  const phrases = [
+    "¡Oye! las contraseñas no coinciden 😬",
+    "¡Hey! introdujiste contraseñas diferentes 😅",
+    "¡Oye! las contraseñas no son iguales 😣",
+    "¡Hey! las contraseñas no coinciden 😖",
+  ];
+  return phrases[Math.floor(Math.random() * phrases.length)];
 }
 
 export default Register;

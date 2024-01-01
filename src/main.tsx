@@ -13,6 +13,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
 import Loader from "hooks/use-loader";
+import "styles/index.css";
 
 const theme = createTheme({
   palette: {
