@@ -3,13 +3,13 @@ import { Skill } from "core/profiles/types";
 import SkillCard from "./skill-card.component";
 import { boxStyles } from "./styles";
 
-const ShowSkills = ({ skills }: Props) => {
+const ShowSkills = ({ skills, setLoading }: Props) => {
   return (
     <Box sx={boxStyles}>
       {skills.map((item: Skill) => {
         return (
           <Box key={item.id}>
-            <SkillCard item={item} />
+            <SkillCard setLoading={setLoading} item={item} />
           </Box>
         );
       })}
@@ -19,6 +19,7 @@ const ShowSkills = ({ skills }: Props) => {
 
 interface Props {
   skills: Skill[];
+  setLoading: (loading: boolean) => void;
 }
 
 export default ShowSkills;

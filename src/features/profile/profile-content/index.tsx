@@ -7,7 +7,6 @@ import {
   EducationBoxStyles,
   aboutMeSection,
   aboutMeTypographyStyles,
-  bannerStyles,
   buttonStyles,
   contactSectionStyles,
   contactTitlesStyles,
@@ -37,12 +36,12 @@ import Portfolio from "./portfolio";
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
-  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+  const { downloadCurriculumPDF, loading: loadingCurriculum } =
+    useDownloadCurriculumPDF(profile);
 
   return (
     <>
       <Box>
-        <Box sx={bannerStyles}></Box>
         <Box sx={pageContainerStyles}>
           <Box sx={topSectionStyles}>
             <Box sx={nameSectionStyles}>
@@ -61,6 +60,7 @@ const ProfileContent = () => {
                 sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
               >
                 <Button
+                  disabled={loadingCurriculum}
                   variant="contained"
                   color="primary"
                   type="submit"
@@ -146,6 +146,7 @@ const ProfileContent = () => {
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
             <Button
+              disabled={loadingCurriculum}
               variant="contained"
               color="primary"
               type="submit"
