@@ -1,19 +1,19 @@
-import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import ProfileContextProvider from "./profile-context/ProfileContextProvider";
 import useProfile from "./use-profile";
 import ProfileContent from "./profile-content";
 import Loader from "hooks/use-loader";
+import NotFoundProfile from "./not-found-profile/NotFoundProfile";
 
 const Profile = () => {
   const profileId = parseInt(useParams<RouteParams>().id!);
-  const { profile, fetchProfile } = useProfile(profileId);
+  const { profile, isFirstTimeLoaded, fetchProfile } = useProfile(profileId);
 
   return (
-    <Box>
-      {!profile || !profileId ? (
+    <>
+      {!isFirstTimeLoaded ? (
         <Loader />
-      ) : (
+      ) : profile && profileId ? (
         <ProfileContextProvider
           profileId={profileId}
           profile={profile}
@@ -21,8 +21,10 @@ const Profile = () => {
         >
           <ProfileContent />
         </ProfileContextProvider>
+      ) : (
+        <NotFoundProfile />
       )}
-    </Box>
+    </>
   );
 };
 
