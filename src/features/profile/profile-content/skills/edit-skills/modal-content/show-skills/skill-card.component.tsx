@@ -4,14 +4,14 @@ import { skillTitleStyles } from "./styles";
 import ClearIcon from "@mui/icons-material/Clear";
 import useDeleteSkill from "../../use-delete-skill";
 
-const SkillCard = ({ item }: Props) => {
-  const deleteSkill = useDeleteSkill(item.id);
+const SkillCard = ({ item, setLoading }: Props) => {
+  const deleteSkill = useDeleteSkill(item.id, setLoading);
   return (
     <Box>
       <Typography sx={skillTitleStyles} variant="h6">
         {item.name}
         <IconButton>
-          <ClearIcon sx={{ color: '#545454' }} onClick={deleteSkill}/>
+          <ClearIcon sx={{ color: "#545454" }} onClick={deleteSkill} />
         </IconButton>
       </Typography>
     </Box>
@@ -20,6 +20,7 @@ const SkillCard = ({ item }: Props) => {
 
 interface Props {
   item: Skill;
+  setLoading: (loading: boolean) => void;
 }
 
 export default SkillCard;

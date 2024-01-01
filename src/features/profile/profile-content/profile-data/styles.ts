@@ -17,7 +17,7 @@ export const modalStyle = {
 
 export const titleStyles = {
   margin: "0px 0px 12px",
-  fontSize:{ xs: "20px", sm: "22px", md: "30px"},
+  fontSize: { xs: "20px", sm: "22px", md: "30px" },
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
@@ -37,6 +37,9 @@ export const buttonStyle = {
   my: 2,
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
+  },
+  "&:disabled": {
+    color: "#ffffff",
   },
 };
 
@@ -68,4 +71,4 @@ export const descriptionStyles = {
 
 export const infoStyles = {
   mt: 1,
-}
+};

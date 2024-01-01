@@ -14,6 +14,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
 import Loader from "hooks/use-loader";
 import ForgotPassword from "features/auth/ForgotPassword";
+import "styles/index.css";
 
 const theme = createTheme({
   palette: {
