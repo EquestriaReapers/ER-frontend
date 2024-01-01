@@ -24,6 +24,7 @@ import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 import ContactCard from "./contact-card";
+import { SkillType } from "core/skills/types";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
@@ -82,7 +83,8 @@ const ProfileContent = () => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <Skills />
+            <Skills skillType={SkillType.Hard} />
+            <Skills skillType={SkillType.Soft} />
             <Experiences />
           </Box>
           <Box sx={EducationBoxStyles}>
