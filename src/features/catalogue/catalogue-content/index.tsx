@@ -12,6 +12,7 @@ import CatalogueSearchBar from "./components/SearchBar";
 import useCatalogueProfiles from "./profiles/use-catalogue";
 import { ChangeEvent } from "react";
 import useSeed from "./use-seed";
+import SpinnerBlock from "components/spinner-block";
 
 const Catalogue = () => {
   const seed = useSeed();
@@ -28,7 +29,9 @@ const Catalogue = () => {
   return (
     <>
       {!seed ? (
-        <Typography>PAPA PAPA </Typography>
+        <Typography>
+          <SpinnerBlock />
+        </Typography>
       ) : (
         <>
           <Box sx={navBarStyles}>fakenavbar por ahora</Box>
