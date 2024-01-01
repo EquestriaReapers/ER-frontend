@@ -6,8 +6,8 @@ import useRedirectWhenRegistered from "./use-redirect-when-registered";
 import { registerProfileStyles } from "./styles/RegisterStyles";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
-import SpinnerAbsolute from "components/spinner-absolute";
 import { Box } from "@mui/material";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();

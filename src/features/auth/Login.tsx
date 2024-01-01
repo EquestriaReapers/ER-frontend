@@ -9,8 +9,8 @@ import LoginForm from "./login-form/LoginForm";
 import { loginProfileStyles } from "./styles/LoginStyles";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
-import SpinnerAbsolute from "components/spinner-absolute";
 import { Box } from "@mui/material";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
