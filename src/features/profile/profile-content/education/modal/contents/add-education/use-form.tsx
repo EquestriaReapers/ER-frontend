@@ -1,85 +1,91 @@
-import { useAuthState } from 'hooks/use-auth-state'
-import { useErrorToast } from 'hooks/use-error-toast'
-import { useSuccessToast } from 'hooks/use-success-toast'
-import { FormEvent, useCallback, useContext } from 'react'
-import { EducationContent } from '../../education-modal-context/types'
-import { Dayjs } from 'dayjs'
-import { useNavigate } from 'react-router'
-import useProfileContext from 'features/profile/profile-context/use-profile-context'
-import { addAProfileEducation } from 'features/profile/services/education/add-profile-education'
-import EducationModalContext from '../../education-modal-context'
+import { useAuthState } from "hooks/use-auth-state";
+import { useErrorToast } from "hooks/use-error-toast";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { FormEvent, useCallback, useContext } from "react";
+import { EducationContent } from "../../education-modal-context/types";
+import { Dayjs } from "dayjs";
+import { useNavigate } from "react-router";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { addAProfileEducation } from "features/profile/services/education/add-profile-education";
+import EducationModalContext from "../../education-modal-context";
 
 const useAddEducationForm = ({ education }: AddEducationFormProps) => {
-  const getToken = useGetToken()
-  const { showSuccessToast } = useSuccessToast()
-  const { showErrorToast } = useErrorToast()
-  const { setContent } = useContext(EducationModalContext)
-  const { fetchProfile } = useProfileContext()
+  const getToken = useGetToken();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
+  const { setContent, setLoading } = useContext(EducationModalContext);
+  const { fetchProfile } = useProfileContext();
 
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
+      event.preventDefault();
 
       try {
-        const token = getToken()
+        const token = getToken();
         if (!education.title || !education.entity || !education.endDate) {
-          showErrorToast('Por favor, rellena todos los campos')
-          return
+          showErrorToast("Por favor, rellena todos los campos");
+          return;
         }
 
-        const data = addAProfileEducation(
+        setLoading(true);
+        const data = await addAProfileEducation(
           {
             title: education.title,
             entity: education.entity,
-            endDate: education.endDate?.format('YYYY-MM-DD')
+            endDate: education.endDate?.format("YYYY-MM-DD"),
           },
           token
-        )
+        );
 
-        setContent(EducationContent.Show)
-        showSuccessToast('Educacion agregada con éxito')
-        fetchProfile()
+        setContent(EducationContent.Show);
+        showSuccessToast("Educacion agregada con éxito");
+        await fetchProfile();
 
-        return data
+        return data;
       } catch (error) {
-        showErrorToast(error)
+        showErrorToast(error);
+      } finally {
+        setLoading(false);
       }
     },
     [
       getToken,
-      education,
+      education.title,
+      education.entity,
+      education.endDate,
+      setLoading,
       setContent,
       showSuccessToast,
       fetchProfile,
-      showErrorToast
+      showErrorToast,
     ]
-  )
+  );
 
-  return { onSubmitForm }
-}
+  return { onSubmitForm };
+};
 
 export interface AddEducationFormProps {
   education: {
-    title: string
-    entity: string
-    endDate: Dayjs | null
-  }
+    title: string;
+    entity: string;
+    endDate: Dayjs | null;
+  };
 }
 
 function useGetToken() {
-  const navigate = useNavigate()
-  const { token } = useAuthState()
+  const navigate = useNavigate();
+  const { token } = useAuthState();
 
   return useCallback(() => {
     if (!token) {
-      navigate('/login')
+      navigate("/login");
       throw new Error(
-        'No se ha encontrado un token local para hacer la peticion'
-      )
+        "No se ha encontrado un token local para hacer la peticion"
+      );
     }
 
-    return token
-  }, [navigate, token])
+    return token;
+  }, [navigate, token]);
 }
 
-export default useAddEducationForm
+export default useAddEducationForm;

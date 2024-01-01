@@ -137,6 +137,7 @@ export const websiteTitleContainerStyles = {
 
 export const topSectionStyles = {
   width: "100%",
+  mt: "30px",
   display: "flex",
   flexDirection: "column",
   gap: { xs: "16px", sm: "31px" },
