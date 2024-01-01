@@ -30,8 +30,8 @@ export const useMainContainerStyles = () => {
 
   const MainContainerStyles = {
     width: "100%",
-    height: isMediumScreen ? "calc(370vh - 60px)" : "calc(270vh - 65px)",
-    minHeight: isSmallScreen ? "3960px" : isMediumScreen ? "4350px" : "2140px",
+    height: isMediumScreen ? "370vh" : "270vh",
+    minHeight: isSmallScreen ? "4000px" : isMediumScreen ? "4390px" : "2200px",
   };
 
   return MainContainerStyles;
