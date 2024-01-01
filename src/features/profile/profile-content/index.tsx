@@ -22,6 +22,8 @@ import {
   topSectionStyles,
   websiteBoxStyles,
   websiteTitleContainerStyles,
+  bothSkillsContainerStyles,
+  skillsTitleTypographyStyles,
 } from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
@@ -87,6 +89,7 @@ const ProfileContent = () => {
                   sx={{
                     display: "flex",
                     flexWrap: "wrap",
+                    width: "100%",
                   }}
                 >
                   <Box sx={locationAndEditButtonStyles}>
@@ -126,8 +129,15 @@ const ProfileContent = () => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <Skills skillType={SkillType.Hard} />
-            <Skills skillType={SkillType.Soft} />
+            <Box sx={{ width: "100%" }}>
+              <Typography sx={skillsTitleTypographyStyles}>
+                Habilidades
+              </Typography>
+              <Box sx={bothSkillsContainerStyles}>
+                <Skills skillType={SkillType.Hard} />
+                <Skills skillType={SkillType.Soft} />
+              </Box>
+            </Box>
             <Experiences />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>

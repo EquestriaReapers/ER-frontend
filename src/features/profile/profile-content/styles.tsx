@@ -75,10 +75,10 @@ export const editIconStyles = {
 export const aboutMeSection = {
   display: "flex",
   flexWrap: {
-    lg: "nowrap",
-    md: "nowrap",
-    sm: "nowrap",
     xs: "wrap",
+    sm: "wrap",
+    md: "nowrap",
+    lg: "nowrap",
   },
   width: "100%",
   justifyContent: "space-between",
@@ -88,7 +88,6 @@ export const aboutMeSection = {
 export const descriptionStyles = {
   width: {
     xs: "100%",
-    sm: "90%",
   },
   fontStyle: "normal",
   fontWeight: "400",
@@ -99,7 +98,6 @@ export const descriptionStyles = {
 
 export const contactSectionStyles = {
   display: "flex",
-  width: { xs: "100%", sm: "25%" },
   height: "30%",
   backgroundColor: "#F4F4F4",
   justifyContent: "space-between",
@@ -108,6 +106,16 @@ export const contactSectionStyles = {
   px: { xs: "8px", sm: "15px", md: "25px" },
   gap: "10px",
   borderRadius: "6px",
+  width: { xs: "100%", sm: "100%", md: "20%", lg: "25%" },
+  maxWidth: {
+    xs: "100%",
+    sm: "100%",
+    md: "500px",
+  },
+  mt: {
+    xs: 5,
+    md: 0,
+  },
 };
 
 export const locationBoxStyles = {
@@ -154,10 +162,17 @@ export const descriptionBoxStyles = {
   gap: "17px",
   display: "flex",
   flexDirection: "column",
-  width: { xs: "100%", sm: "70%" },
+  width: { xs: "100%", sm: "100%", md: "70%", lg: "60%" },
 };
 
 export const aboutMeTypographyStyles = {
+  fontWeight: "700",
+  fontFamily: "inter",
+  fontSize: { xs: "22px", sm: "30px" },
+  py: 2,
+};
+
+export const skillsTitleTypographyStyles = {
   fontWeight: "700",
   fontFamily: "inter",
   fontSize: { xs: "22px", sm: "30px" },
@@ -174,4 +189,17 @@ export const locationAndEditButtonStyles = {
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
+};
+
+export const bothSkillsContainerStyles = {
+  display: "flex",
+  flexWrap: "no-wrap",
+  flexDirection: "row",
+  width: {
+    xs: "100%",
+    sm: "100%",
+    md: "70%",
+    lg: "60%",
+  },
+  py: 1,
 };
