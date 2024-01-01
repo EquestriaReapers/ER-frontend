@@ -18,6 +18,7 @@ import Catalogue from "features/catalogue/catalogue-content";
 import Loader from "hooks/use-loader";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
+import "styles/index.css";
 
 const theme = createTheme({
   palette: {
