@@ -2,7 +2,6 @@ import { Box, Pagination, Stack, Typography } from "@mui/material";
 import ShowProfiles from "./profiles/show-profiles";
 import {
   filtersContainer,
-  navBarStyles,
   pageContainer,
   catalogueContainer,
   searchBarContainer,
@@ -34,7 +33,6 @@ const Catalogue = () => {
         </Typography>
       ) : (
         <>
-          <Box sx={navBarStyles}>fakenavbar por ahora</Box>
           <Box sx={pageContainer}>
             <Box sx={catalogueContainer}>
               <Box sx={filtersContainer}>
