@@ -8,6 +8,7 @@ export interface Profile {
   mainTitle: string;
   countryResidence: string;
   website: string;
+  education: Education[];
   experience: Experience[];
   skills: Skill[];
   languageProfile: Lenguage[];
@@ -56,4 +57,15 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+}
+
+export interface Education {
+  id: number;
+  profileId: number;
+  principal: boolean;
+  isUCAB: boolean;
+  title: string;
+  entity: string;
+  endDate: Date;
+  deleteAt: Date | null;
 }

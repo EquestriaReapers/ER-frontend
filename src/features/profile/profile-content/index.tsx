@@ -1,6 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
 import {
+  EducationBoxStyles,
   aboutMeSection,
   aboutMeTypographyStyles,
   buttonStyles,
@@ -18,6 +19,7 @@ import {
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
 import Skills from "./skills";
+import Education from "./education";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
@@ -82,6 +84,9 @@ const ProfileContent = () => {
           <Box sx={skillsAndExperiencesBoxStyles}>
             <Skills />
             <Experiences />
+          </Box>
+          <Box sx={EducationBoxStyles}>
+            <Education />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
             <Button
