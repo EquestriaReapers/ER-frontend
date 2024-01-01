@@ -1,4 +1,4 @@
-import { addAProfileExperience } from "features/profile/services/experience/add-profile-experience";
+import { addAProfileExperience } from "core/experience/add-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -13,7 +13,7 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
-  const { setContent } = useContext(ExperiencesModalContext);
+  const { setContent, setLoading } = useContext(ExperiencesModalContext);
   const { fetchProfile } = useProfileContext();
 
   const onSubmitForm = useCallback(
@@ -33,7 +33,7 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
           return;
         }
 
-        const data = addAProfileExperience(
+        const data = await addAProfileExperience(
           {
             businessName: experience.businessName,
             role: experience.role,
@@ -45,13 +45,15 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
           token
         );
 
+        setLoading(true);
         setContent(ExperienceContent.Show);
         showSuccessToast("Experiencia agregada con éxito");
-        fetchProfile();
-
+        await fetchProfile();
         return data;
       } catch (error) {
         showErrorToast(error);
+      } finally {
+        setLoading(false);
       }
     },
     [

@@ -1,4 +1,4 @@
-import { updateProfileExperience } from "features/profile/services/experience/update-profile-experience";
+import { updateProfileExperience } from "core/experience/update-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -10,7 +10,7 @@ import useProfileContext from "features/profile/profile-context/use-profile-cont
 import { Dayjs } from "dayjs";
 
 const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
-  const { setContent } = useContext(ExperiencesModalContext);
+  const { setContent, setLoading } = useContext(ExperiencesModalContext);
   const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
@@ -33,6 +33,7 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
           return;
         }
 
+        setLoading(true);
         const data = await updateProfileExperience(
           {
             businessName: anExperience.businessName,
@@ -47,10 +48,12 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
         );
         showSuccessToast("Experiencia editada con éxito");
         setContent(ExperienceContent.Show);
-        fetchProfile();
+        await fetchProfile();
         return data;
       } catch (error) {
         showErrorToast(error);
+      } finally {
+        setLoading(false);
       }
     },
     [

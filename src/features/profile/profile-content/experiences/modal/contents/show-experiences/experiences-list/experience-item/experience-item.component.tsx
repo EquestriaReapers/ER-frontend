@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ExperiencesModalContext from "../../../../experiencies-modal-context/index";
+import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiencies-modal-context";
 import { useContext } from "react";
-import { ExperienceContent } from "../../../../experiencies-modal-context/types";
+import { ExperienceContent } from "features/profile/profile-content/experiences/modal/experiencies-modal-context/types";
 import {
   nameStyles,
   inlineStyles,
@@ -50,9 +50,15 @@ const ExperienceItem = ({ item, className }: Props) => {
             </Box>
           </Box>
           <Box sx={inlineStyles}>
-            <Typography sx={subtitleStyles} variant="h6">{item.role},</Typography>
-            <Typography sx={subtitleStyles} variant="h6">{item.location},</Typography>
-            <Typography sx={subtitleStyles} variant="h6">{dateItem}</Typography>
+            <Typography sx={subtitleStyles} variant="h6">
+              {item.role},
+            </Typography>
+            <Typography sx={subtitleStyles} variant="h6">
+              {item.location},
+            </Typography>
+            <Typography sx={subtitleStyles} variant="h6">
+              {dateItem}
+            </Typography>
           </Box>
           <div className={"exp-description-container"}>
             <Typography sx={descriptionStyles}>{item.description}</Typography>

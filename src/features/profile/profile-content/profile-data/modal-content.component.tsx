@@ -22,8 +22,9 @@ import {
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 import useProfileContext from "../../profile-context/use-profile-context";
-import { CareersOption } from "features/profile/services/profile/get-careers-options.service";
+import { CareersOption } from "core/profiles/get-careers-options.service";
 import useCareersOptions from "./use-careers-options";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   const { profile } = useProfileContext();
@@ -41,7 +42,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
   } = useEditProfileFormState(profile);
 
   const user = { name, description, lastname, mainTitle };
-  const { onSubmitForm } = useOnSubmitForm({ setIsOpen, user });
+  const { onSubmitForm, loading } = useOnSubmitForm({ setIsOpen, user });
   const options = useCareersOptions();
 
   if (!loaded) return null;
@@ -56,9 +57,11 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
         </Typography>
       </Box>
       <form onSubmit={onSubmitForm} autoComplete="off">
+        {loading && <SpinnerAbsolute />}
         <Box className="inputStyles">
           <Box className="inputContainer pr-5px">
             <TextField
+              disabled={loading}
               sx={textFieldStyles}
               value={name}
               label="Nombre"
@@ -68,6 +71,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           </Box>
           <Box className="inputContainer pl-5px">
             <TextField
+              disabled={loading}
               sx={textFieldStyles}
               value={lastname}
               label="Apellido"
@@ -86,6 +90,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
                 Carrera
               </InputLabel>
               <Select
+                disabled={loading}
                 sx={textFieldStyles}
                 placeholder="Carrera"
                 label="Carrera"
@@ -109,6 +114,7 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
         <Box>
           <Box className="inputContainer">
             <TextField
+              disabled={loading}
               sx={textFieldStyles}
               value={description}
               label="Sobre mi"
@@ -126,7 +132,12 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
           </Typography>
         </Box>
         <Box sx={boxButtonStyles}>
-          <Button sx={buttonStyle} type="submit">
+          <Button
+            sx={buttonStyle}
+            disabled={loading}
+            className="exp-show-button"
+            type="submit"
+          >
             Guardar Cambios
           </Button>
         </Box>

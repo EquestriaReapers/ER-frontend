@@ -1,4 +1,4 @@
-import { deleteAProfileExperience } from "features/profile/services/experience/delete-profile-experience";
+import { deleteAProfileExperience } from "core/experience/delete-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -9,7 +9,7 @@ import useProfileContext from "features/profile/profile-context/use-profile-cont
 import ExperiencesModalContext from "../../experiencies-modal-context";
 
 const useDeleteExperience = ({ experienceId }: Payload) => {
-  const { setContent } = useContext(ExperiencesModalContext);
+  const { setContent, setLoading } = useContext(ExperiencesModalContext);
   const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
@@ -21,10 +21,13 @@ const useDeleteExperience = ({ experienceId }: Payload) => {
       const data = await deleteAProfileExperience(token, experienceId);
       setContent(ExperienceContent.Show);
       showSuccessToast("Experiencia borrada con éxito");
-      fetchProfile();
+      setLoading(true);
+      await fetchProfile();
       return data;
     } catch (error) {
       showErrorToast(error);
+    } finally {
+      setLoading(false);
     }
   }, [
     experienceId,

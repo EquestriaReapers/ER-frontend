@@ -160,7 +160,7 @@ const EditExperienceModalContent = ({ anExperience, className }: Props) => {
           </Box>
 
           <Box sx={boxButtonStyles}>
-            <Button sx={buttonStyle} type="submit">
+            <Button sx={buttonStyle} type="submit" className="exp-show-button">
               Guardar
             </Button>
           </Box>

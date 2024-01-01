@@ -12,7 +12,7 @@ import Filters from "./filters";
 import CatalogueSearchBar from "./components/SearchBar";
 import useCatalogueProfiles from "./profiles/use-catalogue";
 import { ChangeEvent } from "react";
-import useSeed from "./hooks/use-seed";
+import useSeed from "./use-seed";
 
 const Catalogue = () => {
   const seed = useSeed();

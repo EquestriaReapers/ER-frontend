@@ -4,10 +4,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import { ExperienceContent } from "./experiencies-modal-context/types";
 import ExperiencesModalContext from "./experiencies-modal-context";
 import { ExperiencesContentManager } from "./contents/experiences-content-manager";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const ExperiencesModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { setContent } = useContext(ExperiencesModalContext);
+  const { setContent, loading } = useContext(ExperiencesModalContext);
 
   return (
     <div>
@@ -21,7 +22,10 @@ const ExperiencesModal = () => {
       </IconButton>
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <ExperiencesContentManager />
+        <>
+          {loading && <SpinnerAbsolute />}
+          <ExperiencesContentManager />
+        </>
       </Modal>
     </div>
   );

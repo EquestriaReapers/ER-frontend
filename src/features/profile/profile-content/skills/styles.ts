@@ -14,7 +14,7 @@ export const boxStyles = {
 export const skillTitleStyles = {
   color: "#000",
   fontFamily: "inter",
-  fontSize: { xs: "22px", sm: "35px" },
+  fontSize: { xs: "22px", sm: "30px" },
   fontStyle: "normal",
   fontWeight: "700",
   lineHeight: "normal",

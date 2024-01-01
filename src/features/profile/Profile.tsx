@@ -1,27 +1,33 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
-
-//Own
 import ProfileContextProvider from "./profile-context/ProfileContextProvider";
 import useProfile from "./use-profile";
 import ProfileContent from "./profile-content";
+import { bannerStyles } from "./profile-content/styles";
+import SpinnerBlock from "components/spinner-block";
+import SpinnerAbsolute from "components/spinner-absolute";
 
 const Profile = () => {
   const profileId = parseInt(useParams<RouteParams>().id!);
-  const { profile, fetchProfile } = useProfile(profileId);
+  const { profile, fetchProfile, loading } = useProfile(profileId);
+
   return (
     <Box>
-      {!profile || !profileId ? (
-        <Typography> El perfil no existe!</Typography>
-      ) : (
-        <ProfileContextProvider
-          profileId={profileId}
-          profile={profile}
-          fetchProfile={fetchProfile}
-        >
-          <ProfileContent />
-        </ProfileContextProvider>
-      )}
+      <Box sx={bannerStyles}></Box>
+      <>
+        {!profile || !profileId ? (
+          <SpinnerBlock style={{ mt: 16 }} />
+        ) : (
+          <ProfileContextProvider
+            profileId={profileId}
+            profile={profile}
+            fetchProfile={fetchProfile}
+          >
+            {loading && <SpinnerAbsolute />}
+            <ProfileContent />
+          </ProfileContextProvider>
+        )}
+      </>
     </Box>
   );
 };
