@@ -5,5 +5,5 @@ export const notFoundProfileContainer = {
   justifyContent: "center",
   backgroundSize: "cover",
   backgroundPosition: "center",
-  height: "100%",
+  mt: 16,
 };
