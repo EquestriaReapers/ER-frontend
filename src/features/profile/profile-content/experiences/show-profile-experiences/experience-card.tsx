@@ -18,7 +18,7 @@ const ExperienceCard = ({ item }: Props) => {
         display: "flex",
         flexDirection: "column",
         gap: "12px",
-        width: { xs: "100%", sm: "70%" },
+        width: "100%",
       }}
     >
       <Typography sx={nameStyles} variant="h5">

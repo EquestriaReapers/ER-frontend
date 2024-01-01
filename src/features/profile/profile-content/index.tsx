@@ -15,6 +15,8 @@ import {
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
   topSectionStyles,
+  bothSkillsContainerStyles,
+  skillsTitleTypographyStyles,
 } from "./styles";
 import EditProfileModal from "./profile-data/modal";
 import Experiences from "./experiences";
@@ -83,8 +85,15 @@ const ProfileContent = () => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <Skills skillType={SkillType.Hard} />
-            <Skills skillType={SkillType.Soft} />
+            <Box sx={{ width: "100%" }}>
+              <Typography sx={skillsTitleTypographyStyles}>
+                Habilidades
+              </Typography>
+              <Box sx={bothSkillsContainerStyles}>
+                <Skills skillType={SkillType.Hard} />
+                <Skills skillType={SkillType.Soft} />
+              </Box>
+            </Box>
             <Experiences />
           </Box>
           <Box sx={EducationBoxStyles}>

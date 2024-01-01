@@ -12,7 +12,7 @@ const ProfileSkills = ({ skillType }: Props) => {
     <>
       <Box sx={boxWrapperStyles}>
         <Box sx={boxStyles}>
-          <Typography sx={skillTitleStyles} variant="h4">
+          <Typography sx={skillTitleStyles} variant="h5">
             {skillType === SkillType.Hard
               ? "Habilidades duras"
               : "Habilidades blandas"}
