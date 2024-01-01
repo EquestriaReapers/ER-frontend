@@ -8,7 +8,6 @@ import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import ucabLogo from "../images/ucabLogo.webp";
-import "../../../styles/index.css";
 import {
   TextFieldTypography,
   UcabLogoStyles,
