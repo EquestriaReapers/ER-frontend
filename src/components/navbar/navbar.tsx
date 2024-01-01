@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "core/auth/store/types";
 import { User } from "core/users/types";
-import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
 import { logout } from "core/auth/store/auth-slice";
 import SvgComponent from "./SvgComponent";
 
@@ -13,17 +12,13 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useRedirectWhenUnlogged();
-
-  if (!user) return null;
-
   const onLogout = () => {
     dispatch(logout());
     navigate("/login");
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static">
         <Toolbar sx={navbarStyles}>
           <Box>
@@ -35,15 +30,24 @@ const Navbar = () => {
             <Link to="/">
               <Button sx={titleStyles}>Home</Button>
             </Link>
-            <Link to={`/profile/${user.id}`}>
-              <Button sx={titleStyles}>Perfil</Button>
-            </Link>
+            {user && (
+              <Link to={`/profile/${user.id}`}>
+                <Button sx={titleStyles}>Perfil</Button>
+              </Link>
+            )}
+            {!user && (
+              <Link to={`/login`}>
+                <Button sx={titleStyles}>Login</Button>
+              </Link>
+            )}
             <Link to={`/catalogue`}>
               <Button sx={titleStyles}>Catálogo</Button>
             </Link>
-            <Button onClick={onLogout} sx={titleStyles}>
-              Salir
-            </Button>
+            {user && (
+              <Button onClick={onLogout} sx={titleStyles}>
+                Salir
+              </Button>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

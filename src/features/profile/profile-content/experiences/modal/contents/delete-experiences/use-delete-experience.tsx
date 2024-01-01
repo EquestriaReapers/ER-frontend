@@ -34,6 +34,7 @@ const useDeleteExperience = ({ experienceId }: Payload) => {
     fetchProfile,
     getToken,
     setContent,
+    setLoading,
     showErrorToast,
     showSuccessToast,
   ]);
