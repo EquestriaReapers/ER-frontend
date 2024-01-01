@@ -3,17 +3,17 @@ import RegisterForm from "./register-form/RegisterForm";
 import { FunctionComponent, useState, useCallback } from "react";
 import registerService from "core/auth/register.service";
 import useRedirectWhenRegistered from "./use-redirect-when-registered";
-import Div100vh from "react-div-100vh";
 import { registerProfileStyles } from "./styles/RegisterStyles";
 import "styles/index.css";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
+import { Box } from "@mui/material";
 
 const Register: FunctionComponent = () => {
   const { loading, onSubmit } = useRegister();
 
   return (
-    <Div100vh
+    <Box
       style={
         registerProfileStyles as unknown as Record<string, number | string>
       }
@@ -21,7 +21,7 @@ const Register: FunctionComponent = () => {
       <FormControl margin="normal">
         <RegisterForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
-    </Div100vh>
+    </Box>
   );
 };
 
