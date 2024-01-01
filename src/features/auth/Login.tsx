@@ -6,23 +6,23 @@ import { login as loginAction } from "core/auth/store/auth-slice";
 import useRedirectWhenLogged from "hooks/use-redirect-when-logged";
 import { useNavigate } from "react-router-dom";
 import LoginForm from "./login-form/LoginForm";
-import Div100vh from "react-div-100vh";
 import { loginProfileStyles } from "./styles/LoginStyles";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
 import SpinnerAbsolute from "components/spinner-absolute";
+import { Box } from "@mui/material";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
   return (
-    <Div100vh
+    <Box
       style={loginProfileStyles as unknown as Record<string, number | string>}
     >
       {loading && <SpinnerAbsolute />}
       <FormControl>
         <LoginForm disabled={loading} onSubmit={onSubmit} />
       </FormControl>
-    </Div100vh>
+    </Box>
   );
 };
 
