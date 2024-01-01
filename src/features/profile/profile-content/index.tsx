@@ -1,46 +1,46 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
-import { useAuthState } from "hooks/use-auth-state";
-import EditProfileModal from "../edit-profile/modal";
-import { Profile } from "core/profiles/types";
-import ProfileSkills from "./profile-skills/profile-skills";
-import ProfileExperiences from "./profile-experience/profile-experience";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import EditIcon from "@mui/icons-material/Edit";
 import LanguageIcon from "@mui/icons-material/Language";
 import {
   aboutMeSection,
-  bannerStyles,
+  aboutMeTypographyStyles,
   buttonStyles,
   contactSectionStyles,
   contactTitlesStyles,
+  descriptionBoxStyles,
   descriptionStyles,
   editIconStyles,
+  locationAndEditButtonStyles,
   locationBoxStyles,
   mainTitleStyles,
   nameSectionStyles,
   nameStyles,
+  pageContainerStyles,
+  skillsAndExperiencesBoxStyles,
+  topSectionStyles,
   websiteBoxStyles,
   websiteTitleContainerStyles,
-} from "./styles/styles";
+} from "./styles";
+import EditProfileModal from "./profile-data/modal";
+import Experiences from "./experiences";
+import Skills from "./skills";
+import useTransformCareerEnum from "hooks/use-transform-career-enum";
+import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
-const ProfileContent = ({ profile }: ProfileContentProps) => {
-  const loggedUser = useAuthState().user;
-  const isEditable = !!(loggedUser && loggedUser.id == profile.userId);
-  const { downloadCurriculumPDF } = useDownloadCurriculumPDF(profile);
+
+const ProfileContent = () => {
+  const { profile, isEditable } = useProfileContext();
+  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const { downloadCurriculumPDF, loading: loadingCurriculum } =
+    useDownloadCurriculumPDF(profile);
 
   return (
     <>
       <Box>
-        <Box sx={bannerStyles}></Box>
-        <Box>
-          <Box
-            sx={{
-              width: "90%",
-              mx: { lg: "auto", md: "auto", xs: "20px" },
-              mt: "30px",
-            }}
-          >
+        <Box sx={pageContainerStyles}>
+          <Box sx={topSectionStyles}>
             <Box sx={nameSectionStyles}>
               <Box>
                 <Typography variant="h4" sx={nameStyles}>
@@ -50,11 +50,14 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                   </Box>
                 </Typography>
                 <Typography variant="h4" sx={mainTitleStyles}>
-                  {profile.mainTitle}
+                  {transformedCareerName}
                 </Typography>
               </Box>
-              <Box>
+              <Box
+                sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
+              >
                 <Button
+                  disabled={loadingCurriculum}
                   variant="contained"
                   color="primary"
                   type="submit"
@@ -66,19 +69,17 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
               </Box>
             </Box>
             <Box sx={aboutMeSection}>
-              <Box sx={{ paddingTop: "14px", paddingBottom: "24px" }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "700",
-                    fontFamily: "inter",
-                  }}
-                >
+              <Box sx={descriptionBoxStyles}>
+                <Typography variant="h5" sx={aboutMeTypographyStyles}>
                   Sobre Mí
                 </Typography>
-                <Typography sx={descriptionStyles}>
-                  {profile.description}
-                </Typography>
+                {!profile.description ? (
+                  <Typography>El perfil no tiene descripción.</Typography>
+                ) : (
+                  <Typography sx={descriptionStyles}>
+                    {profile.description}
+                  </Typography>
+                )}
               </Box>
               <Box sx={contactSectionStyles}>
                 <Box
@@ -87,9 +88,10 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                     flexWrap: "wrap",
                   }}
                 >
-                  <Box sx={{ display: "flex" }}>
+                  <Box sx={locationAndEditButtonStyles}>
                     <Box sx={locationBoxStyles}>
                       <LocationOnIcon />
+                      &nbsp;
                       <Typography sx={contactTitlesStyles}>
                         Ubicación
                       </Typography>
@@ -101,8 +103,8 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
 
                   <Typography
                     sx={{
-                      marginLeft: "10px",
                       fontFamily: "inter",
+                      fontSize: "16px",
                     }}
                   >
                     Puerto Ordaz, Venezuela
@@ -111,26 +113,32 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
                 <Box sx={websiteBoxStyles}>
                   <Box sx={websiteTitleContainerStyles}>
                     <LanguageIcon />
+                    &nbsp;
                     <Typography sx={contactTitlesStyles}>Website</Typography>
                   </Box>
 
-                  <Typography sx={{ marginLeft: "10px", fontFamily: "inter" }}>
+                  <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
                     www.abcdefge.com
                   </Typography>
                 </Box>
               </Box>
             </Box>
           </Box>
-          <Box>
-            <ProfileSkills
-              isEditable={isEditable}
-              currentProfileSkills={profile.skills}
-            />
-
-            <ProfileExperiences
-              isEditable={isEditable}
-              currentProfileExperience={profile.experience}
-            />
+          <Box sx={skillsAndExperiencesBoxStyles}>
+            <Skills />
+            <Experiences />
+          </Box>
+          <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
+            <Button
+              disabled={loadingCurriculum}
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={buttonStyles}
+              onClick={downloadCurriculumPDF}
+            >
+              Descargar CV
+            </Button>
           </Box>
         </Box>
       </Box>
@@ -138,7 +146,4 @@ const ProfileContent = ({ profile }: ProfileContentProps) => {
   );
 };
 
-export interface ProfileContentProps {
-  profile: Profile;
-}
 export default ProfileContent;

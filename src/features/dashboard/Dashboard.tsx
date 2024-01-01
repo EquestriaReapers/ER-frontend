@@ -3,11 +3,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthState } from "features/auth/store/types";
+import { AuthState } from "core/auth/store/types";
 import { User } from "core/users/types";
 import useRedirectWhenUnlogged from "hooks/use-redirect-when-unlogged";
-import { logout } from "features/auth/store/auth-slice";
-import { buttonStyles, dashboardBoxStyles } from "./styles/styles";
+import { logout } from "core/auth/store/auth-slice";
+import { buttonStyles, dashboardBoxStyles } from "./styles";
 
 const Dashboard = () => {
   const user = useCurrentUser();
@@ -16,9 +16,7 @@ const Dashboard = () => {
 
   useRedirectWhenUnlogged();
 
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   const onLogout = () => {
     dispatch(logout());
@@ -38,7 +36,7 @@ const Dashboard = () => {
   );
 };
 
-function useCurrentUser(): User {
+function useCurrentUser(): User | null {
   return useSelector<{ auth: AuthState }>((state) => state.auth.user) as User;
 }
 

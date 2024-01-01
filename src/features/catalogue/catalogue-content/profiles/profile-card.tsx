@@ -1,7 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Profile } from "core/profiles/types";
 import { Box } from "@mui/material/";
-import { profileCardTypography, profileContainer } from "./styles/styles";
+import { profileCardTypography, profileContainer } from "./styles";
 import ShowProfileCardSkills from "./show-profile-card-skills";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Link } from "react-router-dom";

@@ -11,12 +11,12 @@ export default function useRegisterFormState() {
     setName(event.target.value);
   };
 
-  const onChangeLastname = (event: ChangeEvent<HTMLInputElement>) => {
-    setLastname(event.target.value);
-  };
-
   const onChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+  };
+
+  const onChangeLastname = (event: ChangeEvent<HTMLInputElement>) => {
+    setLastname(event.target.value);
   };
 
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
@@ -29,14 +29,14 @@ export default function useRegisterFormState() {
 
   return {
     name,
-    lastname,
     email,
+    lastname,
     password,
     confirmPassword,
     onChangeEmail,
     onChangePassword,
-    onChangeName,
     onChangeLastname,
+    onChangeName,
     onChangeConfirmPassword,
   };
 }

@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Skill } from "core/profiles/types";
-import { skillTitleStyles } from "./styles/styles";
+import { skillTitleStyles } from "./styles";
 
 const ShowProfileCardSkills = ({ skills }: Props) => {
   return (
