@@ -4,8 +4,9 @@ import { skillTitleStyles } from "./styles";
 import ClearIcon from "@mui/icons-material/Clear";
 import useDeleteSkill from "../../use-delete-skill";
 
-const SkillCard = ({ item, setLoading }: Props) => {
-  const deleteSkill = useDeleteSkill(item.id, setLoading);
+const SkillCard = ({ item }: Props) => {
+  const deleteSkill = useDeleteSkill(item.id);
+
   return (
     <Box>
       <Typography sx={skillTitleStyles} variant="h6">
@@ -20,7 +21,6 @@ const SkillCard = ({ item, setLoading }: Props) => {
 
 interface Props {
   item: Skill;
-  setLoading: (loading: boolean) => void;
 }
 
 export default SkillCard;

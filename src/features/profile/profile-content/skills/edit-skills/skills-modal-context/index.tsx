@@ -1,52 +1,39 @@
 import React, { createContext, useState } from "react";
-import { Experience } from "core/profiles/types";
-import { ExperienceContent } from "./types";
+import { SkillType } from "core/skills/types";
 
 // Creamos un contexto
-const ExperiencesModalContext = createContext<ExperiencesModalContextI>({
-  content: ExperienceContent.Show,
-  setContent: () => {},
-  experiences: [],
-  anExperience: null,
-  setAnExperience: () => {},
+export const SkillsModalContext = createContext<SkillsModalContextI>({
+  skillType: SkillType.Hard,
+  loading: false,
+  setLoading: () => {},
 });
 
 // Proveedor del contexto
-export const ExperiencesContentProvider = ({
-  children,
-  experiences,
-}: Props) => {
-  const [content, setContent] = useState<ExperienceContent>(
-    ExperienceContent.Show
-  );
-  const [anExperience, setAnExperience] = useState<Experience | null>(null);
+export const SkillsModalContextProvider = ({ children, skillType }: Props) => {
+  const [loading, setLoading] = useState(false);
 
   // Proporcionamos el valor del contexto
   const contextValue = {
-    content,
-    setContent,
-    anExperience,
-    experiences,
-    setAnExperience,
+    skillType,
+    loading,
+    setLoading,
   };
   return (
-    <ExperiencesModalContext.Provider value={contextValue}>
+    <SkillsModalContext.Provider value={contextValue}>
       {children}
-    </ExperiencesModalContext.Provider>
+    </SkillsModalContext.Provider>
   );
 };
 
 interface Props {
-  experiences: Experience[];
+  skillType: SkillType;
   children?: React.ReactNode;
 }
 
-export interface ExperiencesModalContextI {
-  content: ExperienceContent;
-  setContent: (content: ExperienceContent) => void;
-  experiences: Experience[];
-  anExperience: Experience | null;
-  setAnExperience: (anExperience: Experience | null) => void;
+export interface SkillsModalContextI {
+  skillType: SkillType;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
-export default ExperiencesModalContext;
+export default SkillsModalContextProvider;

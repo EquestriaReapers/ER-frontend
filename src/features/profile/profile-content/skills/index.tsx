@@ -17,10 +17,11 @@ const ProfileSkills = ({ skillType }: Props) => {
               ? "Habilidades duras"
               : "Habilidades blandas"}
           </Typography>
-          {isEditable && <EditSkills />}
+          {isEditable && <EditSkills skillType={skillType} />}
         </Box>
-
-        <ShowSkills skills={profile.skills} />
+        <ShowSkills
+          skills={profile.skills.filter((skill) => skill.type === skillType)}
+        />
       </Box>
     </>
   );
