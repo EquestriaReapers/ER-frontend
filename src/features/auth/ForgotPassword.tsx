@@ -11,7 +11,7 @@ const ForgotPassword: FunctionComponent = () => {
   const theme = useTheme();
 
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.between("md"));
+  //const isMediumScreen = useMediaQuery(theme.breakpoints.between("md"));
 
   return (
     <Box
