@@ -9,6 +9,8 @@ const ExperiencesModalContext = createContext<ExperiencesModalContextI>({
   experiences: [],
   anExperience: null,
   setAnExperience: () => {},
+  loading: false,
+  setLoading: () => {},
 });
 
 // Proveedor del contexto
@@ -16,6 +18,7 @@ export const ExperiencesContentProvider = ({
   children,
   experiences,
 }: Props) => {
+  const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<ExperienceContent>(
     ExperienceContent.Show
   );
@@ -28,6 +31,8 @@ export const ExperiencesContentProvider = ({
     anExperience,
     experiences,
     setAnExperience,
+    loading,
+    setLoading,
   };
   return (
     <ExperiencesModalContext.Provider value={contextValue}>
@@ -47,6 +52,8 @@ export interface ExperiencesModalContextI {
   experiences: Experience[];
   anExperience: Experience | null;
   setAnExperience: (anExperience: Experience | null) => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export default ExperiencesModalContext;
