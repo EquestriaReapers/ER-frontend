@@ -76,16 +76,17 @@ const routerConfig: RouteObject[] = [
         path: "/new-password/",
         element: <NewPassword />,
       },
+      {
+        path:"/home",
+        element: <Home/>
+      }
     ],
   },
   {
     path: "loader",
     element: <Loader />,
   },
-  {
-    path:"/home",
-    element: <Home/>
-  }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
