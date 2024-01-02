@@ -7,6 +7,7 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
+import NewPassword from "features/auth/NewPassword";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -69,6 +70,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "/forgot-password/",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/new-password/",
+        element: <NewPassword />,
       },
     ],
   },

@@ -1,4 +1,4 @@
-import background from "./images/background.jpeg";
+import background from "../images/background.jpeg"
 import { useMediaQuery, useTheme } from "@mui/material";
 
 const XS_SCREEN_LARGE_FONT_SIZE = '1.8rem';
@@ -153,12 +153,13 @@ export const useSendEmailStyles = () => {
     const theme = useTheme();
 
     const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down(300));
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down(650));
 
 
     const SendEmailStyles  = {
         margin:'0 auto 0 auto', 
         height: '45px',
-        width:'60%', 
+        width: isSmallScreen ? '100%' : '60%', 
         backgroundColor:'#D9D9D9', 
         color:'#303030', 
         fontSize: isExtraSmallScreen ? XS_SCREEN_MEDIUM_FONT_SIZE : LG_SCREEN_MEDIUM_FONT_SIZE, 

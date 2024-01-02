@@ -4,50 +4,56 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Button from "@mui/material/Button";
 import { FunctionComponent } from "react";
-import { ForgotPasswordContainerStyles, 
-    ForgotPasswordInsideContainerStyles, 
+import { 
+    NewPasswordContainerStyles, 
+    NewPasswordInsideContainerStyles, 
     useCenterBoxStyles, 
     InsideCenterBoxStyles, 
     useRecoverPasswordTypographyStyles,
     useRecoverPasswordTextStyles,
     SearchBarBoxStyles,
-    useEmailTypographyStyles,
+    useNewPasswordTypographyStyles,
     SearchBarTextFieldStyles,
     useForgotEmailStyles,
-    useSendEmailStyles,
-} from "./styles/ForgotPaswordStyles";
-import "../../styles/index.css";
+    useConfirmPasswordStyles,
+} from "./styles/NewPasswordStyles";
+import "../../styles/index.css"
 
-const ForgotPassword: FunctionComponent = () => {
+const NewPassword: FunctionComponent = () => {
 
     const CenterBoxStyles = useCenterBoxStyles();
     const RecoverPasswordTypographyStyles = useRecoverPasswordTypographyStyles();
     const RecoverPasswordTextStyles = useRecoverPasswordTextStyles();
-    const EmailTypographyStyles = useEmailTypographyStyles();
+    const NewPasswordTypographyStyles = useNewPasswordTypographyStyles();
     const ForgotEmailStyles  = useForgotEmailStyles ();
-    const SendEmailStyles = useSendEmailStyles();
+    const ConfirmPasswordStyles = useConfirmPasswordStyles();
 
     return (
-        <Box sx={ForgotPasswordContainerStyles}>
-            <Box sx= {ForgotPasswordInsideContainerStyles}>
+        <Box sx={NewPasswordContainerStyles}>
+            <Box sx= {NewPasswordInsideContainerStyles}>
                 <Box sx={CenterBoxStyles}>
                     <Box sx={InsideCenterBoxStyles}>
-                        <Typography sx={RecoverPasswordTypographyStyles}>Recuperar contraseña</Typography>
+                        <Typography sx={RecoverPasswordTypographyStyles}>Nueva contraseña</Typography>
                         <Typography sx={RecoverPasswordTextStyles}>
-                            Ingresa tu correo para que puedas recibir un mensaje 
-                            de recuperación de contraseña
+                            Ingrese su nueva contraseña
                         </Typography>
                         <Box sx={SearchBarBoxStyles}>
-                            <Typography sx={EmailTypographyStyles}>
-                                Correo Electrónico
+                            <Typography sx={NewPasswordTypographyStyles}>
+                                Contraseña
+                            </Typography>
+                            <TextField 
+                                variant='outlined'
+                                sx={{...SearchBarTextFieldStyles, marginBottom:'30px'}}
+                            />
+                            <Typography sx={NewPasswordTypographyStyles}>
+                                Confirmar contraseña
                             </Typography>
                             <TextField 
                                 variant='outlined'
                                 sx={SearchBarTextFieldStyles}
                             />
-                            <Link sx={ForgotEmailStyles}>¿Olvidó su correo?</Link>
                         </Box>
-                        <Button sx={SendEmailStyles}>Enviar Email</Button>
+                        <Button sx={ConfirmPasswordStyles}>Confirmar</Button>
                     </Box>
                 </Box>
             </Box>
@@ -57,4 +63,4 @@ const ForgotPassword: FunctionComponent = () => {
 };
   
 
-export default ForgotPassword;
+export default NewPassword;
