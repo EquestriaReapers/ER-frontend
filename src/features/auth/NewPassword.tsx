@@ -13,7 +13,6 @@ import {
     SearchBarBoxStyles,
     useNewPasswordTypographyStyles,
     SearchBarTextFieldStyles,
-    useForgotEmailStyles,
     useConfirmPasswordStyles,
 } from "./styles/NewPasswordStyles";
 import "../../styles/index.css"
