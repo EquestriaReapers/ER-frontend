@@ -27,21 +27,22 @@ const AddPortfolioModalContent = ({ className }: Props) => {
     description,
     location,
     dateEnd,
-    images,
+    image,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
-    onImagesChange,
+    onImageChange,
   } = useProjectState();
 
-  const onSubmitForm = useAddProjectForm({
+  const project = {
     title,
     description,
     location,
     dateEnd,
-    images,
-  });
+    image,
+  };
+  const onSubmitForm = useAddProjectForm({ project });
 
   return (
     <Box className={className} sx={modalStyle}>
@@ -103,7 +104,11 @@ const AddPortfolioModalContent = ({ className }: Props) => {
               </Box>
             </Box>
             <Box>
-              <TextField type="file" onChange={onImagesChange} />
+              <TextField
+                type="file"
+                onChange={onImageChange}
+                inputProps={{ multiple: true }}
+              />
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>

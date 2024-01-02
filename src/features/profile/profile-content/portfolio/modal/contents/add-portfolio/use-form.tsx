@@ -39,12 +39,12 @@ const useAddProjectForm = ({ project }: Props) => {
           location: project.location,
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
           imagePrincipal: project.imagePrincipal!,
-          images: project.images!,
+          image: project.image!,
         });
 
         setLoading(true);
         setContent(PortfolioContent.Show);
-        showSuccessToast("Experiencia agregada con éxito");
+        showSuccessToast("Proyecto agregado con éxito");
         await fetchProfile();
         return data;
       } catch (error) {
@@ -57,7 +57,7 @@ const useAddProjectForm = ({ project }: Props) => {
       project.dateEnd,
       project.description,
       project.imagePrincipal,
-      project.images,
+      project.image,
       project.location,
       project.title,
       getToken,
@@ -73,12 +73,14 @@ const useAddProjectForm = ({ project }: Props) => {
 };
 
 export interface Props {
-  title: string;
-  description: string;
-  location: string;
-  dateEnd: Dayjs | null;
-  imagePrincipal?: string;
-  images?: string[];
+  project: {
+    title: string;
+    description: string;
+    location: string;
+    dateEnd: Dayjs | null;
+    imagePrincipal?: string;
+    image: File[] | null;
+  };
 }
 
 function useGetToken() {

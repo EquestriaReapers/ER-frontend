@@ -13,6 +13,7 @@ export async function addProjectToProfile(
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -25,7 +26,7 @@ export interface AddProjectBody {
   location: string;
   dateEnd: string;
   imagePrincipal: string;
-  images: string[];
+  image: File[];
 }
 
 export interface UpdateProfileNewSkillBody {
