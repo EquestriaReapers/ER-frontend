@@ -1,19 +1,20 @@
-import { addAProfileExperience } from "core/experience/add-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback, useContext } from "react";
-import { ExperienceContent } from "../../experiences-modal-context/types";
-import ExperiencesModalContext from "../../experiences-modal-context";
+
 import { Dayjs } from "dayjs";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { addProjectToProfile } from "core/portfolio/add-project.service";
 
-const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
+const useAddProjectForm = ({ project }: Props) => {
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
-  const { setContent, setLoading } = useContext(ExperiencesModalContext);
+  const { setContent, setLoading } = useContext(PortfolioModalContext);
   const { fetchProfile } = useProfileContext();
 
   const onSubmitForm = useCallback(
@@ -23,30 +24,26 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
       try {
         const token = getToken();
         if (
-          !experience.businessName ||
-          !experience.role ||
-          !experience.location ||
-          !experience.startDate ||
-          !experience.description
+          !project.title ||
+          !project.description ||
+          !project.location ||
+          !project.dateEnd
         ) {
           showErrorToast("Por favor, rellena todos los campos");
           return;
         }
 
-        const data = await addAProfileExperience(
-          {
-            businessName: experience.businessName,
-            role: experience.role,
-            location: experience.location,
-            description: experience.description,
-            startDate: experience.startDate.format("YYYY-MM-DD"),
-            endDate: experience.endDate?.format("YYYY-MM-DD") ?? null,
-          },
-          token
-        );
+        const data = await addProjectToProfile(token, {
+          title: project.title,
+          description: project.description,
+          location: project.location,
+          dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
+          imagePrincipal: project.imagePrincipal!,
+          images: project.images!,
+        });
 
         setLoading(true);
-        setContent(ExperienceContent.Show);
+        setContent(PortfolioContent.Show);
         showSuccessToast("Experiencia agregada con éxito");
         await fetchProfile();
         return data;
@@ -57,13 +54,13 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
       }
     },
     [
+      project.dateEnd,
+      project.description,
+      project.imagePrincipal,
+      project.images,
+      project.location,
+      project.title,
       getToken,
-      experience.businessName,
-      experience.role,
-      experience.location,
-      experience.startDate,
-      experience.description,
-      experience.endDate,
       setLoading,
       setContent,
       showSuccessToast,
@@ -72,18 +69,16 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
     ]
   );
 
-  return { onSubmitForm };
+  return onSubmitForm;
 };
 
-export interface AddExperienceFormProps {
-  experience: {
-    businessName: string | null;
-    role: string | null;
-    location: string | null;
-    startDate: Dayjs | null;
-    endDate?: Dayjs | null;
-    description: string | null;
-  };
+export interface Props {
+  title: string;
+  description: string;
+  location: string;
+  dateEnd: Dayjs | null;
+  imagePrincipal?: string;
+  images?: string[];
 }
 
 function useGetToken() {
@@ -102,4 +97,4 @@ function useGetToken() {
   }, [navigate, token]);
 }
 
-export default useAddExperienceForm;
+export default useAddProjectForm;

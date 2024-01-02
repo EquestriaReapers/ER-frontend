@@ -17,9 +17,31 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { descriptionStyles } from "../edit-portfolio/styles";
+import useProjectState from "./use-project-form-state";
+import useAddProjectForm from "./use-form";
 
 const AddPortfolioModalContent = ({ className }: Props) => {
   const { setContent } = useContext(PortfolioModalContext);
+  const {
+    title,
+    description,
+    location,
+    dateEnd,
+    images,
+    onTitleChange,
+    onDescriptionChange,
+    onLocationChange,
+    onDateEndChange,
+    onImagesChange,
+  } = useProjectState();
+
+  const onSubmitForm = useAddProjectForm({
+    title,
+    description,
+    location,
+    dateEnd,
+    images,
+  });
 
   return (
     <Box className={className} sx={modalStyle}>
@@ -36,17 +58,26 @@ const AddPortfolioModalContent = ({ className }: Props) => {
         </Typography>
       </Box>
       <Box>
-        <form>
+        <form onSubmit={onSubmitForm}>
           <Box>
             <Box>
               <Box className="inputContainer">
-                <TextField sx={textFieldStyles} id="title" label="Título" />
+                <TextField
+                  sx={textFieldStyles}
+                  id="title"
+                  label="Título"
+                  onChange={onTitleChange}
+                />
               </Box>
               <Box className="inputStyles">
                 <Box className="inputStyles">
                   <Box className="inputContainer pl-5px">
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DatePicker sx={textFieldStyles} label="Fecha Final" />
+                      <DatePicker
+                        sx={textFieldStyles}
+                        label="Fecha Final"
+                        onChange={onDateEndChange}
+                      />
                     </LocalizationProvider>
                   </Box>
                 </Box>
@@ -55,6 +86,7 @@ const AddPortfolioModalContent = ({ className }: Props) => {
                     sx={textFieldStyles}
                     id="location"
                     label="Ubicación"
+                    onChange={onLocationChange}
                   />
                 </Box>
               </Box>
@@ -66,12 +98,12 @@ const AddPortfolioModalContent = ({ className }: Props) => {
                   multiline
                   rows={4}
                   label="Descripción"
+                  onChange={onDescriptionChange}
                 />
               </Box>
             </Box>
             <Box>
-              <Typography>Imágenes</Typography>
-              <Box sx={{ height: "150px", backgroundColor: "lightgray" }}></Box>
+              <TextField type="file" onChange={onImagesChange} />
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>

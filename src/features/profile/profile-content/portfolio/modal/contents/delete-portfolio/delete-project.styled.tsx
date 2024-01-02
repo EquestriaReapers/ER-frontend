@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import DeleteExperienceModalContent from "./delete-experience.component";
+import DeleteExperienceModalContent from "./delete-project.component";
 
 export default styled(DeleteExperienceModalContent)`
 
