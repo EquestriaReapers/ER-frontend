@@ -6,8 +6,6 @@ export const PortfolioContentManager: FunctionComponent = () => {
   const { content, aPortfolio } = useContext(PortfolioModalContext);
 
   switch (content) {
-    case PortfolioContent.ShowOne:
-      return null;
     case PortfolioContent.Show:
       return null;
     case PortfolioContent.Add:
