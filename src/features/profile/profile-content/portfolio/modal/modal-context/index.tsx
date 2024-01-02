@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { Portfolio } from "core/profiles/types";
 import { PortfolioContent } from "./types";
 
-export const PortfolioModalContext = createContext<PortfolioModalContextI>({
+const PortfolioModalContext = createContext<PortfolioModalContextI>({
   content: PortfolioContent.Show,
   setContent: () => {},
   portfolio: [],

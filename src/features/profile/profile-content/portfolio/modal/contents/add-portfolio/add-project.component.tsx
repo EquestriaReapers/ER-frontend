@@ -1,0 +1,92 @@
+import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import {
+  boxButtonStyles,
+  headerStyles,
+  textFieldStyles,
+  modalStyle,
+  titleStyles,
+  buttonStyle,
+} from "./styles";
+
+import { useContext } from "react";
+
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { descriptionStyles } from "../edit-portfolio/styles";
+
+const AddPortfolioModalContent = ({ className }: Props) => {
+  const { setContent } = useContext(PortfolioModalContext);
+
+  return (
+    <Box className={className} sx={modalStyle}>
+      <Box sx={headerStyles}>
+        <Box>
+          <IconButton onClick={() => setContent(PortfolioContent.Show)}>
+            <ArrowBackIcon />
+          </IconButton>
+        </Box>
+        <Typography sx={titleStyles}>Agregar Proyecto</Typography>
+
+        <Typography sx={descriptionStyles}>
+          Aquí podrás agregar un proyecto a tu portafolio
+        </Typography>
+      </Box>
+      <Box>
+        <form>
+          <Box>
+            <Box>
+              <Box className="inputContainer">
+                <TextField sx={textFieldStyles} id="title" label="Título" />
+              </Box>
+              <Box className="inputStyles">
+                <Box className="inputStyles">
+                  <Box className="inputContainer pl-5px">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DatePicker sx={textFieldStyles} label="Fecha Final" />
+                    </LocalizationProvider>
+                  </Box>
+                </Box>
+                <Box className="inputContainer pl-5px">
+                  <TextField
+                    sx={textFieldStyles}
+                    id="location"
+                    label="Ubicación"
+                  />
+                </Box>
+              </Box>
+
+              <Box className="inputContainer">
+                <TextField
+                  sx={textFieldStyles}
+                  id="description"
+                  multiline
+                  rows={4}
+                  label="Descripción"
+                />
+              </Box>
+            </Box>
+            <Box>
+              <Typography>Imágenes</Typography>
+              <Box sx={{ height: "150px", backgroundColor: "lightgray" }}></Box>
+            </Box>
+          </Box>
+          <Box sx={boxButtonStyles}>
+            <Button type="submit" sx={buttonStyle} className="exp-show-button">
+              Guardar
+            </Button>
+          </Box>
+        </form>
+      </Box>
+    </Box>
+  );
+};
+
+interface Props {
+  className?: string;
+}
+
+export default AddPortfolioModalContent;
