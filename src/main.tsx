@@ -7,7 +7,11 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
+<<<<<<< HEAD
 import NewPassword from "features/auth/NewPassword";
+=======
+import Home from "features/home/Home";
+>>>>>>> 80a0e2bd405c525c6a06f64a2fa9333a26647f3c
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -16,11 +20,11 @@ import {
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
-import Loader from "hooks/use-loader";
 import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
+import Loader from "hooks/use-loader";
 
 const theme = createTheme({
   palette: {
@@ -66,6 +70,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "*",
         element: <NotFound />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/forgot-password/",

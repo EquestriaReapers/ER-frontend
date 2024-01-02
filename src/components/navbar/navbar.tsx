@@ -27,7 +27,7 @@ const Navbar = () => {
             </Link>
           </Box>
           <Box sx={inlineStyles}>
-            <Link to="/">
+            <Link to="/home">
               <Button sx={titleStyles}>Home</Button>
             </Link>
             {user && (

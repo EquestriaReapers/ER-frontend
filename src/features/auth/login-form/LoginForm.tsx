@@ -5,8 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-
+import { Box } from "@mui/material";
 import ucabLogo from "../images/ucabLogo.webp";
 import {
   TextFieldTypography,
@@ -99,17 +98,15 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
               </Typography>
             </Box>
             <Box sx={ForgotPasswordStyles}>
-              <Link rel="noopener noreferrer" to={""}>
-                ¿Olvidó la contraseña?
-              </Link>
+              <Link to="/remember-password">¿Olvidó la contraseña?</Link>
             </Box>
           </Box>
           <Box sx={RedirectBoxStyles}>
             <Typography sx={QuestionBoxStyles}>
-              ¿Aun no tienes cuenta?
+              ¿Aún no tienes cuenta?
             </Typography>{" "}
             <Link to="/register" style={LinkBoxStyles}>
-              Registrate
+              Regístrate
             </Link>
           </Box>
         </Box>

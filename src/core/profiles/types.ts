@@ -1,3 +1,4 @@
+import { SkillType } from "core/skills/types";
 import { User } from "core/users/types";
 
 export interface Profile {
@@ -7,8 +8,11 @@ export interface Profile {
   description: string;
   mainTitle: string;
   countryResidence: string;
+  website: string;
+  education: Education[];
   experience: Experience[];
   skills: Skill[];
+  languageProfile: Lenguage[];
   deletedAt: Date | null;
 }
 
@@ -24,7 +28,26 @@ export interface Pagination {
 export interface Skill {
   id: number;
   name: string;
+  type: SkillType;
   level: string;
+}
+
+export interface ContactMethod {
+  id: number;
+  profileId: number;
+  name: string;
+}
+
+export interface Location {
+  id: number;
+  name: string;
+}
+
+export interface Lenguage {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
 }
 
 export interface Experience {
@@ -36,4 +59,15 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+}
+
+export interface Education {
+  id: number;
+  profileId: number;
+  principal: boolean;
+  isUCAB: boolean;
+  title: string;
+  entity: string;
+  endDate: Date;
+  deleteAt: Date | null;
 }

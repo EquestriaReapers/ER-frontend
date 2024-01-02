@@ -4,10 +4,18 @@ import { Option } from "./use-skill-form-state";
 import useAddSkill from "./use-add-skill";
 import useAddUnexistsSkill from "./use-add-unexists-skill";
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
+import { useSkillsModalContext } from "../../skills-modal-context/use-skills-modal-context";
+import { SkillType } from "core/skills/types";
 
-const AddSkillField = ({ loading, setLoading }: Props) => {
-  const addSkill = useAddSkill({ setLoading });
-  const addUnexistsSkill = useAddUnexistsSkill({ setLoading });
+const AddSkillField = () => {
+  const { loading, skillType } = useSkillsModalContext();
+  const addSkill = useAddSkill();
+  const addUnexistsSkill = useAddUnexistsSkill();
+
+  const label =
+    skillType === SkillType.Hard
+      ? "Buscar habilidades duras"
+      : "Buscar habilidades blandas";
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -16,7 +24,7 @@ const AddSkillField = ({ loading, setLoading }: Props) => {
         disabled={loading}
         debounceTime={350}
         useOptions={useSkillsSuggestions}
-        label="Buscar Habilidades"
+        label={label}
         onSelectOption={(option: Option) => {
           addSkill(+option.value);
         }}
@@ -41,7 +49,6 @@ function useSkillsSuggestions(name?: string | null): Option[] {
 
 export interface Props {
   loading: boolean;
-  setLoading: (loading: boolean) => void;
 }
 
 export default AddSkillField;

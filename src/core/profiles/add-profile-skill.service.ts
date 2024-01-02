@@ -3,6 +3,7 @@ import axios from "axios";
 import { MessageResponse } from "./config";
 import { BackendError } from "app/exceptions";
 import { BACKEND_V1_URL } from "app/config";
+import { SkillType } from "core/skills/types";
 
 export async function addProfileSkill(
   token: string,
@@ -50,4 +51,5 @@ export interface UpdateProfileSkillBody {
 
 export interface UpdateProfileNewSkillBody {
   name: string;
+  type: SkillType;
 }

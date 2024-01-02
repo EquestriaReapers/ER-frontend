@@ -8,8 +8,8 @@ export const experienceTitleStyles = {
 };
 
 export const boxTitleStyles = {
-  display: "flex", 
-  flexWrap: "wrap", 
-  gap: "10px", 
-  alignItems: "center", 
-}
+  display: "flex",
+  flexWrap: "wrap",
+  gap: "10px",
+  alignItems: "center",
+};
