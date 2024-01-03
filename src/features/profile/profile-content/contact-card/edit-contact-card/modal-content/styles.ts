@@ -3,7 +3,10 @@ const PRIMARY_DARKER = "#03652e";
 export const FormTitleStyles = {
   color: "#000",
   fontFamily: "Inter",
-  fontSize: { xs: "14px", sm: "16px" },
+  fontSize: { 
+    xs: "14px", 
+    sm: "16px" 
+  },
   fontStyle: "normal",
   fontWeight: "500",
   lineHeight: "normal",
@@ -11,9 +14,12 @@ export const FormTitleStyles = {
 
 export const boxContentStyles = {
   display: "flex",
-  flexDirection: { xs: "column", sm: "row", lg: "row", },
-  justifyContent: "space-between",
-  
+  flexDirection: { 
+    xs: "column", 
+    sm: "row", 
+    lg: "row", 
+  },
+  justifyContent: "space-between", 
 };
 
 

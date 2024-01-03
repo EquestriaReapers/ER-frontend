@@ -19,7 +19,7 @@ const ContactMethods = () => {
       >
         <TextField
           className={"fieldsStyle"}
-          sx={{ width: "70%", marginRight:1, }}
+          sx={{ width: "100%", marginRight:1, }}
           id="web-page"
           label=""
           variant="outlined"
