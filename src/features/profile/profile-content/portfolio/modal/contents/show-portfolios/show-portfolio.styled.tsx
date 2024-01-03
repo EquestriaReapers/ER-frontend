@@ -1,16 +1,16 @@
-import styled from 'styled-components'
-import ShowPortfolio from './show-portfolios.component'
+import styled from "styled-components";
+import ShowPortfolio from "./show-portfolios.component";
 
-const LG_SIZE = 1200
-const MD_SIZE = 767
-const SM_SIZE = 480
-const XS_SIZE = 380
+const LG_SIZE = 1200;
+const MD_SIZE = 767;
+const SM_SIZE = 480;
+const XS_SIZE = 380;
 
 export default styled(ShowPortfolio)`
   width: 800px;
   margin-left: auto;
   margin-right: auto;
-
+  overflow-y: auto;
   .exp-header-container {
     margin-bottom: 12px;
   }
@@ -46,4 +46,4 @@ export default styled(ShowPortfolio)`
   @media screen and (max-width: ${XS_SIZE}px) {
     width: 250px;
   }
-`
+`;

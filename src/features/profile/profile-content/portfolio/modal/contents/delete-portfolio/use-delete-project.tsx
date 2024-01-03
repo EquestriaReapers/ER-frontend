@@ -20,7 +20,7 @@ const useDeleteProject = ({ projectId }: Payload) => {
       const token = getToken();
       const data = await deleteAProfileProject(token, projectId);
       setContent(PortfolioContent.Show);
-      showSuccessToast("Experiencia borrada con éxito");
+      showSuccessToast("Proyecto borrado con éxito");
       setLoading(true);
       await fetchProfile();
       return data;
