@@ -1,11 +1,11 @@
 import { Portfolio } from "core/profiles/types";
-import PortfolioCard from "./portfolio-card";
+import ProjectCard from "./project-card";
 
 const ShowPortfolios = ({ portfolio }: Props) => {
   return (
     <>
-      {portfolio.map((aPortfolio) => {
-        return <PortfolioCard aPortfolio={aPortfolio} />;
+      {portfolio.map((project) => {
+        return <ProjectCard project={project} />;
       })}
     </>
   );

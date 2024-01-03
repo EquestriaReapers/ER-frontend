@@ -1,16 +1,27 @@
-import { Card, CardMedia, CardContent, Typography, Box } from '@mui/material'
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Box,
+  Modal
+} from '@mui/material'
 import { Portfolio } from 'core/profiles/types'
 import { useState } from 'react'
+import ProjectInfoModal from './project-info-modal'
 
-function PortfolioCard({ aPortfolio }: Props) {
+function ProjectCard({ project }: Props) {
   const [hover, setHover] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const showPortfolioText = () => setHover(true)
   const hidePortfolioText = () => setHover(false)
-
   const limitWords = (text: string, limit: number) => {
     const words = text.split(' ')
     return words.length > limit ? `${words.slice(0, limit).join(' ')}...` : text
   }
+
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
 
   return (
     <Card
@@ -19,15 +30,17 @@ function PortfolioCard({ aPortfolio }: Props) {
         width: '300px',
         maxHeight: '1000',
         height: '300px',
-        textDecoration: 'none'
+        textDecoration: 'none',
+        cursor: 'pointer'
       }}
       onMouseEnter={showPortfolioText}
       onMouseLeave={hidePortfolioText}
+      onClick={openModal}
     >
       <CardMedia
         sx={{ height: '300px', position: 'relative' }}
-        image={aPortfolio.imagePrincipal}
-        title={aPortfolio.title}
+        image={project.imagePrincipal}
+        title={project.title}
       >
         <Box sx={{ width: '300px' }}></Box>
         {hover && (
@@ -57,7 +70,7 @@ function PortfolioCard({ aPortfolio }: Props) {
                 textTransform: 'capitalize'
               }}
             >
-              {aPortfolio.title}
+              {project.title}
             </Typography>
             <Typography
               sx={{
@@ -70,16 +83,19 @@ function PortfolioCard({ aPortfolio }: Props) {
                 textTransform: 'capitalize'
               }}
             >
-              {limitWords(aPortfolio.description, 40)}
+              {limitWords(project.description, 40)}
             </Typography>
           </CardContent>
         )}
       </CardMedia>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <ProjectInfoModal />
+      </Modal>
     </Card>
   )
 }
 
 interface Props {
-  aPortfolio: Portfolio
+  project: Portfolio
 }
-export default PortfolioCard
+export default ProjectCard
