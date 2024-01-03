@@ -2,20 +2,18 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback, useContext } from "react";
-
-import { Dayjs } from "dayjs";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
 import PortfolioModalContext from "../../modal-context";
 import { PortfolioContent } from "../../modal-context/types";
-import { addProjectToProfile } from "core/portfolio/add-project.service";
+import { updateProfileProject } from "core/portfolio/edit-project.service";
 
-const useAddProjectForm = ({ project }: Props) => {
+const useForm = ({ project, projectId }: EditProjectFormProps) => {
+  const { setContent, setLoading } = useContext(PortfolioModalContext);
+  const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
-  const { setContent, setLoading } = useContext(PortfolioModalContext);
-  const { fetchProfile } = useProfileContext();
 
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
@@ -23,27 +21,17 @@ const useAddProjectForm = ({ project }: Props) => {
 
       try {
         const token = getToken();
-        if (
-          !project.title ||
-          !project.description ||
-          !project.location ||
-          !project.dateEnd
-        ) {
-          showErrorToast("Por favor, rellena todos los campos");
+        if (!project.imagePrincipal) {
+          showErrorToast("Por favor, sube una imágen");
           return;
         }
 
-        const data = await addProjectToProfile(token, {
-          title: project.title,
-          description: project.description,
-          location: project.location,
-          dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
-          image: project.image!,
-        });
-
         setLoading(true);
+        const data = await updateProfileProject(token, projectId, {
+          imagePrincipal: project.imagePrincipal,
+        });
+        showSuccessToast("Experiencia editada con éxito");
         setContent(PortfolioContent.Show);
-        showSuccessToast("Proyecto agregado con éxito");
         await fetchProfile();
         return data;
       } catch (error) {
@@ -53,15 +41,12 @@ const useAddProjectForm = ({ project }: Props) => {
       }
     },
     [
-      project.dateEnd,
-      project.description,
-      project.image,
-      project.location,
-      project.title,
       getToken,
+      project.imagePrincipal,
       setLoading,
-      setContent,
+      projectId,
       showSuccessToast,
+      setContent,
       fetchProfile,
       showErrorToast,
     ]
@@ -70,15 +55,11 @@ const useAddProjectForm = ({ project }: Props) => {
   return onSubmitForm;
 };
 
-export interface Props {
+export interface EditProjectFormProps {
   project: {
-    title: string;
-    description: string;
-    location: string;
-    dateEnd: Dayjs | null;
-    imagePrincipal?: string;
-    image: File[] | null;
+    imagePrincipal?: File | null;
   };
+  projectId: number;
 }
 
 function useGetToken() {
@@ -97,4 +78,4 @@ function useGetToken() {
   }, [navigate, token]);
 }
 
-export default useAddProjectForm;
+export default useForm;

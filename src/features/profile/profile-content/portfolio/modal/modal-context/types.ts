@@ -3,4 +3,5 @@ export enum PortfolioContent {
   Add = "add",
   Edit = "edit",
   Delete = "delete",
+  EditPrincipalImage = "edit-principal-image",
 }

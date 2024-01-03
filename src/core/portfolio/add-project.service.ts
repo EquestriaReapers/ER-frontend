@@ -16,7 +16,7 @@ export async function addProjectToProfile(
     body.image.forEach((file) => {
       formData.append(`image`, file);
     });
-    console.log(formData);
+
     const response = await axios.post(`${PORTFOLIO_URL}`, formData, {
       headers: {
         Authorization: `Bearer ${token}`,

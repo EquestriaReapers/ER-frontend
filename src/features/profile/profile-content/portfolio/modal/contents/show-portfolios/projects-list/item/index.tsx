@@ -27,10 +27,15 @@ function ProjectItem({ item }: Props) {
           width: '200px',
           maxHeight: '1000',
           height: '200px',
-          textDecoration: 'none'
+          textDecoration: 'none',
+          cursor: 'pointer'
         }}
         onMouseEnter={showPortfolioText}
         onMouseLeave={hidePortfolioText}
+        onClick={() => {
+          setContent(PortfolioContent.EditPrincipalImage)
+          setAPortfolio(item)
+        }}
       >
         <CardMedia
           sx={{ height: '200px', position: 'relative' }}
