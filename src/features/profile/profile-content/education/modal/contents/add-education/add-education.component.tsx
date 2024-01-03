@@ -11,15 +11,15 @@ import {
 
 import { EducationContent } from '../../education-modal-context/types'
 import { useContext } from 'react'
-import ExperiencesModalContext from '../../education-modal-context'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import { descriptionStyles } from '../../styles'
 import useEducationFormState from '../use-education-form-state'
 import useAddEducationForm from './use-form'
+import EducationModalContext from '../../education-modal-context'
 
 const AddEducationModalContent = ({ className }: Props) => {
-  const { setContent } = useContext(ExperiencesModalContext)
+  const { setContent } = useContext(EducationModalContext)
   const {
     onChangeTitle,
     onChangeEntity,
@@ -54,23 +54,23 @@ const AddEducationModalContent = ({ className }: Props) => {
       <Box>
         <form onSubmit={onSubmitForm}>
           <Box>
-            <Box className='inputContainer pl-5px'>
+            <Box className='inputContainer mb-5px'>
               <TextField
                 sx={textFieldStyles}
-                id='role'
+                id='title'
                 label='Titulo'
                 onChange={onChangeTitle}
               />
             </Box>
-            <Box className='inputContainer '>
+            <Box className='inputContainer mt-5px'>
               <TextField
                 sx={textFieldStyles}
-                id='businessName'
+                id='entity'
                 label='Entidad'
                 onChange={onChangeEntity}
               />
             </Box>
-            <Box className='inputContainer '>
+            <Box className='inputContainer mt-5px'>
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
                   sx={textFieldStyles}

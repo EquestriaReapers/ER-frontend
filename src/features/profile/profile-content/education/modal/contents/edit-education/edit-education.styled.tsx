@@ -1,13 +1,13 @@
+import EditEducationModalContent from './edit-education.component'
 import styled from 'styled-components'
-import EditExperienceModalContent from './modal-content.component'
 
 const LG_SIZE = 1200
 const MD_SIZE = 767
 const SM_SIZE = 480
 const XS_SIZE = 380
 
-export default styled(EditExperienceModalContent)`
-  width: 400px;
+export default styled(EditEducationModalContent)`
+  width: 1000px;
   margin-left: auto;
   margin-right: auto;
 
@@ -27,6 +27,14 @@ export default styled(EditExperienceModalContent)`
   }
   .pl-5px {
     padding-left: 5px;
+  }
+
+  .mt-5px {
+    margin-top: 40px;
+  }
+
+  .mb-5px {
+    margin-bottom: 40px;
   }
 
   .exp-header-container {

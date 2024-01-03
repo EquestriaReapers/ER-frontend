@@ -3,7 +3,7 @@ import AddExperience from './add-education/add-education.styled.tsx'
 import ShowExperience from './show-education/show-education.styled.tsx'
 import { EducationContent } from '../education-modal-context/types.ts'
 import EducationModalContext from '../education-modal-context/index.tsx'
-import EditEducationModalContent from './edit-education/modal-content.component.tsx'
+import EditEducationModalContent from './edit-education/edit-education.component.tsx'
 import DeleteEducationModalContent from './delete-education/delete-education.component.tsx'
 
 export const EducationContentManager: FunctionComponent = () => {
