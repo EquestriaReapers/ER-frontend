@@ -16,24 +16,59 @@ import { PortfolioContent } from "../../modal-context/types";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import useProjectFormState from "./use-project-form-state";
+import dayjs, { Dayjs } from "dayjs";
 
 const EditProjectModalContent = ({ project, className }: Props) => {
   const { setContent } = useContext(PortfolioModalContext);
-
-  const getProjectInfo = useCallback(() => {}, []);
+  const {
+    onTitleChange,
+    onDescriptionChange,
+    onLocationChange,
+    onDateEndChange,
+    onImageChange,
+    setTitle,
+    setDescription,
+    setLocation,
+    setDateEnd,
+    setImage,
+    title,
+    description,
+    location,
+    dateEnd,
+    image,
+  } = useProjectFormState();
+  const getProjectInfo = useCallback(() => {
+    setTitle(project.title);
+    setDescription(project.description);
+    setLocation(project.location);
+    setDateEnd(toDateOrNull(project.dateEnd));
+    setImage(project.image);
+  }, [
+    project.title,
+    project.description,
+    project.location,
+    project.dateEnd,
+    project.image,
+    setTitle,
+    setDescription,
+    setLocation,
+    setDateEnd,
+    setImage,
+  ]);
 
   useEffect(() => {
     getProjectInfo();
   }, [getProjectInfo]);
 
-  const projectState = {};
+  const projectState = { title, description, location, dateEnd, image };
 
   const projectId = project.id;
 
-  /*const onSubmitForm = useForm({
+  const onSubmitForm = useForm({
     project: projectState,
     projectId,
-  }); */
+  });
 
   return (
     <Box sx={modalStyle} className={className}>
@@ -50,66 +85,60 @@ const EditProjectModalContent = ({ project, className }: Props) => {
         </Typography>
       </Box>
       <Box>
-        <form>
+        <form onSubmit={onSubmitForm}>
           <Box>
-            <Box className="inputContainer">
-              <TextField
-                sx={textFieldStyles}
-                id="role"
-                label="Cargo / Puesto"
-                onChange={onChangeRole}
-              />
-            </Box>
-
-            <Box className="inputStyles">
-              <Box className="inputContainer pr-5px">
+            <Box>
+              <Box className="inputContainer">
                 <TextField
                   sx={textFieldStyles}
-                  id="businessName"
-                  label="Empresa"
-                  onChange={onChangeBusinessName}
+                  id="title"
+                  label="Título"
+                  onChange={onTitleChange}
+                  value={title}
                 />
               </Box>
+              <Box className="inputStyles">
+                <Box className="inputStyles">
+                  <Box className="inputContainer pl-5px">
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DatePicker
+                        sx={textFieldStyles}
+                        label="Fecha Final"
+                        onChange={onDateEndChange}
+                        value={dateEnd}
+                      />
+                    </LocalizationProvider>
+                  </Box>
+                </Box>
+                <Box className="inputContainer pl-5px">
+                  <TextField
+                    sx={textFieldStyles}
+                    id="location"
+                    label="Ubicación"
+                    onChange={onLocationChange}
+                    value={location}
+                  />
+                </Box>
+              </Box>
 
-              <Box className="inputContainer pl-5px">
+              <Box className="inputContainer">
                 <TextField
                   sx={textFieldStyles}
-                  id="location"
-                  label="Ubicación"
-                  onChange={onChangeLocation}
+                  id="description"
+                  multiline
+                  rows={4}
+                  label="Descripción"
+                  onChange={onDescriptionChange}
+                  value={description}
                 />
               </Box>
             </Box>
-
-            <Box className="inputStyles">
-              <Box className="inputContainer pr-5px">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    sx={textFieldStyles}
-                    label="Fecha Inicial"
-                    onChange={onChangeStartDate}
-                  />
-                </LocalizationProvider>
-              </Box>
-              <Box className="inputContainer pl-5px">
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    sx={textFieldStyles}
-                    label="Fecha Final"
-                    onChange={onChangeEndDate}
-                  />
-                </LocalizationProvider>
-              </Box>
-            </Box>
-
-            <Box className="inputContainer">
+            <Box>
               <TextField
-                sx={textFieldStyles}
-                id="description"
-                multiline
-                rows={4}
-                label="Descripción"
-                onChange={onChangeDescription}
+                type="file"
+                onChange={onImageChange}
+                inputProps={{ multiple: true }}
+                value={image}
               />
             </Box>
           </Box>
@@ -129,4 +158,9 @@ export default EditProjectModalContent;
 interface Props {
   project: Portfolio;
   className?: string;
+}
+
+function toDateOrNull(date: string | Date | null): Dayjs | null {
+  if (date) return dayjs(date);
+  return null;
 }

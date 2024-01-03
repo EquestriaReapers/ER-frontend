@@ -1,4 +1,3 @@
-import { updateProfileExperience } from "core/experience/update-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -8,8 +7,9 @@ import useProfileContext from "features/profile/profile-context/use-profile-cont
 import { Dayjs } from "dayjs";
 import PortfolioModalContext from "../../modal-context";
 import { PortfolioContent } from "../../modal-context/types";
+import { updateProfileProject } from "core/portfolio/edit-project.service";
 
-const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
+const useForm = ({ project, projectId }: EditProjectFormProps) => {
   const { setContent, setLoading } = useContext(PortfolioModalContext);
   const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
@@ -23,29 +23,24 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
       try {
         const token = getToken();
         if (
-          !anExperience.businessName ||
-          !anExperience.role ||
-          !anExperience.location ||
-          !anExperience.startDate ||
-          !anExperience.description
+          !project.title ||
+          !project.description ||
+          !project.location ||
+          !project.dateEnd
         ) {
           showErrorToast("Por favor, rellena todos los campos");
           return;
         }
 
         setLoading(true);
-        const data = await updateProfileExperience(
-          {
-            businessName: anExperience.businessName,
-            role: anExperience.role,
-            location: anExperience.location,
-            description: anExperience.description,
-            startDate: anExperience.startDate.format("YYYY-MM-DD"),
-            endDate: anExperience.endDate?.format("YYYY-MM-DD") ?? null,
-          },
-          token,
-          experienceId
-        );
+        const data = await updateProfileProject(token, projectId, {
+          title: project.title,
+          description: project.description,
+          location: project.location,
+          dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
+          imagePrincipal: project.imagePrincipal!,
+          image: project.image!,
+        });
         showSuccessToast("Experiencia editada con éxito");
         setContent(PortfolioContent.Show);
         await fetchProfile();
@@ -58,14 +53,14 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
     },
     [
       getToken,
-      anExperience.businessName,
-      anExperience.role,
-      anExperience.location,
-      anExperience.startDate,
-      anExperience.description,
-      anExperience.endDate,
+      project.dateEnd,
+      project.description,
+      project.imagePrincipal,
+      project.image,
+      project.location,
+      project.title,
       setLoading,
-      experienceId,
+      projectId,
       showSuccessToast,
       setContent,
       fetchProfile,
@@ -76,16 +71,16 @@ const useForm = ({ anExperience, experienceId }: EditExperienceFormProps) => {
   return onSubmitForm;
 };
 
-export interface EditExperienceFormProps {
-  anExperience: {
-    businessName: string | null;
-    role: string | null;
-    location: string | null;
-    startDate: Dayjs | null;
-    endDate?: Dayjs | null;
-    description: string | null;
+export interface EditProjectFormProps {
+  project: {
+    title: string;
+    description: string;
+    location: string;
+    dateEnd: Dayjs | null;
+    imagePrincipal?: File | null;
+    image: File[] | null;
   };
-  experienceId: number;
+  projectId: number;
 }
 
 function useGetToken() {

@@ -15,14 +15,12 @@ const useSearchProfileList = ({
   const { showErrorToast } = useErrorToast();
   const searchProfileList = useCallback(async () => {
     try {
-      console.log(text);
       const response = await searchPaginatedProfiles(
         currentPage,
         PER_PAGE,
         seed,
         text
       );
-      console.log(response.profiles);
       setProfileList(response.profiles);
       setPagination(response.pagination);
     } catch (error) {

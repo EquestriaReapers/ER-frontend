@@ -18,9 +18,7 @@ const useDeleteProject = ({ projectId }: Payload) => {
   const deleteProject = useCallback(async () => {
     try {
       const token = getToken();
-      console.log(projectId);
       const data = await deleteAProfileProject(token, projectId);
-      console.log(data);
       setContent(PortfolioContent.Show);
       showSuccessToast("Experiencia borrada con éxito");
       setLoading(true);
