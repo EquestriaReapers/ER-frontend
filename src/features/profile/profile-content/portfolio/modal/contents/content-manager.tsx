@@ -5,6 +5,7 @@ import ShowPortfolio from "./show-portfolios/show-portfolios.component";
 import DeleteProjectModalContent from "./delete-portfolio";
 import EditProjectModalContent from "./edit-portfolio/edit-project.component";
 import AddPortfolioModalContent from "./add-portfolio/add-project.component";
+import EditPrincipalImageModalContent from "./edit-principal-image";
 
 export const PortfolioContentManager: FunctionComponent = () => {
   const { content, aPortfolio } = useContext(PortfolioModalContext);
@@ -28,6 +29,8 @@ export const PortfolioContentManager: FunctionComponent = () => {
       }
 
       return <DeleteProjectModalContent projectId={aPortfolio!.id} />;
+    case PortfolioContent.EditPrincipalImage:
+      return <EditPrincipalImageModalContent project={aPortfolio!} />;
     default:
       return null;
   }

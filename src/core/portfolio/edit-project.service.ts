@@ -8,11 +8,31 @@ export async function updateProfileProject(
   body: UpdateProjectBody
 ): Promise<MessageResponse> {
   try {
-    const response = await axios.patch(`${PORTFOLIO_URL}/${projectId}`, body, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const formData = new FormData();
+    if (body.title) formData.append("title", body.title);
+    if (body.description) formData.append("description", body.description);
+    if (body.location) formData.append("location", body.location);
+    if (body.dateEnd) formData.append("dateEnd", body.dateEnd);
+    if (body.imagePrincipal)
+      formData.append("imagePrincipal", body.imagePrincipal as File);
+
+    if (body.image) {
+      body.image?.forEach((file) => {
+        formData.append(`image`, file);
+      });
+    }
+
+    console.log(formData);
+    const response = await axios.patch(
+      `${PORTFOLIO_URL}/${projectId}`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -20,12 +40,12 @@ export async function updateProfileProject(
 }
 
 export interface UpdateProjectBody {
-  title: string;
-  description: string;
-  location: string;
-  dateEnd: string;
-  imagePrincipal: File | null;
-  image: File[] | null;
+  title?: string;
+  description?: string;
+  location?: string;
+  dateEnd?: string;
+  imagePrincipal?: File | null;
+  image?: File[] | null;
 }
 
 export interface UpdateProfileNewSkillBody {

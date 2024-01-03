@@ -28,8 +28,6 @@ const useProjectState = () => {
     if (event.target.files) {
       const filesArray = Array.from(event.target.files);
       setImage(filesArray);
-      console.log(filesArray);
-      console.log(image);
     }
   };
 

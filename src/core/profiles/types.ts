@@ -58,7 +58,7 @@ export interface Portfolio {
   description: string;
   location: string;
   dateEnd: Date;
-  imagePrincipal: File | null;
-  image: File[] | null;
+  imagePrincipal: string | null;
+  image: string[] | null;
   deletedAt: Date | null;
 }
