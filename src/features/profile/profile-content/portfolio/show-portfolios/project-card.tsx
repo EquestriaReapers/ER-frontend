@@ -1,11 +1,23 @@
-import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Box,
+  Modal,
+} from "@mui/material";
 import { Portfolio } from "core/profiles/types";
 import { useState } from "react";
+import ProjectInfoModal from "./project-info-modal";
 
-function PortfolioCard({ aPortfolio }: Props) {
+function ProjectCard({ project }: Props) {
   const [hover, setHover] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const showPortfolioText = () => setHover(true);
   const hidePortfolioText = () => setHover(false);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   return (
     <Card
@@ -15,14 +27,16 @@ function PortfolioCard({ aPortfolio }: Props) {
         maxHeight: "1000",
         height: "300px",
         textDecoration: "none",
+        cursor: "pointer",
       }}
       onMouseEnter={showPortfolioText}
       onMouseLeave={hidePortfolioText}
+      onClick={openModal}
     >
       <CardMedia
         sx={{ height: "300px", position: "relative" }}
-        image={aPortfolio.imagePrincipal}
-        title={aPortfolio.title}
+        image={project.imagePrincipal}
+        title={project.title}
       >
         <Box sx={{ width: "300px" }}></Box>
         {hover && (
@@ -52,7 +66,7 @@ function PortfolioCard({ aPortfolio }: Props) {
                 textTransform: "capitalize",
               }}
             >
-              {aPortfolio.title}
+              {project.title}
             </Typography>
             <Typography
               sx={{
@@ -65,16 +79,19 @@ function PortfolioCard({ aPortfolio }: Props) {
                 textTransform: "capitalize",
               }}
             >
-              {aPortfolio.description}
+              {project.description}
             </Typography>
           </CardContent>
         )}
       </CardMedia>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <ProjectInfoModal />
+      </Modal>
     </Card>
   );
 }
 
 interface Props {
-  aPortfolio: Portfolio;
+  project: Portfolio;
 }
-export default PortfolioCard;
+export default ProjectCard;
