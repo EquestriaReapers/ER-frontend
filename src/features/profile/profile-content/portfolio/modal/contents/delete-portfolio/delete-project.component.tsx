@@ -14,7 +14,7 @@ const DeleteProjectModalContent = ({ projectId, className }: Props) => {
     <Box className={className} sx={modalStyle}>
       <form>
         <Typography className={"message"}>
-          ¿Estás seguro de que quieres eliminar esta experiencia?
+          ¿Estás seguro de que quieres eliminar este proyecto?
         </Typography>
         <Box className={"button-box"}>
           <Button

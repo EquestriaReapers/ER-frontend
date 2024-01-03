@@ -5,6 +5,8 @@ import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
 import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { deleteAProfileProject } from "core/portfolio/delete-project.service";
 
 const useDeleteProject = ({ projectId }: Payload) => {
   const { setContent, setLoading } = useContext(PortfolioModalContext);
@@ -16,8 +18,10 @@ const useDeleteProject = ({ projectId }: Payload) => {
   const deleteProject = useCallback(async () => {
     try {
       const token = getToken();
-      //const data = await deleteAProfileProject(token, projectId);
-      setContent(ProjectContent.Show);
+      console.log(projectId);
+      const data = await deleteAProfileProject(token, projectId);
+      console.log(data);
+      setContent(PortfolioContent.Show);
       showSuccessToast("Experiencia borrada con éxito");
       setLoading(true);
       await fetchProfile();
