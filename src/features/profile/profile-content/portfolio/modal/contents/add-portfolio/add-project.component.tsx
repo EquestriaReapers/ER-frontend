@@ -19,7 +19,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { descriptionStyles } from "../edit-portfolio/styles";
 import useProjectState from "./use-project-form-state";
 import useAddProjectForm from "./use-form";
-import { forEach } from "lodash";
 
 const AddPortfolioModalContent = ({ className }: Props) => {
   const { setContent } = useContext(PortfolioModalContext);
@@ -106,7 +105,7 @@ const AddPortfolioModalContent = ({ className }: Props) => {
             </Box>
             <Box sx={{ mb: 2 }}>
               <Button>
-                <input type="file" onChange={onImageChange} multiple value={image} />
+                <input type="file" onChange={onImageChange} multiple />
               </Button>
             </Box>
           </Box>
