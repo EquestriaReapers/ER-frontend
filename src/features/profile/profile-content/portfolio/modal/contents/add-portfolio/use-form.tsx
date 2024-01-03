@@ -17,6 +17,30 @@ const useAddProjectForm = ({ project }: Props) => {
   const { setContent, setLoading } = useContext(PortfolioModalContext);
   const { fetchProfile } = useProfileContext();
 
+  const convertFilesToStrings = async (files: File[]) => {
+    const promises = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+
+        fileReader.onloadend = function (e) {
+          if (e.target === null)
+            return reject(new Error("Error leyendo el archivo"));
+          const result = e.target.result;
+          resolve(result);
+        };
+
+        fileReader.onerror = function (e) {
+          reject(new Error("Error leyendo el archivo: " + e));
+        };
+
+        fileReader.readAsDataURL(file);
+      });
+    });
+
+    const strings = (await Promise.all(promises)) as string[];
+    return strings;
+  };
+
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -38,7 +62,6 @@ const useAddProjectForm = ({ project }: Props) => {
           description: project.description,
           location: project.location,
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
-          imagePrincipal: project.imagePrincipal!,
           image: project.image!,
         });
 
@@ -56,7 +79,6 @@ const useAddProjectForm = ({ project }: Props) => {
     [
       project.dateEnd,
       project.description,
-      project.imagePrincipal,
       project.image,
       project.location,
       project.title,

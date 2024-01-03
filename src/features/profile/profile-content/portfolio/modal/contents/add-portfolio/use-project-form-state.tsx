@@ -6,7 +6,7 @@ const useProjectState = () => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
-  const [imagePrincipal, setImagePrincipal] = useState("");
+  const [imagePrincipal, setImagePrincipal] = useState<File | null>(null);
   const [image, setImage] = useState<File[] | null>([]);
 
   const onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,13 +22,17 @@ const useProjectState = () => {
     setDateEnd(date);
   };
   const onImagePrincipalChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setImagePrincipal(event.target.value);
+    setImagePrincipal(event.target.files?.[0] || null);
   };
   const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setImage(Array.from(event.target.files));
+      const filesArray = Array.from(event.target.files);
+      setImage(filesArray);
+      console.log(filesArray);
+      console.log(image);
     }
   };
+
   return {
     title,
     description,

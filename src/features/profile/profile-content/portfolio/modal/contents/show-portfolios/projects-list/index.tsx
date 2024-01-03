@@ -25,7 +25,6 @@ const ProjectsList = () => {
       {portfolio.map((item: Portfolio) => {
         return (
           <>
-            <ProjectItem item={item} /> <ProjectItem item={item} />{" "}
             <ProjectItem item={item} />
           </>
         );
