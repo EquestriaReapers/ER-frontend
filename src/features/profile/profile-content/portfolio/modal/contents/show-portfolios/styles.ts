@@ -12,6 +12,7 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
+  width: "43%",
   borderRadius: "6px",
 };
 
@@ -33,7 +34,7 @@ export const buttonStyle = {
   textTransform: "capitalize",
   fontSize: "16px",
   px: 3,
-  my: 1,
+  mb: 1,
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
   },
@@ -52,5 +53,5 @@ export const inlineStyles = {
     md: "nowrap",
     lg: "nowrap",
   },
-  justifyContent: "space-between",
+  gap: "40px",
 };
