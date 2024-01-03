@@ -4,7 +4,12 @@ import { useContext } from "react";
 import PortfolioModalContext from "../../modal-context";
 import { PortfolioContent } from "../../modal-context/types";
 import useDeleteProject from "./use-delete-project";
-import { deleteModalStyle } from "./styles";
+import {
+  deleteButtonStyle,
+  deleteModalStyle,
+  messageStyle,
+  returnButtonStyle,
+} from "./styles";
 
 const DeleteProjectModalContent = ({ projectId }: Props) => {
   const { setContent } = useContext(PortfolioModalContext);
@@ -16,52 +21,21 @@ const DeleteProjectModalContent = ({ projectId }: Props) => {
         component="form"
         sx={{ display: "flex", flexDirection: "column", gap: "30px" }}
       >
-        <Typography
-          sx={{
-            color: "#000",
-            textAlign: "center",
-            fontFamily: "inter",
-            fontSize: "20px",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "normal",
-          }}
-        >
+        <Typography sx={messageStyle}>
           ¿Estás seguro de que quieres eliminar este proyecto?
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", gap: "50px" }}>
           <Button
             onClick={() => setContent(PortfolioContent.Show)}
             variant="outlined"
-            sx={{
-              textAlign: "center",
-              fontFamily: "inter",
-              fontSize: "18px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "normal",
-              textTransform: "capitalize",
-              px: "50px",
-              py: "10px",
-            }}
+            sx={returnButtonStyle}
           >
             Regresar
           </Button>
           <Button
             onClick={deleteProject}
             variant="contained"
-            sx={{
-              color: "#FCFEFE",
-              textAlign: "center",
-              fontFamily: "inter",
-              fontSize: "18px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "normal",
-              textTransform: "capitalize",
-              px: "50px",
-              py: "10px",
-            }}
+            sx={deleteButtonStyle}
           >
             Eliminar
           </Button>

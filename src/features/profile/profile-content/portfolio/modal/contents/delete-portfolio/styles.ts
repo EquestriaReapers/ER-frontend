@@ -14,3 +14,38 @@ export const deleteModalStyle = {
   width: "40%",
   borderRadius: "6px",
 };
+
+export const messageStyle = {
+  color: "#000",
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "20px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+};
+
+export const returnButtonStyle = {
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "18px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+  textTransform: "capitalize",
+  px: "50px",
+  py: "10px",
+};
+
+export const deleteButtonStyle = {
+  color: "#FCFEFE",
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "18px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+  textTransform: "capitalize",
+  px: "50px",
+  py: "10px",
+};
