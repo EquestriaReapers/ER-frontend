@@ -1,22 +1,20 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { Profile } from "core/profiles/types";
 import { exportCurriculumPDF } from "core/profiles/export-curriculum-pdf.service";
-import useLoaderState from "hooks/use-loader-state";
 
 const useDownloadCurriculumPDF = (profile: Profile) => {
+  const [loading, setLoading] = useState(false);
   const { showErrorToast } = useErrorToast();
   const { showSuccessToast } = useSuccessToast();
-  const loader = useLoaderState();
 
-  return useCallback(async () => {
+  const downloadCurriculumPDF = useCallback(async () => {
     try {
       if (!profile) return;
-
+      setLoading(true);
       const response = await exportCurriculumPDF(profile.userId);
 
-      console.log(loader);
       const file = new Blob([response.data], { type: "application/pdf" });
       const fileURL = URL.createObjectURL(file);
       const link = document.createElement("a");
@@ -30,8 +28,12 @@ const useDownloadCurriculumPDF = (profile: Profile) => {
       return response;
     } catch (error) {
       showErrorToast(error);
+    } finally {
+      setLoading(false);
     }
-  }, [profile, showErrorToast, showSuccessToast, loader]);
+  }, [profile, showErrorToast, showSuccessToast]);
+
+  return { downloadCurriculumPDF, loading };
 };
 
 export default useDownloadCurriculumPDF;

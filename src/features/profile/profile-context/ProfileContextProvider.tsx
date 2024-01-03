@@ -30,7 +30,7 @@ export interface Props {
   children: React.ReactNode;
   profileId: number;
   profile: Profile;
-  fetchProfile: () => void;
+  fetchProfile: () => Promise<void>;
 }
 
 export default ProfileContextProvider;
