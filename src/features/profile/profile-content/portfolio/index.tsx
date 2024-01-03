@@ -35,7 +35,7 @@ const Portfolio = () => {
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'row',
+          flexWrap: 'wrap',
           gap: { xs: '18px', sm: '20px' }
         }}
       >

@@ -138,7 +138,6 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                 type='file'
                 onChange={onImageChange}
                 inputProps={{ multiple: true }}
-                value={image}
               />
             </Box>
           </Box>
