@@ -4,7 +4,7 @@ import EmailIcon from "@mui/icons-material/Email";
 
 const ContactMethods = () => {
   return (
-    <div>
+    <Box>
       <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
         <EmailIcon className={"iconStyle"} />
         <Typography sx={FormTitleStyles}>Agregar Correo de contacto</Typography>
@@ -19,7 +19,7 @@ const ContactMethods = () => {
       >
         <TextField
           className={"fieldsStyle"}
-          sx={{ width: "70%" }}
+          sx={{ width: "70%", marginRight:1, }}
           id="web-page"
           label=""
           variant="outlined"
@@ -28,7 +28,7 @@ const ContactMethods = () => {
           Buscar
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 

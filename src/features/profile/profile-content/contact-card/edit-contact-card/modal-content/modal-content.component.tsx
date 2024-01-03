@@ -1,6 +1,6 @@
 import { Button, Box, Typography } from "@mui/material";
 import { buttonStyle, titleStyles, subTitleStyles } from "../../../../styles";
-import { descriptionStyles } from "./styles";
+import { descriptionStyles, boxContentStyles } from "./styles";
 import Email from "./contact-methods";
 import useContactCardContext from "../contact-card-context/use-contact-card-context";
 import BasicDataForm from "./basic-data/basic-data-form";
@@ -13,34 +13,27 @@ const ModalContent = () => {
   const updateContactData = useUpdateContactData(basicData);
 
   return (
-    <div>
+    <Box>
       {loading && <SpinnerAbsolute />}
       <Box sx={{ marginBottom: "32px" }}>
         <Typography sx={titleStyles}>Datos de contacto</Typography>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box sx={{ width: "48%" }}>
+      <Box sx={boxContentStyles}>
+        <Box sx={{ px: 2 }}>
           <Typography sx={subTitleStyles}>Datos Generales</Typography>
           <Typography sx={descriptionStyles}>
-            Estos datos básicos aparecerán en el perfil y en el CV
+            Estos datos básicos aparecerán en tu perfil y CV
           </Typography>
 
           <BasicDataForm externalState={basicData} onChange={setBasicData} />
           <Language />
         </Box>
-        <Box sx={{ width: "48%" }}>
+        <Box sx={{ px: 2, }}>
           <Typography sx={subTitleStyles}>Medios de contacto</Typography>
           <Typography sx={descriptionStyles}>
-            Estos datos solo aparecerán en el CV
+            Estos datos sólo aparecerán en tu CV
           </Typography>
-
           <Email />
         </Box>
       </Box>
@@ -57,7 +50,7 @@ const ModalContent = () => {
           Guardar Cambios
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 
