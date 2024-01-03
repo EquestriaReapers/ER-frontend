@@ -23,8 +23,6 @@ export default styled(EditCardComponent)`
   }
 
   .fieldsStyle {
-    height: 55px;
-    border: 2px solid #000000;
     border-radius: 5px;
     margin-bottom: 16px;
   }
