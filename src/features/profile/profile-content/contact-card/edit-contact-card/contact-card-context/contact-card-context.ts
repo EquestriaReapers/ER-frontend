@@ -15,6 +15,7 @@ const ContactCardContext = createContext<ContactCardContextI>({
   isOpen: false,
   setIsOpen: () => {},
   setBasicData: () => {},
+  setContactMethod: () => {},
 });
 
 export interface ContactCardContextI {
@@ -28,6 +29,7 @@ export interface ContactCardContextI {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   setBasicData: (basicData: BasicDataFormState) => void;
+  setContactMethod: (contactMethod: ContactMethod[]) => void;
 }
 
 export interface BasicDataFormState {

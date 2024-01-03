@@ -19,7 +19,7 @@ const ContactMethods = () => {
       >
         <TextField
           className={"fieldsStyle"}
-          sx={{ width: "70%", marginRight:1, }}
+          sx={{ width: "70%", marginRight: 1 }}
           id="web-page"
           label=""
           variant="outlined"
@@ -27,6 +27,10 @@ const ContactMethods = () => {
         <Button sx={buttonStyle} className="exp-show-button">
           Buscar
         </Button>
+      </Box>
+
+      <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+        {/*<ContactCards/>*/}
       </Box>
     </Box>
   );
