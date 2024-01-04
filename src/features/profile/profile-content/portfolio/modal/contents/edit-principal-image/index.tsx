@@ -1,14 +1,14 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
-import { Portfolio } from "core/profiles/types";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Button, IconButton, Typography } from '@mui/material'
+import { Portfolio } from 'core/profiles/types'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import ClearIcon from '@mui/icons-material/Clear'
 
-import { useContext } from "react";
-import PortfolioModalContext from "../../modal-context";
-import { PortfolioContent } from "../../modal-context/types";
-import useEditPrincipalImageModalContent from "./use-edit-principal-image-form-state";
+import { useContext } from 'react'
+import PortfolioModalContext from '../../modal-context'
+import { PortfolioContent } from '../../modal-context/types'
+import useEditPrincipalImageModalContent from './use-edit-principal-image-form-state'
 import {
   boxButtonStyles,
   buttonStyle,
@@ -21,25 +21,25 @@ import {
   modalStyle,
   titleStyles,
   uploadBoxStyles,
-  uploadButtonStyles,
-} from "./styles";
-import useForm from "./use-form";
-import useFileList from "./use-file-list";
+  uploadButtonStyles
+} from './styles'
+import useForm from './use-form'
+import useFileList from './use-file-list'
 
 const EditPrincipalImageModalContent = ({ project }: Props) => {
-  const { setContent } = useContext(PortfolioModalContext);
+  const { setContent } = useContext(PortfolioModalContext)
   const { imagePrincipal, onImagePrincipalChange, files } =
-    useEditPrincipalImageModalContent();
-  const { onDragOver, onDrop, deleteFile } = useFileList();
+    useEditPrincipalImageModalContent()
+  const { onDragOver, onDrop, deleteFile } = useFileList()
 
-  const projectState = { imagePrincipal };
+  const projectState = { imagePrincipal }
 
-  const projectId = project.id;
+  const projectId = project.id
 
   const onSubmitForm = useForm({
     project: projectState,
-    projectId,
-  });
+    projectId
+  })
 
   return (
     <Box sx={modalStyle}>
@@ -55,10 +55,10 @@ const EditPrincipalImageModalContent = ({ project }: Props) => {
         </Typography>
       </Box>
       <Typography sx={inputLabelStyles}>Imagen</Typography>
-      <Box sx={uploadBoxStyles} component="form" onSubmit={onSubmitForm}>
+      <Box sx={uploadBoxStyles} component='form' onSubmit={onSubmitForm}>
         <Box sx={inputBoxStyles} onDragOver={onDragOver} onDrop={onDrop}>
           <Button
-            component="label"
+            component='label'
             disabled={files.length > 0}
             sx={uploadButtonStyles}
           >
@@ -67,11 +67,12 @@ const EditPrincipalImageModalContent = ({ project }: Props) => {
             </Typography>
             <AddPhotoAlternateOutlinedIcon />
             <input
-              type="file"
+              type='file'
               multiple
-              accept=".jpg,.jpeg,.png"
-              style={{ display: "none" }}
+              accept='.jpg,.jpeg,.png'
+              style={{ display: 'none' }}
               onDragOver={onDragOver}
+              onDrop={onDrop}
               onChange={onImagePrincipalChange}
             />
           </Button>
@@ -82,7 +83,7 @@ const EditPrincipalImageModalContent = ({ project }: Props) => {
               <Box key={file.name} sx={fileListBoxStyles}>
                 <InsertDriveFileOutlinedIcon />
                 <Typography sx={fileNameStyles}>
-                  {file.name.slice(0, 35) + " ... " + file.name.slice(-7)}
+                  {file.name.slice(0, 35) + ' ... ' + file.name.slice(-7)}
                 </Typography>
 
                 <IconButton onClick={() => deleteFile(index)}>
@@ -94,17 +95,17 @@ const EditPrincipalImageModalContent = ({ project }: Props) => {
         )}
 
         <Box sx={boxButtonStyles}>
-          <Button type="submit" sx={buttonStyle}>
+          <Button type='submit' sx={buttonStyle}>
             Guardar Cambios
           </Button>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default EditPrincipalImageModalContent;
+export default EditPrincipalImageModalContent
 
 interface Props {
-  project: Portfolio;
+  project: Portfolio
 }
