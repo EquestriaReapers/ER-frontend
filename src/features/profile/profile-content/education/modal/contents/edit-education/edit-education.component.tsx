@@ -4,8 +4,7 @@ import {
   Divider,
   IconButton,
   TextField,
-  Typography,
-  styled
+  Typography
 } from '@mui/material'
 import { Education } from 'core/profiles/types'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
@@ -32,6 +31,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import EducationModalContext from '../../education-modal-context'
 import useEducationFormState from '../use-education-form-state'
+import { StyledBox, StyledButton } from './edit-education.styled'
 
 const EditEducationModalContent = ({ anEducation, className }: Props) => {
   const { setContent } = useContext(EducationModalContext)
@@ -83,42 +83,6 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
     onChangePrincipal()
   }
 
-  const StyledBox = styled(Box)({
-    width: '500px',
-    height: '50.037px',
-    borderRadius: '4px',
-    border: '1px solid #000',
-    display: 'flex',
-    flexDirection: 'row',
-    overflow: 'hidden',
-    '@media screen and (max-width: 767px)': {
-      width: '100%'
-    }
-  })
-
-  const StyledButton = styled(Button)({
-    flex: 1,
-    color: '#000',
-    border: 'none',
-    borderRadius: 0,
-    cursor: 'pointer',
-    backgroundColor: '#FFF',
-    '&:hover': {
-      backgroundColor: '#007935',
-      color: '#FFF'
-    },
-    '&.selected': {
-      backgroundColor: '#007935',
-      color: '#FFF'
-    },
-    textTransform: 'none',
-    fontFamily: 'Inter',
-    fontSize: '15px',
-    fontStyle: 'normal',
-    fontWeight: 500,
-    lineHeight: 'normal'
-  })
-
   return (
     <Box sx={modalStyle} className={className}>
       <Box sx={headerStyles}>
@@ -143,6 +107,7 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
                 label='Titulo'
                 value={title}
                 onChange={onChangeTitle}
+                disabled={anEducation.isUCAB}
               />
             </Box>
             <Box className='inputContainer mt-5px' sx={{ marginTop: 2 }}>
@@ -152,6 +117,7 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
                 label='Entidad'
                 value={entity}
                 onChange={onChangeEntity}
+                disabled={anEducation.isUCAB}
               />
             </Box>
             <Box className='inputContainer mt-5px' sx={{ marginTop: 2 }}>
@@ -161,10 +127,11 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
                   label='Fecha de Finalizacion'
                   value={endDate}
                   onChange={onChangeEndDate}
+                  disabled={anEducation.isUCAB}
                 />
               </LocalizationProvider>
             </Box>
-            {anEducation.isUCAB !== true && (
+            {anEducation.isUCAB == true && (
               <Box className='inputContainer mt-5px'>
                 <StyledBox>
                   <StyledButton
