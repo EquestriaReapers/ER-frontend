@@ -8,7 +8,7 @@ import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import NewPassword from "features/auth/NewPassword";
-import Home from "features/home/Home"
+import Home from "features/home/Home";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -17,7 +17,6 @@ import {
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
-import Loader from "hooks/use-loader";
 import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
@@ -79,14 +78,14 @@ const routerConfig: RouteObject[] = [
     ],
   },
   {
-    path: "loader",
-    element: <Loader />,
+    path: "/home",
+    element: <Home />,
   },
-  {
-    path:"/home",
-    element: <Home/>
-  }
-]);
+];
+
+const router = createBrowserRouter(routerConfig);
+
+export default router;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
