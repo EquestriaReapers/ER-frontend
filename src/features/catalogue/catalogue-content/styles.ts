@@ -1,9 +1,3 @@
-export const navBarStyles = {
-  width: "100%",
-  height: "60px",
-  boxShadow: "0px 15px 15px 0px rgba(0, 0, 0, 0.07)",
-};
-
 export const pageContainer = {
   width: "100%",
   height: "auto",
