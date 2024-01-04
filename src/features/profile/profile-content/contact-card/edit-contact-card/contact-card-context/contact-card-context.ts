@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ContactMethod, Lenguage } from "core/profiles/types";
+import { ContactMethod, Language } from "core/profiles/types";
 
 const ContactCardContext = createContext<ContactCardContextI>({
   profileId: 0,
@@ -15,13 +15,12 @@ const ContactCardContext = createContext<ContactCardContextI>({
   isOpen: false,
   setIsOpen: () => {},
   setBasicData: () => {},
-  setContactMethod: () => {},
 });
 
 export interface ContactCardContextI {
   profileId: number;
   basicData: BasicDataFormState;
-  languagues: Lenguage[];
+  languagues: Language[];
   contactMethods: ContactMethod[];
   fetchProfile: () => Promise<void>;
   loading: boolean;
@@ -29,7 +28,6 @@ export interface ContactCardContextI {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   setBasicData: (basicData: BasicDataFormState) => void;
-  setContactMethod: (contactMethod: ContactMethod[]) => void;
 }
 
 export interface BasicDataFormState {

@@ -11,6 +11,7 @@ export interface Profile {
   experience: Experience[];
   skills: Skill[];
   languageProfile: Language[];
+  contactMethods: ContactMethod[];
   deletedAt: Date | null;
 }
 
@@ -31,8 +32,7 @@ export interface Skill {
 
 export interface ContactMethod {
   id: number;
-  profileId: number;
-  name: string;
+  email: string;
 }
 
 export interface Location {
