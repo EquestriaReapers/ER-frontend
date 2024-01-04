@@ -35,6 +35,5 @@ export const EducationContentManager: FunctionComponent = () => {
 }
 
 function debugError(message: string) {
-  console.error(message)
   alert(message)
 }

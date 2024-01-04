@@ -2,7 +2,6 @@ import React, { createContext, useState } from 'react'
 import { Education } from 'core/profiles/types'
 import { EducationContent } from './types'
 
-// Creamos un contexto
 const EducationModalContext = createContext<EducationModalContextI>({
   content: EducationContent.Show,
   setContent: () => {},
@@ -13,7 +12,6 @@ const EducationModalContext = createContext<EducationModalContextI>({
   setLoading: () => {}
 })
 
-// Proveedor del contexto
 export const EducationContentProvider = ({ children, educations }: Props) => {
   const [loading, setLoading] = useState(false)
   const [content, setContent] = useState<EducationContent>(
@@ -21,7 +19,6 @@ export const EducationContentProvider = ({ children, educations }: Props) => {
   )
   const [anEducation, setAnEducation] = useState<Education | null>(null)
 
-  // Proporcionamos el valor del contexto
   const contextValue = {
     content,
     setContent,

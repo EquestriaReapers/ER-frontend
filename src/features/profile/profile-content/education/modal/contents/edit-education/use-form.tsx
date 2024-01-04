@@ -38,7 +38,7 @@ const useForm = ({ anEducation, educationId }: EditEducationFormProps) => {
           token,
           educationId
         )
-        showSuccessToast('Educacion editada con éxito')
+        showSuccessToast('Educación editada con éxito')
         setContent(EducationContent.Show)
         fetchProfile()
         return data

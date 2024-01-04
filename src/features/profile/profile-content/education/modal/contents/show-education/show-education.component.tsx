@@ -12,19 +12,19 @@ const ShowExperiences = ({ className }: Props) => {
   return (
     <Box sx={modalStyle} className={className}>
       <Box>
-        <Box className={'exp-header-container'}>
-          <Typography sx={titleStyles}>Gestión de educacion</Typography>
+        <Box className={'edu-header-container'}>
+          <Typography sx={titleStyles}>Gestión de educación</Typography>
           <Box sx={inlineStyles}>
-            <Typography className={'exp-show-description'}>
+            <Typography className={'edu-show-description'}>
               En esta sección podrás gestionar las educaciones profesionales que
               has tenido
             </Typography>
             <Button
               sx={buttonStyle}
-              className={'exp-show-button'}
+              className={'edu-show-button'}
               onClick={() => setContent(EducationContent.Add)}
             >
-              Agregar educacion
+              Agregar educación
             </Button>
           </Box>
         </Box>
