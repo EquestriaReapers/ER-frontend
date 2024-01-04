@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import EditCardComponent from "./edit-card-content.component";
 
-const LG_SIZE = 1200;
+const LG_SIZE = 800;
 const MD_SIZE = 767;
 const SM_SIZE = 480;
 const XS_SIZE = 380;
