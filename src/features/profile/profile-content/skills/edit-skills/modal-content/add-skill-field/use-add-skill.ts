@@ -3,8 +3,10 @@ import { addProfileSkill } from "core/profiles/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
+import { useSkillsModalContext } from "../../skills-modal-context/use-skills-modal-context";
 
-const useAddSkill = ({ setLoading }: Options) => {
+const useAddSkill = () => {
+  const { setLoading } = useSkillsModalContext();
   const { fetchProfile } = useProfileContext();
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
@@ -26,9 +28,5 @@ const useAddSkill = ({ setLoading }: Options) => {
     [fetchProfile, setLoading, showErrorToast, token]
   );
 };
-
-interface Options {
-  setLoading: (loading: boolean) => void;
-}
 
 export default useAddSkill;
