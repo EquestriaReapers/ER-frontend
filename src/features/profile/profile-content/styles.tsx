@@ -1,4 +1,5 @@
 import bannerImage from "./images/bannerImage.png";
+import { styled } from "@mui/system";
 
 export const bannerStyles = {
   width: {
@@ -199,15 +200,21 @@ export const locationAndEditButtonStyles = {
   justifyContent: "space-between",
 };
 
-export const bothSkillsContainerStyles = {
+export const BothSkillsContainer = styled("div")(({ theme }) => ({
   display: "flex",
-  flexWrap: "no-wrap",
   flexDirection: "row",
-  width: {
-    xs: "100%",
-    sm: "100%",
-    md: "70%",
-    lg: "60%",
-  },
+  gap: "20px",
   py: 1,
-};
+  width: "100%",
+  flexWrap: "wrap",
+  [theme.breakpoints.up("sm")]: {
+    flexWrap: "nowrap",
+    width: "100%",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "60%",
+  },
+}));

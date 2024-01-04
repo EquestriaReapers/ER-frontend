@@ -40,6 +40,11 @@ const Navbar = () => {
                 <Button sx={titleStyles}>Login</Button>
               </Link>
             )}
+            {!user && (
+              <Link to={`/register`}>
+                <Button sx={titleStyles}>Registro</Button>
+              </Link>
+            )}
             <Link to={`/catalogue`}>
               <Button sx={titleStyles}>Catálogo</Button>
             </Link>

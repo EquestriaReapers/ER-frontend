@@ -82,10 +82,6 @@ const routerConfig: RouteObject[] = [
       },
     ],
   },
-  {
-    path: "loader",
-    element: <Loader />,
-  },
 ];
 
 const router = createBrowserRouter(routerConfig);
