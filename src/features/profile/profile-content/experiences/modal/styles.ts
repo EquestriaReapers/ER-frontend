@@ -7,7 +7,7 @@ export const boxStyles = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };
@@ -64,7 +64,7 @@ export const boxWithButton = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };
