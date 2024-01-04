@@ -11,13 +11,14 @@ const useAddContacthMethods = (name: string) => {
 
   const addContactMethods = useCallback(async () => {
     try {
+      if (!token) return;
       const data = await addContactMethod(token, name);
       fetchProfile();
       return data;
     } catch (error) {
       showErrorToast(error);
     }
-  }, [showErrorToast]);
+  }, [fetchProfile, name, showErrorToast, token]);
 
   return addContactMethods;
 };
