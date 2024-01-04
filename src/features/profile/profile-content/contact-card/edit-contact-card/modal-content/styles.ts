@@ -3,9 +3,9 @@ const PRIMARY_DARKER = "#03652e";
 export const FormTitleStyles = {
   color: "#000",
   fontFamily: "Inter",
-  fontSize: { 
-    xs: "14px", 
-    sm: "16px" 
+  fontSize: {
+    xs: "14px",
+    sm: "16px",
   },
   fontStyle: "normal",
   fontWeight: "500",
@@ -13,29 +13,28 @@ export const FormTitleStyles = {
 };
 
 export const iconTextStyles = {
-  display: "flex", 
-  flexDirection: "row", 
+  display: "flex",
+  flexDirection: "row",
   marginBottom: "10px",
-}
+};
 
 export const boxContentStyles = {
   display: "flex",
-  flexDirection: { 
-    xs: "column", 
-    sm: "row", 
-    lg: "row", 
+  flexDirection: {
+    xs: "column",
+    sm: "row",
+    lg: "row",
   },
 };
 
 export const textfieldStyles = {
-  width: {
-    lg: "100%", 
-  },
-  mr:  {
+  width: "100%",
+  flex: 1,
+  mr: {
     sm: 2,
-    lg: 2, 
+    lg: 2,
   },
-}
+};
 
 export const descriptionStyles = {
   fontSize: "16px",

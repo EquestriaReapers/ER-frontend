@@ -1,8 +1,20 @@
-import { Box, Typography, TextField } from "@mui/material";
-import { FormTitleStyles, boxContentStyles, iconTextStyles,textfieldStyles } from "../styles";
+import { Box, Typography } from "@mui/material";
+import {
+  FormTitleStyles,
+  boxContentStyles,
+  iconTextStyles,
+  textfieldStyles,
+} from "../styles";
 import TranslateIcon from "@mui/icons-material/Translate";
+import LanguageInput from "./language-input/language-input.component";
+import { useState } from "react";
+import SelectComponent from "components/select-component";
 
 const Lenguage = () => {
+  const [languague, setLanguague] = useState("");
+  const [nivel, setNivel] = useState("");
+  const disabled = false;
+
   return (
     <div>
       <Box sx={iconTextStyles}>
@@ -11,19 +23,34 @@ const Lenguage = () => {
       </Box>
 
       <Box sx={boxContentStyles}>
-        <TextField
+        {/*<TextField
           className={"fieldsStyle"}
           sx={textfieldStyles}
           id="web-page"
           label="idioma"
           variant="outlined"
-        />
-
-        <TextField
-          className={"fieldsStyle"}
-          id="web-page"
-          label="nivel"
-          variant="outlined"
+        />*/}
+        <Box sx={textfieldStyles}>
+          <LanguageInput
+            disabled={disabled}
+            value={languague}
+            onChange={function (value: string): void {
+              setLanguague(value);
+            }}
+          />
+        </Box>
+        <SelectComponent
+          disabled={disabled}
+          options={[
+            { value: "1", label: "Basico" },
+            { value: "2", label: "Intermedio" },
+            { value: "3", label: "Avanzado" },
+          ]}
+          label="Nivel"
+          value={nivel}
+          onChange={function (value: string): void {
+            setNivel(value);
+          }}
         />
       </Box>
     </div>

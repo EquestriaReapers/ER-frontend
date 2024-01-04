@@ -45,6 +45,8 @@ export interface Language {
   profileId: number;
   level: string;
   languageId: number;
+  name: string;
+  isVisible: boolean;
 }
 
 export interface Experience {
@@ -56,4 +58,13 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+}
+
+export interface LanguageOption {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
+  name: string;
+  isVisible: boolean;
 }
