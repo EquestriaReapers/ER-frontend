@@ -29,7 +29,7 @@ const ModalContent = () => {
           <BasicDataForm externalState={basicData} onChange={setBasicData} />
           <Language />
         </Box>
-        <Box>
+        <Box sx={{mx:3}}>
           <Typography sx={subTitleStyles}>Medios de contacto</Typography>
           <Typography sx={descriptionStyles}>
             Estos datos sólo aparecerán en tu CV

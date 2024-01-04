@@ -10,7 +10,7 @@ export interface Profile {
   website: string;
   experience: Experience[];
   skills: Skill[];
-  languageProfile: Lenguage[];
+  languageProfile: Language[];
   deletedAt: Date | null;
 }
 
@@ -40,7 +40,7 @@ export interface Location {
   name: string;
 }
 
-export interface Lenguage {
+export interface Language {
   id: number;
   profileId: number;
   level: string;

@@ -25,7 +25,7 @@ const ContactMethods = () => {
           variant="outlined"
         />
         <Button sx={buttonStyle} className="exp-show-button">
-          Buscar
+          Agregar
         </Button>
       </Box>
 

@@ -12,6 +12,12 @@ export const FormTitleStyles = {
   lineHeight: "normal",
 };
 
+export const iconTextStyles = {
+  display: "flex", 
+  flexDirection: "row", 
+  marginBottom: "10px",
+}
+
 export const boxContentStyles = {
   display: "flex",
   flexDirection: { 
@@ -19,9 +25,17 @@ export const boxContentStyles = {
     sm: "row", 
     lg: "row", 
   },
-  justifyContent: "space-between", 
 };
 
+export const textfieldStyles = {
+  width: {
+    lg: "100%", 
+  },
+  mr:  {
+    sm: 2,
+    lg: 2, 
+  },
+}
 
 export const descriptionStyles = {
   fontSize: "16px",
