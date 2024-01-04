@@ -1,8 +1,10 @@
 import { Box, Typography, IconButton } from "@mui/material";
 import { ContactMethod } from "core/profiles/types";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useDeleteContacthMethods from "./use-delete-contact-method";
 
 const ContactCards = ({ contactMethods }: Props) => {
+  const deleteContact = useDeleteContacthMethods();
   return (
     <div>
       {contactMethods.map((mail) => (
@@ -12,7 +14,12 @@ const ContactCards = ({ contactMethods }: Props) => {
               {mail.email}
             </Typography>
 
-            <IconButton className={"contact-cardDelete-style"}>
+            <IconButton
+              className={"contact-cardDelete-style"}
+              onClick={() => {
+                deleteContact(mail.id);
+              }}
+            >
               <DeleteIcon />
             </IconButton>
           </Box>

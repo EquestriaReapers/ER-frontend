@@ -2,11 +2,15 @@ import { Box, Typography, TextField, Button } from "@mui/material";
 import { FormTitleStyles, buttonStyle, textFieldBoxStyles } from "../styles";
 import EmailIcon from "@mui/icons-material/Email";
 import ContactCards from "./contact-cards";
-import { ContactMethod } from "core/profiles/types";
+import useAddContacthMethods from "./use-add-contact-method";
+import useContactMethodFormState from "./use-contact-method-form-state";
 import useProfileContext from "../../../../../profile-context/use-profile-context";
 
 const ContactMethods = () => {
   const { profile } = useProfileContext();
+  const { contactMethod, onChangeContactMethod, setContactMethod } =
+    useContactMethodFormState();
+  const addContactMethod = useAddContacthMethods();
 
   return (
     <Box>
@@ -19,11 +23,18 @@ const ContactMethods = () => {
         <TextField
           className={"fieldsStyle"}
           sx={{ width: "100%", marginRight: 1 }}
+          onChange={onChangeContactMethod}
           id="web-page"
           label="Correo UCAB"
           variant="outlined"
         />
-        <Button sx={buttonStyle} className="exp-show-button">
+        <Button
+          sx={buttonStyle}
+          className="exp-show-button"
+          onClick={() => {
+            addContactMethod(contactMethod);
+          }}
+        >
           Agregar
         </Button>
       </Box>
