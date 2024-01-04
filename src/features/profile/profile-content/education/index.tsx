@@ -26,7 +26,7 @@ const Education = () => {
             display: 'flex',
             flexDirection: 'row',
             flexWrap: 'wrap',
-            gap: { xs: '18px', sm: '45px' }
+            gap: { xs: '18px', sm: '25px' }
           }}
         >
           <ShowProfileEducation educations={profile.education} />

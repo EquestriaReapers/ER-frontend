@@ -35,6 +35,15 @@ export const nameStyles = {
   fontWeight: "700",
 };
 
+export const cvButtonStyle ={ 
+  color: "#007934",
+  fontFamily: "Inter",
+  fontSize: "20px",
+  fontStyle: "normal",
+  fontWeight: 600,
+  lineHeight: "normal",
+}
+
 export const inlineStyles = {
   display: 'flex',
   flexWrap: 'wrap',

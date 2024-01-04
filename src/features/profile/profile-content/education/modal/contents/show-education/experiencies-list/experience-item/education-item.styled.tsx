@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import ExperienceItem from './education-item.component.tsx'
+import EducationItem from './education-item.component.tsx'
 
-export default styled(ExperienceItem)`
+export default styled(EducationItem)`
 
 .titleIconStyles {
     display: flex;

@@ -1,10 +1,10 @@
 import { Box } from '@mui/material'
 import { Education } from 'core/profiles/types'
 import { useContext } from 'react'
-import ExperienceItem from './experience-item/education-item.styled'
+import EducationItem from './experience-item/education-item.styled'
 import EducationModalContext from '../../../education-modal-context'
 
-const ExperiencesList = ({ className }: Props) => {
+const EducationList = ({ className }: Props) => {
   const { educations } = useContext(EducationModalContext)
 
   return (
@@ -12,7 +12,7 @@ const ExperiencesList = ({ className }: Props) => {
       {educations.map((item: Education) => {
         return (
           <Box key={item.id}>
-            <ExperienceItem item={item} />
+            <EducationItem item={item} />
           </Box>
         )
       })}
@@ -24,4 +24,4 @@ interface Props {
   className?: string
 }
 
-export default ExperiencesList
+export default EducationList
