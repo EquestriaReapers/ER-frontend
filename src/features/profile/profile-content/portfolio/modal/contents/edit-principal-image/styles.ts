@@ -7,7 +7,17 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  p: {
+  paddingTop: {
+    xs: 2,
+    sm: 3,
+    md: 2,
+  },
+  paddingBottom: {
+    xs: 2,
+    sm: 3,
+    md: 4,
+  },
+  px: {
     xs: 2,
     sm: 3,
     md: 4,
@@ -24,6 +34,16 @@ export const titleStyles = {
   fontWeight: "700",
 };
 
+export const descriptionStyles = {
+  color: "#575757",
+  fontSize: "16px",
+  fontFamily: "inter",
+  lineHeight: "normal",
+  fontStyle: "normal",
+  fontWeight: "400",
+  mb: "30px",
+};
+
 export const buttonStyle = {
   fontFamily: "inter",
   borderRadius: "5px",
@@ -38,10 +58,6 @@ export const buttonStyle = {
   },
 };
 
-export const headerStyles = {
-  py: 2,
-};
-
 export const textFieldStyles = {
   width: "100%",
   display: "flex",
@@ -53,10 +69,67 @@ export const boxButtonStyles = {
   justifyContent: "center",
 };
 
-export const descriptionStyles = {
+export const inputLabelStyles = {
+  color: "#000",
+  fontFamily: "inter",
   fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+  textTransform: "none",
+};
+
+export const uploadBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  marginTop: "10px",
+};
+
+export const inputBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  border: "2px dashed #ccc",
+  borderRadius: "8px",
+  textAlign: "center",
+  alignItems: "center",
+};
+
+export const fileListBoxStyles = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+};
+
+export const fileNameStyles = {
+  color: "#000",
+  fontFamily: "inter",
+  fontSize: "14px",
+  fontStyle: "normal",
   fontWeight: "400",
-  color: "#444444",
-  fontFamily: "Inter",
-  wordWrap: "break-word",
+  lineHeight: "normal",
+  textTransform: "none",
+};
+
+export const uploadButtonStyles = {
+  ":hover": { backgroundColor: "#fff" },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingTop: "25px",
+  paddingBottom: "50px",
+  width: "100%",
+  gap: "14px",
+};
+
+export const inputDescriptionStyles = {
+  color: "#000",
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  textTransform: "none",
 };
