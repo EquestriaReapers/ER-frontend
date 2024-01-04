@@ -17,21 +17,21 @@ export const modalStyle = {
 
 export const titleStyles = {
   fontSize: { xs: "20px", sm: "22px", md: "30px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontWeight: "700",
 };
 
 export const subTitleStyles = {
   fontSize: { xs: "16px", sm: "18px", md: "24px" },
-  fontFamily: "Inter",
-  fontWeight: "700",
+  fontFamily: "inter",
+  fontWeight: "500",
 };
 
 export const buttonStyle = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "700",
+  fontWeight: "500",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
@@ -66,7 +66,7 @@ export const descriptionStyles = {
 };
 
 export const skillTitleStyle = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontWeight: "700",
   fontSize: "16px",
   pb: 2,

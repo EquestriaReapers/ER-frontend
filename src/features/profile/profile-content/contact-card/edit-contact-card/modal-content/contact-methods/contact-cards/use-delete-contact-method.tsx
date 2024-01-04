@@ -1,5 +1,5 @@
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import { deleteContactMethod } from "core/cardcontent/delete-contact-method.service";
+import { deleteContactMethod } from "core/contact-method/delete-contact-method.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 import { useAuthState } from "hooks/use-auth-state";

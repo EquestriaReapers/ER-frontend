@@ -1,5 +1,5 @@
 import { Location } from "core/profiles/types";
-import { getAllLocations } from "core/cardcontent/get-all-locations.service";
+import { getAllLocations } from "core/contact-method/get-all-locations.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 

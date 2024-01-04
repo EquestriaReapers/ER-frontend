@@ -7,7 +7,7 @@ const ContactCardContext = createContext<ContactCardContextI>({
     countryResidence: "",
     website: "",
   },
-  languagues: [],
+  languages: [],
   contactMethods: [],
   fetchProfile: () => new Promise(() => {}),
   loading: false,
@@ -20,7 +20,7 @@ const ContactCardContext = createContext<ContactCardContextI>({
 export interface ContactCardContextI {
   profileId: number;
   basicData: BasicDataFormState;
-  languagues: Language[];
+  languages: Language[];
   contactMethods: ContactMethod[];
   fetchProfile: () => Promise<void>;
   loading: boolean;

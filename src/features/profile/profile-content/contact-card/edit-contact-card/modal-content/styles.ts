@@ -75,10 +75,10 @@ export const descriptionStyles = {
 
 export const buttonStyle = {
   height: "100%",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "700",
+  fontWeight: "500",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",

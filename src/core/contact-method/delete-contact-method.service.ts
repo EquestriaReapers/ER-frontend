@@ -1,4 +1,4 @@
-import { CONTACTMETHOD_URL } from "core/cardcontent/config";
+import { CONTACTMETHOD_URL } from "core/contact-method/config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 import { MessageResponse } from "core/profiles/config";
