@@ -41,10 +41,4 @@ const ContactMethods = () => {
   );
 };
 
-const mockMails: ContactMethod[] = [
-  { email: "sexo 1@sexomail.com", id: 1 },
-  { email: "sexo 2@sexomail.com", id: 2 },
-  { email: "sexo 3@sexomail.com", id: 3 },
-];
-
 export default ContactMethods;
