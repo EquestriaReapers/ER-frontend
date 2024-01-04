@@ -26,7 +26,7 @@ export async function updateProfileEducation(
 }
 
 export interface UpdateEducationBody {
-
+  principal: boolean;
   title: string;
   entity: string;
   endDate: string | null;

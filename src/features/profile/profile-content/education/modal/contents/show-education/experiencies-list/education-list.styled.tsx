@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import ExperiencesList from './education-list.component'
+import EducationList from './education-list.component'
 
 const LG_SIZE = 1200
 const MD_SIZE = 767
 const SM_SIZE = 480
 const XS_SIZE = 380
 
-export default styled(ExperiencesList)`
+export default styled(EducationList)`
   background: #f4f4f4;
   padding: 24px;
   padding-top: 0;
