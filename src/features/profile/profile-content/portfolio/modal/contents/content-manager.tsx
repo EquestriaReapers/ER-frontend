@@ -3,7 +3,7 @@ import PortfolioModalContext from "../modal-context";
 import { PortfolioContent } from "../modal-context/types";
 import ShowPortfolio from "./show-portfolios/show-portfolios.component";
 import DeleteProjectModalContent from "./delete-portfolio";
-import EditProjectModalContent from "./edit-portfolio/edit-project.component";
+import EditProjectModalContent from "./edit-portfolio";
 import AddPortfolioModalContent from "./add-portfolio/add-project.component";
 import EditPrincipalImageModalContent from "./edit-principal-image";
 

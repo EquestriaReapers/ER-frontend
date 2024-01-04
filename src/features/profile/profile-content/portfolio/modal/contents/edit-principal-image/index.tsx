@@ -5,10 +5,9 @@ import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternate
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import ClearIcon from '@mui/icons-material/Clear'
 
-import { useContext } from 'react'
-import PortfolioModalContext from '../../modal-context'
-import { PortfolioContent } from '../../modal-context/types'
-import useEditPrincipalImageModalContent from './use-edit-principal-image-form-state'
+import { useContext } from "react";
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
 import {
   boxButtonStyles,
   buttonStyle,
@@ -21,16 +20,21 @@ import {
   modalStyle,
   titleStyles,
   uploadBoxStyles,
-  uploadButtonStyles
-} from './styles'
-import useForm from './use-form'
-import useFileList from './use-file-list'
+  uploadButtonStyles,
+} from "./styles";
+import useForm from "./use-form";
+import useEditPrincipalImageState from "./use-edit-principal-image-form-state";
 
 const EditPrincipalImageModalContent = ({ project }: Props) => {
-  const { setContent } = useContext(PortfolioModalContext)
-  const { imagePrincipal, onImagePrincipalChange, files } =
-    useEditPrincipalImageModalContent()
-  const { onDragOver, onDrop, deleteFile } = useFileList()
+  const { setContent } = useContext(PortfolioModalContext);
+  const {
+    imagePrincipal,
+    onImagePrincipalChange,
+    files,
+    onDragOver,
+    onDrop,
+    deleteFile,
+  } = useEditPrincipalImageState();
 
   const projectState = { imagePrincipal }
 

@@ -17,7 +17,7 @@ export const modalStyle = {
 
 export const titleStyles = {
   margin: "0px 0px 12px",
-  fontSize:{ xs: "20px", sm: "22px", md: "30px"},
+  fontSize: { xs: "20px", sm: "22px", md: "30px" },
   fontFamily: "Inter",
   lineHeight: "normal",
   fontStyle: "normal",
@@ -49,19 +49,80 @@ export const textFieldStyles = {
   fontFamily: "Inter",
 };
 
-export const boxButtonStyles = {
-  display: "flex",
-
-  justifyContent: {
-    xs: "center",
-    md: "flex-start",
-  },
-};
-
 export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
   fontFamily: "Inter",
   wordWrap: "break-word",
+};
+
+export const boxButtonStyles = {
+  display: "flex",
+  justifyContent: "center",
+};
+
+export const inputLabelStyles = {
+  color: "#000",
+  fontFamily: "inter",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+  textTransform: "none",
+};
+
+export const uploadBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  marginTop: "10px",
+};
+
+export const inputBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  border: "2px dashed #ccc",
+  borderRadius: "8px",
+  textAlign: "center",
+  alignItems: "center",
+};
+
+export const fileListBoxStyles = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+};
+
+export const fileNameStyles = {
+  color: "#000",
+  fontFamily: "inter",
+  fontSize: "14px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  textTransform: "none",
+};
+
+export const uploadButtonStyles = {
+  ":hover": { backgroundColor: "#fff" },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingTop: "25px",
+  paddingBottom: "50px",
+  width: "100%",
+  gap: "14px",
+};
+
+export const inputDescriptionStyles = {
+  color: "#000",
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  textTransform: "none",
 };

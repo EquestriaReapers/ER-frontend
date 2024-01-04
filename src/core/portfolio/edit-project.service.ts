@@ -22,7 +22,6 @@ export async function updateProfileProject(
       });
     }
 
-    console.log(formData);
     const response = await axios.patch(
       `${PORTFOLIO_URL}/${projectId}`,
       formData,
