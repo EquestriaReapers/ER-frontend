@@ -1,5 +1,5 @@
 import { Box, Typography, TextField, Button } from "@mui/material";
-import { FormTitleStyles, buttonStyle } from "../styles";
+import { FormTitleStyles, buttonStyle, textFieldBoxStyles } from "../styles";
 import EmailIcon from "@mui/icons-material/Email";
 import ContactCards from "./contact-cards";
 import { ContactMethod } from "core/profiles/types";
@@ -15,13 +15,7 @@ const ContactMethods = () => {
         <Typography sx={FormTitleStyles}>Agregar Correo de contacto</Typography>
       </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+      <Box sx={textFieldBoxStyles}>
         <TextField
           className={"fieldsStyle"}
           sx={{ width: "100%", marginRight: 1 }}

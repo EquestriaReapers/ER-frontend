@@ -12,11 +12,38 @@ export const FormTitleStyles = {
   lineHeight: "normal",
 };
 
+export const textFieldBoxStyles = {
+  display: "flex",
+  flexDirection: {
+    xs: "column",
+    sm: "row",
+    lg: "row",
+  },
+  justifyContent: "space-between",
+}
+
 export const iconTextStyles = {
   display: "flex",
   flexDirection: "row",
   marginBottom: "10px",
 };
+
+export const languageBoxStyles = {
+  width: "100%",
+}
+
+export const emailBoxStyles = {
+  width: "100%",
+  mt: {
+    xs: 1,
+    sm: 0,
+    lg: 0,
+  },
+  ml: {
+    sm: 3,
+    lg: 3,
+  },
+}
 
 export const boxContentStyles = {
   display: "flex",
@@ -43,6 +70,7 @@ export const descriptionStyles = {
   fontFamily: "Inter",
   wordWrap: "break-word",
   py: 2,
+  mb: 1,
 };
 
 export const buttonStyle = {

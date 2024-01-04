@@ -1,6 +1,6 @@
 import { Button, Box, Typography } from "@mui/material";
 import { buttonStyle, titleStyles, subTitleStyles } from "../../../../styles";
-import { descriptionStyles, boxContentStyles } from "./styles";
+import { descriptionStyles, boxContentStyles,emailBoxStyles,languageBoxStyles } from "./styles";
 import Email from "./contact-methods";
 import useContactCardContext from "../contact-card-context/use-contact-card-context";
 import BasicDataForm from "./basic-data/basic-data-form";
@@ -20,7 +20,7 @@ const ModalContent = () => {
       </Box>
 
       <Box sx={boxContentStyles}>
-        <Box>
+        <Box sx={languageBoxStyles}>
           <Typography sx={subTitleStyles}>Datos Generales</Typography>
           <Typography sx={descriptionStyles}>
             Estos datos básicos aparecerán en tu perfil y CV
@@ -29,7 +29,7 @@ const ModalContent = () => {
           <BasicDataForm externalState={basicData} onChange={setBasicData} />
           <Language />
         </Box>
-        <Box sx={{ mx: 3 }}>
+        <Box sx={emailBoxStyles}>
           <Typography sx={subTitleStyles}>Medios de contacto</Typography>
           <Typography sx={descriptionStyles}>
             Estos datos sólo aparecerán en tu CV

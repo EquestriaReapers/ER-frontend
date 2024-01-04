@@ -10,5 +10,5 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
+  borderRadius: "6px",
 };
