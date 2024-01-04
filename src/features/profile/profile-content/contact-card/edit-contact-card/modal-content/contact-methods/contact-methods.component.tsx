@@ -30,6 +30,7 @@ const ContactMethods = () => {
         />
         <Button
           sx={buttonStyle}
+          disabled={profile.contactMethods.length == 3}
           className="exp-show-button"
           onClick={() => {
             addContactMethod(contactMethod);
