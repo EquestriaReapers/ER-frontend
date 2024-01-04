@@ -47,6 +47,27 @@ export default styled(EditCardComponent)`
     max-width: 350px;
   }
 
+  .contact-card-style {
+    width: 100%;
+    margin-bottom: 12px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+    border-radius: 2px;
+    justify-content: space-between;
+  }
+
+  .contact-cardText-style {
+    color: #535353;
+    font-family: inter;
+    font-weight: 600;
+    padding: 8px 8px 8px 8px;
+  }
+
+  .contact-cardDelete-style {
+    color: #007935;
+  }
+
   @media screen and (max-width: ${LG_SIZE}px) {
     width: 500px;
   }
