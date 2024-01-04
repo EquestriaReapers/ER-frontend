@@ -1,8 +1,9 @@
 import { Box, Button, IconButton, TextField, Typography } from '@mui/material'
 import { Portfolio } from 'core/profiles/types'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload'
 import useForm from './use-form'
-import { useCallback, useContext, useEffect } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import {
   boxButtonStyles,
   headerStyles,
@@ -70,6 +71,26 @@ const EditProjectModalContent = ({ project, className }: Props) => {
     projectId
   })
 
+  const [files, setFiles] = useState<File[]>([])
+
+  const onDragOver = (event: { preventDefault: () => void }) => {
+    event.preventDefault()
+  }
+
+  const onDrop = (event: {
+    preventDefault: () => void
+    dataTransfer: { files: FileList }
+  }) => {
+    event.preventDefault()
+
+    const droppedFiles = event.dataTransfer.files
+
+    setFiles((prevFiles) => [
+      ...prevFiles,
+      ...(Array.from(droppedFiles) as File[])
+    ])
+  }
+
   return (
     <Box sx={modalStyle} className={className}>
       <Box sx={headerStyles}>
@@ -99,25 +120,25 @@ const EditProjectModalContent = ({ project, className }: Props) => {
               </Box>
               <Box className='inputStyles'>
                 <Box className='inputStyles'>
-                  <Box className='inputContainer pl-5px' sx={{ mb: 2 }}>
+                  <Box className='' sx={{ display: 'flex', mb: 2 }}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
-                        sx={textFieldStyles}
+                        sx={{ textFieldStyles }}
                         label='Fecha Final'
                         onChange={onDateEndChange}
                         value={dateEnd}
                       />
                     </LocalizationProvider>
+                    <Box className='inputContainer pl-5px' sx={{ ml: 3 }}>
+                      <TextField
+                        sx={textFieldStyles}
+                        id='location'
+                        label='Ubicación'
+                        onChange={onLocationChange}
+                        value={location}
+                      />
+                    </Box>
                   </Box>
-                </Box>
-                <Box className='inputContainer pl-5px' sx={{ mb: 2 }}>
-                  <TextField
-                    sx={textFieldStyles}
-                    id='location'
-                    label='Ubicación'
-                    onChange={onLocationChange}
-                    value={location}
-                  />
                 </Box>
               </Box>
 
@@ -133,12 +154,44 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                 />
               </Box>
             </Box>
-            <Box sx={{ mb: 2 }}>
-              <TextField
+            <Box
+              border='2px dashed #ccc'
+              borderRadius='8px'
+              p={2}
+              textAlign='center'
+              display='flex'
+              flexDirection='column'
+              alignItems='center'
+              onDragOver={onDragOver}
+              onDrop={onDrop}
+              sx={{ mb: 2 }}
+            >
+              <input
                 type='file'
+                multiple
+                style={{ display: 'none' }}
                 onChange={onImageChange}
-                inputProps={{ multiple: true }}
               />
+              <CloudUploadIcon fontSize='large' color='primary' />
+              <Typography variant='subtitle1' color='textSecondary'>
+                Arrastra y sube tus archivos
+              </Typography>
+              <Button color='primary' component='label'>
+                Subir Archivo
+                <input
+                  type='file'
+                  multiple
+                  style={{ display: 'none' }}
+                  onChange={onImageChange}
+                />
+              </Button>
+
+              {files!.length > 0 && (
+                <Typography variant='body2' color='textSecondary' mt={2}>
+                  Archivos seleccionados:
+                  {files!.map((file) => file.name).join(', ')}
+                </Typography>
+              )}
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>
