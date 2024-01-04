@@ -13,7 +13,7 @@ const ProjectInfoModal = ({ project }: Props) => {
           width: "100%",
           height: "120px",
           backgroundColor: "#D9D9D9",
-          borderRadius: "6px",
+          borderRadius: "6px 6px 0px 0px",
         }}
       ></Box>
       <Box
