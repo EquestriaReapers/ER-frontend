@@ -1,3 +1,4 @@
+import { SkillType } from "core/skills/types";
 import { User } from "core/users/types";
 
 export interface Profile {
@@ -24,6 +25,7 @@ export interface Pagination {
 export interface Skill {
   id: number;
   name: string;
+  type: SkillType;
   level: string;
 }
 
