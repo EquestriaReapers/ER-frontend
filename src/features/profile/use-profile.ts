@@ -4,8 +4,9 @@ import { useCallback, useEffect, useState } from "react";
 import { useErrorToast } from "hooks/use-error-toast";
 
 export default function useProfile(id: number | null) {
+  const [isFirstTimeLoaded, setIsFirstTimeLoaded] = useState<boolean>(false);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(false); // [1
+  const [loading, setLoading] = useState(false);
   const { showErrorToast } = useErrorToast();
 
   const fetchProfile = useCallback(async () => {
@@ -17,6 +18,7 @@ export default function useProfile(id: number | null) {
     } catch (error) {
       showErrorToast(error);
     } finally {
+      setIsFirstTimeLoaded(true);
       setLoading(false);
     }
   }, [id, setProfile, showErrorToast]);
@@ -25,5 +27,5 @@ export default function useProfile(id: number | null) {
     fetchProfile();
   }, [fetchProfile]);
 
-  return { profile, fetchProfile, loading };
+  return { profile, isFirstTimeLoaded, loading, fetchProfile };
 }
