@@ -7,6 +7,7 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
+import NewPassword from "features/auth/NewPassword";
 import Home from "features/home/Home";
 import "typeface-inter";
 import {
@@ -68,12 +69,16 @@ const routerConfig: RouteObject[] = [
         element: <NotFound />,
       },
       {
-        path: "/home",
-        element: <Home />,
-      },
-      {
         path: "/forgot-password/",
         element: <ForgotPassword />,
+      },
+      {
+        path: "/new-password/",
+        element: <NewPassword />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
     ],
   },
