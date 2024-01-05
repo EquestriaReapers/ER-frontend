@@ -24,7 +24,7 @@ export const ContactCardContextProvider = ({
   const contextValue = {
     profileId,
     basicData,
-    languagues: [],
+    languages: [],
     contactMethods: profile.contactMethods || [],
     fetchProfile,
     loading,

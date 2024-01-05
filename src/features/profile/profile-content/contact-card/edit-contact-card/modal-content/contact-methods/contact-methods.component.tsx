@@ -8,8 +8,7 @@ import useProfileContext from "../../../../../profile-context/use-profile-contex
 
 const ContactMethods = () => {
   const { profile } = useProfileContext();
-  const { contactMethod, onChangeContactMethod, setContactMethod } =
-    useContactMethodFormState();
+  const { contactMethod, onChangeContactMethod } = useContactMethodFormState();
   const addContactMethod = useAddContacthMethods();
 
   return (
@@ -21,7 +20,7 @@ const ContactMethods = () => {
 
       <Box sx={textFieldBoxStyles}>
         <TextField
-          className={"fieldsStyle"}
+          className="fieldsStyle"
           sx={{ width: "100%", marginRight: 1 }}
           onChange={onChangeContactMethod}
           id="web-page"
@@ -31,7 +30,6 @@ const ContactMethods = () => {
         <Button
           sx={buttonStyle}
           disabled={profile.contactMethods.length == 3}
-          className="exp-show-button"
           onClick={() => {
             addContactMethod(contactMethod);
           }}

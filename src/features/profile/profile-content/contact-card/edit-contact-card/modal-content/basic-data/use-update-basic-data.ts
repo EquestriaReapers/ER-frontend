@@ -6,26 +6,35 @@ import useContactCardContext from "../../contact-card-context/use-contact-card-c
 import { useAuthState } from "hooks/use-auth-state";
 import { useNavigate } from "react-router-dom";
 import { BasicDataFormState } from "../../contact-card-context/contact-card-context";
+import { useSuccessToast } from "hooks/use-success-toast";
 
 const useUpdateContactData = (payload: BasicDataFormState) => {
   const { setLoading } = useContactCardContext();
   const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
   const { showErrorToast } = useErrorToast();
-
+  const { showSuccessToast } = useSuccessToast();
   return useCallback(async () => {
     try {
       const token = getToken();
       setLoading(true);
       const data = await updateContactData(token, payload);
       fetchProfile();
+      showSuccessToast("Datos actualizados correctamente");
       return data;
     } catch (error) {
       showErrorToast(error);
     } finally {
       setLoading(false);
     }
-  }, [fetchProfile, getToken, payload, setLoading, showErrorToast]);
+  }, [
+    fetchProfile,
+    getToken,
+    payload,
+    setLoading,
+    showErrorToast,
+    showSuccessToast,
+  ]);
 };
 
 function useGetToken() {

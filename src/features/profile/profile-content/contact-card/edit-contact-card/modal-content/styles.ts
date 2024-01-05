@@ -39,10 +39,7 @@ export const emailBoxStyles = {
     sm: 0,
     lg: 0,
   },
-  ml: {
-    sm: 3,
-    lg: 3,
-  },
+  
 }
 
 export const boxContentStyles = {
@@ -52,15 +49,16 @@ export const boxContentStyles = {
     sm: "row",
     lg: "row",
   },
+  gap: {
+    xs: 0,
+    sm: 3,
+    lg: 3,
+  },
 };
 
 export const textfieldStyles = {
   width: "100%",
   flex: 1,
-  mr: {
-    sm: 2,
-    lg: 2,
-  },
 };
 
 export const descriptionStyles = {
@@ -75,10 +73,10 @@ export const descriptionStyles = {
 
 export const buttonStyle = {
   height: "100%",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "700",
+  fontWeight: "500",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",

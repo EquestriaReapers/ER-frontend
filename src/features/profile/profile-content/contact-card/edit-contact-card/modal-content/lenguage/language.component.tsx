@@ -10,8 +10,8 @@ import LanguageInput from "./language-input/language-input.component";
 import { useState } from "react";
 import SelectComponent from "components/select-component";
 
-const Lenguage = () => {
-  const [languague, setLanguague] = useState("");
+const Language = () => {
+  const [language, setlanguage] = useState("");
   const [nivel, setNivel] = useState("");
   const disabled = false;
 
@@ -23,19 +23,12 @@ const Lenguage = () => {
       </Box>
 
       <Box sx={boxContentStyles}>
-        {/*<TextField
-          className={"fieldsStyle"}
-          sx={textfieldStyles}
-          id="web-page"
-          label="idioma"
-          variant="outlined"
-        />*/}
         <Box sx={textfieldStyles}>
           <LanguageInput
             disabled={disabled}
-            value={languague}
+            value={language}
             onChange={function (value: string): void {
-              setLanguague(value);
+              setlanguage(value);
             }}
           />
         </Box>
@@ -57,4 +50,4 @@ const Lenguage = () => {
   );
 };
 
-export default Lenguage;
+export default Language;

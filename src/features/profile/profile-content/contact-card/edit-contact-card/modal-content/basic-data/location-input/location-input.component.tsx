@@ -47,8 +47,6 @@ const LocationInput = ({ value, onChange }: Props) => {
         <Select
           disabled={loading}
           sx={textFieldStyles}
-          placeholder="Carrera"
-          label="Carrera"
           value={value}
           onChange={onChangeLocation}
           MenuProps={{

@@ -1,6 +1,11 @@
 import { Button, Box, Typography } from "@mui/material";
 import { buttonStyle, titleStyles, subTitleStyles } from "../../../../styles";
-import { descriptionStyles, boxContentStyles,emailBoxStyles,languageBoxStyles } from "./styles";
+import {
+  descriptionStyles,
+  boxContentStyles,
+  emailBoxStyles,
+  languageBoxStyles,
+} from "./styles";
 import Email from "./contact-methods";
 import useContactCardContext from "../contact-card-context/use-contact-card-context";
 import BasicDataForm from "./basic-data/basic-data-form";
@@ -41,9 +46,7 @@ const ModalContent = () => {
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
         <Button
           sx={buttonStyle}
-          className="exp-show-button"
           onClick={() => {
-            //setIsOpen(false);
             updateContactData();
           }}
         >
