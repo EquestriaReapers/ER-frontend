@@ -59,10 +59,6 @@ export const boxContentStyles = {
 export const textfieldStyles = {
   width: "100%",
   flex: 1,
-  mr: {
-    sm: 2,
-    lg: 2,
-  },
 };
 
 export const descriptionStyles = {
