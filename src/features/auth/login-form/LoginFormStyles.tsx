@@ -84,7 +84,7 @@ export const useLinkBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const LinkBoxStyles = {
-    marginLeft: isSmallScreen ? "3px" : "15px",
+    marginLeft: isSmallScreen ? "6px" : "3px",
     fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
@@ -98,23 +98,17 @@ export const RedirectBoxStyles = {
   fontFamily: "Inter, sans-serif",
 };
 
-export const TextFieldTypography = {
-  fontFamily: "Inter, sans-serif",
-  color: "#979899",
-  fontSize: "14px",
-};
-
 export const UcabLogoStyles = {
   height: "85px",
   width: "85px",
   marginBottom: "32px",
+  
 };
 
 export const ImageBoxStyles = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "40px",
 };
 
 export const CheckBoxStyles = {

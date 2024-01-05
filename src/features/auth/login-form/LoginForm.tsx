@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 
 import ucabLogo from "../images/ucabLogo.webp";
 import {
-  TextFieldTypography,
   UcabLogoStyles,
   ImageBoxStyles,
   FormBottomTypographyStyles,
