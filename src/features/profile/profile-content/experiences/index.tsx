@@ -14,6 +14,7 @@ const Experiences = () => {
           display: "flex",
           flexDirection: "column",
           gap: { xs: "18px", sm: "45px" },
+          width: { xs: "100%", sm: "100%", md: "70%", lg: "60%" },
         }}
       >
         <Box sx={boxTitleStyles}>

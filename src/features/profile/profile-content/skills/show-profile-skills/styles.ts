@@ -1,14 +1,10 @@
 export const skillBoxStyles = {
   overflow: "hidden",
-  width: {
-    xs: "100%",
-    md: "60%",
-    lg: "60%",
-  },
+  width: "100%",
   display: "flex",
   flexWrap: "wrap",
   marginTop: "17px",
-  gap: { xs: "9px", sm: "11px" },
+  gap: { xs: "8px", sm: "10px" },
 };
 
 export const skillTitleStyles = {

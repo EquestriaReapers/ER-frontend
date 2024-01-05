@@ -1,6 +1,7 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
 import {
+  BothSkillsContainer,
   aboutMeSection,
   aboutMeTypographyStyles,
   buttonStyles,
@@ -13,6 +14,7 @@ import {
   nameStyles,
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
+  skillsTitleTypographyStyles,
   topSectionStyles,
 } from "./styles";
 import EditProfileModal from "./profile-data/modal";
@@ -22,6 +24,7 @@ import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
 import ContactCard from "./contact-card";
+import { SkillType } from "core/skills/types";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
@@ -80,7 +83,15 @@ const ProfileContent = () => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <Skills />
+            <Box sx={{ width: "100%" }}>
+              <Typography sx={skillsTitleTypographyStyles}>
+                Habilidades
+              </Typography>
+              <BothSkillsContainer>
+                <Skills skillType={SkillType.Hard} />
+                <Skills skillType={SkillType.Soft} />
+              </BothSkillsContainer>
+            </Box>
             <Experiences />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
