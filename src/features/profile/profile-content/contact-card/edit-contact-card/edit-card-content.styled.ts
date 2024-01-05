@@ -73,7 +73,7 @@ export default styled(EditCardComponent)`
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {
-    width: 400px;
+   
 
     .exp-show-description {
       max-width: none;
