@@ -4,7 +4,7 @@ import { PortfolioContent } from "../modal-context/types";
 import ShowPortfolio from "./show-portfolios/show-portfolios.component";
 import DeleteProjectModalContent from "./delete-portfolio";
 import EditProjectModalContent from "./edit-portfolio";
-import AddPortfolioModalContent from "./add-portfolio/add-project.component";
+import AddPortfolioModalContent from "./add-portfolio";
 import EditPrincipalImageModalContent from "./edit-principal-image";
 
 export const PortfolioContentManager: FunctionComponent = () => {

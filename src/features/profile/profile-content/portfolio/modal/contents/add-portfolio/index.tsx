@@ -1,10 +1,6 @@
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
-import { Portfolio } from "core/profiles/types";
+import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import ClearIcon from "@mui/icons-material/Clear";
-import useForm from "./use-form";
-import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -12,87 +8,52 @@ import {
   modalStyle,
   titleStyles,
   buttonStyle,
-  fileListBoxStyles,
-  inputDescriptionStyles,
   uploadBoxStyles,
   inputBoxStyles,
   uploadButtonStyles,
+  fileListBoxStyles,
+  inputDescriptionStyles,
 } from "./styles";
+
+import { useContext } from "react";
+
 import PortfolioModalContext from "../../modal-context";
 import { PortfolioContent } from "../../modal-context/types";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import useProjectFormState from "./use-project-form-state";
-import dayjs, { Dayjs } from "dayjs";
-import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import useProjectState from "./use-project-form-state";
+import useAddProjectForm from "./use-form";
 import ImageCard from "./image-card";
 
-const EditProjectModalContent = ({ project, className }: Props) => {
+import ClearIcon from "@mui/icons-material/Clear";
+
+const AddPortfolioModalContent = ({ className }: Props) => {
   const { setContent } = useContext(PortfolioModalContext);
-  const { fetchProfile } = useProfileContext();
   const {
+    title,
+    description,
+    location,
+    dateEnd,
+    newFiles,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
     onImageChange,
-    setTitle,
-    setDescription,
-    setLocation,
-    setDateEnd,
-    deletedImages,
-    title,
-    newFiles,
-    description,
-    location,
-    dateEnd,
-    previousImages,
-    setImage,
+    deleteFile,
     onDragOver,
     onDrop,
-    deleteFile,
-  } = useProjectFormState();
+  } = useProjectState();
 
-  const getProjectInfo = useCallback(() => {
-    setTitle(project.title);
-    setDescription(project.description);
-    setLocation(project.location);
-    setDateEnd(toDateOrNull(project.dateEnd));
-    const _projectImages = project.image || [];
-    setImage(_projectImages);
-  }, [
-    setTitle,
-    project.title,
-    project.description,
-    project.location,
-    project.dateEnd,
-    project.image,
-    setDescription,
-    setLocation,
-    setDateEnd,
-    setImage,
-  ]);
-
-  useEffect(() => {
-    getProjectInfo();
-  }, [getProjectInfo]);
-
-  const projectState = {
+  const project = {
     title,
     description,
     location,
     dateEnd,
     newFiles,
   };
-  const projectId = project.id;
-
-  const onSubmitForm = useForm({
-    project: projectState,
-    projectId,
-    deletedImages,
-    newFiles,
-  });
+  const onSubmitForm = useAddProjectForm({ project });
 
   return (
     <Box sx={modalStyle} className={className}>
@@ -102,16 +63,15 @@ const EditProjectModalContent = ({ project, className }: Props) => {
             sx={{ ml: "-10px" }}
             onClick={async () => {
               setContent(PortfolioContent.Show);
-              await fetchProfile();
             }}
           >
             <ArrowBackIcon />
           </IconButton>
 
-          <Typography sx={titleStyles}>Editar Proyecto</Typography>
+          <Typography sx={titleStyles}>Agregar Proyecto</Typography>
 
           <Typography className="exp-show-description">
-            Aquí podrás editar los datos de tu proyecto
+            Aquí podrás agregar un proyecto a tu portafolio
           </Typography>
         </Box>
 
@@ -130,7 +90,6 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                 id="title"
                 label="Título"
                 onChange={onTitleChange}
-                value={title}
               />
 
               <Box sx={{ display: "flex" }}>
@@ -139,7 +98,6 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                     sx={{ textFieldStyles }}
                     label="Fecha Final"
                     onChange={onDateEndChange}
-                    value={dateEnd}
                   />
                 </LocalizationProvider>
                 <Box className="inputContainer pl-5px" sx={{ ml: 3 }}>
@@ -148,7 +106,6 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                     id="location"
                     label="Ubicación"
                     onChange={onLocationChange}
-                    value={location}
                   />
                 </Box>
               </Box>
@@ -160,7 +117,6 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                 rows={4}
                 label="Descripción"
                 onChange={onDescriptionChange}
-                value={description}
               />
             </Box>
 
@@ -168,7 +124,7 @@ const EditProjectModalContent = ({ project, className }: Props) => {
               <Box sx={inputBoxStyles} onDragOver={onDragOver} onDrop={onDrop}>
                 <Button
                   component="label"
-                  disabled={previousImages.length >= 3}
+                  disabled={newFiles.length >= 3}
                   sx={uploadButtonStyles}
                 >
                   <Typography sx={inputDescriptionStyles}>
@@ -192,15 +148,15 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                   gap: "15px",
                 }}
               >
-                {previousImages.length > 0 && (
+                {newFiles.length > 0 && (
                   <>
-                    {previousImages.map((previousImage) => (
+                    {newFiles.map((image) => (
                       <Box sx={fileListBoxStyles}>
-                        <ImageCard imageUrl={previousImage.previewUrl} />
+                        <ImageCard image={image} />
 
                         <IconButton
                           onClick={() => {
-                            deleteFile(previousImage);
+                            deleteFile(image);
                           }}
                           sx={{
                             display: "flex",
@@ -227,14 +183,8 @@ const EditProjectModalContent = ({ project, className }: Props) => {
   );
 };
 
-export default EditProjectModalContent;
-
 interface Props {
-  project: Portfolio;
   className?: string;
 }
 
-function toDateOrNull(date: string | Date | null): Dayjs | null {
-  if (date) return dayjs(date);
-  return null;
-}
+export default AddPortfolioModalContent;

@@ -6,12 +6,12 @@ const useProjectState = () => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
-  const [imagePrincipal, setImagePrincipal] = useState<File | null>(null);
-  const [image, setImage] = useState<File[]>([]);
+  const [newFiles, setNewFiles] = useState<File[]>([]);
 
   const onTitleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
   }, []);
+
   const onDescriptionChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       setDescription(event.target.value);
@@ -27,19 +27,45 @@ const useProjectState = () => {
   const onDateEndChange = useCallback((date: Dayjs | null) => {
     setDateEnd(date);
   }, []);
-  const onImagePrincipalChange = useCallback(
+
+  const addNewImages = useCallback((files: FileList) => {
+    const filesArray = Array.from(files);
+    setNewFiles((preNewFiles) => {
+      const newNewFilesArray = [...preNewFiles, ...filesArray];
+
+      return newNewFilesArray;
+    });
+  }, []);
+
+  const onImageChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      setImagePrincipal(event.target.files?.[0] || null);
+      if (event.target.files) {
+        addNewImages(event.target.files);
+      }
     },
-    []
+    [addNewImages]
   );
-  const onImageChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      const filesArray = Array.from(event.target.files);
-      setImage((prevImages) => {
-        return [...prevImages, ...filesArray];
-      });
-    }
+
+  const onDragOver = useCallback((event: { preventDefault: () => void }) => {
+    event.preventDefault();
+  }, []);
+
+  const onDrop = useCallback(
+    (event: {
+      preventDefault: () => void;
+      dataTransfer: { files: FileList };
+    }) => {
+      event.preventDefault();
+      const droppedFiles = event.dataTransfer.files;
+      addNewImages(droppedFiles);
+    },
+    [addNewImages]
+  );
+
+  const deleteFile = useCallback((fileToDelete: File) => {
+    setNewFiles((prevFiles) =>
+      prevFiles.filter((file) => file !== fileToDelete)
+    );
   }, []);
 
   return {
@@ -47,14 +73,15 @@ const useProjectState = () => {
     description,
     location,
     dateEnd,
-    imagePrincipal,
-    image,
+    newFiles,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
-    onImagePrincipalChange,
     onImageChange,
+    onDragOver,
+    onDrop,
+    deleteFile,
   };
 };
 

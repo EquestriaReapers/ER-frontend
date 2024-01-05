@@ -7,30 +7,24 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  p: {
-    xs: 2,
-    sm: 3,
-    md: 4,
-  },
+  width: "75%",
   borderRadius: "6px",
 };
 
 export const titleStyles = {
-  fontFamily: "Inter",
-  fontWeight: "bold",
-  fontSize:{ xs: "20px", sm: "22px", md: "30px"},
   margin: "0px 0px 12px",
-  width: {
-    xs: "100%",
-    sm: "100%",
-  },
+  fontSize: { xs: "20px", sm: "22px", md: "30px" },
+  fontFamily: "inter",
+  lineHeight: "normal",
+  fontStyle: "normal",
+  fontWeight: "700",
 };
 
 export const buttonStyle = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "bold",
+  fontWeight: "600",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
@@ -42,24 +36,92 @@ export const buttonStyle = {
 };
 
 export const headerStyles = {
-  py: 2,
+  pb: 2,
 };
 
 export const textFieldStyles = {
-  fontFamily: "Inter",
   width: "100%",
   display: "flex",
-  fontSize: "17px",
+  fontFamily: "Inter",
+};
+
+export const descriptionStyles = {
+  fontSize: "16px",
+  fontWeight: "400",
+  color: "#444444",
+  fontFamily: "Inter",
+  wordWrap: "break-word",
 };
 
 export const boxButtonStyles = {
   display: "flex",
-
-  justifyContent: {
-    xs: "center",
-    md: "flex-start",
-  },
+  justifyContent: "flex-end",
+  marginTop: "15px",
 };
 
+export const inputLabelStyles = {
+  color: "#000",
+  fontFamily: "inter",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "500",
+  lineHeight: "normal",
+  textTransform: "none",
+};
 
+export const uploadBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+  width: "50%",
+};
 
+export const inputBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  border: "2px dashed #ccc",
+  borderRadius: "8px",
+  textAlign: "center",
+  alignItems: "center",
+  width: "100%",
+};
+
+export const fileListBoxStyles = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "row",
+  width: "100%",
+};
+
+export const fileNameStyles = {
+  color: "#000",
+  fontFamily: "inter",
+  fontSize: "14px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  textTransform: "none",
+};
+
+export const uploadButtonStyles = {
+  ":hover": { backgroundColor: "#fff" },
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingTop: "25px",
+  paddingBottom: "50px",
+  width: "100%",
+  gap: "14px",
+};
+
+export const inputDescriptionStyles = {
+  color: "#000",
+  textAlign: "center",
+  fontFamily: "inter",
+  fontSize: "16px",
+  fontStyle: "normal",
+  fontWeight: "400",
+  lineHeight: "normal",
+  textTransform: "none",
+};

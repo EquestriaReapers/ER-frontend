@@ -7,29 +7,24 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  p: {
-    xs: 2,
-    sm: 3,
-    md: 4,
-  },
-  width: "60%",
+  width: "75%",
   borderRadius: "6px",
 };
 
 export const titleStyles = {
   margin: "0px 0px 12px",
   fontSize: { xs: "20px", sm: "22px", md: "30px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
 };
 
 export const buttonStyle = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "bold",
+  fontWeight: "600",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
@@ -41,7 +36,7 @@ export const buttonStyle = {
 };
 
 export const headerStyles = {
-  py: 2,
+  pb: 2,
 };
 
 export const textFieldStyles = {
@@ -60,7 +55,8 @@ export const descriptionStyles = {
 
 export const boxButtonStyles = {
   display: "flex",
-  justifyContent: "center",
+  justifyContent: "flex-end",
+  marginTop: "15px",
 };
 
 export const inputLabelStyles = {
@@ -77,7 +73,7 @@ export const uploadBoxStyles = {
   display: "flex",
   flexDirection: "column",
   gap: "15px",
-  width: "100%",
+  width: "50%",
 };
 
 export const inputBoxStyles = {
@@ -87,6 +83,7 @@ export const inputBoxStyles = {
   borderRadius: "8px",
   textAlign: "center",
   alignItems: "center",
+  width: "100%",
 };
 
 export const fileListBoxStyles = {
@@ -95,7 +92,6 @@ export const fileListBoxStyles = {
   alignItems: "center",
   flexDirection: "row",
   width: "100%",
-  position: "relative",
 };
 
 export const fileNameStyles = {

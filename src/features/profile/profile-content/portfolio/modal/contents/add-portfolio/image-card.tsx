@@ -1,6 +1,8 @@
 import { Card, CardMedia } from "@mui/material";
 
-const ImageCard = ({ imageUrl }: Props) => {
+const ImageCard = ({ image }: Props) => {
+  const objectURL = URL.createObjectURL(image);
+  console.log("hola")
   return (
     <Card>
       <CardMedia
@@ -11,13 +13,13 @@ const ImageCard = ({ imageUrl }: Props) => {
           height: "125px",
           borderRadius: "5px",
         }}
-        image={imageUrl}
+        image={objectURL}
       />
     </Card>
   );
 };
 
 interface Props {
-  imageUrl: string;
+  image: File;
 }
 export default ImageCard;

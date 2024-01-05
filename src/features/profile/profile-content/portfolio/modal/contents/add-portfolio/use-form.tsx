@@ -38,7 +38,7 @@ const useAddProjectForm = ({ project }: Props) => {
           description: project.description,
           location: project.location,
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
-          image: project.image!,
+          image: project.newFiles!,
         });
 
         setLoading(true);
@@ -55,8 +55,8 @@ const useAddProjectForm = ({ project }: Props) => {
     [
       project.dateEnd,
       project.description,
-      project.image,
       project.location,
+      project.newFiles,
       project.title,
       getToken,
       setLoading,
@@ -76,8 +76,7 @@ export interface Props {
     description: string;
     location: string;
     dateEnd: Dayjs | null;
-    imagePrincipal?: string;
-    image: File[] | null;
+    newFiles: File[] | null;
   };
 }
 
