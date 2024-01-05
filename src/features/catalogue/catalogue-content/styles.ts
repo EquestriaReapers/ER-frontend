@@ -21,7 +21,7 @@ export const filtersContainer = {
   display: { xs: "none", md: "flex" },
   backgroundColor: "#F4F4F4",
   boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.25)",
-  borderRadius: "6px",
+  borderRadius: "6px 0px 0px 6px",
   height: "auto",
   width: "58%",
 };

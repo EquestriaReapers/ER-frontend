@@ -56,7 +56,7 @@ const Filters = () => {
               display: "flex",
               width: "100%",
               backgroundColor: "white",
-              borderRadius: "5px",
+              borderRadius: "6px",
               height: "35px",
               "&:hover": {
                 height: "35px",
@@ -85,7 +85,7 @@ const Filters = () => {
                 label={career}
                 onDelete={() => onCheckChange}
                 sx={{
-                  borderRadius: "5px",
+                  borderRadius: "6px",
                   backgroundColor: "#D9D9D9",
                   color: "#303030",
                   fontFamily: "Inter",

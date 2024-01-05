@@ -23,7 +23,7 @@ const DateRangePicker = () => {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          borderRadius: '8px'
+          borderRadius: '6px'
         }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -41,7 +41,7 @@ const DateRangePicker = () => {
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
-          borderRadius: '8px'
+          borderRadius: '6px'
         }}
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
