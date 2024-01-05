@@ -18,10 +18,10 @@ export async function updateProfileProject(
 
     if (body.image) {
       body.image?.forEach((file) => {
-        formData.append(`image`, file);
+        if (file instanceof File) formData.append(`image`, file);
       });
     }
-
+    console.log(formData);
     const response = await axios.patch(
       `${PORTFOLIO_URL}/${projectId}`,
       formData,
@@ -31,6 +31,7 @@ export async function updateProfileProject(
         },
       }
     );
+    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new BackendError(error);

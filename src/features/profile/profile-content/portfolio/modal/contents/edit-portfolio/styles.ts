@@ -12,6 +12,7 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
+  width: "60%",
   borderRadius: "6px",
 };
 
@@ -76,7 +77,7 @@ export const uploadBoxStyles = {
   display: "flex",
   flexDirection: "column",
   gap: "15px",
-  marginTop: "10px",
+  width: "100%",
 };
 
 export const inputBoxStyles = {
@@ -92,7 +93,9 @@ export const fileListBoxStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  gap: "10px",
+  flexDirection: "row",
+  width: "100%",
+  position: "relative",
 };
 
 export const fileNameStyles = {

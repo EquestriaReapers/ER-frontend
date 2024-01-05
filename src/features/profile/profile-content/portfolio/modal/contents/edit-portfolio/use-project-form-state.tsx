@@ -8,6 +8,7 @@ const useEditProjectState = () => {
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
   const [image, setImage] = useState<File[]>([]);
   const [files, setFiles] = useState<File[]>([]);
+  const [deletedImages, setDeletedImages] = useState<number[]>([]);
 
   const onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
@@ -25,6 +26,7 @@ const useEditProjectState = () => {
     if (event.target.files) {
       const filesArray = Array.from(event.target.files);
       setImage((prevImages) => [...prevImages, ...filesArray]);
+      setFiles((prevImages) => [...prevImages, ...filesArray]);
     }
   };
 
@@ -47,10 +49,12 @@ const useEditProjectState = () => {
     }
   };
 
-  const deleteFile = (index: number) => {
+  const deleteFile = async (index: number) => {
     setFiles((prevFiles) => {
       const newFiles = prevFiles.filter((_, i) => i !== index);
       onImageChange({ target: { files: newFiles } });
+      setDeletedImages((prevDeletedImages) => [...prevDeletedImages, index]);
+      console.log(deletedImages);
       return newFiles;
     });
   };
@@ -62,11 +66,13 @@ const useEditProjectState = () => {
     dateEnd,
     image,
     files,
+    deletedImages,
     setTitle,
     setDescription,
     setLocation,
     setDateEnd,
     setImage,
+    setDeletedImages,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,

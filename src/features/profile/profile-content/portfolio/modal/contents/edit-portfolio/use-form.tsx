@@ -1,54 +1,53 @@
-import { useAuthState } from 'hooks/use-auth-state'
-import { useErrorToast } from 'hooks/use-error-toast'
-import { useSuccessToast } from 'hooks/use-success-toast'
-import { FormEvent, useCallback, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useProfileContext from 'features/profile/profile-context/use-profile-context'
-import { Dayjs } from 'dayjs'
-import PortfolioModalContext from '../../modal-context'
-import { PortfolioContent } from '../../modal-context/types'
-import { updateProfileProject } from 'core/portfolio/edit-project.service'
+import { useAuthState } from "hooks/use-auth-state";
+import { useErrorToast } from "hooks/use-error-toast";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { FormEvent, useCallback, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { Dayjs } from "dayjs";
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { updateProfileProject } from "core/portfolio/edit-project.service";
+import { deleteAProjectImage } from "core/portfolio/delete-project-image.service";
 
-const useForm = ({ project, projectId }: EditProjectFormProps) => {
-  const { setContent, setLoading } = useContext(PortfolioModalContext)
-  const { fetchProfile } = useProfileContext()
-  const getToken = useGetToken()
-  const { showSuccessToast } = useSuccessToast()
-  const { showErrorToast } = useErrorToast()
+const useForm = ({
+  project,
+  projectId,
+  deletedImages,
+}: EditProjectFormProps) => {
+  const { setContent, setLoading } = useContext(PortfolioModalContext);
+  const { fetchProfile } = useProfileContext();
+  const getToken = useGetToken();
+  const { showSuccessToast } = useSuccessToast();
+  const { showErrorToast } = useErrorToast();
 
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
+      event.preventDefault();
 
       try {
-        const token = getToken()
-        if (
-          !project.title ||
-          !project.description ||
-          !project.location ||
-          !project.dateEnd
-        ) {
-          showErrorToast('Por favor, rellena todos los campos')
-          return
-        }
-
-        setLoading(true)
-        const data = await updateProfileProject(token, projectId, {
+        const token = getToken();
+        setLoading(true);
+        console.log(deletedImages);
+        deletedImages.map(async (index) => {
+          await deleteAProjectImage(token, projectId, index);
+        });
+        const editProjectData = await updateProfileProject(token, projectId, {
           title: project.title,
           description: project.description,
           location: project.location,
-          dateEnd: project.dateEnd?.format('YYYY-MM-DD'),
+          dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
           imagePrincipal: project.imagePrincipal!,
-          image: project.image!
-        })
-        showSuccessToast('Portafolio editada con éxito')
-        setContent(PortfolioContent.Show)
-        await fetchProfile()
-        return data
+          image: project.image!,
+        });
+        showSuccessToast("Proyecto editado con éxito");
+        setContent(PortfolioContent.Show);
+        await fetchProfile();
+        return editProjectData;
       } catch (error) {
-        showErrorToast(error)
+        showErrorToast(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     },
     [
@@ -59,44 +58,46 @@ const useForm = ({ project, projectId }: EditProjectFormProps) => {
       project.image,
       project.location,
       project.title,
+      deletedImages,
       setLoading,
       projectId,
       showSuccessToast,
       setContent,
       fetchProfile,
-      showErrorToast
+      showErrorToast,
     ]
-  )
+  );
 
-  return onSubmitForm
-}
+  return onSubmitForm;
+};
 
 export interface EditProjectFormProps {
   project: {
-    title: string
-    description: string
-    location: string
-    dateEnd: Dayjs | null
-    imagePrincipal?: File | null
-    image: File[] | null
-  }
-  projectId: number
+    title: string;
+    description: string;
+    location: string;
+    dateEnd: Dayjs | null;
+    imagePrincipal?: File | null;
+    image: File[] | null;
+  };
+  projectId: number;
+  deletedImages: number[];
 }
 
 function useGetToken() {
-  const navigate = useNavigate()
-  const { token } = useAuthState()
+  const navigate = useNavigate();
+  const { token } = useAuthState();
 
   return useCallback(() => {
     if (!token) {
-      navigate('/login')
+      navigate("/login");
       throw new Error(
-        'No se ha encontrado un token local para hacer la peticion'
-      )
+        "No se ha encontrado un token local para hacer la peticion"
+      );
     }
 
-    return token
-  }, [navigate, token])
+    return token;
+  }, [navigate, token]);
 }
 
-export default useForm
+export default useForm;
