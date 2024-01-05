@@ -20,7 +20,7 @@ export const textFieldBoxStyles = {
     lg: "row",
   },
   justifyContent: "space-between",
-}
+};
 
 export const iconTextStyles = {
   display: "flex",
@@ -30,7 +30,7 @@ export const iconTextStyles = {
 
 export const languageBoxStyles = {
   width: "100%",
-}
+};
 
 export const emailBoxStyles = {
   width: "100%",
@@ -39,8 +39,7 @@ export const emailBoxStyles = {
     sm: 0,
     lg: 0,
   },
-  
-}
+};
 
 export const boxContentStyles = {
   display: "flex",
@@ -84,5 +83,9 @@ export const buttonStyle = {
   my: 1,
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
+  },
+  "&.Mui-disabled": {
+    background: "#eaeaea",
+    color: "#c0c0c0",
   },
 };
