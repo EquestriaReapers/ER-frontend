@@ -6,7 +6,7 @@ const useEditProjectState = () => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
-  const [image, setImage] = useState<File[] | null>([]);
+  const [image, setImage] = useState<File[]>([]);
   const [files, setFiles] = useState<File[]>([]);
 
   const onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -23,10 +23,8 @@ const useEditProjectState = () => {
   };
   const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setImage((prevImages) => [
-        ...prevImages,
-        ...(Array.from(event.target.files) as File[]),
-      ]);
+      const filesArray = Array.from(event.target.files);
+      setImage((prevImages) => [...prevImages, ...filesArray]);
     }
   };
 
