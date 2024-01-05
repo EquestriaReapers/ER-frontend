@@ -138,6 +138,7 @@ export const TextFieldStyles = {
 };
 
 export const ButtonStyles = {
+  boxShadow:'none',
   backgroundColor: "#03652e",
   width: "100%",
   color: "white",
