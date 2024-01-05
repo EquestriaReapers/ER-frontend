@@ -6,7 +6,7 @@ export const useQuestionBoxStylesFunct = () => {
 
   const QuestionBoxStyles = {
     marginRight: isSmallScreen ? "3px" : "0px",
-    fontSize: isSmallScreen ? "14px" : "16px",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
@@ -85,7 +85,7 @@ export const useLinkBoxStylesFunct = () => {
 
   const LinkBoxStyles = {
     marginLeft: isSmallScreen ? "3px" : "15px",
-    fontSize: isSmallScreen ? "0.9rem" : "1rem",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
