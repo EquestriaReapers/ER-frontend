@@ -6,11 +6,10 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { useSkillsModalContext } from "./skills-modal-context/use-skills-modal-context";
 
-const useDeleteSkill = (
-  skillId: number,
-  setLoading: (loading: boolean) => void
-) => {
+const useDeleteSkill = (skillId: number) => {
+  const { setLoading } = useSkillsModalContext();
   const { fetchProfile } = useProfileContext();
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
@@ -29,7 +28,14 @@ const useDeleteSkill = (
     } finally {
       setLoading(false);
     }
-  }, [token, skillId, showSuccessToast, fetchProfile, showErrorToast]);
+  }, [
+    token,
+    skillId,
+    setLoading,
+    showSuccessToast,
+    fetchProfile,
+    showErrorToast,
+  ]);
 
   return deleteSkill;
 };

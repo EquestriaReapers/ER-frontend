@@ -5,10 +5,6 @@ export const boxStyles = {
     lg: 10,
   },
   overflow: "hidden",
-  width: {
-    md: "60%",
-    lg: "60%",
-  },
   display: "flex",
   flexWrap: "wrap",
 };
