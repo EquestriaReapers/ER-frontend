@@ -14,6 +14,7 @@ const useForm = ({
   project,
   projectId,
   deletedImages,
+  newFiles,
 }: EditProjectFormProps) => {
   const { setContent, setLoading } = useContext(PortfolioModalContext);
   const { fetchProfile } = useProfileContext();
@@ -29,16 +30,27 @@ const useForm = ({
         const token = getToken();
         setLoading(true);
         console.log(deletedImages);
-        deletedImages.map(async (index) => {
-          await deleteAProjectImage(token, projectId, index);
-        });
+
+        let _deletedImagesIndexes = [...deletedImages];
+        // Ordena de menor a mayor los indices
+        _deletedImagesIndexes.sort((a, b) => a - b);
+
+        for (let i = 0; i < _deletedImagesIndexes.length; i++) {
+          const currentIndex = _deletedImagesIndexes[i];
+          await deleteAProjectImage(token, projectId, currentIndex);
+          // Resta a todos los valores siguientes -1
+          _deletedImagesIndexes = _deletedImagesIndexes.map((index) =>
+            index > currentIndex ? index - 1 : index
+          );
+        }
+
         const editProjectData = await updateProfileProject(token, projectId, {
           title: project.title,
           description: project.description,
           location: project.location,
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
-          imagePrincipal: project.imagePrincipal!,
-          image: project.image!,
+          imagePrincipal: project.imagePrincipal,
+          image: newFiles,
         });
         showSuccessToast("Proyecto editado con éxito");
         setContent(PortfolioContent.Show);
@@ -55,7 +67,6 @@ const useForm = ({
       project.dateEnd,
       project.description,
       project.imagePrincipal,
-      project.image,
       project.location,
       project.title,
       deletedImages,
@@ -65,6 +76,7 @@ const useForm = ({
       setContent,
       fetchProfile,
       showErrorToast,
+      newFiles,
     ]
   );
 
@@ -78,10 +90,10 @@ export interface EditProjectFormProps {
     location: string;
     dateEnd: Dayjs | null;
     imagePrincipal?: File | null;
-    image: File[] | null;
   };
   projectId: number;
   deletedImages: number[];
+  newFiles: File[];
 }
 
 function useGetToken() {

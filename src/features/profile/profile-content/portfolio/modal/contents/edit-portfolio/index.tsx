@@ -2,10 +2,9 @@ import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Portfolio } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
-import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import useForm from "./use-form";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -18,7 +17,6 @@ import {
   uploadBoxStyles,
   inputBoxStyles,
   uploadButtonStyles,
-  fileNameStyles,
 } from "./styles";
 import PortfolioModalContext from "../../modal-context";
 import { PortfolioContent } from "../../modal-context/types";
@@ -45,47 +43,55 @@ const EditProjectModalContent = ({ project, className }: Props) => {
     setDateEnd,
     deletedImages,
     title,
+    newFiles,
     description,
     location,
     dateEnd,
-    image,
-    files,
-    setFiles,
+    previousImages,
+    setImage,
     onDragOver,
     onDrop,
     deleteFile,
   } = useProjectFormState();
+
   const getProjectInfo = useCallback(() => {
     setTitle(project.title);
     setDescription(project.description);
     setLocation(project.location);
     setDateEnd(toDateOrNull(project.dateEnd));
-    setFiles(project.image);
+    const _projectImages = project.image || [];
+    setImage(_projectImages);
   }, [
+    setTitle,
     project.title,
     project.description,
     project.location,
     project.dateEnd,
     project.image,
-    setFiles,
-    setTitle,
     setDescription,
     setLocation,
     setDateEnd,
+    setImage,
   ]);
 
   useEffect(() => {
     getProjectInfo();
   }, [getProjectInfo]);
 
-  const projectState = { title, description, location, dateEnd, image };
-  console.log(projectState.image);
+  const projectState = {
+    title,
+    description,
+    location,
+    dateEnd,
+    newFiles,
+  };
   const projectId = project.id;
 
   const onSubmitForm = useForm({
     project: projectState,
     projectId,
     deletedImages,
+    newFiles,
   });
 
   return (
@@ -161,7 +167,7 @@ const EditProjectModalContent = ({ project, className }: Props) => {
             <Box sx={inputBoxStyles} onDragOver={onDragOver} onDrop={onDrop}>
               <Button
                 component="label"
-                disabled={files.length > 2}
+                disabled={previousImages.length >= 3}
                 sx={uploadButtonStyles}
               >
                 <Typography sx={inputDescriptionStyles}>
@@ -179,15 +185,15 @@ const EditProjectModalContent = ({ project, className }: Props) => {
               </Button>
             </Box>
             <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
-              {files.length > 0 && (
+              {previousImages.length > 0 && (
                 <>
-                  {files.map((file, index) => (
+                  {previousImages.map((previousImage) => (
                     <Box sx={fileListBoxStyles}>
-                      <ImageCard file={file} />
+                      <ImageCard imageUrl={previousImage.previewUrl} />
 
                       <IconButton
                         onClick={() => {
-                          deleteFile(index);
+                          deleteFile(previousImage);
                         }}
                         sx={{
                           display: "flex",
