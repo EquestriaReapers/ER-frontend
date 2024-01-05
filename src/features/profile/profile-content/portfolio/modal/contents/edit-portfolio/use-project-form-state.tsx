@@ -23,7 +23,10 @@ const useEditProjectState = () => {
   };
   const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      setImage(Array.from(event.target.files));
+      setImage((prevImages) => [
+        ...prevImages,
+        ...(Array.from(event.target.files) as File[]),
+      ]);
     }
   };
 
