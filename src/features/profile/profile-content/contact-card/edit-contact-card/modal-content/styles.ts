@@ -39,10 +39,7 @@ export const emailBoxStyles = {
     sm: 0,
     lg: 0,
   },
-  ml: {
-    sm: 3,
-    lg: 3,
-  },
+  
 }
 
 export const boxContentStyles = {
@@ -51,6 +48,11 @@ export const boxContentStyles = {
     xs: "column",
     sm: "row",
     lg: "row",
+  },
+  gap: {
+    xs: 0,
+    sm: 3,
+    lg: 3,
   },
 };
 
