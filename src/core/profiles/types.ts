@@ -61,6 +61,7 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+  isValid: boolean;
 }
 
 export interface LanguageOption {

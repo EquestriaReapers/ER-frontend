@@ -1,6 +1,5 @@
 import { Experience } from "core/profiles/types";
-import Typography from "@mui/material/Typography";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiencies-modal-context";
@@ -31,6 +30,9 @@ const ExperienceItem = ({ item, className }: Props) => {
           <Box className="titleIconStyles">
             <Typography sx={nameStyles}>{item.businessName}</Typography>
             <Box>
+              <IconButton onClick={() => {}}>
+                <Typography className={"cvButtonStyle"}>CV</Typography>
+              </IconButton>
               <IconButton
                 onClick={() => {
                   setContent(ExperienceContent.Edit);
