@@ -1,4 +1,4 @@
-import { updateCVExperience } from "core/experience/update-CV-experience";
+import { updateCVEducation } from "core/education/update-CV-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
@@ -6,7 +6,7 @@ import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
 
-const useUpdateExperienceCV = () => {
+const useUpdateEducationCV = () => {
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
@@ -16,7 +16,7 @@ const useUpdateExperienceCV = () => {
   return useCallback(
     async (isVisible: boolean, experienceID: number) => {
       try {
-        const data = await updateCVExperience(
+        const data = await updateCVEducation(
           { isVisible },
           token,
           experienceID
@@ -48,4 +48,4 @@ function useGetToken() {
   }, [navigate, token]);
 }
 
-export default useUpdateExperienceCV;
+export default useUpdateEducationCV;
