@@ -23,8 +23,8 @@ export const modalStyle = {
     md: 4,
   },
   borderRadius: "6px",
-  height: { xs: "100%", sm: "auto" },
-  width: { xs: "100%", sm: "50%", md: "30%" },
+  height: { xs: "85%", sm: "auto" },
+  width: { xs: "80%", sm: "50%", md: "30%" },
 };
 
 export const titleStyles = {

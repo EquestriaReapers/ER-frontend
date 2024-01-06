@@ -12,8 +12,8 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  width: "50%",
-  borderRadius: "6px",
+  width: { xs: "95%", sm: "80%", md: "60%", lg: "50%" },
+    borderRadius: "6px",
 };
 
 export const titleStyles = {
@@ -33,25 +33,17 @@ export const buttonStyle = {
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
-  padding: "10px 25px",
+  padding: { xs: "8px 15px", md: "4px 18px" },
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
   },
 };
 
-export const textFieldStyleA = {
-  marginBottom: "20px",
-  width: "100%",
-};
-
 export const inlineStyles = {
   display: "flex",
-  flexDirection: "row",
-  flexWrap: {
-    xs: "wrap",
-    md: "nowrap",
-    lg: "nowrap",
-  },
+  flexDirection: { xs: "column", sm: "row" },
   justifyContent: "space-between",
   alignItems: "center",
+  gap: "10px",
+  flexWrap: { xs: "wrap", sm: "nowrap" }
 };

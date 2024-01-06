@@ -7,8 +7,10 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  width: "75%",
+  width: { xs: "90%", sm: "75%" },
   borderRadius: "6px",
+  overflowY: "auto",
+  maxHeight: "90%",
 };
 
 export const titleStyles = {
@@ -73,7 +75,7 @@ export const uploadBoxStyles = {
   display: "flex",
   flexDirection: "column",
   gap: "15px",
-  width: "50%",
+  width: { xs: "100%", sm: "100%", md: "100%", lg: "50%" },
 };
 
 export const inputBoxStyles = {
