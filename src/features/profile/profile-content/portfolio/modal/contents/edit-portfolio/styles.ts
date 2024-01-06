@@ -94,6 +94,7 @@ export const fileListBoxStyles = {
   alignItems: "center",
   flexDirection: { xs: "column", sm: "row" },
   width: "100%",
+  height: "100%",
   overflowY: "scroll",
   gap: "10px",
 };
