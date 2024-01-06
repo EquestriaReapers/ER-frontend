@@ -16,12 +16,16 @@ import {
   LanguagueType,
   LocalLanguague,
 } from "../../contact-card-context/contact-card-context";
+import {
+  DICTIONARY_LANGUAGUE_OPTIONS,
+  LanguageLevel,
+} from "core/profiles/types";
 
 const Language = () => {
   const { languages, setDeletedLanguaguesIds, setNewLanguagues } =
     useContactCardContext();
   const [language, setlanguage] = useState<number | null>(null);
-  const [nivel, setNivel] = useState("");
+  const [nivel, setNivel] = useState<LanguageLevel | "">("");
   const disabled = false;
 
   const deleteLanguague = useCallback(
@@ -91,14 +95,28 @@ const Language = () => {
         <SelectComponent
           disabled={disabled}
           options={[
-            { value: "basico", label: "Basico" },
-            { value: "intermedio", label: "Intermedio" },
-            { value: "avanzado", label: "Avanzado" },
+            {
+              value: LanguageLevel.Bajo,
+              label: DICTIONARY_LANGUAGUE_OPTIONS[LanguageLevel.Bajo],
+            },
+            {
+              value: LanguageLevel.Intermedio,
+              label: DICTIONARY_LANGUAGUE_OPTIONS[LanguageLevel.Intermedio],
+            },
+            {
+              value: LanguageLevel.Alto,
+              label: DICTIONARY_LANGUAGUE_OPTIONS[LanguageLevel.Alto],
+            },
+            {
+              value: LanguageLevel.Nativo,
+              label: DICTIONARY_LANGUAGUE_OPTIONS[LanguageLevel.Nativo],
+            },
           ]}
           label="Nivel"
           value={nivel}
           onChange={(value: string | number) => {
-            setNivel(value + "");
+            const _levelOption = (value + "") as LanguageLevel;
+            setNivel(_levelOption);
           }}
         />
       </Box>

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, createContext } from "react";
-import { ContactMethod } from "core/profiles/types";
+import { ContactMethod, LanguageLevel } from "core/profiles/types";
 import { OptionLanguage } from "./types";
 
 const ContactCardContext = createContext<ContactCardContextI>({
@@ -48,7 +48,7 @@ export interface BasicDataFormState {
 
 export interface LocalLanguague {
   languagueId: number;
-  level: string;
+  level: LanguageLevel;
   type: LanguagueType;
 }
 
