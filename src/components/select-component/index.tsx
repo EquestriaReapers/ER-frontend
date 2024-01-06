@@ -69,7 +69,7 @@ export interface Option<T> {
 }
 
 interface Props<T> {
-  value: T | null;
+  value: T | undefined;
   options: Option<T>[];
   onChange: (value: T) => void;
   disabled?: boolean;

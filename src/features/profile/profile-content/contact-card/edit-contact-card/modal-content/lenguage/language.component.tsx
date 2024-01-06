@@ -23,9 +23,14 @@ import {
 import SpinnerBlock from "components/spinner-block";
 
 const Language = () => {
-  const { languages, setDeletedLanguaguesIds, setNewLanguagues, loading } =
-    useContactCardContext();
-  const [language, setlanguage] = useState<number | null>(null);
+  const {
+    languages,
+    setDeletedLanguaguesIds,
+    setNewLanguagues,
+    loading,
+    lenguagueOptions,
+  } = useContactCardContext();
+  const [language, setlanguage] = useState<number | "">("");
   const [nivel, setNivel] = useState<LanguageLevel | "">("");
   const disabled = false;
 
@@ -39,11 +44,14 @@ const Language = () => {
       } else {
         setNewLanguagues((previousNewLanguagues: LocalLanguague[]) => {
           const _previousNewLanguagues = [...previousNewLanguagues];
-          const newDeletedId = _previousNewLanguagues.findIndex(
+          console.log("_previousNewLanguagues", _previousNewLanguagues);
+          console.log("deletedLanguague", deletedLanguague);
+          const newDeletedIndex = _previousNewLanguagues.findIndex(
             (item) => item.languagueId === deletedLanguague.languagueId
           );
-          if (newDeletedId === -1) return _previousNewLanguagues;
-          _previousNewLanguagues.splice(newDeletedId, 1);
+          console.log("newDeletedIndex", newDeletedIndex);
+          if (newDeletedIndex === -1) return _previousNewLanguagues;
+          _previousNewLanguagues.splice(newDeletedIndex, 1);
           return _previousNewLanguagues;
         });
       }
@@ -52,7 +60,7 @@ const Language = () => {
   );
 
   useEffect(() => {
-    if (language === null) return;
+    if (language === null || language === undefined || language === "") return;
     if (!nivel) return;
 
     const newLanguague: LocalLanguague = {
@@ -68,7 +76,7 @@ const Language = () => {
       if (languagueConflict) return;
     }
 
-    setlanguage(null);
+    setlanguage("");
     setNivel("");
     setNewLanguagues((prevNewLanguagues: LocalLanguague[]) => [
       ...prevNewLanguagues,
@@ -87,7 +95,7 @@ const Language = () => {
         <Box sx={textfieldStyles}>
           <LanguageInput
             disabled={disabled}
-            value={language}
+            value={language || undefined}
             onChange={(value: number) => {
               setlanguage(value);
             }}
@@ -122,13 +130,17 @@ const Language = () => {
         />
       </Box>
       <Box sx={itemBoxStyles}>
-        {loading ? (
+        {loading || !lenguagueOptions.length ? (
           <>
             <SpinnerBlock />
           </>
         ) : (
           languages.map((language) => (
-            <LanguageItem onDelete={deleteLanguague} item={language} />
+            <LanguageItem
+              onDelete={deleteLanguague}
+              key={language.languagueId}
+              item={language}
+            />
           ))
         )}
       </Box>
