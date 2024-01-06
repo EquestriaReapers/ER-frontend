@@ -2,9 +2,9 @@ import Button from "@mui/material/Button";
 import { Box, Typography } from "@mui/material";
 import { modalStyle } from "../show-experiences/styles";
 import useDeleteExperience from "./use-delete-experience";
-import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { ExperienceContent } from "../../experiences-modal-context/types";
 import { useContext } from "react";
-import ExperiencesModalContext from "../../experiencies-modal-context";
+import ExperiencesModalContext from "../../experiences-modal-context";
 
 const DeleteExperienceModalContent = ({ experienceId, className }: Props) => {
   const { setContent } = useContext(ExperiencesModalContext);

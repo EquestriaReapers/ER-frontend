@@ -10,9 +10,9 @@ import {
 } from "./styles";
 import useExperienceFormState from "../use-experience-form-state";
 import useAddExperienceForm from "./use-form";
-import { ExperienceContent } from "../../experiencies-modal-context/types";
+import { ExperienceContent } from "../../experiences-modal-context/types";
 import { useContext } from "react";
-import ExperiencesModalContext from "../../experiencies-modal-context";
+import ExperiencesModalContext from "../../experiences-modal-context";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { descriptionStyles } from "../../styles";

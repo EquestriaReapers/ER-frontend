@@ -11,6 +11,7 @@ export interface Profile {
   website: string;
   education: Education[];
   experience: Experience[];
+  portfolio: Portfolio[];
   skills: Skill[];
   languages: Language[];
   contactMethods: ContactMethod[];
@@ -96,3 +97,14 @@ export const DICTIONARY_LANGUAGUE_OPTIONS: Record<LanguageLevel, string> = {
   [LanguageLevel.Nativo]: "Nativo",
   [LanguageLevel.Intermedio]: "Intermedio",
 };
+export interface Portfolio {
+  id: number;
+  profileId: number;
+  title: string;
+  description: string;
+  location: string;
+  dateEnd: Date;
+  imagePrincipal: string | null;
+  image: string[] | null;
+  deletedAt: Date | null;
+}

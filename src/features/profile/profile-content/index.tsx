@@ -1,5 +1,5 @@
-import Typography from "@mui/material/Typography";
-import { Box, Button } from "@mui/material";
+import Typography from '@mui/material/Typography'
+import { Box, Button } from '@mui/material'
 import {
   BothSkillsContainer,
   EducationBoxStyles,
@@ -16,23 +16,24 @@ import {
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
   skillsTitleTypographyStyles,
-  topSectionStyles,
-} from "./styles";
-import EditProfileModal from "./profile-data/modal";
-import Experiences from "./experiences";
-import Skills from "./skills";
-import Education from "./education";
-import useTransformCareerEnum from "hooks/use-transform-career-enum";
-import useProfileContext from "../profile-context/use-profile-context";
-import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
-import ContactCard from "./contact-card";
-import { SkillType } from "core/skills/types";
+  topSectionStyles
+} from './styles'
+import EditProfileModal from './profile-data/modal'
+import Experiences from './experiences'
+import Skills from './skills'
+import Education from './education'
+import useTransformCareerEnum from 'hooks/use-transform-career-enum'
+import useProfileContext from '../profile-context/use-profile-context'
+import useDownloadCurriculumPDF from './use-download-curriculum-pdf'
+import ContactCard from './contact-card'
+import { SkillType } from 'core/skills/types'
+import Portfolio from './portfolio'
 
 const ProfileContent = () => {
-  const { profile, isEditable } = useProfileContext();
-  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const { profile, isEditable } = useProfileContext()
+  const transformedCareerName = useTransformCareerEnum(profile.mainTitle)
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
-    useDownloadCurriculumPDF(profile);
+    useDownloadCurriculumPDF(profile)
 
   return (
     <>
@@ -41,24 +42,24 @@ const ProfileContent = () => {
           <Box sx={topSectionStyles}>
             <Box sx={nameSectionStyles}>
               <Box>
-                <Typography variant="h4" sx={nameStyles}>
-                  {profile.user.name} {profile.user.lastname}{" "}
+                <Typography variant='h4' sx={nameStyles}>
+                  {profile.user.name} {profile.user.lastname}{' '}
                   <Box sx={editIconStyles}>
                     {isEditable && <EditProfileModal />}
                   </Box>
                 </Typography>
-                <Typography variant="h4" sx={mainTitleStyles}>
+                <Typography variant='h4' sx={mainTitleStyles}>
                   {transformedCareerName}
                 </Typography>
               </Box>
               <Box
-                sx={{ width: { xs: "100%", sm: "30%", md: "30%", lg: "20%" } }}
+                sx={{ width: { xs: '100%', sm: '30%', md: '30%', lg: '20%' } }}
               >
                 <Button
                   disabled={loadingCurriculum}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
+                  variant='contained'
+                  color='primary'
+                  type='submit'
                   sx={buttonStyles}
                   onClick={downloadCurriculumPDF}
                 >
@@ -68,7 +69,7 @@ const ProfileContent = () => {
             </Box>
             <Box sx={aboutMeSection}>
               <Box sx={descriptionBoxStyles}>
-                <Typography variant="h5" sx={aboutMeTypographyStyles}>
+                <Typography variant='h5' sx={aboutMeTypographyStyles}>
                   Sobre Mí
                 </Typography>
                 {!profile.description ? (
@@ -85,7 +86,7 @@ const ProfileContent = () => {
             </Box>
           </Box>
           <Box sx={skillsAndExperiencesBoxStyles}>
-            <Box sx={{ width: "100%" }}>
+            <Box sx={{ width: '100%' }}>
               <Typography sx={skillsTitleTypographyStyles}>
                 Habilidades
               </Typography>
@@ -99,12 +100,22 @@ const ProfileContent = () => {
           <Box sx={EducationBoxStyles}>
             <Education />
           </Box>
-          <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              width: '100%',
+              flexDirection: 'column',
+              gap: '34px'
+            }}
+          >
+            <Portfolio />
+          </Box>
+          <Box sx={{ display: { sm: 'none' }, width: { xs: '100%' } }}>
             <Button
               disabled={loadingCurriculum}
-              variant="contained"
-              color="primary"
-              type="submit"
+              variant='contained'
+              color='primary'
+              type='submit'
               sx={buttonStyles}
               onClick={downloadCurriculumPDF}
             >
@@ -114,7 +125,7 @@ const ProfileContent = () => {
         </Box>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default ProfileContent;
+export default ProfileContent
