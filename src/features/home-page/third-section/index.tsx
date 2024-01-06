@@ -54,7 +54,7 @@ const ThirdSection = () => {
           sx={ThirdSectionButtonStyles}
           onClick={navigateToCatalogue}
         >
-          Ver más egresados
+          Ver más portafolios
         </Button>
       </Box>
     </Box>
