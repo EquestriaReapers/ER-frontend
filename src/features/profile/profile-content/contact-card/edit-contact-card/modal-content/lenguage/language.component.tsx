@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import {
   FormTitleStyles,
-  boxContentStyles,
+  itemBoxStyles,
   iconTextStyles,
   textfieldStyles,
+  boxContentStyles,
 } from "../styles";
 import TranslateIcon from "@mui/icons-material/Translate";
 import LanguageInput from "./language-input/language-input.component";
@@ -101,7 +102,7 @@ const Language = () => {
           }}
         />
       </Box>
-      <Box sx={boxContentStyles}>
+      <Box sx={itemBoxStyles}>
         {languages.map((language) => (
           <LanguageItem onDelete={deleteLanguague} item={language} />
         ))}
