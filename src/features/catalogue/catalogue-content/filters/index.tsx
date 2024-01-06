@@ -1,22 +1,15 @@
-import Checkbox from "@mui/material/Checkbox";
 import Typography from "@mui/material/Typography";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
 import { ChangeEvent, useState } from "react";
 import Chip from "@mui/material/Chip";
 import DateRangePicker from "../components/DateRangePicker";
 import ClearIcon from "@mui/icons-material/Clear";
-import { FormControlLabel, FormGroup } from "@mui/material";
 import { typographyStyles } from "./styles";
+import { Option } from "components/autocomplete-field/autocomplete-field.component";
+import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 
 const Filters = () => {
-  const [selectedCareers, setSelectedCareers] = useState<string[]>([]);
-  const [checked, setChecked] = useState(false);
-
-  const onCheckChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
-  };
+  const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
 
   const onSelectedCareersChange = (event: ChangeEvent<{ value: unknown }>) => {
     setSelectedCareers(event.target.value as string[]);
@@ -42,40 +35,21 @@ const Filters = () => {
               lineHeight: "16px",
             }}
           >
-            Carrera
+            Habilidades
           </Typography>
-
-          <Select
-            label="Carrera"
-            value={selectedCareers}
-            variant="standard"
-            multiple
-            onChange={onSelectedCareersChange}
-            renderValue={() => null}
-            sx={{
-              display: "flex",
-              width: "100%",
-              backgroundColor: "white",
-              borderRadius: "6px",
-              height: "35px",
-              "&:hover": {
-                height: "35px",
-              },
+          <AutoCompleteFieldComponent
+            sx={{ width: "100%", background: "white" }}
+            label="Buscar carrera"
+            useOptions={function (text?: string | null | undefined): Option[] {
+              return [];
             }}
-          >
-            <MenuItem value="" disabled>
-              Todas las carreras
-            </MenuItem>
-            {["Opción 1", "Opción", "Opción."].map((name) => (
-              <MenuItem key={name} value={name}>
-                <Checkbox
-                  checked={selectedCareers.indexOf(name) > -1}
-                  onChange={onCheckChange}
-                />
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
+            onSelectOption={function (option: Option): void {
+              throw new Error("Function not implemented.");
+            }}
+            onCreateNewOption={function (option: Option): void {
+              throw new Error("Function not implemented.");
+            }}
+          />
           <Box>
             {selectedCareers.map((career) => (
               <Chip
@@ -83,7 +57,7 @@ const Filters = () => {
                 color="primary"
                 key={career}
                 label={career}
-                onDelete={() => onCheckChange}
+                onDelete={() => {}}
                 sx={{
                   borderRadius: "6px",
                   backgroundColor: "#D9D9D9",
@@ -101,26 +75,6 @@ const Filters = () => {
           </Box>
         </Box>
 
-        <Typography
-          sx={{
-            fontWeight: "700",
-            paddingTop: 2,
-            fontFamily: "inter",
-          }}
-        >
-          Carrera
-        </Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Carrera 1"
-          />
-          <FormControlLabel control={<Checkbox />} label="Carrera 2" />
-          <FormControlLabel control={<Checkbox />} label="Carrera 3" />
-          <FormControlLabel control={<Checkbox />} label="Carrera 4" />
-        </FormGroup>
-
-        <Typography sx={typographyStyles}>select de carrera</Typography>
         <Typography sx={typographyStyles}>Habilidades</Typography>
 
         <Box
