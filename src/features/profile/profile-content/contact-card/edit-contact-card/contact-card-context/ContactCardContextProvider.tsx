@@ -4,7 +4,7 @@ import ContactCardContext, {
   LocalLanguague,
 } from "./contact-card-context";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import { Language } from "core/profiles/types";
+import { Language, LanguageLevel } from "core/profiles/types";
 import { OptionLanguage } from "./types";
 import useAllLanguages from "./use-all-language";
 
@@ -28,7 +28,7 @@ export const ContactCardContextProvider = ({
   const _languaguesWithoutDeleted: LocalLanguague[] = _languageProfile
     .map((languague: Language) => ({
       languagueId: languague.id,
-      level: languague.level,
+      level: languague.level as LanguageLevel,
       type: LanguagueType.Online,
     }))
     .filter((language) => {

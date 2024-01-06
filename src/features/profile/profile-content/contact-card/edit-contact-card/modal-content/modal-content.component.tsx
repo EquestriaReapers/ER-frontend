@@ -9,13 +9,13 @@ import {
 import Email from "./contact-methods";
 import useContactCardContext from "../contact-card-context/use-contact-card-context";
 import BasicDataForm from "./basic-data/basic-data-form";
-import useUpdateContactData from "./basic-data/use-update-basic-data";
 import Language from "./lenguage";
 import SpinnerAbsolute from "components/spinner-absolute";
+import useUpdateContactModal from "./use-update-contact-modal";
 
 const ModalContent = () => {
   const { basicData, setBasicData, loading } = useContactCardContext();
-  const updateContactData = useUpdateContactData(basicData);
+  const updateContactModal = useUpdateContactModal();
 
   return (
     <Box>
@@ -44,12 +44,7 @@ const ModalContent = () => {
       </Box>
 
       <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          sx={buttonStyle}
-          onClick={() => {
-            updateContactData();
-          }}
-        >
+        <Button sx={buttonStyle} onClick={updateContactModal}>
           Guardar Cambios
         </Button>
       </Box>

@@ -82,3 +82,17 @@ export interface Education {
   endDate: Date;
   deleteAt: Date | null;
 }
+
+export enum LanguageLevel {
+  Alto = "alto",
+  Bajo = "bajo",
+  Nativo = "nativo",
+  Intermedio = "intermedio",
+}
+
+export const DICTIONARY_LANGUAGUE_OPTIONS: Record<LanguageLevel, string> = {
+  [LanguageLevel.Alto]: "Alto",
+  [LanguageLevel.Bajo]: "Bajo",
+  [LanguageLevel.Nativo]: "Nativo",
+  [LanguageLevel.Intermedio]: "Intermedio",
+};
