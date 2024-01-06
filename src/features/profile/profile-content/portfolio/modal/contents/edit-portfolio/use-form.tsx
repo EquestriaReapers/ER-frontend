@@ -29,16 +29,13 @@ const useForm = ({
       try {
         const token = getToken();
         setLoading(true);
-        console.log(deletedImages);
 
         let _deletedImagesIndexes = [...deletedImages];
-        // Ordena de menor a mayor los indices
         _deletedImagesIndexes.sort((a, b) => a - b);
 
         for (let i = 0; i < _deletedImagesIndexes.length; i++) {
           const currentIndex = _deletedImagesIndexes[i];
           await deleteAProjectImage(token, projectId, currentIndex);
-          // Resta a todos los valores siguientes -1
           _deletedImagesIndexes = _deletedImagesIndexes.map((index) =>
             index > currentIndex ? index - 1 : index
           );

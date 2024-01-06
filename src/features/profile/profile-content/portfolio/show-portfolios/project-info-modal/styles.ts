@@ -7,7 +7,8 @@ export const modalStyle = {
   transform: "translate(-50%, -50%)",
   bgcolor: "white",
   boxShadow: 24,
-  width: "50%",
+  height: { xs: "100%", sm: "auto" },
+  width: { xs: "100%", sm: "90%", md: "60%", lg: "50%", xl: "50%" },
   borderRadius: "6px",
 };
 

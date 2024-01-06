@@ -23,6 +23,8 @@ export const modalStyle = {
     md: 4,
   },
   borderRadius: "6px",
+  height: { xs: "100%", sm: "auto" },
+  width: { xs: "100%", sm: "50%", md: "30%" },
 };
 
 export const titleStyles = {
@@ -77,6 +79,7 @@ export const inputLabelStyles = {
   fontWeight: "500",
   lineHeight: "normal",
   textTransform: "none",
+  mx: { xs: "20px", sm: "0" },
 };
 
 export const uploadBoxStyles = {
@@ -84,6 +87,7 @@ export const uploadBoxStyles = {
   flexDirection: "column",
   gap: "15px",
   marginTop: "10px",
+  mx: { xs: "20px", sm: "0" },
 };
 
 export const inputBoxStyles = {

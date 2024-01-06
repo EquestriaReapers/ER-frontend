@@ -30,7 +30,7 @@ const useForm = ({ project, projectId }: EditProjectFormProps) => {
         const data = await updateProfileProject(token, projectId, {
           imagePrincipal: project.imagePrincipal,
         });
-        showSuccessToast("Experiencia editada con éxito");
+        showSuccessToast("Imagen principal editada con éxito");
         setContent(PortfolioContent.Show);
         await fetchProfile();
         return data;
