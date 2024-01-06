@@ -153,7 +153,6 @@ export const lenguageTitleContainerStyles = {
   },
   alignItems: "center",
   width: "100%",
-  gap: "5px",
 };
 
 export const topSectionStyles = {

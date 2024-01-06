@@ -7,7 +7,9 @@ const showLenguages = ({ lenguages }: Props) => {
     <Box sx={boxStyles}>
       {lenguages.map((item) => (
         <Box sx={lenguageTagStyles}>
-          <Typography>{item.name}</Typography>
+          <Typography>
+            {item.name} — {item.level}
+          </Typography>
         </Box>
       ))}
     </Box>
