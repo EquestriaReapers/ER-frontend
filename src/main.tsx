@@ -21,7 +21,7 @@ import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
-import LandingPage from "features/landing-page/LandingPage";
+import HomePage from "features/home-page";
 
 const theme = createTheme({
   palette: {
@@ -75,9 +75,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "/new-password/",
         element: <NewPassword />,
-      },      {
-        path: "/landing/",
-        element: <LandingPage />,
+      },
+      {
+        path: "/home/",
+        element: <HomePage />,
       },
     ],
   },
