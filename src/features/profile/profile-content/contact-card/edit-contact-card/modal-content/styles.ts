@@ -65,8 +65,8 @@ export const itemBoxStyles = {
   flexWrap: "wrap",
   gap: {
     xs: 0,
-    sm: 0,
-    lg: 0,
+    sm: 1,
+    lg: 1,
   },
   justifyContent: "flex-start",
 };
