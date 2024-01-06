@@ -37,24 +37,33 @@ const ForgotPassword: FunctionComponent = () => {
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-  }
+  };
 
-  const onSubmitForm = useCallback( async (event: FormEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    
-    try {
-      console.log(email);
-      const data = await forgotPassword(email);
-      showSuccessToast("El correo con el método de recuperación ha sido enviado");
-      console.log(data);
-      return data;
-    } catch (error) {
-      showErrorToast(error);
-    }
-  }, [])
+  const onSubmitForm = useCallback(
+    async (event: FormEvent<HTMLInputElement>) => {
+      event.preventDefault();
+
+      try {
+        console.log(email);
+        const data = await forgotPassword(email);
+        showSuccessToast(
+          "El correo con el método de recuperación ha sido enviado"
+        );
+        console.log(data);
+        return data;
+      } catch (error) {
+        showErrorToast(error);
+      }
+    },
+    [email, showErrorToast, showSuccessToast]
+  );
 
   return (
-    <Box sx={ForgotPasswordContainerStyles} component="form" onSubmit={onSubmitForm}>
+    <Box
+      sx={ForgotPasswordContainerStyles}
+      component="form"
+      onSubmit={onSubmitForm}
+    >
       <Box sx={ForgotPasswordInsideContainerStyles}>
         <Box sx={CenterBoxStyles}>
           <Box sx={InsideCenterBoxStyles}>
@@ -69,14 +78,16 @@ const ForgotPassword: FunctionComponent = () => {
               <Typography sx={EmailTypographyStyles}>
                 Correo Electrónico
               </Typography>
-              <TextField 
-                variant="outlined" 
-                onChange={onEmailChange} 
-                sx={SearchBarTextFieldStyles} 
+              <TextField
+                variant="outlined"
+                onChange={onEmailChange}
+                sx={SearchBarTextFieldStyles}
               />
               <Link sx={ForgotEmailStyles}>¿Olvidó su correo?</Link>
             </Box>
-            <Button sx={SendEmailStyles} type="submit">Enviar Email</Button>
+            <Button sx={SendEmailStyles} type="submit">
+              Enviar Email
+            </Button>
           </Box>
         </Box>
       </Box>
