@@ -39,7 +39,7 @@ export const useLinkBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const LinkBoxStyles = {
-    marginLeft: isSmallScreen ? "3px" : "6px",
+    marginLeft: isSmallScreen ? "3px" : "3px",
     fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
