@@ -1,17 +1,3 @@
-export const boxStyles = {
-  py: 3,
-  marginLeft: {
-    xs: 3,
-    md: 10,
-    lg: 10,
-  },
-  overflow: "hidden",
-  width: {
-    md: "60%",
-    lg: "60%",
-  },
-};
-
 export const nameStyles = {
   fontSize: { xs: "18px", sm: "22px" },
   fontFamily: "Inter",

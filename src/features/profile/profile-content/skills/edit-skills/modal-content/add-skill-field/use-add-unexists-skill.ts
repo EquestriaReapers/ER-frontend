@@ -3,8 +3,10 @@ import { addProfileNewSkill } from "core/profiles/add-profile-skill.service";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
+import { useSkillsModalContext } from "../../skills-modal-context/use-skills-modal-context";
 
-const useAddUnexistsSkill = ({ setLoading }: Options) => {
+const useAddUnexistsSkill = () => {
+  const { setLoading, skillType } = useSkillsModalContext();
   const { fetchProfile } = useProfileContext();
   const { token } = useAuthState();
   const { showErrorToast } = useErrorToast();
@@ -14,7 +16,7 @@ const useAddUnexistsSkill = ({ setLoading }: Options) => {
       try {
         if (!token) return;
         setLoading(true);
-        const data = await addProfileNewSkill(token, { name });
+        const data = await addProfileNewSkill(token, { name, type: skillType });
         fetchProfile();
         return data;
       } catch (error) {
@@ -23,12 +25,8 @@ const useAddUnexistsSkill = ({ setLoading }: Options) => {
         setLoading(false);
       }
     },
-    [fetchProfile, setLoading, showErrorToast, token]
+    [fetchProfile, setLoading, showErrorToast, token, skillType]
   );
 };
-
-interface Options {
-  setLoading: (loading: boolean) => void;
-}
 
 export default useAddUnexistsSkill;
