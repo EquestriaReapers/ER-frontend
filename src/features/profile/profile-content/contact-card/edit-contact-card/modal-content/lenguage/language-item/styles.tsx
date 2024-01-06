@@ -14,8 +14,6 @@ export const skillTitleStyles = {
   borderRadius: "6px",
   px: "12px",
   backgroundColor: "#D9D9D9",
-  marginRight: 2,
-  marginBottom: 1,
   display: "flex",
   flexWrap: {
     xs: "wrap",
