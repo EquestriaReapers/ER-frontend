@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LanguageIcon from "@mui/icons-material/Language";
+import TranslateIcon from "@mui/icons-material/Translate";
 import useProfileContext from "../../profile-context/use-profile-context";
 import {
   contactTitlesStyles,
@@ -10,7 +11,9 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
   editIconStyles,
+  lenguageTitleContainerStyles,
 } from "../styles";
+import ShowLenguages from "./show-lenguages";
 import EditContactCard from "./edit-contact-card";
 
 const ContactCard = () => {
@@ -60,6 +63,15 @@ const ContactCard = () => {
         <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
           {profile.website}
         </Typography>
+      </Box>
+
+      <Box sx={websiteBoxStyles}>
+        <Box sx={websiteTitleContainerStyles}>
+          <TranslateIcon />
+          &nbsp;
+          <Typography sx={contactTitlesStyles}>Idiomas</Typography>
+        </Box>
+        <ShowLenguages lenguages={profile.languages} />
       </Box>
     </>
   );

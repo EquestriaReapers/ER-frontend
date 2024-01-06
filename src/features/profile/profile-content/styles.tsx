@@ -144,6 +144,18 @@ export const websiteTitleContainerStyles = {
   alignItems: "center",
 };
 
+export const lenguageTitleContainerStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  pr: {
+    lg: "150px",
+    xs: "20px",
+  },
+  alignItems: "center",
+  width: "100%",
+  gap: "5px",
+};
+
 export const topSectionStyles = {
   width: "100%",
   mt: "30px",
