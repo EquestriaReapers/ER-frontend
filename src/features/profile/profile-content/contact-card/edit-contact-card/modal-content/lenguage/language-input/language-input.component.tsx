@@ -1,11 +1,17 @@
 import { Box } from "@mui/material";
-import useAllLanguages from "./use-all-language";
 import useContactCardContext from "../../../contact-card-context/use-contact-card-context";
 import SelectComponent from "components/select-component";
+import { useCallback } from "react";
 
 const LanguageInput = ({ value, onChange, disabled }: Props) => {
-  const { loading } = useContactCardContext();
-  const options = useLanguagesSuggestions("");
+  const { loading, lenguagueOptions } = useContactCardContext();
+
+  const _onChange = useCallback(
+    (value: number | string) => {
+      onChange(+value);
+    },
+    [onChange]
+  );
 
   return (
     <Box
@@ -19,34 +25,19 @@ const LanguageInput = ({ value, onChange, disabled }: Props) => {
     >
       <SelectComponent
         disabled={loading || disabled}
-        options={options}
+        options={lenguagueOptions}
         label="Idioma"
         value={value}
-        onChange={onChange}
+        onChange={_onChange}
       />
     </Box>
   );
 };
 
-function useLanguagesSuggestions(name?: string | null): Option[] {
-  const allLanguages = useAllLanguages(name || "");
-
-  if (!allLanguages?.length) return [];
-
-  return allLanguages.map((item) => {
-    return { value: item.id + "", label: item.name };
-  });
-}
-
-export interface Option {
-  value: string;
-  label: string;
-}
-
 interface Props {
-  value: string;
+  value: number | null;
   disabled?: boolean;
-  onChange: (value: string) => void;
+  onChange: (value: number) => void;
 }
 
 export default LanguageInput;

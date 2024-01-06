@@ -20,9 +20,9 @@ const SelectComponent = ({
   options,
   disabled,
   label,
-}: Props) => {
+}: Props<string | number>) => {
   const onLocalChange = useCallback(
-    (event: SelectChangeEvent<string>) => {
+    (event: SelectChangeEvent<string | number>) => {
       if (!event.target.value) return;
       onChange(event.target.value);
     },
@@ -43,7 +43,7 @@ const SelectComponent = ({
           sx={textFieldStyles}
           placeholder={label}
           label={label}
-          value={value}
+          value={value === null ? undefined : value}
           onChange={onLocalChange}
           MenuProps={{
             style: {
@@ -52,7 +52,7 @@ const SelectComponent = ({
           }}
           input={<OutlinedInput label="Name" />}
         >
-          {options.map(({ label, value: _value }: Option) => (
+          {options.map(({ label, value: _value }: Option<string | number>) => (
             <MenuItem selected={value === _value} key={_value} value={_value}>
               {label}
             </MenuItem>
@@ -63,15 +63,15 @@ const SelectComponent = ({
   );
 };
 
-export interface Option {
-  value: string;
+export interface Option<T> {
+  value: T;
   label: string;
 }
 
-interface Props {
-  value: string;
-  options: Option[];
-  onChange: (value: string) => void;
+interface Props<T> {
+  value: T | null;
+  options: Option<T>[];
+  onChange: (value: T) => void;
   disabled?: boolean;
   label: string;
 }

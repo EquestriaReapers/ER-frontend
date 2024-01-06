@@ -7,13 +7,68 @@ import {
 } from "../styles";
 import TranslateIcon from "@mui/icons-material/Translate";
 import LanguageInput from "./language-input/language-input.component";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import SelectComponent from "components/select-component";
+import useContactCardContext from "../../contact-card-context/use-contact-card-context";
+import LanguageItem from "./language-item/language-item.component";
+import {
+  LanguagueType,
+  LocalLanguague,
+} from "../../contact-card-context/contact-card-context";
 
 const Language = () => {
-  const [language, setlanguage] = useState("");
+  const { languages, setDeletedLanguaguesIds, setNewLanguagues } =
+    useContactCardContext();
+  const [language, setlanguage] = useState<number | null>(null);
   const [nivel, setNivel] = useState("");
   const disabled = false;
+
+  const deleteLanguague = useCallback(
+    (deletedLanguague: LocalLanguague) => {
+      if (deletedLanguague.type === LanguagueType.Online) {
+        setDeletedLanguaguesIds((prevLanguaguesDeletedIds: number[]) => [
+          ...prevLanguaguesDeletedIds,
+          deletedLanguague.languagueId,
+        ]);
+      } else {
+        setNewLanguagues((previousNewLanguagues: LocalLanguague[]) => {
+          const _previousNewLanguagues = [...previousNewLanguagues];
+          const newDeletedId = _previousNewLanguagues.findIndex(
+            (item) => item.languagueId === deletedLanguague.languagueId
+          );
+          if (newDeletedId === -1) return _previousNewLanguagues;
+          _previousNewLanguagues.splice(newDeletedId, 1);
+          return _previousNewLanguagues;
+        });
+      }
+    },
+    [setDeletedLanguaguesIds, setNewLanguagues]
+  );
+
+  useEffect(() => {
+    if (language === null) return;
+    if (!nivel) return;
+
+    const newLanguague: LocalLanguague = {
+      languagueId: language,
+      level: nivel,
+      type: LanguagueType.Local,
+    };
+
+    if (languages.length) {
+      const languagueConflict = languages.find(
+        (item) => item.languagueId === newLanguague.languagueId
+      );
+      if (languagueConflict) return;
+    }
+
+    setlanguage(null);
+    setNivel("");
+    setNewLanguagues((prevNewLanguagues: LocalLanguague[]) => [
+      ...prevNewLanguagues,
+      newLanguague,
+    ]);
+  }, [language, languages, nivel, setNewLanguagues]);
 
   return (
     <div>
@@ -27,7 +82,7 @@ const Language = () => {
           <LanguageInput
             disabled={disabled}
             value={language}
-            onChange={function (value: string): void {
+            onChange={(value: number) => {
               setlanguage(value);
             }}
           />
@@ -35,16 +90,21 @@ const Language = () => {
         <SelectComponent
           disabled={disabled}
           options={[
-            { value: "1", label: "Basico" },
-            { value: "2", label: "Intermedio" },
-            { value: "3", label: "Avanzado" },
+            { value: "basico", label: "Basico" },
+            { value: "intermedio", label: "Intermedio" },
+            { value: "avanzado", label: "Avanzado" },
           ]}
           label="Nivel"
           value={nivel}
-          onChange={function (value: string): void {
-            setNivel(value);
+          onChange={(value: string | number) => {
+            setNivel(value + "");
           }}
         />
+      </Box>
+      <Box sx={boxContentStyles}>
+        {languages.map((language) => (
+          <LanguageItem onDelete={deleteLanguague} item={language} />
+        ))}
       </Box>
     </div>
   );
