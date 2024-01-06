@@ -44,12 +44,9 @@ const Language = () => {
       } else {
         setNewLanguagues((previousNewLanguagues: LocalLanguague[]) => {
           const _previousNewLanguagues = [...previousNewLanguagues];
-          console.log("_previousNewLanguagues", _previousNewLanguagues);
-          console.log("deletedLanguague", deletedLanguague);
           const newDeletedIndex = _previousNewLanguagues.findIndex(
             (item) => item.languagueId === deletedLanguague.languagueId
           );
-          console.log("newDeletedIndex", newDeletedIndex);
           if (newDeletedIndex === -1) return _previousNewLanguagues;
           _previousNewLanguagues.splice(newDeletedIndex, 1);
           return _previousNewLanguagues;
