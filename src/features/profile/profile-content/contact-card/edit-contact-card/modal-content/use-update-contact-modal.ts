@@ -38,12 +38,15 @@ const useAddNewLanguaguesAction = () => {
   );
 
   const addNewLanguagues = useCallback(async () => {
-    newLanguagues.forEach(async (languague: LocalLanguague) => {
-      await addLanguague({
+    console.log("creating", newLanguagues);
+    const process = newLanguagues.map(async (languague: LocalLanguague) => {
+      return addLanguague({
         languageId: languague.languagueId,
         level: languague.level,
       });
     });
+
+    await Promise.all(process);
 
     setNewLanguagues([]);
     return;
@@ -67,9 +70,12 @@ const useDeleteNewLanguaguesAction = () => {
   );
 
   const deleteNewLanguagues = useCallback(async () => {
-    deletedLanguaguesIds.forEach(async (languagueId: number) => {
+    console.log("delting", deletedLanguaguesIds);
+    const process = deletedLanguaguesIds.map(async (languagueId: number) => {
       await deleteLanguague(languagueId);
     });
+
+    await Promise.all(process);
 
     setDeletedLanguaguesIds([]);
     return;

@@ -24,7 +24,9 @@ export const ContactCardContextProvider = ({
     []
   );
 
-  const _languageProfile = profile.languageProfile || [];
+  console.log("current proflie is", profile);
+
+  const _languageProfile = profile.languages || [];
   const _languaguesWithoutDeleted: LocalLanguague[] = _languageProfile
     .map((languague: Language) => ({
       languagueId: languague.id,

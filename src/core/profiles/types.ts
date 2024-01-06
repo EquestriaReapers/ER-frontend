@@ -12,7 +12,7 @@ export interface Profile {
   education: Education[];
   experience: Experience[];
   skills: Skill[];
-  languageProfile: Language[];
+  languages: Language[];
   contactMethods: ContactMethod[];
   deletedAt: Date | null;
 }
