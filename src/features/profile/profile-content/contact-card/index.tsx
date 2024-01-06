@@ -29,7 +29,16 @@ const ContactCard = () => {
             &nbsp;
             <Typography sx={contactTitlesStyles}>Ubicación</Typography>
           </Box>
-          <Box sx={{ editIconStyles }}>{isEditable && <EditContactCard />}</Box>
+          <Box
+            sx={{
+              editIconStyles,
+              display: "flex",
+              width: "24px",
+              height: "24px",
+            }}
+          >
+            {isEditable && <EditContactCard />}
+          </Box>
         </Box>
 
         <Typography
@@ -45,7 +54,7 @@ const ContactCard = () => {
         <Box sx={websiteTitleContainerStyles}>
           <LanguageIcon />
           &nbsp;
-          <Typography sx={contactTitlesStyles}>Website</Typography>
+          <Typography sx={contactTitlesStyles}>Websites</Typography>
         </Box>
 
         <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>

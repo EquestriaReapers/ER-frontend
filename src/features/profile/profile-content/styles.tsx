@@ -196,6 +196,7 @@ export const EducationBoxStyles = {
 
 export const locationAndEditButtonStyles = {
   display: "flex",
+  flexWrap: "wrap",
   width: "100%",
   justifyContent: "space-between",
 };
