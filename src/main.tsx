@@ -18,7 +18,6 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
 import ForgotPassword from "features/auth/ForgotPassword";
-
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import LandingPage from "features/landing-page/LandingPage";

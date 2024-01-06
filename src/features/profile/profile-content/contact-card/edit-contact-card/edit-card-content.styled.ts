@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import EditCardComponent from "./edit-card-content.component";
 
-const LG_SIZE = 1200;
+const LG_SIZE = 800;
 const MD_SIZE = 767;
 const SM_SIZE = 480;
 const XS_SIZE = 380;
 
 export default styled(EditCardComponent)`
-  width: 1000px;
+  width: 800px;
   margin-left: auto;
   margin-right: auto;
 
@@ -23,9 +23,7 @@ export default styled(EditCardComponent)`
   }
 
   .fieldsStyle {
-    height: 55px;
-    border: 2px solid #000000;
-    border-radius: 5px;
+    border-radius: 6px;
     margin-bottom: 16px;
   }
 
@@ -49,12 +47,32 @@ export default styled(EditCardComponent)`
     max-width: 350px;
   }
 
+  .contact-card-style {
+    width: 100%;
+    margin-bottom: 12px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+    border-radius: 2px;
+    justify-content: space-between;
+  }
+
+  .contact-cardText-style {
+    color: #535353;
+    font-family: inter;
+    font-weight: 600;
+    padding: 8px 8px 8px 8px;
+  }
+
+  .contact-cardDelete-style {
+    color: #007935;
+  }
+
   @media screen and (max-width: ${LG_SIZE}px) {
     width: 500px;
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {
-    width: 400px;
 
     .exp-show-description {
       max-width: none;

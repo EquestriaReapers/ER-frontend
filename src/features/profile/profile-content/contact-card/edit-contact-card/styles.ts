@@ -10,8 +10,5 @@ export const modalStyle = {
     sm: 3,
     md: 4,
   },
-  borderRadius: "10px",
-  width: {
-    md: "1000px",
-  },
+  borderRadius: "6px",
 };

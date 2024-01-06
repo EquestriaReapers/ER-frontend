@@ -9,7 +9,7 @@ const WebsiteInput = ({ value, onChange }: Props) => {
 
   return (
     <div>
-      <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+      <Box sx={{ display: "flex", flexDirection: "row", marginBottom: "10px" ,mt:2,}}>
         <LanguageIcon className={"iconStyle"} />
         <Typography sx={FormTitleStyles}>Website</Typography>
       </Box>
