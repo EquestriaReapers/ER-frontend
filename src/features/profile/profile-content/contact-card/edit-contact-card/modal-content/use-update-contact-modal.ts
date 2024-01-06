@@ -38,7 +38,6 @@ const useAddNewLanguaguesAction = () => {
   );
 
   const addNewLanguagues = useCallback(async () => {
-    console.log("creating", newLanguagues);
     const process = newLanguagues.map(async (languague: LocalLanguague) => {
       return addLanguague({
         languageId: languague.languagueId,
@@ -70,7 +69,6 @@ const useDeleteNewLanguaguesAction = () => {
   );
 
   const deleteNewLanguagues = useCallback(async () => {
-    console.log("delting", deletedLanguaguesIds);
     const process = deletedLanguaguesIds.map(async (languagueId: number) => {
       await deleteLanguague(languagueId);
     });
@@ -99,7 +97,7 @@ const useUpdateContactModal = () => {
       await deleteNewLanguaguesAction();
       await addNewLanguaguesAction();
       await updateContactDataAction();
-      fetchProfile();
+      await fetchProfile();
       showSuccessToast("Datos de contacto actualizados correctamente 🎉");
       return;
     } catch (error) {

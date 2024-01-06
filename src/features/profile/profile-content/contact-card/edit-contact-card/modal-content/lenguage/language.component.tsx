@@ -20,9 +20,10 @@ import {
   DICTIONARY_LANGUAGUE_OPTIONS,
   LanguageLevel,
 } from "core/profiles/types";
+import SpinnerBlock from "components/spinner-block";
 
 const Language = () => {
-  const { languages, setDeletedLanguaguesIds, setNewLanguagues } =
+  const { languages, setDeletedLanguaguesIds, setNewLanguagues, loading } =
     useContactCardContext();
   const [language, setlanguage] = useState<number | null>(null);
   const [nivel, setNivel] = useState<LanguageLevel | "">("");
@@ -121,9 +122,15 @@ const Language = () => {
         />
       </Box>
       <Box sx={itemBoxStyles}>
-        {languages.map((language) => (
-          <LanguageItem onDelete={deleteLanguague} item={language} />
-        ))}
+        {loading ? (
+          <>
+            <SpinnerBlock />
+          </>
+        ) : (
+          languages.map((language) => (
+            <LanguageItem onDelete={deleteLanguague} item={language} />
+          ))
+        )}
       </Box>
     </div>
   );
