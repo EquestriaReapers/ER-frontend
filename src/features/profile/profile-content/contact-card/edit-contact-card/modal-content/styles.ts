@@ -29,11 +29,11 @@ export const iconTextStyles = {
 };
 
 export const languageBoxStyles = {
-  width: "100%",
+  width: "50%",
 };
 
 export const emailBoxStyles = {
-  width: "100%",
+  width: "50%",
   mt: {
     xs: 1,
     sm: 0,
@@ -53,6 +53,22 @@ export const boxContentStyles = {
     sm: 3,
     lg: 3,
   },
+};
+
+export const itemBoxStyles = {
+  display: "flex",
+  flexDirection: {
+    xs: "column",
+    sm: "row",
+    lg: "row",
+  },
+  flexWrap: "wrap",
+  gap: {
+    xs: 0,
+    sm: 0,
+    lg: 0,
+  },
+  justifyContent: "flex-start",
 };
 
 export const textfieldStyles = {
