@@ -82,4 +82,5 @@ export interface Education {
   entity: string;
   endDate: Date;
   deleteAt: Date | null;
+  isVisible: boolean;
 }
