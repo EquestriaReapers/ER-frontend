@@ -21,6 +21,7 @@ import ForgotPassword from "features/auth/ForgotPassword";
 
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
+import LandingPage from "features/landing-page/LandingPage";
 import "styles/index.css";
 
 const theme = createTheme({
@@ -79,6 +80,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "/home",
         element: <Home />,
+      },
+      {
+        path: "/landing/",
+        element: <LandingPage />,
       },
     ],
   },
