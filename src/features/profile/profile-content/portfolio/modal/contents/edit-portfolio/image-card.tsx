@@ -1,23 +1,39 @@
-import { Card, CardMedia } from "@mui/material";
+import { Box, Card, CardMedia, IconButton } from "@mui/material";
+import { PreviousImage } from "./use-project-form-state";
+import ClearIcon from "@mui/icons-material/Clear";
 
-const ImageCard = ({ imageUrl }: Props) => {
+const ImageCard = ({ image, deleteFile }: Props) => {
   return (
-    <Card>
-      <CardMedia
-        sx={{
-          maxWidth: "150px",
-          width: "125px",
-          maxHeight: "150px",
-          height: "125px",
-          borderRadius: "5px",
+    <Box sx={{ display: "flex" }}>
+      <Card>
+        <CardMedia
+          sx={{
+            maxWidth: "150px",
+            width: "125px",
+            maxHeight: "150px",
+            height: "125px",
+            borderRadius: "5px",
+          }}
+          image={image.previewUrl}
+        />
+      </Card>
+      <IconButton
+        onClick={() => {
+          deleteFile(image);
         }}
-        image={imageUrl}
-      />
-    </Card>
+        sx={{
+          display: "flex",
+          alignSelf: "flex-start",
+        }}
+      >
+        <ClearIcon />
+      </IconButton>
+    </Box>
   );
 };
 
 interface Props {
-  imageUrl: string;
+  image: PreviousImage;
+  deleteFile: (file: PreviousImage) => void;
 }
 export default ImageCard;

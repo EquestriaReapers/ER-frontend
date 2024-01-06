@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext } from "react";
 import PortfolioModalContext from "../modal-context";
 import { PortfolioContent } from "../modal-context/types";
-import ShowPortfolio from "./show-portfolios/show-portfolios.component";
+import ShowPortfolio from "./show-portfolios";
 import DeleteProjectModalContent from "./delete-portfolio";
 import EditProjectModalContent from "./edit-portfolio";
 import AddPortfolioModalContent from "./add-portfolio";

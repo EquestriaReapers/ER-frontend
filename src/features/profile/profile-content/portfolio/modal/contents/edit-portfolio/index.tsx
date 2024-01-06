@@ -1,10 +1,9 @@
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material'
-import { Portfolio } from 'core/profiles/types'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
-import ClearIcon from '@mui/icons-material/Clear'
-import useForm from './use-form'
-import { useCallback, useContext, useEffect } from 'react'
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { Portfolio } from "core/profiles/types";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
+import useForm from "./use-form";
+import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -16,21 +15,21 @@ import {
   inputDescriptionStyles,
   uploadBoxStyles,
   inputBoxStyles,
-  uploadButtonStyles
-} from './styles'
-import PortfolioModalContext from '../../modal-context'
-import { PortfolioContent } from '../../modal-context/types'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import useProjectFormState from './use-project-form-state'
-import dayjs, { Dayjs } from 'dayjs'
-import useProfileContext from 'features/profile/profile-context/use-profile-context'
-import ImageCard from './image-card'
+  uploadButtonStyles,
+} from "./styles";
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import useProjectFormState from "./use-project-form-state";
+import dayjs, { Dayjs } from "dayjs";
+import useProfileContext from "features/profile/profile-context/use-profile-context";
+import ImageCard from "./image-card";
 
-const EditProjectModalContent = ({ project, className }: Props) => {
-  const { setContent } = useContext(PortfolioModalContext)
-  const { fetchProfile } = useProfileContext()
+const EditProjectModalContent = ({ project }: Props) => {
+  const { setContent } = useContext(PortfolioModalContext);
+  const { fetchProfile } = useProfileContext();
   const {
     onTitleChange,
     onDescriptionChange,
@@ -51,16 +50,16 @@ const EditProjectModalContent = ({ project, className }: Props) => {
     setImage,
     onDragOver,
     onDrop,
-    deleteFile
-  } = useProjectFormState()
+    deleteFile,
+  } = useProjectFormState();
 
   const getProjectInfo = useCallback(() => {
-    setTitle(project.title)
-    setDescription(project.description)
-    setLocation(project.location)
-    setDateEnd(toDateOrNull(project.dateEnd))
-    const _projectImages = project.image || []
-    setImage(_projectImages)
+    setTitle(project.title);
+    setDescription(project.description);
+    setLocation(project.location);
+    setDateEnd(toDateOrNull(project.dateEnd));
+    const _projectImages = project.image || [];
+    setImage(_projectImages);
   }, [
     setTitle,
     project.title,
@@ -71,38 +70,38 @@ const EditProjectModalContent = ({ project, className }: Props) => {
     setDescription,
     setLocation,
     setDateEnd,
-    setImage
-  ])
+    setImage,
+  ]);
 
   useEffect(() => {
-    getProjectInfo()
-  }, [getProjectInfo])
+    getProjectInfo();
+  }, [getProjectInfo]);
 
   const projectState = {
     title,
     description,
     location,
     dateEnd,
-    newFiles
-  }
-  const projectId = project.id
+    newFiles,
+  };
+  const projectId = project.id;
 
   const onSubmitForm = useForm({
     project: projectState,
     projectId,
     deletedImages,
-    newFiles
-  })
+    newFiles,
+  });
 
   return (
-    <Box sx={modalStyle} className={className}>
-      <Box sx={{ mx: '40px', mb: '40px', mt: '20px' }}>
+    <Box sx={modalStyle}>
+      <Box sx={{ mx: "40px", mb: "40px", mt: "20px" }}>
         <Box sx={headerStyles}>
           <IconButton
-            sx={{ ml: '-10px' }}
+            sx={{ ml: "-10px" }}
             onClick={async () => {
-              setContent(PortfolioContent.Show)
-              await fetchProfile()
+              setContent(PortfolioContent.Show);
+              await fetchProfile();
             }}
           >
             <ArrowBackIcon />
@@ -110,57 +109,62 @@ const EditProjectModalContent = ({ project, className }: Props) => {
 
           <Typography sx={titleStyles}>Editar Proyecto</Typography>
 
-          <Typography className='exp-show-description'>
-            Aquí podrás editar los datos de tu proyecto
-          </Typography>
+          <Typography>Aquí podrás editar los datos de tu proyecto</Typography>
         </Box>
 
-        <Box component='form' onSubmit={onSubmitForm}>
+        <Box
+          component="form"
+          onSubmit={onSubmitForm}
+          sx={{ display: "flex", flexDirection: "column" }}
+        >
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', lg: 'row' },
-              gap: '30px'
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              gap: { xs: "20px", sm: "30px" },
             }}
           >
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '20px'
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "20px",
+                width: "100%",
               }}
             >
               <TextField
                 sx={textFieldStyles}
-                id='title'
-                label='Título'
+                id="title"
+                label="Título"
                 onChange={onTitleChange}
                 value={title}
               />
 
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' }
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  width: "100%",
+                  gap: "20px",
                 }}
               >
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    sx={{ textFieldStyles }}
-                    label='Fecha Final'
-                    onChange={onDateEndChange}
-                    value={dateEnd}
-                  />
-                </LocalizationProvider>
-                <Box
-                  className='inputContainer pl-5px'
-                  sx={{ ml: { xs: 0, sm: 3 }, mt: { xs: 3, sm: 0 } }}
-                >
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      sx={textFieldStyles}
+                      label="Fecha Final"
+                      onChange={onDateEndChange}
+                      value={dateEnd}
+                    />
+                  </LocalizationProvider>
+                </Box>
+
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
                   <TextField
                     sx={textFieldStyles}
-                    id='location'
-                    label='Ubicación'
+                    id="location"
+                    label="Ubicación"
                     onChange={onLocationChange}
                     value={location}
                   />
@@ -169,19 +173,19 @@ const EditProjectModalContent = ({ project, className }: Props) => {
 
               <TextField
                 sx={textFieldStyles}
-                id='description'
+                id="description"
                 multiline
                 rows={4}
-                label='Descripción'
+                label="Descripción"
                 onChange={onDescriptionChange}
                 value={description}
               />
             </Box>
 
-            <Box sx={uploadBoxStyles} component='form' onSubmit={onSubmitForm}>
+            <Box sx={uploadBoxStyles} component="form" onSubmit={onSubmitForm}>
               <Box sx={inputBoxStyles} onDragOver={onDragOver} onDrop={onDrop}>
                 <Button
-                  component='label'
+                  component="label"
                   disabled={previousImages.length >= 3}
                   sx={uploadButtonStyles}
                 >
@@ -190,40 +194,25 @@ const EditProjectModalContent = ({ project, className }: Props) => {
                   </Typography>
                   <AddPhotoAlternateOutlinedIcon />
                   <input
-                    type='file'
+                    type="file"
                     multiple
-                    accept='.jpg,.jpeg,.png'
-                    style={{ display: 'none' }}
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: "none" }}
                     onDragOver={onDragOver}
                     onChange={onImageChange}
                   />
                 </Button>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  gap: '15px'
-                }}
-              >
+              <Box sx={fileListBoxStyles}>
                 {previousImages.length > 0 && (
                   <>
                     {previousImages.map((previousImage) => (
-                      <Box sx={fileListBoxStyles}>
-                        <ImageCard imageUrl={previousImage.previewUrl} />
-
-                        <IconButton
-                          onClick={() => {
-                            deleteFile(previousImage)
-                          }}
-                          sx={{
-                            display: 'flex',
-                            alignSelf: 'flex-start'
-                          }}
-                        >
-                          <ClearIcon />
-                        </IconButton>
-                      </Box>
+                      <>
+                        <ImageCard
+                          image={previousImage}
+                          deleteFile={deleteFile}
+                        />
+                      </>
                     ))}
                   </>
                 )}
@@ -231,24 +220,23 @@ const EditProjectModalContent = ({ project, className }: Props) => {
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>
-            <Button type='submit' sx={buttonStyle} className='exp-show-button'>
+            <Button type="submit" sx={buttonStyle}>
               Guardar Cambios
             </Button>
           </Box>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default EditProjectModalContent
+export default EditProjectModalContent;
 
 interface Props {
-  project: Portfolio
-  className?: string
+  project: Portfolio;
 }
 
 function toDateOrNull(date: string | Date | null): Dayjs | null {
-  if (date) return dayjs(date)
-  return null
+  if (date) return dayjs(date);
+  return null;
 }

@@ -1,6 +1,6 @@
-import { Box, Typography, TextField, Button, IconButton } from '@mui/material'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined'
+import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import {
   boxButtonStyles,
   headerStyles,
@@ -12,24 +12,23 @@ import {
   inputBoxStyles,
   uploadButtonStyles,
   fileListBoxStyles,
-  inputDescriptionStyles
-} from './styles'
+  inputDescriptionStyles,
+} from "./styles";
 
-import { useContext } from 'react'
+import { useContext } from "react";
 
-import PortfolioModalContext from '../../modal-context'
-import { PortfolioContent } from '../../modal-context/types'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import useProjectState from './use-project-form-state'
-import useAddProjectForm from './use-form'
-import ImageCard from './image-card'
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import useProjectState from "./use-project-form-state";
+import useAddProjectForm from "./use-form";
+import ImageCard from "./image-card";
 
-import ClearIcon from '@mui/icons-material/Clear'
 
 const AddPortfolioModalContent = ({ className }: Props) => {
-  const { setContent } = useContext(PortfolioModalContext)
+  const { setContent } = useContext(PortfolioModalContext);
   const {
     title,
     description,
@@ -43,26 +42,26 @@ const AddPortfolioModalContent = ({ className }: Props) => {
     onImageChange,
     deleteFile,
     onDragOver,
-    onDrop
-  } = useProjectState()
+    onDrop,
+  } = useProjectState();
 
   const project = {
     title,
     description,
     location,
     dateEnd,
-    newFiles
-  }
-  const onSubmitForm = useAddProjectForm({ project })
+    newFiles,
+  };
+  const onSubmitForm = useAddProjectForm({ project });
 
   return (
     <Box sx={modalStyle} className={className}>
-      <Box sx={{ mx: '40px', mb: '40px', mt: '20px' }}>
+      <Box sx={{ mx: "40px", mb: "40px", mt: "20px" }}>
         <Box sx={headerStyles}>
           <IconButton
-            sx={{ ml: '-10px' }}
+            sx={{ ml: "-10px" }}
             onClick={async () => {
-              setContent(PortfolioContent.Show)
+              setContent(PortfolioContent.Show);
             }}
           >
             <ArrowBackIcon />
@@ -70,55 +69,56 @@ const AddPortfolioModalContent = ({ className }: Props) => {
 
           <Typography sx={titleStyles}>Agregar Proyecto</Typography>
 
-          <Typography className='exp-show-description'>
+          <Typography className="exp-show-description">
             Aquí podrás agregar un proyecto a tu portafolio
           </Typography>
         </Box>
 
-        <Box component='form' onSubmit={onSubmitForm}>
+        <Box component="form" onSubmit={onSubmitForm}>
           <Box
             sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', lg: 'row' },
-              gap: '30px'
+              display: "flex",
+              flexDirection: { xs: "column", lg: "row" },
+              gap: "30px",
             }}
           >
             <Box
               sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '20px'
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "20px",
               }}
             >
               <TextField
                 sx={textFieldStyles}
-                id='title'
-                label='Título'
+                id="title"
+                label="Título"
                 onChange={onTitleChange}
               />
 
               <Box
                 sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' }
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: "20px",
                 }}
               >
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <DatePicker
-                    sx={{ textFieldStyles }}
-                    label='Fecha Final'
-                    onChange={onDateEndChange}
-                  />
-                </LocalizationProvider>
-                <Box
-                  className='inputContainer'
-                  sx={{ ml: { xs: 0, sm: 3 }, mt: { xs: 3, sm: 0 } }}
-                >
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                      sx={textFieldStyles}
+                      label="Fecha Final"
+                      onChange={onDateEndChange}
+                    />
+                  </LocalizationProvider>
+                </Box>
+
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
                   <TextField
                     sx={textFieldStyles}
-                    id='location'
-                    label='Ubicación'
+                    id="location"
+                    label="Ubicación"
                     onChange={onLocationChange}
                   />
                 </Box>
@@ -126,18 +126,18 @@ const AddPortfolioModalContent = ({ className }: Props) => {
 
               <TextField
                 sx={textFieldStyles}
-                id='description'
+                id="description"
                 multiline
                 rows={4}
-                label='Descripción'
+                label="Descripción"
                 onChange={onDescriptionChange}
               />
             </Box>
 
-            <Box sx={uploadBoxStyles} component='form' onSubmit={onSubmitForm}>
+            <Box sx={uploadBoxStyles} component="form" onSubmit={onSubmitForm}>
               <Box sx={inputBoxStyles} onDragOver={onDragOver} onDrop={onDrop}>
                 <Button
-                  component='label'
+                  component="label"
                   disabled={newFiles.length >= 3}
                   sx={uploadButtonStyles}
                 >
@@ -146,40 +146,20 @@ const AddPortfolioModalContent = ({ className }: Props) => {
                   </Typography>
                   <AddPhotoAlternateOutlinedIcon />
                   <input
-                    type='file'
+                    type="file"
                     multiple
-                    accept='.jpg,.jpeg,.png'
-                    style={{ display: 'none' }}
+                    accept=".jpg,.jpeg,.png"
+                    style={{ display: "none" }}
                     onDragOver={onDragOver}
                     onChange={onImageChange}
                   />
                 </Button>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  gap: '15px'
-                }}
-              >
+              <Box sx={fileListBoxStyles}>
                 {newFiles.length > 0 && (
                   <>
                     {newFiles.map((image) => (
-                      <Box sx={fileListBoxStyles}>
-                        <ImageCard image={image} />
-
-                        <IconButton
-                          onClick={() => {
-                            deleteFile(image)
-                          }}
-                          sx={{
-                            display: 'flex',
-                            alignSelf: 'flex-start'
-                          }}
-                        >
-                          <ClearIcon />
-                        </IconButton>
-                      </Box>
+                      <ImageCard image={image} deleteFile={deleteFile} />
                     ))}
                   </>
                 )}
@@ -187,18 +167,18 @@ const AddPortfolioModalContent = ({ className }: Props) => {
             </Box>
           </Box>
           <Box sx={boxButtonStyles}>
-            <Button type='submit' sx={buttonStyle} className='exp-show-button'>
+            <Button type="submit" sx={buttonStyle}>
               Guardar Cambios
             </Button>
           </Box>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 interface Props {
-  className?: string
+  className?: string;
 }
 
-export default AddPortfolioModalContent
+export default AddPortfolioModalContent;

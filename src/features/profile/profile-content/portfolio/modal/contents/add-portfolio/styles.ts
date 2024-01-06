@@ -57,7 +57,7 @@ export const descriptionStyles = {
 
 export const boxButtonStyles = {
   display: "flex",
-  justifyContent: "flex-end",
+  justifyContent: { xs: "center", lg: "flex-end" },
   marginTop: "15px",
 };
 
@@ -92,10 +92,12 @@ export const fileListBoxStyles = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  flexDirection: "row",
+  flexDirection: { xs: "column", sm: "row" },
   width: "100%",
+  height: "100%",
+  overflowY: "scroll",
+  gap: "10px",
 };
-
 export const fileNameStyles = {
   color: "#000",
   fontFamily: "inter",

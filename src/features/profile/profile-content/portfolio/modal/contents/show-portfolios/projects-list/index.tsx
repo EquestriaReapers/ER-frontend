@@ -1,35 +1,58 @@
-import { useContext } from 'react'
-import PortfolioModalContext from '../../../modal-context'
-import { Portfolio } from 'core/profiles/types'
-import Box from '@mui/material/Box'
-import ProjectItem from './item'
+import { useContext } from "react";
+import PortfolioModalContext from "../../../modal-context";
+import { Portfolio } from "core/profiles/types";
+
+import ProjectItem from "./item";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Box, IconButton } from "@mui/material";
+import { PortfolioContent } from "../../../modal-context/types";
 
 const ProjectsList = () => {
-  const { portfolio } = useContext(PortfolioModalContext)
+  const { setContent, setAPortfolio, portfolio } = useContext(
+    PortfolioModalContext
+  );
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '33px',
-        overflowY: 'auto',
-        height: '100%',
-        maxHeight: '425px',
-        backgroundColor: '#F4F4F4',
-        py: '40px',
-        px: '40px',
-        borderRadius: '6px'
-      }}
-    >
+    <>
       {portfolio.map((item: Portfolio) => {
         return (
-          <>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             <ProjectItem item={item} />
-          </>
-        )
+            <Box
+              sx={{
+                mt: "6px",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
+              <IconButton
+                onClick={() => {
+                  setContent(PortfolioContent.Edit);
+                  setAPortfolio(item);
+                }}
+              >
+                <EditIcon sx={{ color: "#007935" }} />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setContent(PortfolioContent.Delete);
+                  setAPortfolio(item);
+                }}
+              >
+                <DeleteIcon sx={{ color: "#007935" }} />
+              </IconButton>
+            </Box>
+          </Box>
+        );
       })}
-    </Box>
-  )
-}
+    </>
+  );
+};
 
-export default ProjectsList
+export default ProjectsList;

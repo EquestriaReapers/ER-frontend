@@ -125,7 +125,7 @@ export enum TypeImage {
   Online = "online",
 }
 
-interface PreviousImage {
+export interface PreviousImage {
   previewUrl: string;
   type: TypeImage;
   index: number;
