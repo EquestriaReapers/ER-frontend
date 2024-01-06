@@ -6,12 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import useUpdateEducationCV from "./use-update-CV-education";
 import { useContext, useState, useEffect } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
-import {
-  nameStyles,
-  inlineStyles,
-  subtitleStyles,
-  cvButtonStyle,
-} from "../styles";
+import { nameStyles, inlineStyles, subtitleStyles } from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
 
 const EducationItem = ({ item, className }: Props) => {

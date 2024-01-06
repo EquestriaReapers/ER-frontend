@@ -1,14 +1,12 @@
 import { updateCVEducation } from "core/education/update-CV-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
-import { useSuccessToast } from "hooks/use-success-toast";
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
 
 const useUpdateEducationCV = () => {
   const getToken = useGetToken();
-  const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
   const { fetchProfile } = useProfileContext();
   const token = getToken();
@@ -21,7 +19,6 @@ const useUpdateEducationCV = () => {
           token,
           experienceID
         );
-        showSuccessToast("Experiencia agregada con éxito");
         await fetchProfile();
         return data;
       } catch (error) {
