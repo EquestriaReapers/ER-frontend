@@ -1,40 +1,67 @@
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
-import { typographyStyles } from "./styles";
+import Box from "@mui/material/Box";
+import SkillsFilter from "./skills-filter/skills-filter";
+import LanguaguesFilter from "./languagues-filter/languagues-filter";
+import LocationsFilter from "./locations-filter/locations-filter";
+import CareersFilter from "./careers-filter/careers-filter";
 
 const Filters = () => {
   return (
-    <>
+    <Box
+      sx={{
+        px: "25px",
+        pt: "35px",
+        pb: "25px",
+        display: "flex",
+        width: "100%",
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start",
+      }}
+    >
       <Typography
         sx={{ fontWeight: "700", fontSize: "1.25rem", fontFamily: "inter" }}
       >
         Filtrar resultados
       </Typography>
-
-      <Typography
+      <Box
         sx={{
-          fontWeight: "700",
-          paddingTop: 2,
-          fontFamily: "inter",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          flex: 1,
+          width: "100%",
         }}
       >
-        Carrera
-      </Typography>
-      <FormGroup>
-        <FormControlLabel
-          control={<Checkbox defaultChecked />}
-          label="Carrera 1"
-        />
-        <FormControlLabel control={<Checkbox />} label="Carrera 2" />
-        <FormControlLabel control={<Checkbox />} label="Carrera 3" />
-        <FormControlLabel control={<Checkbox />} label="Carrera 4" />
-      </FormGroup>
+        <SkillsFilter />
+        <LanguaguesFilter />
+        <LocationsFilter />
+        <CareersFilter />
 
-      <Typography sx={typographyStyles}>select de carrera</Typography>
-      <Typography sx={typographyStyles}>Habilidades</Typography>
-    </>
+        {/*
+                <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "25px",
+            width: "100%",
+          }}
+        >
+          <Typography
+            sx={{
+              fontFamily: "Inter",
+              fontSize: "20px",
+              fontStyle: "normal",
+              fontWeight: "600",
+              lineHeight: "16px",
+            }}
+          >
+            Fecha de Egreso
+          </Typography>
+          <DateRangePicker />
+        </Box>*/}
+      </Box>
+    </Box>
   );
 };
 

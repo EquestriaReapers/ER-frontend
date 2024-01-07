@@ -144,6 +144,17 @@ export const websiteTitleContainerStyles = {
   alignItems: "center",
 };
 
+export const lenguageTitleContainerStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  pr: {
+    lg: "150px",
+    xs: "20px",
+  },
+  alignItems: "center",
+  width: "100%",
+};
+
 export const topSectionStyles = {
   width: "100%",
   mt: "30px",
@@ -197,6 +208,7 @@ export const EducationBoxStyles = {
 
 export const locationAndEditButtonStyles = {
   display: "flex",
+  flexWrap: "wrap",
   width: "100%",
   justifyContent: "space-between",
 };

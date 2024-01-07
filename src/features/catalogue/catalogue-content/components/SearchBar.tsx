@@ -3,15 +3,14 @@ import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import { Typography, styled } from "@mui/material";
-import useSearchBarState from "../profiles/search/use-search-bar-state";
-import { Pagination, Profile } from "core/profiles/types";
-import useSearchProfileList from "../profiles/search/use-search-profile-list";
 import {
   InputBaseStyles,
   PaperStyles,
   SearchButtonStyles,
   SearchIconStyles,
 } from "./styles";
+import useCatalogueContext from "../catalogue-context/use-catalogue-context";
+import { useEffect, useState } from "react";
 
 const StyledPaper = styled(Paper)`
   ${PaperStyles}
@@ -29,28 +28,31 @@ const StyledButton = styled(Button)`
   ${SearchButtonStyles}
 `;
 
-const SearchBar = ({
-  setProfileList,
-  setPagination,
-  currentPage,
-  seed,
-}: Props) => {
-  const { onChangeText, text } = useSearchBarState();
-  const searchProfileList = useSearchProfileList({
-    setProfileList,
-    setPagination,
-    currentPage,
-    seed,
-    text,
-  });
+const SearchBar = () => {
+  const [localSearchText, setLocalSearchText] = useState("");
+  const { setSearchText, searchText } = useCatalogueContext();
+  useEffect(() => {
+    setLocalSearchText(searchText);
+  }, [searchText]);
 
   return (
     <>
       <StyledPaper>
         <StyledSearchIcon />
-        <StyledInputBase placeholder="Buscador" onChange={onChangeText} />
+        <StyledInputBase
+          placeholder="Buscador"
+          value={localSearchText}
+          onChange={(input) => {
+            setLocalSearchText(input.target.value);
+          }}
+        />
       </StyledPaper>
-      <StyledButton variant="contained" onClick={searchProfileList}>
+      <StyledButton
+        variant="contained"
+        onClick={() => {
+          setSearchText(localSearchText);
+        }}
+      >
         <SearchIcon sx={{ display: { sm: "none" } }} />
         <Typography
           sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "Inter" }}
@@ -61,11 +63,5 @@ const SearchBar = ({
     </>
   );
 };
-interface Props {
-  setProfileList: (profileList: Profile[]) => void;
-  setPagination: (pagination: Pagination) => void;
-  currentPage: number;
-  seed: number;
-  text: string | null;
-}
+
 export default SearchBar;

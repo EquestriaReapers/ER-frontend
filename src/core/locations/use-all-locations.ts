@@ -1,15 +1,15 @@
-import { Language } from "core/profiles/types";
-import { getAllLanguages } from "core/languagues/get-all-languages.service";
+import { getAllLocations } from "./get-all-locations.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
+import { Location } from "core/profiles/types";
 
 const useAllLanguages = (name: string, excludeNames?: string[]) => {
-  const [allLanguages, setAllLanguages] = useState<Language[]>([]);
+  const [allLanguages, setAllLanguages] = useState<Location[]>([]);
   const { showErrorToast } = useErrorToast();
 
   const getLanguages = useCallback(async () => {
     try {
-      const data = await getAllLanguages(name, excludeNames);
+      const data = await getAllLocations(name, excludeNames);
       setAllLanguages(data);
     } catch (error) {
       showErrorToast(error);
