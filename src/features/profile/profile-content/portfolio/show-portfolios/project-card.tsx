@@ -58,7 +58,7 @@ function ProjectCard({ project }: Props) {
                 backgroundColor: "rgba(0, 0, 0, 0.58)  ",
                 py: "32px",
                 px: "32px",
-                position: "absolute",
+                position: "relative",
                 top: 0,
                 bottom: 0,
                 left: 0,
