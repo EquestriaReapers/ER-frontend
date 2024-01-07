@@ -40,6 +40,7 @@ jobs:
 #            cd /var/www/ER-frontend-staging
 #            chmod -R 777 dist || { echo 'Failed to set permissions on dist folder'; exit 1; }
 #
+#
       - name: Remove existing dist folder
         uses: appleboy/ssh-action@v0.1.2
         with:
