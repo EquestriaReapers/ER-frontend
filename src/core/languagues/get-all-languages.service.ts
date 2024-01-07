@@ -1,5 +1,5 @@
 import { Language } from "core/profiles/types";
-import { LANGUAGE_URL } from "./config";
+import { LANGUAGE_URL } from "../contact-method/config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 

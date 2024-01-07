@@ -1,5 +1,5 @@
 import { Location } from "core/profiles/types";
-import { LOCATION_URL } from "./config";
+import { LOCATION_URL } from "../contact-method/config";
 import axios from "axios";
 import { BackendError } from "app/exceptions";
 
