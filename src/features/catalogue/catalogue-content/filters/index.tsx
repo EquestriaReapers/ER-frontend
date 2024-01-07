@@ -1,10 +1,9 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import DateRangePicker from "../components/DateRangePicker";
-import { typographyStyles } from "./styles";
 import SkillsFilter from "./skills-filter/skills-filter";
 import LanguaguesFilter from "./languagues-filter/languagues-filter";
 import LocationsFilter from "./locations-filter/locations-filter";
+import CareersFilter from "./careers-filter/careers-filter";
 
 const Filters = () => {
   return (
@@ -37,10 +36,10 @@ const Filters = () => {
         <SkillsFilter />
         <LanguaguesFilter />
         <LocationsFilter />
+        <CareersFilter />
 
-        <Typography sx={{ ...typographyStyles }}>Habilidades</Typography>
-
-        <Box
+        {/*
+                <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -60,7 +59,7 @@ const Filters = () => {
             Fecha de Egreso
           </Typography>
           <DateRangePicker />
-        </Box>
+        </Box>*/}
       </Box>
     </Box>
   );
