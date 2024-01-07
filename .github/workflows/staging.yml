@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull Ucab Profile
+      - name: Pull Ucab Profile 🔽
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
@@ -19,7 +19,7 @@ jobs:
             git checkout staging
             git pull || { echo 'Failed to pull changes'; exit 1; }
 
-      - name: Npm Install Frontend
+      - name: Npm Install Frontend ⚙️
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
@@ -29,19 +29,8 @@ jobs:
             cd /var/www/ER-frontend-staging
             git checkout staging
             npm install || { echo 'Failed to install dependencies'; exit 1; }
-#
-#      - name: Set permissions for dist folder
-#        uses: appleboy/ssh-action@v0.1.2
-#        with:
-#          host: ${{secrets.SSH_HOST}}
-#          key: ${{secrets.SSH_KEY}}
-#          username: ${{secrets.SSH_USERNAME}}
-#          script: |
-#            cd /var/www/ER-frontend-staging
-#            chmod -R 777 dist || { echo 'Failed to set permissions on dist folder'; exit 1; }
-#
-#
-      - name: Remove existing dist folder
+
+      - name: Remove existing dist folder ❌
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
@@ -51,7 +40,7 @@ jobs:
             cd /var/www/ER-frontend-staging
             rm -rf dist || { echo 'Failed to remove existing dist folder'; exit 1; }
 
-      - name: Build and Verify
+      - name: Build and Verify 👷‍♂️
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
@@ -66,6 +55,6 @@ jobs:
               exit 1
             fi
 
-      - name: Finalize
+      - name: Finalize ✅
         run: |
           echo 'Repository already exists previously, pulling changes'
