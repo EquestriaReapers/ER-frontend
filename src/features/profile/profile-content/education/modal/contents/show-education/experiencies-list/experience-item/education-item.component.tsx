@@ -5,7 +5,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import useUpdateEducationCV from "./use-update-CV-education";
 import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
-import { nameStyles, inlineStyles, subtitleStyles } from "../styles";
+import { nameStyles } from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
 import { Education } from "core/profiles/types";
 
@@ -37,7 +37,6 @@ const EducationItem = ({ item, className }: Props) => {
                   CV
                 </Typography>
               </IconButton>
-              ) : (
               <IconButton
                 onClick={() => {
                   setContent(EducationContent.Edit);
@@ -62,16 +61,11 @@ const EducationItem = ({ item, className }: Props) => {
               )}
             </Box>
           </Box>
-          <Box sx={inlineStyles}>
-            <Typography sx={subtitleStyles} variant="h6">
+          <Box className={"inlineStyles"}>
+            <Typography className={"subtitleStyles"} variant="h6">
               {item.entity} {dateItem}
             </Typography>
           </Box>
-        </Box>
-        <Box className={"inlineStyles"}>
-          <Typography className={"subtitleStyles"} variant="h6">
-            {item.entity} {dateItem}
-          </Typography>
         </Box>
       </Box>
     </div>
