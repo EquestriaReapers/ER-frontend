@@ -1,5 +1,5 @@
 import { Language } from "core/profiles/types";
-import { getAllLanguages } from "core/contact-method/get-all-languages.service";
+import { getAllLanguages } from "core/languagues/get-all-languages.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

@@ -56,6 +56,15 @@ export const boxButtonStyles = {
   },
 };
 
+export const reverseBoxButtonStyles = {
+  display: "flex",
+
+  justifyContent: {
+    xs: "center",
+    lg: "flex-end",
+  },
+};
+
 export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",

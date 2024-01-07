@@ -1,11 +1,14 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useCallback } from "react";
 
 const useContactMethodFormState = () => {
   const [contactMethod, setContactMethod] = useState("");
 
-  const onChangeContactMethod = (event: ChangeEvent<HTMLInputElement>) => {
-    setContactMethod(event.target.value);
-  };
+  const onChangeContactMethod = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setContactMethod(event.target.value);
+    },
+    []
+  );
 
   return {
     contactMethod,

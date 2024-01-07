@@ -24,12 +24,12 @@ const ContactMethods = () => {
           sx={{ width: "100%", marginRight: 1 }}
           onChange={onChangeContactMethod}
           id="web-page"
-          label="Correo UCAB"
+          label="Correo"
           variant="outlined"
         />
         <Button
           sx={buttonStyle}
-          disabled={profile.contactMethods.length == 3}
+          disabled={profile.contactMethods.length >= 3}
           onClick={() => {
             addContactMethod(contactMethod);
           }}

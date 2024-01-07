@@ -20,7 +20,7 @@ export const textFieldBoxStyles = {
     lg: "row",
   },
   justifyContent: "space-between",
-}
+};
 
 export const iconTextStyles = {
   display: "flex",
@@ -29,38 +29,58 @@ export const iconTextStyles = {
 };
 
 export const languageBoxStyles = {
-  width: "100%",
-}
+  width: {
+    xs: "100%",
+    sm: "100%",
+    lg: "50%",
+  },
+};
 
 export const emailBoxStyles = {
-  width: "100%",
+  width: {
+    xs: "100",
+    sm: "100%",
+    lg: "50%",
+  },
   mt: {
     xs: 1,
     sm: 0,
     lg: 0,
   },
-  ml: {
+};
+
+export const boxContentStyles = {
+  display: "flex",
+  flexDirection: {
+    xs: "column",
+    lg: "row",
+  },
+  gap: {
+    xs: 0,
     sm: 3,
     lg: 3,
   },
-}
+};
 
-export const boxContentStyles = {
+export const itemBoxStyles = {
   display: "flex",
   flexDirection: {
     xs: "column",
     sm: "row",
     lg: "row",
   },
+  flexWrap: "wrap",
+  gap: {
+    xs: 1,
+    sm: 1,
+    lg: 1,
+  },
+  justifyContent: "flex-start",
 };
 
 export const textfieldStyles = {
   width: "100%",
   flex: 1,
-  mr: {
-    sm: 2,
-    lg: 2,
-  },
 };
 
 export const descriptionStyles = {
@@ -86,5 +106,9 @@ export const buttonStyle = {
   my: 1,
   "&:hover": {
     backgroundColor: PRIMARY_DARKER,
+  },
+  "&.Mui-disabled": {
+    background: "#eaeaea",
+    color: "#c0c0c0",
   },
 };

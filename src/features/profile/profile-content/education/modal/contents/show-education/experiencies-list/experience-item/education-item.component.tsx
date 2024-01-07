@@ -1,13 +1,13 @@
-import { Education } from "core/profiles/types";
 import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useUpdateEducationCV from "./use-update-CV-education";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
 import { nameStyles, inlineStyles, subtitleStyles } from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
+import { Education } from "core/profiles/types";
 
 const EducationItem = ({ item, className }: Props) => {
   const { setContent, setAnEducation } = useContext(EducationModalContext);
@@ -15,37 +15,29 @@ const EducationItem = ({ item, className }: Props) => {
     new Date(date).getFullYear();
   const endYear = item.endDate ? getYear(item.endDate) : "No especificado";
   const dateItem = `(${endYear})`;
-
-  const [cvStyles, setCVStyles] = useState("");
   const updateEducationCV = useUpdateEducationCV();
-
-  useEffect(() => {
-    if (item.isVisible) {
-      setCVStyles("cvButtonStyleTrue");
-    } else {
-      setCVStyles("cvButtonStyleFalse");
-    }
-  }, []);
 
   return (
     <div className={className}>
-      <div>
+      <Box>
         <Box>
           <Box className="titleIconStyles">
             <Typography sx={nameStyles}>{item.title}</Typography>
             <Box>
               <IconButton
                 onClick={() => {
-                  if (item.isVisible) {
-                    setCVStyles("cvButtonStyleFalse");
-                  } else {
-                    setCVStyles("cvButtonStyleTrue");
-                  }
                   updateEducationCV(!item.isVisible, item.id);
                 }}
               >
-                <Typography className={`${cvStyles}`}>CV</Typography>
+                <Typography
+                  className={
+                    item.isVisible ? "cvButtonStyleTrue" : "cvButtonStyleFalse"
+                  }
+                >
+                  CV
+                </Typography>
               </IconButton>
+              ) : (
               <IconButton
                 onClick={() => {
                   setContent(EducationContent.Edit);
@@ -76,7 +68,12 @@ const EducationItem = ({ item, className }: Props) => {
             </Typography>
           </Box>
         </Box>
-      </div>
+        <Box className={"inlineStyles"}>
+          <Typography className={"subtitleStyles"} variant="h6">
+            {item.entity} {dateItem}
+          </Typography>
+        </Box>
+      </Box>
     </div>
   );
 };

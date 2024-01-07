@@ -12,9 +12,9 @@ const EditContactCard = ({ className }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
-      <IconButton onClick={() => setIsOpen(true)}>
-        <EditIcon />
+    <div style={{ display: "flex", width: "24px", height: "24px" }}>
+      <IconButton sx={{ width: "24px" }} onClick={() => setIsOpen(true)}>
+        <EditIcon sx={{ fontSize: "24px" }} />
       </IconButton>
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>

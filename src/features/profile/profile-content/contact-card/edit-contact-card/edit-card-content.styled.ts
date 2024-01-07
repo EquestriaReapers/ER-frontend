@@ -7,7 +7,7 @@ const SM_SIZE = 480;
 const XS_SIZE = 380;
 
 export default styled(EditCardComponent)`
-  width: 800px;
+  width: 790px;
   margin-left: auto;
   margin-right: auto;
 
@@ -73,8 +73,6 @@ export default styled(EditCardComponent)`
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {
-    width: 400px;
-
     .exp-show-description {
       max-width: none;
     }
