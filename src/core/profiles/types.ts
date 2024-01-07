@@ -8,9 +8,12 @@ export interface Profile {
   description: string;
   mainTitle: string;
   countryResidence: string;
+  website: string;
   education: Education[];
   experience: Experience[];
   skills: Skill[];
+  languages: Language[];
+  contactMethods: ContactMethod[];
   deletedAt: Date | null;
 }
 
@@ -30,6 +33,25 @@ export interface Skill {
   level: string;
 }
 
+export interface ContactMethod {
+  id: number;
+  email: string;
+}
+
+export interface Location {
+  id: number;
+  name: string;
+}
+
+export interface Language {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
+  name: string;
+  isVisible: boolean;
+}
+
 export interface Experience {
   id: number;
   profileId: number;
@@ -39,6 +61,15 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+}
+
+export interface LanguageOption {
+  id: number;
+  profileId: number;
+  level: string;
+  languageId: number;
+  name: string;
+  isVisible: boolean;
 }
 
 export interface Education {
@@ -51,3 +82,17 @@ export interface Education {
   endDate: Date;
   deleteAt: Date | null;
 }
+
+export enum LanguageLevel {
+  Alto = "alto",
+  Bajo = "bajo",
+  Nativo = "nativo",
+  Intermedio = "intermedio",
+}
+
+export const DICTIONARY_LANGUAGUE_OPTIONS: Record<LanguageLevel, string> = {
+  [LanguageLevel.Alto]: "Alto",
+  [LanguageLevel.Bajo]: "Bajo",
+  [LanguageLevel.Nativo]: "Nativo",
+  [LanguageLevel.Intermedio]: "Intermedio",
+};
