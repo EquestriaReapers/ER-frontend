@@ -20,5 +20,8 @@ jobs:
             git checkout staging
             git pull
             npm install
+
+            # Agrega comandos para liberar recursos o archivos bloqueados
+            rm -rf dist
             npm run build
             echo 'Repository already exists previously, pulling changes'
