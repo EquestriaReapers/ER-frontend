@@ -1,5 +1,10 @@
 import { Button, Box, Typography } from "@mui/material";
-import { buttonStyle, titleStyles, subTitleStyles } from "../../../../styles";
+import {
+  buttonStyle,
+  titleStyles,
+  subTitleStyles,
+  reverseBoxButtonStyles,
+} from "../../../../styles";
 import {
   descriptionStyles,
   boxContentStyles,
@@ -43,7 +48,7 @@ const ModalContent = () => {
         </Box>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+      <Box sx={reverseBoxButtonStyles}>
         <Button sx={buttonStyle} onClick={updateContactModal}>
           Guardar Cambios
         </Button>

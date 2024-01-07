@@ -29,11 +29,19 @@ export const iconTextStyles = {
 };
 
 export const languageBoxStyles = {
-  width: "50%",
+  width: {
+    xs: "100%",
+    sm: "100%",
+    lg: "50%",
+  },
 };
 
 export const emailBoxStyles = {
-  width: "50%",
+  width: {
+    xs: "100",
+    sm: "100%",
+    lg: "50%",
+  },
   mt: {
     xs: 1,
     sm: 0,
@@ -45,7 +53,6 @@ export const boxContentStyles = {
   display: "flex",
   flexDirection: {
     xs: "column",
-    sm: "row",
     lg: "row",
   },
   gap: {
@@ -64,7 +71,7 @@ export const itemBoxStyles = {
   },
   flexWrap: "wrap",
   gap: {
-    xs: 0,
+    xs: 1,
     sm: 1,
     lg: 1,
   },
