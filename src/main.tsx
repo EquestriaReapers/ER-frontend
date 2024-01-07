@@ -8,7 +8,7 @@ import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
 import NewPassword from "features/auth/NewPassword";
-import Home from "features/home/Home";
+import LandingPage from "./features/landing-page";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -75,11 +75,11 @@ const routerConfig: RouteObject[] = [
         path: "/new-password/",
         element: <NewPassword />,
       },
+      {
+        path: "/landing",
+        element: <LandingPage />,
+      },
     ],
-  },
-  {
-    path: "/home",
-    element: <Home />,
   },
 ];
 
