@@ -91,7 +91,9 @@ function ProjectCard({ project }: Props) {
         </CardMedia>
       </Card>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-        <ProjectInfoModal project={project} setIsOpen={setIsOpen} />
+        <Box>
+          <ProjectInfoModal project={project} setIsOpen={setIsOpen} />
+        </Box>
       </Modal>
     </>
   )

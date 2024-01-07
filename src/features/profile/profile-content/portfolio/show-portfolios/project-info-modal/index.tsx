@@ -140,6 +140,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
                   width: "100%",
                   marginBottom: "12px",
                 }}
+                key={image}
               >
                 <CardMedia
                   sx={{
