@@ -1,7 +1,7 @@
 import { Option } from "components/autocomplete-field/autocomplete-field.component";
 import useAllLanguages from "core/languagues/use-all-language";
 
-const LIMIT_SHOW_SELECT = 15;
+const LIMIT_SHOW_SELECT = 500;
 
 const useLanguaguesSuggestions = (
   name: string | null,

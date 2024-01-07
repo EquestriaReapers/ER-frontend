@@ -4,6 +4,7 @@ import DateRangePicker from "../components/DateRangePicker";
 import { typographyStyles } from "./styles";
 import SkillsFilter from "./skills-filter/skills-filter";
 import LanguaguesFilter from "./languagues-filter/languagues-filter";
+import LocationsFilter from "./locations-filter/locations-filter";
 
 const Filters = () => {
   return (
@@ -35,6 +36,7 @@ const Filters = () => {
       >
         <SkillsFilter />
         <LanguaguesFilter />
+        <LocationsFilter />
 
         <Typography sx={{ ...typographyStyles }}>Habilidades</Typography>
 

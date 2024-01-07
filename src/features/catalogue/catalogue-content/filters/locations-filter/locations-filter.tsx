@@ -5,44 +5,38 @@ import Chip from "@mui/material/Chip";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Option } from "components/autocomplete-field/autocomplete-field.component";
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
-import useLanguaguesSuggestions from "./use-languagues-suggestions";
+import useLocationsSuggestions from "./use-locations-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
-import { Checkbox } from "@mui/material";
 
-const LanguaguesFilter = () => {
-  const {
-    selectedLanguagues,
-    setSelectedLanguagues,
-    isExclusiveLanguague,
-    setIsExclusiveLanguague,
-  } = useCatalogueContext();
+const LocationsFilter = () => {
+  const { selectedLocations, setSelectedLocations } = useCatalogueContext();
 
-  const addLanguague = useCallback(
-    (newLanguague: string) => {
-      if (selectedLanguagues.includes(newLanguague)) return;
-      setSelectedLanguagues((prev) => [...prev, newLanguague]);
+  const addLocation = useCallback(
+    (newLocation: string) => {
+      if (selectedLocations.includes(newLocation)) return;
+      setSelectedLocations((prev) => [...prev, newLocation]);
     },
-    [selectedLanguagues, setSelectedLanguagues]
+    [selectedLocations, setSelectedLocations]
   );
 
-  const removeLanguague = useCallback(
-    (removedLanguague: string) => {
-      setSelectedLanguagues((prev) =>
-        prev.filter((languague) => languague !== removedLanguague)
+  const removeLocation = useCallback(
+    (removedLocation: string) => {
+      setSelectedLocations((prev) =>
+        prev.filter((location) => location !== removedLocation)
       );
     },
-    [setSelectedLanguagues]
+    [setSelectedLocations]
   );
 
-  const onSelectLanguague = useCallback(
+  const onSelectLocation = useCallback(
     (option: Option) => {
-      addLanguague(option.label);
+      addLocation(option.label);
     },
-    [addLanguague]
+    [addLocation]
   );
 
-  const useFilteredLanguaguesSuggestions =
-    getFilteredLanguaguesSuggestionsClousure(selectedLanguagues);
+  const useFilteredLocationsSuggestions =
+    getFilteredLocationsSuggestionsClousure(selectedLocations);
 
   return (
     <Box
@@ -63,13 +57,13 @@ const LanguaguesFilter = () => {
           mb: 2,
         }}
       >
-        Lenguajes
+        Localizaciones
       </Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
-        label="Agregar lenguajes"
-        useOptions={useFilteredLanguaguesSuggestions}
-        onSelectOption={onSelectLanguague}
+        label="Agregar localizaciones"
+        useOptions={useFilteredLocationsSuggestions}
+        onSelectOption={onSelectLocation}
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
@@ -84,14 +78,14 @@ const LanguaguesFilter = () => {
             my: 1,
           }}
         >
-          {selectedLanguagues.map((languague) => (
+          {selectedLocations.map((location) => (
             <Chip
               deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
               color="primary"
-              key={languague}
-              label={languague}
+              key={location}
+              label={location}
               onDelete={() => {
-                removeLanguague(languague);
+                removeLocation(location);
               }}
               sx={{
                 borderRadius: "6px",
@@ -114,14 +108,9 @@ const LanguaguesFilter = () => {
             alignItems: "center",
           }}
         >
-          <Checkbox
-            checked={isExclusiveLanguague}
-            onChange={(check) => {
-              setIsExclusiveLanguague(check.target.checked);
-            }}
-            inputProps={{ "aria-label": "Checkbox" }}
-          />
-          <Typography>Todos los lenguajes son excluyentes</Typography>
+          <Typography>
+            Las localizaciones no son excluyentes, permite cadenas abiertas
+          </Typography>
         </Box>
       </Box>
     </Box>
@@ -132,12 +121,10 @@ const LanguaguesFilter = () => {
   Tecnica secreta de construccion de hooks por 
   composicion programatica 💀
  */
-function getFilteredLanguaguesSuggestionsClousure(
-  excludedLanguagues: string[]
-) {
+function getFilteredLocationsSuggestionsClousure(excludedLocations: string[]) {
   return (name?: string | null): Option[] => {
-    return useLanguaguesSuggestions(name || "", excludedLanguagues);
+    return useLocationsSuggestions(name || "", excludedLocations);
   };
 }
 
-export default LanguaguesFilter;
+export default LocationsFilter;

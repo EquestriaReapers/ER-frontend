@@ -4,7 +4,7 @@ import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 import { Option } from "components/autocomplete-field/autocomplete-field.component";
 
-const LIMIT_SHOW_SELECT = 15;
+const LIMIT_SHOW_SELECT = 500;
 
 const useAllSkills = (name: string, excludeSkills: string[]) => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);

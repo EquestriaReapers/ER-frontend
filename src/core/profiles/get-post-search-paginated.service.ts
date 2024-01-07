@@ -31,7 +31,7 @@ export async function searchPostPaginatedProfiles({
     const bodyParams = {
       text: currentPaginatedParams.searchText,
       skills: generateArraySlug(selectedSkills),
-      language: generateArraySlug(selectedLanguagues),
+      language: selectedLanguagues,
       countryResidence: selectedLocations,
       career: generateArraySlug(selectedCareers),
     };

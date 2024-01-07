@@ -6,6 +6,7 @@ import { debounce } from "lodash";
 const filter = createFilterOptions<Option>();
 
 const DEFAULT_DEBOUNCE_TIME = 350;
+const DEFAULT_OPTIONS_LIMIT = 10;
 
 const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
   sx,
@@ -18,6 +19,7 @@ const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
   allowNewUserOptions,
   blurTextOnSelect,
   value,
+  optionsLimit,
 }) => {
   const textFieldRef = useRef<HTMLInputElement>(null);
   const [currentText, setCurrentText] = useState("");
@@ -71,7 +73,7 @@ const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
           }
         }
 
-        return filtered;
+        return filtered.slice(0, optionsLimit || DEFAULT_OPTIONS_LIMIT);
       }}
       renderInput={(params) => (
         <TextField {...params} inputRef={textFieldRef} label={label} />
@@ -97,6 +99,7 @@ export interface Props {
   allowNewUserOptions?: boolean;
   value?: Option;
   blurTextOnSelect?: boolean;
+  optionsLimit?: number;
 }
 
 export default AutoCompleteFieldComponent;
