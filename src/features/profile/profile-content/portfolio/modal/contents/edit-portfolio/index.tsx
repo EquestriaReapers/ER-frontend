@@ -205,13 +205,11 @@ const EditProjectModalContent = ({ project }: Props) => {
                 {previousImages.length > 0 && (
                   <>
                     {previousImages.map((previousImage, index) => (
-                      <>
-                        <ImageCard
-                          key={index}
-                          image={previousImage}
-                          deleteFile={deleteFile}
-                        />
-                      </>
+                      <ImageCard
+                        key={index + "project-image"}
+                        image={previousImage}
+                        deleteFile={deleteFile}
+                      />
                     ))}
                   </>
                 )}
