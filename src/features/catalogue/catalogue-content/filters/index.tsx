@@ -12,7 +12,10 @@ const Filters = () => {
         pt: "35px",
         pb: "25px",
         display: "flex",
+        width: "100%",
+        flex: 1,
         flexDirection: "column",
+        justifyContent: "flex-start",
       }}
     >
       <Typography
@@ -20,10 +23,18 @@ const Filters = () => {
       >
         Filtrar resultados
       </Typography>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-start",
+          flex: 1,
+          width: "100%",
+        }}
+      >
         <SkillsFilter />
 
-        <Typography sx={typographyStyles}>Habilidades</Typography>
+        <Typography sx={{ ...typographyStyles }}>Habilidades</Typography>
 
         <Box
           sx={{

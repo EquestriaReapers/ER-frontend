@@ -45,7 +45,14 @@ const SkillsFilter = () => {
     getFilteredSkillsSuggestionsClousure(selectedSkills);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", mt: 2 }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        mt: 2,
+        width: "100%",
+      }}
+    >
       <Typography
         sx={{
           fontFamily: "Inter",
@@ -67,7 +74,17 @@ const SkillsFilter = () => {
         blurTextOnSelect={true}
       />
       <Box>
-        <Box sx={{ width: "100%", display: "flex", gap: "5px" }}>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "15px",
+            flex: 1,
+            my: 1,
+            mb: 2,
+          }}
+        >
           {selectedSkills.map((skill) => (
             <Chip
               deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
@@ -105,7 +122,7 @@ const SkillsFilter = () => {
             }}
             inputProps={{ "aria-label": "Checkbox" }}
           />
-          <Typography>Solo coincidencias exactas</Typography>
+          <Typography>Todas las habilidades son excluyentes</Typography>
         </Box>
       </Box>
     </Box>
