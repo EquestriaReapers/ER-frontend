@@ -54,7 +54,7 @@ const CareersFilter = () => {
     >
       <Typography
         sx={{
-          fontFamily: "Inter",
+          fontFamily: "inter",
           fontSize: "1rem",
           fontStyle: "normal",
           fontWeight: "600",
@@ -101,7 +101,7 @@ const CareersFilter = () => {
                   lg: "#D9D9D9",
                 },
                 color: "#303030",
-                fontFamily: "Inter",
+                fontFamily: "inter",
                 fontSize: "16px",
                 fontStyle: "normal",
                 fontWeight: "400",

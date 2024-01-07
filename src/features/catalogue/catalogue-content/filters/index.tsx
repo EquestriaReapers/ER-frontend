@@ -37,29 +37,6 @@ const Filters = () => {
         <LanguaguesFilter />
         <LocationsFilter />
         <CareersFilter />
-
-        {/*
-                <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "25px",
-            width: "100%",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Inter",
-              fontSize: "20px",
-              fontStyle: "normal",
-              fontWeight: "600",
-              lineHeight: "16px",
-            }}
-          >
-            Fecha de Egreso
-          </Typography>
-          <DateRangePicker />
-        </Box>*/}
       </Box>
     </Box>
   );

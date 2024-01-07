@@ -8,7 +8,7 @@ export const skillBoxStyles = {
 };
 
 export const skillTitleStyles = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontWeight: "400",
   color: "#000",
   fontSize: "16px",

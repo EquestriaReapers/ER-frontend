@@ -55,7 +55,7 @@ const SearchBar = () => {
       >
         <SearchIcon sx={{ display: { sm: "none" } }} />
         <Typography
-          sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "Inter" }}
+          sx={{ display: { xs: "none", sm: "flex" }, fontFamily: "inter" }}
         >
           Buscar
         </Typography>

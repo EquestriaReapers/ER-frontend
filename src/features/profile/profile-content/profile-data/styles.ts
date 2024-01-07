@@ -18,7 +18,7 @@ export const modalStyle = {
 export const titleStyles = {
   margin: "0px 0px 12px",
   fontSize: { xs: "20px", sm: "22px", md: "30px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
@@ -26,7 +26,7 @@ export const titleStyles = {
 };
 
 export const buttonStyle = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
   fontWeight: "700",
@@ -64,7 +64,7 @@ export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   wordWrap: "break-word",
   pb: 1,
 };

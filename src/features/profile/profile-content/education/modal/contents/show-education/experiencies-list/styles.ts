@@ -29,7 +29,7 @@ export const boxStyles = {
 
 export const nameStyles = {
   fontSize: "20px",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
@@ -37,7 +37,7 @@ export const nameStyles = {
 
 export const cvButtonStyle ={ 
   color: "#007934",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "20px",
   fontStyle: "normal",
   fontWeight: 600,
@@ -54,7 +54,7 @@ export const subtitleStyles = {
   fontSize: "16px",
   color: "#535353",
   textTransform: "capitalize",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontStyle: "normal",
   lineHeight: "normal",
   pr: 1,
@@ -64,7 +64,7 @@ export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   wordWrap: "break-word",
   pt: 2,
   display: '-webkit-box',
