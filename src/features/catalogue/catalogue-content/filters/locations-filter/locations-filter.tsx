@@ -89,13 +89,24 @@ const LocationsFilter = () => {
               }}
               sx={{
                 borderRadius: "6px",
-                backgroundColor: "#D9D9D9",
+                backgroundColor: {
+                  xs: "#D9D9D9",
+                  sm: "#D9D9D9",
+                  md: "#D9D9D9",
+                  lg: "#D9D9D9",
+                },
                 color: "#303030",
                 fontFamily: "Inter",
                 fontSize: "16px",
                 fontStyle: "normal",
                 fontWeight: "400",
                 lineHeight: "normal",
+                maxWidth: {
+                  xs: "100%",
+                  sm: "100%",
+                  md: "250px",
+                  lg: "100%",
+                },
               }}
             />
           ))}

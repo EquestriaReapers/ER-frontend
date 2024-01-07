@@ -39,6 +39,8 @@ export async function searchPostPaginatedProfiles({
     console.log("body params", bodyParams);
 
     const response = await axios.post(urlWithParams, bodyParams);
+    console.log("AAAA", response);
+    if (!response) throw new Error("Respuesta incomprensible del servidor");
     return response.data;
   } catch (error) {
     throw new BackendError(error);
