@@ -1,9 +1,10 @@
 import { FunctionComponent, useContext } from 'react'
 import AddExperience from './add-education/add-education.styled.tsx'
 import ShowExperience from './show-education/show-education.styled.tsx'
+
 import { EducationContent } from '../education-modal-context/types.ts'
 import EducationModalContext from '../education-modal-context/index.tsx'
-import EditEducationModalContent from './edit-education/modal-content.component.tsx'
+import EditEducationStyled from './edit-education/edit-education.styled.tsx'
 import DeleteEducationModalContent from './delete-education/delete-education.component.tsx'
 
 export const EducationContentManager: FunctionComponent = () => {
@@ -20,7 +21,7 @@ export const EducationContentManager: FunctionComponent = () => {
         return null
       }
 
-      return <EditEducationModalContent anEducation={anEducation} />
+      return <EditEducationStyled anEducation={anEducation} />
     case EducationContent.Delete:
       if (!anEducation) {
         debugError('anEducation is null')
@@ -34,6 +35,5 @@ export const EducationContentManager: FunctionComponent = () => {
 }
 
 function debugError(message: string) {
-  console.error(message)
   alert(message)
 }

@@ -11,11 +11,11 @@ export default styled(ShowExperiences)`
   margin-left: auto;
   margin-right: auto;
 
-  .exp-header-container {
+  .edu-header-container {
     margin-bottom: 12px;
   }
 
-  .exp-show-description {
+  .edu-show-description {
     max-width: 550px;
     font-size: 16px;
     font-weight: 400;
@@ -30,11 +30,11 @@ export default styled(ShowExperiences)`
 
   @media screen and (max-width: ${MD_SIZE}px) {
     width: 400px;
-    .exp-show-description {
+    .edu-show-description {
       max-width: none;
     }
 
-    .exp-show-button {
+    .edu-show-button {
       width: 100%;
     }
   }

@@ -34,6 +34,5 @@ export const ExperiencesContentManager: FunctionComponent = () => {
 };
 
 function debugError(message: string) {
-  console.error(message);
   alert(message);
 }
