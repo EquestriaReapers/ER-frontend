@@ -4,6 +4,8 @@ import axios from "axios";
 import { BackendError } from "app/exceptions";
 import { SkillType } from "core/skills/types";
 
+const LIMIT_DEFAULT_GET_ALL_SKILLS = 25;
+
 export async function getAllSkills(
   name: string,
   exclude?: string[],
@@ -30,5 +32,5 @@ function getSkillsUrl(
     exclude !== undefined && exclude && exclude.length
       ? `&_exclude=${exclude}`
       : "";
-  return `${SKILLS_URL}?name=${name}${skillsTypeComplement}${excludeComplement}`;
+  return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}${skillsTypeComplement}${excludeComplement}`;
 }

@@ -4,6 +4,8 @@ import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useEffect, useState } from "react";
 import { Option } from "components/autocomplete-field/autocomplete-field.component";
 
+const LIMIT_SHOW_SELECT = 15;
+
 const useAllSkills = (name: string, excludeSkills: string[]) => {
   const [allSkills, setAllSkills] = useState<Skill[] | null>(null);
   const { showErrorToast } = useErrorToast();
@@ -39,9 +41,13 @@ const useSkillsSuggestions = (
     return !excludeSkills.includes(item.name);
   });
 
-  return allSkilsWithoutExcluded.map((item) => {
-    return { value: item.id, label: item.name };
-  });
+  const allSkilsWithoutExcludedFormatted = allSkilsWithoutExcluded.map(
+    (item) => {
+      return { value: item.id, label: item.name };
+    }
+  );
+
+  return allSkilsWithoutExcludedFormatted.slice(0, LIMIT_SHOW_SELECT);
 };
 
 export default useSkillsSuggestions;
