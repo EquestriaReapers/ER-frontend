@@ -21,9 +21,24 @@ export async function searchPostPaginatedProfiles({
     );
     console.log("url with params", urlWithParams);
 
-    const response = await axios.post(urlWithParams, {
+    const {
+      selectedSkills,
+      selectedLanguagues,
+      selectedLocations,
+      selectedCareers,
+    } = currentPaginatedParams;
+
+    const bodyParams = {
       text: currentPaginatedParams.searchText,
-    });
+      skills: generateArraySlug(selectedSkills),
+      language: generateArraySlug(selectedLanguagues),
+      countryResidence: selectedLocations,
+      career: generateArraySlug(selectedCareers),
+    };
+
+    console.log("body params", bodyParams);
+
+    const response = await axios.post(urlWithParams, bodyParams);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -40,6 +55,17 @@ interface Response {
     currentPage: number;
     randomSeed: number;
   };
+}
+
+function generateSlug(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-") // Reemplaza caracteres no alfanuméricos con '-'
+    .replace(/^-+|-+$/g, ""); // Elimina guiones al principio y al final
+}
+
+function generateArraySlug(text: string[]): string[] {
+  return text.map((item) => generateSlug(item));
 }
 
 interface Props {

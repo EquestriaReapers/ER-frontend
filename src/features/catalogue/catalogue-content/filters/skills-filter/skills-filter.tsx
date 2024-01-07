@@ -67,7 +67,7 @@ const SkillsFilter = () => {
         blurTextOnSelect={true}
       />
       <Box>
-        <Box sx={{ width: "100%", display: "flex", gab: "5px" }}>
+        <Box sx={{ width: "100%", display: "flex", gap: "5px" }}>
           {selectedSkills.map((skill) => (
             <Chip
               deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
@@ -112,7 +112,10 @@ const SkillsFilter = () => {
   );
 };
 
-// Jutsu Prohibido 🙏: Tecnica secreta de construccion de hooks por composicion programatica 💀
+/* Jutsu Prohibido 🙏:
+  Tecnica secreta de construccion de hooks por 
+  composicion programatica 💀
+ */
 function getFilteredSkillsSuggestionsClousure(excludedSkills: string[]) {
   return (name?: string | null): Option[] => {
     return useSkillsSuggestions(name || "", excludedSkills);

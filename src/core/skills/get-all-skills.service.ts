@@ -13,6 +13,7 @@ export async function getAllSkills(
 ): Promise<Skill[]> {
   try {
     const allSkillsUrlFormatted = getSkillsUrl(name, exclude, type);
+    console.log("allSkillsUrlFormatted", allSkillsUrlFormatted);
     const response = await axios.get(allSkillsUrlFormatted);
     return response.data;
   } catch (error) {
@@ -29,9 +30,14 @@ function getSkillsUrl(
     type !== undefined && type ? `&type=${type}` : "";
   const excludeComplement =
     exclude !== undefined && exclude && exclude.length
-      ? `&exclude=${exclude}`
+      ? getExcludeArrayParams(exclude)
       : "";
-  return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}
-          ${skillsTypeComplement}
-          ${excludeComplement}`;
+  return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}${skillsTypeComplement}${excludeComplement}`;
+}
+
+// input: ["a", "b", "c"] => output: "&exclude=a&exclude=b&exclude=c"
+function getExcludeArrayParams(exclude: string[]): string {
+  return exclude.reduce((acc, item) => {
+    return `${acc}&exclude=${item}`;
+  }, "");
 }
