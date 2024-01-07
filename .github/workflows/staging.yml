@@ -29,17 +29,17 @@ jobs:
             cd /var/www/ER-frontend-staging
             git checkout staging
             npm install || { echo 'Failed to install dependencies'; exit 1; }
-
-      - name: Set permissions for dist folder
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
-          username: ${{secrets.SSH_USERNAME}}
-          script: |
-            cd /var/www/ER-frontend-staging
-            chmod -R 777 dist || { echo 'Failed to set permissions on dist folder'; exit 1; }
-
+#
+#      - name: Set permissions for dist folder
+#        uses: appleboy/ssh-action@v0.1.2
+#        with:
+#          host: ${{secrets.SSH_HOST}}
+#          key: ${{secrets.SSH_KEY}}
+#          username: ${{secrets.SSH_USERNAME}}
+#          script: |
+#            cd /var/www/ER-frontend-staging
+#            chmod -R 777 dist || { echo 'Failed to set permissions on dist folder'; exit 1; }
+#
       - name: Remove existing dist folder
         uses: appleboy/ssh-action@v0.1.2
         with:
