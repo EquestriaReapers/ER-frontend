@@ -7,9 +7,15 @@ import { Option } from "components/autocomplete-field/autocomplete-field.compone
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 import useSkillsSuggestions from "./use-skills-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
+import { Checkbox } from "@mui/material";
 
 const SkillsFilter = () => {
-  const { selectedSkills, setSelectedSkills } = useCatalogueContext();
+  const {
+    selectedSkills,
+    setSelectedSkills,
+    isExclusiveSkills,
+    setIsExclusiveSkills,
+  } = useCatalogueContext();
 
   const addSkill = useCallback(
     (newSkill: string) => {
@@ -39,7 +45,7 @@ const SkillsFilter = () => {
     getFilteredSkillsSuggestionsClousure(selectedSkills);
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", gap: "15px", mt: 2 }}>
+    <Box sx={{ display: "flex", flexDirection: "column", mt: 2 }}>
       <Typography
         sx={{
           fontFamily: "Inter",
@@ -47,6 +53,7 @@ const SkillsFilter = () => {
           fontStyle: "normal",
           fontWeight: "600",
           lineHeight: "16px",
+          mb: 1,
         }}
       >
         Habilidades
@@ -60,29 +67,48 @@ const SkillsFilter = () => {
         blurTextOnSelect={true}
       />
       <Box>
-        {selectedSkills.map((skill) => (
-          <Chip
-            deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
-            color="primary"
-            key={skill}
-            label={skill}
-            onDelete={() => {
-              removeSkill(skill);
+        <Box sx={{ width: "100%" }}>
+          {selectedSkills.map((skill) => (
+            <Chip
+              deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
+              color="primary"
+              key={skill}
+              label={skill}
+              onDelete={() => {
+                removeSkill(skill);
+              }}
+              sx={{
+                borderRadius: "6px",
+                backgroundColor: "#D9D9D9",
+                color: "#303030",
+                fontFamily: "Inter",
+                fontSize: "16px",
+                fontStyle: "normal",
+                fontWeight: "400",
+                lineHeight: "normal",
+                mt: "4px",
+                mx: "4px",
+              }}
+            />
+          ))}
+        </Box>
+        <Box
+          sx={{
+            witdh: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Checkbox
+            checked={isExclusiveSkills}
+            onChange={(check) => {
+              setIsExclusiveSkills(check.target.checked);
             }}
-            sx={{
-              borderRadius: "6px",
-              backgroundColor: "#D9D9D9",
-              color: "#303030",
-              fontFamily: "Inter",
-              fontSize: "16px",
-              fontStyle: "normal",
-              fontWeight: "400",
-              lineHeight: "normal",
-              my: "4px",
-              mx: "4px",
-            }}
+            inputProps={{ "aria-label": "Checkbox" }}
           />
-        ))}
+          <Typography>Solo coincidencias exactas</Typography>
+        </Box>
       </Box>
     </Box>
   );
