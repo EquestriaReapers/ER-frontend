@@ -7,6 +7,13 @@ import { Option } from "components/autocomplete-field/autocomplete-field.compone
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
 import useLocationsSuggestions from "./use-locations-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
+import {
+  filterDescriptionStyles,
+  locationChipStyles,
+  locationFilterTitleTypography,
+  locationsFilterBox,
+  selectedLocationsBox,
+} from "./styles";
 
 const LocationsFilter = () => {
   const { selectedLocations, setSelectedLocations } = useCatalogueContext();
@@ -39,26 +46,8 @@ const LocationsFilter = () => {
     getFilteredLocationsSuggestionsClousure(selectedLocations);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        mt: 2,
-        width: "100%",
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: "inter",
-          fontSize: "1rem",
-          fontStyle: "normal",
-          fontWeight: "600",
-          lineHeight: "16px",
-          mb: 2,
-        }}
-      >
-        Localizaciones
-      </Typography>
+    <Box sx={locationsFilterBox}>
+      <Typography sx={locationFilterTitleTypography}>Localizaciones</Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
         label="Agregar localizaciones"
@@ -67,62 +56,26 @@ const LocationsFilter = () => {
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
-      <Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "15px",
-            flex: 1,
-            my: 1,
-          }}
-        >
-          {selectedLocations.map((location) => (
-            <Chip
-              deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
-              color="primary"
-              key={location}
-              label={location}
-              onDelete={() => {
-                removeLocation(location);
-              }}
-              sx={{
-                borderRadius: "6px",
-                backgroundColor: {
-                  xs: "#D9D9D9",
-                  sm: "#D9D9D9",
-                  md: "#D9D9D9",
-                  lg: "#D9D9D9",
-                },
-                color: "#303030",
-                fontFamily: "inter",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal",
-                maxWidth: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "250px",
-                  lg: "100%",
-                },
-              }}
-            />
-          ))}
-        </Box>
-        <Box
-          sx={{
-            witdh: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Typography>
-            Las localizaciones no son excluyentes, permite cadenas abiertas
-          </Typography>
-        </Box>
+
+      <Box sx={selectedLocationsBox}>
+        {selectedLocations.map((location) => (
+          <Chip
+            deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
+            color="primary"
+            key={location}
+            label={location}
+            onDelete={() => {
+              removeLocation(location);
+            }}
+            sx={locationChipStyles}
+          />
+        ))}
+      </Box>
+      <Box sx={filterDescriptionStyles}>
+        <Typography>
+          Se mostraran los egresados que tengan 1 de las localizaciones
+          seleccionadas
+        </Typography>
       </Box>
     </Box>
   );

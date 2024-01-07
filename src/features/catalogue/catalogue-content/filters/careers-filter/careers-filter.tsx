@@ -9,6 +9,13 @@ import useCareersSuggestions from "./use-careers-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
 import useAllCareers from "./use-all-careers";
 import { CareersOption } from "core/profiles/get-careers-options.service";
+import {
+  careerChipStyles,
+  careerFilterTitleTypography,
+  careersFilterBox,
+  filterDescriptionStyles,
+  selectedCareersBox,
+} from "./styles";
 
 const CareersFilter = () => {
   const careersOptions = useAllCareers();
@@ -44,26 +51,8 @@ const CareersFilter = () => {
   );
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        mt: 2,
-        width: "100%",
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: "inter",
-          fontSize: "1rem",
-          fontStyle: "normal",
-          fontWeight: "600",
-          lineHeight: "16px",
-          mb: 2,
-        }}
-      >
-        Carreras
-      </Typography>
+    <Box sx={careersFilterBox}>
+      <Typography sx={careerFilterTitleTypography}>Carreras</Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
         label="Agregar carrera"
@@ -72,60 +61,25 @@ const CareersFilter = () => {
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
-      <Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "15px",
-            flex: 1,
-            my: 1,
-          }}
-        >
-          {selectedCareers.map((career) => (
-            <Chip
-              deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
-              color="primary"
-              key={career}
-              label={getCareerLabelWithValue(career, careersOptions)}
-              onDelete={() => {
-                removeCareer(career);
-              }}
-              sx={{
-                borderRadius: "6px",
-                backgroundColor: {
-                  xs: "#D9D9D9",
-                  sm: "#D9D9D9",
-                  md: "#D9D9D9",
-                  lg: "#D9D9D9",
-                },
-                color: "#303030",
-                fontFamily: "inter",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal",
-                maxWidth: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "250px",
-                  lg: "100%",
-                },
-              }}
-            />
-          ))}
-        </Box>
-        <Box
-          sx={{
-            witdh: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Typography>Las carreras no son excluyentes</Typography>
-        </Box>
+
+      <Box sx={selectedCareersBox}>
+        {selectedCareers.map((career) => (
+          <Chip
+            deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
+            color="primary"
+            key={career}
+            label={getCareerLabelWithValue(career, careersOptions)}
+            onDelete={() => {
+              removeCareer(career);
+            }}
+            sx={careerChipStyles}
+          />
+        ))}
+      </Box>
+      <Box sx={filterDescriptionStyles}>
+        <Typography>
+          Se mostraran los egresados que tengan 1 de las carreras seleccionadas
+        </Typography>
       </Box>
     </Box>
   );

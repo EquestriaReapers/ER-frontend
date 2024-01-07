@@ -8,6 +8,13 @@ import AutoCompleteFieldComponent from "components/autocomplete-field/autocomple
 import useLanguaguesSuggestions from "./use-languagues-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
 import { Checkbox } from "@mui/material";
+import {
+  filterDescriptionStyles,
+  languageChipStyles,
+  languageFilterTitleTypography,
+  languagesFilterBox,
+  selectedLanguagesBox,
+} from "./styles";
 
 const LanguaguesFilter = () => {
   const {
@@ -45,26 +52,8 @@ const LanguaguesFilter = () => {
     getFilteredLanguaguesSuggestionsClousure(selectedLanguagues);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        mt: 2,
-        width: "100%",
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: "inter",
-          fontSize: "1rem",
-          fontStyle: "normal",
-          fontWeight: "600",
-          lineHeight: "16px",
-          mb: 2,
-        }}
-      >
-        Lenguajes
-      </Typography>
+    <Box sx={languagesFilterBox}>
+      <Typography sx={languageFilterTitleTypography}>Lenguajes</Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
         label="Agregar lenguajes"
@@ -73,67 +62,31 @@ const LanguaguesFilter = () => {
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
-      <Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "15px",
-            flex: 1,
-            my: 1,
-          }}
-        >
-          {selectedLanguagues.map((languague) => (
-            <Chip
-              deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
-              color="primary"
-              key={languague}
-              label={languague}
-              onDelete={() => {
-                removeLanguague(languague);
-              }}
-              sx={{
-                borderRadius: "6px",
-                backgroundColor: {
-                  xs: "#D9D9D9",
-                  sm: "#D9D9D9",
-                  md: "#D9D9D9",
-                  lg: "#D9D9D9",
-                },
-                color: "#303030",
-                fontFamily: "inter",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal",
-                maxWidth: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "250px",
-                  lg: "100%",
-                },
-              }}
-            />
-          ))}
-        </Box>
-        <Box
-          sx={{
-            witdh: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Checkbox
-            checked={isExclusiveLanguague}
-            onChange={(check) => {
-              setIsExclusiveLanguague(check.target.checked);
+      <Box sx={selectedLanguagesBox}>
+        {selectedLanguagues.map((languague) => (
+          <Chip
+            deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
+            color="primary"
+            key={languague}
+            label={languague}
+            onDelete={() => {
+              removeLanguague(languague);
             }}
-            inputProps={{ "aria-label": "Checkbox" }}
+            sx={languageChipStyles}
           />
-          <Typography>Todos los lenguajes son excluyentes</Typography>
-        </Box>
+        ))}
+      </Box>
+      <Box sx={filterDescriptionStyles}>
+        <Checkbox
+          checked={isExclusiveLanguague}
+          onChange={(check) => {
+            setIsExclusiveLanguague(check.target.checked);
+          }}
+          inputProps={{ "aria-label": "Checkbox" }}
+        />
+        <Typography>
+          Mostrar egresados que tienen todas estas localizaciones
+        </Typography>
       </Box>
     </Box>
   );
