@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  Box,
-  Modal
-} from '@mui/material'
+import { Card, CardMedia, CardContent, Typography, Modal } from '@mui/material'
 import { Portfolio } from 'core/profiles/types'
 import { useState } from 'react'
 import ProjectInfoModal from './project-info-modal'
@@ -49,13 +42,13 @@ function ProjectCard({ project }: Props) {
           image={project.imagePrincipal!}
           title={project.title}
         >
-          <Box sx={{ width: '100%' }}></Box>
           {hover && (
             <CardContent
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.58)  ',
                 py: '32px',
                 px: '32px',
+                height: '100%',
                 position: 'relative',
                 top: 0,
                 bottom: 0,
