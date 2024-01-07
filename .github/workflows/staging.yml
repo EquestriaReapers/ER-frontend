@@ -1,4 +1,5 @@
 name: Build & Deploy
+
 on:
   push:
     branches: [staging]
@@ -7,28 +8,63 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy UcabProfile Frontend
+      - name: Pull Ucab Profile
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
-          key: ${{secrets.SSH_KEY}} # Private or public key of the server
-          username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
-
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
           script: |
-            cd /var/www 
-            cd ER-frontend-staging
+            cd /var/www/ER-frontend-staging
             git checkout staging
-            git pull || exit 1
-            npm install || exit 1
+            git pull || { echo 'Failed to pull changes'; exit 1; }
 
-            # Agrega comandos para liberar recursos o archivos bloqueados
-            chmod -R 777 dist || exit 1
-            rm -rf dist || exit 1
-            # Ejecuta npm run build y verifica el resultado
+      - name: Npm Install Frontend
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend-staging
+            git checkout staging
+            npm install || { echo 'Failed to install dependencies'; exit 1; }
+
+      - name: Set permissions for dist folder
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend-staging
+            chmod -R 777 dist || { echo 'Failed to set permissions on dist folder'; exit 1; }
+
+      - name: Remove existing dist folder
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend-staging
+            rm -rf dist || { echo 'Failed to remove existing dist folder'; exit 1; }
+
+      - name: Build and Verify
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend-staging
             if npm run build; then
               echo 'Build successful'
             else
               echo 'Build failed'
               exit 1
             fi
-            echo 'Repository already exists previously, pulling changes'
+
+      - name: Finalize
+        run: |
+          echo 'Repository already exists previously, pulling changes'
