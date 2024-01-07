@@ -22,7 +22,7 @@ export const boxStyles = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };
@@ -36,8 +36,8 @@ export const nameStyles = {
 };
 
 export const inlineStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
 };
 
 export const subtitleStyles = {
@@ -58,9 +58,9 @@ export const descriptionStyles = {
   fontFamily: "Inter",
   wordWrap: "break-word",
   pt: 2,
-  display: '-webkit-box',
-  WebkitBoxOrient: 'vertical',
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };

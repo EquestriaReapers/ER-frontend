@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucabLogo.webp";
 import {
-  TextFieldTypography,
   ImageBoxStyles,
   TextFieldStyles,
   ButtonStyles,
@@ -33,7 +32,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
     onChangeConfirmPassword,
   } = useRegisterFormState();
 
-  const LOGIN_BORDER_RADIUS = "11px";
+  const LOGIN_BORDER_RADIUS = "6px";
 
   const FormBoxStyles = useFormBoxStylesFunct();
   const QuestionBoxStyles = useQuestionBoxStylesFunct();
@@ -45,50 +44,45 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         <Box sx={ImageBoxStyles}>
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
         </Box>
-        <Typography sx={TextFieldTypography}>Nombre</Typography>
         <TextField
           value={name}
-          label=""
+          label="Nombre"
           type="name"
           onChange={onChangeName}
           disabled={disabled}
           sx={TextFieldStyles}
           InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
-        <Typography sx={TextFieldTypography}>Apellido</Typography>
         <TextField
           value={lastname}
-          label=""
+          label="Apellido"
           type="lastname"
           onChange={onChangeLastname}
           disabled={disabled}
           sx={TextFieldStyles}
           InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
-        <Typography sx={TextFieldTypography}>Correo electronico</Typography>
         <TextField
           value={email}
-          label=""
+          label="Correo electrónico"
           type="email"
           onChange={onChangeEmail}
           disabled={disabled}
           sx={TextFieldStyles}
           InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
-        <Typography sx={TextFieldTypography}>Contraseña</Typography>
         <TextField
           value={password}
-          label=""
+          label="Contraseña"
           type="password"
           onChange={onChangePassword}
           disabled={disabled}
           sx={TextFieldStyles}
           InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
         />
-        <Typography sx={TextFieldTypography}>Confirmar contraseña</Typography>
         <TextField
           value={confirmPassword}
-          label=""
+          label="Confirmar contraseña"
           type="password"
           onChange={onChangeConfirmPassword}
           disabled={disabled}

@@ -5,7 +5,12 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useContext } from 'react'
 import { EducationContent } from '../../../../education-modal-context/types'
-import { nameStyles, inlineStyles, subtitleStyles } from '../styles'
+import {
+  nameStyles,
+  inlineStyles,
+  subtitleStyles,
+  cvButtonStyle
+} from '../styles'
 import EducationModalContext from '../../../../education-modal-context/index'
 
 const EducationItem = ({ item, className }: Props) => {
@@ -22,6 +27,9 @@ const EducationItem = ({ item, className }: Props) => {
           <Box className='titleIconStyles'>
             <Typography sx={nameStyles}>{item.title}</Typography>
             <Box>
+              <IconButton>
+                <Typography sx={cvButtonStyle}>CV</Typography>
+              </IconButton>
               <IconButton
                 onClick={() => {
                   setContent(EducationContent.Edit)
@@ -30,14 +38,20 @@ const EducationItem = ({ item, className }: Props) => {
               >
                 <EditIcon sx={{ color: '#007935' }} />
               </IconButton>
-              <IconButton
-                onClick={() => {
-                  setContent(EducationContent.Delete)
-                  setAnEducation(item)
-                }}
-              >
-                <DeleteIcon sx={{ color: '#007935' }} />
-              </IconButton>
+              {item.isUCAB ? (
+                <IconButton disabled>
+                  <DeleteIcon sx={{ color: 'gray' }} />
+                </IconButton>
+              ) : (
+                <IconButton
+                  onClick={() => {
+                    setContent(EducationContent.Delete)
+                    setAnEducation(item)
+                  }}
+                >
+                  <DeleteIcon sx={{ color: '#007935' }} />
+                </IconButton>
+              )}
             </Box>
           </Box>
           <Box sx={inlineStyles}>

@@ -5,8 +5,8 @@ export const useFormBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const FormBoxStyles = {
-    width: isSmallScreen ? "250px" : "350px",
-    height: "680px",
+    width: isSmallScreen ? "300px" : "350px",
+    height: "600px",
     margin: "auto",
     padding: isSmallScreen ? "18px" : "40px",
     backgroundColor: "white",
@@ -15,7 +15,7 @@ export const useFormBoxStylesFunct = () => {
     alignItemns: "center",
     justifyContent: "center",
     borderRadius: "6px",
-    marginBottom: "16px",
+    mb: "16px",
   };
 
   return FormBoxStyles;
@@ -26,8 +26,8 @@ export const useQuestionBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const QuestionBoxStyles = {
-    marginRight: isSmallScreen ? "3px" : "15px",
-    fontSize: isSmallScreen ? "0.9rem" : "1rem",
+    marginRight: isSmallScreen ? "3px" : "6px",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
@@ -39,8 +39,8 @@ export const useLinkBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const LinkBoxStyles = {
-    marginLeft: isSmallScreen ? "3px" : "15px",
-    fontSize: isSmallScreen ? "0.9rem" : "1rem",
+    marginLeft: isSmallScreen ? "3px" : "3px",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
@@ -53,11 +53,6 @@ export const RedirectBoxStyles = {
   fontFamily: "Inter, sans-serif",
 };
 
-export const TextFieldTypography = {
-  fontFamily: "Inter, sans-serif",
-  color: "#979899",
-  fontSize: "0.9rem",
-};
 
 export const ImageBoxStyles = {
   display: "flex",
@@ -76,18 +71,20 @@ export const TextFieldStyles = {
 };
 
 export const ButtonStyles = {
-  backgroundColor: "#37B4E3",
+  boxShadow:'none',
+  backgroundColor:  "#03652e",
   width: "100%",
   color: "white",
   marginBottom: "26px",
   borderRadius: "6px",
   minHeight: "50px",
   textTransform: "capitalize",
-  fontSize: "0.rem",
+  fontSize: "16px",
+  fontWeight: "500",
 };
 
 export const UcabLogoStyles = {
   height: "85px",
   width: "85px",
-  marginBottom: "16px",
+  marginBottom: "32px",
 };

@@ -22,13 +22,17 @@ function ProjectCard({ project }: Props) {
   }
 
   return (
-    <div>
+    <>
       <Card
         sx={{
-          maxWidth: '300px',
-          width: '300px',
-          maxHeight: '1000',
-          height: '300px',
+          width: '100%',
+          maxWidth: {
+            xs: '100%',
+            sm: '100%',
+            md: '300px',
+            lg: '300px',
+            xl: '300px'
+          },
           textDecoration: 'none',
           cursor: 'pointer'
         }}
@@ -39,26 +43,28 @@ function ProjectCard({ project }: Props) {
         <CardMedia
           sx={{
             display: 'flex',
+            width: '100%',
             height: '300px'
           }}
           image={project.imagePrincipal!}
           title={project.title}
         >
-          <Box sx={{ width: '300px' }}></Box>
+          <Box sx={{ width: '100%' }}></Box>
           {hover && (
             <CardContent
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.58)  ',
                 py: '32px',
                 px: '32px',
-                position: 'absolute',
+                position: 'relative',
                 top: 0,
                 bottom: 0,
                 left: 0,
                 right: 0,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '22px'
+                gap: '22px',
+                width: '100%'
               }}
             >
               <Typography
@@ -94,7 +100,7 @@ function ProjectCard({ project }: Props) {
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ProjectInfoModal project={project} setIsOpen={setIsOpen} />
       </Modal>
-    </div>
+    </>
   )
 }
 

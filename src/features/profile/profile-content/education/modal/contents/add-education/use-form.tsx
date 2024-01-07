@@ -38,7 +38,7 @@ const useAddEducationForm = ({ education }: AddEducationFormProps) => {
         );
 
         setContent(EducationContent.Show);
-        showSuccessToast("Educacion agregada con éxito");
+        showSuccessToast("Educación agregada con éxito");
         await fetchProfile();
 
         return data;

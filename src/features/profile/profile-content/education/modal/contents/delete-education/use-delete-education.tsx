@@ -21,7 +21,7 @@ const useDeleteEducation = ({ educationId }: Payload) => {
       setLoading(true);
       const data = await deleteAProfileEducation(token, educationId);
       setContent(EducationContent.Show);
-      showSuccessToast("Educacion borrada con éxito");
+      showSuccessToast("Educación borrada con éxito");
       fetchProfile();
       return data;
     } catch (error) {

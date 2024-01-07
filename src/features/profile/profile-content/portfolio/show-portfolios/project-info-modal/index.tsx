@@ -112,7 +112,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           }}
         >
           {project.image && project.image.length === 0 ? (
-            <>
+            <Box sx={{ display: "flex" }}>
               <Typography
                 sx={{
                   display: "flex",
@@ -121,16 +121,16 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
                 }}
               >
                 No hay imágenes{" "}
-                <BrokenImageIcon
-                  sx={{
-                    display: "flex",
-                    fontSize: "32px",
-                    alignSelf: "center",
-                    marginLeft: "10px",
-                  }}
-                />
               </Typography>
-            </>
+              <BrokenImageIcon
+                sx={{
+                  display: "flex",
+                  fontSize: "32px",
+                  alignSelf: "center",
+                  marginLeft: "10px",
+                }}
+              />
+            </Box>
           ) : (
             project.image!.map((image) => (
               <Card

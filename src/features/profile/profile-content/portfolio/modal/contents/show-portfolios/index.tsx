@@ -41,12 +41,16 @@ const ShowPortfolio = () => {
           gap: "33px",
           overflowY: "auto",
           height: "100%",
-          maxHeight: "425px",
+          maxHeight: {
+            xs: "350px",
+            sm: "400px",
+            md: "425px",
+          },
           justifyContent: "center",
           backgroundColor: "#F4F4F4",
           py: { xs: "20px", sm: "40px" },
           px: { xs: "0", sx: "40px" },
-          borderRadius: "6px",  
+          borderRadius: "6px",
         }}
       >
         <ProjectsList />
