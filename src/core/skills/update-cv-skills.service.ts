@@ -1,15 +1,16 @@
 import axios from "axios";
 import { BackendError } from "../../app/exceptions";
 import { SKILLSCV_URL } from "./config";
+import { MessageResponse } from "core/profiles/config";
 
 export async function updateCvSkills(
   body: UpdateSkillsBody,
   token: string,
-  Id: number
-): Promise<unknown> {
+  skillId: number
+): Promise<MessageResponse> {
   try {
     const response = await axios.patch(
-      `${SKILLSCV_URL}/${Id}/visibility`,
+      `${SKILLSCV_URL}/${skillId}/visibility`,
       body,
       {
         headers: {
