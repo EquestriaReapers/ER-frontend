@@ -67,7 +67,7 @@ const SkillsFilter = () => {
         blurTextOnSelect={true}
       />
       <Box>
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", display: "flex", gab: "5px" }}>
           {selectedSkills.map((skill) => (
             <Chip
               deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
@@ -86,8 +86,6 @@ const SkillsFilter = () => {
                 fontStyle: "normal",
                 fontWeight: "400",
                 lineHeight: "normal",
-                mt: "4px",
-                mx: "4px",
               }}
             />
           ))}

@@ -20,19 +20,19 @@ const Catalogue = () => {
     );
 
   return (
-    <CatalogueContextProvider
-      seed={seed}
-      initialCatalogueSearchParams={initialCatalogueSearchParams}
-    >
-      <Box sx={pageContainer}>
+    <Box sx={pageContainer}>
+      <CatalogueContextProvider
+        seed={seed}
+        initialCatalogueSearchParams={initialCatalogueSearchParams}
+      >
         <Box sx={catalogueContainer}>
           <Box sx={filtersContainer}>
             <Filters />
           </Box>
           <CatalogueBoxList />
         </Box>
-      </Box>
-    </CatalogueContextProvider>
+      </CatalogueContextProvider>
+    </Box>
   );
 };
 

@@ -1,6 +1,6 @@
 import { Box, Pagination, Stack } from "@mui/material";
 import ShowProfiles from "./profiles/show-profiles";
-import { searchBarContainer } from "./styles";
+import { profileCardResultContainer, searchBarContainer } from "./styles";
 import CatalogueSearchBar from "./components/SearchBar";
 import { ChangeEvent } from "react";
 import SpinnerBlock from "components/spinner-block";
@@ -10,14 +10,7 @@ const CatalogueBoxList = () => {
   const { loading, pagination, setCurrentPage } = useCatalogueContext();
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        maxWidth: { lg: 590, xl: 790 },
-        height: "90%",
-        mx: { xs: "30px", sm: "50px" },
-      }}
-    >
+    <Box sx={profileCardResultContainer}>
       <Box sx={searchBarContainer}>
         <CatalogueSearchBar />
       </Box>
