@@ -23,45 +23,45 @@ const EducationItem = ({ item, className }: Props) => {
 
   return (
     <div className={className}>
-      <Box>
-        <Box className="titleIconStyles">
-          <Box className={"typographyBoxStyles"}>
-            <Typography className={"nameStyles"}>{item.title}</Typography>
-          </Box>
-          <Box className={"itemIconBox"}>
-            <IconButton>
-              <Typography sx={cvButtonStyle}>CV</Typography>
-            </IconButton>
-            <IconButton
-              onClick={() => {
-                setContent(EducationContent.Edit);
-                setAnEducation(item);
-              }}
-            >
-              <EditIcon sx={{ color: "#007935" }} />
-            </IconButton>
-            {item.isUCAB ? (
-              <IconButton disabled>
-                <DeleteIcon sx={{ color: "gray" }} />
+      <div>
+        <Box>
+          <Box className="titleIconStyles">
+            <Typography sx={nameStyles}>{item.title}</Typography>
+            <Box>
+              <IconButton>
+                <Typography sx={cvButtonStyle}>CV</Typography>
               </IconButton>
-            ) : (
               <IconButton
                 onClick={() => {
-                  setContent(EducationContent.Delete);
+                  setContent(EducationContent.Edit);
                   setAnEducation(item);
                 }}
               >
-                <DeleteIcon sx={{ color: "#007935" }} />
+                <EditIcon sx={{ color: "#007935" }} />
               </IconButton>
-            )}
+              {item.isUCAB ? (
+                <IconButton disabled>
+                  <DeleteIcon sx={{ color: "gray" }} />
+                </IconButton>
+              ) : (
+                <IconButton
+                  onClick={() => {
+                    setContent(EducationContent.Delete);
+                    setAnEducation(item);
+                  }}
+                >
+                  <DeleteIcon sx={{ color: "#007935" }} />
+                </IconButton>
+              )}
+            </Box>
+          </Box>
+          <Box sx={inlineStyles}>
+            <Typography sx={subtitleStyles} variant="h6">
+              {item.entity} {dateItem}
+            </Typography>
           </Box>
         </Box>
-        <Box className={"inlineStyles"}>
-          <Typography className={"subtitleStyles"} variant="h6">
-            {item.entity} {dateItem}
-          </Typography>
-        </Box>
-      </Box>
+      </div>
     </div>
   );
 };
