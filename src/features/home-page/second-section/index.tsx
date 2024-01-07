@@ -12,10 +12,7 @@ import {
 } from "./styles";
 import Card from "./card";
 import { useNavigate } from "react-router-dom";
-import { useCallback, useEffect, useState } from "react";
-import { useErrorToast } from "hooks/use-error-toast";
-import { searchPaginatedProfiles } from "core/profiles/get-search-paginated.service";
-import { Profile } from "core/profiles/types";
+import useGetProfiles from "./card/use-get-profiles";
 
 const SecondSection = () => {
   const SecondSectionStyles = useSecondSectionStyles();
@@ -32,23 +29,7 @@ const SecondSection = () => {
     navigate("/catalogue");
   };
 
-  const { showErrorToast } = useErrorToast();
-  const [profiles, setProfiles] = useState<Profile[]>([]);
-  const getProfilesInfo = useCallback(async () => {
-    try {
-      const seed = Math.floor(Math.random() * 1000);
-      const data = await searchPaginatedProfiles(1, 6, seed, null);
-      setProfiles(data.profiles);
-      return data;
-    } catch (error) {
-      showErrorToast(error);
-    }
-  }, [showErrorToast]);
-
-  useEffect(() => {
-    getProfilesInfo();
-  }, [getProfilesInfo]);
-
+  const profiles = useGetProfiles();
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
