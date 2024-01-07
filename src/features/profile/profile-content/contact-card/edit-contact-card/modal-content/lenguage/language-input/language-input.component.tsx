@@ -1,11 +1,24 @@
 import { Box } from "@mui/material";
-import useAllLanguages from "./use-all-language";
 import useContactCardContext from "../../../contact-card-context/use-contact-card-context";
 import SelectComponent from "components/select-component";
+import { useCallback, useMemo } from "react";
+import { LocalLanguague } from "../../../contact-card-context/contact-card-context";
+import { OptionLanguage } from "../../../contact-card-context/types";
 
 const LanguageInput = ({ value, onChange, disabled }: Props) => {
-  const { loading } = useContactCardContext();
-  const options = useLanguagesSuggestions("");
+  const { loading, lenguagueOptions, languages } = useContactCardContext();
+
+  const _onChange = useCallback(
+    (value: number | string) => {
+      onChange(+value);
+    },
+    [onChange]
+  );
+
+  const _availableOptionsLanguagues = useFilteredLanguagues(
+    lenguagueOptions,
+    languages
+  );
 
   return (
     <Box
@@ -19,34 +32,44 @@ const LanguageInput = ({ value, onChange, disabled }: Props) => {
     >
       <SelectComponent
         disabled={loading || disabled}
-        options={options}
+        options={_availableOptionsLanguagues}
         label="Idioma"
-        value={value}
-        onChange={onChange}
+        value={value || ""}
+        onChange={_onChange}
       />
     </Box>
   );
 };
 
-function useLanguagesSuggestions(name?: string | null): Option[] {
-  const allLanguages = useAllLanguages(name || "");
+function useFilteredLanguagues(
+  lenguagueOptions: OptionLanguage[],
+  currentLanguagues: LocalLanguague[]
+) {
+  const filteredLanguagues = useMemo(() => {
+    const _lenguagueOptions = [...lenguagueOptions];
+    currentLanguagues.forEach((currentLanguague) => {
+      const _currentLanguague = lenguagueOptions.find(
+        (option) => +option.value === currentLanguague.languagueId
+      );
+      if (!_currentLanguague) return;
 
-  if (!allLanguages?.length) return [];
+      const currentLanguagueIndex = _lenguagueOptions.findIndex(
+        (option) => +option.value === currentLanguague.languagueId
+      );
 
-  return allLanguages.map((item) => {
-    return { value: item.id + "", label: item.name };
-  });
-}
+      if (currentLanguagueIndex === -1) return;
+      _lenguagueOptions.splice(currentLanguagueIndex, 1);
+    });
+    return _lenguagueOptions;
+  }, [lenguagueOptions, currentLanguagues]);
 
-export interface Option {
-  value: string;
-  label: string;
+  return filteredLanguagues;
 }
 
 interface Props {
-  value: string;
+  value: number | undefined;
   disabled?: boolean;
-  onChange: (value: string) => void;
+  onChange: (value: number) => void;
 }
 
 export default LanguageInput;

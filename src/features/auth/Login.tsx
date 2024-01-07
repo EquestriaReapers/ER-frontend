@@ -14,6 +14,7 @@ import SpinnerAbsolute from "components/spinner-absolute";
 
 const Login: FunctionComponent = () => {
   const { loading, onSubmit } = useLogin();
+
   return (
     <Box
       style={loginProfileStyles as unknown as Record<string, number | string>}
@@ -29,9 +30,8 @@ const Login: FunctionComponent = () => {
 function useLogin() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
-
+  const { showSuccessToast } = useSuccessToast();
   useRedirectWhenLogged();
 
   const [loading, setLoading] = useState(false);
@@ -49,6 +49,7 @@ function useLogin() {
           email,
           password,
         });
+        showSuccessToast("Inicio de sesión exitoso");
         dispatch(loginAction(result));
         showSuccessToast(getRandomWelcomePhrase());
         navigate(`/dashboard`);

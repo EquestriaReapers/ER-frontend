@@ -1,4 +1,4 @@
-import { ExperiencesContentProvider } from "./experiencies-modal-context";
+import { ExperiencesContentProvider } from "./experiences-modal-context";
 import { Experience } from "core/profiles/types";
 import ExperiencesModal from "./experiences-modal";
 import useProfileContext from "../../../profile-context/use-profile-context";

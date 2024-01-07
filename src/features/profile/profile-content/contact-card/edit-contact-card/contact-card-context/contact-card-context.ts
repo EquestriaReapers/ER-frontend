@@ -1,5 +1,6 @@
-import { createContext } from "react";
-import { ContactMethod, Language } from "core/profiles/types";
+import { Dispatch, SetStateAction, createContext } from "react";
+import { ContactMethod, LanguageLevel } from "core/profiles/types";
+import { OptionLanguage } from "./types";
 
 const ContactCardContext = createContext<ContactCardContextI>({
   profileId: 0,
@@ -15,12 +16,17 @@ const ContactCardContext = createContext<ContactCardContextI>({
   isOpen: false,
   setIsOpen: () => {},
   setBasicData: () => {},
+  setDeletedLanguaguesIds: () => {},
+  deletedLanguaguesIds: [],
+  newLanguagues: [],
+  setNewLanguagues: () => {},
+  lenguagueOptions: [],
 });
 
 export interface ContactCardContextI {
   profileId: number;
   basicData: BasicDataFormState;
-  languages: Language[];
+  languages: LocalLanguague[];
   contactMethods: ContactMethod[];
   fetchProfile: () => Promise<void>;
   loading: boolean;
@@ -28,11 +34,27 @@ export interface ContactCardContextI {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
   setBasicData: (basicData: BasicDataFormState) => void;
+  setDeletedLanguaguesIds: Dispatch<SetStateAction<number[]>>;
+  deletedLanguaguesIds: number[];
+  newLanguagues: LocalLanguague[];
+  setNewLanguagues: Dispatch<SetStateAction<LocalLanguague[]>>;
+  lenguagueOptions: OptionLanguage[];
 }
 
 export interface BasicDataFormState {
   countryResidence: string;
   website: string;
+}
+
+export interface LocalLanguague {
+  languagueId: number;
+  level: LanguageLevel;
+  type: LanguagueType;
+}
+
+export enum LanguagueType {
+  Online = "online",
+  Local = "local",
 }
 
 export default ContactCardContext;

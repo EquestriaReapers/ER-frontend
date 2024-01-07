@@ -5,11 +5,9 @@ import Checkbox from "@mui/material/Checkbox";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-
+import { Box } from "@mui/material";
 import ucabLogo from "../images/ucabLogo.webp";
 import {
-  TextFieldTypography,
   UcabLogoStyles,
   ImageBoxStyles,
   FormBottomTypographyStyles,
@@ -43,7 +41,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const InsideFormBottomStyles = useInsideFormBottomStylesFunct();
   const ForgotPasswordStyles = useForgotPasswordStylesFunct();
 
-  const LOGIN_BORDER_RADIUS = "11px";
+  const LOGIN_BORDER_RADIUS = "6px";
 
   return (
     <>
@@ -52,20 +50,18 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
         </Box>
         <Box>
-          <Typography sx={TextFieldTypography}>Correo electronico</Typography>
           <TextField
             value={email}
-            label=""
+            label="Correo electrónico"
             type="email"
             onChange={onChangeEmail}
             disabled={disabled}
             sx={TextFieldStyles}
             InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
-          <Typography sx={TextFieldTypography}>Contraseña</Typography>
           <TextField
             value={password}
-            label=""
+            label="Contraseña"
             type="password"
             onChange={onChangePassword}
             disabled={disabled}
@@ -99,17 +95,15 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
               </Typography>
             </Box>
             <Box sx={ForgotPasswordStyles}>
-              <Link rel="noopener noreferrer" to={""}>
-                ¿Olvidó la contraseña?
-              </Link>
+              <Link to={"/forgot-password"}>¿Olvidó la contraseña?</Link>
             </Box>
           </Box>
           <Box sx={RedirectBoxStyles}>
             <Typography sx={QuestionBoxStyles}>
-              ¿Aun no tienes cuenta?
+              ¿Aún no tienes cuenta?
             </Typography>{" "}
             <Link to="/register" style={LinkBoxStyles}>
-              Registrate
+              ¡Registrate!
             </Link>
           </Box>
         </Box>
