@@ -103,6 +103,19 @@ export const useRecoverPasswordTextStyles = () => {
   return RecoverPasswordTextStyles;
 };
 
+export const SuccesImageStyles = {
+  width:"40%", 
+  height:"auto", 
+  margin:"auto", 
+  minWidth:"120px",
+}
+
+export const MainContentStyles = {
+  display:"grid", 
+  height:"100%", 
+  gridTemplateRows:"85% 15%"
+}
+
 export const SearchBarBoxStyles = {
   margin: "auto 0 auto 0",
 };

@@ -11,6 +11,8 @@ import {
   InsideCenterBoxStyles,
   useRecoverPasswordTypographyStyles,
   useRecoverPasswordTextStyles,
+  SuccesImageStyles,
+  MainContentStyles,
   SearchBarBoxStyles,
   useEmailTypographyStyles,
   SearchBarTextFieldStyles,
@@ -22,6 +24,7 @@ import { ChangeEvent, FormEvent } from "react";
 import forgotPassword from "core/auth/forgot-password.service";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
+import forgotPasswordImage from "./images/forgot-password.jpg"
 
 const ForgotPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();
@@ -32,6 +35,7 @@ const ForgotPassword: FunctionComponent = () => {
   const SendEmailStyles = useSendEmailStyles();
 
   const [email, setEmail] = useState("");
+  const [emailSent, setEmailSend] = useState(false);
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
 
@@ -46,10 +50,10 @@ const ForgotPassword: FunctionComponent = () => {
       try {
         console.log(email);
         const data = await forgotPassword(email);
+        setEmailSend(true);
         showSuccessToast(
           "El correo con el método de recuperación ha sido enviado"
         );
-        console.log(data);
         return data;
       } catch (error) {
         showErrorToast(error);
@@ -68,26 +72,35 @@ const ForgotPassword: FunctionComponent = () => {
         <Box sx={CenterBoxStyles}>
           <Box sx={InsideCenterBoxStyles}>
             <Typography sx={RecoverPasswordTypographyStyles}>
-              Recuperar contraseña
+              {emailSent ? "Revisa tu correo electronico!": "Recuperar contraseña"}
             </Typography>
             <Typography sx={RecoverPasswordTextStyles}>
-              Ingresa tu correo para que puedas recibir un mensaje de
-              recuperación de contraseña
+              {emailSent ? 
+                `Te hemos enviado un correo a ${email} para recuperar tu contraseña, revisalo y continua el proceso`: 
+                "Ingresa tu correo para que puedas recibir un mensaje de recuperación de contraseña"
+              }
             </Typography>
-            <Box sx={SearchBarBoxStyles}>
-              <Typography sx={EmailTypographyStyles}>
-                Correo Electrónico
-              </Typography>
-              <TextField
-                variant="outlined"
-                onChange={onEmailChange}
-                sx={SearchBarTextFieldStyles}
-              />
-              <Link sx={ForgotEmailStyles}>¿Olvidó su correo?</Link>
-            </Box>
-            <Button sx={SendEmailStyles} type="submit">
-              Enviar Email
-            </Button>
+            {emailSent ? ( 
+              <img src={forgotPasswordImage} style={SuccesImageStyles} /> 
+              ) : ( 
+                <Box sx={MainContentStyles}>
+                  <Box sx={SearchBarBoxStyles}>
+                  <Typography sx={EmailTypographyStyles}>
+                    Correo Electrónico
+                  </Typography>
+                  <TextField
+                    variant="outlined"
+                    onChange={onEmailChange}
+                    sx={SearchBarTextFieldStyles}
+                  />
+                  <Link sx={ForgotEmailStyles}>¿Olvidó su correo?</Link>
+                  </Box>
+                  <Button sx={SendEmailStyles} type="submit">
+                    Enviar Email
+                  </Button> 
+                </Box>
+              )}
+
           </Box>
         </Box>
       </Box>
