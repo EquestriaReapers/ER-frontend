@@ -11,22 +11,37 @@ const useSearchProfileList = ({
   currentPage,
   seed,
   text,
+  setLoading,
+  selectedSkills,
 }: Props) => {
   const { showErrorToast } = useErrorToast();
   const searchProfileList = useCallback(async () => {
     try {
-      const response = await searchPaginatedProfiles(
-        currentPage,
-        PER_PAGE,
+      setLoading(true);
+      const response = await searchPaginatedProfiles({
+        page: currentPage,
+        limit: PER_PAGE,
         seed,
-        text
-      );
+        text,
+        skills: selectedSkills,
+      });
       setProfileList(response.profiles);
       setPagination(response.pagination);
     } catch (error) {
       showErrorToast(error);
+    } finally {
+      setLoading(false);
     }
-  }, [text, currentPage, seed, setProfileList, setPagination, showErrorToast]);
+  }, [
+    setLoading,
+    currentPage,
+    seed,
+    text,
+    selectedSkills,
+    setProfileList,
+    setPagination,
+    showErrorToast,
+  ]);
   return searchProfileList;
 };
 
@@ -36,6 +51,8 @@ interface Props {
   currentPage: number;
   seed: number | null;
   text: string;
+  setLoading: (loading: boolean) => void;
+  selectedSkills: string[];
 }
 
 export default useSearchProfileList;

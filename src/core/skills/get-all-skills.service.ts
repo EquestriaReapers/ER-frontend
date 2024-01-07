@@ -5,21 +5,30 @@ import { BackendError } from "app/exceptions";
 import { SkillType } from "core/skills/types";
 
 export async function getAllSkills(
-  token: string,
   name: string,
-  type: SkillType
+  exclude?: string[],
+  type?: SkillType
 ): Promise<Skill[]> {
   try {
-    const response = await axios.get(
-      `${SKILLS_URL}?name=${name}&type=${type}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const allSkillsUrlFormatted = getSkillsUrl(name, exclude, type);
+    //console.log("==============", allSkillsUrlFormatted);
+    const response = await axios.get(allSkillsUrlFormatted);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
   }
+}
+
+function getSkillsUrl(
+  name: string,
+  exclude?: string[],
+  type?: SkillType
+): string {
+  const skillsTypeComplement =
+    type !== undefined && type ? `&type=${type}` : "";
+  const excludeComplement =
+    exclude !== undefined && exclude && exclude.length
+      ? `&_exclude=${exclude}`
+      : "";
+  return `${SKILLS_URL}?name=${name}${skillsTypeComplement}${excludeComplement}`;
 }

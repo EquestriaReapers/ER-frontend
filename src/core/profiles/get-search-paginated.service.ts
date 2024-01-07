@@ -5,23 +5,33 @@ import { Profile } from "core/profiles/types";
 
 const URL = `${BACKEND_V1_URL}/search`;
 
-export async function searchPaginatedProfiles(
-  page: number,
-  limit: number,
-  seed: number | null,
-  text: string | null
-): Promise<Response> {
+export async function searchPaginatedProfiles({
+  page,
+  limit,
+  seed,
+  text,
+  skills,
+}: Props): Promise<Response> {
   try {
-    const response = await axios.post(
-      `${URL}?page=${page}&limit=${limit}&random=${seed}`,
-      {
-        text,
-      }
-    );
+    const paginatedUrl = getProfilesPaginatedUrl({
+      page,
+      limit,
+      seed,
+      skills,
+    });
+    const response = await axios.post(paginatedUrl, {
+      text,
+    });
     return response.data;
   } catch (error) {
     throw new BackendError(error);
   }
+}
+
+function getProfilesPaginatedUrl(urlProps: SearchUrlProps) {
+  const { page, limit, seed, skills } = urlProps;
+  const skillsQuery = skills ? `&skills=${skills.join(",")}` : "";
+  return `${URL}?page=${page}&limit=${limit}&random=${seed}${skillsQuery}`;
 }
 
 interface Response {
@@ -34,4 +44,19 @@ interface Response {
     currentPage: number;
     randomSeed: number;
   };
+}
+
+interface Props {
+  page: number;
+  limit: number;
+  seed: number | null;
+  text: string | null;
+  skills?: string[];
+}
+
+interface SearchUrlProps {
+  page: number;
+  limit: number;
+  seed: number | null;
+  skills?: string[];
 }

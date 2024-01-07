@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import { FunctionComponent, SyntheticEvent, useState } from "react";
+import { FunctionComponent, SyntheticEvent, useRef, useState } from "react";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 import { debounce } from "lodash";
 
@@ -16,8 +16,10 @@ const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
   onSelectOption,
   onCreateNewOption,
   allowNewUserOptions,
+  blurTextOnSelect,
   value,
 }) => {
+  const textFieldRef = useRef<HTMLInputElement>(null);
   const [currentText, setCurrentText] = useState("");
   const options = useOptions(currentText);
 
@@ -39,6 +41,10 @@ const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
       }}
       onChange={(_: SyntheticEvent<Element, Event>, option: Option | null) => {
         if (!option?.value) return;
+
+        if (blurTextOnSelect) {
+          textFieldRef.current!.blur();
+        }
 
         if (option.isNew) {
           onCreateNewOption?.(option);
@@ -67,7 +73,9 @@ const AutoCompleteFieldComponent: FunctionComponent<Props> = ({
 
         return filtered;
       }}
-      renderInput={(params) => <TextField {...params} label={label} />}
+      renderInput={(params) => (
+        <TextField {...params} inputRef={textFieldRef} label={label} />
+      )}
     />
   );
 };
@@ -88,6 +96,7 @@ export interface Props {
   onCreateNewOption(option: Option): void;
   allowNewUserOptions?: boolean;
   value?: Option;
+  blurTextOnSelect?: boolean;
 }
 
 export default AutoCompleteFieldComponent;
