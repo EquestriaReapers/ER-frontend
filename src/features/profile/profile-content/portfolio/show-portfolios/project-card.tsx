@@ -1,4 +1,11 @@
-import { Card, CardMedia, CardContent, Typography, Modal } from '@mui/material'
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  Typography,
+  Modal,
+  Box
+} from '@mui/material'
 import { Portfolio } from 'core/profiles/types'
 import { useState } from 'react'
 import ProjectInfoModal from './project-info-modal'
