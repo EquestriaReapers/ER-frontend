@@ -15,7 +15,7 @@ const EducationItem = ({ item, className }: Props) => {
     new Date(date).getFullYear();
   const endYear = item.endDate ? getYear(item.endDate) : "No especificado";
   const dateItem = `(${endYear})`;
-  const updateEducationCV = useUpdateEducationCV();
+  const updateEducationCV = useUpdateEducationCV(!item.isVisible, item);
 
   return (
     <div className={className}>
@@ -24,14 +24,14 @@ const EducationItem = ({ item, className }: Props) => {
           <Box className="titleIconStyles">
             <Typography sx={nameStyles}>{item.title}</Typography>
             <Box>
-              <IconButton
-                onClick={() => {
-                  updateEducationCV(!item.isVisible, item.id);
-                }}
-              >
+              <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
                 <Typography
                   className={
-                    item.isVisible ? "cvButtonStyleTrue" : "cvButtonStyleFalse"
+                    item.isUCAB
+                      ? "cvButtonStyleUCAB"
+                      : item.isVisible
+                      ? "cvButtonStyleTrue"
+                      : "cvButtonStyleFalse"
                   }
                 >
                   CV

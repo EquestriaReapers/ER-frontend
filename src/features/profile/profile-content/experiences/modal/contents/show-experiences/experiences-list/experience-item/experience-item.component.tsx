@@ -3,7 +3,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiencies-modal-context";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { ExperienceContent } from "features/profile/profile-content/experiences/modal/experiencies-modal-context/types";
 import {
   nameStyles,
@@ -23,17 +23,7 @@ const ExperienceItem = ({ item, className }: Props) => {
   const endDate = endYear === getYear(item.startDate) ? "Presente" : endYear;
   const dateItem = `(${startYear} - ${endDate})`;
 
-  const [cvStyles, setCVStyles] = useState("");
-
-  useEffect(() => {
-    if (item.isVisible) {
-      setCVStyles("cvButtonStyleTrue");
-    } else {
-      setCVStyles("cvButtonStyleFalse");
-    }
-  }, []);
-
-  const updateExperienceCV = useUpdateExperienceCV();
+  const updateExperienceCV = useUpdateExperienceCV(!item.isVisible, item);
 
   return (
     <div className={className}>
@@ -42,17 +32,14 @@ const ExperienceItem = ({ item, className }: Props) => {
           <Box className="titleIconStyles">
             <Typography sx={nameStyles}>{item.businessName}</Typography>
             <Box>
-              <IconButton
-                onClick={() => {
-                  if (item.isVisible) {
-                    setCVStyles("cvButtonStyleFalse");
-                  } else {
-                    setCVStyles("cvButtonStyleTrue");
+              <IconButton onClick={updateExperienceCV}>
+                <Typography
+                  className={
+                    item.isVisible ? "cvButtonStyleTrue" : "cvButtonStyleFalse"
                   }
-                  updateExperienceCV(!item.isVisible, item.id);
-                }}
-              >
-                <Typography className={`${cvStyles}`}>CV</Typography>
+                >
+                  CV
+                </Typography>
               </IconButton>
               <IconButton
                 onClick={() => {

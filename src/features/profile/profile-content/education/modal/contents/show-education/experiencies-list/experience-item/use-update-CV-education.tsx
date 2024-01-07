@@ -1,32 +1,53 @@
 import { updateCVEducation } from "core/education/update-CV-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
+import EducationModalContext from "../../../../education-modal-context";
+import { useSuccessToast } from "hooks/use-success-toast";
+import { Education } from "core/profiles/types";
 
-const useUpdateEducationCV = () => {
+const useUpdateEducationCV = (isVisible: boolean, education: Education) => {
   const getToken = useGetToken();
   const { showErrorToast } = useErrorToast();
+  const { showSuccessToast } = useSuccessToast();
   const { fetchProfile } = useProfileContext();
+  const { setLoading } = useContext(EducationModalContext);
   const token = getToken();
 
-  return useCallback(
-    async (isVisible: boolean, experienceID: number) => {
-      try {
-        const data = await updateCVEducation(
-          { isVisible },
-          token,
-          experienceID
+  return useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await updateCVEducation({ isVisible }, token, education.id);
+      await fetchProfile();
+      if (isVisible) {
+        showSuccessToast(
+          `${education.title} de ${education.entity} se mostrara en el CV ✅.`
         );
-        await fetchProfile();
-        return data;
-      } catch (error) {
-        showErrorToast(error);
+      } else {
+        showSuccessToast(
+          `${education.title} de ${education.entity} no se mostrara en el CV ❌.`
+        );
       }
-    },
-    [fetchProfile, showErrorToast, token]
-  );
+
+      return data;
+    } catch (error) {
+      showErrorToast(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [
+    education.entity,
+    education.id,
+    education.title,
+    fetchProfile,
+    isVisible,
+    setLoading,
+    showErrorToast,
+    showSuccessToast,
+    token,
+  ]);
 };
 
 function useGetToken() {
