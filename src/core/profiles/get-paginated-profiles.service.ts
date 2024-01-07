@@ -11,9 +11,11 @@ export async function fetchPaginatedProfiles(
   currentSeed: number | null
 ): Promise<Response> {
   try {
+    console.log(page, limit, currentSeed);
     const response = await axios.get(
       `${URL}?page=${page}&limit=${limit}&random=${currentSeed}`
     );
+
     return response.data;
   } catch (error) {
     throw new BackendError(error);

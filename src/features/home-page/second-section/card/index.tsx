@@ -1,61 +1,93 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Chip from '@mui/material/Chip';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { 
-    useCardStyles,
-    InsideCardStyles,
-    CardFirstSection,
-    CardFirstLine,
-    useCardNameStyles,
-    useCardOcupationStyles,
-    CardSecondLine,
-    useCardLocationLineStyles,
-    useCardLocationIconStyles,
-    CardSecondSection,
-    useCardLocationChipStyles,
-    CardSecondSectionSecondLine,
+import Chip from "@mui/material/Chip";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import {
+  useCardStyles,
+  InsideCardStyles,
+  CardFirstSection,
+  CardFirstLine,
+  useCardNameStyles,
+  useCardOcupationStyles,
+  CardSecondLine,
+  useCardLocationLineStyles,
+  useCardLocationIconStyles,
+  CardSecondSection,
+  skillTitleStyles,
 } from "./styles";
+import { Profile } from "core/profiles/types";
+import useTransformCareerEnum from "hooks/use-transform-career-enum";
 
+const Card = ({ profile }: Props) => {
+  const CardStyles = useCardStyles();
+  const CardNameStyles = useCardNameStyles();
+  const CardOcupationStyles = useCardOcupationStyles();
+  const CardLocationLineStyles = useCardLocationLineStyles();
+  const CardLocationIconStyles = useCardLocationIconStyles();
 
-const Card = () => {
+  const transformedCareer = useTransformCareerEnum(profile.mainTitle);
 
-    const CardStyles = useCardStyles();
-    const CardNameStyles = useCardNameStyles();
-    const CardOcupationStyles = useCardOcupationStyles();
-    const CardLocationLineStyles = useCardLocationLineStyles();
-    const CardLocationIconStyles = useCardLocationIconStyles();
-    const CardLocationChipStyles = useCardLocationChipStyles();
+  return (
+    <Box sx={CardStyles}>
+      <Box sx={InsideCardStyles}>
+        <Box sx={CardFirstSection}>
+          <Box sx={CardFirstLine}>
+            <Typography sx={CardNameStyles}>
+              {profile.user.name} {profile.user.lastname}
+            </Typography>
+            <Typography sx={CardOcupationStyles}>
+              {transformedCareer}
+            </Typography>
+          </Box>
 
-    return (
-        <Box sx={CardStyles}>
-            <Box sx={InsideCardStyles}>
-            <Box sx={CardFirstSection}>
-                <Box sx={CardFirstLine}>
-                    <Typography sx={CardNameStyles}>Meredith Smith</Typography>
-                    <Typography sx={CardOcupationStyles}>Ingeniero informático</Typography>
-                </Box>
-
-                <Box sx={CardSecondLine}>
-                    <Typography sx={CardLocationLineStyles}>Venezuela, Bolívar</Typography>
-                    <LocationOnIcon sx={CardLocationIconStyles}/>
-                </Box>
-            </Box>
-            <Box sx={CardSecondSection}>
-                <Box>
-                    <Chip label="Habilidad" sx={CardLocationChipStyles} />
-                    <Chip label="Habilidad" sx={CardLocationChipStyles} />
-                    <Chip label="Habilidad" sx={CardLocationChipStyles} />
-                </Box>
-                <Box sx={CardSecondSectionSecondLine }>
-                    <Chip label="Habilidad" sx={CardLocationChipStyles} />
-                    <Chip label="Habilidad" sx={CardLocationChipStyles} />
-                </Box>
-            </Box>
-
-            </Box>
+          <Box sx={CardSecondLine}>
+            {!profile.countryResidence ? (
+              <Typography sx={CardLocationLineStyles}>
+                Residencia no especificada
+              </Typography>
+            ) : (
+              <Typography sx={CardLocationLineStyles}>
+                {profile.countryResidence}
+              </Typography>
+            )}
+            <LocationOnIcon sx={CardLocationIconStyles} />
+          </Box>
         </Box>
-    );
-}
+        <Box sx={CardSecondSection}>
+          <Box
+            sx={{
+              display: "flex",
+              gap: "2px",
+              flexWrap: "wrap",
+              width: "100%",
+            }}
+          >
+            {profile.skills.length === 0 ? (
+              <Typography
+                sx={{
+                  fontFamily: "inter",
+                  color: "#007934",
+                  fontWeight: "700",
+                  justifySelf: "center",
+                }}
+              >
+                No tiene habilidades especificadas
+              </Typography>
+            ) : (
+              profile.skills
+                .slice(0, 5)
+                .map((skill) => (
+                  <Chip label={skill.name} sx={skillTitleStyles} />
+                ))
+            )}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
 
+interface Props {
+  profile: Profile;
+}
 export default Card;

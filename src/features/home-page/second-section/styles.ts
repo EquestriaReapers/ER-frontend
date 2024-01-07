@@ -96,7 +96,6 @@ export const useCardSectionStyles = () => {
     justifyContent: isLargeScreen ? "normal" : "space-between",
     width: "100%",
     marginBottom: "15px",
-    height: isLargeScreen ? "40%" : "auto",
   };
 
   return CardSectionStyles;
