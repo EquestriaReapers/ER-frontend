@@ -3,11 +3,9 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 const XS_SCREEN_LARGE_FONT_SIZE = "1.8rem";
 const XS_SCREEN_MEDIUM_FONT_SIZE = "0.8rem";
-const XS_SCREEN_SMALL_FONT_SIZE = "0.75rem";
 
 const LG_SCREEN_LARGE_FONT_SIZE = "2rem";
 const LG_SCREEN_MEDIUM_FONT_SIZE = "1rem";
-const LG_SCREEN_SMALL_FONT_SIZE = "0.95rem";
 
 export const ForgotPasswordContainerStyles = {
   width: "100%",
