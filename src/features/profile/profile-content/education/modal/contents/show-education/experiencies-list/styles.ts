@@ -28,6 +28,7 @@ export const boxStyles = {
 };
 
 export const nameStyles = {
+  display: "flex",
   fontSize: "20px",
   fontFamily: "Inter",
   lineHeight: "normal",
@@ -35,18 +36,18 @@ export const nameStyles = {
   fontWeight: "700",
 };
 
-export const cvButtonStyle ={ 
+export const cvButtonStyle = {
   color: "#007934",
   fontFamily: "Inter",
   fontSize: "20px",
   fontStyle: "normal",
   fontWeight: 600,
   lineHeight: "normal",
-}
+};
 
 export const inlineStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
 };
 
 export const subtitleStyles = {
@@ -67,9 +68,9 @@ export const descriptionStyles = {
   fontFamily: "Inter",
   wordWrap: "break-word",
   pt: 2,
-  display: '-webkit-box',
-  WebkitBoxOrient: 'vertical',
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
