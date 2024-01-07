@@ -21,6 +21,7 @@ import {
 } from "./styles/NewPasswordStyles";
 import "../../styles/index.css";
 import newPassword from "core/auth/reset-password.service";
+import { useNavigate } from "react-router-dom";
 
 const NewPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();
@@ -33,6 +34,7 @@ const NewPassword: FunctionComponent = () => {
   const { showErrorToast } = useErrorToast();
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const {token} = useParams();
 
@@ -58,9 +60,9 @@ const NewPassword: FunctionComponent = () => {
           return;
         }
 
-        const result = await newPassword( password, token );
+        await newPassword( password, token );
         showSuccessToast("La contraseña se ha restablecido con exito");
-        console.log(result);
+        navigate(`/login`);
       } catch (error) {
         showErrorToast(error);
       }
@@ -88,6 +90,7 @@ const NewPassword: FunctionComponent = () => {
                 Contraseña
               </Typography>
               <TextField
+                name="password" 
                 variant="outlined"
                 sx={{ ...SearchBarTextFieldStyles, marginBottom: "30px" }}
                 type="password"
@@ -97,6 +100,7 @@ const NewPassword: FunctionComponent = () => {
                 Confirmar contraseña
               </Typography>
               <TextField 
+                name="confirm-password"
                 variant="outlined" 
                 sx={SearchBarTextFieldStyles}
                 onChange={onConfirmPasswordChange}
