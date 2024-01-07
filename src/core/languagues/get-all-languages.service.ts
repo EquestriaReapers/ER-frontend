@@ -4,17 +4,29 @@ import axios from "axios";
 import { BackendError } from "app/exceptions";
 
 export async function getAllLanguages(
-  token: string,
-  name: string
+  name: string,
+  excludeNames?: string[]
 ): Promise<Language[]> {
   try {
-    const response = await axios.get(`${LANGUAGE_URL}?name=${name}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const skillUrl = getUrl(name, excludeNames);
+    const response = await axios.get(skillUrl);
     return response.data;
   } catch (error) {
     throw new BackendError(error);
   }
+}
+
+function getUrl(name: string, exclude?: string[]): string {
+  const excludeComplement =
+    exclude !== undefined && exclude && exclude.length
+      ? getExcludeArrayParams(exclude)
+      : "";
+  return `${LANGUAGE_URL}?name=${name}${excludeComplement}`;
+}
+
+// input: ["a", "b", "c"] => output: "&exclude=a&exclude=b&exclude=c"
+function getExcludeArrayParams(exclude: string[]): string {
+  return exclude.reduce((acc, item) => {
+    return `${acc}&exclude=${item}`;
+  }, "");
 }

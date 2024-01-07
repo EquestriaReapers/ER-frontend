@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import DateRangePicker from "../components/DateRangePicker";
 import { typographyStyles } from "./styles";
 import SkillsFilter from "./skills-filter/skills-filter";
+import LanguaguesFilter from "./languagues-filter/languagues-filter";
 
 const Filters = () => {
   return (
@@ -33,6 +34,7 @@ const Filters = () => {
         }}
       >
         <SkillsFilter />
+        <LanguaguesFilter />
 
         <Typography sx={{ ...typographyStyles }}>Habilidades</Typography>
 

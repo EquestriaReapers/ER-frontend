@@ -8,11 +8,11 @@ const LIMIT_DEFAULT_GET_ALL_SKILLS = 25;
 
 export async function getAllSkills(
   name: string,
-  exclude?: string[],
+  excludeName?: string[],
   type?: SkillType
 ): Promise<Skill[]> {
   try {
-    const allSkillsUrlFormatted = getSkillsUrl(name, exclude, type);
+    const allSkillsUrlFormatted = getUrl(name, excludeName, type);
     console.log("allSkillsUrlFormatted", allSkillsUrlFormatted);
     const response = await axios.get(allSkillsUrlFormatted);
     return response.data;
@@ -21,16 +21,16 @@ export async function getAllSkills(
   }
 }
 
-function getSkillsUrl(
+function getUrl(
   name: string,
-  exclude?: string[],
+  excludeName?: string[],
   type?: SkillType
 ): string {
   const skillsTypeComplement =
     type !== undefined && type ? `&type=${type}` : "";
   const excludeComplement =
-    exclude !== undefined && exclude && exclude.length
-      ? getExcludeArrayParams(exclude)
+    excludeName !== undefined && excludeName && excludeName.length
+      ? getExcludeArrayParams(excludeName)
       : "";
   return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}${skillsTypeComplement}${excludeComplement}`;
 }

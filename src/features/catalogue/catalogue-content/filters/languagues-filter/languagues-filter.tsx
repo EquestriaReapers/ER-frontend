@@ -5,44 +5,44 @@ import Chip from "@mui/material/Chip";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Option } from "components/autocomplete-field/autocomplete-field.component";
 import AutoCompleteFieldComponent from "components/autocomplete-field/autocomplete-field.component";
-import useSkillsSuggestions from "./use-skills-suggestions";
+import useLanguaguesSuggestions from "./use-languagues-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
 import { Checkbox } from "@mui/material";
 
-const SkillsFilter = () => {
+const LanguaguesFilter = () => {
   const {
-    selectedSkills,
-    setSelectedSkills,
-    isExclusiveSkills,
-    setIsExclusiveSkills,
+    selectedLanguagues,
+    setSelectedLanguagues,
+    isExclusiveLanguague,
+    setIsExclusiveLanguague,
   } = useCatalogueContext();
 
-  const addSkill = useCallback(
-    (newSkill: string) => {
-      if (selectedSkills.includes(newSkill)) return;
-      setSelectedSkills((prev) => [...prev, newSkill]);
+  const addLanguague = useCallback(
+    (newLanguague: string) => {
+      if (selectedLanguagues.includes(newLanguague)) return;
+      setSelectedLanguagues((prev) => [...prev, newLanguague]);
     },
-    [selectedSkills, setSelectedSkills]
+    [selectedLanguagues, setSelectedLanguagues]
   );
 
-  const removeSkill = useCallback(
-    (removedSkill: string) => {
-      setSelectedSkills((prev) =>
-        prev.filter((skill) => skill !== removedSkill)
+  const removeLanguague = useCallback(
+    (removedLanguague: string) => {
+      setSelectedLanguagues((prev) =>
+        prev.filter((languague) => languague !== removedLanguague)
       );
     },
-    [setSelectedSkills]
+    [setSelectedLanguagues]
   );
 
-  const onSelectSkill = useCallback(
+  const onSelectLanguague = useCallback(
     (option: Option) => {
-      addSkill(option.label);
+      addLanguague(option.label);
     },
-    [addSkill]
+    [addLanguague]
   );
 
-  const useFilteredSkillsSuggestions =
-    getFilteredSkillsSuggestionsClousure(selectedSkills);
+  const useFilteredLanguaguesSuggestions =
+    getFilteredLanguaguesSuggestionsClousure(selectedLanguagues);
 
   return (
     <Box
@@ -63,13 +63,13 @@ const SkillsFilter = () => {
           mb: 2,
         }}
       >
-        Habilidades
+        Lenguajes
       </Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
-        label="Buscar habilidades"
-        useOptions={useFilteredSkillsSuggestions}
-        onSelectOption={onSelectSkill}
+        label="Buscar lenguajes"
+        useOptions={useFilteredLanguaguesSuggestions}
+        onSelectOption={onSelectLanguague}
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
@@ -84,14 +84,14 @@ const SkillsFilter = () => {
             my: 1,
           }}
         >
-          {selectedSkills.map((skill) => (
+          {selectedLanguagues.map((languague) => (
             <Chip
               deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
               color="primary"
-              key={skill}
-              label={skill}
+              key={languague}
+              label={languague}
               onDelete={() => {
-                removeSkill(skill);
+                removeLanguague(languague);
               }}
               sx={{
                 borderRadius: "6px",
@@ -115,13 +115,13 @@ const SkillsFilter = () => {
           }}
         >
           <Checkbox
-            checked={isExclusiveSkills}
+            checked={isExclusiveLanguague}
             onChange={(check) => {
-              setIsExclusiveSkills(check.target.checked);
+              setIsExclusiveLanguague(check.target.checked);
             }}
             inputProps={{ "aria-label": "Checkbox" }}
           />
-          <Typography>Todas las habilidades son excluyentes</Typography>
+          <Typography>Todos los lenguajes son excluyentes</Typography>
         </Box>
       </Box>
     </Box>
@@ -132,10 +132,12 @@ const SkillsFilter = () => {
   Tecnica secreta de construccion de hooks por 
   composicion programatica 💀
  */
-function getFilteredSkillsSuggestionsClousure(excludedSkills: string[]) {
+function getFilteredLanguaguesSuggestionsClousure(
+  excludedLanguagues: string[]
+) {
   return (name?: string | null): Option[] => {
-    return useSkillsSuggestions(name || "", excludedSkills);
+    return useLanguaguesSuggestions(name || "", excludedLanguagues);
   };
 }
 
-export default SkillsFilter;
+export default LanguaguesFilter;
