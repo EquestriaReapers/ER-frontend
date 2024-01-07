@@ -3,8 +3,8 @@ import {
   CardMedia,
   CardContent,
   Typography,
-  Box,
-  Modal
+  Modal,
+  Box
 } from '@mui/material'
 import { Portfolio } from 'core/profiles/types'
 import { useState } from 'react'
@@ -49,13 +49,13 @@ function ProjectCard({ project }: Props) {
           image={project.imagePrincipal!}
           title={project.title}
         >
-          <Box sx={{ width: '100%' }}></Box>
           {hover && (
             <CardContent
               sx={{
                 backgroundColor: 'rgba(0, 0, 0, 0.58)  ',
                 py: '32px',
                 px: '32px',
+                height: '100%',
                 position: 'relative',
                 top: 0,
                 bottom: 0,
