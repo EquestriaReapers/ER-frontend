@@ -1,12 +1,9 @@
 import { Button, Box, Typography } from '@mui/material'
-import { useCallback } from 'react'
-import { useDrop, useDrag } from 'react-dnd'
 import {
   buttonStyle,
   titleStyles,
   skillTitleStyle,
-  descriptionStyles,
-  skillSubtitleStyle
+  descriptionStyles
 } from '../../../../styles'
 import ShowSkills from './show-skills/show-skills.component'
 import useProfileContext from '../../../../profile-context/use-profile-context'
@@ -14,35 +11,12 @@ import AddSkillField from './add-skill-field'
 import SpinnerAbsolute from 'components/spinner-absolute'
 import { useSkillsModalContext } from '../skills-modal-context/use-skills-modal-context'
 import { SkillType } from 'core/skills/types'
-import UseUpdateSkillsCV from '../use-update-skills-cv'
+import { Props, useCloseModal } from './modal-content.component'
 
-const ModalContent = ({ setIsOpen }: Props) => {
+export const ModalContent = ({ setIsOpen }: Props) => {
   const { loading, skillType } = useSkillsModalContext()
   const { profile } = useProfileContext()
   const closeModal = useCloseModal(setIsOpen)
-
-  const Types = {
-    SKILL: 'skill'
-  }
-
-  const [, dropCV] = useDrop({
-    accept: Types.SKILL,
-    drop: (item) => {
-      UseUpdateSkillsCV(item.id, { isVisible: true })
-    }
-  })
-
-  const [, dropProfile] = useDrop({
-    accept: Types.SKILL,
-    drop: (item) => {
-      UseUpdateSkillsCV(item.id, { isVisible: false })
-    }
-  })
-
-  const [, drag] = useDrag({
-    type: Types.SKILL,
-    item: { type: Types.SKILL }
-  })
 
   return (
     <Box>
@@ -77,21 +51,13 @@ const ModalContent = ({ setIsOpen }: Props) => {
             padding: '10px'
           }}
         >
-          <Typography sx={skillSubtitleStyle}>
-            Mostradas en CV{' '}
-            <ShowSkills
-              skills={profile.skills.filter((item) => item.type === skillType)}
-            />
-          </Typography>
+          <Typography>Mostradas en CV</Typography>
         </Box>
-        <Typography sx={{ skillSubtitleStyle, padding: 1 }}>
-          Mostradas tanto en perfil como en CV
-          <ShowSkills
-            skills={profile.skills.filter((item) => item.type === skillType)}
-          />
-        </Typography>
+        Mostradas tanto en perfil como en CV <Typography />
       </Box>
-
+      <ShowSkills
+        skills={profile.skills.filter((item) => item.type === skillType)}
+      />
       <Button
         sx={buttonStyle}
         className='exp-show-button'
@@ -103,15 +69,3 @@ const ModalContent = ({ setIsOpen }: Props) => {
     </Box>
   )
 }
-
-function useCloseModal(setIsOpen: (open: boolean) => void) {
-  return useCallback(() => {
-    setIsOpen(false)
-  }, [setIsOpen])
-}
-
-export interface Props {
-  setIsOpen: (open: boolean) => void
-}
-
-export default ModalContent

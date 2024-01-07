@@ -80,3 +80,13 @@ export const skillTitleStyle = {
   fontSize: "16px",
   pb: 2,
 };
+
+export const skillSubtitleStyle = {
+  color: "#575757",
+  fontFamily: "Inter",
+  fontSize: "18px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  lineHeight: "normal",
+  letterSpacing: "-0.198px",
+};

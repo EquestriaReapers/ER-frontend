@@ -5,7 +5,7 @@ import { useCallback } from 'react'
 import { useNavigate } from 'react-router'
 import useProfileContext from 'features/profile/profile-context/use-profile-context'
 
-const useUpdateSkillsCV = () => {
+const UseUpdateSkillsCV = () => {
   const getToken = useGetToken()
   const { showErrorToast } = useErrorToast()
   const { fetchProfile } = useProfileContext()
@@ -41,4 +41,4 @@ function useGetToken() {
   }, [navigate, token])
 }
 
-export default useUpdateSkillsCV
+export default UseUpdateSkillsCV
