@@ -17,10 +17,7 @@ const DeleteProjectModalContent = ({ projectId }: Props) => {
 
   return (
     <Box sx={deleteModalStyle}>
-      <Box
-        component="form"
-        sx={{ display: "flex", flexDirection: "column", gap: "30px" }}
-      >
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
         <Typography sx={messageStyle}>
           ¿Estás seguro de que quieres eliminar este proyecto?
         </Typography>

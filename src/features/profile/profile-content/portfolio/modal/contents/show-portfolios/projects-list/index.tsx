@@ -17,6 +17,7 @@ const ProjectsList = () => {
       {portfolio.map((item: Portfolio) => {
         return (
           <Box
+            key={item.id}
             sx={{
               display: "flex",
               flexDirection: "column",

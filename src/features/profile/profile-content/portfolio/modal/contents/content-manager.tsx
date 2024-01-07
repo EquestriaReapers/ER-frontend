@@ -12,16 +12,18 @@ export const PortfolioContentManager: FunctionComponent = () => {
 
   switch (content) {
     case PortfolioContent.Show:
-      return <ShowPortfolio />;
+      return <ShowPortfolio key={"show-modal"} />;
     case PortfolioContent.Add:
-      return <AddPortfolioModalContent />;
+      return <AddPortfolioModalContent key={"add-modal"} />;
     case PortfolioContent.Edit:
       if (!aPortfolio) {
         debugError("aPortfolio is null");
         return null;
       }
 
-      return <EditProjectModalContent project={aPortfolio!} />;
+      return (
+        <EditProjectModalContent key={"edit-modal"} project={aPortfolio!} />
+      );
     case PortfolioContent.Delete:
       if (!aPortfolio) {
         debugError("aPortfolio is null");
