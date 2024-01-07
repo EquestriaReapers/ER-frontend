@@ -104,10 +104,10 @@ export const useRecoverPasswordTextStyles = () => {
 };
 
 export const SuccesImageStyles = {
-  width:"40%", 
+  width:"60%", 
   height:"auto", 
   margin:"auto", 
-  minWidth:"120px",
+  minWidth:"160px",
 }
 
 export const MainContentStyles = {
@@ -141,21 +141,6 @@ export const SearchBarTextFieldStyles = {
   marginBottom: "15px",
 };
 
-export const useForgotEmailStyles = () => {
-  const theme = useTheme();
-
-  const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down(300));
-
-  const ForgotEmailStyles = {
-    display: "grid",
-    fontSize: isExtraSmallScreen
-      ? XS_SCREEN_SMALL_FONT_SIZE
-      : LG_SCREEN_SMALL_FONT_SIZE,
-    color: "#007BFF",
-  };
-  return ForgotEmailStyles;
-};
-
 export const useSendEmailStyles = () => {
   const theme = useTheme();
 
@@ -166,8 +151,8 @@ export const useSendEmailStyles = () => {
     margin: "0 auto 0 auto",
     height: "45px",
     width: isSmallScreen ? "100%" : "60%",
-    backgroundColor: "#D9D9D9",
-    color: "#303030",
+    backgroundColor: "#007934",
+    color: "#FFFFFF",
     fontSize: isExtraSmallScreen
       ? XS_SCREEN_MEDIUM_FONT_SIZE
       : LG_SCREEN_MEDIUM_FONT_SIZE,
@@ -175,8 +160,8 @@ export const useSendEmailStyles = () => {
     borderRadius: "5px",
 
     "&:hover": {
-      backgroundColor: "#D9D9D9",
-      color: "#303030",
+      backgroundColor: "#007934",
+      color: "#FFFFFF",
     },
   };
   return SendEmailStyles;

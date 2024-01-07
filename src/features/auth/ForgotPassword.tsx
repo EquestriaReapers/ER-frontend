@@ -16,7 +16,6 @@ import {
   SearchBarBoxStyles,
   useEmailTypographyStyles,
   SearchBarTextFieldStyles,
-  useForgotEmailStyles,
   useSendEmailStyles,
 } from "./styles/ForgotPaswordStyles";
 import "../../styles/index.css";
@@ -24,14 +23,13 @@ import { ChangeEvent, FormEvent } from "react";
 import forgotPassword from "core/auth/forgot-password.service";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
-import forgotPasswordImage from "./images/forgot-password.jpg"
+import forgotPasswordImage from "./images/forgot-password.png"
 
 const ForgotPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();
   const RecoverPasswordTypographyStyles = useRecoverPasswordTypographyStyles();
   const RecoverPasswordTextStyles = useRecoverPasswordTextStyles();
   const EmailTypographyStyles = useEmailTypographyStyles();
-  const ForgotEmailStyles = useForgotEmailStyles();
   const SendEmailStyles = useSendEmailStyles();
 
   const [email, setEmail] = useState("");
@@ -48,7 +46,7 @@ const ForgotPassword: FunctionComponent = () => {
       event.preventDefault();
 
       try {
-        console.log(email);
+        if (!email) return;
         const data = await forgotPassword(email);
         setEmailSend(true);
         showSuccessToast(
@@ -93,7 +91,6 @@ const ForgotPassword: FunctionComponent = () => {
                     onChange={onEmailChange}
                     sx={SearchBarTextFieldStyles}
                   />
-                  <Link sx={ForgotEmailStyles}>¿Olvidó su correo?</Link>
                   </Box>
                   <Button sx={SendEmailStyles} type="submit">
                     Enviar Email
