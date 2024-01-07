@@ -13,8 +13,8 @@ export default function getUrlWithPaginatedParams(
     ? "&isExclusiveSkills=true"
     : "&isExclusiveSkills=false";
   const isExclusiveLanguagueComplement = isExclusiveLanguague
-    ? "&isExclusiveLanguague=true"
-    : "&isExclusiveLanguague=false";
+    ? "&isExclusiveLanguages=true"
+    : "&isExclusiveLanguages=false";
 
   const seedComplement = currentSeed ? `&random=${currentSeed}` : "";
   const url = `${urlBase}?page=${page}&limit=${limit}${searchTextComplement}${seedComplement}${isExclusiveSkillsComplement}${isExclusiveLanguagueComplement}`;

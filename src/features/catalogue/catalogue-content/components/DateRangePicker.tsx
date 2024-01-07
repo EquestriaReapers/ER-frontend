@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+//import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -28,7 +28,7 @@ const DateRangePicker = () => {
           <DatePicker
             openTo="year"
             views={["year"]}
-            renderInput={(params) => <CalendarTodayIcon {...params} />}
+            /*renderInput={(params) => <CalendarTodayIcon {...params} />}*/
           />
         </LocalizationProvider>
       </Box>
@@ -46,7 +46,7 @@ const DateRangePicker = () => {
           <DatePicker
             openTo="year"
             views={["year"]}
-            renderInput={(params) => <CalendarTodayIcon {...params} />}
+            /*renderInput={(params) => <CalendarTodayIcon {...params} />}*/
           />
         </LocalizationProvider>
       </Box>
