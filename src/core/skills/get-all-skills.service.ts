@@ -30,7 +30,9 @@ function getSkillsUrl(
     type !== undefined && type ? `&type=${type}` : "";
   const excludeComplement =
     exclude !== undefined && exclude && exclude.length
-      ? `&_exclude=${exclude}`
+      ? `&exclude=${exclude}`
       : "";
-  return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}${skillsTypeComplement}${excludeComplement}`;
+  return `${SKILLS_URL}?name=${name}&limit=${LIMIT_DEFAULT_GET_ALL_SKILLS}
+          ${skillsTypeComplement}
+          ${excludeComplement}`;
 }
