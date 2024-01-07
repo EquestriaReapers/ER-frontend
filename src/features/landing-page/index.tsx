@@ -10,17 +10,16 @@ import ThirdSection from "./third-section";
 import FourthSection from "./fourth-section";
 
 const LandingPage = () => {
-
   const LandingPageStyles = useLandingPageContainerStyles();
   const MainContainerStyles = useMainContainerStyles();
 
   return (
     <Box sx={LandingPageStyles}>
       <Box sx={MainContainerStyles}>
-        <FirstSection/>
-        <SecondSection/>
-        <ThirdSection/>
-        <FourthSection/>
+        <FirstSection />
+        <SecondSection />
+        <ThirdSection />
+        <FourthSection />
       </Box>
     </Box>
   );

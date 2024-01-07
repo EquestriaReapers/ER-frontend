@@ -76,7 +76,7 @@ const routerConfig: RouteObject[] = [
         element: <NewPassword />,
       },
       {
-        path: "/landing",
+        path: "/",
         element: <LandingPage />,
       },
     ],
