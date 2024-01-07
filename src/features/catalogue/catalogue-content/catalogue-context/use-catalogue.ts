@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useProfileList from "./pagination/use-profile-list";
 import usePaginationState from "./pagination/use-pagination-state";
 import useSearchProfileList from "./use-search-profile-list";
@@ -36,30 +36,41 @@ const useCatalogue = (
     initialCatalogueSearchParams.searchText
   );
 
+  const paginatedParams = useMemo(() => {
+    return {
+      searchText,
+      page: currentPage,
+      selectedSkills,
+      selectedLanguagues,
+      selectedLocations,
+      selectedCareers,
+      isExclusiveSkills,
+      isExclusiveLanguague,
+    };
+  }, [
+    currentPage,
+    isExclusiveLanguague,
+    isExclusiveSkills,
+    searchText,
+    selectedCareers,
+    selectedLanguagues,
+    selectedLocations,
+    selectedSkills,
+  ]);
+
   const searchProfileList = useSearchProfileList({
     setProfileList,
     setPagination,
-    currentPage: pagination.currentPage,
+    paginatedParams,
     seed,
-    text: searchText,
     setLoading,
-    selectedSkills,
   });
 
   useEffect(() => {
     searchProfileList();
   }, [searchProfileList]);
 
-  useChangeUrlOnChangeParams({
-    searchText,
-    selectedSkills,
-    page: currentPage,
-    selectedLanguagues,
-    selectedLocations,
-    selectedCareers,
-    isExclusiveSkills,
-    isExclusiveLanguague,
-  });
+  useChangeUrlOnChangeParams(paginatedParams);
 
   return {
     profileList,

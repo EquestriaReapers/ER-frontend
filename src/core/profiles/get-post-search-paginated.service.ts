@@ -5,22 +5,25 @@ import { Profile } from "core/profiles/types";
 import { CatalogueSearchParams } from "features/catalogue/catalogue-content/use-initial-catalogue-search-params";
 import getUrlWithPaginatedParams from "./get-url-with-paginated-params";
 
-const URL = `${BACKEND_V1_URL}/profiles`;
+const URL = `${BACKEND_V1_URL}/search`;
 
-export async function fetchPaginatedProfiles(
-  currentPaginatedParams: CatalogueSearchParams,
-  limit: number,
-  currentSeed: number | null
-): Promise<Response> {
+export async function searchPostPaginatedProfiles({
+  currentPaginatedParams,
+  limit,
+  seed,
+}: Props): Promise<Response> {
   try {
     const urlWithParams = getUrlWithPaginatedParams(
       URL,
       currentPaginatedParams,
       limit,
-      currentSeed
+      seed
     );
     console.log("url with params", urlWithParams);
-    const response = await axios.get(urlWithParams);
+
+    const response = await axios.post(urlWithParams, {
+      text: currentPaginatedParams.searchText,
+    });
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -38,19 +41,9 @@ interface Response {
     randomSeed: number;
   };
 }
-/*
-export interface CatalogueSearchParams {
-  searchText: string;
-  page: number;
-  // Selector exclusivo / inclusivo de habilidades
-  selectedSkills: string[];
-  isExclusiveSkills: boolean;
-  // Selector exclusivo / inclusivo de idiomas
-  selectedLanguagues: string[];
-  isExclusiveLanguague: boolean;
-  // Otros selectores siempre inclusivos
-  selectedLocations: string[];
-  selectedCareers: string[];
-}
 
-*/
+interface Props {
+  currentPaginatedParams: CatalogueSearchParams;
+  limit: number;
+  seed: number | null;
+}

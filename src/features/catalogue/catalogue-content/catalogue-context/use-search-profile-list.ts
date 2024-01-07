@@ -1,29 +1,28 @@
 import { Pagination, Profile } from "core/profiles/types";
-import { searchPaginatedProfiles } from "core/profiles/get-search-paginated.service";
+import { searchPostPaginatedProfiles } from "core/profiles/get-post-search-paginated.service";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
+import { CatalogueSearchParams } from "../use-initial-catalogue-search-params";
 
 const PER_PAGE = 6;
 
 const useSearchProfileList = ({
   setProfileList,
   setPagination,
-  currentPage,
+  paginatedParams,
   seed,
-  text,
   setLoading,
-  selectedSkills,
 }: Props) => {
   const { showErrorToast } = useErrorToast();
+  const _textPaginatedParams = JSON.stringify(paginatedParams);
   const searchProfileList = useCallback(async () => {
     try {
+      const pagiantedParamJsons = JSON.parse(_textPaginatedParams);
       setLoading(true);
-      const response = await searchPaginatedProfiles({
-        page: currentPage,
+      const response = await searchPostPaginatedProfiles({
+        currentPaginatedParams: pagiantedParamJsons,
         limit: PER_PAGE,
         seed,
-        text,
-        skills: selectedSkills,
       });
       setProfileList(response.profiles);
       setPagination(response.pagination);
@@ -33,11 +32,9 @@ const useSearchProfileList = ({
       setLoading(false);
     }
   }, [
+    _textPaginatedParams,
     setLoading,
-    currentPage,
     seed,
-    text,
-    selectedSkills,
     setProfileList,
     setPagination,
     showErrorToast,
@@ -48,11 +45,9 @@ const useSearchProfileList = ({
 interface Props {
   setProfileList: (profileList: Profile[]) => void;
   setPagination: (pagination: Pagination) => void;
-  currentPage: number;
   seed: number | null;
-  text: string;
   setLoading: (loading: boolean) => void;
-  selectedSkills: string[];
+  paginatedParams: CatalogueSearchParams;
 }
 
 export default useSearchProfileList;

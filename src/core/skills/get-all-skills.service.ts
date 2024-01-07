@@ -13,7 +13,6 @@ export async function getAllSkills(
 ): Promise<Skill[]> {
   try {
     const allSkillsUrlFormatted = getSkillsUrl(name, exclude, type);
-    //console.log("==============", allSkillsUrlFormatted);
     const response = await axios.get(allSkillsUrlFormatted);
     return response.data;
   } catch (error) {
