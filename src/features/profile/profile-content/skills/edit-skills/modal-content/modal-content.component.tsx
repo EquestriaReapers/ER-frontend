@@ -1,6 +1,5 @@
 import { Button, Box, Typography } from "@mui/material";
-import { useCallback } from "react";
-import { useDrop, useDrag } from "react-dnd";
+import { useCallback, useEffect, useState } from "react";
 import {
   buttonStyle,
   titleStyles,
@@ -15,26 +14,47 @@ import SpinnerAbsolute from "components/spinner-absolute";
 import { useSkillsModalContext } from "../skills-modal-context/use-skills-modal-context";
 import { SkillType } from "core/skills/types";
 import UseUpdateSkillsCV from "../use-update-skills-cv";
-import DraggableSkill from "./drag-and-drop";
-import update from "immutability-helper";
+import { Skill } from "core/profiles/types";
+import { DndContext, DragEndEvent, closestCenter } from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  arrayMove,
+} from "@dnd-kit/sortable";
+import SkillCard from "./show-skills/skill-card.component";
 
 const ModalContent = ({ setIsOpen }: Props) => {
   const { loading, skillType } = useSkillsModalContext();
   const { profile } = useProfileContext();
   const closeModal = useCloseModal(setIsOpen);
+  const [visibleInCV, setVisibleInCV] = useState<Skill[]>([]);
+  const [visibleInProfile, setVisibleInProfile] = useState<Skill[]>([]);
 
-  const moveSkill = (dragIndex, hoverIndex) => {
-    const dragSkill = skills[dragIndex];
-    setSkills(
-      update(skills, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, dragSkill],
-        ],
-      })
-    );
-  };
+  const getSkillsInfo = useCallback(() => {
+    profile.skills.forEach((skill: Skill) => {
+      if (skill.isVisible === true) {
+        setVisibleInCV((prevSkills: Skill[]) => [...prevSkills, skill]);
+      }
+      if (skill.isVisible === false) {
+        setVisibleInProfile((prevSkills: Skill[]) => [...prevSkills, skill]);
+      }
+    });
+  }, [profile.skills]);
 
+  useEffect(() => {
+    getSkillsInfo();
+  }, [getSkillsInfo]);
+
+  const onDragEnd = useCallback((event: DragEndEvent) => {
+    const { active, over } = event;
+    if (over && active) {
+      setVisibleInCV((items) => {
+        const oldIndex = items.findIndex((item) => item.id === active.id);
+        const newIndex = items.findIndex((item) => item.id === over.id);
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  }, []);
   return (
     <Box>
       {loading && <SpinnerAbsolute />}
@@ -60,37 +80,16 @@ const ModalContent = ({ setIsOpen }: Props) => {
           my: "10px",
         }}
       >
-        <Box
-          sx={{
-            bordeRadius: "5px",
-            border: "1px solid #777",
-            background: "rgba(217, 217, 217, 0.00)",
-            padding: "10px",
-          }}
-        >
-          <Typography sx={skillSubtitleStyle}>
-            Mostradas en CV{" "}
-            <ShowSkills
-              skills={profile.skills.filter((item) => item.type === skillType)}
-            />
-          </Typography>
-        </Box>
-        <Typography sx={{ skillSubtitleStyle, padding: 1 }}>
-          Mostradas tanto en perfil como en CV
-          <ShowSkills
-            skills={profile.skills.filter((item) => item.type === skillType)}
-          />
-        </Typography>
-        {profile.skills
-          .filter((item) => item.type === skillType)
-          .map((skill, index) => (
-            <DraggableSkill
-              key={skill.id}
-              index={index}
-              skill={skill}
-              moveSkill={moveSkill}
-            />
-          ))}
+        <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <SortableContext
+            items={visibleInCV}
+            strategy={verticalListSortingStrategy}
+          >
+            {visibleInCV.map((item: Skill) => {
+              return <SkillCard item={item} />;
+            })}
+          </SortableContext>
+        </DndContext>
       </Box>
 
       <Button
