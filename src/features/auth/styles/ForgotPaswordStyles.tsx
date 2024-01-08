@@ -102,17 +102,17 @@ export const useRecoverPasswordTextStyles = () => {
 };
 
 export const SuccesImageStyles = {
-  width:"60%", 
-  height:"auto", 
-  margin:"auto", 
-  minWidth:"160px",
-}
+  width: "60%",
+  height: "auto",
+  margin: "auto",
+  minWidth: "160px",
+};
 
 export const MainContentStyles = {
-  display:"grid", 
-  height:"100%", 
-  gridTemplateRows:"85% 15%"
-}
+  display: "grid",
+  height: "100%",
+  gridTemplateRows: "85% 15%",
+};
 
 export const SearchBarBoxStyles = {
   margin: "auto 0 auto 0",
@@ -160,6 +160,10 @@ export const useSendEmailStyles = () => {
     "&:hover": {
       backgroundColor: "#007934",
       color: "#FFFFFF",
+    },
+    "&.Mui-disabled": {
+      background: "#eaeaea",
+      color: "#c0c0c0",
     },
   };
   return SendEmailStyles;
