@@ -69,7 +69,7 @@ export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   wordWrap: "break-word",
   py: 2,
 };

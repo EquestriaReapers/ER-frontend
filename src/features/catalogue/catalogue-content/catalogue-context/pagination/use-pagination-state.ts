@@ -1,8 +1,13 @@
 import { Pagination } from "core/profiles/types";
 import { useState } from "react";
+import { CatalogueSearchParams } from "../../use-initial-catalogue-search-params";
 
-const usePaginationState = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+const usePaginationState = (
+  initialCatalogueSearchParams: CatalogueSearchParams
+) => {
+  const [currentPage, setCurrentPage] = useState(
+    initialCatalogueSearchParams.page
+  );
 
   const [pagination, setPagination] = useState<Pagination>({
     itemCount: 0,
