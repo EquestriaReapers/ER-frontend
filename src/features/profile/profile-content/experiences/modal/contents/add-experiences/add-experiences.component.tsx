@@ -32,6 +32,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
     location,
     startDate,
     role,
+    isVisible,
   } = useExperienceFormState();
 
   const experience = {
@@ -41,6 +42,7 @@ const AddExperienceModalContent = ({ className }: Props) => {
     location,
     startDate,
     role,
+    isVisible,
   };
 
   const { onSubmitForm } = useAddExperienceForm({ experience });

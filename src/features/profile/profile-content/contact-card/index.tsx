@@ -11,7 +11,6 @@ import {
   websiteBoxStyles,
   websiteTitleContainerStyles,
   editIconStyles,
-  lenguageTitleContainerStyles,
 } from "../styles";
 import ShowLenguages from "./show-lenguages";
 import EditContactCard from "./edit-contact-card";
