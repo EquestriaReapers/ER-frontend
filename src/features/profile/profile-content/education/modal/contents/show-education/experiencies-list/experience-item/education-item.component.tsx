@@ -5,7 +5,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
-import { cvButtonStyle } from "../styles";
+import {
+  cvButtonStyle,
+  inlineStyles,
+  nameStyles,
+  subtitleStyles,
+} from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
 
 const EducationItem = ({ item, className }: Props) => {
