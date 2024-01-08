@@ -16,12 +16,13 @@ export const usePortfoliosBoxStyles = () => {
     width: isLargeScreen ? "50%" : '210px',
     backgroundColor: 'white',
     margin: isLargeScreen ? "auto" : "inherit",
+    mb: {xs: '20px',sm: '20px',lg: '0',},
     pb: 3,
     minWidth: isSmallScreen ? "250px" : (isLargeScreen ? "335px" : "210px"),
     borderRadius: '6px',
     boxShadow:
       "0 0 0 rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)",
-
+    
 
   };
 

@@ -72,7 +72,7 @@ const FirstSection = () => {
             </Box>
             <Box sx={InsideSearchBarTextSectionStyles}>
               <Typography sx={InsideSearchBarSectionTypographyStyles}>
-                Puedes encontrar profesionales egresados de la UCAB por nombre,
+                ¡Puedes encontrar profesionales egresados de la UCAB por nombre,
                 carrera, habilidades, ubicación e idiomas!
               </Typography>
             </Box>
