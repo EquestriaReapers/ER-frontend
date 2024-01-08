@@ -16,8 +16,6 @@ export default async function register(
 }
 
 export interface RegisterBody {
-  name: string;
-  lastname: string;
   email: string;
   password: string;
 }

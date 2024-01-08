@@ -5,16 +5,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
-import { cvButtonStyle } from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
+import useUpdateEducationCV from "./use-update-CV-education";
 
 const EducationItem = ({ item, className }: Props) => {
   const { setContent, setAnEducation } = useContext(EducationModalContext);
   const getYear = (date: string | number | Date) =>
     new Date(date).getFullYear();
   const endYear = item.endDate ? getYear(item.endDate) : "No especificado";
-
   const dateItem = `(${endYear})`;
+  const updateEducationCV = useUpdateEducationCV(!item.isVisible, item);
 
   return (
     <div className={className}>
@@ -24,8 +24,18 @@ const EducationItem = ({ item, className }: Props) => {
             <Typography className={"nameStyles"}>{item.title}</Typography>
           </Box>
           <Box className={"itemIconBox"}>
-            <IconButton>
-              <Typography sx={cvButtonStyle}>CV</Typography>
+            <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
+              <Typography
+                className={
+                  item.isUCAB
+                    ? "cvButtonStyleUCAB"
+                    : item.isVisible
+                    ? "cvButtonStyleTrue"
+                    : "cvButtonStyleFalse"
+                }
+              >
+                CV
+              </Typography>
             </IconButton>
             <IconButton
               onClick={() => {

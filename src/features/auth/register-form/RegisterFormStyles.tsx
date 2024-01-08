@@ -6,7 +6,7 @@ export const useFormBoxStylesFunct = () => {
 
   const FormBoxStyles = {
     width: isSmallScreen ? "300px" : "350px",
-    height: "600px",
+    height: "500px",
     margin: "auto",
     padding: isSmallScreen ? "18px" : "40px",
     backgroundColor: "white",
@@ -53,7 +53,6 @@ export const RedirectBoxStyles = {
   fontFamily: "Inter, sans-serif",
 };
 
-
 export const ImageBoxStyles = {
   display: "flex",
   flexDirection: "column",
@@ -71,8 +70,8 @@ export const TextFieldStyles = {
 };
 
 export const ButtonStyles = {
-  boxShadow:'none',
-  backgroundColor:  "#03652e",
+  boxShadow: "none",
+  backgroundColor: "#03652e",
   width: "100%",
   color: "white",
   marginBottom: "26px",

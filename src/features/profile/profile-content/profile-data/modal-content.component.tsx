@@ -33,15 +33,13 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
     loaded,
     name,
     description,
-    mainTitle,
     lastname,
     onChangeName,
     onChangeDescription,
     onChangeLastname,
-    onChangeMainTitle,
   } = useEditProfileFormState(profile);
 
-  const user = { name, description, lastname, mainTitle };
+  const user = { name, description, lastname };
   const { onSubmitForm, loading } = useOnSubmitForm({ setIsOpen, user });
   const options = useCareersOptions();
 
@@ -78,42 +76,6 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
               autoComplete="off"
               onChange={onChangeLastname}
             />
-          </Box>
-        </Box>
-        <Box>
-          <Box className="inputContainer">
-            <FormControl sx={{ width: "100%" }}>
-              <InputLabel
-                id="demo-simple-select-required-label"
-                sx={{ width: "100%" }}
-              >
-                Carrera
-              </InputLabel>
-              <Select
-                disabled={loading}
-                sx={textFieldStyles}
-                placeholder="Carrera"
-                label="Carrera"
-                value={mainTitle}
-                onChange={onChangeMainTitle}
-                input={<OutlinedInput label="Name" />}
-                MenuProps={{
-                  style: {
-                    maxHeight: 300,
-                  },
-                }}
-              >
-                {options.map(({ label, value }: CareersOption) => (
-                  <MenuItem
-                    selected={value === mainTitle}
-                    key={value}
-                    value={value}
-                  >
-                    {label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
           </Box>
         </Box>
         <Box>
