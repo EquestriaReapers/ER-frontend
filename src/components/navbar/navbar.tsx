@@ -8,12 +8,7 @@ import {
   Button,
 } from "@mui/material/";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  titleStyles,
-  inlineStyles,
-  inlineMobileStyles,
-  titleStylesLogoutM,
-} from "./styles";
+import { titleStyles, inlineMobileStyles, titleStylesLogoutM } from "./styles";
 import { useState } from "react";
 import { navbarStyles } from "./styles";
 import Desktop from "./desktop";
