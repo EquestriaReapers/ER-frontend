@@ -8,6 +8,7 @@ const useExperienceFormState = () => {
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
   const [endDate, setEndDate] = useState<Dayjs | null>(null);
   const [description, setDescription] = useState("");
+  const [isVisible, setIsVisible] = useState<boolean | null>(true);
 
   const onChangeBusinessName = (event: ChangeEvent<HTMLInputElement>) => {
     setBusinessName(event.target.value);
@@ -35,12 +36,14 @@ const useExperienceFormState = () => {
     startDate,
     endDate,
     description,
+    isVisible,
     setBusinessName,
     setRole,
     setLocation,
     setStartDate,
     setEndDate,
     setDescription,
+    setIsVisible,
     onChangeBusinessName,
     onChangeRole,
     onChangeLocation,

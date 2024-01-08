@@ -7,7 +7,7 @@ export const boxStyles = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };
@@ -36,7 +36,7 @@ export const roleStyles = {
 };
 
 export const descriptionStyles = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "16px",
   color: "#444444",
 };
@@ -64,7 +64,7 @@ export const boxWithButton = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };

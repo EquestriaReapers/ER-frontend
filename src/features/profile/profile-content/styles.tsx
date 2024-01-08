@@ -1,4 +1,5 @@
 import bannerImage from "./images/bannerImage.png";
+import { styled } from "@mui/system";
 
 export const bannerStyles = {
   width: {
@@ -75,10 +76,10 @@ export const editIconStyles = {
 export const aboutMeSection = {
   display: "flex",
   flexWrap: {
-    lg: "nowrap",
-    md: "nowrap",
-    sm: "nowrap",
     xs: "wrap",
+    sm: "wrap",
+    md: "nowrap",
+    lg: "nowrap",
   },
   width: "100%",
   justifyContent: "space-between",
@@ -88,7 +89,6 @@ export const aboutMeSection = {
 export const descriptionStyles = {
   width: {
     xs: "100%",
-    sm: "90%",
   },
   fontStyle: "normal",
   fontWeight: "400",
@@ -99,7 +99,6 @@ export const descriptionStyles = {
 
 export const contactSectionStyles = {
   display: "flex",
-  width: { xs: "100%", sm: "25%" },
   height: "30%",
   backgroundColor: "#F4F4F4",
   justifyContent: "space-between",
@@ -108,6 +107,16 @@ export const contactSectionStyles = {
   px: { xs: "8px", sm: "15px", md: "25px" },
   gap: "10px",
   borderRadius: "6px",
+  width: { xs: "100%", sm: "100%", md: "20%", lg: "25%" },
+  maxWidth: {
+    xs: "100%",
+    sm: "100%",
+    md: "500px",
+  },
+  mt: {
+    xs: 5,
+    md: 0,
+  },
 };
 
 export const locationBoxStyles = {
@@ -135,6 +144,17 @@ export const websiteTitleContainerStyles = {
   alignItems: "center",
 };
 
+export const lenguageTitleContainerStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  pr: {
+    lg: "150px",
+    xs: "20px",
+  },
+  alignItems: "center",
+  width: "100%",
+};
+
 export const topSectionStyles = {
   width: "100%",
   mt: "30px",
@@ -154,10 +174,17 @@ export const descriptionBoxStyles = {
   gap: "17px",
   display: "flex",
   flexDirection: "column",
-  width: { xs: "100%", sm: "70%" },
+  width: { xs: "100%", sm: "100%", md: "70%", lg: "60%" },
 };
 
 export const aboutMeTypographyStyles = {
+  fontWeight: "700",
+  fontFamily: "inter",
+  fontSize: { xs: "22px", sm: "30px" },
+  py: 2,
+};
+
+export const skillsTitleTypographyStyles = {
   fontWeight: "700",
   fontFamily: "inter",
   fontSize: { xs: "22px", sm: "30px" },
@@ -170,8 +197,36 @@ export const skillsAndExperiencesBoxStyles = {
   gap: { xs: "29px", sm: "37px" },
 };
 
+export const EducationBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  with: "100%",
+  gap: { xs: "29px", sm: "37px" },
+  mt: 2,
+};
+
 export const locationAndEditButtonStyles = {
   display: "flex",
+  flexWrap: "wrap",
   width: "100%",
   justifyContent: "space-between",
 };
+
+export const BothSkillsContainer = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: "20px",
+  py: 1,
+  width: "100%",
+  flexWrap: "wrap",
+  [theme.breakpoints.up("sm")]: {
+    flexWrap: "nowrap",
+    width: "100%",
+  },
+  [theme.breakpoints.up("md")]: {
+    width: "70%",
+  },
+  [theme.breakpoints.up("lg")]: {
+    width: "60%",
+  },
+}));
