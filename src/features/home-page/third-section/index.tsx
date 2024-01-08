@@ -32,13 +32,10 @@ const ThirdSection = () => {
     <Box sx={ThirdSectionStyles}>
       <Box sx={InsideThirdSectionStyles}>
         <Box sx={InsideThirdSectionTextStyles}>
-          <Box>
-            <Box sx={InsideThirdSectionBoxTextStyles}>
-              <Typography sx={InsideThirdSectionTypographytStyles}>
-                Explora nuestros{" "}
-                <span style={PortfoliosColor}>portafolios</span>
-              </Typography>
-            </Box>
+          <Box sx={InsideThirdSectionBoxTextStyles}>
+            <Typography sx={InsideThirdSectionTypographytStyles}>
+              Explora nuestros <span style={PortfoliosColor}>portafolios</span>
+            </Typography>
           </Box>
         </Box>
         <Box sx={PortfoliosSectionStyles}>

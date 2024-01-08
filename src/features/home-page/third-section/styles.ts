@@ -45,7 +45,7 @@ export const InsideThirdSectionTextStyles = {
 export const InsideThirdSectionBoxTextStyles = {
     width: "max-content",
     margin: "auto",
-    marginBottom: "40px",
+    my: { xs: '20px', sm: '40px', lg: '40px', },
 };
 
 export const useInsideThirdSectionTypographytStyles = () => {
