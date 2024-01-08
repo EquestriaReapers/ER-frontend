@@ -8,6 +8,13 @@ import AutoCompleteFieldComponent from "components/autocomplete-field/autocomple
 import useSkillsSuggestions from "./use-skills-suggestions";
 import useCatalogueContext from "../../catalogue-context/use-catalogue-context";
 import { Checkbox } from "@mui/material";
+import {
+  filterDescriptionStyles,
+  selectedSkillsBox,
+  skillChipStyles,
+  skillFilterTitleTypography,
+  skillsFilterBox,
+} from "./styles";
 
 const SkillsFilter = () => {
   const {
@@ -45,26 +52,8 @@ const SkillsFilter = () => {
     getFilteredSkillsSuggestionsClousure(selectedSkills);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        mt: 2,
-        width: "100%",
-      }}
-    >
-      <Typography
-        sx={{
-          fontFamily: "Inter",
-          fontSize: "1rem",
-          fontStyle: "normal",
-          fontWeight: "600",
-          lineHeight: "16px",
-          mb: 2,
-        }}
-      >
-        Habilidades
-      </Typography>
+    <Box sx={skillsFilterBox}>
+      <Typography sx={skillFilterTitleTypography}>Habilidades</Typography>
       <AutoCompleteFieldComponent
         sx={{ width: "100%", background: "white" }}
         label="Buscar habilidades"
@@ -73,67 +62,31 @@ const SkillsFilter = () => {
         onCreateNewOption={() => {}}
         blurTextOnSelect={true}
       />
-      <Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "15px",
-            flex: 1,
-            my: 1,
-          }}
-        >
-          {selectedSkills.map((skill) => (
-            <Chip
-              deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
-              color="primary"
-              key={skill}
-              label={skill}
-              onDelete={() => {
-                removeSkill(skill);
-              }}
-              sx={{
-                borderRadius: "6px",
-                backgroundColor: {
-                  xs: "#D9D9D9",
-                  sm: "#D9D9D9",
-                  md: "#D9D9D9",
-                  lg: "#D9D9D9",
-                },
-                color: "#303030",
-                fontFamily: "Inter",
-                fontSize: "16px",
-                fontStyle: "normal",
-                fontWeight: "400",
-                lineHeight: "normal",
-                maxWidth: {
-                  xs: "100%",
-                  sm: "100%",
-                  md: "250px",
-                  lg: "100%",
-                },
-              }}
-            />
-          ))}
-        </Box>
-        <Box
-          sx={{
-            witdh: "100%",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-          }}
-        >
-          <Checkbox
-            checked={isExclusiveSkills}
-            onChange={(check) => {
-              setIsExclusiveSkills(check.target.checked);
+      <Box sx={selectedSkillsBox}>
+        {selectedSkills.map((skill) => (
+          <Chip
+            deleteIcon={<ClearIcon style={{ color: "#545454" }} />}
+            color="primary"
+            key={skill}
+            label={skill}
+            onDelete={() => {
+              removeSkill(skill);
             }}
-            inputProps={{ "aria-label": "Checkbox" }}
+            sx={skillChipStyles}
           />
-          <Typography>Todas las habilidades son excluyentes</Typography>
-        </Box>
+        ))}
+      </Box>
+      <Box sx={filterDescriptionStyles}>
+        <Checkbox
+          checked={isExclusiveSkills}
+          onChange={(check) => {
+            setIsExclusiveSkills(check.target.checked);
+          }}
+          inputProps={{ "aria-label": "Checkbox" }}
+        />
+        <Typography>
+          Mostrar egresados que tienen todas estas habilidades
+        </Typography>
       </Box>
     </Box>
   );

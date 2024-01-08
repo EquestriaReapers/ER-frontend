@@ -22,7 +22,8 @@ import { ChangeEvent, FormEvent } from "react";
 import forgotPassword from "core/auth/forgot-password.service";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useErrorToast } from "hooks/use-error-toast";
-import forgotPasswordImage from "./images/forgot-password.png"
+import forgotPasswordImage from "./images/forgot-password.png";
+import SpinnerBlock from "components/spinner-block";
 
 const ForgotPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();
@@ -35,6 +36,7 @@ const ForgotPassword: FunctionComponent = () => {
   const [emailSent, setEmailSend] = useState(false);
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
+  const [loading, setLoading] = useState(false);
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -46,6 +48,7 @@ const ForgotPassword: FunctionComponent = () => {
 
       try {
         if (!email) return;
+        setLoading(true);
         const data = await forgotPassword(email);
         setEmailSend(true);
         showSuccessToast(
@@ -54,6 +57,8 @@ const ForgotPassword: FunctionComponent = () => {
         return data;
       } catch (error) {
         showErrorToast(error);
+      } finally {
+        setLoading(false);
       }
     },
     [email, showErrorToast, showSuccessToast]
@@ -68,35 +73,45 @@ const ForgotPassword: FunctionComponent = () => {
       <Box sx={ForgotPasswordInsideContainerStyles}>
         <Box sx={CenterBoxStyles}>
           <Box sx={InsideCenterBoxStyles}>
-            <Typography sx={RecoverPasswordTypographyStyles}>
-              {emailSent ? "Revisa tu correo electronico!": "Recuperar contraseña"}
-            </Typography>
-            <Typography sx={RecoverPasswordTextStyles}>
-              {emailSent ? 
-                `Te hemos enviado un correo a ${email} para recuperar tu contraseña, revisalo y continua el proceso`: 
-                "Ingresa tu correo para que puedas recibir un mensaje de recuperación de contraseña"
-              }
-            </Typography>
-            {emailSent ? ( 
-              <img src={forgotPasswordImage} style={SuccesImageStyles} /> 
-              ) : ( 
-                <Box sx={MainContentStyles}>
-                  <Box sx={SearchBarBoxStyles}>
-                  <Typography sx={EmailTypographyStyles}>
-                    Correo Electrónico
-                  </Typography>
-                  <TextField
-                    variant="outlined"
-                    onChange={onEmailChange}
-                    sx={SearchBarTextFieldStyles}
-                  />
+            {loading ? (
+              <SpinnerBlock />
+            ) : (
+              <>
+                <Typography sx={RecoverPasswordTypographyStyles}>
+                  {emailSent
+                    ? "Revisa tu correo electronico!"
+                    : "Recuperar contraseña"}
+                </Typography>
+                <Typography sx={RecoverPasswordTextStyles}>
+                  {emailSent
+                    ? `Te hemos enviado un correo a ${email} para recuperar tu contraseña, revisalo y continua el proceso`
+                    : "Ingresa tu correo para que puedas recibir un mensaje de recuperación de contraseña"}
+                </Typography>
+                {emailSent ? (
+                  <img src={forgotPasswordImage} style={SuccesImageStyles} />
+                ) : (
+                  <Box sx={MainContentStyles}>
+                    <Box sx={SearchBarBoxStyles}>
+                      <Typography sx={EmailTypographyStyles}>
+                        Correo Electrónico
+                      </Typography>
+                      <TextField
+                        variant="outlined"
+                        onChange={onEmailChange}
+                        sx={SearchBarTextFieldStyles}
+                      />
+                    </Box>
+                    <Button
+                      sx={SendEmailStyles}
+                      disabled={!email || loading}
+                      type="submit"
+                    >
+                      Enviar Email
+                    </Button>
                   </Box>
-                  <Button sx={SendEmailStyles} type="submit">
-                    Enviar Email
-                  </Button> 
-                </Box>
-              )}
-
+                )}
+              </>
+            )}
           </Box>
         </Box>
       </Box>

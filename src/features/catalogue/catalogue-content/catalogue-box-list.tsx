@@ -23,7 +23,7 @@ const CatalogueBoxList = () => {
           {!!pagination && !!pagination.totalItems && (
             <Box
               sx={{
-                fontFamily: "Inter",
+                fontFamily: "inter",
                 fontSize: "0.85rem",
                 fontWeight: "400",
                 fontColor: "#545454",

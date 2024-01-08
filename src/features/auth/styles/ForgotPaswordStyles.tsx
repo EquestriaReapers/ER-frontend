@@ -3,11 +3,9 @@ import { useMediaQuery, useTheme } from "@mui/material";
 
 const XS_SCREEN_LARGE_FONT_SIZE = "1.8rem";
 const XS_SCREEN_MEDIUM_FONT_SIZE = "0.8rem";
-const XS_SCREEN_SMALL_FONT_SIZE = "0.75rem";
 
 const LG_SCREEN_LARGE_FONT_SIZE = "2rem";
 const LG_SCREEN_MEDIUM_FONT_SIZE = "1rem";
-const LG_SCREEN_SMALL_FONT_SIZE = "0.95rem";
 
 export const ForgotPasswordContainerStyles = {
   width: "100%",
@@ -104,17 +102,17 @@ export const useRecoverPasswordTextStyles = () => {
 };
 
 export const SuccesImageStyles = {
-  width:"40%", 
-  height:"auto", 
-  margin:"auto", 
-  minWidth:"120px",
-}
+  width: "60%",
+  height: "auto",
+  margin: "auto",
+  minWidth: "160px",
+};
 
 export const MainContentStyles = {
-  display:"grid", 
-  height:"100%", 
-  gridTemplateRows:"85% 15%"
-}
+  display: "grid",
+  height: "100%",
+  gridTemplateRows: "85% 15%",
+};
 
 export const SearchBarBoxStyles = {
   margin: "auto 0 auto 0",
@@ -141,21 +139,6 @@ export const SearchBarTextFieldStyles = {
   marginBottom: "15px",
 };
 
-export const useForgotEmailStyles = () => {
-  const theme = useTheme();
-
-  const isExtraSmallScreen = useMediaQuery(theme.breakpoints.down(300));
-
-  const ForgotEmailStyles = {
-    display: "grid",
-    fontSize: isExtraSmallScreen
-      ? XS_SCREEN_SMALL_FONT_SIZE
-      : LG_SCREEN_SMALL_FONT_SIZE,
-    color: "#007BFF",
-  };
-  return ForgotEmailStyles;
-};
-
 export const useSendEmailStyles = () => {
   const theme = useTheme();
 
@@ -166,8 +149,8 @@ export const useSendEmailStyles = () => {
     margin: "0 auto 0 auto",
     height: "45px",
     width: isSmallScreen ? "100%" : "60%",
-    backgroundColor: "#D9D9D9",
-    color: "#303030",
+    backgroundColor: "#007934",
+    color: "#FFFFFF",
     fontSize: isExtraSmallScreen
       ? XS_SCREEN_MEDIUM_FONT_SIZE
       : LG_SCREEN_MEDIUM_FONT_SIZE,
@@ -175,8 +158,12 @@ export const useSendEmailStyles = () => {
     borderRadius: "5px",
 
     "&:hover": {
-      backgroundColor: "#D9D9D9",
-      color: "#303030",
+      backgroundColor: "#007934",
+      color: "#FFFFFF",
+    },
+    "&.Mui-disabled": {
+      background: "#eaeaea",
+      color: "#c0c0c0",
     },
   };
   return SendEmailStyles;
