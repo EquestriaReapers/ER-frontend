@@ -62,6 +62,7 @@ export interface Experience {
   location: string;
   description: string;
   endDate: Date | null;
+  isVisible: boolean;
 }
 
 export interface LanguageOption {
@@ -82,6 +83,7 @@ export interface Education {
   entity: string;
   endDate: Date;
   deleteAt: Date | null;
+  isVisible: boolean;
 }
 
 export enum LanguageLevel {

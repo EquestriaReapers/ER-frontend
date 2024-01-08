@@ -1,7 +1,6 @@
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
 import {
-  BothSkillsContainer,
   EducationBoxStyles,
   aboutMeSection,
   aboutMeTypographyStyles,
@@ -15,6 +14,7 @@ import {
   nameStyles,
   pageContainerStyles,
   skillsAndExperiencesBoxStyles,
+  BothSkillsContainer,
   skillsTitleTypographyStyles,
   topSectionStyles,
 } from "./styles";
