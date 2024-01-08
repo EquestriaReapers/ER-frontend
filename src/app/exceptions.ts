@@ -23,7 +23,10 @@ export class BackendError extends Error implements AppError {
     const backendError = this.getBackendErrorType(error);
     if (backendError) {
       this.message = backendError.error;
-      this.details = backendError.message;
+      this.details =
+        typeof backendError.message === "string"
+          ? [backendError.message]
+          : backendError.message;
     } else {
       this.handleOtherErrors(error);
     }

@@ -46,12 +46,7 @@ const useOnSubmitForm = ({ setIsOpen, user }: Props) => {
 function validatePayload(
   payload: Partial<UpdateProfileBody>
 ): payload is UpdateProfileBody {
-  return (
-    !!payload.name &&
-    !!payload.lastname &&
-    !!payload.mainTitle &&
-    !!payload.description
-  );
+  return !!payload.name && !!payload.lastname && !!payload.description;
 }
 
 function useGetToken() {

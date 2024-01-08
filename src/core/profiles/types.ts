@@ -7,6 +7,7 @@ export interface Profile {
   user: User;
   description: string;
   mainTitle: string;
+  mainTitleCode: string;
   countryResidence: string;
   website: string;
   education: Education[];

@@ -31,7 +31,8 @@ import { SkillType } from "core/skills/types";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
-  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const transformedCareerName =
+    profile.mainTitle || useTransformCareerEnum(profile.mainTitleCode);
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
     useDownloadCurriculumPDF(profile);
 

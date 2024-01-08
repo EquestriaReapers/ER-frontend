@@ -20,13 +20,9 @@ import { RegisterPayload } from "../Register";
 
 const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const {
-    name,
-    lastname,
     email,
     password,
     confirmPassword,
-    onChangeName,
-    onChangeLastname,
     onChangeEmail,
     onChangePassword,
     onChangeConfirmPassword,
@@ -44,24 +40,6 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         <Box sx={ImageBoxStyles}>
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
         </Box>
-        <TextField
-          value={name}
-          label="Nombre"
-          type="name"
-          onChange={onChangeName}
-          disabled={disabled}
-          sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
-        />
-        <TextField
-          value={lastname}
-          label="Apellido"
-          type="lastname"
-          onChange={onChangeLastname}
-          disabled={disabled}
-          sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
-        />
         <TextField
           value={email}
           label="Correo electrónico"
@@ -95,7 +73,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           type="submit"
           disabled={disabled}
           onClick={() => {
-            onSubmit({ name, lastname, email, password, confirmPassword });
+            onSubmit({ email, password, confirmPassword });
           }}
           sx={ButtonStyles}
         >
@@ -114,13 +92,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
 export interface Props {
   disabled: boolean;
-  onSubmit: ({
-    name,
-    lastname,
-    email,
-    password,
-    confirmPassword,
-  }: RegisterPayload) => void;
+  onSubmit: ({ email, password, confirmPassword }: RegisterPayload) => void;
 }
 
 export default RegisterForm;

@@ -32,16 +32,10 @@ function useRegister() {
   const { showErrorToast } = useErrorToast();
   const [loading, setLoading] = useState(false);
   const onSubmit = useCallback(
-    async ({
-      name,
-      lastname,
-      email,
-      password,
-      confirmPassword,
-    }: RegisterPayload) => {
+    async ({ email, password, confirmPassword }: RegisterPayload) => {
       setLoading(true);
       try {
-        if (!name || !lastname || !email || !password || !confirmPassword) {
+        if (!email || !password || !confirmPassword) {
           showErrorToast(getFieldsRandomErrorPhrase());
           return;
         }
@@ -52,8 +46,6 @@ function useRegister() {
         }
 
         await registerService({
-          name,
-          lastname,
           email,
           password,
         });
@@ -71,8 +63,6 @@ function useRegister() {
 }
 
 export interface RegisterPayload {
-  name: string;
-  lastname: string;
   email: string;
   password: string;
   confirmPassword: string;
