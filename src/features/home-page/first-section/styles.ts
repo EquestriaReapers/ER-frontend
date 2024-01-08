@@ -135,10 +135,10 @@ export const SearchButtomStyles = {
     backgroundColor: "#37B4E3",
     height: "50px",
     fontWeight: "500",
-    fontSize: "0.8rem",
+    fontSize: '16px',
     textTransform: "none",
     "&&:hover": {
-        backgroundColor: "#37B4E3",
+        backgroundColor: "#0b9bd1",
     }
 };
 

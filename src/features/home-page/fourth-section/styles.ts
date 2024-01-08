@@ -100,7 +100,9 @@ export const FourthSectionButtonStyles = {
       minWidth:"230px",
       textTransform: "none",
       fontWeight:"500",
+      my: 5,
+      fontSize: { xs:'16px' , sm:'18px', lg: '18px', },
       "&&:hover" : {
-        backgroundColor: "#37B4E3", 
+        backgroundColor: "#0b9bd1", 
       }
 };

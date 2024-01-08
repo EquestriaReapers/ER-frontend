@@ -99,14 +99,15 @@ export const useCardSectionStyles = () => {
 
 export const SecondSectionButtonStyles = {
   color: "#FFFFFF",
-  backgroundColor: "#007934",
+  background: "#007935",
   my: 5,
   width: BUTTON_WIDTH,
   minWidth: "230px",
   textTransform: "none",
   fontWeight: "500",
+  fontSize: { xs:'16px' , sm:'18px', lg: '18px', },
 
   "&&:hover": {
-    backgroundColor: "#007934",
+    backgroundColor: "#03652e",
   },
 };

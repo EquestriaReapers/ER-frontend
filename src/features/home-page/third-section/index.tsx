@@ -8,7 +8,7 @@ import {
   InsideThirdSectionTextStyles,
   InsideThirdSectionBoxTextStyles,
   useInsideThirdSectionTypographytStyles,
-  
+  PortfoliosColor,
   usePortfoliosSectionStyles,
   ThirdSectionButtonStyles,
 } from "./styles";
@@ -21,7 +21,6 @@ const ThirdSection = () => {
   const InsideThirdSectionTypographytStyles =
     useInsideThirdSectionTypographytStyles();
   const PortfoliosSectionStyles = usePortfoliosSectionStyles();
-  
 
   const navigate = useNavigate();
 
@@ -37,7 +36,7 @@ const ThirdSection = () => {
             <Box sx={InsideThirdSectionBoxTextStyles}>
               <Typography sx={InsideThirdSectionTypographytStyles}>
                 Explora nuestros{" "}
-                <Typography sx={{ color: "#FCC430" }}>portafolios</Typography>
+                <span style={PortfoliosColor}>portafolios</span>
               </Typography>
             </Box>
           </Box>
