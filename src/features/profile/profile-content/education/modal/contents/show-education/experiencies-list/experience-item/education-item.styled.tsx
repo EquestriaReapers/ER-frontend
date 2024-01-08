@@ -14,6 +14,14 @@ export default styled(EducationItem)`
     justify-content: space-between;
   }
 
+  .cvButtonStyleUCAB {
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
   .cvButtonStyleTrue {
     color: #007934;
     font-family: Inter;

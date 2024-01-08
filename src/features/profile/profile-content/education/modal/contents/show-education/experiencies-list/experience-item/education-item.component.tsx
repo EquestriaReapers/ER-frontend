@@ -24,10 +24,14 @@ const EducationItem = ({ item, className }: Props) => {
             <Typography className={"nameStyles"}>{item.title}</Typography>
           </Box>
           <Box className={"itemIconBox"}>
-            <IconButton onClick={updateEducationCV}>
+            <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
               <Typography
                 className={
-                  item.isVisible ? "cvButtonStyleTrue" : "cvButtonStyleFalse"
+                  item.isUCAB
+                    ? "cvButtonStyleUCAB"
+                    : item.isVisible
+                    ? "cvButtonStyleTrue"
+                    : "cvButtonStyleFalse"
                 }
               >
                 CV
