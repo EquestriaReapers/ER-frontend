@@ -34,7 +34,7 @@ export const useFooterFirstLineStyles = () => {
       width: isLargeScreen ? "230px" :"380px", 
       display:"flex", 
       justifyContent:"space-between", 
-      fontSize: isLargeScreen ? "0.6rem" : "1rem"
+      fontSize: isLargeScreen ? "12px" : "16px"
     };
   
     return FooterFirstLineStyles;
