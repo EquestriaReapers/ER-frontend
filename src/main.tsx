@@ -20,6 +20,7 @@ import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
+import HomePage from "features/home-page";
 import NewPassword from "features/auth/NewPassword";
 
 const theme = createTheme({
@@ -74,6 +75,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "/new-password/:token",
         element: <NewPassword />,
+      },
+      {
+        path: "/home/",
+        element: <HomePage />,
       },
       {
         path: "/",
