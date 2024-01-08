@@ -7,7 +7,6 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
-import NewPassword from "features/auth/NewPassword";
 import LandingPage from "./features/landing-page";
 import "typeface-inter";
 import {

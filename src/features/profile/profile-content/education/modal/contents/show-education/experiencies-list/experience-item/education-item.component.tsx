@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
 import EducationModalContext from "../../../../education-modal-context/index";
 import useUpdateEducationCV from "./use-update-CV-education";
