@@ -1,14 +1,4 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import {
   modalStyle,
   buttonStyle,
@@ -22,8 +12,6 @@ import {
 import useEditProfileFormState from "./use-edit-profile-form-state";
 import useOnSubmitForm from "./use-on-submit-form";
 import useProfileContext from "../../profile-context/use-profile-context";
-import { CareersOption } from "core/profiles/get-careers-options.service";
-import useCareersOptions from "./use-careers-options";
 import SpinnerAbsolute from "components/spinner-absolute";
 
 const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
@@ -41,7 +29,6 @@ const EditProfileModalContent = ({ setIsOpen, className }: Props) => {
 
   const user = { name, description, lastname };
   const { onSubmitForm, loading } = useOnSubmitForm({ setIsOpen, user });
-  const options = useCareersOptions();
 
   if (!loaded) return null;
 
