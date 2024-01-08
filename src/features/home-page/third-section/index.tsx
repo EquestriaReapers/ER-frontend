@@ -40,7 +40,6 @@ const ThirdSection = () => {
         </Box>
         <Box sx={PortfoliosSectionStyles}>
           <PortfolioBox />
-
           <PortfolioBox />
           <PortfolioBox />
           <PortfolioBox />
