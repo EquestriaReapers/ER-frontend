@@ -5,8 +5,8 @@ import { useSuccessToast } from "hooks/use-success-toast";
 import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import ExperiencesModalContext from "../../../../experiencies-modal-context";
 import { Experience } from "core/profiles/types";
+import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiencies-modal-context";
 
 const useUpdateExperienceCV = (isVisible: boolean, experience: Experience) => {
   const getToken = useGetToken();
