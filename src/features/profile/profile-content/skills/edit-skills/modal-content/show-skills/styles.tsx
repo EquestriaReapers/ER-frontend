@@ -6,7 +6,7 @@ export const boxStyles = {
 };
 
 export const skillTitleStyles = {
-  fontFamily: "Inter",
+  fontFamily: "inter",
   alignItems: "center",
   fontWeight: "400",
   color: "#000",

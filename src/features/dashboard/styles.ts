@@ -7,5 +7,5 @@ export const dashboardBoxStyles = {
 export const buttonStyles = {
   backgroundColor: "red",
   padding: 2,
-  fontFamily: "Inter",
+  fontFamily: "inter",
 };

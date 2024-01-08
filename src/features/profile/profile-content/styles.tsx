@@ -144,6 +144,17 @@ export const websiteTitleContainerStyles = {
   alignItems: "center",
 };
 
+export const lenguageTitleContainerStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  pr: {
+    lg: "150px",
+    xs: "20px",
+  },
+  alignItems: "center",
+  width: "100%",
+};
+
 export const topSectionStyles = {
   width: "100%",
   mt: "30px",
@@ -186,8 +197,17 @@ export const skillsAndExperiencesBoxStyles = {
   gap: { xs: "29px", sm: "37px" },
 };
 
+export const EducationBoxStyles = {
+  display: "flex",
+  flexDirection: "column",
+  with: "100%",
+  gap: { xs: "29px", sm: "37px" },
+  mt: 2,
+};
+
 export const locationAndEditButtonStyles = {
   display: "flex",
+  flexWrap: "wrap",
   width: "100%",
   justifyContent: "space-between",
 };
