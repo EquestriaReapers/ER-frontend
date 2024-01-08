@@ -60,7 +60,7 @@ export const useInsideThirdSectionTypographytStyles = () => {
   
     const InsideThirdSectionTypographytStyles = {
         fontWeight: "600",
-        fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
+        fontSize: isSmallScreen ? "22px" : isLargeScreen ? "28px" : "32px",
         textAlign: "center",
         marginBottom: "40px",
     };

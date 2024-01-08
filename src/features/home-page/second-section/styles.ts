@@ -3,10 +3,6 @@ import { Theme } from "@mui/material";
 import { BUTTON_WIDTH } from "../styles";
 
 export const useSecondSectionStyles = () => {
-  const isLargeScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("lg")
-  );
-
   const SecondSectionStyles = {
     width: "100%",
     position: "relative",
@@ -68,8 +64,8 @@ export const useSecondSectionExploreTypographyStyles = () => {
     fontWeight: "600",
     fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
     textAlign: "center",
-    marginBottom: {xs:5, sm:11, lg:11,},
-    color:'black',
+    marginBottom: { xs: 5, sm: 11, lg: 11, },
+    color: 'black',
   };
   return SecondSectionExploreTypographyStyles;
 };
