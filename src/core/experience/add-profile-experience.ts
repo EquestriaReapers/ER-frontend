@@ -27,4 +27,5 @@ export interface AddExperienceBody {
   location: string;
   description: string;
   endDate: string | null;
+  isVisible: boolean | null;
 }

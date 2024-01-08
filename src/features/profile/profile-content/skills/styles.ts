@@ -6,9 +6,14 @@ export const boxWrapperStyles = {
 
 export const boxStyles = {
   display: "flex",
-  flexWrap: "wrap",
+  flexWrap: {
+    sm: "wrap",
+    md: "wrap",
+    lg: "nowrap",
+    xl: "nowrap",
+  },
   gap: "10px",
-  py: 3,
+  py: 1,
   alignItems: "center",
   flex: 1,
   flexDirection: "row",
