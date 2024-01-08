@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 
 import ucabLogo from "../images/ucabLogo.webp";
 import {
-  TextFieldTypography,
   UcabLogoStyles,
   ImageBoxStyles,
   FormBottomTypographyStyles,
@@ -43,7 +42,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
   const InsideFormBottomStyles = useInsideFormBottomStylesFunct();
   const ForgotPasswordStyles = useForgotPasswordStylesFunct();
 
-  const LOGIN_BORDER_RADIUS = "11px";
+  const LOGIN_BORDER_RADIUS = "6px";
 
   return (
     <>
@@ -52,20 +51,18 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
         </Box>
         <Box>
-          <Typography sx={TextFieldTypography}>Correo electronico</Typography>
           <TextField
             value={email}
-            label=""
+            label="Correo electrónico"
             type="email"
             onChange={onChangeEmail}
             disabled={disabled}
             sx={TextFieldStyles}
             InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
           />
-          <Typography sx={TextFieldTypography}>Contraseña</Typography>
           <TextField
             value={password}
-            label=""
+            label="Contraseña"
             type="password"
             onChange={onChangePassword}
             disabled={disabled}
@@ -106,10 +103,10 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
           </Box>
           <Box sx={RedirectBoxStyles}>
             <Typography sx={QuestionBoxStyles}>
-              ¿Aun no tienes cuenta?
+              ¿Aún no tienes cuenta?
             </Typography>{" "}
             <Link to="/register" style={LinkBoxStyles}>
-              Registrate
+              ¡Registrate!
             </Link>
           </Box>
         </Box>

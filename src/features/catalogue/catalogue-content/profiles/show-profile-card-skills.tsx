@@ -7,9 +7,9 @@ const ShowProfileCardSkills = ({ skills }: Props) => {
   return (
     <Box sx={{ display: "flex", flexWrap: "wrap" }}>
       {skills.slice(0, 12).map((skill) => (
-        <>
-          <Typography sx={skillTitleStyles}>{skill.name}</Typography>
-        </>
+        <Typography key={skill.id} sx={skillTitleStyles}>
+          {skill.name}
+        </Typography>
       ))}
     </Box>
   );
