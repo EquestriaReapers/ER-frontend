@@ -11,6 +11,7 @@ export interface Profile {
   website: string;
   education: Education[];
   experience: Experience[];
+  portfolio: Portfolio[];
   skills: Skill[];
   languages: Language[];
   contactMethods: ContactMethod[];
@@ -85,6 +86,17 @@ export interface Education {
   isVisible: boolean;
 }
 
+export interface Portfolio {
+  id: number;
+  profileId: number;
+  title: string;
+  description: string;
+  location: string;
+  dateEnd: Date;
+  imagePrincipal: string | null;
+  image: string[] | null;
+  deletedAt: Date | null;
+}
 export enum LanguageLevel {
   Alto = "alto",
   Bajo = "bajo",

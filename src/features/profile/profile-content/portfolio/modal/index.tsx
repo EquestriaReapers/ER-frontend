@@ -1,21 +1,20 @@
 import { useContext, useState } from "react";
-import { Modal, IconButton } from "@mui/material";
+import PortfolioModalContext from "./modal-context";
 import EditIcon from "@mui/icons-material/Edit";
-import { ExperienceContent } from "./experiences-modal-context/types";
-import ExperiencesModalContext from "./experiences-modal-context";
-import { ExperiencesContentManager } from "./contents/experiences-content-manager";
+import { Modal, IconButton } from "@mui/material";
+import { PortfolioContent } from "./modal-context/types";
+import { PortfolioContentManager } from "./contents/content-manager";
 import SpinnerAbsolute from "components/spinner-absolute";
 
-const ExperiencesModal = () => {
+const PortfolioModal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { setContent, loading } = useContext(ExperiencesModalContext);
-
+  const { setContent, loading } = useContext(PortfolioModalContext);
   return (
     <div>
       <IconButton
         onClick={() => {
           setIsOpen(true);
-          setContent(ExperienceContent.Show);
+          setContent(PortfolioContent.Show);
         }}
       >
         <EditIcon />
@@ -24,11 +23,11 @@ const ExperiencesModal = () => {
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <>
           {loading && <SpinnerAbsolute />}
-          <ExperiencesContentManager />
+          <PortfolioContentManager />
         </>
       </Modal>
     </div>
   );
 };
 
-export default ExperiencesModal;
+export default PortfolioModal;

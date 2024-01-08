@@ -1,26 +1,26 @@
-import { deleteAProfileExperience } from "core/experience/delete-profile-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { useCallback, useContext } from "react";
-import { ExperienceContent } from "../../experiences-modal-context/types";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import ExperiencesModalContext from "../../experiences-modal-context";
+import PortfolioModalContext from "../../modal-context";
+import { PortfolioContent } from "../../modal-context/types";
+import { deleteAProfileProject } from "core/portfolio/delete-project.service";
 
-const useDeleteExperience = ({ experienceId }: Payload) => {
-  const { setContent, setLoading } = useContext(ExperiencesModalContext);
+const useDeleteProject = ({ projectId }: Payload) => {
+  const { setContent, setLoading } = useContext(PortfolioModalContext);
   const { fetchProfile } = useProfileContext();
   const getToken = useGetToken();
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
 
-  const deleteExperience = useCallback(async () => {
+  const deleteProject = useCallback(async () => {
     try {
       const token = getToken();
-      const data = await deleteAProfileExperience(token, experienceId);
-      setContent(ExperienceContent.Show);
-      showSuccessToast("Experiencia borrada con éxito");
+      const data = await deleteAProfileProject(token, projectId);
+      setContent(PortfolioContent.Show);
+      showSuccessToast("Proyecto borrado con éxito");
       setLoading(true);
       await fetchProfile();
       return data;
@@ -30,7 +30,7 @@ const useDeleteExperience = ({ experienceId }: Payload) => {
       setLoading(false);
     }
   }, [
-    experienceId,
+    projectId,
     fetchProfile,
     getToken,
     setContent,
@@ -39,11 +39,11 @@ const useDeleteExperience = ({ experienceId }: Payload) => {
     showSuccessToast,
   ]);
 
-  return deleteExperience;
+  return deleteProject;
 };
 
 export interface Payload {
-  experienceId: number;
+  projectId: number;
 }
 
 function useGetToken() {
@@ -62,4 +62,4 @@ function useGetToken() {
   }, [navigate, token]);
 }
 
-export default useDeleteExperience;
+export default useDeleteProject;
