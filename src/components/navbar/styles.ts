@@ -15,8 +15,29 @@ export const titleStyles = {
   },
 };
 
+export const titleStylesLogoutM = {
+  color: "black",
+  ml: 2,
+  fontFamily: "Inter",
+  fontSize: "16px",
+  textTransform: "Capitalize",
+  "&:hover": {
+    color: "#007935",
+  },
+  justifyContent: "flex-start",
+};
+
 export const inlineStyles = {
   display: "flex",
   flexWrap: "wrap",
   p: "15px",
+  flexDirection: "row",
+};
+
+export const inlineMobileStyles = {
+  display: "flex",
+  flexWrap: "wrap",
+  p: "15px",
+  flexDirection: "column",
+  justifyContent: "flex-start",
 };

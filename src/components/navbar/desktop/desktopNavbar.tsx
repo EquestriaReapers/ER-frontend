@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "core/auth/store/auth-slice";
 import { User } from "core/users/types";
 
-const navBarDesktop = () => {
+const navBarDesktop = ({ setIsOpen }: Props) => {
   const user = useCurrentUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  setIsOpen(false);
 
   const onLogout = () => {
     dispatch(logout());
@@ -58,6 +59,10 @@ const navBarDesktop = () => {
 };
 
 export default navBarDesktop;
+
+export interface Props {
+  setIsOpen: (isOpen: boolean) => void;
+}
 
 function useCurrentUser(): User | null {
   return useSelector<{ auth: AuthState }>((state) => state.auth.user) as User;
