@@ -1,22 +1,22 @@
-import { Button, Box, Typography } from '@mui/material'
+import { Button, Box, Typography } from "@mui/material";
 import {
   buttonStyle,
   titleStyles,
   skillTitleStyle,
-  descriptionStyles
-} from '../../../../styles'
-import ShowSkills from './show-skills/show-skills.component'
-import useProfileContext from '../../../../profile-context/use-profile-context'
-import AddSkillField from './add-skill-field'
-import SpinnerAbsolute from 'components/spinner-absolute'
-import { useSkillsModalContext } from '../skills-modal-context/use-skills-modal-context'
-import { SkillType } from 'core/skills/types'
-import { Props, useCloseModal } from './modal-content.component'
+  descriptionStyles,
+} from "../../../../styles";
+import ShowSkills from "./show-skills/show-skills.component";
+import useProfileContext from "../../../../profile-context/use-profile-context";
+import AddSkillField from "./add-skill-field";
+import SpinnerAbsolute from "components/spinner-absolute";
+import { useSkillsModalContext } from "../skills-modal-context/use-skills-modal-context";
+import { SkillType } from "core/skills/types";
+import { Props, useCloseModal } from "./modal-content.component";
 
 export const ModalContent = ({ setIsOpen }: Props) => {
-  const { loading, skillType } = useSkillsModalContext()
-  const { profile } = useProfileContext()
-  const closeModal = useCloseModal(setIsOpen)
+  const { loading, skillType } = useSkillsModalContext();
+  const { profile } = useProfileContext();
+  const closeModal = useCloseModal(setIsOpen);
 
   return (
     <Box>
@@ -36,19 +36,19 @@ export const ModalContent = ({ setIsOpen }: Props) => {
       <Typography sx={skillTitleStyle}>Habilidades</Typography>
       <Box
         sx={{
-          bordeRadius: '5px',
-          border: '1px solid #777',
-          background: 'rgba(217, 217, 217, 0.00)',
-          padding: '20px',
-          my: '10px'
+          bordeRadius: "5px",
+          border: "1px solid #777",
+          background: "rgba(217, 217, 217, 0.00)",
+          padding: "20px",
+          my: "10px",
         }}
       >
         <Box
           sx={{
-            bordeRadius: '5px',
-            border: '1px solid #777',
-            background: 'rgba(217, 217, 217, 0.00)',
-            padding: '10px'
+            bordeRadius: "5px",
+            border: "1px solid #777",
+            background: "rgba(217, 217, 217, 0.00)",
+            padding: "10px",
           }}
         >
           <Typography>Mostradas en CV</Typography>
@@ -60,12 +60,12 @@ export const ModalContent = ({ setIsOpen }: Props) => {
       />
       <Button
         sx={buttonStyle}
-        className='exp-show-button'
-        type='submit'
+        className="exp-show-button"
+        type="submit"
         onClick={closeModal}
       >
         Listo
       </Button>
     </Box>
-  )
-}
+  );
+};

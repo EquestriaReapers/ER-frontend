@@ -1,13 +1,10 @@
-import { Typography, Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import { Skill } from "core/profiles/types";
 import { skillTitleStyles } from "./styles";
-import ClearIcon from "@mui/icons-material/Clear";
-import useDeleteSkill from "../../use-delete-skill";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-const SkillCard = ({ item }: Props) => {
-  const deleteSkill = useDeleteSkill(item.id);
+const InvisibleSpace = ({ item, children }: Props) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: item.id });
 
@@ -21,29 +18,34 @@ const SkillCard = ({ item }: Props) => {
       <Box
         style={style}
         sx={{
-          ...skillTitleStyles,
-          height: "40px",
+          flex: 1,
           flexDirection: "row",
           display: "flex",
-          maxWidth: "30px",
+          minHeight: "120px",
+          maxWidth: "100%",
+          width: "100%",
+          flexWrap: "wrap",
+          background: "yellow",
+          "&hover": {
+            background: "red",
+          },
+          "&:active": {
+            background: "green",
+          },
         }}
         ref={setNodeRef}
         {...attributes}
         {...listeners}
       >
-        {item.name}
+        {children}
       </Box>
-      {/*      <IconButton
-        onClick={deleteSkill}
-        sx={{ zIndex: 100, position: "relative", marginTop: "-32px" }}
-      >
-        <ClearIcon sx={{ color: "#545454" }} /></IconButton>*/}
     </>
   );
 };
 
 interface Props {
   item: Skill;
+  children: React.ReactNode;
 }
 
-export default SkillCard;
+export default InvisibleSpace;
