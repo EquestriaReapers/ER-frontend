@@ -16,11 +16,12 @@ export const usePortfoliosBoxStyles = () => {
     width: isLargeScreen ? "50%" : '210px',
     backgroundColor: 'white',
     margin: isLargeScreen ? "auto" : "inherit",
-    pb: 2,
+    pb: 3,
     minWidth: isSmallScreen ? "250px" : (isLargeScreen ? "335px" : "210px"),
     borderRadius: '6px',
     boxShadow:
       "0 0 0 rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)",
+
 
   };
 
@@ -43,6 +44,8 @@ export const usePortfoliosTitleStyles = () => {
   const PortfoliosTitleStyles = {
     fontWeight: "700",
     fontSize: isLargeScreen ? "16px" : "14px",
+    py:1,
+    pl:1,
   };
 
   return PortfoliosTitleStyles;
@@ -55,7 +58,8 @@ export const PortfolioSecondLineStyles = {
 
 export const PortfolioNameStyles = {
   color: "#353535",
-  fontSize: "14px"
+  fontSize: "14px",
+  pl:1,
 }
 
 export const PortfolioInsideSecondLine = {
@@ -66,12 +70,14 @@ export const PortfolioInsideSecondLine = {
 export const PortfolioViewsNumber = {
   marginRight: "5px",
   color: "#353535",
-  fontSize: "14px"
+  fontSize: "14px",
+  pr:1,
 }
 
 export const PortfolioViewsNumberIcon = {
   color: "#353535",
-  height: "20px"
+  height: "20px",
+  pr:1,
 }
 
 

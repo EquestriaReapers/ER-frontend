@@ -68,9 +68,8 @@ export const useSecondSectionExploreTypographyStyles = () => {
     fontWeight: "600",
     fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
     textAlign: "center",
-    marginBottom: 11,
+    marginBottom: {xs:5, sm:11, lg:11,},
     color:'black',
-    mt:4,
   };
   return SecondSectionExploreTypographyStyles;
 };
