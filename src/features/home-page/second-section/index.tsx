@@ -37,30 +37,36 @@ const SecondSection = () => {
           <Typography sx={SecondSectionExploreTypographyStyles}>
             Explora nuestros <span style={GraduatesColor}>egresados</span>
           </Typography>
-          <Box sx={CardSectionStyles}>
-            {profiles &&
-              profiles.slice(0, 3).map((profile) => (
-                <Box sx={CardSectionStyles}>
-                  <Card profile={profile} />
-                </Box>
-              ))}
+
+          <Box>
+            <Box sx={CardSectionStyles}>
+              {profiles &&
+                profiles.slice(0, 3).map((profile) => (
+                  <Box sx={CardSectionStyles}>
+                    <Card profile={profile} />
+                  </Box>
+                ))}
+            </Box>
+
+            <Box sx={CardSectionStyles}>
+              {profiles &&
+                profiles.slice(2, 5).map((profile) => (
+                  <Box sx={CardSectionStyles}>
+                    <Card profile={profile} />
+                  </Box>
+                ))}
+            </Box>
           </Box>
-          <Box sx={CardSectionStyles}>
-            {profiles &&
-              profiles.slice(2, 5).map((profile) => (
-                <Box sx={CardSectionStyles}>
-                  <Card profile={profile} />
-                </Box>
-              ))}
+          <Box>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={SecondSectionButtonStyles}
+              onClick={navigateToCatalogue}
+            >
+              Ver más egresados
+            </Button>
           </Box>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={SecondSectionButtonStyles}
-            onClick={navigateToCatalogue}
-          >
-            Ver más egresados
-          </Button>
         </Box>
       </Box>
     </Box>

@@ -8,16 +8,18 @@ export const useCardStyles = () => {
   );
 
   const CardStyles = {
-    width: "30%",
-    height: "150px",
+    width: "40%",
+    height: "200px",
     backgroundColor: "#FFFFFF",
     display: "grid",
     boxShadow:
       "0px 8px 12px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.1)",
-    borderRadius: "3px",
+    borderRadius: "6px",
     margin: isLargeScreen ? "auto" : "inherit",
     minWidth: "230px",
+    p: 1, 
   };
+
 
   return CardStyles;
 };
@@ -26,6 +28,7 @@ export const InsideCardStyles = {
   width: "calc(100% - 14px)",
   height: "calc(100% - 14px)",
   margin: "auto",
+  overflow:'hidden',
 };
 
 export const CardFirstSection = {
@@ -36,6 +39,7 @@ export const CardFirstSection = {
 export const CardFirstLine = {
   display: "flex",
   justifyContent: "space-between",
+  alignItems: 'center',
 };
 
 export const useCardNameStyles = () => {
@@ -46,7 +50,7 @@ export const useCardNameStyles = () => {
   const CardNameStyles = {
     color: "#007934",
     fontWeight: "700",
-    fontSize: isLargeScreen ? "0.7rem" : "1rem",
+    fontSize: isLargeScreen ? "20px" : "20px",
   };
 
   return CardNameStyles;
@@ -60,7 +64,8 @@ export const useCardOcupationStyles = () => {
   const CardOcupationStyles = {
     color: "#000000",
     fontWeight: "700",
-    fontSize: isLargeScreen ? "0.55rem" : "0.75rem",
+    mt:1,
+    fontSize: isLargeScreen ? "14px" : "14px",
   };
 
   return CardOcupationStyles;
@@ -69,6 +74,7 @@ export const useCardOcupationStyles = () => {
 export const CardSecondLine = {
   display: "flex",
   justifyContent: "left",
+  py: 1,
 };
 
 export const useCardLocationLineStyles = () => {
@@ -79,7 +85,7 @@ export const useCardLocationLineStyles = () => {
   const CardLocationLineStyles = {
     color: "#303030",
     fontWeight: "700",
-    fontSize: isLargeScreen ? "0.55rem" : "0.75rem",
+    fontSize: isLargeScreen ? "14px" : "14px",
   };
 
   return CardLocationLineStyles;
@@ -101,7 +107,9 @@ export const useCardLocationIconStyles = () => {
 export const CardSecondSection = {
   height: "50%",
   width: "100%",
-  marginTop: "2px",
+  marginTop: 1,
+  overflow: 'hidden',
+
 };
 
 export const useCardLocationChipStyles = () => {
@@ -110,14 +118,14 @@ export const useCardLocationChipStyles = () => {
   );
 
   const CardLocationChipStyles = {
-    borderRadius: "8px",
+    borderRadius: "6px",
     marginRight: 1,
     marginTop: "auto",
     marginBottom: "0px",
     backgroundColor: "#A6D6A8",
     color: "#000000",
     height: "28px",
-    fontSize: isLargeScreen ? "0.48rem" : "0.8125rem",
+    fontSize: isLargeScreen ? "12px" : "12px",
   };
 
   return CardLocationChipStyles;
@@ -145,5 +153,5 @@ export const skillTitleStyles = {
   fontWeight: "400",
   color: "#000",
   backgroundColor: "#A6D6A8",
-  borderRadius: "4px",
+  borderRadius: "6px",
 };

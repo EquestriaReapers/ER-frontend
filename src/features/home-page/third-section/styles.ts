@@ -60,7 +60,7 @@ export const useInsideThirdSectionTypographytStyles = () => {
   
     const InsideThirdSectionTypographytStyles = {
         fontWeight: "600",
-        fontSize: isSmallScreen ? "1.2rem" : isLargeScreen ? "1.5rem" : "2rem",
+        fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
         textAlign: "center",
         marginBottom: "40px",
     };
@@ -80,7 +80,7 @@ export const usePortfoliosSectionStyles = () => {
   
     const PortfoliosSectionStyles = {
       display: isLargeScreen ? "grid" :'flex', 
-      justifyContent:isLargeScreen? "inherit":'space-between', 
+      justifyContent:isLargeScreen? "inherit":'space-evenly', 
       marginBottom:"40px"
     };
   

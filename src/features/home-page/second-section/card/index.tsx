@@ -6,7 +6,6 @@ import {
   useCardStyles,
   InsideCardStyles,
   CardFirstSection,
-  CardFirstLine,
   useCardNameStyles,
   useCardOcupationStyles,
   CardSecondLine,
@@ -30,36 +29,37 @@ const Card = ({ profile }: Props) => {
   return (
     <Box sx={CardStyles}>
       <Box sx={InsideCardStyles}>
-        <Box sx={CardFirstSection}>
-          <Box sx={CardFirstLine}>
+        <Box>
+          <Box sx={CardFirstSection}>
             <Typography sx={CardNameStyles}>
               {profile.user.name} {profile.user.lastname}
             </Typography>
             <Typography sx={CardOcupationStyles}>
               {transformedCareer}
             </Typography>
-          </Box>
 
-          <Box sx={CardSecondLine}>
-            {!profile.countryResidence ? (
-              <Typography sx={CardLocationLineStyles}>
-                Residencia no especificada
-              </Typography>
-            ) : (
-              <Typography sx={CardLocationLineStyles}>
-                {profile.countryResidence}
-              </Typography>
-            )}
-            <LocationOnIcon sx={CardLocationIconStyles} />
+            <Box sx={CardSecondLine}>
+              {!profile.countryResidence ? (
+                <Typography sx={CardLocationLineStyles}>
+                  Residencia no especificada
+                </Typography>
+              ) : (
+                <Typography sx={CardLocationLineStyles}>
+                  {profile.countryResidence}
+                </Typography>
+              )}
+              <LocationOnIcon sx={CardLocationIconStyles} />
+            </Box>
           </Box>
         </Box>
         <Box sx={CardSecondSection}>
           <Box
             sx={{
               display: "flex",
-              gap: "2px",
+              gap: "4px",
               flexWrap: "wrap",
               width: "100%",
+              my: 2,
             }}
           >
             {profile.skills.length === 0 ? (

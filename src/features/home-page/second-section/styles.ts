@@ -9,7 +9,6 @@ export const useSecondSectionStyles = () => {
 
   const SecondSectionStyles = {
     width: "100%",
-    height: isLargeScreen ? "35%" : "30%",
     position: "relative",
     display: "flex",
     alignItems: "center",
@@ -67,16 +66,18 @@ export const useSecondSectionExploreTypographyStyles = () => {
 
   const SecondSectionExploreTypographyStyles = {
     fontWeight: "600",
-    fontSize: isSmallScreen ? "1.2rem" : isLargeScreen ? "1.5rem" : "2rem",
+    fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
     textAlign: "center",
-    marginBottom: "40px",
+    marginBottom: 11,
+    color:'black',
+    mt:4,
   };
   return SecondSectionExploreTypographyStyles;
 };
 
 export const SecondSectionExploreTypographyStyles = {
   fontWeight: "600",
-  fontSize: "1.5rem",
+  fontSize: "24px",
   marginBottom: "40px",
   color: "black",
   textAlign: "center",
@@ -93,7 +94,7 @@ export const useCardSectionStyles = () => {
 
   const CardSectionStyles = {
     display: isLargeScreen ? "grid" : "flex",
-    justifyContent: isLargeScreen ? "normal" : "space-between",
+    justifyContent: isLargeScreen ? "normal" : "space-evenly",
     width: "100%",
     marginBottom: "15px",
   };
@@ -104,7 +105,7 @@ export const useCardSectionStyles = () => {
 export const SecondSectionButtonStyles = {
   color: "#FFFFFF",
   backgroundColor: "#007934",
-  margin: "auto",
+  my: 5,
   width: BUTTON_WIDTH,
   minWidth: "230px",
   textTransform: "none",

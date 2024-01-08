@@ -1,83 +1,89 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme } from "@mui/material";
-import { BUTTON_WIDTH }from "../../styles";
+import { BUTTON_WIDTH } from "../../styles";
 
 export const usePortfoliosBoxStyles = () => {
-  
-    const isLargeScreen = useMediaQuery((theme: Theme) =>
-      theme.breakpoints.down("lg")
-    );
-  
-    const isSmallScreen = useMediaQuery((theme: Theme) =>
-      theme.breakpoints.down("sm")
-    );
-    const PortfoliosBoxStyles = {
-      height: isLargeScreen ? "350px" :'220px', 
-      width: isLargeScreen ? "50%":'210px', 
-      backgroundColor:'white', 
-      margin:isLargeScreen?"auto":"inherit", 
-      minWidth: isSmallScreen ? "250px" : (isLargeScreen?"335px" : "210px")
-    };
-  
-    return PortfoliosBoxStyles;
+
+  const isLargeScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("lg")
+  );
+
+  const isSmallScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
+  const PortfoliosBoxStyles = {
+    height: isLargeScreen ? "350px" : '220px',
+    width: isLargeScreen ? "50%" : '210px',
+    backgroundColor: 'white',
+    margin: isLargeScreen ? "auto" : "inherit",
+    pb: 2,
+    minWidth: isSmallScreen ? "250px" : (isLargeScreen ? "335px" : "210px"),
+    borderRadius: '6px',
+    boxShadow:
+      "0 0 0 rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1)",
+
+  };
+
+  return PortfoliosBoxStyles;
 };
-  
+
 export const PortfolioBackground = {
-    backgroundColor:'#D9D9D9', 
-    width:'100%', 
-    height:'80%'
+  backgroundColor: '#D9D9D9',
+  width: '100%',
+  height: '80%',
+  borderRadius: '6px 6px 0 0',
 }
-  
+
 export const usePortfoliosTitleStyles = () => {
-  
-    const isLargeScreen = useMediaQuery((theme: Theme) =>
-      theme.breakpoints.down("lg")
-    );
-  
-    const PortfoliosTitleStyles = {
-      fontWeight:"700", 
-      fontSize: isLargeScreen ? "0.7rem":"0.85rem"
-    };
-  
-    return PortfoliosTitleStyles;
+
+  const isLargeScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("lg")
+  );
+
+  const PortfoliosTitleStyles = {
+    fontWeight: "700",
+    fontSize: isLargeScreen ? "16px" : "14px",
+  };
+
+  return PortfoliosTitleStyles;
 };
-  
+
 export const PortfolioSecondLineStyles = {
-    display:"flex", 
-    justifyContent:"space-between",
+  display: "flex",
+  justifyContent: "space-between",
 }
-  
+
 export const PortfolioNameStyles = {
-    color:"#353535",
-    fontSize:"0.8rem"
+  color: "#353535",
+  fontSize: "14px"
 }
-  
+
 export const PortfolioInsideSecondLine = {
-    display:"flex", 
-    alignItems:"center"
+  display: "flex",
+  alignItems: "center"
 }
-  
+
 export const PortfolioViewsNumber = {
-    marginRight:"5px", 
-    color:"#353535", 
-    fontSize:"0.8rem"
+  marginRight: "5px",
+  color: "#353535",
+  fontSize: "14px"
 }
-  
+
 export const PortfolioViewsNumberIcon = {
-    color:"#353535", 
-    height:"20px"
+  color: "#353535",
+  height: "20px"
 }
-  
-  
+
+
 export const ThirdSectionButtonStyles = {
-    color:'#FFFFFF', 
-    backgroundColor:'#FCC430', 
-    margin:'auto', 
-    width: BUTTON_WIDTH,
-    minWidth:"230px",
-    textTransform:"none",
-    fontWeight:"500",
-    "&&:hover" : {
-      backgroundColor: "#FCC430", 
-    }
+  color: '#FFFFFF',
+  backgroundColor: '#FCC430',
+  margin: 'auto',
+  width: BUTTON_WIDTH,
+  minWidth: "230px",
+  textTransform: "none",
+  fontWeight: "500",
+  "&&:hover": {
+    backgroundColor: "#FCC430",
+  }
 }
