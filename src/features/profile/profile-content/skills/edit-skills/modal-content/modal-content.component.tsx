@@ -246,23 +246,27 @@ const ModalContent = ({ setIsOpen }: Props) => {
                   flexWrap: "wrap",
                 }}
               >
-                <InvisibleSpace
-                  item={{
-                    id: -1,
-                    name: "visible",
-                    isVisible: true,
-                    type: SkillType.Hard,
-                  }}
-                >
-                  {visibleInCv.map((item: Skill, index) => {
-                    return (
-                      <SkillCard
-                        item={item}
-                        key={`visible-${item.id}-${index}`}
-                      />
-                    );
-                  })}
-                </InvisibleSpace>
+                {visibleInCv.length <= 0 ? (
+                  <InvisibleSpace
+                    item={{
+                      id: -2,
+                      name: "invisible",
+                      isVisible: false,
+                      type: SkillType.Hard,
+                    }}
+                  ></InvisibleSpace>
+                ) : (
+                  <></>
+                )}
+
+                {visibleInCv.map((item: Skill, index) => {
+                  return (
+                    <SkillCard
+                      item={item}
+                      key={`visible-${item.id}-${index}`}
+                    />
+                  );
+                })}
               </Box>
               <Box
                 sx={{
@@ -272,23 +276,27 @@ const ModalContent = ({ setIsOpen }: Props) => {
                   flexWrap: "wrap",
                 }}
               >
-                <InvisibleSpace
-                  item={{
-                    id: -2,
-                    name: "invisible",
-                    isVisible: false,
-                    type: SkillType.Hard,
-                  }}
-                >
-                  {invisibleInCv.map((item: Skill, index) => {
-                    return (
-                      <SkillCard
-                        item={item}
-                        key={`invisible-${item.id}-${index}`}
-                      />
-                    );
-                  })}
-                </InvisibleSpace>
+                {invisibleInCv.length <= 0 ? (
+                  <InvisibleSpace
+                    item={{
+                      id: -1,
+                      name: "visible",
+                      isVisible: true,
+                      type: SkillType.Hard,
+                    }}
+                  ></InvisibleSpace>
+                ) : (
+                  <></>
+                )}
+
+                {invisibleInCv.map((item: Skill, index) => {
+                  return (
+                    <SkillCard
+                      item={item}
+                      key={`invisible-${item.id}-${index}`}
+                    />
+                  );
+                })}
               </Box>
             </Box>
           </Box>

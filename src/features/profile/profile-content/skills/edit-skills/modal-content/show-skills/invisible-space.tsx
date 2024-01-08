@@ -4,7 +4,7 @@ import { skillTitleStyles } from "./styles";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-const InvisibleSpace = ({ item, children }: Props) => {
+const InvisibleSpace = ({ item }: Props) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: item.id });
 
@@ -21,9 +21,8 @@ const InvisibleSpace = ({ item, children }: Props) => {
           flex: 1,
           flexDirection: "row",
           display: "flex",
-          minHeight: "120px",
-          maxWidth: "100%",
-          width: "100%",
+          width: "30px",
+          height: "40px",
           flexWrap: "wrap",
           background: "yellow",
           "&hover": {
@@ -37,7 +36,7 @@ const InvisibleSpace = ({ item, children }: Props) => {
         {...attributes}
         {...listeners}
       >
-        {children}
+        No hay elementos! agrega el primero
       </Box>
     </>
   );
@@ -45,7 +44,6 @@ const InvisibleSpace = ({ item, children }: Props) => {
 
 interface Props {
   item: Skill;
-  children: React.ReactNode;
 }
 
 export default InvisibleSpace;
