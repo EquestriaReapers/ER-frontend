@@ -29,7 +29,7 @@ export const ubicationDateStyles = {
 export const subtitleStyles = {
   fontWeight: "700",
   fontSize: "16px",
-  color: "#535353",
+  color: "#007934",
   textTransform: "capitalize",
   fontFamily: "inter",
   fontStyle: "normal",
