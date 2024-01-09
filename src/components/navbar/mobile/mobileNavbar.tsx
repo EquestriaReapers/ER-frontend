@@ -1,7 +1,7 @@
 import { Box, IconButton } from "@mui/material/";
-import SvgComponent from "../SvgComponent";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import Logo from "../logo.png";
 
 const navBarMovile = ({ setIsOpen }: Props) => {
   return (
@@ -15,7 +15,7 @@ const navBarMovile = ({ setIsOpen }: Props) => {
     >
       <Box sx={{ display: "flex", width: "57%", justifyContent: "flex-end" }}>
         <Link to="/">
-          <SvgComponent />
+          <img src={Logo} alt="logo" width="70px" height="65px" />
         </Link>
       </Box>
 

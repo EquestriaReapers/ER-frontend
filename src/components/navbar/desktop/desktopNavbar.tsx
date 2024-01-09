@@ -5,7 +5,7 @@ import { AuthState } from "core/auth/store/types";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "core/auth/store/auth-slice";
 import { User } from "core/users/types";
-import Logo from "./logo.png";
+import Logo from "../logo.png";
 
 const navBarDesktop = ({ setIsOpen }: Props) => {
   const user = useCurrentUser();
