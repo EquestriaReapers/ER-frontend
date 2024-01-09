@@ -6,7 +6,7 @@ export const useFormBoxStylesFunct = () => {
 
   const FormBoxStyles = {
     width: isSmallScreen ? "300px" : "350px",
-    height: "600px",
+    height: "500px",
     margin: "auto",
     padding: isSmallScreen ? "18px" : "40px",
     backgroundColor: "white",

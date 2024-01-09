@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 
 const ProfileCard = ({ profile }: Props) => {
-  const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
+  const transformedCareerName =
+    profile.mainTitle || useTransformCareerEnum(profile.mainTitleCode);
   return (
     <Box sx={profileContainer}>
       <Box sx={{ display: "flex", width: "100%" }}>
