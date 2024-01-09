@@ -31,11 +31,10 @@ import Experiences from "./experiences/index";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
-  const transformedCareerName =
-    profile.mainTitle || useTransformCareerEnum(profile.mainTitleCode);
+  const transformedCareerEnum = useTransformCareerEnum(profile.mainTitleCode);
+  const transformedCareerName = profile.mainTitle || transformedCareerEnum;
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
     useDownloadCurriculumPDF(profile);
-
   return (
     <>
       <Box>
@@ -96,7 +95,16 @@ const ProfileContent = () => {
                 <Skills skillType={SkillType.Soft} />
               </BothSkillsContainer>
             </Box>
-            <Experiences />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: { xs: "18px", sm: "20px" },
+                width: { xs: "100%", sm: "65%" },
+              }}
+            >
+              <Experiences />
+            </Box>
           </Box>
           <Box sx={EducationBoxStyles}>
             <Education />
