@@ -11,14 +11,20 @@ import {
   TextFieldStyles,
   ButtonStyles,
   UcabLogoStyles,
+  WelcomeTOUCABSpan,
+  WelcomeToUCABTypography,
+  SentEmailTypography,
+  SentEmailImageBoxStyles,
+  SentEmailImageStyles,
   useFormBoxStylesFunct,
   RedirectBoxStyles,
   useQuestionBoxStylesFunct,
   useLinkBoxStylesFunct,
 } from "./RegisterFormStyles.tsx";
 import { RegisterPayload } from "../Register";
+import registerImage from "../images/forgot-password.png";
 
-const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
+const RegisterForm: FunctionComponent<Props> = ({ disabled, startedregister, onSubmit }) => {
   const {
     email,
     password,
@@ -40,51 +46,67 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
         <Box sx={ImageBoxStyles}>
           <img src={ucabLogo} alt="UCAB Logo" style={UcabLogoStyles} />
         </Box>
-        <TextField
-          value={email}
-          label="Correo electrónico"
-          type="email"
-          onChange={onChangeEmail}
-          disabled={disabled}
-          sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
-        />
-        <TextField
-          value={password}
-          label="Contraseña"
-          type="password"
-          onChange={onChangePassword}
-          disabled={disabled}
-          sx={TextFieldStyles}
-          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
-        />
-        <TextField
-          value={confirmPassword}
-          label="Confirmar contraseña"
-          type="password"
-          onChange={onChangeConfirmPassword}
-          disabled={disabled}
-          sx={{ ...TextFieldStyles, marginBottom: "26px" }}
-          InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          disabled={disabled}
-          onClick={() => {
-            onSubmit({ email, password, confirmPassword });
-          }}
-          sx={ButtonStyles}
-        >
-          Registrarse
-        </Button>
-        <Box sx={RedirectBoxStyles}>
-          <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
-          <Link to="/login" style={LinkBoxStyles}>
-            Inicia sesión
-          </Link>
+        {startedregister ? (<Typography sx={WelcomeToUCABTypography}>¡Bienvenido a <span style={WelcomeTOUCABSpan}>UCAB Profile</span>! </Typography>) : 
+        (<Box>
+          <TextField
+            value={email}
+            label="Correo electrónico"
+            type="email"
+            onChange={onChangeEmail}
+            disabled={disabled}
+            sx={TextFieldStyles}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
+          />
+          <TextField
+            value={password}
+            label="Contraseña"
+            type="password"
+            onChange={onChangePassword}
+            disabled={disabled}
+            sx={TextFieldStyles}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
+          />
+          <TextField
+            value={confirmPassword}
+            label="Confirmar contraseña"
+            type="password"
+            onChange={onChangeConfirmPassword}
+            disabled={disabled}
+            sx={{ ...TextFieldStyles, marginBottom: "26px" }}
+            InputProps={{ sx: { borderRadius: LOGIN_BORDER_RADIUS } }}
+          />
         </Box>
+
+        )}
+        {startedregister ? (<Typography sx={SentEmailTypography}>{`Te hemos enviado un correo a ${email} para continuar con tu registro!`}</Typography>  ): (
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            disabled={disabled}
+            onClick={() => {
+              onSubmit({ email, password, confirmPassword });
+            }}
+          sx={ButtonStyles}
+          >
+            Registrarse
+          </Button>
+        )}
+
+        {startedregister ? (
+        <Box sx={SentEmailImageBoxStyles}><img src={registerImage} style={SentEmailImageStyles} /></Box>) : (
+          <Box sx={RedirectBoxStyles}>
+            <Typography sx={QuestionBoxStyles}>¿Ya tienes una cuenta?</Typography>
+            <Link to="/login" style={LinkBoxStyles}>
+              Inicia sesión
+            </Link>
+          </Box>
+
+        )}
+
+    
+
+        
       </Box>
     </>
   );
@@ -92,6 +114,7 @@ const RegisterForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
 
 export interface Props {
   disabled: boolean;
+  startedregister: boolean;
   onSubmit: ({ email, password, confirmPassword }: RegisterPayload) => void;
 }
 
