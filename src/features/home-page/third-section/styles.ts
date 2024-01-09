@@ -45,7 +45,7 @@ export const InsideThirdSectionTextStyles = {
 export const InsideThirdSectionBoxTextStyles = {
     width: "max-content",
     margin: "auto",
-    marginBottom: "40px",
+    my: { xs: '20px', sm: '40px', lg: '40px', },
 };
 
 export const useInsideThirdSectionTypographytStyles = () => {
@@ -96,7 +96,7 @@ export const ThirdSectionButtonStyles = {
     minWidth:"230px",
     textTransform:"none",
     fontWeight:"500",
-    my: { xs: 2, sm: 5, lg: 5, },
+    my: { xs: 0, sm: 3, lg: 4, },
     fontSize: { xs:'16px' , sm:'18px', lg: '18px', },
     "&&:hover" : {
       backgroundColor: "#edad00", 

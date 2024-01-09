@@ -11,7 +11,7 @@ export const useFourthSectionStyles = () => {
 
   const FourthSectionStyles = {
     width: "100%",
-    height: isLargeScreen ? "24%" : "15%",
+    height: isLargeScreen ? "25%" : "15%",
     backgroundColor: "white",
   };
 
@@ -79,6 +79,7 @@ export const useInsideFourthSectionTypographyStyles = () => {
     fontSize: isSmallScreen ? "18px" : isLargeScreen ? "24px" : "32px",
     textAlign: "center",
     marginBottom: "40px",
+    
   };
   return InsideFourthSectionTypographyStyles;
 };
