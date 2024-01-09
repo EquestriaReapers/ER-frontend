@@ -34,7 +34,7 @@ const ProfileContent = () => {
   const transformedCareerName = useTransformCareerEnum(profile.mainTitle);
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
     useDownloadCurriculumPDF(profile);
-
+  console.log(profile);
   return (
     <>
       <Box>

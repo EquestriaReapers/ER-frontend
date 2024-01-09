@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthState } from "core/auth/store/types";
 import { User } from "core/users/types";
 import { logout } from "core/auth/store/auth-slice";
-import SvgComponent from "./SvgComponent";
+import Logo from "./logo.png";
 
 const Navbar = () => {
   const user = useCurrentUser();
@@ -23,7 +23,7 @@ const Navbar = () => {
         <Toolbar sx={navbarStyles}>
           <Box>
             <Link to="/">
-              <SvgComponent />
+              <img src={Logo} alt="logo" width="70px" height="65px" />
             </Link>
           </Box>
           <Box sx={inlineStyles}>

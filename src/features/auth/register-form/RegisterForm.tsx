@@ -5,7 +5,7 @@ import useRegisterFormState from "./use-register-form-state";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
-import ucabLogo from "../images/ucabLogo.webp";
+import ucabLogo from "../images/ucab-logo.png";
 import {
   ImageBoxStyles,
   TextFieldStyles,
