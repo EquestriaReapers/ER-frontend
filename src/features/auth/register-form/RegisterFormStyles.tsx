@@ -59,6 +59,33 @@ export const ImageBoxStyles = {
   alignItems: "center",
 };
 
+export const WelcomeToUCABTypography = {
+  fontSize:"24px", 
+  fontWeight:"600", 
+  textAlign:"center"
+}
+
+export const WelcomeTOUCABSpan = {
+  color:"#007935"
+}
+
+export const SentEmailTypography = {
+  fontSize:"13px", 
+  marginTop:"5px"
+}
+
+export const SentEmailImageBoxStyles = {
+  height:"45%", 
+  width:"100%", 
+  display:"grid"
+}
+
+export const SentEmailImageStyles = {
+  width: "65%", 
+  height:"auto", 
+  margin:"auto"
+}
+
 export const TextFieldStyles = {
   width: "100%",
   marginBottom: "16px",
