@@ -14,7 +14,7 @@ const AddSkillField = () => {
 
   const label =
     skillType === SkillType.Hard
-      ? "Buscar habilidades duras"
+      ? "Buscar habilidades fuertes"
       : "Buscar habilidades blandas";
 
   return (

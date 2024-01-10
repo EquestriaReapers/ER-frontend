@@ -35,12 +35,12 @@ const ModalContent = ({ setIsOpen }: Props) => {
       {loading && <SpinnerAbsolute />}
       <Typography sx={titleStyles}>
         {skillType === SkillType.Hard
-          ? `Gestionar habilidades duras`
+          ? `Gestionar habilidades fuertes`
           : `Gestionar habilidades blandas`}
       </Typography>
       <Typography sx={descriptionStyles}>
         {skillType === SkillType.Hard
-          ? `En esta sección podrás modificar las habilidades duras que muestres al publico en tu perfil y cv.`
+          ? `En esta sección podrás modificar las habilidades fuertes que muestres al publico en tu perfil y cv.`
           : `En esta sección podrás modificar las habilidades blandas que muestres al publico en tu perfil y cv.`}
       </Typography>
       <Typography sx={skillTitleStyle}>Nueva habilidad</Typography>
