@@ -4,14 +4,14 @@ import { SKILLSCV_URL } from "./config";
 import { MessageResponse } from "core/profiles/config";
 
 export async function updateCvSkills(
-  body: UpdateSkillsBody,
+  isVisible: boolean,
   token: string,
   skillId: number
 ): Promise<MessageResponse> {
   try {
     const response = await axios.patch(
       `${SKILLSCV_URL}/${skillId}/visibility`,
-      body,
+      { isVisible },
       {
         headers: {
           Authorization: `Bearer ${token}`,
