@@ -15,9 +15,31 @@ export const titleStyles = {
   },
 };
 
+export const titleMovileStyles = {
+  color: "black",
+  ml: 1,
+  fontFamily: "Inter",
+  fontSize: "16px",
+  textTransform: "Capitalize",
+  "&:hover": {
+    color: "#007935",
+  },
+};
+
+export const iconStyles = {
+  color: "#5A5A5A",
+  ml: 0,
+  fontFamily: "Inter",
+  fontSize: "16px",
+  textTransform: "Capitalize",
+  "&:hover": {
+    color: "#007935",
+  },
+};
+
 export const titleStylesLogoutM = {
   color: "black",
-  ml: 2,
+  ml: 1,
   fontFamily: "Inter",
   fontSize: "16px",
   textTransform: "Capitalize",
@@ -40,4 +62,5 @@ export const inlineMobileStyles = {
   p: "15px",
   flexDirection: "column",
   justifyContent: "flex-start",
+  width: "200px",
 };

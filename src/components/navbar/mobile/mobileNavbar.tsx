@@ -13,13 +13,7 @@ const navBarMovile = ({ setIsOpen }: Props) => {
         width: "100%",
       }}
     >
-      <Box sx={{ display: "flex", width: "57%", justifyContent: "flex-end" }}>
-        <Link to="/">
-          <SvgComponent />
-        </Link>
-      </Box>
-
-      <Box sx={{ display: "flex", width: "43%", justifyContent: "flex-end" }}>
+      <Box sx={{ display: "flex", width: "42%", justifyContent: "flex-start" }}>
         <IconButton
           onClick={() => {
             setIsOpen(true);
@@ -27,6 +21,12 @@ const navBarMovile = ({ setIsOpen }: Props) => {
         >
           <MenuIcon />
         </IconButton>
+      </Box>
+
+      <Box sx={{ display: "flex", width: "58%", justifyContent: "flex-start" }}>
+        <Link to="/">
+          <SvgComponent />
+        </Link>
       </Box>
     </Box>
   );
