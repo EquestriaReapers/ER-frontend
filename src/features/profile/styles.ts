@@ -35,6 +35,7 @@ export const buttonStyle = {
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
+  width: { xs: "100%", sm: "200px" },
   px: 3,
   my: 1,
   "&:hover": {
@@ -79,4 +80,14 @@ export const skillTitleStyle = {
   fontWeight: "700",
   fontSize: "16px",
   pb: 2,
+};
+
+export const skillSubtitleStyle = {
+  color: "#575757",
+  fontFamily: "Inter",
+  fontSize: "18px",
+  fontStyle: "normal",
+  fontWeight: 500,
+  lineHeight: "normal",
+  letterSpacing: "-0.198px",
 };

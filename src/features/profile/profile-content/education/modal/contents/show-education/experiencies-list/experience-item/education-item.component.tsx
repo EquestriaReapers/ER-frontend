@@ -61,19 +61,19 @@ const EducationItem = ({ item, className }: Props) => {
             )}
           </Box>
         </Box>
-        <Box className={"inlineStyles"}>
-          <Typography className={"subtitleStyles"} variant="h6">
+        <Box className={'inlineStyles'}>
+          <Typography className={'subtitleStyles'} variant='h6'>
             {item.entity} {dateItem}
           </Typography>
         </Box>
       </Box>
     </div>
-  );
-};
-
-interface Props {
-  item: Education;
-  className?: string;
+  )
 }
 
-export default EducationItem;
+interface Props {
+  item: Education
+  className?: string
+}
+
+export default EducationItem

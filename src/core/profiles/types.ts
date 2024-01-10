@@ -32,7 +32,7 @@ export interface Skill {
   id: number;
   name: string;
   type: SkillType;
-  level: string;
+  isVisible: boolean;
 }
 
 export interface ContactMethod {
