@@ -32,7 +32,7 @@ function useRegister() {
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
   const [loading, setLoading] = useState(false);
-  const [startedRegisterSuccesfully, setStartedRegisterSuccesfully] = useState(false);
+  const [startedRegisterSuccesfully, setStartedRegisterSuccesfully] = useState(true);
   const onSubmit = useCallback(
     async ({ email, password, confirmPassword }: RegisterPayload) => {
       setLoading(true);
