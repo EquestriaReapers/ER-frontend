@@ -35,6 +35,7 @@ export const buttonStyle = {
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
+  width: { xs: "100%", sm: "200px" },
   px: 3,
   my: 1,
   "&:hover": {

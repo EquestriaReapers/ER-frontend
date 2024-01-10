@@ -32,7 +32,7 @@ const useUpdateEducationCV = () => {
 function useGetToken() {
   const navigate = useNavigate();
   const { token } = useAuthState();
-  console.log(token);
+
   return useCallback(() => {
     if (!token) {
       navigate("/login");

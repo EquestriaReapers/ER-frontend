@@ -13,6 +13,7 @@ import SpinnerAbsolute from "components/spinner-absolute";
 import { useSkillsModalContext } from "../skills-modal-context/use-skills-modal-context";
 import { SkillType } from "core/skills/types";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { modalStyle } from "./styles";
 
 function useCloseModal(setIsOpen: (open: boolean) => void) {
   return useCallback(() => {
@@ -30,7 +31,7 @@ const ModalContent = ({ setIsOpen }: Props) => {
   const { profile } = useProfileContext();
 
   return (
-    <Box>
+    <Box sx={modalStyle}>
       {loading && <SpinnerAbsolute />}
       <Typography sx={titleStyles}>
         {skillType === SkillType.Hard
@@ -46,35 +47,71 @@ const ModalContent = ({ setIsOpen }: Props) => {
       <AddSkillField />
       <Box sx={{ border: "solid 1px #CBCBCB", borderRadius: "6px", p: "10px" }}>
         <Typography sx={skillTitleStyle}>
-          Habilidades a mostrar sólamente en el currículum
+          Mostrar sólamente en el currículum
         </Typography>
-        <ShowSkills
-          skills={profile.skills.filter(
-            (item) => item.type === skillType && item.isVisible === true
-          )}
-        />
+        {profile.skills.filter(
+          (item) => item.type === skillType && item.isVisible === true
+        ).length === 0 ? (
+          <Typography
+            sx={{
+              fontFamily: "inter",
+              fontSize: "16px",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "10px",
+            }}
+          >
+            No hay habilidades
+          </Typography>
+        ) : (
+          <ShowSkills
+            skills={profile.skills.filter(
+              (item) => item.type === skillType && item.isVisible === true
+            )}
+          />
+        )}
         <Box
           sx={{ border: "solid 1px #CBCBCB", borderRadius: "6px", p: "10px" }}
         >
           <Typography sx={skillTitleStyle}>
-            Habilidades a mostrar en el currículum y el perfil
+            Mostrar en el currículum y el perfil
           </Typography>
-          <ShowSkills
-            skills={profile.skills.filter(
-              (item) => item.type === skillType && item.isVisible === false
-            )}
-          />
+          {profile.skills.filter(
+            (item) => item.type === skillType && item.isVisible === false
+          ).length === 0 ? (
+            <Typography
+              sx={{
+                fontFamily: "inter",
+                fontSize: "16px",
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "10px",
+              }}
+            >
+              No hay habilidades
+            </Typography>
+          ) : (
+            <ShowSkills
+              skills={profile.skills.filter(
+                (item) => item.type === skillType && item.isVisible === false
+              )}
+            />
+          )}
         </Box>
       </Box>
 
-      <Button
-        sx={buttonStyle}
-        className="exp-show-button"
-        type="submit"
-        onClick={closeModal}
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          marginTop: "10px",
+        }}
       >
-        Listo
-      </Button>
+        <Button sx={buttonStyle} type="submit" onClick={closeModal}>
+          Listo
+        </Button>
+      </Box>
     </Box>
   );
 };

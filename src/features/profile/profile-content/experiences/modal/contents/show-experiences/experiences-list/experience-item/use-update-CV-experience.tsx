@@ -28,14 +28,13 @@ const useUpdateExperienceCV = () => {
         showErrorToast(error);
       }
     },
-    [fetchProfile, showErrorToast, token]
+    [fetchProfile, showErrorToast, token, showSuccessToast]
   );
 };
 
 function useGetToken() {
   const navigate = useNavigate();
   const { token } = useAuthState();
-  console.log(token);
   return useCallback(() => {
     if (!token) {
       navigate("/login");
