@@ -19,18 +19,8 @@ export const PortfoliosContextProvider = ({
     currentPage,
     loading,
     searchProjects,
-    selectedSkills,
-    setSelectedSkills,
-    isExclusiveSkills,
-    setIsExclusiveSkills,
-    isExclusiveLanguague,
-    selectedLanguagues,
-    setSelectedLanguagues,
-    setIsExclusiveLanguague,
     selectedCareers,
     setSelectedCareers,
-    selectedLocations,
-    setSelectedLocations,
   } = usePortfolio(seed, initialPortfoliosSearchParams);
 
   const contextValue = {
@@ -44,19 +34,9 @@ export const PortfoliosContextProvider = ({
     seed,
     currentPage,
     loading,
-    selectedSkills,
-    setSelectedSkills,
     searchProjects,
-    isExclusiveSkills,
-    setIsExclusiveSkills,
-    isExclusiveLanguague,
-    selectedLanguagues,
-    setSelectedLanguagues,
-    setIsExclusiveLanguague,
     selectedCareers,
     setSelectedCareers,
-    selectedLocations,
-    setSelectedLocations,
   };
 
   return (

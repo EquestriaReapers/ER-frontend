@@ -22,26 +22,6 @@ const PortfoliosContext = createContext<PortfoliosContextI>({
   loading: false,
   seed: 0,
   searchProjects: async () => {},
-  selectedSkills: [],
-  setSelectedSkills: (() => {}) as React.Dispatch<
-    React.SetStateAction<string[]>
-  >,
-  isExclusiveSkills: false,
-  setIsExclusiveSkills: (() => {}) as React.Dispatch<
-    React.SetStateAction<boolean>
-  >,
-  selectedLanguagues: [],
-  setSelectedLanguagues: (() => {}) as React.Dispatch<
-    React.SetStateAction<string[]>
-  >,
-  isExclusiveLanguague: false,
-  setIsExclusiveLanguague: (() => {}) as React.Dispatch<
-    React.SetStateAction<boolean>
-  >,
-  selectedLocations: [],
-  setSelectedLocations: (() => {}) as React.Dispatch<
-    React.SetStateAction<string[]>
-  >,
   selectedCareers: [],
   setSelectedCareers: (() => {}) as React.Dispatch<
     React.SetStateAction<string[]>
@@ -60,20 +40,6 @@ export interface PortfoliosContextI {
   loading: boolean;
   seed: number;
   searchProjects: () => Promise<void>;
-  // Skills
-  selectedSkills: string[];
-  setSelectedSkills: React.Dispatch<React.SetStateAction<string[]>>;
-  isExclusiveSkills: boolean;
-  setIsExclusiveSkills: React.Dispatch<React.SetStateAction<boolean>>;
-  // Languagues
-  selectedLanguagues: string[];
-  setSelectedLanguagues: React.Dispatch<React.SetStateAction<string[]>>;
-  isExclusiveLanguague: boolean;
-  setIsExclusiveLanguague: React.Dispatch<React.SetStateAction<boolean>>;
-  // Locations
-  selectedLocations: string[];
-  setSelectedLocations: React.Dispatch<React.SetStateAction<string[]>>;
-  // Careers
   selectedCareers: string[];
   setSelectedCareers: React.Dispatch<React.SetStateAction<string[]>>;
 }

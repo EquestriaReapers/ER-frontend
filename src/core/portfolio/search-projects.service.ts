@@ -18,18 +18,10 @@ export async function searchPostPaginatedPortfolios({
       seed
     );
 
-    const {
-      selectedSkills,
-      selectedLanguagues,
-      selectedLocations,
-      selectedCareers,
-    } = currentPaginatedParams;
+    const { selectedCareers } = currentPaginatedParams;
 
     const bodyParams = {
       text: currentPaginatedParams.searchText,
-      skills: generateArraySlug(selectedSkills),
-      language: selectedLanguagues,
-      countryResidence: selectedLocations,
       career: generateArraySlug(selectedCareers),
     };
     const response = await axios.post(urlWithParams, bodyParams);

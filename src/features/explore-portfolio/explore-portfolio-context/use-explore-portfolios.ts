@@ -10,23 +10,8 @@ const usePortfolio = (
   seed: number | null,
   initialPortfolioSearchParams: PortfolioSearchParams
 ) => {
-  const [selectedSkills, setSelectedSkills] = useState<string[]>(
-    initialPortfolioSearchParams.selectedSkills
-  );
-  const [selectedLanguagues, setSelectedLanguagues] = useState<string[]>(
-    initialPortfolioSearchParams.selectedLanguagues
-  );
-  const [selectedLocations, setSelectedLocations] = useState<string[]>(
-    initialPortfolioSearchParams.selectedLocations
-  );
   const [selectedCareers, setSelectedCareers] = useState<string[]>(
     initialPortfolioSearchParams.selectedCareers
-  );
-  const [isExclusiveSkills, setIsExclusiveSkills] = useState<boolean>(
-    initialPortfolioSearchParams.isExclusiveSkills
-  );
-  const [isExclusiveLanguague, setIsExclusiveLanguague] = useState<boolean>(
-    initialPortfolioSearchParams.isExclusiveLanguague
   );
 
   const [loading, setLoading] = useState(false);
@@ -41,23 +26,9 @@ const usePortfolio = (
     return {
       searchText,
       page: currentPage,
-      selectedSkills,
-      selectedLanguagues,
-      selectedLocations,
       selectedCareers,
-      isExclusiveSkills,
-      isExclusiveLanguague,
     };
-  }, [
-    currentPage,
-    isExclusiveLanguague,
-    isExclusiveSkills,
-    searchText,
-    selectedCareers,
-    selectedLanguagues,
-    selectedLocations,
-    selectedSkills,
-  ]);
+  }, [currentPage, searchText, selectedCareers]);
 
   const searchProjects = useSearchProjects({
     setProjects,
@@ -83,17 +54,7 @@ const usePortfolio = (
     setPagination,
     currentPage,
     loading,
-    selectedSkills,
-    setSelectedSkills,
     searchProjects,
-    isExclusiveSkills,
-    setIsExclusiveSkills,
-    selectedLanguagues,
-    setSelectedLanguagues,
-    isExclusiveLanguague,
-    setIsExclusiveLanguague,
-    selectedLocations,
-    setSelectedLocations,
     selectedCareers,
     setSelectedCareers,
   };
@@ -101,13 +62,8 @@ const usePortfolio = (
 
 function useChangeUrlOnChangeParams({
   searchText,
-  selectedSkills,
   page,
-  selectedLanguagues,
-  selectedLocations,
   selectedCareers,
-  isExclusiveSkills,
-  isExclusiveLanguague,
 }: PortfolioSearchParams) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setSearchParams] = useSearchParams();
@@ -119,43 +75,17 @@ function useChangeUrlOnChangeParams({
       params["searchText"] = searchText;
     }
 
-    if (selectedSkills.length) {
-      params["selectedSkills"] = selectedSkills.join(",");
-    }
-
     if (page !== null || page !== undefined) {
       params["page"] = page + "";
-    }
-
-    if (selectedLanguagues.length) {
-      params["selectedLanguagues"] = selectedLanguagues.join(",");
-    }
-
-    if (selectedLocations.length) {
-      params["selectedLocations"] = selectedLocations.join(",");
     }
 
     if (selectedCareers.length) {
       params["selectedCareers"] = selectedCareers.join(",");
     }
 
-    params["isExclusiveSkills"] = isExclusiveSkills + "";
-
-    params["isExclusiveLanguague"] = isExclusiveLanguague + "";
-
     const paramsObject = new URLSearchParams(params);
     setSearchParams(paramsObject.toString());
-  }, [
-    isExclusiveLanguague,
-    isExclusiveSkills,
-    page,
-    searchText,
-    selectedCareers,
-    selectedLanguagues,
-    selectedLocations,
-    selectedSkills,
-    setSearchParams,
-  ]);
+  }, [page, searchText, selectedCareers, setSearchParams]);
 }
 
 export default usePortfolio;
