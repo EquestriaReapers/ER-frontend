@@ -3,8 +3,8 @@ import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
 import { FormEvent, useCallback, useContext } from "react";
-import { ExperienceContent } from "../../experiencies-modal-context/types";
-import ExperiencesModalContext from "../../experiencies-modal-context";
+import { ExperienceContent } from "../../experiences-modal-context/types";
+import ExperiencesModalContext from "../../experiences-modal-context";
 import { Dayjs } from "dayjs";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
@@ -41,7 +41,6 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
             description: experience.description,
             startDate: experience.startDate.format("YYYY-MM-DD"),
             endDate: experience.endDate?.format("YYYY-MM-DD") ?? null,
-            isVisible: experience.isVisible,
           },
           token
         );

@@ -22,9 +22,9 @@ export const skillBoxStyles = {
 };
 
 export const skillTitleStyles = {
-  fontSize: "16px",
   fontFamily: "inter",
-
+  alignItems: "center",
   fontWeight: "400",
   color: "#000",
+  fontSize: "16px",
 };

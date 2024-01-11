@@ -2,34 +2,54 @@ import { updateCVExperience } from "core/experience/update-CV-experience";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
+import { Experience } from "core/profiles/types";
+import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiences-modal-context";
 
-const useUpdateExperienceCV = () => {
+const useUpdateExperienceCV = (isVisible: boolean, experience: Experience) => {
   const getToken = useGetToken();
+  const { setLoading } = useContext(ExperiencesModalContext);
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
   const { fetchProfile } = useProfileContext();
   const token = getToken();
 
-  return useCallback(
-    async (isVisible: boolean, experienceID: number) => {
-      try {
-        const data = await updateCVExperience(
-          { isVisible },
-          token,
-          experienceID
+  return useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await updateCVExperience(
+        { isVisible },
+        token,
+        experience.id
+      );
+      await fetchProfile();
+      if (isVisible) {
+        showSuccessToast(
+          `Experiencia en ${experience.businessName} se mostrara en el CV ✅.`
         );
-        showSuccessToast("Experiencia agregada con éxito");
-        await fetchProfile();
-        return data;
-      } catch (error) {
-        showErrorToast(error);
+      } else {
+        showSuccessToast(
+          `Experiencia en ${experience.businessName} no se mostrara en el CV ❌.`
+        );
       }
-    },
-    [fetchProfile, showErrorToast, token, showSuccessToast]
-  );
+      return data;
+    } catch (error) {
+      showErrorToast(error);
+    } finally {
+      setLoading(false);
+    }
+  }, [
+    experience.businessName,
+    experience.id,
+    fetchProfile,
+    isVisible,
+    setLoading,
+    showErrorToast,
+    showSuccessToast,
+    token,
+  ]);
 };
 
 function useGetToken() {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import EditCardComponent from "./edit-card-content.component";
 
+const XL_SIZE = 1200;
 const LG_SIZE = 800;
 const MD_SIZE = 767;
 const SM_SIZE = 480;
@@ -10,6 +11,8 @@ export default styled(EditCardComponent)`
   width: 790px;
   margin-left: auto;
   margin-right: auto;
+  overflow-y: auto;
+  max-height: 790px;
 
   .inputStyles {
     font-size: 16px;
@@ -67,9 +70,13 @@ export default styled(EditCardComponent)`
   .contact-cardDelete-style {
     color: #007935;
   }
+  @media screen and (max-width: ${XL_SIZE}px) {
+    max-height: 520px;
+  }
 
   @media screen and (max-width: ${LG_SIZE}px) {
     width: 500px;
+    max-height: 525px;
   }
 
   @media screen and (max-width: ${MD_SIZE}px) {

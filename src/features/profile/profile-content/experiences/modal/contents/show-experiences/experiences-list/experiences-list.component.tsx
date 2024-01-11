@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { Experience } from "core/profiles/types";
-import ExperiencesModalContext from "../../../experiencies-modal-context";
+import ExperiencesModalContext from "../../../experiences-modal-context";
 import { useContext } from "react";
 import ExperienceItem from "./experience-item/experience-item.styled";
 

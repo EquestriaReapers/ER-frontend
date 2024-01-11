@@ -96,7 +96,7 @@ const LoginForm: FunctionComponent<Props> = ({ disabled, onSubmit }) => {
               </Typography>
             </Box>
             <Box sx={ForgotPasswordStyles}>
-              <Link rel="forgot-password" to={""}>
+              <Link to={"/forgot-password"}>
                 ¿Olvidó la contraseña?
               </Link>
             </Box>

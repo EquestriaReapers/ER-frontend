@@ -14,7 +14,7 @@ export const EducationCardStyle ={
 
 export const nameStyles = {
   fontSize: { xs: "18px", sm: "22px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
@@ -24,7 +24,7 @@ export const descriptionStyles = {
   fontWeight: "400",
   fontSize: "18px",
   color: "#444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontStyle: "normal",
   lineHeight: "normal",
 };
@@ -34,7 +34,7 @@ export const titleStyles = {
   fontSize: "18px",
   color: "#535353",
   textTransform: "capitalize",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontStyle: "normal",
   lineHeight: "normal",
 };
