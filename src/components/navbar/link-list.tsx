@@ -49,6 +49,17 @@ const LinkList = ({ user }: Props) => {
         )}
       </Box>
 
+      {!user && (
+        <Box sx={{ inlineStyles }}>
+          <IconButton sx={iconStyles}>
+            <AccountCircleIcon sx={{ fontSize: "20px" }} />
+          </IconButton>
+
+          <Link to={`/register`}>
+            <Button sx={mobileTitleStyles}>Registro</Button>
+          </Link>
+        </Box>
+      )}
       <Box sx={{ inlineStyles }}>
         <IconButton sx={iconStyles}>
           <MenuBookIcon sx={{ fontSize: "20px" }} />
@@ -69,7 +80,6 @@ const LinkList = ({ user }: Props) => {
           </Button>
         </Box>
       )}
-      
     </Box>
   );
 };

@@ -1,13 +1,14 @@
 import { Box, Button } from "@mui/material/";
-import SvgComponent from "../SvgComponent";
+//import SvgComponent from "../SvgComponent";
 import { titleStyles, inlineStyles } from "../styles";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthState } from "core/auth/store/types";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "core/auth/store/auth-slice";
 import { User } from "core/users/types";
+import Logo from "../logo.png";
 
-const navBarDesktop = ({ setIsOpen }: Props) => {
+const NavBarDesktop = ({ setIsOpen }: Props) => {
   const user = useCurrentUser();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,9 +27,14 @@ const navBarDesktop = ({ setIsOpen }: Props) => {
         width: "100%",
       }}
     >
-      <Box>
+      {/*<Box>
         <Link to="/">
           <SvgComponent />
+        </Link>
+      </Box>*/}
+      <Box>
+        <Link to="/">
+          <img src={Logo} alt="logo" width="70px" height="65px" />
         </Link>
       </Box>
       <Box sx={inlineStyles}>
@@ -45,6 +51,11 @@ const navBarDesktop = ({ setIsOpen }: Props) => {
             <Button sx={titleStyles}>Login</Button>
           </Link>
         )}
+        {!user && (
+          <Link to={`/register`}>
+            <Button sx={titleStyles}>Registro</Button>
+          </Link>
+        )}
         <Link to={`/catalogue`}>
           <Button sx={titleStyles}>Catálogo</Button>
         </Link>
@@ -58,7 +69,7 @@ const navBarDesktop = ({ setIsOpen }: Props) => {
   );
 };
 
-export default navBarDesktop;
+export default NavBarDesktop;
 
 export interface Props {
   setIsOpen: (isOpen: boolean) => void;
