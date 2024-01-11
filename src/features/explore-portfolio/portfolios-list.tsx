@@ -1,4 +1,4 @@
-import { Box, Pagination, Stack } from "@mui/material";
+import { Box, Pagination } from "@mui/material";
 import SpinnerBlock from "components/spinner-block";
 import usePortfolioContext from "./explore-portfolio-context/use-explore-portfolios-context";
 import ShowPortfolios from "./show-portfolios";

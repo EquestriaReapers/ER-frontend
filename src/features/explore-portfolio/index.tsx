@@ -4,6 +4,7 @@ import useInitialPortfoliosSearchParams from "./explore-portfolio-context/use-in
 import PortfoliosContextProvider from "./explore-portfolio-context/context-provider";
 import useSeed from "./explore-portfolio-context/use-seed";
 import PortfoliosList from "./portfolios-list";
+import SearchBar from "./explore-portfolio-context/SearchBar/SearchBar";
 
 const ExplorePortfolio = () => {
   const seed = useSeed();
@@ -22,7 +23,11 @@ const ExplorePortfolio = () => {
         seed={seed}
         initialPortfoliosSearchParams={initialPortfoliosSearchParams}
       >
-        <PortfoliosList seed={seed} initialPortfoliosSearchParams={initialPortfoliosSearchParams}/>
+        <SearchBar />
+        <PortfoliosList
+          seed={seed}
+          initialPortfoliosSearchParams={initialPortfoliosSearchParams}
+        />
       </PortfoliosContextProvider>
     </Box>
   );
