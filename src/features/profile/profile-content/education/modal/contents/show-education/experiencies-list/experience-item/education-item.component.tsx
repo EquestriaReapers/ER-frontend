@@ -25,8 +25,14 @@ const EducationItem = ({ item, className }: Props) => {
           >
             <Typography className={'nameStyles'}>{item.title}</Typography>
             {item.isUCAB && (
-              <Typography className={'principalButtonStyles'}>
-                {item.principal ? 'Principal' : 'Secundario'}
+              <Typography
+                className={
+                  item.principal
+                    ? 'principalButtonStyles'
+                    : 'SecundariaButtonStyles'
+                }
+              >
+                {item.principal ? 'Principal' : 'Secundaria'}
               </Typography>
             )}
           </Box>

@@ -27,6 +27,22 @@ export default styled(EducationItem)`
     align-items: center;
     gap: 10px;
     border-radius: 5px;
+    background: #007935;
+  }
+
+  .SecundariaButtonStyles {
+    color: #ffff;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: inline-flex;
+    padding: 2px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
     background: #37b4e3;
   }
 

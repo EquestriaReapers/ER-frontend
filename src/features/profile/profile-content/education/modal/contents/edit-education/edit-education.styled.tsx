@@ -108,8 +108,8 @@ export const StyledButton = styled(Button)({
   cursor: 'pointer',
   backgroundColor: '#FFF',
   '&:hover': {
-    backgroundColor: '#007935',
-    color: '#FFF'
+    backgroundColor: '#FFF',
+    color: 'green'
   },
   '&.selected': {
     backgroundColor: '#007935',
