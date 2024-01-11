@@ -17,7 +17,7 @@ export const titleStyles = {
 
 export const mobileTitleStyles = {
   color: "black",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "16px",
   textTransform: "Capitalize",
   "&:hover": {
@@ -29,7 +29,7 @@ export const mobileTitleStyles = {
 export const iconStyles = {
   color: "#5A5A5A",
   ml: 0,
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "16px",
   textTransform: "Capitalize",
   "&:hover": {

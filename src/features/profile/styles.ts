@@ -84,7 +84,7 @@ export const skillTitleStyle = {
 
 export const skillSubtitleStyle = {
   color: "#575757",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "18px",
   fontStyle: "normal",
   fontWeight: 500,

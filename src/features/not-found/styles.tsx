@@ -5,5 +5,7 @@ export const notFoundContainer = {
   justifyContent: "center",
   backgroundSize: "cover",
   backgroundPosition: "center",
-  height: "100%",
+  width: "100%",
+  mt: 16,
+  mb: 40,
 };

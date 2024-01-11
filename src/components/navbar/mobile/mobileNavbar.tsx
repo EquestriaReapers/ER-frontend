@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import Logo from "../logo.png";
 
-const navBarMovile = ({ setIsOpen }: Props) => {
+const NavBarMovile = ({ setIsOpen }: Props) => {
   return (
     <Box
       sx={{
@@ -42,4 +42,4 @@ export interface Props {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-export default navBarMovile;
+export default NavBarMovile;

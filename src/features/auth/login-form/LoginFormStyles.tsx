@@ -102,7 +102,6 @@ export const UcabLogoStyles = {
   height: "140px",
   width: "140px",
   marginBottom: "26px",
-  
 };
 
 export const ImageBoxStyles = {
@@ -132,7 +131,7 @@ export const TextFieldStyles = {
 };
 
 export const ButtonStyles = {
-  boxShadow:'none',
+  boxShadow: "none",
   backgroundColor: "#03652e",
   width: "100%",
   color: "white",

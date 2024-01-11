@@ -14,7 +14,7 @@ export const loginProfileStyles = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "600px",
+  minHeight: "715px",
   minWidth: "350px",
   backgroundImage: `url(${Background})`,
   backgroundSize: "cover",
