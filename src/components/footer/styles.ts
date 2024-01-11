@@ -31,11 +31,17 @@ export const useFooterFirstLineStyles = () => {
     const isLargeScreen = useMediaQuery((theme: Theme) =>
         theme.breakpoints.down("lg")
     );
+    const isSmallScreen = useMediaQuery((theme: Theme) =>
+        theme.breakpoints.down("sm")
+    );
 
     const FooterFirstLineStyles = {
         marginBottom: "30px",
         width: isLargeScreen ? "270px" : "380px",
         display: "flex",
+        flexDirection: isLargeScreen ? "column" : "row",
+        alignItems: isSmallScreen ? "center" : "center",
+        gap: isSmallScreen ? "0px" : "10px",
         justifyContent: "space-between",
         fontSize: isLargeScreen ? "12px" : "16px",
     };
@@ -52,7 +58,7 @@ export const FooterSecondLine = {
     width: "80px",
     display: "flex",
     justifyContent: "space-between",
-    gap: "40px",
+    gap: "20px",
 }
 
 export const FooterIconStyles = {
