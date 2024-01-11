@@ -19,6 +19,7 @@ export const skillBoxStyles = {
     md: "nowrap",
     lg: "nowrap",
   },
+  overflowY: "auto",
 };
 
 export const skillTitleStyles = {
