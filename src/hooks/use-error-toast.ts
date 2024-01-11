@@ -6,7 +6,9 @@ export function useErrorToast() {
   const showErrorToast = useCallback((error: unknown) => {
     if (error instanceof BackendError) {
       if (error.haveDetails()) {
-        toast.error(error.details);
+        error.details.map((errorText) => {
+          toast.error(errorText);
+        });
         return;
       }
 
