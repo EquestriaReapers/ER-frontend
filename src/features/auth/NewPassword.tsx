@@ -22,7 +22,6 @@ import {
 import "../../styles/index.css";
 import newPassword from "core/auth/reset-password.service";
 import { useNavigate } from "react-router-dom";
-import registerImage from "./images/forgot-password.png";
 
 const NewPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();
@@ -37,7 +36,7 @@ const NewPassword: FunctionComponent = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
-  const {token} = useParams();
+  const { token } = useParams();
 
   const onPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
@@ -49,11 +48,9 @@ const NewPassword: FunctionComponent = () => {
 
   const onSubmitForm = useCallback(
     async (event: FormEvent<HTMLInputElement>) => {
-
       event.preventDefault();
 
       try {
-
         if (!token || !password || !confirmPassword) return;
 
         if (password != confirmPassword) {
@@ -61,20 +58,27 @@ const NewPassword: FunctionComponent = () => {
           return;
         }
 
-        await newPassword( password, token );
+        await newPassword(password, token);
         showSuccessToast("La contraseña se ha restablecido con exito");
         navigate(`/login`);
       } catch (error) {
         showErrorToast(error);
       }
     },
-    [password, confirmPassword, showErrorToast, showSuccessToast]
+    [
+      token,
+      password,
+      confirmPassword,
+      showSuccessToast,
+      navigate,
+      showErrorToast,
+    ]
   );
 
   return (
-    <Box 
-      sx={NewPasswordContainerStyles} 
-      component="form" 
+    <Box
+      sx={NewPasswordContainerStyles}
+      component="form"
       onSubmit={onSubmitForm}
     >
       <Box sx={NewPasswordInsideContainerStyles}>
@@ -91,7 +95,7 @@ const NewPassword: FunctionComponent = () => {
                 Contraseña
               </Typography>
               <TextField
-                name="password" 
+                name="password"
                 variant="outlined"
                 sx={{ ...SearchBarTextFieldStyles, marginBottom: "30px" }}
                 type="password"
@@ -100,15 +104,17 @@ const NewPassword: FunctionComponent = () => {
               <Typography sx={NewPasswordTypographyStyles}>
                 Confirmar contraseña
               </Typography>
-              <TextField 
+              <TextField
                 name="confirm-password"
-                variant="outlined" 
+                variant="outlined"
                 sx={SearchBarTextFieldStyles}
                 onChange={onConfirmPasswordChange}
                 type="password"
               />
             </Box>
-            <Button sx={ConfirmPasswordStyles} type="submit">Confirmar</Button>
+            <Button sx={ConfirmPasswordStyles} type="submit">
+              Confirmar
+            </Button>
           </Box>
         </Box>
       </Box>
