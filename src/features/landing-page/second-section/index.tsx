@@ -33,7 +33,12 @@ const SecondSection = () => {
       <Box sx={InsideSecondSectionStyles}>
         <Box sx={SecondSectionFigureBoxStyles}>
           <Box sx={SecondSectionFigureStyles}>
-            <Box sx={SecondSectionFigureBackgroundStyles}></Box>
+            <Box
+              component="img"
+              sx={SecondSectionFigureBackgroundStyles}
+              alt="catalog-in-pc"
+              src="src\features\landing-page\second-section\images\pc2.png"
+            />
           </Box>
         </Box>
         <Box sx={SecondSectionDownloadCVSectionStyles}>

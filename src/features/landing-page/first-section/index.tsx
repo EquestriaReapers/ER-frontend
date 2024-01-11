@@ -1,111 +1,46 @@
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import InputAdornment from "@mui/material/InputAdornment";
-import SearchIcon from "@mui/icons-material/Search";
+import {Typography, Box, Button} from "@mui/material/";
 import {
-  FirstSectionStyles,
+  firstSectionStyles,
   useInsideFirstSectionStyles,
-  SearchBarSectionStyles,
-  TextFieldSearchBarStyles,
-  SearchIconStyles,
-  TextFieldSearchBarPropStyles,
-  useInsideSearchBarSectionStyles,
-  useSearchEgresatesSectionStyles,
-  useSearchEgresatesTypographyStyles,
-  useSearchBoxStyles,
-  SearchButtomStyles,
-  InsideSearchBarTextSectionStyles,
-  InsideSearchBarSectionTypographyStyles,
-  useGetCVSectionStyles,
-  useInsideGetCVSectionStyles,
-  useInsideGetCVTypographytyles,
-  useInsideGetCVSectionTextStyles,
-  useGetCVBoxtStyles,
-  useGetCVImagetStyles,
+  firstSectionFigureBoxStyles,
+  useFirstSectionFigureStyles,
+  firstSectionFigureBackgroundStyles,
+  useFirstSectionDownloadCVSectionStyles,
+  useFirstSectionDownloadCVTypographyStyles,
+  useButtonStyles,
+  DownlodCVTypography,
 } from "./styles";
-import curriculum from "./images/curriculum.jpeg";
 
 const FirstSection = () => {
-  const InsideFirstSectionStyles = useInsideFirstSectionStyles();
-  const InsideSearchBarSectionStyles = useInsideSearchBarSectionStyles();
-  const SearchEgresatesSectionStyles = useSearchEgresatesSectionStyles();
-  const SearchEgresatesTypographyStyles = useSearchEgresatesTypographyStyles();
-  const SearchBoxStyles = useSearchBoxStyles();
-  const GetCVSectionStyles = useGetCVSectionStyles();
-  const InsideGetCVSectionStyles = useInsideGetCVSectionStyles();
-  const InsideGetCVTypographyStyles = useInsideGetCVTypographytyles();
-  const InsideGetCVSectionTextStyles = useInsideGetCVSectionTextStyles();
-  const GetCVBoxStyles = useGetCVBoxtStyles();
-  const GetCVImageStyles = useGetCVImagetStyles();
+  const insideFirstSectionStyles = useInsideFirstSectionStyles();
+  const firstSectionFigureStyles = useFirstSectionFigureStyles();
+  const firstSectionDownloadCVSectionStyles =
+    useFirstSectionDownloadCVSectionStyles();
+  const firstSectionDownloadCVTypographyStyles =
+    useFirstSectionDownloadCVTypographyStyles();
+
+  const buttonStyles = useButtonStyles();
 
   return (
-    <Box sx={FirstSectionStyles}>
-      <Box sx={InsideFirstSectionStyles}>
-        <Box sx={SearchBarSectionStyles}>
-          <Box sx={InsideSearchBarSectionStyles}>
-            <Box sx={SearchEgresatesSectionStyles}>
-              <Typography sx={SearchEgresatesTypographyStyles}>
-                ¡Busca a tus Egresados!
-              </Typography>
-            </Box>
-            <Box sx={SearchBoxStyles}>
-              <TextField
-                id="search"
-                variant="outlined"
-                fullWidth
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                sx={TextFieldSearchBarStyles}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon color="primary" style={SearchIconStyles} />
-                    </InputAdornment>
-                  ),
-
-                  style: TextFieldSearchBarPropStyles,
-                }}
-                placeholder="Ej: ingeniería informática"
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                sx={SearchButtomStyles}
-              >
-                Buscar
-              </Button>
-            </Box>
-            <Box sx={InsideSearchBarTextSectionStyles}>
-              <Typography sx={InsideSearchBarSectionTypographyStyles}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-                mollitia, molestiae quas vel sint commodi repudiandae
-                consequuntur
-              </Typography>
-            </Box>
+    <Box sx={firstSectionStyles}>
+      <Box sx={insideFirstSectionStyles}>
+        <Box sx={firstSectionFigureBoxStyles}>
+          <Box sx={firstSectionFigureStyles}>
+            <Box
+              component="img"
+              sx={firstSectionFigureBackgroundStyles}
+              alt="catalog-in-pc"
+              src="src\features\landing-page\first-section\images\catalog- in-phone-and-pc.png"
+            />
           </Box>
         </Box>
-        <Box sx={GetCVSectionStyles}>
-          <Box sx={InsideGetCVSectionStyles}>
-            <Box>
-              <Box>
-                <Typography sx={InsideGetCVTypographyStyles}>
-                  Obtén tu CV
-                </Typography>
-              </Box>
-              <Box>
-                <Typography sx={InsideGetCVSectionTextStyles}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Maxime mollitia, molestiae quas vel sint commodi repudiandae
-                  consequuntur voluptatum laborum numquam
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-          <Box sx={GetCVBoxStyles}>
-            <img src={curriculum} style={GetCVImageStyles} />
+        <Box sx={firstSectionDownloadCVSectionStyles}>
+          <Typography sx={firstSectionDownloadCVTypographyStyles}>
+            ¡La red con los perfiles profesionales de egresados de la UCAB!
+          </Typography>
+
+          <Box>
+            <Button sx={buttonStyles}>Empezar a Explorar</Button>
           </Box>
         </Box>
       </Box>

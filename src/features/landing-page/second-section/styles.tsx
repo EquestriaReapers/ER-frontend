@@ -1,6 +1,5 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme } from "@mui/material";
-import background from "./images/background.jpeg";
 
 export const SecondSectionStyles = {
   width: "100%",
@@ -14,7 +13,7 @@ export const SecondSectionStyles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage: `url(${background})`,
+
     backgroundSize: "cover",
     backgroundPosition: "center",
     filter: "blur(3.3px)",
@@ -59,22 +58,16 @@ export const useSecondSectionFigureStyles = () => {
 
   const SecondSectionFigureStyles = {
     height: isSmallScreen ? "310px" : "300px",
-    width: isSmallScreen ? "270px" : "250px",
-    backgroundColor: "#72C4E8",
-    transform: "rotate(8deg)",
-    display: "flex",
-    alignItems: "center",
-    margin: isSmallScreen ? "auto auto 0 auto" : "auto",
+    width: isSmallScreen ? "270px" : "100%",
   };
   return SecondSectionFigureStyles;
 };
 
 export const SecondSectionFigureBackgroundStyles = {
-  height: "110%",
-  width: "98%",
-  backgroundColor: "white",
-  transform: "rotate(-9deg)",
-  marginBottom: "40px",
+  height: 233,
+  width: 350,
+  maxHeight: { xs: 233, md: 167 },
+  maxWidth: { xs: 350, md: 250 },
 };
 
 export const useSecondSectionDownloadCVSectionStyles = () => {
