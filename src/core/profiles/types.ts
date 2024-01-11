@@ -97,6 +97,7 @@ export interface Portfolio {
   imagePrincipal: string | null;
   image: string[] | null;
   deletedAt: Date | null;
+  url: string | null;
 }
 export enum LanguageLevel {
   Alto = "alto",

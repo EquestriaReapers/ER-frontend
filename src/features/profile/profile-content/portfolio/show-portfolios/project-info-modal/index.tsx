@@ -33,12 +33,31 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
         />
       </Box>
 
-      <IconButton
-        onClick={() => setIsOpen(false)}
-        sx={{ display: "flex", marginLeft: "10px", marginTop: "5px" }}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          mx: "10px",
+          my: "10px",
+        }}
       >
-        <ArrowBackIcon />
-      </IconButton>
+        <IconButton onClick={() => setIsOpen(false)}>
+          <ArrowBackIcon />
+        </IconButton>
+
+        <Box>
+          {!project.url ? (
+            <Typography>No existe una URL asignada al proyecto</Typography>
+          ) : (
+            <Box component="a" href={project.url}>
+              {project.url}
+            </Box>
+          )}
+        </Box>
+      </Box>
+
       <Box
         sx={{
           mx: "24px",
