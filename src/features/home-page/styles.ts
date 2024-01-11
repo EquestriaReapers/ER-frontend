@@ -11,10 +11,6 @@ export const useHomePageContainerStyles = () => {
     theme.breakpoints.down("md")
   );
 
-  const isLargeScreen = useMediaQuery((theme: Theme) =>
-  theme.breakpoints.down("lg")
-  );
-
   const HomePageStyles = {
     minWidth: isSmallScreen ? "280px" : isMediumScreen ? "600px" : "900px",
     width: "100%",
@@ -24,14 +20,6 @@ export const useHomePageContainerStyles = () => {
 };
 
 export const useMainContainerStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
-
-  const isLargeScreen = useMediaQuery((theme: Theme) =>
-  theme.breakpoints.down("lg")
-  );
-
   const MainContainerStyles = {
     width: "100%",
   };
