@@ -21,14 +21,14 @@ const SkillCard = ({ item }: Props) => {
             onClick={() => onUpdateSkill(item, false)}
             sx={{ height: "30px", width: "30px" }}
           >
-            <KeyboardArrowDownIcon />
+            <KeyboardArrowUpIcon />
           </IconButton>
         ) : (
           <IconButton
             onClick={() => onUpdateSkill(item, true)}
             sx={{ height: "30px", width: "30px" }}
           >
-            <KeyboardArrowUpIcon />
+            <KeyboardArrowDownIcon />
           </IconButton>
         )}
 

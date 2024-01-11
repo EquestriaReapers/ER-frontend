@@ -47,10 +47,10 @@ const ModalContent = ({ setIsOpen }: Props) => {
       <AddSkillField />
       <Box sx={{ border: "solid 1px #CBCBCB", borderRadius: "6px", p: "10px" }}>
         <Typography sx={skillTitleStyle}>
-          Mostrar sólamente en el currículum
+          Mostrar sólamente en el perfil
         </Typography>
         {profile.skills.filter(
-          (item) => item.type === skillType && item.isVisible === true
+          (item) => item.type === skillType && item.isVisible === false
         ).length === 0 ? (
           <Typography
             sx={{
@@ -66,10 +66,11 @@ const ModalContent = ({ setIsOpen }: Props) => {
         ) : (
           <ShowSkills
             skills={profile.skills.filter(
-              (item) => item.type === skillType && item.isVisible === true
+              (item) => item.type === skillType && item.isVisible === false
             )}
           />
         )}
+        {console.log(profile.skills)}
         <Box
           sx={{ border: "solid 1px #CBCBCB", borderRadius: "6px", p: "10px" }}
         >
@@ -77,7 +78,7 @@ const ModalContent = ({ setIsOpen }: Props) => {
             Mostrar en el currículum y el perfil
           </Typography>
           {profile.skills.filter(
-            (item) => item.type === skillType && item.isVisible === false
+            (item) => item.type === skillType && item.isVisible === true
           ).length === 0 ? (
             <Typography
               sx={{
@@ -93,7 +94,7 @@ const ModalContent = ({ setIsOpen }: Props) => {
           ) : (
             <ShowSkills
               skills={profile.skills.filter(
-                (item) => item.type === skillType && item.isVisible === false
+                (item) => item.type === skillType && item.isVisible === true
               )}
             />
           )}
