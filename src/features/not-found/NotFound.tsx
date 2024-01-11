@@ -5,7 +5,9 @@ import { notFoundContainer } from "./styles";
 const NotFound: FunctionComponent = () => {
   return (
     <Box sx={notFoundContainer}>
-      <Typography variant="h1">404</Typography>
+      <Typography sx={{ textAlign: "center" }} variant="h1">
+        404
+      </Typography>
       <Typography variant="h5">{getRandomNotFoundPharses()}</Typography>
     </Box>
   );

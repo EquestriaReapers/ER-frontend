@@ -24,6 +24,7 @@ export default styled(Layout)`
   flex-direction: column;
   flex: 1;
   height: 100%;
+  overflow-y: auto;
 
   #detail {
     flex: 1;
