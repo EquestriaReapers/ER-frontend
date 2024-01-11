@@ -151,7 +151,7 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
                   }
                   onClick={() => handleButtonClick('complementaria')}
                 >
-                  Secundario
+                  Secundaria
                 </StyledButton>
               </StyledBox>
             </Box>
