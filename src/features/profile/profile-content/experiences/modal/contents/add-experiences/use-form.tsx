@@ -41,7 +41,6 @@ const useAddExperienceForm = ({ experience }: AddExperienceFormProps) => {
             description: experience.description,
             startDate: experience.startDate.format("YYYY-MM-DD"),
             endDate: experience.endDate?.format("YYYY-MM-DD") ?? null,
-            isVisible: experience.isVisible,
           },
           token
         );
