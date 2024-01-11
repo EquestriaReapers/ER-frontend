@@ -93,7 +93,7 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
     fontWeight: "600",
     fontSize: "2rem",
     marginBottom: "40px",
-    color: "#FFFFFF",
+    color: "black",
     textAlign: isSmallScreen ? "center" : "left",
   };
 
@@ -109,7 +109,7 @@ export const useSecondSectionDownloadCVTextStyles = () => {
     marginBottom: "40px",
     fontWeight: "500",
     fontSize: "0.9rem",
-    color: "#FFFFFF",
+    color: "black",
     textAlign: isSmallScreen ? "center" : "left",
   };
 
@@ -135,13 +135,35 @@ export const DownloadIconStyles = {
   marginTop: "auto",
   marginBottom: "auto",
   marginRight: "2px",
-  color: "#FFFFFF",
+  color: "black",
 };
 
 export const DownlodCVTypography = {
   marginBottom: "40px",
   fontSize: "0.8rem",
   fontWeight: "500",
-  color: "#FFFFFF",
+  color: "black",
   margin: "auto 0 0 0",
+};
+
+export const useButtonStyles = () => {
+  const buttonStyles = {
+    fontFamily: "inter",
+    borderRadius: "6px",
+    background: '#37B4E3',
+    fontWeight: "700",
+    color: "white",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    px: 3,
+    my: 2,
+    "&:hover": {
+      backgroundColor: '#0b9bd1',
+    },
+    "&:disabled": {
+      color: "#ffffff",
+    },
+  };
+
+  return buttonStyles;
 };

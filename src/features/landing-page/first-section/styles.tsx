@@ -66,6 +66,14 @@ export const firstSectionFigureBackgroundStyles = {
   maxWidth: { xs: 350, md: 250 },
 };
 
+export const firstSectionLogoStyles = {
+  height: 75,
+  width: 200,
+  maxHeight: { xs: 233, md: 167 },
+  maxWidth: { xs: 350, md: 250 },
+};
+
+
 export const useFirstSectionDownloadCVSectionStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm")

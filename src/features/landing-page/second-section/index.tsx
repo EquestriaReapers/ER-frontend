@@ -1,5 +1,4 @@
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Typography, Box, Button } from "@mui/material/";
 import {
   SecondSectionStyles,
   useInsideSecondSectionStyles,
@@ -9,12 +8,8 @@ import {
   useSecondSectionDownloadCVSectionStyles,
   useSecondSectionDownloadCVTypographyStyles,
   useSecondSectionDownloadCVTextStyles,
-  useSecondSectionDownloadCVBoxStyles,
-  DownloadIconStyles,
-  DownlodCVTypography,
+  useButtonStyles,
 } from "./styles";
-
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
 
 const SecondSection = () => {
   const InsideSecondSectionStyles = useInsideSecondSectionStyles();
@@ -25,8 +20,7 @@ const SecondSection = () => {
     useSecondSectionDownloadCVTypographyStyles();
   const SecondSectionDownloadCVTextStyles =
     useSecondSectionDownloadCVTextStyles();
-  const SecondSectionDownloadCVBoxStyles =
-    useSecondSectionDownloadCVBoxStyles();
+  const buttonStyles = useButtonStyles();
 
   return (
     <Box sx={SecondSectionStyles}>
@@ -43,16 +37,15 @@ const SecondSection = () => {
         </Box>
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
-            Lorem
+            ¡Encuentra los perfiles que te interesan!
           </Typography>
           <Typography sx={SecondSectionDownloadCVTextStyles}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-            mollitia, molestiae quas vel sint commodi repudiandae consequuntur
-            voluptatum laborum numquam
+            ¡Usa nuestro poderoso motor de búsquedas, el cual te permitirá
+            amplias opciones de exploración, búsqueda y filtrado para conseguir
+            justo el talento y los perfiles que necesitas !
           </Typography>
-          <Box sx={SecondSectionDownloadCVBoxStyles}>
-            <FileDownloadOutlinedIcon sx={DownloadIconStyles} />
-            <Typography sx={DownlodCVTypography}>Descarga tus CV</Typography>
+          <Box>
+            <Button sx={buttonStyles}>Empieza a Buscar</Button>
           </Box>
         </Box>
       </Box>

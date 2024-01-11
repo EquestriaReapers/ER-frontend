@@ -1,4 +1,4 @@
-import {Typography, Box, Button} from "@mui/material/";
+import { Typography, Box, Button } from "@mui/material/";
 import {
   firstSectionStyles,
   useInsideFirstSectionStyles,
@@ -8,7 +8,7 @@ import {
   useFirstSectionDownloadCVSectionStyles,
   useFirstSectionDownloadCVTypographyStyles,
   useButtonStyles,
-  DownlodCVTypography,
+  firstSectionLogoStyles,
 } from "./styles";
 
 const FirstSection = () => {
@@ -31,6 +31,12 @@ const FirstSection = () => {
               sx={firstSectionFigureBackgroundStyles}
               alt="catalog-in-pc"
               src="src\features\landing-page\first-section\images\catalog- in-phone-and-pc.png"
+            />
+            <Box
+              component="img"
+              sx={firstSectionLogoStyles}
+              alt="catalog-in-pc"
+              src="src\features\landing-page\first-section\images\wide-logo.png"
             />
           </Box>
         </Box>
