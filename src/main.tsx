@@ -7,7 +7,7 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
-import LandingPage from "./features/landing-page";
+import NewPassword from "features/auth/NewPassword";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -20,7 +20,8 @@ import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
-import NewPassword from "features/auth/NewPassword";
+import HomePage from "features/home-page";
+import ExplorePortfolio from "features/explore-portfolio";
 
 const theme = createTheme({
   palette: {
@@ -72,12 +73,16 @@ const routerConfig: RouteObject[] = [
         element: <ForgotPassword />,
       },
       {
-        path: "/new-password/:token",
+        path: "/new-password/",
         element: <NewPassword />,
       },
       {
-        path: "/",
-        element: <LandingPage />,
+        path: "/home/",
+        element: <HomePage />,
+      },
+      {
+        path: "/explore-portfolio/",
+        element: <ExplorePortfolio />,
       },
     ],
   },
