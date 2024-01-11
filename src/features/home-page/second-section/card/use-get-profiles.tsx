@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useErrorToast } from "hooks/use-error-toast";
-import { searchPaginatedProfiles } from "core/profiles/get-search-paginated.service";
+import { searchPostPaginatedProfiles } from "core/profiles/get-post-search-paginated.service";
 import { Profile } from "core/profiles/types";
 
 const useGetProfiles = () => {
@@ -9,7 +9,20 @@ const useGetProfiles = () => {
   const getProfilesInfo = useCallback(async () => {
     try {
       const seed = Math.floor(Math.random() * 1000);
-      const data = await searchPaginatedProfiles(1, 6, seed, null);
+      const data = await searchPostPaginatedProfiles({
+        currentPaginatedParams: {
+          searchText: "",
+          page: 1,
+          selectedSkills: [],
+          isExclusiveSkills: false,
+          selectedLanguagues: [],
+          isExclusiveLanguague: false,
+          selectedLocations: [],
+          selectedCareers: [],
+        },
+        limit: 6,
+        seed,
+      });
       setProfiles(data.profiles);
       return data;
     } catch (error) {
