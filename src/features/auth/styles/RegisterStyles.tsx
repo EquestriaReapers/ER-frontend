@@ -14,7 +14,7 @@ export const registerProfileStyles = {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  minHeight: "700px",
+  minHeight: "715px",
   minWidth: "350px",
   backgroundImage: `url(${Background})`,
   backgroundSize: "cover",
