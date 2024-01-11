@@ -15,7 +15,7 @@ export const titleStyles = {
   },
 };
 
-export const titleMovileStyles = {
+export const mobileTitleStyles = {
   color: "black",
   fontFamily: "Inter",
   fontSize: "16px",
@@ -35,17 +35,6 @@ export const iconStyles = {
   "&:hover": {
     color: "#007935",
   },
-};
-
-export const titleStylesLogoutM = {
-  color: "black",
-  fontFamily: "Inter",
-  fontSize: "16px",
-  textTransform: "Capitalize",
-  "&:hover": {
-    color: "#007935",
-  },
-  fontWeight: "400",
 };
 
 export const inlineStyles = {
