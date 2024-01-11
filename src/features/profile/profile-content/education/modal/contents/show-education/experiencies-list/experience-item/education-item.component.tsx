@@ -1,12 +1,13 @@
-import { Education } from "core/profiles/types";
 import Typography from "@mui/material/Typography";
 import { Box, IconButton } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useUpdateEducationCV from "./use-update-CV-education";
 import { useContext } from "react";
 import { EducationContent } from "../../../../education-modal-context/types";
+import { nameStyles } from "../styles";
 import EducationModalContext from "../../../../education-modal-context/index";
-import useUpdateEducationCV from "./use-update-CV-education";
+import { Education } from "core/profiles/types";
 
 const EducationItem = ({ item, className }: Props) => {
   const { setContent, setAnEducation } = useContext(EducationModalContext);
@@ -19,46 +20,56 @@ const EducationItem = ({ item, className }: Props) => {
   return (
     <div className={className}>
       <Box>
-        <Box className="titleIconStyles">
-          <Box className={"typographyBoxStyles"}>
-            <Typography className={"nameStyles"}>{item.title}</Typography>
-          </Box>
-          <Box className={"itemIconBox"}>
-            <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
-              <Typography
-                className={
-                  item.isUCAB
-                    ? "cvButtonStyleUCAB"
-                    : item.isVisible
-                    ? "cvButtonStyleTrue"
-                    : "cvButtonStyleFalse"
-                }
-              >
-                CV
+        <Box>
+          <Box className="titleIconStyles">
+            <Box className={"typographyBoxStyles"}>
+              <Typography sx={nameStyles} className={"nameStyles"}>
+                {item.title}
               </Typography>
-            </IconButton>
-            <IconButton
-              onClick={() => {
-                setContent(EducationContent.Edit);
-                setAnEducation(item);
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
               }}
             >
-              <EditIcon sx={{ color: "#007935" }} />
-            </IconButton>
-            {item.isUCAB ? (
-              <IconButton disabled>
-                <DeleteIcon sx={{ color: "gray" }} />
+              <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
+                <Typography
+                  className={
+                    item.isUCAB
+                      ? "cvButtonStyleUCAB"
+                      : item.isVisible
+                      ? "cvButtonStyleTrue"
+                      : "cvButtonStyleFalse"
+                  }
+                >
+                  CV
+                </Typography>
               </IconButton>
-            ) : (
               <IconButton
                 onClick={() => {
-                  setContent(EducationContent.Delete);
+                  setContent(EducationContent.Edit);
                   setAnEducation(item);
                 }}
               >
-                <DeleteIcon sx={{ color: "#007935" }} />
+                <EditIcon sx={{ color: "#007935" }} />
               </IconButton>
-            )}
+              {item.isUCAB ? (
+                <IconButton disabled>
+                  <DeleteIcon sx={{ color: "gray" }} />
+                </IconButton>
+              ) : (
+                <IconButton
+                  onClick={() => {
+                    setContent(EducationContent.Delete);
+                    setAnEducation(item);
+                  }}
+                >
+                  <DeleteIcon sx={{ color: "#007935" }} />
+                </IconButton>
+              )}
+            </Box>
           </Box>
         </Box>
         <Box className={"inlineStyles"}>
@@ -72,8 +83,8 @@ const EducationItem = ({ item, className }: Props) => {
 };
 
 interface Props {
-  item: Education;
   className?: string;
+  item: Education;
 }
 
 export default EducationItem;

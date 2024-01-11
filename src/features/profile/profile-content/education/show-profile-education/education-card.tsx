@@ -21,6 +21,7 @@ const EducationCard = ({ item }: Props) => {
           flexDirection: { xs: "column", sm: "column" },
           justifyContent: "space-between",
           gap: { xs: "5px", sm: "5px" },
+          height: "100%",
         }}
       >
         <Typography sx={titleStyles} variant="h6">

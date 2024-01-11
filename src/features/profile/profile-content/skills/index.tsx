@@ -14,7 +14,7 @@ const ProfileSkills = ({ skillType }: Props) => {
         <Box sx={boxStyles}>
           <Typography sx={skillTitleStyles} variant="h5">
             {skillType === SkillType.Hard
-              ? "Habilidades duras"
+              ? "Habilidades fuertes"
               : "Habilidades blandas"}
           </Typography>
           {isEditable && <EditSkills skillType={skillType} />}

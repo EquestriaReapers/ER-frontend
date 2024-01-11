@@ -9,23 +9,14 @@ const Experiences = () => {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: "18px", sm: "45px" },
-          width: { xs: "100%", sm: "100%", md: "70%", lg: "60%" },
-        }}
-      >
-        <Box sx={boxTitleStyles}>
-          <Typography variant="h4" sx={experienceTitleStyles}>
-            Experiencia
-          </Typography>
-          {isEditable && <ExperienceModalWrapper />}
-        </Box>
-
-        <ShowProfileExperiencies experiences={profile.experience} />
+      <Box sx={boxTitleStyles}>
+        <Typography variant="h4" sx={experienceTitleStyles}>
+          Experiencia
+        </Typography>
+        {isEditable && <ExperienceModalWrapper />}
       </Box>
+
+      <ShowProfileExperiencies experiences={profile.experience} />
     </>
   );
 };
