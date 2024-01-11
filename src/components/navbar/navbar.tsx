@@ -14,7 +14,6 @@ import Mobile from "./mobile";
 import { useSelector } from "react-redux";
 import { User } from "core/users/types";
 import { AuthState } from "core/auth/store/types";
-
 import LinkList from "./link-list";
 
 const Navbar = () => {

@@ -1,9 +1,10 @@
 import { Box, IconButton } from "@mui/material/";
-import SvgComponent from "../SvgComponent";
+//import SvgComponent from "../SvgComponent";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import Logo from "../logo.png";
 
-const navBarMovile = ({ setIsOpen }: Props) => {
+const NavBarMovile = ({ setIsOpen }: Props) => {
   return (
     <Box
       sx={{
@@ -29,9 +30,15 @@ const navBarMovile = ({ setIsOpen }: Props) => {
           <MenuIcon />
         </IconButton>
       </Box>
-      <Box sx={{ width: "58%" }}>
+      {/*
+            <Box sx={{ width: "58%" }}>
         <Link to="/">
           <SvgComponent />
+        </Link>
+      </Box>*/}
+      <Box sx={{ width: "58%" }}>
+        <Link to="/">
+          <img src={Logo} alt="logo" width="70px" height="65px" />
         </Link>
       </Box>
     </Box>
@@ -42,4 +49,4 @@ export interface Props {
   setIsOpen: (isOpen: boolean) => void;
 }
 
-export default navBarMovile;
+export default NavBarMovile;
