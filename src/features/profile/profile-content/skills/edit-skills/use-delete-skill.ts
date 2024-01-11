@@ -17,7 +17,6 @@ const useDeleteSkill = (skillId: number) => {
 
   const deleteSkill = useCallback(async () => {
     try {
-      console.log("skillId");
       if (!token || !skillId) return;
       setLoading(true);
       const data = await removeProfileSkill(token, skillId);
