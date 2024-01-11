@@ -14,7 +14,7 @@ export const modalStyle = {
     md: 4,
   },
   width: { xs: "80%", sm: "70%", md: "50%", lg: "40%", xl: "30%" },
-  height: { xs: "90%", sm: "auto" },
+  height: { xs: "90%", sm: "80%" },
   borderRadius: "6px",
 };
 
