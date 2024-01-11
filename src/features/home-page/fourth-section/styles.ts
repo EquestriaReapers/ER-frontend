@@ -76,7 +76,7 @@ export const useInsideFourthSectionTypographyStyles = () => {
 
   const InsideFourthSectionTypographyStyles = {
     fontWeight: "600",
-    fontSize: isSmallScreen ? "18px" : isLargeScreen ? "24px" : "32px",
+    fontSize: isSmallScreen ? "22px" : isLargeScreen ? "24px" : "32px",
     textAlign: "center",
     marginBottom: "40px",
     

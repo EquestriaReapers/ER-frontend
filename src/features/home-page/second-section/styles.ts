@@ -62,7 +62,7 @@ export const useSecondSectionExploreTypographyStyles = () => {
 
   const SecondSectionExploreTypographyStyles = {
     fontWeight: "600",
-    fontSize: isSmallScreen ? "18px" : isLargeScreen ? "28px" : "32px",
+    fontSize: isSmallScreen ? "22px" : isLargeScreen ? "28px" : "32px",
     textAlign: "center",
     marginBottom: { xs: 5, sm: 11, lg: 11, },
     color: 'black',

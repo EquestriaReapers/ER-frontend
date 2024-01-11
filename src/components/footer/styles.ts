@@ -2,9 +2,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme } from "@mui/material";
 
 export const FooterStyles = {
-    width: "100%",
+    width: "100%", 
+    backgroundColor: "#CDCDCD",
+    minHeight:"70vh",
     height: "240px",
-    backgroundColor: "#CDCDCD"
 };
 
 
@@ -17,7 +18,7 @@ export const FooterLineStyles = {
 export const InsideFooterStyles = {
     display: "flex",
     width: "100%",
-    height: "97%",
+    height: "40%",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column"

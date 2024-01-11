@@ -3,21 +3,19 @@ import { Theme } from "@mui/material";
 import { BUTTON_WIDTH } from "../../styles";
 
 export const useCardStyles = () => {
-  const isLargeScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("lg")
-  );
+
 
   const CardStyles = {
-    width: "40%",
+    width: { xs: "40%", sm: "95%", lg: "300px" },
     height: "200px",
     backgroundColor: "#FFFFFF",
     display: "grid",
     boxShadow:
       "0px 8px 12px rgba(0, 0, 0, 0.2), 0px 4px 8px rgba(0, 0, 0, 0.1)",
     borderRadius: "6px",
-    margin: isLargeScreen ? "auto" : "inherit",
+    margin: { xs: "inherit", sm: "inherit", lg: "0 10px 0 10px" },
     minWidth: "230px",
-    p: 1, 
+    p: 1,
   };
 
 
@@ -28,7 +26,7 @@ export const InsideCardStyles = {
   width: "calc(100% - 14px)",
   height: "calc(100% - 14px)",
   margin: "auto",
-  overflow:'hidden',
+  overflow: 'hidden',
 };
 
 export const CardFirstSection = {
@@ -64,7 +62,7 @@ export const useCardOcupationStyles = () => {
   const CardOcupationStyles = {
     color: "#000000",
     fontWeight: "700",
-    mt:1,
+    mt: 1,
     fontSize: isLargeScreen ? "14px" : "14px",
   };
 

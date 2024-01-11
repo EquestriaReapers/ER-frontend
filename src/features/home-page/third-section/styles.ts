@@ -99,6 +99,6 @@ export const ThirdSectionButtonStyles = {
     my: { xs: 0, sm: 3, lg: 4, },
     fontSize: { xs:'16px' , sm:'18px', lg: '18px', },
     "&&:hover" : {
-      backgroundColor: "#edad00", 
+      backgroundColor: "#edb520", 
     }
 }
