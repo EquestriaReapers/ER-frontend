@@ -7,7 +7,7 @@ import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 
-import ucabLogo from "../images/ucabLogo.webp";
+import ucabLogo from "../images/ucab-logo.png";
 import {
   UcabLogoStyles,
   ImageBoxStyles,
