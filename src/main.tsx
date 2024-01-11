@@ -7,7 +7,7 @@ import Dashboard from "features/dashboard/Dashboard";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
-import NewPassword from "features/auth/NewPassword";
+import LandingPage from "./features/landing-page";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -16,12 +16,11 @@ import {
 } from "react-router-dom";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Catalogue from "features/catalogue/catalogue-content";
-import Loader from "hooks/use-loader";
 import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
-import HomePage from "features/home-page";
+import NewPassword from "features/auth/NewPassword";
 
 const theme = createTheme({
   palette: {
@@ -73,18 +72,14 @@ const routerConfig: RouteObject[] = [
         element: <ForgotPassword />,
       },
       {
-        path: "/new-password/",
+        path: "/new-password/:token",
         element: <NewPassword />,
       },
       {
-        path: "/home/",
-        element: <HomePage />,
+        path: "/",
+        element: <LandingPage />,
       },
     ],
-  },
-  {
-    path: "loader",
-    element: <Loader />,
   },
 ];
 

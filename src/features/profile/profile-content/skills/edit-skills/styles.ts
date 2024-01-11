@@ -15,7 +15,7 @@ export const modalStyle = {
 
 export const nameStyles = {
   fontSize: "20px",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
@@ -25,7 +25,7 @@ export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   wordWrap: "break-word",
   pt: 2,
 };

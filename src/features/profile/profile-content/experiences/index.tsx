@@ -8,24 +8,22 @@ const Experiences = () => {
   const { isEditable, profile } = useProfileContext();
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: { xs: "18px", sm: "45px" },
-        }}
-      >
-        <Box sx={boxTitleStyles}>
-          <Typography variant="h4" sx={experienceTitleStyles}>
-            Experiencia
-          </Typography>
-          {isEditable && <ExperienceModalWrapper />}
-        </Box>
-
-        <ShowProfileExperiencies experiences={profile.experience} />
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: { xs: "18px", sm: "45px" },
+      }}
+    >
+      <Box sx={boxTitleStyles}>
+        <Typography variant="h4" sx={experienceTitleStyles}>
+          Experiencia
+        </Typography>
+        {isEditable && <ExperienceModalWrapper />}
       </Box>
-    </>
+
+      <ShowProfileExperiencies experiences={profile.experience} />
+    </Box>
   );
 };
 

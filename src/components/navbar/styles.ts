@@ -7,7 +7,7 @@ export const navbarStyles = {
 export const titleStyles = {
   color: "black",
   ml: 2,
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontSize: "16px",
   textTransform: "Capitalize",
   "&:hover": {

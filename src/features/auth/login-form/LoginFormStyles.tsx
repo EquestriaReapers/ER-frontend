@@ -5,8 +5,8 @@ export const useQuestionBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const QuestionBoxStyles = {
-    marginRight: isSmallScreen ? "3px" : "15px",
-    fontSize: isSmallScreen ? "0.9rem" : "1rem",
+    marginRight: isSmallScreen ? "3px" : "0px",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
@@ -19,7 +19,7 @@ export const useFormBoxStylesFunct = () => {
 
   const FormBoxStyles = {
     width: isSmallScreen ? "88%" : "350px",
-    height: "520px",
+    height: "500px",
     margin: "auto",
     padding: isSmallScreen ? "18px" : "40px",
     backgroundColor: "white",
@@ -84,8 +84,8 @@ export const useLinkBoxStylesFunct = () => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const LinkBoxStyles = {
-    marginLeft: isSmallScreen ? "3px" : "15px",
-    fontSize: isSmallScreen ? "0.9rem" : "1rem",
+    marginLeft: isSmallScreen ? "6px" : "3px",
+    fontSize: isSmallScreen ? "16px" : "14px",
     fontFamily: "Inter, sans-serif",
   };
 
@@ -98,23 +98,17 @@ export const RedirectBoxStyles = {
   fontFamily: "Inter, sans-serif",
 };
 
-export const TextFieldTypography = {
-  fontFamily: "Inter, sans-serif",
-  color: "#979899",
-  fontSize: "0.9rem",
-};
-
 export const UcabLogoStyles = {
   height: "85px",
   width: "85px",
-  marginBottom: "16px",
+  marginBottom: "32px",
+  
 };
 
 export const ImageBoxStyles = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "40px",
 };
 
 export const CheckBoxStyles = {
@@ -123,7 +117,7 @@ export const CheckBoxStyles = {
 
 export const FormBottomTypographyStyles = {
   fontFamily: "Inter, sans-serif",
-  fontSize: "0.9rem",
+  fontSize: "14px",
   fontWeight: "500",
 };
 
@@ -138,12 +132,14 @@ export const TextFieldStyles = {
 };
 
 export const ButtonStyles = {
-  backgroundColor: "#37B4E3",
+  boxShadow:'none',
+  backgroundColor: "#03652e",
   width: "100%",
   color: "white",
   marginBottom: "22px",
   borderRadius: "6px",
   minHeight: "50px",
   textTransform: "capitalize",
-  fontSize: "0.9rem",
+  fontSize: "16px",
+  fontWeight: "500",
 };

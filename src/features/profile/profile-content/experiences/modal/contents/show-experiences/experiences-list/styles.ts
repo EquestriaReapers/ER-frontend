@@ -22,22 +22,22 @@ export const boxStyles = {
   },
   overflow: "hidden",
   width: {
-    md: "60%",
+    md: "70%",
     lg: "60%",
   },
 };
 
 export const nameStyles = {
   fontSize: "20px",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
 };
 
 export const inlineStyles = {
-  display: 'flex',
-  flexWrap: 'wrap',
+  display: "flex",
+  flexWrap: "wrap",
 };
 
 export const subtitleStyles = {
@@ -45,7 +45,7 @@ export const subtitleStyles = {
   fontSize: "16px",
   color: "#535353",
   textTransform: "capitalize",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   fontStyle: "normal",
   lineHeight: "normal",
   pr: 1,
@@ -55,12 +55,12 @@ export const descriptionStyles = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  fontFamily: "Inter",
+  fontFamily: "inter",
   wordWrap: "break-word",
   pt: 2,
-  display: '-webkit-box',
-  WebkitBoxOrient: 'vertical',
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  overflow: "hidden",
+  textOverflow: "ellipsis",
 };
