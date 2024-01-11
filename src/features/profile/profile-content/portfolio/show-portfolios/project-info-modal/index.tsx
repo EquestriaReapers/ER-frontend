@@ -62,7 +62,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
 
           {!project.url ? (
             <Typography sx={{ fontFamily: "inter", fontSize: "14px" }}>
-              No existe una URL asignada al proyecto
+              {project.url ? project.url : "No hay url para mostrar"}
             </Typography>
           ) : (
             <Box
