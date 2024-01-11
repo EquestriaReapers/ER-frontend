@@ -53,7 +53,7 @@ const useUpdateEducationCV = (isVisible: boolean, education: Education) => {
 function useGetToken() {
   const navigate = useNavigate();
   const { token } = useAuthState();
-  console.log(token);
+
   return useCallback(() => {
     if (!token) {
       navigate("/login");
