@@ -6,7 +6,7 @@ import { useCallback, useContext } from "react";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
 import { Experience } from "core/profiles/types";
-import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiencies-modal-context";
+import ExperiencesModalContext from "features/profile/profile-content/experiences/modal/experiences-modal-context";
 
 const useUpdateExperienceCV = (isVisible: boolean, experience: Experience) => {
   const getToken = useGetToken();
@@ -55,7 +55,6 @@ const useUpdateExperienceCV = (isVisible: boolean, experience: Experience) => {
 function useGetToken() {
   const navigate = useNavigate();
   const { token } = useAuthState();
-  console.log(token);
   return useCallback(() => {
     if (!token) {
       navigate("/login");

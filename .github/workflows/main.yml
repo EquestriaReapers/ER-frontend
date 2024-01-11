@@ -1,4 +1,5 @@
 name: Build & Deploy
+
 on:
   push:
     branches: [main]
@@ -7,17 +8,53 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy NESTJS app
+      - name: Pull Ucab Profile 🔽
         uses: appleboy/ssh-action@v0.1.2
         with:
-          host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
-          key: ${{secrets.SSH_KEY}} # Private or public key of the server
-          username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
-
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
           script: |
-            cd /var/www 
-            cd ER-frontend
-            git pull
-            npm install
-            npm run build
-            echo 'Repository already exists previously, pulling changes'
+            cd /var/www/ER-frontend
+            git checkout main
+            git pull || { echo 'Failed to pull changes'; exit 1; }
+
+      - name: Npm Install Frontend ⚙️
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend
+            git checkout main
+            npm install || { echo 'Failed to install dependencies'; exit 1; }
+
+      - name: Remove existing dist folder ❌
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend
+            rm -rf dist || { echo 'Failed to remove existing dist folder'; exit 1; }
+
+      - name: Build and Verify 👷‍♂️
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.SSH_USERNAME}}
+          script: |
+            cd /var/www/ER-frontend
+            if npm run build; then
+              echo 'Build successful'
+            else
+              echo 'Build failed'
+              exit 1
+            fi
+
+      - name: Finalize ✅
+        run: |
+          echo 'Repository already exists previously, pulling changes'

@@ -110,7 +110,7 @@ export const ButtonStyles = {
 };
 
 export const UcabLogoStyles = {
-  height: "85px",
-  width: "85px",
-  marginBottom: "32px",
+  height: "140px",
+  width: "140px",
+  marginBottom: "26px",
 };

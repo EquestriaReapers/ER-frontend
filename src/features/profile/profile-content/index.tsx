@@ -25,16 +25,16 @@ import Education from "./education";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
 import useProfileContext from "../profile-context/use-profile-context";
 import useDownloadCurriculumPDF from "./use-download-curriculum-pdf";
+import Portfolio from "./portfolio";
 import ContactCard from "./contact-card";
 import { SkillType } from "core/skills/types";
 
 const ProfileContent = () => {
   const { profile, isEditable } = useProfileContext();
-  const transformedCareerName =
-    profile.mainTitle || useTransformCareerEnum(profile.mainTitleCode);
+  const transformedCareerEnum = useTransformCareerEnum(profile.mainTitleCode);
+  const transformedCareerName = profile.mainTitle || transformedCareerEnum;
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
     useDownloadCurriculumPDF(profile);
-
   return (
     <>
       <Box>
@@ -95,10 +95,29 @@ const ProfileContent = () => {
                 <Skills skillType={SkillType.Soft} />
               </BothSkillsContainer>
             </Box>
-            <Experiences />
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: { xs: "18px", sm: "20px" },
+                width: { xs: "100%", sm: "65%" },
+              }}
+            >
+              <Experiences />
+            </Box>
           </Box>
           <Box sx={EducationBoxStyles}>
             <Education />
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+              gap: "34px",
+            }}
+          >
+            <Portfolio />
           </Box>
           <Box sx={{ display: { sm: "none" }, width: { xs: "100%" } }}>
             <Button
