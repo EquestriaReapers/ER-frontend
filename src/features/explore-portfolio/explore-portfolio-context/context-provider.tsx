@@ -1,24 +1,24 @@
 import React from "react";
 import ProfileContext from "./context";
-import useCatalogue from "./use-catalogue";
-import { CatalogueSearchParams } from "../use-initial-catalogue-search-params";
+import usePortfolio from "./use-explore-portfolios";
+import { PortfolioSearchParams } from "./use-initial-portfolios-search-params";
 
-export const CatalogueContextProvider = ({
+export const PortfoliosContextProvider = ({
   children,
   seed,
-  initialCatalogueSearchParams,
+  initialPortfoliosSearchParams,
 }: Props) => {
   const {
-    profileList,
+    projects,
     pagination,
     setCurrentPage,
-    setProfileList,
+    setProjects,
     searchText,
     setSearchText,
     setPagination,
     currentPage,
     loading,
-    searchProfileList,
+    searchProjects,
     selectedSkills,
     setSelectedSkills,
     isExclusiveSkills,
@@ -31,13 +31,13 @@ export const CatalogueContextProvider = ({
     setSelectedCareers,
     selectedLocations,
     setSelectedLocations,
-  } = useCatalogue(seed, initialCatalogueSearchParams);
+  } = usePortfolio(seed, initialPortfoliosSearchParams);
 
   const contextValue = {
-    profileList,
+    projects,
     pagination,
     setCurrentPage,
-    setProfileList,
+    setProjects,
     setPagination,
     searchText,
     setSearchText,
@@ -46,7 +46,7 @@ export const CatalogueContextProvider = ({
     loading,
     selectedSkills,
     setSelectedSkills,
-    searchProfileList,
+    searchProjects,
     isExclusiveSkills,
     setIsExclusiveSkills,
     isExclusiveLanguague,
@@ -68,8 +68,8 @@ export const CatalogueContextProvider = ({
 
 export interface Props {
   seed: number;
-  initialCatalogueSearchParams: CatalogueSearchParams;
+  initialPortfoliosSearchParams: PortfolioSearchParams;
   children: React.ReactNode;
 }
 
-export default CatalogueContextProvider;
+export default PortfoliosContextProvider;

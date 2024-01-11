@@ -1,12 +1,12 @@
 import { Pagination } from "core/profiles/types";
 import { useState } from "react";
-import { CatalogueSearchParams } from "../../use-initial-catalogue-search-params";
+import { PortfolioSearchParams } from "../use-initial-portfolios-search-params";
 
 const usePaginationState = (
-  initialCatalogueSearchParams: CatalogueSearchParams
+  initialPortfolioSearchParams: PortfolioSearchParams
 ) => {
   const [currentPage, setCurrentPage] = useState(
-    initialCatalogueSearchParams.page
+    initialPortfolioSearchParams.page
   );
 
   const [pagination, setPagination] = useState<Pagination>({

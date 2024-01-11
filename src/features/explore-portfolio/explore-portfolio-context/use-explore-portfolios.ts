@@ -1,39 +1,40 @@
 import { useEffect, useMemo, useState } from "react";
-import useProfileList from "./pagination/use-profile-list";
-import usePaginationState from "./pagination/use-pagination-state";
-import useSearchProfileList from "./use-search-profile-list";
-import { useSearchParams } from "react-router-dom";
-import { CatalogueSearchParams } from "../use-initial-catalogue-search-params";
 
-const useCatalogue = (
+import usePaginationState from "./pagination/use-pagination-state";
+import useSearchProjects from "./use-search-projects";
+import { useSearchParams } from "react-router-dom";
+import { PortfolioSearchParams } from "./use-initial-portfolios-search-params";
+import useProjectsList from "./pagination/use-projects-list";
+
+const usePortfolio = (
   seed: number | null,
-  initialCatalogueSearchParams: CatalogueSearchParams
+  initialPortfolioSearchParams: PortfolioSearchParams
 ) => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>(
-    initialCatalogueSearchParams.selectedSkills
+    initialPortfolioSearchParams.selectedSkills
   );
   const [selectedLanguagues, setSelectedLanguagues] = useState<string[]>(
-    initialCatalogueSearchParams.selectedLanguagues
+    initialPortfolioSearchParams.selectedLanguagues
   );
   const [selectedLocations, setSelectedLocations] = useState<string[]>(
-    initialCatalogueSearchParams.selectedLocations
+    initialPortfolioSearchParams.selectedLocations
   );
   const [selectedCareers, setSelectedCareers] = useState<string[]>(
-    initialCatalogueSearchParams.selectedCareers
+    initialPortfolioSearchParams.selectedCareers
   );
   const [isExclusiveSkills, setIsExclusiveSkills] = useState<boolean>(
-    initialCatalogueSearchParams.isExclusiveSkills
+    initialPortfolioSearchParams.isExclusiveSkills
   );
   const [isExclusiveLanguague, setIsExclusiveLanguague] = useState<boolean>(
-    initialCatalogueSearchParams.isExclusiveLanguague
+    initialPortfolioSearchParams.isExclusiveLanguague
   );
 
   const [loading, setLoading] = useState(false);
-  const { profileList, setProfileList } = useProfileList();
+  const { projects, setProjects } = useProjectsList();
   const { setCurrentPage, pagination, setPagination, currentPage } =
-    usePaginationState(initialCatalogueSearchParams);
+    usePaginationState(initialPortfolioSearchParams);
   const [searchText, setSearchText] = useState<string>(
-    initialCatalogueSearchParams.searchText
+    initialPortfolioSearchParams.searchText
   );
 
   const paginatedParams = useMemo(() => {
@@ -58,8 +59,8 @@ const useCatalogue = (
     selectedSkills,
   ]);
 
-  const searchProfileList = useSearchProfileList({
-    setProfileList,
+  const searchProjects = useSearchProjects({
+    setProjects,
     setPagination,
     paginatedParams,
     seed,
@@ -67,16 +68,16 @@ const useCatalogue = (
   });
 
   useEffect(() => {
-    searchProfileList();
-  }, [searchProfileList]);
+    searchProjects();
+  }, [searchProjects]);
 
   useChangeUrlOnChangeParams(paginatedParams);
 
   return {
-    profileList,
+    projects,
     pagination,
     setCurrentPage,
-    setProfileList,
+    setProjects,
     searchText,
     setSearchText,
     setPagination,
@@ -84,7 +85,7 @@ const useCatalogue = (
     loading,
     selectedSkills,
     setSelectedSkills,
-    searchProfileList,
+    searchProjects,
     isExclusiveSkills,
     setIsExclusiveSkills,
     selectedLanguagues,
@@ -107,7 +108,7 @@ function useChangeUrlOnChangeParams({
   selectedCareers,
   isExclusiveSkills,
   isExclusiveLanguague,
-}: CatalogueSearchParams) {
+}: PortfolioSearchParams) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setSearchParams] = useSearchParams();
 
@@ -157,4 +158,4 @@ function useChangeUrlOnChangeParams({
   ]);
 }
 
-export default useCatalogue;
+export default usePortfolio;

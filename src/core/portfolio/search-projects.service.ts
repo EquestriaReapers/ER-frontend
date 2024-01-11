@@ -1,9 +1,9 @@
 import axios from "axios";
-import { PORTFOLIO_URL } from "./config";
+import { SEARCH_PORTFOLIOS_URL } from "./config";
 import { BackendError } from "app/exceptions";
 import { Portfolio } from "core/profiles/types";
-import { PortfolioSearchParams } from "features/catalogue/catalogue-content/use-initial-catalogue-search-params";
 import getUrlWithPaginatedParams from "./get-url-with-paginated-params";
+import { PortfolioSearchParams } from "features/explore-portfolio/explore-portfolio-context/use-initial-portfolios-search-params";
 
 export async function searchPostPaginatedPortfolios({
   currentPaginatedParams,
@@ -12,12 +12,11 @@ export async function searchPostPaginatedPortfolios({
 }: Props): Promise<Response> {
   try {
     const urlWithParams = getUrlWithPaginatedParams(
-      PORTFOLIO_URL,
+      SEARCH_PORTFOLIOS_URL,
       currentPaginatedParams,
       limit,
       seed
     );
-    console.log("url with params", urlWithParams);
 
     const {
       selectedSkills,
@@ -33,11 +32,8 @@ export async function searchPostPaginatedPortfolios({
       countryResidence: selectedLocations,
       career: generateArraySlug(selectedCareers),
     };
-
-    console.log("body params", bodyParams);
-
     const response = await axios.post(urlWithParams, bodyParams);
-    console.log("AAAA", response);
+
     if (!response) throw new Error("Respuesta incomprensible del servidor");
     return response.data;
   } catch (error) {
@@ -46,7 +42,7 @@ export async function searchPostPaginatedPortfolios({
 }
 
 interface Response {
-  portfolio: Portfolio[];
+  portfolios: Portfolio[];
   pagination: {
     itemCount: number;
     totalItems: number;

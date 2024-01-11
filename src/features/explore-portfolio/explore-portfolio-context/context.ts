@@ -1,8 +1,8 @@
+import { Pagination, Portfolio } from "core/profiles/types";
 import { createContext } from "react";
-import { Pagination, Profile } from "core/profiles/types";
 
-const ProfileContext = createContext<CatalogueContextI>({
-  profileList: [],
+const PortfoliosContext = createContext<PortfoliosContextI>({
+  projects: [],
   pagination: {
     itemCount: 0,
     totalItems: 0,
@@ -12,7 +12,7 @@ const ProfileContext = createContext<CatalogueContextI>({
     randomSeed: 0,
   },
   setCurrentPage: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
-  setProfileList: (() => {}) as React.Dispatch<React.SetStateAction<Profile[]>>,
+  setProjects: (() => {}) as React.Dispatch<React.SetStateAction<Portfolio[]>>,
   searchText: "",
   setSearchText: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
   setPagination: (() => {}) as unknown as React.Dispatch<
@@ -21,7 +21,7 @@ const ProfileContext = createContext<CatalogueContextI>({
   currentPage: 0,
   loading: false,
   seed: 0,
-  searchProfileList: async () => {},
+  searchProjects: async () => {},
   selectedSkills: [],
   setSelectedSkills: (() => {}) as React.Dispatch<
     React.SetStateAction<string[]>
@@ -48,18 +48,18 @@ const ProfileContext = createContext<CatalogueContextI>({
   >,
 });
 
-export interface CatalogueContextI {
-  profileList: Profile[];
+export interface PortfoliosContextI {
+  projects: Portfolio[];
   pagination: Pagination;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  setProfileList: React.Dispatch<React.SetStateAction<Profile[]>>;
+  setProjects: React.Dispatch<React.SetStateAction<Portfolio[]>>;
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
   setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
   currentPage: number;
   loading: boolean;
   seed: number;
-  searchProfileList: () => Promise<void>;
+  searchProjects: () => Promise<void>;
   // Skills
   selectedSkills: string[];
   setSelectedSkills: React.Dispatch<React.SetStateAction<string[]>>;
@@ -78,4 +78,4 @@ export interface CatalogueContextI {
   setSelectedCareers: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-export default ProfileContext;
+export default PortfoliosContext;

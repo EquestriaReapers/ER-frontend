@@ -84,6 +84,10 @@ const routerConfig: RouteObject[] = [
         path: "/explore-portfolios/",
         element: <ExplorePortfolio />,
       },
+      {
+        path: "/explore-portfolios/:seed",
+        element: <ExplorePortfolio />,
+      },
     ],
   },
 ];

@@ -1,13 +1,13 @@
-import { Pagination, Profile } from "core/profiles/types";
-import { searchPostPaginatedProfiles } from "core/profiles/get-post-search-paginated.service";
+import { Pagination, Portfolio } from "core/profiles/types";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
-import { CatalogueSearchParams } from "../use-initial-catalogue-search-params";
+import { PortfolioSearchParams } from "./use-initial-portfolios-search-params";
+import { searchPostPaginatedPortfolios } from "core/portfolio/search-projects.service";
 
 const PER_PAGE = 6;
 
-const useSearchProfileList = ({
-  setProfileList,
+const useSearchProjects = ({
+  setProjects,
   setPagination,
   paginatedParams,
   seed,
@@ -15,16 +15,16 @@ const useSearchProfileList = ({
 }: Props) => {
   const { showErrorToast } = useErrorToast();
   const _textPaginatedParams = JSON.stringify(paginatedParams);
-  const searchProfileList = useCallback(async () => {
+  const searchProjects = useCallback(async () => {
     try {
       const pagiantedParamJsons = JSON.parse(_textPaginatedParams);
       setLoading(true);
-      const response = await searchPostPaginatedProfiles({
+      const response = await searchPostPaginatedPortfolios({
         currentPaginatedParams: pagiantedParamJsons,
         limit: PER_PAGE,
         seed,
       });
-      setProfileList(response.profiles);
+      setProjects(response.portfolios);
       setPagination(response.pagination);
     } catch (error) {
       showErrorToast(error);
@@ -35,19 +35,19 @@ const useSearchProfileList = ({
     _textPaginatedParams,
     setLoading,
     seed,
-    setProfileList,
+    setProjects,
     setPagination,
     showErrorToast,
   ]);
-  return searchProfileList;
+  return searchProjects;
 };
 
 interface Props {
-  setProfileList: (profileList: Profile[]) => void;
+  setProjects: (projects: Portfolio[]) => void;
   setPagination: (pagination: Pagination) => void;
   seed: number | null;
   setLoading: (loading: boolean) => void;
-  paginatedParams: CatalogueSearchParams;
+  paginatedParams: PortfolioSearchParams;
 }
 
-export default useSearchProfileList;
+export default useSearchProjects;

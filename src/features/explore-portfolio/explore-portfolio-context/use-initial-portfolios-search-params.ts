@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-export default function useInitialCatalogueSearchParams(): CatalogueSearchParams {
+export default function useInitialPortfoliosSearchParams(): PortfolioSearchParams {
   const [searchParams] = useSearchParams();
   const paramsPage = searchParams.get("page");
   const paramsSearchText = searchParams.get("searchText");
@@ -45,7 +45,7 @@ export default function useInitialCatalogueSearchParams(): CatalogueSearchParams
   };
 }
 
-export interface CatalogueSearchParams {
+export interface PortfolioSearchParams {
   searchText: string;
   page: number;
   // Selector exclusivo / inclusivo de habilidades
