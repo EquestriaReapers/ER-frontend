@@ -27,7 +27,13 @@ const EducationItem = ({ item, className }: Props) => {
                 {item.title}
               </Typography>
             </Box>
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
+            >
               <IconButton onClick={updateEducationCV} disabled={item.isUCAB}>
                 <Typography
                   className={
