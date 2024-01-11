@@ -49,7 +49,6 @@ function useLogin() {
           email,
           password,
         });
-        showSuccessToast("Inicio de sesión exitoso");
         dispatch(loginAction(result));
         showSuccessToast(getRandomWelcomePhrase());
         navigate(`/home`);
