@@ -70,7 +70,6 @@ const ModalContent = ({ setIsOpen }: Props) => {
             )}
           />
         )}
-        {console.log(profile.skills)}
         <Box
           sx={{ border: "solid 1px #CBCBCB", borderRadius: "6px", p: "10px" }}
         >
