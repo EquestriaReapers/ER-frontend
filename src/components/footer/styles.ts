@@ -3,8 +3,7 @@ import { Theme } from "@mui/material";
 
 export const FooterStyles = {
     width: "100%", 
-    backgroundColor: "#CDCDCD",
-    minHeight:"70vh",
+    backgroundColor: "#CDCDCD",   
     height: "240px",
 };
 

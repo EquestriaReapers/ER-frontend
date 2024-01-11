@@ -16,8 +16,6 @@ export const useHomePageContainerStyles = () => {
   );
 
   const HomePageStyles = {
-    height: isLargeScreen ? "300vh" : "200vh",
-    minHeight: isSmallScreen ? "4200px" : isLargeScreen ? "4390px" : "2400px",
     minWidth: isSmallScreen ? "280px" : isMediumScreen ? "600px" : "900px",
     width: "100%",
   };
@@ -36,8 +34,6 @@ export const useMainContainerStyles = () => {
 
   const MainContainerStyles = {
     width: "100%",
-    height: isLargeScreen ? "300vh" : "200vh",
-    minHeight: isSmallScreen ? "4200px" : isLargeScreen ? "4390px" : "2400px",
   };
 
   return MainContainerStyles;
