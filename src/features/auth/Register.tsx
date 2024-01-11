@@ -10,7 +10,8 @@ import { Box } from "@mui/material";
 import SpinnerAbsolute from "components/spinner-absolute";
 
 const Register: FunctionComponent = () => {
-  const { loading, onSubmit } = useRegister();
+  const { loading, startedRegisterSuccesfully, onSubmit } = useRegister();
+ 
 
   return (
     <Box
@@ -20,7 +21,7 @@ const Register: FunctionComponent = () => {
     >
       {loading && <SpinnerAbsolute />}
       <FormControl margin="normal">
-        <RegisterForm disabled={loading} onSubmit={onSubmit} />
+        <RegisterForm disabled={loading} startedregister={startedRegisterSuccesfully} onSubmit={onSubmit} />
       </FormControl>
     </Box>
   );
@@ -31,6 +32,7 @@ function useRegister() {
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
   const [loading, setLoading] = useState(false);
+  const [startedRegisterSuccesfully, setStartedRegisterSuccesfully] = useState(true);
   const onSubmit = useCallback(
     async ({ email, password, confirmPassword }: RegisterPayload) => {
       setLoading(true);
@@ -50,6 +52,7 @@ function useRegister() {
           password,
         });
         showSuccessToast(getRandomWelcomePhrase());
+        setStartedRegisterSuccesfully(true);
       } catch (error) {
         showErrorToast(error);
       } finally {
@@ -59,7 +62,7 @@ function useRegister() {
     [showErrorToast, showSuccessToast]
   );
 
-  return { onSubmit, loading };
+  return { onSubmit, startedRegisterSuccesfully, loading };
 }
 
 export interface RegisterPayload {

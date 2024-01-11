@@ -22,6 +22,7 @@ import {
 import "../../styles/index.css";
 import newPassword from "core/auth/reset-password.service";
 import { useNavigate } from "react-router-dom";
+import registerImage from "./images/forgot-password.png";
 
 const NewPassword: FunctionComponent = () => {
   const CenterBoxStyles = useCenterBoxStyles();

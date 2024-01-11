@@ -21,6 +21,7 @@ import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
 import HomePage from "features/home-page";
 import NewPassword from "features/auth/NewPassword";
+import RegisterSuccess from "features/auth/RegisterSuccess";
 
 const theme = createTheme({
   palette: {
@@ -77,6 +78,10 @@ const routerConfig: RouteObject[] = [
       {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/successfully-confirm",
+        element: <RegisterSuccess />,
       },
     ],
   },
