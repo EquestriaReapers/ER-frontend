@@ -35,7 +35,6 @@ const ProfileContent = () => {
   const transformedCareerName = profile.mainTitle || _transformedCareerName;
   const { downloadCurriculumPDF, loading: loadingCurriculum } =
     useDownloadCurriculumPDF(profile);
-
   return (
     <Box>
       <Box sx={pageContainerStyles}>

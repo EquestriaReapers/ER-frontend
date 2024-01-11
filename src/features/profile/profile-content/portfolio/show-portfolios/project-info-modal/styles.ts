@@ -14,7 +14,7 @@ export const modalStyle = {
 
 export const titleStyles = {
   fontSize: { xs: "20px", sm: "22px", md: "30px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
