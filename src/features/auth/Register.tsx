@@ -11,7 +11,6 @@ import SpinnerAbsolute from "components/spinner-absolute";
 
 const Register: FunctionComponent = () => {
   const { loading, startedRegisterSuccesfully, onSubmit } = useRegister();
- 
 
   return (
     <Box
@@ -21,7 +20,11 @@ const Register: FunctionComponent = () => {
     >
       {loading && <SpinnerAbsolute />}
       <FormControl margin="normal">
-        <RegisterForm disabled={loading} startedregister={startedRegisterSuccesfully} onSubmit={onSubmit} />
+        <RegisterForm
+          disabled={loading}
+          startedregister={startedRegisterSuccesfully}
+          onSubmit={onSubmit}
+        />
       </FormControl>
     </Box>
   );
@@ -32,7 +35,9 @@ function useRegister() {
   const { showSuccessToast } = useSuccessToast();
   const { showErrorToast } = useErrorToast();
   const [loading, setLoading] = useState(false);
-  const [startedRegisterSuccesfully, setStartedRegisterSuccesfully] = useState(false);
+  const [startedRegisterSuccesfully, setStartedRegisterSuccesfully] =
+    useState(false);
+
   const onSubmit = useCallback(
     async ({ email, password, confirmPassword }: RegisterPayload) => {
       setLoading(true);
