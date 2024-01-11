@@ -5,6 +5,9 @@ export const FooterStyles = {
     width: "100%", 
     backgroundColor: "#CDCDCD",   
     height: "240px",
+    display: "flex",
+    flexDirection: "column",
+    gap: "40px",
 };
 
 
@@ -42,13 +45,14 @@ export const useFooterFirstLineStyles = () => {
 
 export const FooterTextStyles = {
     color: "#343434",
-    textDecoration: "none"
+    textDecoration: "none",
 }
 
 export const FooterSecondLine = {
     width: "80px",
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    gap: "40px",
 }
 
 export const FooterIconStyles = {
