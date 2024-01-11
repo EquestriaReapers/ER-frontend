@@ -20,7 +20,6 @@ import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import LandingPage from "features/landing-page";
 import "styles/index.css";
-import Home from "features/home-page/LandingPage";
 import HomePage from "features/home-page";
 import NewPassword from "features/auth/NewPassword";
 
@@ -87,7 +86,7 @@ const routerConfig: RouteObject[] = [
       },
       {
         path: "/home",
-        element: <Home />,
+        element: <HomePage />,
       },
     ],
   },
