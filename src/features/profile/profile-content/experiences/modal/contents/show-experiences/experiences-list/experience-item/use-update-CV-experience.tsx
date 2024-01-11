@@ -55,7 +55,6 @@ const useUpdateExperienceCV = (isVisible: boolean, experience: Experience) => {
 function useGetToken() {
   const navigate = useNavigate();
   const { token } = useAuthState();
-  console.log(token);
   return useCallback(() => {
     if (!token) {
       navigate("/login");
