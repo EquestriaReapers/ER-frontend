@@ -17,13 +17,13 @@ export const titleStyles = {
 
 export const titleMovileStyles = {
   color: "black",
-  ml: 1,
   fontFamily: "Inter",
   fontSize: "16px",
   textTransform: "Capitalize",
   "&:hover": {
     color: "#007935",
   },
+  fontWeight: "400",
 };
 
 export const iconStyles = {
@@ -39,14 +39,13 @@ export const iconStyles = {
 
 export const titleStylesLogoutM = {
   color: "black",
-  ml: 1,
   fontFamily: "Inter",
   fontSize: "16px",
   textTransform: "Capitalize",
   "&:hover": {
     color: "#007935",
   },
-  justifyContent: "flex-start",
+  fontWeight: "400",
 };
 
 export const inlineStyles = {
@@ -59,8 +58,8 @@ export const inlineStyles = {
 export const inlineMobileStyles = {
   display: "flex",
   flexWrap: "wrap",
-  p: "15px",
   flexDirection: "column",
   justifyContent: "flex-start",
   width: "200px",
+  marginLeft: "10px",
 };
