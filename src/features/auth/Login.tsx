@@ -51,7 +51,7 @@ function useLogin() {
         });
         dispatch(loginAction(result));
         showSuccessToast(getRandomWelcomePhrase());
-        navigate(`/dashboard`);
+        navigate(`/home`);
       } catch (error) {
         showErrorToast(error);
       } finally {
@@ -66,23 +66,23 @@ function useLogin() {
 
 function getRandomWelcomePhrase() {
   const phrases = [
-    "¡Bienvenido devuelta 👋!",
-    "¡Hola de nuevo 👋!",
-    "¡Qué bueno verte otra vez 👋!",
-    "¡Qué bueno verte de nuevo 👋!",
-    "¡Un gusto verte otra vez 👋!",
+    "¡Bienvenido de vuelta! 👋",
+    "¡Hola de nuevo! 👋",
+    "¡Qué bueno verte otra vez! 👋",
+    "¡Qué bueno verte de nuevo! 👋",
+    "¡Un gusto verte otra vez! 👋",
   ];
   return phrases[Math.floor(Math.random() * phrases.length)];
 }
 
 function getFieldsRandomErrorPhrase() {
   const phrases = [
-    "Recuerda debes introducir el usuario y la contraseña 😬!",
-    "Si no introduces el usuario y la contraseña no podras autenticarte 😣!",
-    "Por favor introduce el usuario y la contraseña 🙏!",
-    "Por favor introduce el usuario y la contraseña 😅!",
-    "Oye!, no olvides introducir el usuario y la contraseña 😖!",
-    "No olvides introducir el usuario y la contraseña antes 😁!",
+    "¡Recuerda que debes introducir el usuario y la contraseña! 😬",
+    "¡Si no introduces el usuario y la contraseña, no podrás autenticarte! 😣",
+    "Por favor, ¡introduce el usuario y la contraseña! 🙏",
+    "Por favor, ¡introduce el usuario y la contraseña! 😅",
+    "¡Oye! ¡No olvides introducir el usuario y la contraseña! 😖",
+    "¡No olvides introducir el usuario y la contraseña antes! 😁",
   ];
   return phrases[Math.floor(Math.random() * phrases.length)];
 }

@@ -21,7 +21,6 @@ export async function updateProfile(
 
 export interface UpdateProfileBody {
   description: string;
-  mainTitle: string;
   lastname: string;
   name: string;
 }

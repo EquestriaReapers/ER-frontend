@@ -1,67 +1,52 @@
-import { Toolbar, Box, AppBar, Button } from "@mui/material/";
-import { navbarStyles, titleStyles, inlineStyles } from "./styles";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AuthState } from "core/auth/store/types";
+import {
+  Box,
+  AppBar,
+  Toolbar,
+  useMediaQuery,
+  Drawer,
+  List,
+} from "@mui/material/";
+
+import { useState } from "react";
+import { navbarStyles } from "./styles";
+import Desktop from "./desktop";
+import Mobile from "./mobile";
+import { useSelector } from "react-redux";
 import { User } from "core/users/types";
-import { logout } from "core/auth/store/auth-slice";
-import SvgComponent from "./SvgComponent";
+import { AuthState } from "core/auth/store/types";
+import LinkList from "./link-list";
 
 const Navbar = () => {
+  const isMobile = useMediaQuery("(max-width: 600px)");
+  const [isOpen, setIsOpen] = useState(false);
   const user = useCurrentUser();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
-  const onLogout = () => {
-    dispatch(logout());
-    navigate("/login");
+  const closeDrawer = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
     <Box>
       <AppBar position="static">
         <Toolbar sx={navbarStyles}>
-          <Box>
-            <Link to="/">
-              <SvgComponent />
-            </Link>
-          </Box>
-          <Box sx={inlineStyles}>
-            <Link to="/home">
-              <Button sx={titleStyles}>Home</Button>
-            </Link>
-            {user && (
-              <Link to={`/profile/${user.id}`}>
-                <Button sx={titleStyles}>Perfil</Button>
-              </Link>
-            )}
-            {!user && (
-              <Link to={`/login`}>
-                <Button sx={titleStyles}>Login</Button>
-              </Link>
-            )}
-            {!user && (
-              <Link to={`/register`}>
-                <Button sx={titleStyles}>Registro</Button>
-              </Link>
-            )}
-            <Link to={`/catalogue`}>
-              <Button sx={titleStyles}>Catálogo</Button>
-            </Link>
-            {user && (
-              <Button onClick={onLogout} sx={titleStyles}>
-                Salir
-              </Button>
-            )}
-          </Box>
+          {isMobile ? (
+            <Mobile setIsOpen={setIsOpen} />
+          ) : (
+            <Desktop setIsOpen={setIsOpen} />
+          )}
         </Toolbar>
       </AppBar>
+      <Drawer anchor="left" open={isOpen} onClose={closeDrawer}>
+        <List>
+          <LinkList user={user} />
+        </List>
+      </Drawer>
     </Box>
   );
 };
 
+export default Navbar;
+
 function useCurrentUser(): User | null {
   return useSelector<{ auth: AuthState }>((state) => state.auth.user) as User;
 }
-
-export default Navbar;

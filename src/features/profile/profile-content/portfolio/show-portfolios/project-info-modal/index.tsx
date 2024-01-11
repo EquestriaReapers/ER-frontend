@@ -52,7 +52,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           <Typography
             sx={{
               color: "#000",
-              fontFamily: "Inter",
+              fontFamily: "inter",
               fontSize: "24px",
               fontWeight: "700",
               textTransform: "capitalize",

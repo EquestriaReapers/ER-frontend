@@ -7,6 +7,7 @@ export interface Profile {
   user: User;
   description: string;
   mainTitle: string;
+  mainTitleCode: string;
   countryResidence: string;
   website: string;
   education: Education[];
@@ -31,7 +32,7 @@ export interface Skill {
   id: number;
   name: string;
   type: SkillType;
-  level: string;
+  isVisible: boolean;
 }
 
 export interface ContactMethod {
