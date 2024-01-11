@@ -81,7 +81,7 @@ const routerConfig: RouteObject[] = [
         element: <HomePage />,
       },
       {
-        path: "/explore-portfolio/",
+        path: "/explore-portfolios/",
         element: <ExplorePortfolio />,
       },
     ],
