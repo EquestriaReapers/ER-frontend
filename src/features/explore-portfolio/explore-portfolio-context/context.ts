@@ -1,4 +1,4 @@
-import { Pagination, Portfolio } from "core/profiles/types";
+import { Pagination } from "core/profiles/types";
 import { createContext } from "react";
 
 const PortfoliosContext = createContext<PortfoliosContextI>({
@@ -12,7 +12,7 @@ const PortfoliosContext = createContext<PortfoliosContextI>({
     randomSeed: 0,
   },
   setCurrentPage: (() => {}) as React.Dispatch<React.SetStateAction<number>>,
-  setProjects: (() => {}) as React.Dispatch<React.SetStateAction<Portfolio[]>>,
+  setProjects: (() => {}) as React.Dispatch<React.SetStateAction<Project[]>>,
   searchText: "",
   setSearchText: (() => {}) as React.Dispatch<React.SetStateAction<string>>,
   setPagination: (() => {}) as unknown as React.Dispatch<
@@ -28,11 +28,28 @@ const PortfoliosContext = createContext<PortfoliosContextI>({
   >,
 });
 
+export interface Project {
+  id: number;
+  title: string;
+  profileId: number;
+  description: string;
+  location: string;
+  dateEnd: string;
+  imagePrincipal: string;
+  image: string[];
+  url: null;
+  profile: {
+    name: string;
+    lastname: string;
+    mainTitle: string;
+  };
+}
+
 export interface PortfoliosContextI {
-  projects: Portfolio[];
+  projects: Project[];
   pagination: Pagination;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
-  setProjects: React.Dispatch<React.SetStateAction<Portfolio[]>>;
+  setProjects: React.Dispatch<React.SetStateAction<Project[]>>;
   searchText: string;
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
   setPagination: React.Dispatch<React.SetStateAction<Pagination>>;

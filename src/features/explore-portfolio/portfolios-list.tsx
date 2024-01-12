@@ -2,14 +2,13 @@ import { Box, Pagination } from "@mui/material";
 import SpinnerBlock from "components/spinner-block";
 import usePortfolioContext from "./explore-portfolio-context/use-explore-portfolios-context";
 import ShowPortfolios from "./show-portfolios";
-import { PortfolioSearchParams } from "./explore-portfolio-context/use-initial-portfolios-search-params";
 import { ChangeEvent } from "react";
 
-const PortfoliosList = ({ seed, initialPortfoliosSearchParams }: Props) => {
+const PortfoliosList = () => {
   const { loading, pagination, setCurrentPage } = usePortfolioContext();
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column" }}>
+    <>
       {loading ? (
         <>
           <SpinnerBlock />
@@ -32,26 +31,21 @@ const PortfoliosList = ({ seed, initialPortfoliosSearchParams }: Props) => {
                 fontColor: "#545454",
               }}
             >
-              Se han encontrado {pagination.totalItems} projectos que coinciden
-              con tu busqueda
+              Se han encontrado {pagination.totalItems} proyectos que coinciden
+              con tu búsqueda
             </Box>
           )}
+
+          <ShowPortfolios />
 
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               flexDirection: "column",
-              my: "46px",
-              width: "90%",
-              backgroundColor: "#F4F4F4",
-              justifyItems: "center",
+              width: "100%",
             }}
           >
-            <ShowPortfolios
-              seed={seed}
-              initialPortfoliosSearchParams={initialPortfoliosSearchParams}
-            />
             <Pagination
               count={pagination.totalPages}
               page={pagination.currentPage}
@@ -65,12 +59,8 @@ const PortfoliosList = ({ seed, initialPortfoliosSearchParams }: Props) => {
           </Box>
         </Box>
       )}
-    </Box>
+    </>
   );
 };
 
-interface Props {
-  seed: number;
-  initialPortfoliosSearchParams: PortfolioSearchParams;
-}
 export default PortfoliosList;

@@ -1,9 +1,9 @@
 import axios from "axios";
 import { SEARCH_PORTFOLIOS_URL } from "./config";
 import { BackendError } from "app/exceptions";
-import { Portfolio } from "core/profiles/types";
 import getUrlWithPaginatedParams from "./get-url-with-paginated-params";
 import { PortfolioSearchParams } from "features/explore-portfolio/explore-portfolio-context/use-initial-portfolios-search-params";
+import { Project } from "features/explore-portfolio/explore-portfolio-context/context";
 
 export async function searchPostPaginatedPortfolios({
   currentPaginatedParams,
@@ -34,7 +34,7 @@ export async function searchPostPaginatedPortfolios({
 }
 
 interface Response {
-  portfolios: Portfolio[];
+  portfolios: Project[];
   pagination: {
     itemCount: number;
     totalItems: number;

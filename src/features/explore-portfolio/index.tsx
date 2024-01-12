@@ -23,11 +23,18 @@ const ExplorePortfolio = () => {
         seed={seed}
         initialPortfoliosSearchParams={initialPortfoliosSearchParams}
       >
-        <SearchBar />
-        <PortfoliosList
-          seed={seed}
-          initialPortfoliosSearchParams={initialPortfoliosSearchParams}
-        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <SearchBar />
+          <Box sx={{ display: "flex", flexDirection: "row", width: "100%" }}>
+            <PortfoliosList />
+          </Box>
+        </Box>
       </PortfoliosContextProvider>
     </Box>
   );

@@ -2,7 +2,7 @@ import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { modalStyle } from "./styles";
-import { Portfolio } from "core/profiles/types";
+import { Project } from "features/explore-portfolio/explore-portfolio-context/context";
 
 const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
   const getYear = (date: string | number | Date) =>
@@ -97,8 +97,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           </Typography>
         </Box>
 
-        {/* 
- <Box
+        <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
@@ -155,14 +154,13 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
             ))
           )}
         </Box>
-              */}
       </Box>
     </Box>
   );
 };
 
 interface Props {
-  project: Portfolio;
+  project: Project;
   setIsOpen: (isOpen: boolean) => void;
 }
 export default ProjectInfoModal;

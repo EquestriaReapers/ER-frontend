@@ -1,10 +1,11 @@
-import { Pagination, Portfolio } from "core/profiles/types";
+import { Pagination } from "core/profiles/types";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback } from "react";
 import { PortfolioSearchParams } from "./use-initial-portfolios-search-params";
 import { searchPostPaginatedPortfolios } from "core/portfolio/search-projects.service";
+import { Project } from "./context";
 
-const PER_PAGE = 6;
+const PER_PAGE = 12;
 
 const useSearchProjects = ({
   setProjects,
@@ -17,10 +18,10 @@ const useSearchProjects = ({
   const _textPaginatedParams = JSON.stringify(paginatedParams);
   const searchProjects = useCallback(async () => {
     try {
-      const pagiantedParamJsons = JSON.parse(_textPaginatedParams);
+      const paginatedParamJsons = JSON.parse(_textPaginatedParams);
       setLoading(true);
       const response = await searchPostPaginatedPortfolios({
-        currentPaginatedParams: pagiantedParamJsons,
+        currentPaginatedParams: paginatedParamJsons,
         limit: PER_PAGE,
         seed,
       });
@@ -43,7 +44,7 @@ const useSearchProjects = ({
 };
 
 interface Props {
-  setProjects: (projects: Portfolio[]) => void;
+  setProjects: (projects: Project[]) => void;
   setPagination: (pagination: Pagination) => void;
   seed: number | null;
   setLoading: (loading: boolean) => void;

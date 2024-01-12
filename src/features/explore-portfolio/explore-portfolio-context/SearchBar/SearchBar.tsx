@@ -2,7 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
-import { Typography, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import {
   InputBaseStyles,
   PaperStyles,
@@ -36,7 +36,14 @@ const SearchBar = () => {
   }, [searchText]);
 
   return (
-    <>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "center",
+      }}
+    >
       <StyledPaper>
         <StyledSearchIcon />
         <StyledInputBase
@@ -60,7 +67,7 @@ const SearchBar = () => {
           Buscar
         </Typography>
       </StyledButton>
-    </>
+    </Box>
   );
 };
 

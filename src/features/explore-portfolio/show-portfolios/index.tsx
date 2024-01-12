@@ -1,25 +1,9 @@
 import ProjectCard from "./project-card";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import usePortfolioContext from "../explore-portfolio-context/use-explore-portfolios-context";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { useState } from "react";
-import { searchPostPaginatedPortfolios } from "core/portfolio/search-projects.service";
-import { PortfolioSearchParams } from "../explore-portfolio-context/use-initial-portfolios-search-params";
 
-const ShowPortfolios = ({ seed, initialPortfoliosSearchParams }: Props) => {
-  const { projects, pagination } = usePortfolioContext();
-  const [items, setItems] = useState(Array.from({ length: 20 }));
-  const [hasMore, setHasMore] = useState(true);
-
-  const getMoreProjects = () => {
-    if (items.length >= projects.length) {
-      setHasMore(false);
-      return;
-    }
-    try {
-      const data = searchPostPaginatedPortfolios({});
-    } catch (error) {}
-  };
+const ShowPortfolios = () => {
+  const { projects } = usePortfolioContext();
 
   return (
     <Box
@@ -30,38 +14,20 @@ const ShowPortfolios = ({ seed, initialPortfoliosSearchParams }: Props) => {
         gap: 3,
         width: "100%",
         justifyContent: {
-          xs: "flex-start",
-          sm: "flex-start",
+          xs: "center",
+          sm: "center",
           md: "space-around",
-          lg: "flex-start",
-          xl: "flex-start",
+          lg: "center",
         },
       }}
     >
-      {/* 
-      <InfiniteScroll
-        dataLength={items.length}
-        next={getMoreProjects}
-        hasMore={hasMore}
-        endMessage={<Typography> No hay proyectos!</Typography>}
-        loader={<Typography> Cargando...</Typography>}
-      >
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
-      </InfiniteScroll>
-      */}
-
       {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
+        <>
+          <ProjectCard key={project.id} project={project} />
+        </>
       ))}
     </Box>
   );
 };
-
-interface Props {
-  seed: number;
-  initialPortfoliosSearchParams: PortfolioSearchParams;
-}
 
 export default ShowPortfolios;

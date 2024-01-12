@@ -1,8 +1,8 @@
-import { Portfolio } from "core/profiles/types";
 import { useState } from "react";
+import { Project } from "../context";
 
 const useProjectsList = () => {
-  const [projects, setProjects] = useState<Portfolio[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   return { projects, setProjects };
 };
