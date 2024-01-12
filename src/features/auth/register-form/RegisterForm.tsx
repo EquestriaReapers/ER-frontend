@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import useRegisterFormState from "./use-register-form-state";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "../images/ucab-logo.png";

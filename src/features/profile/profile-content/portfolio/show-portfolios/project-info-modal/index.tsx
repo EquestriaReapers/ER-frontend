@@ -78,42 +78,39 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
             }}
           >
             <Box sx={{ display: "flex", flexDirection: "row" }}>
-              <Typography
-                sx={{
-                  color: "#000",
-                  fontFamily: "inter",
-                  fontSize: "26px",
-                  fontWeight: "700",
-                  textTransform: "capitalize",
-                }}
-              >
-                {project.title}
-              </Typography>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  width: "100%",
+                  width: "60%",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "#000",
+                    fontFamily: "inter",
+                    fontSize: "26px",
+                    fontWeight: "700",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {project.title}
+                </Typography>
+              </Box>
+
+              <Box
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  flexDirection: "column",
+                  width: "40%",
                   justifyContent: "center",
                   alignItems: "flex-end",
                 }}
               >
-                <Box
-                  component="a"
-                  href={`/profile/${profile.userId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    textDecoration: "none",
-                    fontFamily: "inter",
-                    fontSize: "12px",
-                  }}
-                >
-                  {profile.user.name} {profile.user.lastname}
-                </Box>
-
                 {!project.url ? (
-                  <Typography sx={{ fontFamily: "inter", fontSize: "12px" }}>
+                  <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
                     {project.url ? project.url : "No hay url para mostrar"}
                   </Typography>
                 ) : (
@@ -121,20 +118,33 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                     component="a"
                     href={project.url}
                     sx={{
+                      backgroundColor: "#0089E2",
                       textDecoration: "none",
                       fontFamily: "inter",
-                      fontSize: "12px",
+                      fontSize: "16px",
+                      textAlign: "center",
+                      color: "white",
+                      px: "18px",
+                      py: "6px",
+                      borderRadius: "6px",
                     }}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {project.url}
+                    Ver página del proyecto
                   </Box>
                 )}
               </Box>
             </Box>
 
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
               <Typography
                 sx={{
                   color: "#000",
@@ -146,6 +156,38 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
               >
                 {getYear(project.dateEnd)} | {project.location}
               </Typography>
+              <Box
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "inter",
+                    fontSize: "16px",
+                    color: "black",
+                    marginRight: "6px",
+                  }}
+                >
+                  Autor del proyecto:
+                </Typography>
+                <Box
+                  component="a"
+                  href={`/profile/${profile.userId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    textDecoration: "none",
+                    fontFamily: "inter",
+                    fontSize: "16px",
+                    color: "#0089E2",
+                  }}
+                >
+                  {profile.user.name} {profile.user.lastname}
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Box>
@@ -229,6 +271,70 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                 ></CardMedia>
               </Card>
             ))
+          )}
+        </Box>
+        <Box
+          sx={{
+            display: { xs: "flex", sm: "none" },
+            flexDirection: "column",
+            width: "100%",
+            justifyContent: "center",
+            gap: "10px",
+          }}
+        >
+          <Box>
+            <Typography
+              sx={{
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "black",
+                marginRight: "6px",
+              }}
+            >
+              Autor del proyecto:
+            </Typography>
+            <Box
+              component="a"
+              href={`/profile/${profile.userId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                textDecoration: "none",
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "#0089E2",
+              }}
+            >
+              {profile.user.name} {profile.user.lastname}
+            </Box>
+          </Box>
+
+          {!project.url ? (
+            <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
+              {project.url ? project.url : "No hay url para mostrar"}
+            </Typography>
+          ) : (
+            <Box
+              component="a"
+              href={project.url}
+              sx={{
+                maxWidth: "300px",
+                backgroundColor: "#0089E2",
+                textDecoration: "none",
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "white",
+                px: "18px",
+                py: "6px",
+                borderRadius: "6px",
+                textAlign: "center",
+                alignSelf: "center",
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ir a la página del proyecto
+            </Box>
           )}
         </Box>
       </Box>
