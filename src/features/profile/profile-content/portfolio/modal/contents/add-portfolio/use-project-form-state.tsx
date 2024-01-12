@@ -7,9 +7,14 @@ const useProjectState = () => {
   const [location, setLocation] = useState("");
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
   const [newFiles, setNewFiles] = useState<File[]>([]);
+  const [url, setUrl] = useState("");
 
   const onTitleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
+  }, []);
+
+  const onUrlChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
   }, []);
 
   const onDescriptionChange = useCallback(
@@ -74,11 +79,13 @@ const useProjectState = () => {
     location,
     dateEnd,
     newFiles,
+    url,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
     onImageChange,
+    onUrlChange,
     onDragOver,
     onDrop,
     deleteFile,

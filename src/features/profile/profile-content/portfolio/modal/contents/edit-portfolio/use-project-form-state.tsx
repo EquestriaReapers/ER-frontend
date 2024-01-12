@@ -3,6 +3,7 @@ import { ChangeEvent, useCallback, useEffect, useState } from "react";
 
 const useEditProjectState = () => {
   const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [dateEnd, setDateEnd] = useState<Dayjs | null>(null);
@@ -13,6 +14,9 @@ const useEditProjectState = () => {
 
   const onTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
+  };
+  const onUrlChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
   };
   const onDescriptionChange = (event: ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
@@ -94,6 +98,7 @@ const useEditProjectState = () => {
 
   return {
     title,
+    url,
     description,
     location,
     dateEnd,
@@ -102,12 +107,14 @@ const useEditProjectState = () => {
     deletedImages,
     previousImages,
     setTitle,
+    setUrl,
     setDescription,
     setLocation,
     setDateEnd,
     setImage,
     setDeletedImages,
     onTitleChange,
+    onUrlChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,

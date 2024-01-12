@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material/";
-import { titleStyles, inlineStyles } from "../styles";
+import { titleStyles, inlineStyles, logoutStyles } from "../styles";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthState } from "core/auth/store/types";
 import { useDispatch, useSelector } from "react-redux";
@@ -58,8 +58,11 @@ const NavBarDesktop = ({ setIsOpen }: Props) => {
         <Link to={`/catalogue`}>
           <Button sx={titleStyles}>Catálogo</Button>
         </Link>
+        <Link to={`/explore-portfolios`}>
+          <Button sx={titleStyles}>Portafolios</Button>
+        </Link>
         {user && (
-          <Button onClick={onLogout} sx={titleStyles}>
+          <Button onClick={onLogout} sx={logoutStyles}>
             Salir
           </Button>
         )}

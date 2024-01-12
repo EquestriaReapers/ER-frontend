@@ -1,8 +1,8 @@
-import { Portfolio } from "core/profiles/types";
+import { Portfolio, Profile } from "core/profiles/types";
 import ProjectCard from "./project-card";
 import { Box } from "@mui/material";
 
-const ShowPortfolios = ({ portfolio }: Props) => {
+const ShowPortfolios = ({ profile, portfolio }: Props) => {
   return (
     <Box
       sx={{
@@ -20,12 +20,13 @@ const ShowPortfolios = ({ portfolio }: Props) => {
       }}
     >
       {portfolio.map((project) => (
-        <ProjectCard key={project.id} project={project} />
+        <ProjectCard key={project.id} profile={profile} project={project} />
       ))}
     </Box>
   );
 };
 interface Props {
+  profile: Profile;
   portfolio: Portfolio[];
 }
 

@@ -87,6 +87,18 @@ export interface Education {
   isVisible: boolean;
 }
 
+export interface Portfolio {
+  id: number;
+  profileId: number;
+  title: string;
+  description: string;
+  location: string;
+  dateEnd: Date;
+  imagePrincipal: string | null;
+  image: string[] | null;
+  deletedAt: Date | null;
+  url: string | null;
+}
 export enum LanguageLevel {
   Alto = "alto",
   Bajo = "bajo",

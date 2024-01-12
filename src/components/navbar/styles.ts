@@ -7,6 +7,18 @@ export const navbarStyles = {
 export const titleStyles = {
   color: "black",
   ml: 2,
+  mt: 1.8,
+  fontFamily: "inter",
+  fontSize: "16px",
+  textTransform: "Capitalize",
+  "&:hover": {
+    color: "#007935",
+  },
+};
+
+export const logoutStyles = {
+  color: "black",
+  ml: 2,
   fontFamily: "inter",
   fontSize: "16px",
   textTransform: "Capitalize",
@@ -26,6 +38,18 @@ export const mobileTitleStyles = {
   fontWeight: "400",
 };
 
+export const mobileLogoutStyles = {
+  color: "black",
+  fontFamily: "inter",
+  fontSize: "16px",
+  textTransform: "Capitalize",
+  "&:hover": {
+    color: "#007935",
+  },
+  fontWeight: "400",
+  justifyContent: "flex-start",
+};
+
 export const iconStyles = {
   color: "#5A5A5A",
   ml: 0,
@@ -40,7 +64,6 @@ export const iconStyles = {
 export const inlineStyles = {
   display: "flex",
   flexWrap: "wrap",
-  p: "15px",
   flexDirection: "row",
 };
 

@@ -6,6 +6,7 @@ import { boxTitleStyles } from "../education/styles";
 
 const Portfolio = () => {
   const { isEditable, profile } = useProfileContext();
+
   return (
     <Box
       sx={{
@@ -39,7 +40,7 @@ const Portfolio = () => {
           gap: { xs: "18px", sm: "20px" },
         }}
       >
-        <ShowPortfolios portfolio={profile.portfolio} />
+        <ShowPortfolios profile={profile} portfolio={profile.portfolio} />
       </Box>
     </Box>
   );

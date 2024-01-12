@@ -20,8 +20,10 @@ import NotFound from "features/not-found/NotFound";
 import LandingPage from "features/landing-page";
 import "styles/index.css";
 import HomePage from "features/home-page";
+import ExplorePortfolio from "features/explore-portfolio";
 import NewPassword from "features/auth/NewPassword";
 import RegisterSuccess from "features/auth/RegisterSuccess";
+import LandingPage from "features/landing-page";
 
 const theme = createTheme({
   palette: {
@@ -68,12 +70,20 @@ const routerConfig: RouteObject[] = [
         element: <ForgotPassword />,
       },
       {
-        path: "/new-password/:token",
+        path: "/new-password/",
         element: <NewPassword />,
       },
       {
         path: "/home/",
         element: <HomePage />,
+      },
+      {
+        path: "/explore-portfolios/",
+        element: <ExplorePortfolio />,
+      },
+      {
+        path: "/explore-portfolios/:seed",
+        element: <ExplorePortfolio />,
       },
       {
         path: "/",
