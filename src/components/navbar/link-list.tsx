@@ -8,11 +8,13 @@ import {
   inlineStyles,
   iconStyles,
   mobileTitleStyles,
+  mobileLogoutStyles,
 } from "./styles";
 import HomeIcon from "@mui/icons-material/Home";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
+import WorkIcon from "@mui/icons-material/Work";
 
 const LinkList = ({ user }: Props) => {
   const dispatch = useDispatch();
@@ -44,7 +46,7 @@ const LinkList = ({ user }: Props) => {
           </Link>
         ) : (
           <Link to={`/profile/${user.id}`}>
-            <Button sx={mobileTitleStyles}>Perfil</Button>
+            <Button sx={mobileLogoutStyles}>Perfil</Button>
           </Link>
         )}
       </Box>
@@ -69,13 +71,22 @@ const LinkList = ({ user }: Props) => {
         </Link>
       </Box>
 
+      <Box sx={{ inlineStyles }}>
+        <IconButton sx={iconStyles}>
+          <WorkIcon sx={{ fontSize: "20px" }} />
+        </IconButton>
+        <Link to="/explore-portfolios">
+          <Button sx={mobileTitleStyles}>Portafolios</Button>
+        </Link>
+      </Box>
+
       {user && (
-        <Box sx={{ inlineStyles }}>
+        <Box sx={inlineStyles}>
           <IconButton sx={iconStyles}>
             <LogoutIcon sx={{ fontSize: "20px" }} />
           </IconButton>
 
-          <Button onClick={onLogout} sx={mobileTitleStyles}>
+          <Button onClick={onLogout} sx={mobileLogoutStyles}>
             Salir
           </Button>
         </Box>

@@ -48,6 +48,7 @@ const useForm = ({
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
           imagePrincipal: project.imagePrincipal,
           image: newFiles,
+          url: project.url,
         });
         showSuccessToast("Proyecto editado con éxito");
         setContent(PortfolioContent.Show);
@@ -66,6 +67,7 @@ const useForm = ({
       project.imagePrincipal,
       project.location,
       project.title,
+      project.url,
       deletedImages,
       setLoading,
       projectId,
@@ -87,6 +89,7 @@ export interface EditProjectFormProps {
     location: string;
     dateEnd: Dayjs | null;
     imagePrincipal?: File | null;
+    url?: string | null;
   };
   projectId: number;
   deletedImages: number[];

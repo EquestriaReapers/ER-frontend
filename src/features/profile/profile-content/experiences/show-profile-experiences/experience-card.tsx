@@ -17,10 +17,10 @@ const ExperienceCard = ({ item }: Props) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: "12px",
-        width: "100%",
+        width: "auto",
         backgroundColor: "#F4F4F4",
         p: "18px",
+        gap: "10px",
         borderRadius: "6px",
       }}
     >
@@ -41,11 +41,14 @@ const ExperienceCard = ({ item }: Props) => {
         <Box
           sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
         >
-          <Typography sx={subtitleStyles} variant="h6">
-            {item.location} 
+          <Typography
+            sx={{ ...subtitleStyles, marginRight: "10px" }}
+            variant="h6"
+          >
+            <span>{item.location}, </span>
           </Typography>
           <Typography sx={subtitleStyles} variant="h6">
-            <span>, {dateItem}</span>
+            <span>{dateItem}</span>
           </Typography>
         </Box>
       </Box>

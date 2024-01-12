@@ -33,6 +33,9 @@ export const PortfolioBackground = {
   width: "100%",
   height: "80%",
   borderRadius: "6px 6px 0 0",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
 };
 
 export const usePortfoliosTitleStyles = () => {

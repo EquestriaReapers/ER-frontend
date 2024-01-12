@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import { useCallback } from "react";
 import Chip from "@mui/material/Chip";
 import ClearIcon from "@mui/icons-material/Clear";

@@ -32,6 +32,7 @@ const useAddProjectForm = ({ project }: Props) => {
           showErrorToast("Por favor, rellena todos los campos");
           return;
         }
+        setLoading(true);
 
         const data = await addProjectToProfile(token, {
           title: project.title,
@@ -39,9 +40,9 @@ const useAddProjectForm = ({ project }: Props) => {
           location: project.location,
           dateEnd: project.dateEnd?.format("YYYY-MM-DD"),
           image: project.newFiles!,
+          url: project.url,
         });
 
-        setLoading(true);
         setContent(PortfolioContent.Show);
         showSuccessToast("Proyecto agregado con éxito");
         await fetchProfile();
@@ -58,6 +59,7 @@ const useAddProjectForm = ({ project }: Props) => {
       project.location,
       project.newFiles,
       project.title,
+      project.url,
       getToken,
       setLoading,
       setContent,
@@ -77,6 +79,7 @@ export interface Props {
     location: string;
     dateEnd: Dayjs | null;
     newFiles: File[] | null;
+    url: string | null;
   };
 }
 

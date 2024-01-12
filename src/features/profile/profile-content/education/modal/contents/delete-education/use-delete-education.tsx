@@ -1,4 +1,4 @@
-import { deleteAProfileEducation } from "features/profile/services/education/delete-profile-education";
+import { deleteAProfileEducation } from "core/auth/education/delete-profile-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";

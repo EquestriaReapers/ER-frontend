@@ -6,7 +6,7 @@ import { EducationContent } from "../../education-modal-context/types";
 import { Dayjs } from "dayjs";
 import { useNavigate } from "react-router";
 import useProfileContext from "features/profile/profile-context/use-profile-context";
-import { addAProfileEducation } from "features/profile/services/education/add-profile-education";
+import { addAProfileEducation } from "core/auth/education/add-profile-education";
 import EducationModalContext from "../../education-modal-context";
 
 const useAddEducationForm = ({ education }: AddEducationFormProps) => {

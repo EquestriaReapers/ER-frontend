@@ -13,6 +13,8 @@ export async function addProjectToProfile(
     formData.append("description", body.description);
     formData.append("location", body.location);
     formData.append("dateEnd", body.dateEnd);
+    if (body.url) formData.append("url", body.url);
+
     body.image.forEach((file) => {
       formData.append(`image`, file);
     });
@@ -35,6 +37,7 @@ export interface AddProjectBody {
   location: string;
   dateEnd: string;
   image: File[];
+  url: string | null;
 }
 
 export interface UpdateProfileNewSkillBody {

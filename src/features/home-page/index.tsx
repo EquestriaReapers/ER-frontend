@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import "../../styles/index.css";
 import { useHomePageContainerStyles, useMainContainerStyles } from "./styles";
 import FirstSection from "./first-section";

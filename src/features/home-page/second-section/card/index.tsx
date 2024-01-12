@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import LocationOnIcon from "@mui/icons-material/LocationOn";

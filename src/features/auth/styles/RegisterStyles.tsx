@@ -1,4 +1,4 @@
-import Background from "../images/background.jpeg";
+import Background from "../images/background-with-blur.png";
 
 const mediaQueryStyles = {
   "@media (minWidth: 600px)": {

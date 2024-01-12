@@ -2,9 +2,9 @@ import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { modalStyle } from "./styles";
-import { Portfolio } from "core/profiles/types";
+import { Portfolio, Profile } from "core/profiles/types";
 
-const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
+const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
   const getYear = (date: string | number | Date) =>
     new Date(date).getFullYear();
 
@@ -16,6 +16,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           height: "120px",
           overflow: "hidden",
           borderRadius: { xs: "none", sm: "6px 6px 0px 0px" },
+          position: "relative",
         }}
       >
         <Box
@@ -31,14 +32,26 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           component="img"
           src={project.imagePrincipal!}
         />
+
+        <IconButton
+          onClick={() => setIsOpen(false)}
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "30px",
+            width: "30px",
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            "&:hover": {
+              backgroundColor: "white",
+            },
+            margin: "10px",
+          }}
+        >
+          <ArrowBackIcon sx={{ color: "black" }} />
+        </IconButton>
       </Box>
 
-      <IconButton
-        onClick={() => setIsOpen(false)}
-        sx={{ display: "flex", marginLeft: "10px", marginTop: "5px" }}
-      >
-        <ArrowBackIcon />
-      </IconButton>
       <Box
         sx={{
           mx: "24px",
@@ -48,30 +61,135 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
           gap: "16px",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+          }}
+        >
+          <Box
             sx={{
-              color: "#000",
-              fontFamily: "inter",
-              fontSize: "24px",
-              fontWeight: "700",
-              textTransform: "capitalize",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyItems: "flex-start",
             }}
           >
-            {project.title}
-          </Typography>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "60%",
+                  justifyContent: "center",
+                  alignItems: "flex-start",
+                }}
+              >
+                <Typography
+                  sx={{
+                    color: "#000",
+                    fontFamily: "inter",
+                    fontSize: "26px",
+                    fontWeight: "700",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {project.title}
+                </Typography>
+              </Box>
 
-          <Typography
-            sx={{
-              color: "#000",
-              fontFamily: "inter",
-              fontSize: "16px",
-              fontWeight: "400",
-              lineHeight: "normal",
-            }}
-          >
-            {getYear(project.dateEnd)} | {project.location}
-          </Typography>
+              <Box
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  flexDirection: "column",
+                  width: "40%",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                }}
+              >
+                {!project.url ? (
+                  <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
+                    {"No hay url para mostrar"}
+                  </Typography>
+                ) : (
+                  <Box
+                    component="a"
+                    href={agregarHttpsAlLink(project.url)}
+                    sx={{
+                      backgroundColor: "#0089E2",
+                      textDecoration: "none",
+                      fontFamily: "inter",
+                      fontSize: "16px",
+                      textAlign: "center",
+                      color: "white",
+                      px: "18px",
+                      py: "6px",
+                      borderRadius: "6px",
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Ver página del proyecto
+                  </Box>
+                )}
+              </Box>
+            </Box>
+
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                width: "100%",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "#000",
+                  fontFamily: "inter",
+                  fontSize: "16px",
+                  fontWeight: "400",
+                  lineHeight: "normal",
+                }}
+              >
+                {getYear(project.dateEnd)} | {project.location}
+              </Typography>
+              <Box
+                sx={{
+                  display: { xs: "none", sm: "flex" },
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "inter",
+                    fontSize: "16px",
+                    color: "black",
+                    marginRight: "6px",
+                  }}
+                >
+                  Autor del proyecto:
+                </Typography>
+                <Box
+                  component="a"
+                  href={`/profile/${profile.userId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    textDecoration: "none",
+                    fontFamily: "inter",
+                    fontSize: "16px",
+                    color: "#0089E2",
+                  }}
+                >
+                  {profile.user.name} {profile.user.lastname}
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         </Box>
 
         <Box
@@ -155,12 +273,89 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
             ))
           )}
         </Box>
+        <Box
+          sx={{
+            display: { xs: "flex", sm: "none" },
+            flexDirection: "column",
+            width: "100%",
+            justifyContent: "center",
+            gap: "10px",
+          }}
+        >
+          <Box>
+            <Typography
+              sx={{
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "black",
+                marginRight: "6px",
+              }}
+            >
+              Autor del proyecto:
+            </Typography>
+            <Box
+              component="a"
+              href={`/profile/${profile.userId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                textDecoration: "none",
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "#0089E2",
+              }}
+            >
+              {profile.user.name} {profile.user.lastname}
+            </Box>
+          </Box>
+
+          {!project.url ? (
+            <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
+              {"No hay url para mostrar"}
+            </Typography>
+          ) : (
+            <Box
+              component="a"
+              href={agregarHttpsAlLink(project.url)}
+              sx={{
+                maxWidth: "300px",
+                backgroundColor: "#0089E2",
+                textDecoration: "none",
+                fontFamily: "inter",
+                fontSize: "16px",
+                color: "white",
+                px: "18px",
+                py: "6px",
+                borderRadius: "6px",
+                textAlign: "center",
+                alignSelf: "center",
+              }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ir a la página del proyecto
+            </Box>
+          )}
+        </Box>
       </Box>
     </Box>
   );
 };
 
+function agregarHttpsAlLink(link: string): string {
+  console.log("link", link);
+  // Verificar si el enlace comienza con "http://" o "https://"
+  if (!link.startsWith("http://") && !link.startsWith("https://")) {
+    console.log("AGREGALO");
+    // Si no comienza con "http://" o "https://", agregar "https://"
+    return "https://" + link;
+  }
+  console.log("NO AGREGALO");
+  return link;
+}
+
 interface Props {
+  profile: Profile;
   project: Portfolio;
   setIsOpen: (isOpen: boolean) => void;
 }
