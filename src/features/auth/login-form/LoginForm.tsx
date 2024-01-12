@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { FunctionComponent } from "react";
 import useLoginFormState from "./use-login-form-state";
 import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 
 import ucabLogo from "../images/ucab-logo.png";
 import {

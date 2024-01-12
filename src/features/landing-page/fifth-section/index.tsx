@@ -1,5 +1,5 @@
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
+import Typography from "@mui/material/Typography";
+import { Box } from "@mui/material";
 import {
   ThirdSectionStyles,
   useInsideThirdSectionStyles,
@@ -11,23 +11,26 @@ import {
   useThirdSectionSecondFigureTypographyStyles,
   useButtonStyles,
   useButtonSecondStyles,
-  useSecondTitleStyle
-} from './styles'
-import { Button } from '@mui/material'
+  useSecondTitleStyle,
+} from "./styles";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ThirdSection = () => {
-  const InsideThirdSectionStyles = useInsideThirdSectionStyles()
-  const ThirdSectionFiguresSectionStyles = useThirdSectionFiguresSectionStyles()
+  const InsideThirdSectionStyles = useInsideThirdSectionStyles();
+  const ThirdSectionFiguresSectionStyles =
+    useThirdSectionFiguresSectionStyles();
   const ThirdSectionFirstFiguresSectionStyles =
-    useThirdSectionFirstFiguresSectionStyles()
+    useThirdSectionFirstFiguresSectionStyles();
   const ThirdSectionFirstFigureTypographyStyles =
-    useThirdSectionFirstFigureTypographyStyles()
+    useThirdSectionFirstFigureTypographyStyles();
   const ThirdSectionSecondFiguresSectionStyles =
-    useThirdSectionSecondFiguresSectionStyles()
-  useThirdSectionSecondFigureTypographyStyles()
-  const buttonSecondStyles = useButtonStyles()
-  const buttonfirstStyles = useButtonSecondStyles()
-  const secondTitleStyle = useSecondTitleStyle()
+    useThirdSectionSecondFiguresSectionStyles();
+  useThirdSectionSecondFigureTypographyStyles();
+  const buttonSecondStyles = useButtonStyles();
+  const buttonfirstStyles = useButtonSecondStyles();
+  const secondTitleStyle = useSecondTitleStyle();
+  const navigate = useNavigate();
 
   return (
     <Box sx={ThirdSectionStyles}>
@@ -42,8 +45,11 @@ const ThirdSection = () => {
               oportunidades a los profesionales de la UCAB
             </Typography>
             <Box>
-              <Button sx={buttonSecondStyles}>
-                Quiero aumentar mi visibilidad!
+              <Button
+                sx={buttonSecondStyles}
+                onClick={() => navigate("/register")}
+              >
+                ¡Quiero aumentar mi visibilidad!
               </Button>
             </Box>
           </Box>
@@ -57,15 +63,18 @@ const ThirdSection = () => {
               cuenten con el sello de calidad ucabista!
             </Typography>
             <Box>
-              <Button sx={buttonfirstStyles}>
-                Empieza a buscar profesionales!
+              <Button
+                sx={buttonfirstStyles}
+                onClick={() => navigate("/catalogue")}
+              >
+                ¡Empieza a buscar profesionales!
               </Button>
             </Box>
           </Box>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default ThirdSection
+export default ThirdSection;

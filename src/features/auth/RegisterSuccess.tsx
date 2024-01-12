@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import ucabLogo from "./images/ucabLogo.webp";
 import {
