@@ -6,7 +6,7 @@ const PRIMARY_DARKER = "#03652e";
 
 export const firstSectionStyles = {
   width: "100%",
-  height: {xs:650, md:400},
+  height: { xs: 650, md: 400 },
   position: "relative",
   display: "grid",
 
@@ -27,9 +27,6 @@ export const firstSectionStyles = {
 };
 
 export const useInsideFirstSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
   const isMediumScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("md")
   );
@@ -65,7 +62,7 @@ export const useFirstSectionFigureStyles = () => {
 
 export const firstSectionFigureBackgroundStyles = {
   //height: 233,
- // width: 350,
+  // width: 350,
   height: "auto",
   width: 350,
   //maxHeight: { xs: 233, md: 167 },
@@ -90,7 +87,7 @@ export const useFirstSectionDownloadCVSectionStyles = () => {
   );
 
   const firstSectionDownloadCVSectionStyles = {
-    display:"grid",
+    display: "grid",
     width: isMediumScreen ? "100%" : "60%",
     height: "100%",
     //margin: isSmallScreen ? "auto" : "auto 0 60px 0",
@@ -101,16 +98,12 @@ export const useFirstSectionDownloadCVSectionStyles = () => {
 };
 
 export const useFirstSectionDownloadCVTypographyStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
-
   const firstSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: {xs:"1.5rem", md: "2rem"},
+    fontSize: { xs: "1.5rem", md: "2rem" },
     marginBottom: "40px",
     color: "#FFFFFF",
-    textAlign:"center",
+    textAlign: "center",
     //textAlign: isSmallScreen ? "center" : "left",
   };
 

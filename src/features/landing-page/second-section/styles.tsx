@@ -4,7 +4,7 @@ import { Theme } from "@mui/material";
 export const SecondSectionStyles = {
   width: "100%",
   position: "relative",
-  height:{ xs: "600px", md: "400px" },
+  height: { xs: "600px", md: "400px" },
   display: { xs: "grid", md: "flex" },
 
   "&::before": {
@@ -24,9 +24,6 @@ export const SecondSectionStyles = {
 };
 
 export const useInsideSecondSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
   const isMediumScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("md")
   );
@@ -45,7 +42,7 @@ export const useInsideSecondSectionStyles = () => {
 };
 
 export const SecondSectionFigureBoxStyles = {
-  width: {xs: "100%", md:"50%"},
+  width: { xs: "100%", md: "50%" },
   height: "100%",
   display: "flex",
   alignItems: "center",
@@ -83,9 +80,9 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
   );
 
   const SecondSectionDownloadCVSectionStyles = {
-    display:"flex",
-    alignItems:"center",
-    justifyContent:"center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     flexDirection: "column",
     width: isMediumScreen ? "100%" : "50%",
     height: "100%",
@@ -102,7 +99,7 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
 
   const SecondSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: {xs: "1.5rem", md: "2rem"},
+    fontSize: { xs: "1.5rem", md: "2rem" },
     marginBottom: "20px",
     color: "black",
     textAlign: isSmallScreen ? "center" : "left",
