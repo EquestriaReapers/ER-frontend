@@ -1,4 +1,4 @@
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import {
   useLandingPageContainerStyles,
   useMainContainerStyles,
@@ -21,7 +21,7 @@ const LandingPage = () => {
         <SecondSection />
         <ThirdSection />
         <FourthSection />
-        <FifthSection/>
+        <FifthSection />
       </Box>
     </Box>
   );

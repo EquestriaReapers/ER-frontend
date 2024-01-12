@@ -8,8 +8,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ProjectInfoModal from "./project-info-modal";
-import NoPhotographyIcon from '@mui/icons-material/NoPhotography';
-import { Project } from "../explore-portfolio-context/context";
+import NoPhotographyIcon from "@mui/icons-material/NoPhotography";
+
 import {
   hoveredCardDescriptionStyles,
   hoveredCardStyles,
@@ -19,6 +19,7 @@ import {
   projectCardStyles,
   projectTitleStyles,
 } from "./styles";
+import { Project } from "../explore-portfolio-context/context";
 
 function ProjectCard({ project }: Props) {
   const [hover, setHover] = useState(false);

@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import { Box } from "@mui/material";
 import SkillsFilter from "./skills-filter/skills-filter";
 import LanguaguesFilter from "./languagues-filter/languagues-filter";
 import LocationsFilter from "./locations-filter/locations-filter";

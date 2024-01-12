@@ -1,9 +1,19 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme } from "@mui/material";
+import background from "./images/background.png";
 
 export const ThirdSectionStyles = {
   width: "100%",
-  backgroundColor: "white",
+  height: { xs: "1000px", md: "400px" },
+  paddingTop: "100px",
+  position: "relative",
+  display: "grid",
+  top: 0,
+  left: 0,
+  backgroundImage: `url(${background})`,
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  transform: "scale(1.02)",
 };
 
 export const useInsideThirdSectionStyles = () => {
@@ -42,7 +52,7 @@ export const InsideThirdSectionTypographytStyles = {
 };
 
 export const ThirdSectionTextStyles = {
-  width: "80%",
+  width: "100%",
   margin: "auto",
 };
 
@@ -65,22 +75,13 @@ export const useThirdSectionFiguresSectionStyles = () => {
 };
 
 export const useThirdSectionFirstFiguresSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
-  const isMediumScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("md")
-  );
-
   const ThirdSectionFirstFiguresSectionStyles = {
-    width: "50%",
+    width: { xs: "100%", sm: "100%", md: "50%" },
     height: "100%",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    margin: isMediumScreen ? "auto" : 0,
-    marginTop: isSmallScreen ? "-10px" : "auto",
   };
 
   return ThirdSectionFirstFiguresSectionStyles;
@@ -108,7 +109,7 @@ export const useThirdSectionFirstFigureStyles = () => {
 export const ThirdSectionInsideFirstFigureStyles = {
   backgroundColor: "white",
   height: "96%",
-  width: "95%",
+  width: "100%",
   transform: "rotate(-3.5deg)",
 };
 
@@ -119,21 +120,57 @@ export const useThirdSectionFirstFigureTypographyStyles = () => {
 
   const ThirdSectionFirstFigureTypographyStyles = {
     fontWeight: "600",
-    fontSize: "2rem",
+    color: "white",
+    textAlign: "center",
+    fontFamily: "Inter",
+    fontSize: "32px",
+    fontStyle: "normal",
+    lineHeight: "normal",
     marginBottom: isMinimunWidthScreen ? "20px" : "40px",
+    "& span": {
+      color: "#0088DE",
+    },
   };
 
   return ThirdSectionFirstFigureTypographyStyles;
 };
 
+export const useSecondTitleStyle = () => {
+  const isMinimunWidthScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down(300)
+  );
+
+  const SecondTitleStyle = {
+    fontWeight: "600",
+    color: "white",
+    textAlign: "center",
+    fontFamily: "Inter",
+    fontSize: "32px",
+    fontStyle: "normal",
+    lineHeight: "normal",
+    marginBottom: isMinimunWidthScreen ? "20px" : "40px",
+    "& span": {
+      color: "#FFC801",
+    },
+  };
+
+  return SecondTitleStyle;
+};
+
 export const ThirdSectionFirstFigureTextStyles = {
-  fontWeight: "500",
-  fontSize: "0.9rem",
-  textAlign: "center",
+  color: "white",
+  textAlign: { xs: "center", md: "center" },
+  fontFamily: "Inter",
+  fontSize: "22px",
+  fontStyle: "normal",
+  width: { xs: "100%", md: "75%" },
+  mb: 2,
+  fontWeight: 500,
+  lineHeight: "normal",
 };
 
 export const useThirdSectionSecondFiguresSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
+  const isSmallScreen: boolean = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm")
   );
   const isMediumScreen = useMediaQuery((theme: Theme) =>
@@ -141,7 +178,7 @@ export const useThirdSectionSecondFiguresSectionStyles = () => {
   );
 
   const ThirdSectionSecondFiguresSectionStyles = {
-    width: "50%",
+    width: { xs: "100%", sm: "50%" },
     height: "100%",
     display: "flex",
     flexDirection: "column",
@@ -201,4 +238,50 @@ export const ThirdSectionSecondFigureTextStyles = {
   fontWeight: "500",
   fontSize: "0.9rem",
   textAlign: "center",
+};
+
+export const useButtonStyles = () => {
+  const buttonStyles = {
+    fontFamily: "inter",
+    borderRadius: "5px",
+    border: "2px solid #0088DE",
+    background: "#0088DE",
+    fontWeight: "700",
+    color: "white",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    px: 3,
+    my: 2,
+    "&:hover": {
+      backgroundColor: "#0088DE",
+    },
+    "&:disabled": {
+      color: "#ffffff",
+    },
+  };
+
+  return buttonStyles;
+};
+
+export const useButtonSecondStyles = () => {
+  const buttonStyles = {
+    fontFamily: "inter",
+    borderRadius: "5px",
+    border: "2px solid #FFC801",
+    background: "#FFC801",
+    fontWeight: "700",
+    color: "white",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    px: 3,
+    my: 2,
+    "&:hover": {
+      backgroundColor: "#FFC801",
+    },
+    "&:disabled": {
+      color: "#ffffff",
+    },
+  };
+
+  return buttonStyles;
 };
