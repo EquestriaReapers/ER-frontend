@@ -25,16 +25,7 @@ const SecondSection = () => {
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
-        <Box sx={SecondSectionFigureBoxStyles}>
-          <Box sx={SecondSectionFigureStyles}>
-            <Box
-              component="img"
-              sx={SecondSectionFigureBackgroundStyles}
-              alt="catalog-in-pc"
-              src="src\features\landing-page\second-section\images\pc2.png"
-            />
-          </Box>
-        </Box>
+        
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
             ¡Encuentra los perfiles que te interesan!
@@ -46,6 +37,16 @@ const SecondSection = () => {
           </Typography>
           <Box>
             <Button sx={buttonStyles}>Empieza a Buscar</Button>
+          </Box>
+        </Box>
+        <Box sx={SecondSectionFigureBoxStyles}>
+          <Box sx={SecondSectionFigureStyles}>
+            <Box
+              component="img"
+              sx={SecondSectionFigureBackgroundStyles}
+              alt="catalog-in-pc"
+              src="src\features\landing-page\second-section\images\pc2.png"
+            />
           </Box>
         </Box>
       </Box>

@@ -67,7 +67,7 @@ export const firstSectionFigureBackgroundStyles = {
 };
 
 export const firstSectionLogoStyles = {
-  height: 75,
+  height: 125,
   width: 200,
   maxHeight: { xs: 233, md: 167 },
   maxWidth: { xs: 350, md: 250 },
