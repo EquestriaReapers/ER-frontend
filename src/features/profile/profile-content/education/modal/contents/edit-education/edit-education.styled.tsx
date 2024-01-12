@@ -1,11 +1,11 @@
-import { Box, Button } from '@mui/material'
-import EditEducationModalContent from './edit-education.component'
-import styled from 'styled-components'
+import { Box, Button } from "@mui/material";
+import EditEducationModalContent from "./edit-education.component";
+import styled from "styled-components";
 
-const LG_SIZE = 1200
-const MD_SIZE = 767
-const SM_SIZE = 480
-const XS_SIZE = 380
+const LG_SIZE = 1200;
+const MD_SIZE = 767;
+const SM_SIZE = 480;
+const XS_SIZE = 380;
 
 export default styled(EditEducationModalContent)`
   width: 400px;
@@ -86,39 +86,43 @@ export default styled(EditEducationModalContent)`
   @media screen and (max-width: ${XS_SIZE}px) {
     width: 250px;
   }
-`
+`;
 export const StyledBox = styled(Box)({
-  width: '400px',
-  height: '50.037px',
-  borderRadius: '4px',
-  border: '1px solid #000',
-  display: 'flex',
-  flexDirection: 'row',
-  overflow: 'hidden',
-  '@media screen and (max-width: 767px)': {
-    width: '100%'
-  }
-})
+  width: "400px",
+  height: "50.037px",
+  borderRadius: "4px",
+  border: "1px solid #000",
+  display: "flex",
+  flexDirection: "row",
+  overflow: "hidden",
+  "@media screen and (max-width: 767px)": {
+    width: "100%",
+  },
+});
 
 export const StyledButton = styled(Button)({
   flex: 1,
-  color: '#000',
-  border: 'none',
+  color: "#000",
+  border: "none",
   borderRadius: 0,
-  cursor: 'pointer',
-  backgroundColor: '#FFF',
-  '&:hover': {
-    backgroundColor: '#007935',
-    color: '#FFF'
+  cursor: "pointer",
+  backgroundColor: "#FFF",
+  "&:hover": {
+    backgroundColor: "#FFF",
+    color: "#007935",
   },
-  '&.selected': {
-    backgroundColor: '#007935',
-    color: '#FFF'
+  "&.selected": {
+    backgroundColor: "#007935",
+    color: "#FFF",
+    "&:hover": {
+      backgroundColor: "#007935",
+      color: "#FFF",
+    },
   },
-  textTransform: 'none',
-  fontFamily: 'Inter',
-  fontSize: '15px',
-  fontStyle: 'normal',
+  textTransform: "none",
+  fontFamily: "Inter",
+  fontSize: "15px",
+  fontStyle: "normal",
   fontWeight: 500,
-  lineHeight: 'normal'
-})
+  lineHeight: "normal",
+});

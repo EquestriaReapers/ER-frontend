@@ -10,9 +10,16 @@ export async function updateProfileEducation(
   educationId: number
 ): Promise<MessageResponse> {
   try {
+    const requestBody = {
+      title: body.title,
+      entity: body.entity,
+      endDate: body.endDate,
+      ...(body.principal !== null ? { principal: !!body.principal } : {}),
+    };
+
     const response = await axios.patch(
       `${EDUCATION_URL}/my-education/${educationId}`,
-      body,
+      requestBody,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -26,7 +33,7 @@ export async function updateProfileEducation(
 }
 
 export interface UpdateEducationBody {
-  principal: boolean;
+  principal: boolean | null;
   title: string;
   entity: string;
   endDate: string | null;
