@@ -8,7 +8,6 @@ import SearchBar from "./explore-portfolio-context/SearchBar/SearchBar";
 
 const ExplorePortfolio = () => {
   const seed = useSeed();
-
   const initialPortfoliosSearchParams = useInitialPortfoliosSearchParams();
 
   if (!seed)
@@ -28,6 +27,7 @@ const ExplorePortfolio = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            my: "30px",
           }}
         >
           <SearchBar />
