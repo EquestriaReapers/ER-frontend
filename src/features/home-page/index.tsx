@@ -5,7 +5,6 @@ import FirstSection from "./first-section";
 import SecondSection from "./second-section";
 import ThirdSection from "./third-section";
 import FourthSection from "./fourth-section";
-import Footer from "components/footer";
 
 const HomePage = () => {
   const HomePageStyles = useHomePageContainerStyles();
@@ -19,7 +18,6 @@ const HomePage = () => {
         <ThirdSection />
         <FourthSection />
       </Box>
-      <Footer />
     </Box>
   );
 };

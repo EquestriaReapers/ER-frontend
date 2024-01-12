@@ -5,7 +5,9 @@ import { notFoundProfileContainer } from "./styles";
 const NotFoundProfile: FunctionComponent = () => {
   return (
     <Box sx={notFoundProfileContainer}>
-      <Typography variant="h1">Perfil no encontrado!</Typography>
+      <Typography sx={{ textAlign: "center" }} variant="h1">
+        Perfil no encontrado!
+      </Typography>
       <Typography variant="h5">{getRandomNotFoundProfilePharses()}</Typography>
     </Box>
   );

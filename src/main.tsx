@@ -19,7 +19,9 @@ import ForgotPassword from "features/auth/ForgotPassword";
 import Layout from "layout/Layout";
 import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
+import HomePage from "features/home-page";
 import NewPassword from "features/auth/NewPassword";
+import RegisterSuccess from "features/auth/RegisterSuccess";
 
 const theme = createTheme({
   palette: {
@@ -70,8 +72,16 @@ const routerConfig: RouteObject[] = [
         element: <NewPassword />,
       },
       {
+        path: "/home/",
+        element: <HomePage />,
+      },
+      {
         path: "/",
         element: <LandingPage />,
+      },
+      {
+        path: "/successfully-confirm",
+        element: <RegisterSuccess />,
       },
     ],
   },

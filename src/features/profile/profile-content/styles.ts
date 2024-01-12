@@ -8,7 +8,7 @@ export const bannerStyles = {
     md: "100%",
     lg: "100%",
   },
-  height: {
+  minHeight: {
     xs: "90px",
     md: "150px",
   },

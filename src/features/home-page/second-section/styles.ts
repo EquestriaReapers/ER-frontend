@@ -3,16 +3,15 @@ import { Theme } from "@mui/material";
 import { BUTTON_WIDTH } from "../styles";
 
 export const useSecondSectionStyles = () => {
-  const isLargeScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("lg")
-  );
-
   const SecondSectionStyles = {
     width: "100%",
-    height: isLargeScreen ? "35%" : "30%",
     position: "relative",
     display: "flex",
     alignItems: "center",
+    mt: {
+      xs: 6,
+      md: 12,
+    },
   };
 
   return SecondSectionStyles;
@@ -27,13 +26,11 @@ export const useInsideSecondSectionStyles = () => {
   );
 
   const InsideSecondSectionStyles = {
-    width: isMediumScreen ? "90%" : "80%",
-    height: "90%",
+    width: isMediumScreen ? "90%" : "100%",
+    maxWidth: "1200px",
     display: isSmallScreen ? "grid" : "flex",
     margin: "auto",
-    position: "relative",
     zIndex: 1,
-    maxWidth: "2000px",
   };
 
   return InsideSecondSectionStyles;
@@ -50,7 +47,7 @@ export const useSecondSectionExploreSectionStyles = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    margin: isSmallScreen ? "auto" : "0px 0 30px 0",
   };
 
   return SecondSectionExploreSectionStyles;
@@ -67,16 +64,17 @@ export const useSecondSectionExploreTypographyStyles = () => {
 
   const SecondSectionExploreTypographyStyles = {
     fontWeight: "600",
-    fontSize: isSmallScreen ? "1.2rem" : isLargeScreen ? "1.5rem" : "2rem",
+    fontSize: isSmallScreen ? "22px" : isLargeScreen ? "28px" : "32px",
     textAlign: "center",
-    marginBottom: "40px",
+    marginBottom: { xs: 5, sm: 5, lg: 5 },
+    color: "black",
   };
   return SecondSectionExploreTypographyStyles;
 };
 
 export const SecondSectionExploreTypographyStyles = {
   fontWeight: "600",
-  fontSize: "1.5rem",
+  fontSize: "24px",
   marginBottom: "40px",
   color: "black",
   textAlign: "center",
@@ -93,7 +91,8 @@ export const useCardSectionStyles = () => {
 
   const CardSectionStyles = {
     display: isLargeScreen ? "grid" : "flex",
-    justifyContent: isLargeScreen ? "normal" : "space-between",
+    flexDirection: "row",
+    justifyContent: isLargeScreen ? "space-evenly" : "center",
     width: "100%",
     marginBottom: "15px",
   };
@@ -103,14 +102,15 @@ export const useCardSectionStyles = () => {
 
 export const SecondSectionButtonStyles = {
   color: "#FFFFFF",
-  backgroundColor: "#007934",
-  margin: "auto",
+  background: "#007935",
+  mt: 5,
   width: BUTTON_WIDTH,
   minWidth: "230px",
   textTransform: "none",
   fontWeight: "500",
+  fontSize: { xs: "16px", sm: "18px", lg: "18px" },
 
   "&&:hover": {
-    backgroundColor: "#007934",
+    backgroundColor: "#03652e",
   },
 };

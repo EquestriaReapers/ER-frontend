@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
 import Button from "@mui/material/Button";
+import React, { useCallback, useState, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useFirstSectionStyles,
   useInsideFirstSectionStyles,
@@ -30,6 +32,14 @@ const FirstSection = () => {
   const SearchGraduatesSectionStyles = useSearchGraduatesSectionStyles();
   const SearchGraduatesTypographyStyles = useSearchGraduatesTypographyStyles();
   const SearchBoxStyles = useSearchBoxStyles();
+  const navigate = useNavigate();
+
+  const [searchText, setSearchText] = useState("");
+  const searchOnCatalogue = useCallback(() => {
+    navigate(
+      `/catalogue/${generateRandomSeed()}?searchText=${searchText}&page=1&isExclusiveSkills=true&isExclusiveLanguague=true`
+    );
+  }, [navigate, searchText]);
 
   return (
     <Box sx={FirstSectionStyles}>
@@ -50,6 +60,17 @@ const FirstSection = () => {
                 InputLabelProps={{
                   shrink: true,
                 }}
+                value={searchText}
+                onChange={(
+                  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+                ) => {
+                  setSearchText(e.target.value);
+                }}
+                onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                  if (e.key === "Enter") {
+                    searchOnCatalogue();
+                  }
+                }}
                 sx={TextFieldSearchBarStyles}
                 InputProps={{
                   startAdornment: (
@@ -65,6 +86,7 @@ const FirstSection = () => {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={searchOnCatalogue}
                 sx={SearchButtomStyles}
               >
                 Buscar
@@ -72,7 +94,7 @@ const FirstSection = () => {
             </Box>
             <Box sx={InsideSearchBarTextSectionStyles}>
               <Typography sx={InsideSearchBarSectionTypographyStyles}>
-                Puedes encontrar profesionales egresados de la UCAB por nombre,
+                ¡Puedes encontrar profesionales egresados de la UCAB por nombre,
                 carrera, habilidades, ubicación e idiomas!
               </Typography>
             </Box>
@@ -82,5 +104,9 @@ const FirstSection = () => {
     </Box>
   );
 };
+
+function generateRandomSeed() {
+  return Math.floor(Math.random() * 1000);
+}
 
 export default FirstSection;
