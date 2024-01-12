@@ -15,6 +15,8 @@ import {
 } from "./styles";
 import { Profile } from "core/profiles/types";
 import useTransformCareerEnum from "hooks/use-transform-career-enum";
+import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ profile }: Props) => {
   const CardStyles = useCardStyles();
@@ -22,17 +24,21 @@ const Card = ({ profile }: Props) => {
   const CardOcupationStyles = useCardOcupationStyles();
   const CardLocationLineStyles = useCardLocationLineStyles();
   const CardLocationIconStyles = useCardLocationIconStyles();
+  const navigate = useNavigate();
 
   const transformedCareer = useTransformCareerEnum(profile.mainTitle);
 
+  const goToSelectedProfile = useCallback(() => {
+    navigate(`/profile/${profile.user.id}`);
+  }, [navigate, profile.user.id]);
+
   return (
-    <Box sx={CardStyles}>
+    <Box sx={CardStyles} onClick={goToSelectedProfile}>
       <Box sx={CardFirstSection}>
         <Typography sx={CardNameStyles}>
           {profile.user.name} {profile.user.lastname}
         </Typography>
         <Typography sx={CardOcupationStyles}>{transformedCareer}</Typography>
-
         <Box sx={CardSecondLine}>
           {!profile.countryResidence ? (
             <Typography sx={CardLocationLineStyles}>

@@ -22,6 +22,12 @@ export const useCardStyles = () => {
       xs: 1,
       md: 2,
     },
+    cursor: "pointer",
+    transition: "box-shadow 0.5s", // Agrega una transición de 0.5 segundos a la propiedad box-shadow
+    "&:hover": {
+      boxShadow:
+        "0px 8px 8px rgba(0, 0, 0, 0.25), 0px 4px 8px rgba(0, 0, 0, 0.2)",
+    },
   };
 
   return CardStyles;
