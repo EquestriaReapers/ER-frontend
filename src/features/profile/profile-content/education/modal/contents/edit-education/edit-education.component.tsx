@@ -1,15 +1,9 @@
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material'
-import { Education } from 'core/profiles/types'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import { Education } from "core/profiles/types";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
-import useForm from './use-form'
-import {
-  SetStateAction,
-  useCallback,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
+import useForm from "./use-form";
+import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -17,20 +11,24 @@ import {
   modalStyle,
   titleStyles,
   buttonStyle,
-  subTitleStyles
-} from './styles'
-import { EducationContent } from '../../education-modal-context/types'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
-import dayjs, { Dayjs } from 'dayjs'
-import EducationModalContext from '../../education-modal-context'
-import useEducationFormState from '../use-education-form-state'
-import { StyledBox, StyledButton } from './edit-education.styled'
+  subTitleStyles,
+} from "./styles";
+import { EducationContent } from "../../education-modal-context/types";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import dayjs, { Dayjs } from "dayjs";
+import EducationModalContext from "../../education-modal-context";
+import useEducationFormState from "../use-education-form-state";
+import { StyledBox, StyledButton } from "./edit-education.styled";
+
+const DICTIONARY_SELECTED_BOOLEAN: Record<string, boolean> = {
+  principal: true,
+  complementaria: false,
+};
 
 const EditEducationModalContent = ({ anEducation, className }: Props) => {
-  const { setContent } = useContext(EducationModalContext)
+  const { setContent } = useContext(EducationModalContext);
   const {
-    onChangePrincipal,
     onChangeTitle,
     onChangeEntity,
     onChangeEndDate,
@@ -41,41 +39,44 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
     setPrincipal,
     setTitle,
     setEntity,
-    setEndDate
-  } = useEducationFormState()
+    setEndDate,
+  } = useEducationFormState();
 
   const getEducationInfo = useCallback(() => {
-    setPrincipal(anEducation.principal)
-    setTitle(anEducation.title)
-    setEntity(anEducation.entity)
-    setEndDate(toDateOrNull(anEducation.endDate))
-  }, [setTitle, setEntity, setEndDate, setPrincipal, anEducation])
+    setPrincipal(anEducation.principal);
+    setTitle(anEducation.title);
+    setEntity(anEducation.entity);
+    setEndDate(toDateOrNull(anEducation.endDate));
+  }, [setTitle, setEntity, setEndDate, setPrincipal, anEducation]);
 
   useEffect(() => {
-    getEducationInfo()
-  }, [getEducationInfo])
+    getEducationInfo();
+  }, [getEducationInfo]);
 
   const anEducationState = {
     principal,
     title,
     entity,
-    endDate
-  }
+    endDate,
+  };
 
-  const educationId = anEducation.id
+  const educationId = anEducation.id;
 
   const onSubmitForm = useForm({
     anEducation: anEducationState,
-    educationId
-  })
+    educationId,
+  });
 
-  const [selectedButton, setSelectedButton] = useState(
-    anEducation.principal === true ? 'principal' : 'complementaria'
-  )
-  const handleButtonClick = (buttonType: SetStateAction<string>) => {
-    setSelectedButton(buttonType)
-    onChangePrincipal()
-  }
+  const handleButtonClick = useCallback(
+    (buttonType: string) => {
+      if (principal === DICTIONARY_SELECTED_BOOLEAN[buttonType]) {
+        setPrincipal(null);
+      } else {
+        setPrincipal(DICTIONARY_SELECTED_BOOLEAN[buttonType]);
+      }
+    },
+    [principal, setPrincipal]
+  );
 
   return (
     <Box sx={modalStyle} className={className}>
@@ -87,38 +88,38 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
         </Box>
         <Typography sx={titleStyles}>Editar educación</Typography>
 
-        <Typography className='edu-show-description'>
+        <Typography className="edu-show-description">
           Edita los datos de la educación profesional que quieres modificar
         </Typography>
       </Box>
 
-      <Box component='form' onSubmit={onSubmitForm}>
+      <Box component="form" onSubmit={onSubmitForm}>
         <Box>
-          <Box className='inputContainer mt-5px' sx={{ marginBottom: 2 }}>
+          <Box className="inputContainer mt-5px" sx={{ marginBottom: 2 }}>
             <TextField
               sx={textFieldStyles}
-              id='title'
-              label='Titulo'
+              id="title"
+              label="Titulo"
               value={title}
               onChange={onChangeTitle}
               disabled={anEducation.isUCAB}
             />
           </Box>
-          <Box className='inputContainer mt-5px' sx={{ marginTop: 2 }}>
+          <Box className="inputContainer mt-5px" sx={{ marginTop: 2 }}>
             <TextField
               sx={textFieldStyles}
-              id='entity'
-              label='Entidad'
+              id="entity"
+              label="Entidad"
               value={entity}
               onChange={onChangeEntity}
               disabled={anEducation.isUCAB}
             />
           </Box>
-          <Box className='inputContainer mt-5px' sx={{ marginTop: 2 }}>
+          <Box className="inputContainer mt-5px" sx={{ marginTop: 2 }}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 sx={textFieldStyles}
-                label='Fecha de Finalización'
+                label="Fecha de Finalización"
                 value={endDate}
                 onChange={onChangeEndDate}
                 disabled={anEducation.isUCAB}
@@ -126,26 +127,24 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
             </LocalizationProvider>
           </Box>
           {anEducation.isUCAB == true && (
-            <Box className='inputContainer mt-5px'>
-              <Typography sx={subTitleStyles}>
-                Cambiar Tipo de educación
-              </Typography>
+            <Box className="inputContainer mt-5px">
+              <Typography sx={subTitleStyles}>Tipo de educación</Typography>
               <StyledBox>
                 {anEducation.principal ? (
+                  // Boton cambiar a complementaria
                   <StyledButton
-                    className={
-                      selectedButton === 'complementaria' ? 'selected' : ''
-                    }
-                    onClick={() => handleButtonClick('complementaria')}
+                    className={principal === false ? "selected" : ""}
+                    onClick={() => handleButtonClick("complementaria")}
                   >
-                    Secundaria
+                    Es secundaria
                   </StyledButton>
                 ) : (
+                  // Boton cambiar a principal
                   <StyledButton
-                    className={selectedButton === 'principal' ? 'selected' : ''}
-                    onClick={() => handleButtonClick('principal')}
+                    className={principal === true ? "selected" : ""}
+                    onClick={() => handleButtonClick("principal")}
                   >
-                    Principal
+                    Es principal
                   </StyledButton>
                 )}
               </StyledBox>
@@ -154,23 +153,23 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
         </Box>
 
         <Box sx={boxButtonStyles}>
-          <Button sx={buttonStyle} type='submit'>
+          <Button sx={buttonStyle} type="submit">
             Guardar
           </Button>
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default EditEducationModalContent
+export default EditEducationModalContent;
 
 interface Props {
-  anEducation: Education
-  className?: string
+  anEducation: Education;
+  className?: string;
 }
 
 function toDateOrNull(date: string | Date | null): Dayjs | null {
-  if (date) return dayjs(date)
-  return null
+  if (date) return dayjs(date);
+  return null;
 }
