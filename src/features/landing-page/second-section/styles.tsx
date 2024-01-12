@@ -76,8 +76,12 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
   );
 
   const SecondSectionDownloadCVSectionStyles = {
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    flexDirection: "colunn",
     width: isSmallScreen ? "100%" : "50%",
-    height: "40%",
+    height: "100%",
     margin: isSmallScreen ? "auto" : "auto 0 60px 0",
   };
 

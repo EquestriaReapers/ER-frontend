@@ -47,7 +47,7 @@ export const useInsideFirstSectionStyles = () => {
 };
 
 export const firstSectionFigureBoxStyles = {
-  width: "50%",
+  width: "40%",
   height: "100%",
   display: "flex",
   alignItems: "center",
@@ -55,15 +55,22 @@ export const firstSectionFigureBoxStyles = {
 };
 
 export const useFirstSectionFigureStyles = () => {
-  const firstSectionFigureStyles = {};
+  const firstSectionFigureStyles = {
+    margin: "auto",
+  };
   return firstSectionFigureStyles;
 };
 
 export const firstSectionFigureBackgroundStyles = {
-  height: 233,
-  width: 350,
-  maxHeight: { xs: 233, md: 167 },
-  maxWidth: { xs: 350, md: 250 },
+  //height: 233,
+ // width: 350,
+  height: 350,
+  width: 500,
+  //maxHeight: { xs: 233, md: 167 },
+  //maxWidth: { xs: 350, md: 250 },
+  maxHeight: { xs: 233, md: 250 },
+  maxWidth: { xs: 500, md: 350 },
+  margin: "auto",
 };
 
 export const firstSectionLogoStyles = {
@@ -71,6 +78,7 @@ export const firstSectionLogoStyles = {
   width: 200,
   maxHeight: { xs: 233, md: 167 },
   maxWidth: { xs: 350, md: 250 },
+  margin: "auto",
 };
 
 
@@ -80,9 +88,10 @@ export const useFirstSectionDownloadCVSectionStyles = () => {
   );
 
   const firstSectionDownloadCVSectionStyles = {
-    width: isSmallScreen ? "100%" : "50%",
-    height: "40%",
-    margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    display:"grid",
+    width: isSmallScreen ? "100%" : "60%",
+    height: "100%",
+    //margin: isSmallScreen ? "auto" : "auto 0 60px 0",
   };
 
   return firstSectionDownloadCVSectionStyles;
@@ -98,7 +107,8 @@ export const useFirstSectionDownloadCVTypographyStyles = () => {
     fontSize: "2rem",
     marginBottom: "40px",
     color: "#FFFFFF",
-    textAlign: isSmallScreen ? "center" : "left",
+    textAlign:"center",
+    //textAlign: isSmallScreen ? "center" : "left",
   };
 
   return firstSectionDownloadCVTypographyStyles;
@@ -110,7 +120,6 @@ export const useFirstSectionDownloadCVTextStyles = () => {
   );
 
   const firstSectionDownloadCVTextStyles = {
-    marginBottom: "40px",
     fontWeight: "500",
     fontSize: "0.9rem",
     color: "#FFFFFF",
