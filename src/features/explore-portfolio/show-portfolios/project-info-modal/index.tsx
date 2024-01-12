@@ -111,12 +111,12 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
               >
                 {!project.url ? (
                   <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
-                    {project.url ? project.url : "No hay url para mostrar"}
+                    {"No hay url para mostrar"}
                   </Typography>
                 ) : (
                   <Box
                     component="a"
-                    href={project.url}
+                    href={agregarHttpsAlLink(project.url)}
                     sx={{
                       backgroundColor: "#0089E2",
                       textDecoration: "none",
@@ -341,6 +341,15 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
     </Box>
   );
 };
+
+function agregarHttpsAlLink(link: string): string {
+  // Verificar si el enlace comienza con "http://" o "https://"
+  if (!link.startsWith("http://") && !link.startsWith("https://")) {
+    // Si no comienza con "http://" o "https://", agregar "https://"
+    link = "https://" + link;
+  }
+  return link;
+}
 
 interface Props {
   project: Project;

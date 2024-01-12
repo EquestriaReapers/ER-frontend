@@ -111,12 +111,12 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
               >
                 {!project.url ? (
                   <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
-                    {project.url ? project.url : "No hay url para mostrar"}
+                    {"No hay url para mostrar"}
                   </Typography>
                 ) : (
                   <Box
                     component="a"
-                    href={project.url}
+                    href={agregarHttpsAlLink(project.url)}
                     sx={{
                       backgroundColor: "#0089E2",
                       textDecoration: "none",
@@ -311,12 +311,12 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
 
           {!project.url ? (
             <Typography sx={{ fontFamily: "inter", fontSize: "16px" }}>
-              {project.url ? project.url : "No hay url para mostrar"}
+              {"No hay url para mostrar"}
             </Typography>
           ) : (
             <Box
               component="a"
-              href={project.url}
+              href={agregarHttpsAlLink(project.url)}
               sx={{
                 maxWidth: "300px",
                 backgroundColor: "#0089E2",
@@ -341,6 +341,18 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
     </Box>
   );
 };
+
+function agregarHttpsAlLink(link: string): string {
+  console.log("link", link);
+  // Verificar si el enlace comienza con "http://" o "https://"
+  if (!link.startsWith("http://") && !link.startsWith("https://")) {
+    console.log("AGREGALO");
+    // Si no comienza con "http://" o "https://", agregar "https://"
+    return "https://" + link;
+  }
+  console.log("NO AGREGALO");
+  return link;
+}
 
 interface Props {
   profile: Profile;

@@ -16,7 +16,16 @@ const Experiences = () => {
         {isEditable && <ExperienceModalWrapper />}
       </Box>
 
-      <ShowProfileExperiencies experiences={profile.experience} />
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          width: { xs: "100%", lg: "75%" },
+        }}
+      >
+        <ShowProfileExperiencies experiences={profile.experience} />
+      </Box>
     </>
   );
 };

@@ -10,6 +10,7 @@ import {
   thirdSectionCurriculumStyles,
 } from "./styles";
 import CurriculumImage from "./images/curriculum.png";
+import { useNavigate } from "react-router-dom";
 
 const FirstSection = () => {
   const insideFirstSectionStyles = useInsideFirstSectionStyles();
@@ -20,6 +21,7 @@ const FirstSection = () => {
     useFirstSectionDownloadCVTypographyStyles();
 
   const buttonStyles = useButtonStyles();
+  const navigate = useNavigate();
 
   return (
     <Box sx={firstSectionStyles}>
@@ -46,7 +48,9 @@ const FirstSection = () => {
             perfil totalmente actualizado!
           </Typography>
           <Box sx={{ display: "grid", justifyContent: "center" }}>
-            <Button sx={buttonStyles}>Empezar a Generar</Button>
+            <Button sx={buttonStyles} onClick={() => navigate("/home")}>
+              Empezar a Generar
+            </Button>
           </Box>
         </Box>
       </Box>

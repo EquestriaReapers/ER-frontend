@@ -11,6 +11,7 @@ import {
   useButtonStyles,
 } from "./styles";
 import Pc2Imagen from "./images/pc2.png";
+import { useNavigate } from "react-router-dom";
 
 const SecondSection = () => {
   const InsideSecondSectionStyles = useInsideSecondSectionStyles();
@@ -22,7 +23,8 @@ const SecondSection = () => {
   const SecondSectionDownloadCVTextStyles =
     useSecondSectionDownloadCVTextStyles();
   const buttonStyles = useButtonStyles();
-
+  const navigate = useNavigate();
+  
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
@@ -36,7 +38,9 @@ const SecondSection = () => {
             justo el talento y los perfiles que necesitas !
           </Typography>
           <Box>
-            <Button sx={buttonStyles}>Empieza a Buscar</Button>
+            <Button sx={buttonStyles} onClick={() => navigate("/catalogue")}>
+              Empieza a Buscar
+            </Button>
           </Box>
         </Box>
         <Box sx={SecondSectionFigureBoxStyles}>

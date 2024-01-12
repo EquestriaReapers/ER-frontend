@@ -1,4 +1,4 @@
-import { updateProfileEducation } from "features/profile/services/education/update-profile-education";
+import { updateProfileEducation } from "core/auth/education/update-profile-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useSuccessToast } from "hooks/use-success-toast";
