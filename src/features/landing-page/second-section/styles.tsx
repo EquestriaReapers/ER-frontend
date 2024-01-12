@@ -64,10 +64,6 @@ export const useSecondSectionFigureStyles = () => {
 };
 
 export const SecondSectionFigureBackgroundStyles = {
-  //height: 233,
-  //width: 350,
-  //maxHeight: { xs: 233, md: 167 },
-  //maxWidth: { xs: 350, md: 250 },
   maxWidth: { xs: 250, md: "100%" },
   height: "auto",
   width: 400,
