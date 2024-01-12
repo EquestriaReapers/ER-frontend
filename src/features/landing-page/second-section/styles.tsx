@@ -4,7 +4,7 @@ import { Theme } from "@mui/material";
 export const SecondSectionStyles = {
   width: "100%",
   position: "relative",
-  height:"400px",
+  height:{ xs: "600px", md: "400px" },
 
   "&::before": {
     content: '""',

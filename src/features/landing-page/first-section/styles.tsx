@@ -35,7 +35,7 @@ export const useInsideFirstSectionStyles = () => {
   const InsidefirstSectionStyles = {
     width: isMediumScreen ? "90%" : "80%",
     height: "90%",
-    display: isSmallScreen ? "grid" : "flex",
+    display: isMediumScreen ? "grid" : "flex",
     margin: "auto",
     position: "relative",
     zIndex: 1,
@@ -46,11 +46,12 @@ export const useInsideFirstSectionStyles = () => {
 };
 
 export const firstSectionFigureBoxStyles = {
-  width: "40%",
+  width: { xs: "100%", md: "40%" },
   height: "100%",
   display: "flex",
   alignItems: "center",
   margin: "auto",
+  order: { xs: 2, md: 1 },
 };
 
 export const useFirstSectionFigureStyles = () => {
@@ -63,12 +64,13 @@ export const useFirstSectionFigureStyles = () => {
 export const firstSectionFigureBackgroundStyles = {
   //height: 233,
  // width: 350,
-  height: 350,
-  width: 500,
+  height: "auto",
+  width: 450,
   //maxHeight: { xs: 233, md: 167 },
   //maxWidth: { xs: 350, md: 250 },
   maxHeight: { xs: 233, md: 250 },
-  maxWidth: { xs: 500, md: 350 },
+  maxWidth: { xs: 400, md: "100%" },
+
   margin: "auto",
 };
 
@@ -81,15 +83,16 @@ export const firstSectionLogoStyles = {
 };
 
 export const useFirstSectionDownloadCVSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
+  const isMediumScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
   );
 
   const firstSectionDownloadCVSectionStyles = {
     display:"grid",
-    width: isSmallScreen ? "100%" : "60%",
+    width: isMediumScreen ? "100%" : "60%",
     height: "100%",
     //margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    order: { xs: 1, md: 2 },
   };
 
   return firstSectionDownloadCVSectionStyles;

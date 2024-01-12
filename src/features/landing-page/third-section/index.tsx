@@ -37,7 +37,7 @@ const FirstSection = () => {
           <Typography sx={firstSectionDownloadCVTypographyStyles}>
             ¡Genera un currículum profesional en segundos!
           </Typography>
-          <Typography sx={{ color: "pink" }}>
+          <Typography sx={{ color: "white" }}>
             ¡Resume toda la información académica, habilidades, experiencias e
             idiomas en tan solo segundos descargando el currículum vitae de un
             perfil totalmente actualizado!
