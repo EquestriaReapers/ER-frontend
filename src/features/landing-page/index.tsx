@@ -1,18 +1,15 @@
-import Box from "@mui/material/Box";
-import {
-  useLandingPageContainerStyles,
-  useMainContainerStyles,
-} from "./styles";
+import Box from '@mui/material/Box'
+import { useLandingPageContainerStyles, useMainContainerStyles } from './styles'
 
-import FirstSection from "./first-section";
-import SecondSection from "./second-section";
-import ThirdSection from "./third-section";
-import FourthSection from "./fourth-section";
-import FifthSection from "./fifth-section";
+import FirstSection from './first-section'
+import SecondSection from './second-section'
+import ThirdSection from './third-section'
+import FourthSection from './fourth-section'
+import FifthSection from './fifth-section'
 
 const LandingPage = () => {
-  const LandingPageStyles = useLandingPageContainerStyles();
-  const MainContainerStyles = useMainContainerStyles();
+  const LandingPageStyles = useLandingPageContainerStyles()
+  const MainContainerStyles = useMainContainerStyles()
 
   return (
     <Box sx={LandingPageStyles}>
@@ -21,10 +18,10 @@ const LandingPage = () => {
         <SecondSection />
         <ThirdSection />
         <FourthSection />
-        <FifthSection/>
+        <FifthSection />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default LandingPage;
+export default LandingPage

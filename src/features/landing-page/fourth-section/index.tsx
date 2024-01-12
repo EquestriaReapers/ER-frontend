@@ -1,4 +1,4 @@
-import { Typography, Box, Button } from "@mui/material/";
+import { Typography, Box, Button } from '@mui/material/'
 import {
   SecondSectionStyles,
   useInsideSecondSectionStyles,
@@ -8,24 +8,23 @@ import {
   useSecondSectionDownloadCVSectionStyles,
   useSecondSectionDownloadCVTypographyStyles,
   useSecondSectionDownloadCVTextStyles,
-  useButtonStyles,
-} from "./styles";
+  useButtonStyles
+} from './styles'
 
 const SecondSection = () => {
-  const InsideSecondSectionStyles = useInsideSecondSectionStyles();
-  const SecondSectionFigureStyles = useSecondSectionFigureStyles();
+  const InsideSecondSectionStyles = useInsideSecondSectionStyles()
+  const SecondSectionFigureStyles = useSecondSectionFigureStyles()
   const SecondSectionDownloadCVSectionStyles =
-    useSecondSectionDownloadCVSectionStyles();
+    useSecondSectionDownloadCVSectionStyles()
   const SecondSectionDownloadCVTypographyStyles =
-    useSecondSectionDownloadCVTypographyStyles();
+    useSecondSectionDownloadCVTypographyStyles()
   const SecondSectionDownloadCVTextStyles =
-    useSecondSectionDownloadCVTextStyles();
-  const buttonStyles = useButtonStyles();
+    useSecondSectionDownloadCVTextStyles()
+  const buttonStyles = useButtonStyles()
 
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
-        
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
             ¡Explora los portafolios de los egresados!
@@ -42,16 +41,16 @@ const SecondSection = () => {
         <Box sx={SecondSectionFigureBoxStyles}>
           <Box sx={SecondSectionFigureStyles}>
             <Box
-              component="img"
+              component='img'
               sx={SecondSectionFigureBackgroundStyles}
-              alt="portfolio-cards"
-              src="src\features\landing-page\fourth-section\images\cards.png"
+              alt='portfolio-cards'
+              src='src\features\landing-page\fourth-section\images\cards.png'
             />
           </Box>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default SecondSection;
+export default SecondSection

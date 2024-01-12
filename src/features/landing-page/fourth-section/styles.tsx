@@ -1,168 +1,166 @@
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { Theme } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { Theme } from '@mui/material'
 
 export const SecondSectionStyles = {
-  width: "100%",
-  position: "relative",
+  width: '100%',
+  position: 'relative',
+  my: 4,
 
-  "&::before": {
+  '&::before': {
     content: '""',
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
-    width: "100%",
-    height: "100%",
+    width: '100%',
 
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    filter: "blur(3.3px)",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    filter: 'blur(3.3px)',
     zIndex: -1,
-    display: "flex",
-  },
-};
+    display: 'flex'
+  }
+}
 
 export const useInsideSecondSectionStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
   const isMediumScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("md")
-  );
+    theme.breakpoints.down('md')
+  )
 
   const InsideSecondSectionStyles = {
-    width: isMediumScreen ? "90%" : "80%",
-    height: "90%",
-    display: isSmallScreen ? "grid" : "flex",
-    margin: "auto",
-    position: "relative",
+    width: isMediumScreen ? '90%' : '80%',
+    display: isSmallScreen ? 'grid' : 'flex',
+    margin: 'auto',
+    position: 'relative',
     zIndex: 1,
-    maxWidth: "2000px",
-  };
+    maxWidth: '2000px'
+  }
 
-  return InsideSecondSectionStyles;
-};
+  return InsideSecondSectionStyles
+}
 
 export const SecondSectionFigureBoxStyles = {
-  width: "50%",
-  height: "100%",
-  display: "flex",
-  alignItems: "center",
-  margin: "auto",
-};
+  width: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  margin: 'auto'
+}
 
 export const useSecondSectionFigureStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
 
   const SecondSectionFigureStyles = {
-    height: isSmallScreen ? "310px" : "300px",
-    width: isSmallScreen ? "270px" : "100%",
-  };
-  return SecondSectionFigureStyles;
-};
+    height: isSmallScreen ? '310px' : '300px',
+    width: isSmallScreen ? '270px' : '100%'
+  }
+  return SecondSectionFigureStyles
+}
 
 export const SecondSectionFigureBackgroundStyles = {
   height: 250,
   width: 350,
   maxHeight: { xs: 233, md: 300 },
-  maxWidth: { xs: 350, md: 400 },
-};
+  maxWidth: { xs: 350, md: 400 }
+}
 
 export const useSecondSectionDownloadCVSectionStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
 
   const SecondSectionDownloadCVSectionStyles = {
-    width: isSmallScreen ? "100%" : "50%",
-    height: "40%",
-    margin: isSmallScreen ? "auto" : "auto 0 60px 0",
-  };
+    width: isSmallScreen ? '100%' : '50%',
+    height: '40%',
+    margin: isSmallScreen ? 'auto' : 'auto 0 60px 0'
+  }
 
-  return SecondSectionDownloadCVSectionStyles;
-};
+  return SecondSectionDownloadCVSectionStyles
+}
 
 export const useSecondSectionDownloadCVTypographyStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
 
   const SecondSectionDownloadCVTypographyStyles = {
-    fontWeight: "600",
-    fontSize: "2rem",
-    marginBottom: "40px",
-    color: "black",
-    textAlign: isSmallScreen ? "center" : "left",
-  };
+    fontWeight: '600',
+    fontSize: '2rem',
+    marginBottom: '40px',
+    color: 'black',
+    textAlign: isSmallScreen ? 'center' : 'left'
+  }
 
-  return SecondSectionDownloadCVTypographyStyles;
-};
+  return SecondSectionDownloadCVTypographyStyles
+}
 
 export const useSecondSectionDownloadCVTextStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
 
   const SecondSectionDownloadCVTextStyles = {
-    marginBottom: "40px",
-    fontWeight: "500",
-    fontSize: "0.9rem",
-    color: "black",
-    textAlign: isSmallScreen ? "center" : "left",
-  };
+    marginBottom: '40px',
+    fontWeight: '500',
+    fontSize: '0.9rem',
+    color: 'black',
+    textAlign: isSmallScreen ? 'center' : 'left'
+  }
 
-  return SecondSectionDownloadCVTextStyles;
-};
+  return SecondSectionDownloadCVTextStyles
+}
 
 export const useSecondSectionDownloadCVBoxStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
+    theme.breakpoints.down('sm')
+  )
 
   const SecondSectionDownloadCVBoxStyles = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: isSmallScreen ? "center" : "left",
-  };
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: isSmallScreen ? 'center' : 'left'
+  }
 
-  return SecondSectionDownloadCVBoxStyles;
-};
+  return SecondSectionDownloadCVBoxStyles
+}
 
 export const DownloadIconStyles = {
-  fontSize: "1.5rem",
-  marginTop: "auto",
-  marginBottom: "auto",
-  marginRight: "2px",
-  color: "black",
-};
+  fontSize: '1.5rem',
+  marginTop: 'auto',
+  marginBottom: 'auto',
+  marginRight: '2px',
+  color: 'black'
+}
 
 export const DownlodCVTypography = {
-  marginBottom: "40px",
-  fontSize: "0.8rem",
-  fontWeight: "500",
-  color: "black",
-  margin: "auto 0 0 0",
-};
+  marginBottom: '40px',
+  fontSize: '0.8rem',
+  fontWeight: '500',
+  color: 'black',
+  margin: 'auto 0 0 0'
+}
 
 export const useButtonStyles = () => {
   const buttonStyles = {
-    fontFamily: "inter",
-    borderRadius: "6px",
-    background: "#efb70e",
-    fontWeight: "700",
-    color: "white",
-    textTransform: "capitalize",
-    fontSize: "16px",
+    fontFamily: 'inter',
+    borderRadius: '6px',
+    background: '#efb70e',
+    fontWeight: '700',
+    color: 'white',
+    textTransform: 'capitalize',
+    fontSize: '16px',
     px: 3,
     my: 2,
-    "&:hover": {
-      backgroundColor: "#e2ac08",
+    '&:hover': {
+      backgroundColor: '#e2ac08'
     },
-    "&:disabled": {
-      color: "#ffffff",
-    },
-  };
+    '&:disabled': {
+      color: '#ffffff'
+    }
+  }
 
-  return buttonStyles;
-};
+  return buttonStyles
+}
