@@ -103,7 +103,6 @@ const EditProjectModalContent = ({ project }: Props) => {
 
   return (
     <Box sx={modalStyle}>
-      {console.log(url)}
       <Box sx={{ mx: "40px", mb: "40px", mt: "20px" }}>
         <Box sx={headerStyles}>
           <IconButton
