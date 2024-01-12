@@ -7,6 +7,16 @@ import { Portfolio, Profile } from "core/profiles/types";
 const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
   const getYear = (date: string | number | Date) =>
     new Date(date).getFullYear();
+  const addHttpsToLink = (link: string | null): string | undefined => {
+    console.log(link);
+    if (!link) return;
+    if (!link.startsWith("http://") && !link.startsWith("https://")) {
+      link = "https://" + link;
+      return link;
+    }
+  };
+
+  const link = addHttpsToLink(project.url);
 
   return (
     <Box sx={modalStyle}>
@@ -116,7 +126,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                 ) : (
                   <Box
                     component="a"
-                    href={project.url}
+                    href={link}
                     sx={{
                       backgroundColor: "#0089E2",
                       textDecoration: "none",
@@ -316,7 +326,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
           ) : (
             <Box
               component="a"
-              href={project.url}
+              href={link}
               sx={{
                 maxWidth: "300px",
                 backgroundColor: "#0089E2",

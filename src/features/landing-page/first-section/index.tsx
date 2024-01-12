@@ -12,6 +12,7 @@ import {
 } from "./styles";
 import CatalogInPhoneAndPcImage from "./images/catalog-in-phone-and-pc.png";
 import WideLogo from "./images/wide-logo.png";
+import { useNavigate } from "react-router-dom";
 
 const FirstSection = () => {
   const insideFirstSectionStyles = useInsideFirstSectionStyles();
@@ -22,6 +23,8 @@ const FirstSection = () => {
     useFirstSectionDownloadCVTypographyStyles();
 
   const buttonStyles = useButtonStyles();
+
+  const navigate = useNavigate();
 
   return (
     <Box sx={firstSectionStyles}>
@@ -54,7 +57,9 @@ const FirstSection = () => {
               justifyContent: "center",
             }}
           >
-            <Button sx={buttonStyles}>Empezar a Explorar</Button>
+            <Button sx={buttonStyles} onClick={() => navigate("/home")}>
+              Empezar a Explorar
+            </Button>
           </Box>
         </Box>
       </Box>

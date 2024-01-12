@@ -1,4 +1,4 @@
-import { updateCVEducation } from "core/education/update-CV-education";
+import { updateCVEducation } from "core/auth/education/update-CV-education";
 import { useAuthState } from "hooks/use-auth-state";
 import { useErrorToast } from "hooks/use-error-toast";
 import { useCallback, useContext } from "react";
