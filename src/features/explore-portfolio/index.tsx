@@ -4,7 +4,8 @@ import useInitialPortfoliosSearchParams from "./explore-portfolio-context/use-in
 import PortfoliosContextProvider from "./explore-portfolio-context/context-provider";
 import useSeed from "./explore-portfolio-context/use-seed";
 import PortfoliosList from "./portfolios-list";
-import SearchBar from "./explore-portfolio-context/SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
+import { explorePortfolioPageStyles } from "./styles/index-styles";
 
 const ExplorePortfolio = () => {
   const seed = useSeed();
@@ -23,12 +24,7 @@ const ExplorePortfolio = () => {
         initialPortfoliosSearchParams={initialPortfoliosSearchParams}
       >
         <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            my: "30px",
-          }}
+          sx={explorePortfolioPageStyles}
         >
           <SearchBar />
           <Box sx={{ display: "flex", flexDirection: "row", width: "100%" }}>

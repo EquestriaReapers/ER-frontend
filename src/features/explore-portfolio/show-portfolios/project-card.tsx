@@ -9,6 +9,15 @@ import {
 import { useState } from "react";
 import ProjectInfoModal from "./project-info-modal";
 import { Project } from "../explore-portfolio-context/context";
+import {
+  hoveredCardDescriptionStyles,
+  hoveredCardStyles,
+  hoveredCardTitleStyles,
+  profileNameStyles,
+  projectCardContainer,
+  projectCardStyles,
+  projectTitleStyles,
+} from "./styles";
 
 function ProjectCard({ project }: Props) {
   const [hover, setHover] = useState(false);
@@ -25,33 +34,9 @@ function ProjectCard({ project }: Props) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          flexWrap: "wrap",
-          width: "100%",
-          maxWidth: {
-            xs: "250px",
-            md: "300px",
-            lg: "300px",
-            xl: "300px",
-          },
-        }}
-      >
+      <Box sx={projectCardContainer}>
         <Card
-          sx={{
-            width: "100%",
-            maxWidth: {
-              xs: "250px",
-              md: "300px",
-              lg: "300px",
-              xl: "300px",
-            },
-            height: { xs: "250px", md: "300px" },
-            textDecoration: "none",
-            cursor: "pointer",
-          }}
+          sx={projectCardStyles}
           onMouseEnter={showPortfolioText}
           onMouseLeave={hidePortfolioText}
           onClick={() => setIsOpen(true)}
@@ -66,67 +51,20 @@ function ProjectCard({ project }: Props) {
             title={project.title}
           >
             {hover && (
-              <CardContent
-                sx={{
-                  backgroundColor: "rgba(0, 0, 0, 0.58)  ",
-                  py: "32px",
-                  px: "32px",
-                  height: "100%",
-                  position: "relative",
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "22px",
-                  width: "100%",
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontFamily: "inter",
-                    fontSize: "24px",
-                    fontStyle: "normal",
-                    fontWeight: "500",
-                    lineHeight: "normal",
-                    textTransform: "capitalize",
-                  }}
-                >
+              <CardContent sx={hoveredCardStyles}>
+                <Typography sx={hoveredCardTitleStyles}>
                   {project.title}
                 </Typography>
-                <Typography
-                  sx={{
-                    color: "#FFF",
-                    fontFamily: "inter",
-                    fontSize: "16px",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    lineHeight: "normal",
-                    textTransform: "capitalize",
-                  }}
-                >
+                <Typography sx={hoveredCardDescriptionStyles}>
                   {limitWords(project.description, 40)}
                 </Typography>
               </CardContent>
             )}
           </CardMedia>
         </Card>
-        <Box>
-          <Typography
-            sx={{
-              color: "#000",
-              fontFamily: "inter",
-              fontSize: "16px",
-              fontStyle: "normal",
-              fontWeight: "600",
-              lineHeight: "normal",
-            }}
-          >
-            {project.title}
-          </Typography>
-          <Typography>
+        <Box sx={{ marginTop: "2px" }}>
+          <Typography sx={projectTitleStyles}>{project.title}</Typography>
+          <Typography sx={profileNameStyles}>
             {project.profile.name} {project.profile.lastname}
           </Typography>
         </Box>

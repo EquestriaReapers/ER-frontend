@@ -10,7 +10,7 @@ import {
   SearchIconStyles,
 } from "./styles";
 import { useEffect, useState } from "react";
-import usePortfolioContext from "../use-explore-portfolios-context";
+import usePortfolioContext from "../explore-portfolio-context/use-explore-portfolios-context";
 
 const StyledPaper = styled(Paper)`
   ${PaperStyles}
