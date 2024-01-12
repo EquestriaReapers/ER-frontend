@@ -2,9 +2,9 @@ import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { modalStyle } from "./styles";
-import { Portfolio } from "core/profiles/types";
+import { Portfolio, Profile } from "core/profiles/types";
 
-const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
+const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
   const getYear = (date: string | number | Date) =>
     new Date(date).getFullYear();
 
@@ -33,12 +33,51 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
         />
       </Box>
 
-      <IconButton
-        onClick={() => setIsOpen(false)}
-        sx={{ display: "flex", marginLeft: "10px", marginTop: "5px" }}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column", sm: "row" },
+          alignItems: { xs: "flex-start", sm: "center" },
+          justifyContent: { xs: "start", sm: "space-between" },
+          mx: { xs: "24px", sm: "10px" },
+          my: "14px",
+        }}
       >
-        <ArrowBackIcon />
-      </IconButton>
+        <IconButton
+          onClick={() => setIsOpen(false)}
+          sx={{ marginLeft: "-4px" }}
+        >
+          <ArrowBackIcon />
+        </IconButton>
+
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Box
+            component="a"
+            href={`/profile/${profile.userId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {profile.user.name} {profile.user.lastname}
+          </Box>
+
+          {!project.url ? (
+            <Typography sx={{ fontFamily: "inter", fontSize: "14px" }}>
+              {project.url ? project.url : "No hay url para mostrar"}
+            </Typography>
+          ) : (
+            <Box
+              component="a"
+              href={project.url}
+              sx={{ fontFamily: "inter", fontSize: "14px" }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {project.url}
+            </Box>
+          )}
+        </Box>
+      </Box>
+
       <Box
         sx={{
           mx: "24px",
@@ -161,6 +200,7 @@ const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
 };
 
 interface Props {
+  profile: Profile;
   project: Portfolio;
   setIsOpen: (isOpen: boolean) => void;
 }
