@@ -17,7 +17,7 @@ const Profile = () => {
     <>
       <Box sx={bannerStyles}></Box>
       {!isFirstTimeLoaded ? (
-        <SpinnerBlock style={{ mt: 16 }} />
+        <SpinnerBlock style={{ mt: 16, mb: 34 }} />
       ) : profile && profileId ? (
         <ProfileContextProvider
           profileId={profileId}
