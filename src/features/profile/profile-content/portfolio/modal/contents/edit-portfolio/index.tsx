@@ -38,6 +38,7 @@ const EditProjectModalContent = ({ project }: Props) => {
     onDateEndChange,
     onImageChange,
     setTitle,
+    setUrl,
     setDescription,
     setLocation,
     setDateEnd,
@@ -57,14 +58,17 @@ const EditProjectModalContent = ({ project }: Props) => {
 
   const getProjectInfo = useCallback(() => {
     setTitle(project.title);
+
     setDescription(project.description);
     setLocation(project.location);
     setDateEnd(toDateOrNull(project.dateEnd));
     const _projectImages = project.image || [];
     setImage(_projectImages);
+    setUrl(project.url!);
   }, [
     setTitle,
     project.title,
+    project.url,
     project.description,
     project.location,
     project.dateEnd,
@@ -73,6 +77,7 @@ const EditProjectModalContent = ({ project }: Props) => {
     setLocation,
     setDateEnd,
     setImage,
+    setUrl,
   ]);
 
   useEffect(() => {
@@ -98,6 +103,7 @@ const EditProjectModalContent = ({ project }: Props) => {
 
   return (
     <Box sx={modalStyle}>
+      {console.log(url)}
       <Box sx={{ mx: "40px", mb: "40px", mt: "20px" }}>
         <Box sx={headerStyles}>
           <IconButton
