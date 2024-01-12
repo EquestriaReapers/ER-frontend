@@ -10,6 +10,7 @@ import {
   useSecondSectionDownloadCVTextStyles,
   useButtonStyles,
 } from "./styles";
+import Pc2Imagen from "./images/pc2.png";
 
 const SecondSection = () => {
   const InsideSecondSectionStyles = useInsideSecondSectionStyles();
@@ -25,7 +26,6 @@ const SecondSection = () => {
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
-        
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
             ¡Encuentra los perfiles que te interesan!
@@ -45,7 +45,7 @@ const SecondSection = () => {
               component="img"
               sx={SecondSectionFigureBackgroundStyles}
               alt="catalog-in-pc"
-              src="src\features\landing-page\second-section\images\pc2.png"
+              src={Pc2Imagen}
             />
           </Box>
         </Box>

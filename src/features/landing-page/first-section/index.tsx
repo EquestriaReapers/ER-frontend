@@ -10,6 +10,8 @@ import {
   useButtonStyles,
   firstSectionLogoStyles,
 } from "./styles";
+import CatalogInPhoneAndPcImage from "./images/catalog-in-phone-and-pc.png";
+import WideLogo from "./images/wide-logo.png";
 
 const FirstSection = () => {
   const insideFirstSectionStyles = useInsideFirstSectionStyles();
@@ -30,22 +32,28 @@ const FirstSection = () => {
               component="img"
               sx={firstSectionFigureBackgroundStyles}
               alt="catalog-in-pc"
-              src="src\features\landing-page\first-section\images\catalog- in-phone-and-pc.png"
+              src={CatalogInPhoneAndPcImage}
             />
           </Box>
         </Box>
         <Box sx={firstSectionDownloadCVSectionStyles}>
-            <Box
-              component="img"
-              sx={firstSectionLogoStyles}
-              alt="catalog-in-pc"
-              src="src\features\landing-page\first-section\images\wide-logo.png"
-            />
+          <Box
+            component="img"
+            sx={firstSectionLogoStyles}
+            alt="catalog-in-pc"
+            src={WideLogo}
+          />
           <Typography sx={firstSectionDownloadCVTypographyStyles}>
             ¡La red con los perfiles profesionales de egresados de la UCAB!
           </Typography>
 
-          <Box sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Button sx={buttonStyles}>Empezar a Explorar</Button>
           </Box>
         </Box>
