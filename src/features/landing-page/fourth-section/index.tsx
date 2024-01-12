@@ -1,4 +1,4 @@
-import { Typography, Box, Button } from "@mui/material/";
+import { Typography, Box, Button } from '@mui/material/'
 import {
   SecondSectionStyles,
   useInsideSecondSectionStyles,
@@ -8,50 +8,49 @@ import {
   useSecondSectionDownloadCVSectionStyles,
   useSecondSectionDownloadCVTypographyStyles,
   useSecondSectionDownloadCVTextStyles,
-  useButtonStyles,
-} from "./styles";
-import CardImage from "./images/cards.png";
+  useButtonStyles
+} from './styles'
+import CardImage from './images/cards.png'
 
 const SecondSection = () => {
-  const InsideSecondSectionStyles = useInsideSecondSectionStyles();
-  const SecondSectionFigureStyles = useSecondSectionFigureStyles();
+  const InsideSecondSectionStyles = useInsideSecondSectionStyles()
+  const SecondSectionFigureStyles = useSecondSectionFigureStyles()
   const SecondSectionDownloadCVSectionStyles =
-    useSecondSectionDownloadCVSectionStyles();
+    useSecondSectionDownloadCVSectionStyles()
   const SecondSectionDownloadCVTypographyStyles =
-    useSecondSectionDownloadCVTypographyStyles();
+    useSecondSectionDownloadCVTypographyStyles()
   const SecondSectionDownloadCVTextStyles =
-    useSecondSectionDownloadCVTextStyles();
-  const buttonStyles = useButtonStyles();
+    useSecondSectionDownloadCVTextStyles()
+  const buttonStyles = useButtonStyles()
 
   return (
     <Box sx={SecondSectionStyles}>
       <Box sx={InsideSecondSectionStyles}>
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
-            ¡Explora los portafolios de los egresados!
+            ¡Explora los <span>portafolios</span> de los egresados!
           </Typography>
           <Typography sx={SecondSectionDownloadCVTextStyles}>
-            ¡Usa nuestro poderoso motor de búsquedas, el cual te permitirá
-            amplias opciones de exploración, búsqueda y filtrado para conseguir
-            justo el talento y los perfiles que necesitas !
+            Encuentra perfiles por medio de portafolios especificos u observa el
+            portafolio que tiene cada egresado de la plataforma para lucir!
           </Typography>
           <Box>
-            <Button sx={buttonStyles}>Explorar portafolios</Button>
+            <Button sx={buttonStyles}>Explorar portafolios!</Button>
           </Box>
         </Box>
         <Box sx={SecondSectionFigureBoxStyles}>
           <Box sx={SecondSectionFigureStyles}>
             <Box
-              component="img"
+              component='img'
               sx={SecondSectionFigureBackgroundStyles}
-              alt="portfolio-cards"
+              alt='portfolio-cards'
               src={CardImage}
             />
           </Box>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default SecondSection;
+export default SecondSection

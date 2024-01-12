@@ -21,7 +21,7 @@ const LandingPage = () => {
         <SecondSection />
         <ThirdSection />
         <FourthSection />
-        <FifthSection/>
+        <FifthSection />
       </Box>
     </Box>
   );
