@@ -10,6 +10,7 @@ import {
   useSecondSectionDownloadCVTextStyles,
   useButtonStyles
 } from './styles'
+import CardImage from './images/cards.png'
 
 const SecondSection = () => {
   const InsideSecondSectionStyles = useInsideSecondSectionStyles()
@@ -44,7 +45,7 @@ const SecondSection = () => {
               component='img'
               sx={SecondSectionFigureBackgroundStyles}
               alt='portfolio-cards'
-              src='src\features\landing-page\fourth-section\images\cards.png'
+              src={CardImage}
             />
           </Box>
         </Box>

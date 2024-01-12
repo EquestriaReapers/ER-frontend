@@ -6,7 +6,9 @@ const PRIMARY_DARKER = "#03652e";
 
 export const firstSectionStyles = {
   width: "100%",
+  height: { xs: 650, md: 400 },
   position: "relative",
+  display: "grid",
 
   "&::before": {
     content: '""',
@@ -25,9 +27,6 @@ export const firstSectionStyles = {
 };
 
 export const useInsideFirstSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
   const isMediumScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("md")
   );
@@ -35,7 +34,7 @@ export const useInsideFirstSectionStyles = () => {
   const InsidefirstSectionStyles = {
     width: isMediumScreen ? "90%" : "80%",
     height: "90%",
-    display: isSmallScreen ? "grid" : "flex",
+    display: isMediumScreen ? "grid" : "flex",
     margin: "auto",
     position: "relative",
     zIndex: 1,
@@ -46,11 +45,12 @@ export const useInsideFirstSectionStyles = () => {
 };
 
 export const firstSectionFigureBoxStyles = {
-  width: "40%",
+  width: { xs: "100%", md: "40%" },
   height: "100%",
   display: "flex",
   alignItems: "center",
   margin: "auto",
+  order: { xs: 2, md: 1 },
 };
 
 export const useFirstSectionFigureStyles = () => {
@@ -62,13 +62,14 @@ export const useFirstSectionFigureStyles = () => {
 
 export const firstSectionFigureBackgroundStyles = {
   //height: 233,
- // width: 350,
-  height: 350,
-  width: 500,
+  // width: 350,
+  height: "auto",
+  width: 350,
   //maxHeight: { xs: 233, md: 167 },
   //maxWidth: { xs: 350, md: 250 },
   maxHeight: { xs: 233, md: 250 },
-  maxWidth: { xs: 500, md: 350 },
+  maxWidth: { xs: 250, md: "100%" },
+
   margin: "auto",
 };
 
@@ -81,31 +82,28 @@ export const firstSectionLogoStyles = {
 };
 
 export const useFirstSectionDownloadCVSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
+  const isMediumScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
   );
 
   const firstSectionDownloadCVSectionStyles = {
-    display:"grid",
-    width: isSmallScreen ? "100%" : "60%",
+    display: "grid",
+    width: isMediumScreen ? "100%" : "60%",
     height: "100%",
     //margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    order: { xs: 1, md: 2 },
   };
 
   return firstSectionDownloadCVSectionStyles;
 };
 
 export const useFirstSectionDownloadCVTypographyStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
-  );
-
   const firstSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: "2rem",
+    fontSize: { xs: "1.5rem", md: "2rem" },
     marginBottom: "40px",
     color: "#FFFFFF",
-    textAlign:"center",
+    textAlign: "center",
     //textAlign: isSmallScreen ? "center" : "left",
   };
 

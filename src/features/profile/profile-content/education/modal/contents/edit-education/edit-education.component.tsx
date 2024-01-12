@@ -1,22 +1,9 @@
-import {
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
 import { Education } from "core/profiles/types";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import useForm from "./use-form";
-import {
-  SetStateAction,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect } from "react";
 import {
   boxButtonStyles,
   headerStyles,
@@ -24,6 +11,7 @@ import {
   modalStyle,
   titleStyles,
   buttonStyle,
+  subTitleStyles,
 } from "./styles";
 import { EducationContent } from "../../education-modal-context/types";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -33,10 +21,14 @@ import EducationModalContext from "../../education-modal-context";
 import useEducationFormState from "../use-education-form-state";
 import { StyledBox, StyledButton } from "./edit-education.styled";
 
+const DICTIONARY_SELECTED_BOOLEAN: Record<string, boolean> = {
+  principal: true,
+  complementaria: false,
+};
+
 const EditEducationModalContent = ({ anEducation, className }: Props) => {
   const { setContent } = useContext(EducationModalContext);
   const {
-    onChangePrincipal,
     onChangeTitle,
     onChangeEntity,
     onChangeEndDate,
@@ -75,13 +67,16 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
     educationId,
   });
 
-  const [selectedButton, setSelectedButton] = useState(
-    anEducation.principal === true ? "principal" : "complementaria"
+  const handleButtonClick = useCallback(
+    (buttonType: string) => {
+      if (principal === DICTIONARY_SELECTED_BOOLEAN[buttonType]) {
+        setPrincipal(null);
+      } else {
+        setPrincipal(DICTIONARY_SELECTED_BOOLEAN[buttonType]);
+      }
+    },
+    [principal, setPrincipal]
   );
-  const handleButtonClick = (buttonType: SetStateAction<string>) => {
-    setSelectedButton(buttonType);
-    onChangePrincipal();
-  };
 
   return (
     <Box sx={modalStyle} className={className}>
@@ -133,26 +128,25 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
           </Box>
           {anEducation.isUCAB == true && (
             <Box className="inputContainer mt-5px">
+              <Typography sx={subTitleStyles}>Tipo de educación</Typography>
               <StyledBox>
-                <StyledButton
-                  className={selectedButton === "principal" ? "selected" : ""}
-                  onClick={() => handleButtonClick("principal")}
-                >
-                  Principal
-                </StyledButton>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  style={{ backgroundColor: "#555" }}
-                />
-                <StyledButton
-                  className={
-                    selectedButton === "complementaria" ? "selected" : ""
-                  }
-                  onClick={() => handleButtonClick("complementaria")}
-                >
-                  Complementaria
-                </StyledButton>
+                {anEducation.principal ? (
+                  // Boton cambiar a complementaria
+                  <StyledButton
+                    className={principal === false ? "selected" : ""}
+                    onClick={() => handleButtonClick("complementaria")}
+                  >
+                    Es secundaria
+                  </StyledButton>
+                ) : (
+                  // Boton cambiar a principal
+                  <StyledButton
+                    className={principal === true ? "selected" : ""}
+                    onClick={() => handleButtonClick("principal")}
+                  >
+                    Es principal
+                  </StyledButton>
+                )}
               </StyledBox>
             </Box>
           )}

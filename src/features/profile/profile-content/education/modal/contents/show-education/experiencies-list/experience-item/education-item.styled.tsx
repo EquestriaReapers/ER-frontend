@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import EducationItem from "./education-item.component.tsx";
+import styled from 'styled-components'
+import EducationItem from './education-item.component.tsx'
 
 export default styled(EducationItem)`
   .titleIconStyles {
@@ -12,6 +12,38 @@ export default styled(EducationItem)`
   .typographyBoxStyles {
     display: flex;
     justify-content: space-between;
+  }
+
+  .principalButtonStyles {
+    color: #ffff;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: inline-flex;
+    padding: 2px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    background: #007935;
+  }
+
+  .SecundariaButtonStyles {
+    color: #ffff;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: inline-flex;
+    padding: 2px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    background: #37b4e3;
   }
 
   .cvButtonStyleUCAB {
@@ -81,6 +113,7 @@ export default styled(EducationItem)`
 
     .typographyBoxStyles {
       display: flex;
+      flex-direction: column;
       justify-content: center;
     }
 
@@ -113,4 +146,4 @@ export default styled(EducationItem)`
       }
     }
   }
-`;
+`
