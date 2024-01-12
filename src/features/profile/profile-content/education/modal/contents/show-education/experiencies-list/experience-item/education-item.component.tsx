@@ -54,7 +54,7 @@ const EducationItem = ({ item, className }: Props) => {
             {item.isUCAB ? (
               <>
                 <IconButton
-                  disabled={item.principal} // Deshabilitar si item.principal es true
+                  disabled={item.principal}
                   onClick={() => {
                     setContent(EducationContent.Edit)
                     setAnEducation(item)
