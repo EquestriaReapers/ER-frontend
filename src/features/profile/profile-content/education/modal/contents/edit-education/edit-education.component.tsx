@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Divider,
-  IconButton,
-  TextField,
-  Typography
-} from '@mui/material'
+import { Box, Button, IconButton, TextField, Typography } from '@mui/material'
 import { Education } from 'core/profiles/types'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
@@ -23,7 +16,8 @@ import {
   textFieldStyles,
   modalStyle,
   titleStyles,
-  buttonStyle
+  buttonStyle,
+  subTitleStyles
 } from './styles'
 import { EducationContent } from '../../education-modal-context/types'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -133,26 +127,27 @@ const EditEducationModalContent = ({ anEducation, className }: Props) => {
           </Box>
           {anEducation.isUCAB == true && (
             <Box className='inputContainer mt-5px'>
+              <Typography sx={subTitleStyles}>
+                Cambiar Tipo de educación
+              </Typography>
               <StyledBox>
-                <StyledButton
-                  className={selectedButton === 'principal' ? 'selected' : ''}
-                  onClick={() => handleButtonClick('principal')}
-                >
-                  Principal
-                </StyledButton>
-                <Divider
-                  orientation='vertical'
-                  flexItem
-                  style={{ backgroundColor: '#555' }}
-                />
-                <StyledButton
-                  className={
-                    selectedButton === 'complementaria' ? 'selected' : ''
-                  }
-                  onClick={() => handleButtonClick('complementaria')}
-                >
-                  Secundaria
-                </StyledButton>
+                {anEducation.principal ? (
+                  <StyledButton
+                    className={
+                      selectedButton === 'complementaria' ? 'selected' : ''
+                    }
+                    onClick={() => handleButtonClick('complementaria')}
+                  >
+                    Secundaria
+                  </StyledButton>
+                ) : (
+                  <StyledButton
+                    className={selectedButton === 'principal' ? 'selected' : ''}
+                    onClick={() => handleButtonClick('principal')}
+                  >
+                    Principal
+                  </StyledButton>
+                )}
               </StyledBox>
             </Box>
           )}

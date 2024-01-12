@@ -58,10 +58,12 @@ export const boxButtonStyles = {
   },
 };
 
-export const descriptionStyles = {
+export const subTitleStyles = {
+  color: "#000",
+  fontFamily: "Inter",
   fontSize: "16px",
-  fontWeight: "400",
-  color: "#444444",
-  fontFamily: "inter",
-  wordWrap: "break-word",
+  fontStyle: "normal",
+  fontWeight: 500,
+  linHeight: "normal",
+  mb: 1
 };

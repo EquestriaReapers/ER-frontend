@@ -50,27 +50,43 @@ const EducationItem = ({ item, className }: Props) => {
                 CV
               </Typography>
             </IconButton>
-            <IconButton
-              onClick={() => {
-                setContent(EducationContent.Edit)
-                setAnEducation(item)
-              }}
-            >
-              <EditIcon sx={{ color: '#007935' }} />
-            </IconButton>
+
             {item.isUCAB ? (
-              <IconButton disabled>
-                <DeleteIcon sx={{ color: 'gray' }} />
-              </IconButton>
+              <>
+                <IconButton
+                  disabled={item.principal} // Deshabilitar si item.principal es true
+                  onClick={() => {
+                    setContent(EducationContent.Edit)
+                    setAnEducation(item)
+                  }}
+                >
+                  <EditIcon
+                    sx={{ color: item.principal ? 'gray' : '#007935' }}
+                  />
+                </IconButton>
+                <IconButton disabled>
+                  <DeleteIcon sx={{ color: 'gray' }} />
+                </IconButton>
+              </>
             ) : (
-              <IconButton
-                onClick={() => {
-                  setContent(EducationContent.Delete)
-                  setAnEducation(item)
-                }}
-              >
-                <DeleteIcon sx={{ color: '#007935' }} />
-              </IconButton>
+              <>
+                <IconButton
+                  onClick={() => {
+                    setContent(EducationContent.Edit)
+                    setAnEducation(item)
+                  }}
+                >
+                  <EditIcon sx={{ color: '#007935' }} />
+                </IconButton>
+                <IconButton
+                  onClick={() => {
+                    setContent(EducationContent.Delete)
+                    setAnEducation(item)
+                  }}
+                >
+                  <DeleteIcon sx={{ color: '#007935' }} />
+                </IconButton>
+              </>
             )}
           </Box>
         </Box>

@@ -5,7 +5,7 @@ import ShowExperience from './show-education/show-education.styled.tsx'
 import { EducationContent } from '../education-modal-context/types.ts'
 import EducationModalContext from '../education-modal-context/index.tsx'
 import EditEducationStyled from './edit-education/edit-education.styled.tsx'
-import DeleteEducationModalContent from './delete-education/delete-education.component.tsx'
+import DeleteEducationModalContent from './delete-education/delete-education.styled.tsx'
 
 export const EducationContentManager: FunctionComponent = () => {
   const { content, anEducation } = useContext(EducationModalContext)
