@@ -18,10 +18,10 @@ const useDeleteProject = ({ projectId }: Payload) => {
   const deleteProject = useCallback(async () => {
     try {
       const token = getToken();
+      setLoading(true);
       const data = await deleteAProfileProject(token, projectId);
       setContent(PortfolioContent.Show);
       showSuccessToast("Proyecto borrado con éxito");
-      setLoading(true);
       await fetchProfile();
       return data;
     } catch (error) {

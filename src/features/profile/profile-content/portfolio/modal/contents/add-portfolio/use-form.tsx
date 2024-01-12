@@ -32,6 +32,7 @@ const useAddProjectForm = ({ project }: Props) => {
           showErrorToast("Por favor, rellena todos los campos");
           return;
         }
+        setLoading(true);
 
         const data = await addProjectToProfile(token, {
           title: project.title,
@@ -42,7 +43,6 @@ const useAddProjectForm = ({ project }: Props) => {
           url: project.url,
         });
 
-        setLoading(true);
         setContent(PortfolioContent.Show);
         showSuccessToast("Proyecto agregado con éxito");
         await fetchProfile();
