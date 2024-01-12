@@ -19,13 +19,12 @@ const Portfolio = () => {
         <Typography
           variant="h5"
           sx={{
-            color: "#000000",
+            color: "#000",
             fontFamily: "inter",
-            fontSize: "35px",
+            fontSize: { xs: "22px", sm: "30px" },
             fontStyle: "normal",
             fontWeight: "700",
             lineHeight: "normal",
-            textTransform: "capitalize",
           }}
         >
           Portafolio
