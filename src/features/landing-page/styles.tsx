@@ -10,7 +10,7 @@ export const useLandingPageContainerStyles = () => {
   )
 
   const LandingPageStyles = {
-    height: isMediumScreen ? '2800px' : '2000px',
+    height: isMediumScreen ? '3800px' : '2200px',
     minWidth: isSmallScreen ? '280px' : isMediumScreen ? '600px' : '900px',
     width: '100%'
   }
@@ -28,7 +28,7 @@ export const useMainContainerStyles = () => {
 
   const MainContainerStyles = {
     width: '100%',
-    height: isMediumScreen ? '3000px' : '1800px'
+    height: isMediumScreen ? '3600px' : '2200px'
   }
 
   return MainContainerStyles

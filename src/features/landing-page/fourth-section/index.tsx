@@ -28,15 +28,14 @@ const SecondSection = () => {
       <Box sx={InsideSecondSectionStyles}>
         <Box sx={SecondSectionDownloadCVSectionStyles}>
           <Typography sx={SecondSectionDownloadCVTypographyStyles}>
-            ¡Explora los portafolios de los egresados!
+            ¡Explora los <span>portafolios</span> de los egresados!
           </Typography>
           <Typography sx={SecondSectionDownloadCVTextStyles}>
-            ¡Usa nuestro poderoso motor de búsquedas, el cual te permitirá
-            amplias opciones de exploración, búsqueda y filtrado para conseguir
-            justo el talento y los perfiles que necesitas !
+            Encuentra perfiles por medio de portafolios especificos u observa el
+            portafolio que tiene cada egresado de la plataforma para lucir!
           </Typography>
           <Box>
-            <Button sx={buttonStyles}>Explorar portafolios</Button>
+            <Button sx={buttonStyles}>Explorar portafolios!</Button>
           </Box>
         </Box>
         <Box sx={SecondSectionFigureBoxStyles}>

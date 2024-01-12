@@ -4,7 +4,8 @@ import { Theme } from '@mui/material'
 export const SecondSectionStyles = {
   width: '100%',
   position: 'relative',
-  my: 4,
+  mt: 8,
+  mb: 3,
 
   '&::before': {
     content: '""',
@@ -33,6 +34,7 @@ export const useInsideSecondSectionStyles = () => {
     width: isMediumScreen ? '90%' : '80%',
     display: isSmallScreen ? 'grid' : 'flex',
     margin: 'auto',
+    gap: '80px',
     position: 'relative',
     zIndex: 1,
     maxWidth: '2000px'
@@ -44,6 +46,8 @@ export const useInsideSecondSectionStyles = () => {
 export const SecondSectionFigureBoxStyles = {
   width: '50%',
   display: 'flex',
+  flexDirection: 'column',
+  flexWrap: 'wrap',
   alignItems: 'center',
   margin: 'auto'
 }
@@ -61,8 +65,8 @@ export const useSecondSectionFigureStyles = () => {
 }
 
 export const SecondSectionFigureBackgroundStyles = {
-  height: 250,
-  width: 350,
+  height: 300,
+  width: 400,
   maxHeight: { xs: 233, md: 300 },
   maxWidth: { xs: 350, md: 400 }
 }
@@ -75,6 +79,11 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
   const SecondSectionDownloadCVSectionStyles = {
     width: isSmallScreen ? '100%' : '50%',
     height: '40%',
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
     margin: isSmallScreen ? 'auto' : 'auto 0 60px 0'
   }
 
@@ -89,9 +98,14 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
   const SecondSectionDownloadCVTypographyStyles = {
     fontWeight: '600',
     fontSize: '2rem',
+    fontStyle: 'normal',
+    lineHeight: 'normal',
     marginBottom: '40px',
     color: 'black',
-    textAlign: isSmallScreen ? 'center' : 'left'
+    textAlign: isSmallScreen ? 'center' : 'left',
+    '& span': {
+      color: '#FFC801'
+    }
   }
 
   return SecondSectionDownloadCVTypographyStyles
@@ -103,10 +117,13 @@ export const useSecondSectionDownloadCVTextStyles = () => {
   )
 
   const SecondSectionDownloadCVTextStyles = {
+    color: '#000',
+    fontFamily: 'Inter',
+    fontSize: '18px',
+    fontStyle: 'normal',
+    fontWeight: 500,
+    lineHeight: 'normal',
     marginBottom: '40px',
-    fontWeight: '500',
-    fontSize: '0.9rem',
-    color: 'black',
     textAlign: isSmallScreen ? 'center' : 'left'
   }
 
@@ -120,6 +137,8 @@ export const useSecondSectionDownloadCVBoxStyles = () => {
 
   const SecondSectionDownloadCVBoxStyles = {
     display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: isSmallScreen ? 'center' : 'left'
   }
@@ -127,29 +146,17 @@ export const useSecondSectionDownloadCVBoxStyles = () => {
   return SecondSectionDownloadCVBoxStyles
 }
 
-export const DownloadIconStyles = {
-  fontSize: '1.5rem',
-  marginTop: 'auto',
-  marginBottom: 'auto',
-  marginRight: '2px',
-  color: 'black'
-}
-
-export const DownlodCVTypography = {
-  marginBottom: '40px',
-  fontSize: '0.8rem',
-  fontWeight: '500',
-  color: 'black',
-  margin: 'auto 0 0 0'
-}
-
 export const useButtonStyles = () => {
   const buttonStyles = {
     fontFamily: 'inter',
+    textAlign: 'center',
+    fontStyle: 'normal',
     borderRadius: '6px',
     background: '#efb70e',
-    fontWeight: '700',
+    fontWeight: '500',
     color: 'white',
+    width: '312px',
+    height: '48px',
     textTransform: 'capitalize',
     fontSize: '16px',
     px: 3,

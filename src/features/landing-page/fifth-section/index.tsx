@@ -9,10 +9,9 @@ import {
   ThirdSectionFirstFigureTextStyles,
   useThirdSectionSecondFiguresSectionStyles,
   useThirdSectionSecondFigureTypographyStyles,
-  ThirdSectionSecondFigureTextStyles,
   useButtonStyles,
   useButtonSecondStyles,
-  ThirdSectionThirdFigureTextStyles
+  useSecondTitleStyle
 } from './styles'
 import { Button } from '@mui/material'
 
@@ -28,6 +27,7 @@ const ThirdSection = () => {
   useThirdSectionSecondFigureTypographyStyles()
   const buttonSecondStyles = useButtonStyles()
   const buttonfirstStyles = useButtonSecondStyles()
+  const secondTitleStyle = useSecondTitleStyle()
 
   return (
     <Box sx={ThirdSectionStyles}>
@@ -35,11 +35,7 @@ const ThirdSection = () => {
         <Box sx={ThirdSectionFiguresSectionStyles}>
           <Box sx={ThirdSectionFirstFiguresSectionStyles}>
             <Typography sx={ThirdSectionFirstFigureTypographyStyles}>
-              ¿Eres un{' '}
-              <Typography sx={ThirdSectionThirdFigureTextStyles}>
-                egresado profesional
-              </Typography>
-              ?
+              ¿Eres un <span>egresado profesional</span> ?
             </Typography>
             <Typography sx={ThirdSectionFirstFigureTextStyles}>
               Estamos comprometidos con brindar visibilidad e igualdad de
@@ -53,10 +49,10 @@ const ThirdSection = () => {
           </Box>
 
           <Box sx={ThirdSectionSecondFiguresSectionStyles}>
-            <Typography sx={ThirdSectionFirstFigureTypographyStyles}>
-              ¿Eres un reclutador o empresa?
+            <Typography sx={secondTitleStyle}>
+              ¿Eres un <span>reclutador</span> o <span>empresa</span>?
             </Typography>
-            <Typography sx={ThirdSectionSecondFigureTextStyles}>
+            <Typography sx={ThirdSectionFirstFigureTextStyles}>
               ¡Contamos con una red completa de egresados profesionales que
               cuenten con el sello de calidad ucabista!
             </Typography>
