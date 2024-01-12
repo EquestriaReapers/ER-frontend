@@ -13,12 +13,12 @@ export const modalStyle = {
     md: 4,
   },
   width: { xs: "95%", sm: "80%", md: "60%", lg: "50%" },
-    borderRadius: "6px",
+  borderRadius: "6px",
 };
 
 export const titleStyles = {
   fontSize: { xs: "20px", sm: "22px", md: "30px" },
-  fontFamily: "Inter",
+  fontFamily: "inter",
   lineHeight: "normal",
   fontStyle: "normal",
   fontWeight: "700",
@@ -45,5 +45,5 @@ export const inlineStyles = {
   justifyContent: "space-between",
   alignItems: "center",
   gap: "10px",
-  flexWrap: { xs: "wrap", sm: "nowrap" }
+  flexWrap: { xs: "wrap", sm: "nowrap" },
 };

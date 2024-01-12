@@ -9,11 +9,22 @@ export async function addAProfileExperience(
   token: string
 ): Promise<MessageResponse> {
   try {
-    const response = await axios.post(`${EXPERIENCE_URL}/my-experience`, body, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await axios.post(
+      `${EXPERIENCE_URL}/my-experience`,
+      {
+        role: body.role,
+        businessName: body.businessName,
+        startDate: body.startDate,
+        location: body.location,
+        description: body.description,
+        endDate: body.endDate,
       },
-    });
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     throw new BackendError(error);
@@ -27,5 +38,4 @@ export interface AddExperienceBody {
   location: string;
   description: string;
   endDate: string | null;
-  isVisible: boolean | null;
 }

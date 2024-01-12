@@ -16,7 +16,7 @@ const EducationItem = ({ item, className }: Props) => {
   const updateEducationCV = useUpdateEducationCV(!item.isVisible, item)
 
   return (
-    <div className={className}>
+    <Box className={className}>
       <Box>
         <Box className='titleIconStyles'>
           <Box
@@ -90,13 +90,13 @@ const EducationItem = ({ item, className }: Props) => {
             )}
           </Box>
         </Box>
-        <Box className={'inlineStyles'}>
-          <Typography className={'subtitleStyles'} variant='h6'>
-            {item.entity} {dateItem}
-          </Typography>
-        </Box>
       </Box>
-    </div>
+      <Box className={'inlineStyles'}>
+        <Typography className={'subtitleStyles'} variant='h6'>
+          {item.entity} {dateItem}
+        </Typography>
+      </Box>
+    </Box>
   )
 }
 
