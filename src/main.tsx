@@ -6,7 +6,6 @@ import { Toaster } from "sonner";
 import Profile from "features/profile/Profile";
 import Login from "features/auth/Login";
 import Register from "features/auth/Register";
-import NewPassword from "features/auth/NewPassword";
 import "typeface-inter";
 import {
   createBrowserRouter,
@@ -21,6 +20,9 @@ import NotFound from "features/not-found/NotFound";
 import "styles/index.css";
 import HomePage from "features/home-page";
 import ExplorePortfolio from "features/explore-portfolio";
+import NewPassword from "features/auth/NewPassword";
+import RegisterSuccess from "features/auth/RegisterSuccess";
+import LandingPage from "features/landing-page";
 
 const theme = createTheme({
   palette: {
@@ -81,6 +83,14 @@ const routerConfig: RouteObject[] = [
       {
         path: "/explore-portfolios/:seed",
         element: <ExplorePortfolio />,
+      },
+      {
+        path: "/",
+        element: <LandingPage />,
+      },
+      {
+        path: "/successfully-confirm",
+        element: <RegisterSuccess />,
       },
     ],
   },

@@ -1,11 +1,10 @@
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Theme } from "@mui/material";
-import background from "./images/background.jpeg";
 
 export const SecondSectionStyles = {
   width: "100%",
-  height: "22%",
   position: "relative",
+  height:{ xs: "600px", md: "400px" },
 
   "&::before": {
     content: '""',
@@ -14,7 +13,7 @@ export const SecondSectionStyles = {
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundImage: `url(${background})`,
+
     backgroundSize: "cover",
     backgroundPosition: "center",
     filter: "blur(3.3px)",
@@ -59,22 +58,20 @@ export const useSecondSectionFigureStyles = () => {
 
   const SecondSectionFigureStyles = {
     height: isSmallScreen ? "310px" : "300px",
-    width: isSmallScreen ? "270px" : "250px",
-    backgroundColor: "#72C4E8",
-    transform: "rotate(8deg)",
-    display: "flex",
-    alignItems: "center",
-    margin: isSmallScreen ? "auto auto 0 auto" : "auto",
+    width: isSmallScreen ? "270px" : "100%",
+    display: "grid",
   };
   return SecondSectionFigureStyles;
 };
 
 export const SecondSectionFigureBackgroundStyles = {
-  height: "110%",
-  width: "98%",
-  backgroundColor: "white",
-  transform: "rotate(-9deg)",
-  marginBottom: "40px",
+  //height: 233,
+  //width: 350,
+  //maxHeight: { xs: 233, md: 167 },
+  //maxWidth: { xs: 350, md: 250 },
+  height: "auto",
+  width: 450,
+  margin: "auto",
 };
 
 export const useSecondSectionDownloadCVSectionStyles = () => {
@@ -83,9 +80,13 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
   );
 
   const SecondSectionDownloadCVSectionStyles = {
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    flexDirection: "column",
     width: isSmallScreen ? "100%" : "50%",
-    height: "40%",
-    margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    height: "100%",
+    margin: isSmallScreen ? "auto" : "auto",
   };
 
   return SecondSectionDownloadCVSectionStyles;
@@ -99,8 +100,8 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
   const SecondSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
     fontSize: "2rem",
-    marginBottom: "40px",
-    color: "#FFFFFF",
+    marginBottom: "20px",
+    color: "black",
     textAlign: isSmallScreen ? "center" : "left",
   };
 
@@ -113,10 +114,10 @@ export const useSecondSectionDownloadCVTextStyles = () => {
   );
 
   const SecondSectionDownloadCVTextStyles = {
-    marginBottom: "40px",
+    marginBottom: "20px",
     fontWeight: "500",
     fontSize: "0.9rem",
-    color: "#FFFFFF",
+    color: "black",
     textAlign: isSmallScreen ? "center" : "left",
   };
 
@@ -142,13 +143,35 @@ export const DownloadIconStyles = {
   marginTop: "auto",
   marginBottom: "auto",
   marginRight: "2px",
-  color: "#FFFFFF",
+  color: "black",
 };
 
 export const DownlodCVTypography = {
   marginBottom: "40px",
   fontSize: "0.8rem",
   fontWeight: "500",
-  color: "#FFFFFF",
+  color: "black",
   margin: "auto 0 0 0",
+};
+
+export const useButtonStyles = () => {
+  const buttonStyles = {
+    fontFamily: "inter",
+    borderRadius: "6px",
+    background: "#37B4E3",
+    fontWeight: "700",
+    color: "white",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    px: 3,
+    my: 2,
+    "&:hover": {
+      backgroundColor: "#0b9bd1",
+    },
+    "&:disabled": {
+      color: "#ffffff",
+    },
+  };
+
+  return buttonStyles;
 };

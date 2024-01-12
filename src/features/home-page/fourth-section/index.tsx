@@ -34,7 +34,7 @@ const FourthSection = () => {
             ¿Eres un <span style={GraduatesColor}>egresado</span>?
           </Typography>
           <Typography sx={FourthSectionTextStyles}>
-            Si eres un egresado de la UCAB puedes unirte a nuestra plataforma e
+            ¡Si eres un egresado de la UCAB puedes unirte a nuestra plataforma e
             incrementar tu visibilidad profesional en línea!
           </Typography>
           <Button

@@ -13,6 +13,7 @@ import {
 import Card from "./card";
 import { useNavigate } from "react-router-dom";
 import useGetProfiles from "./card/use-get-profiles";
+import SpinnerBlock from "components/spinner-block";
 
 const SecondSection = () => {
   const SecondSectionStyles = useSecondSectionStyles();
@@ -37,30 +38,36 @@ const SecondSection = () => {
           <Typography sx={SecondSectionExploreTypographyStyles}>
             Explora nuestros <span style={GraduatesColor}>egresados</span>
           </Typography>
-          <Box sx={CardSectionStyles}>
-            {profiles &&
-              profiles.slice(0, 3).map((profile) => (
-                <Box sx={CardSectionStyles}>
-                  <Card profile={profile} />
-                </Box>
-              ))}
+
+          {profiles && profiles.length <= 0 && <SpinnerBlock />}
+          {profiles && profiles.length > 0 && (
+            <Box sx={{ width: "100%" }}>
+              <Box sx={CardSectionStyles}>
+                {profiles &&
+                  profiles
+                    .slice(0, 3)
+                    .map((profile) => <Card profile={profile} />)}
+              </Box>
+
+              <Box sx={CardSectionStyles}>
+                {profiles &&
+                  profiles
+                    .slice(2, 5)
+                    .map((profile) => <Card profile={profile} />)}
+              </Box>
+            </Box>
+          )}
+
+          <Box>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={SecondSectionButtonStyles}
+              onClick={navigateToCatalogue}
+            >
+              Ver más egresados
+            </Button>
           </Box>
-          <Box sx={CardSectionStyles}>
-            {profiles &&
-              profiles.slice(2, 5).map((profile) => (
-                <Box sx={CardSectionStyles}>
-                  <Card profile={profile} />
-                </Box>
-              ))}
-          </Box>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={SecondSectionButtonStyles}
-            onClick={navigateToCatalogue}
-          >
-            Ver más egresados
-          </Button>
         </Box>
       </Box>
     </Box>
