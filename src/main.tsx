@@ -23,7 +23,6 @@ import HomePage from "features/home-page";
 import ExplorePortfolio from "features/explore-portfolio";
 import NewPassword from "features/auth/NewPassword";
 import RegisterSuccess from "features/auth/RegisterSuccess";
-import LandingPage from "features/landing-page";
 
 const theme = createTheme({
   palette: {
