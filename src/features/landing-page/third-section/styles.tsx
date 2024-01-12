@@ -101,7 +101,7 @@ export const useFirstSectionDownloadCVTypographyStyles = () => {
   const firstSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
     fontSize: "2rem",
-    marginBottom: "40px",
+    marginBottom: "20px",
     color: "#FFFFFF",
     textAlign: isSmallScreen ? "center" : "left",
   };

@@ -32,20 +32,20 @@ const FirstSection = () => {
               alt="catalog-in-pc"
               src="src\features\landing-page\first-section\images\catalog- in-phone-and-pc.png"
             />
+          </Box>
+        </Box>
+        <Box sx={firstSectionDownloadCVSectionStyles}>
             <Box
               component="img"
               sx={firstSectionLogoStyles}
               alt="catalog-in-pc"
               src="src\features\landing-page\first-section\images\wide-logo.png"
             />
-          </Box>
-        </Box>
-        <Box sx={firstSectionDownloadCVSectionStyles}>
           <Typography sx={firstSectionDownloadCVTypographyStyles}>
             ¡La red con los perfiles profesionales de egresados de la UCAB!
           </Typography>
 
-          <Box>
+          <Box sx={{display:"flex", alignItems:"center", justifyContent:"center"}}>
             <Button sx={buttonStyles}>Empezar a Explorar</Button>
           </Box>
         </Box>

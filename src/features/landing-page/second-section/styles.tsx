@@ -4,6 +4,7 @@ import { Theme } from "@mui/material";
 export const SecondSectionStyles = {
   width: "100%",
   position: "relative",
+  height:"400px",
 
   "&::before": {
     content: '""',
@@ -58,15 +59,19 @@ export const useSecondSectionFigureStyles = () => {
   const SecondSectionFigureStyles = {
     height: isSmallScreen ? "310px" : "300px",
     width: isSmallScreen ? "270px" : "100%",
+    display: "grid",
   };
   return SecondSectionFigureStyles;
 };
 
 export const SecondSectionFigureBackgroundStyles = {
-  height: 233,
-  width: 350,
-  maxHeight: { xs: 233, md: 167 },
-  maxWidth: { xs: 350, md: 250 },
+  //height: 233,
+  //width: 350,
+  //maxHeight: { xs: 233, md: 167 },
+  //maxWidth: { xs: 350, md: 250 },
+  height: "auto",
+  width: 450,
+  margin: "auto",
 };
 
 export const useSecondSectionDownloadCVSectionStyles = () => {
@@ -75,9 +80,13 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
   );
 
   const SecondSectionDownloadCVSectionStyles = {
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center",
+    flexDirection: "column",
     width: isSmallScreen ? "100%" : "50%",
-    height: "40%",
-    margin: isSmallScreen ? "auto" : "auto 0 60px 0",
+    height: "100%",
+    margin: isSmallScreen ? "auto" : "auto",
   };
 
   return SecondSectionDownloadCVSectionStyles;
@@ -91,7 +100,7 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
   const SecondSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
     fontSize: "2rem",
-    marginBottom: "40px",
+    marginBottom: "20px",
     color: "black",
     textAlign: isSmallScreen ? "center" : "left",
   };
@@ -105,7 +114,7 @@ export const useSecondSectionDownloadCVTextStyles = () => {
   );
 
   const SecondSectionDownloadCVTextStyles = {
-    marginBottom: "40px",
+    marginBottom: "20px",
     fontWeight: "500",
     fontSize: "0.9rem",
     color: "black",

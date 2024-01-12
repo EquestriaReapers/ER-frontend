@@ -42,7 +42,7 @@ const FirstSection = () => {
             idiomas en tan solo segundos descargando el currículum vitae de un
             perfil totalmente actualizado!
           </Typography>
-          <Box>
+          <Box sx={{display:"grid", justifyContent:"center"}}>
             <Button sx={buttonStyles}>Empezar a Generar</Button>
           </Box>
         </Box>
