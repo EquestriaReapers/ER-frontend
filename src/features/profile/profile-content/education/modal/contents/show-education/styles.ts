@@ -28,7 +28,7 @@ export const buttonStyle = {
   fontFamily: "inter",
   borderRadius: "6px",
   background: "#007935",
-  fontWeight: "bold",
+  fontWeight: "500",
   color: "white",
   textTransform: "capitalize",
   fontSize: "16px",
