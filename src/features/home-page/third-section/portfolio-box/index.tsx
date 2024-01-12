@@ -1,36 +1,37 @@
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+
 import {
   usePortfoliosBoxStyles,
   PortfolioBackground,
   usePortfoliosTitleStyles,
   PortfolioSecondLineStyles,
   PortfolioNameStyles,
-  PortfolioInsideSecondLine,
-  PortfolioViewsNumber,
-  PortfolioViewsNumberIcon,
 } from "./styles";
+import { Project } from "features/explore-portfolio/explore-portfolio-context/context";
 
-const PortfolioBox = () => {
+const PortfolioBox = ({ project }: Props) => {
   const PortfoliosBoxStyles = usePortfoliosBoxStyles();
   const PortfoliosTitleStyles = usePortfoliosTitleStyles();
 
   return (
     <Box sx={PortfoliosBoxStyles}>
-      <Box sx={PortfolioBackground}></Box>
-      <Typography sx={PortfoliosTitleStyles}>
-        Portfolio incredible title
-      </Typography>
+      <Box
+        component="img"
+        src={project.imagePrincipal!}
+        sx={PortfolioBackground}
+      ></Box>
+      <Typography sx={PortfoliosTitleStyles}>{project.title}</Typography>
       <Box sx={PortfolioSecondLineStyles}>
-        <Typography sx={PortfolioNameStyles}>John Doe</Typography>
-        <Box sx={PortfolioInsideSecondLine}>
-          <Typography sx={PortfolioViewsNumber}>300</Typography>
-          <RemoveRedEyeIcon sx={PortfolioViewsNumberIcon} />
-        </Box>
+        <Typography sx={PortfolioNameStyles}>
+          {project.profile.name} {project.profile.lastname}
+        </Typography>
       </Box>
     </Box>
   );
 };
 
+interface Props {
+  project: Project;
+}
 export default PortfolioBox;

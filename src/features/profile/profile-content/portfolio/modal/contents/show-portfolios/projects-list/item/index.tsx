@@ -9,6 +9,7 @@ import {
 import { Portfolio } from "core/profiles/types";
 import { useContext, useState } from "react";
 import PhotoIcon from "@mui/icons-material/Photo";
+import NoPhotographyIcon from "@mui/icons-material/NoPhotography";
 import PortfolioModalContext from "../../../../modal-context";
 import { PortfolioContent } from "../../../../modal-context/types";
 
@@ -69,6 +70,19 @@ function ProjectItem({ item }: Props) {
                 Cambiar Foto Principal
               </Typography>
             </CardContent>
+          )}
+          {!item.imagePrincipal && (
+            <Box
+              sx={{
+                display: "flex",
+                height: "100%",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <NoPhotographyIcon sx={{ fontSize: "40px", color: "gray" }} />
+            </Box>
           )}
         </CardMedia>
       </Card>

@@ -32,6 +32,7 @@ const EditProjectModalContent = ({ project }: Props) => {
   const { fetchProfile } = useProfileContext();
   const {
     onTitleChange,
+    onUrlChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
@@ -42,6 +43,7 @@ const EditProjectModalContent = ({ project }: Props) => {
     setDateEnd,
     deletedImages,
     title,
+    url,
     newFiles,
     description,
     location,
@@ -83,6 +85,7 @@ const EditProjectModalContent = ({ project }: Props) => {
     location,
     dateEnd,
     newFiles,
+    url,
   };
   const projectId = project.id;
 
@@ -132,13 +135,33 @@ const EditProjectModalContent = ({ project }: Props) => {
                 gap: "20px",
               }}
             >
-              <TextField
-                sx={textFieldStyles}
-                id="title"
-                label="Título"
-                onChange={onTitleChange}
-                value={title}
-              />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: "20px",
+                }}
+              >
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <TextField
+                    sx={textFieldStyles}
+                    id="title"
+                    label="Título"
+                    onChange={onTitleChange}
+                    value={title}
+                  />
+                </Box>
+
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <TextField
+                    sx={textFieldStyles}
+                    id="url"
+                    label="Link"
+                    onChange={onUrlChange}
+                    value={url}
+                  />
+                </Box>
+              </Box>
 
               <Box
                 sx={{

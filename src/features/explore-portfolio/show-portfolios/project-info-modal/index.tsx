@@ -2,9 +2,9 @@ import { Box, Card, CardMedia, IconButton, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import BrokenImageIcon from "@mui/icons-material/BrokenImage";
 import { modalStyle } from "./styles";
-import { Portfolio, Profile } from "core/profiles/types";
+import { Project } from "features/explore-portfolio/explore-portfolio-context/context";
 
-const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
+const ProjectInfoModal = ({ project, setIsOpen }: Props) => {
   const getYear = (date: string | number | Date) =>
     new Date(date).getFullYear();
 
@@ -175,7 +175,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                 </Typography>
                 <Box
                   component="a"
-                  href={`/profile/${profile.userId}`}
+                  href={`/profile/${project.profileId}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -185,7 +185,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                     color: "#0089E2",
                   }}
                 >
-                  {profile.user.name} {profile.user.lastname}
+                  {project.profile.name} {project.profile.lastname}
                 </Box>
               </Box>
             </Box>
@@ -295,7 +295,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
             </Typography>
             <Box
               component="a"
-              href={`/profile/${profile.userId}`}
+              href={`/profile/${project.profileId}`}
               target="_blank"
               rel="noopener noreferrer"
               sx={{
@@ -305,7 +305,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
                 color: "#0089E2",
               }}
             >
-              {profile.user.name} {profile.user.lastname}
+              {project.profile.name} {project.profile.lastname}
             </Box>
           </Box>
 
@@ -343,8 +343,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
 };
 
 interface Props {
-  profile: Profile;
-  project: Portfolio;
+  project: Project;
   setIsOpen: (isOpen: boolean) => void;
 }
 export default ProjectInfoModal;

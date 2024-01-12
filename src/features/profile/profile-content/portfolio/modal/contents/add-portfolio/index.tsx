@@ -34,11 +34,13 @@ const AddPortfolioModalContent = ({ className }: Props) => {
     location,
     dateEnd,
     newFiles,
+    url,
     onTitleChange,
     onDescriptionChange,
     onLocationChange,
     onDateEndChange,
     onImageChange,
+    onUrlChange,
     deleteFile,
     onDragOver,
     onDrop,
@@ -50,6 +52,7 @@ const AddPortfolioModalContent = ({ className }: Props) => {
     location,
     dateEnd,
     newFiles,
+    url,
   };
   const onSubmitForm = useAddProjectForm({ project });
 
@@ -89,12 +92,31 @@ const AddPortfolioModalContent = ({ className }: Props) => {
                 gap: "20px",
               }}
             >
-              <TextField
-                sx={textFieldStyles}
-                id="title"
-                label="Título"
-                onChange={onTitleChange}
-              />
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
+                  gap: "20px",
+                }}
+              >
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <TextField
+                    sx={textFieldStyles}
+                    id="title"
+                    label="Título"
+                    onChange={onTitleChange}
+                  />
+                </Box>
+
+                <Box sx={{ display: "flex", width: { xs: "100%", sm: "50%" } }}>
+                  <TextField
+                    sx={textFieldStyles}
+                    id="url"
+                    label="Link"
+                    onChange={onUrlChange}
+                  />
+                </Box>
+              </Box>
 
               <Box
                 sx={{

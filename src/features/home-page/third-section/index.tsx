@@ -14,6 +14,7 @@ import {
 } from "./styles";
 import PortfolioBox from "./portfolio-box";
 import { useNavigate } from "react-router-dom";
+import useGetProjects from "./portfolio-box/use-get-projects";
 
 const ThirdSection = () => {
   const ThirdSectionStyles = useThirdSectionStyles();
@@ -24,9 +25,11 @@ const ThirdSection = () => {
 
   const navigate = useNavigate();
 
-  const navigateToCatalogue = () => {
-    navigate("/catalogue");
+  const navigateToPortfolios = () => {
+    navigate("/explore-portfolios");
   };
+
+  const projects = useGetProjects();
 
   return (
     <Box sx={ThirdSectionStyles}>
@@ -38,17 +41,17 @@ const ThirdSection = () => {
             </Typography>
           </Box>
         </Box>
+
         <Box sx={PortfoliosSectionStyles}>
-          <PortfolioBox />
-          <PortfolioBox />
-          <PortfolioBox />
-          <PortfolioBox />
+          {projects.slice(0, 4).map((project) => (
+            <PortfolioBox project={project} />
+          ))}
         </Box>
         <Button
           variant="contained"
           color="primary"
           sx={ThirdSectionButtonStyles}
-          onClick={navigateToCatalogue}
+          onClick={navigateToPortfolios}
         >
           Ver más portafolios
         </Button>

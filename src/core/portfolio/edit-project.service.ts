@@ -13,6 +13,7 @@ export async function updateProfileProject(
     if (body.description) formData.append("description", body.description);
     if (body.location) formData.append("location", body.location);
     if (body.dateEnd) formData.append("dateEnd", body.dateEnd);
+    if (body.url) formData.append("url", body.url);
     if (body.imagePrincipal)
       formData.append("imagePrincipal", body.imagePrincipal as File);
 
@@ -43,6 +44,7 @@ export interface UpdateProjectBody {
   dateEnd?: string;
   imagePrincipal?: File | null;
   image?: File[] | null;
+  url?: string | null;
 }
 
 export interface UpdateProfileNewSkillBody {
