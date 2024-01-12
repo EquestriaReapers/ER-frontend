@@ -29,12 +29,13 @@ function ProjectCard({ profile, project }: Props) {
         sx={{
           width: "100%",
           maxWidth: {
-            xs: "100%",
-            sm: "100%",
+            xs: "250px",
+            sm: "250px",
             md: "300px",
             lg: "300px",
             xl: "300px",
           },
+          height: { xs: "250px", md: "300px" },
           textDecoration: "none",
           cursor: "pointer",
         }}

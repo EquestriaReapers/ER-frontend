@@ -16,6 +16,7 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
           height: "120px",
           overflow: "hidden",
           borderRadius: { xs: "none", sm: "6px 6px 0px 0px" },
+          position: "relative",
         }}
       >
         <Box
@@ -31,51 +32,24 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
           component="img"
           src={project.imagePrincipal!}
         />
-      </Box>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          alignItems: { xs: "flex-start", sm: "center" },
-          justifyContent: { xs: "start", sm: "space-between" },
-          mx: { xs: "24px", sm: "10px" },
-          my: "14px",
-        }}
-      >
         <IconButton
           onClick={() => setIsOpen(false)}
-          sx={{ marginLeft: "-4px" }}
+          sx={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            height: "30px",
+            width: "30px",
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            "&:hover": {
+              backgroundColor: "white",
+            },
+            margin: "10px",
+          }}
         >
-          <ArrowBackIcon />
+          <ArrowBackIcon sx={{ color: "black" }} />
         </IconButton>
-
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Box
-            component="a"
-            href={`/profile/${profile.userId}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {profile.user.name} {profile.user.lastname}
-          </Box>
-
-          {!project.url ? (
-            <Typography sx={{ fontFamily: "inter", fontSize: "14px" }}>
-              {project.url ? project.url : "No hay url para mostrar"}
-            </Typography>
-          ) : (
-            <Box
-              component="a"
-              href={project.url}
-              sx={{ fontFamily: "inter", fontSize: "14px" }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {project.url}
-            </Box>
-          )}
-        </Box>
       </Box>
 
       <Box
@@ -87,30 +61,93 @@ const ProjectInfoModal = ({ profile, project, setIsOpen }: Props) => {
           gap: "16px",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+          }}
+        >
+          <Box
             sx={{
-              color: "#000",
-              fontFamily: "inter",
-              fontSize: "24px",
-              fontWeight: "700",
-              textTransform: "capitalize",
+              width: "100%",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyItems: "flex-start",
             }}
           >
-            {project.title}
-          </Typography>
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+              <Typography
+                sx={{
+                  color: "#000",
+                  fontFamily: "inter",
+                  fontSize: "26px",
+                  fontWeight: "700",
+                  textTransform: "capitalize",
+                }}
+              >
+                {project.title}
+              </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "flex-end",
+                }}
+              >
+                <Box
+                  component="a"
+                  href={`/profile/${profile.userId}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    textDecoration: "none",
+                    fontFamily: "inter",
+                    fontSize: "12px",
+                  }}
+                >
+                  {profile.user.name} {profile.user.lastname}
+                </Box>
 
-          <Typography
-            sx={{
-              color: "#000",
-              fontFamily: "inter",
-              fontSize: "16px",
-              fontWeight: "400",
-              lineHeight: "normal",
-            }}
-          >
-            {getYear(project.dateEnd)} | {project.location}
-          </Typography>
+                {!project.url ? (
+                  <Typography sx={{ fontFamily: "inter", fontSize: "12px" }}>
+                    {project.url ? project.url : "No hay url para mostrar"}
+                  </Typography>
+                ) : (
+                  <Box
+                    component="a"
+                    href={project.url}
+                    sx={{
+                      textDecoration: "none",
+                      fontFamily: "inter",
+                      fontSize: "12px",
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.url}
+                  </Box>
+                )}
+              </Box>
+            </Box>
+
+            <Box>
+              <Typography
+                sx={{
+                  color: "#000",
+                  fontFamily: "inter",
+                  fontSize: "16px",
+                  fontWeight: "400",
+                  lineHeight: "normal",
+                }}
+              >
+                {getYear(project.dateEnd)} | {project.location}
+              </Typography>
+            </Box>
+          </Box>
         </Box>
 
         <Box
