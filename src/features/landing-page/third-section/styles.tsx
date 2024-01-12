@@ -6,7 +6,7 @@ const PRIMARY_DARKER = "#03652e";
 
 export const firstSectionStyles = {
   width: "100%",
-  height: {xs:"700px", md:"450px"},
+  height: {xs:"750px", md:"450px"},
   position: "relative",
   display: "grid",
 
@@ -27,10 +27,11 @@ export const firstSectionStyles = {
 };
 
 export const thirdSectionCurriculumStyles = {
-  height: 400,
+  //height: 400,
   width: 300,
-  maxHeight: { xs: 233, md: 400 },
-  maxWidth: { xs: 350, md: 300 },
+  height: "auto",
+  maxHeight: { xs: 350, md: 400 },
+  maxWidth: { xs: 250, md: 300 },
 };
 
 export const useInsideFirstSectionStyles = () => {
@@ -59,6 +60,7 @@ export const firstSectionFigureBoxStyles = {
   height: "100%",
   display: "flex",
   alignItems: "center",
+  justifyContent: {xs:"center", md: "left" },
   margin: "auto",
   order:{xs: 2, md:1},
 };
@@ -102,16 +104,16 @@ export const useFirstSectionDownloadCVSectionStyles = () => {
 };
 
 export const useFirstSectionDownloadCVTypographyStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
+  const isMediumScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
   );
 
   const firstSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: "2rem",
+    fontSize: {xs:"1.5rem", md:"2rem"},
     marginBottom: "20px",
     color: "#FFFFFF",
-    textAlign: isSmallScreen ? "center" : "left",
+    textAlign: isMediumScreen ? "center" : "left",
   };
 
   return firstSectionDownloadCVTypographyStyles;

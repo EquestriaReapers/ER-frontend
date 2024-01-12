@@ -61,6 +61,7 @@ export const useSecondSectionFigureStyles = () => {
     height: isSmallScreen ? "310px" : "300px",
     width: isSmallScreen ? "270px" : "100%",
     display: "grid",
+    margin: "auto",
   };
   return SecondSectionFigureStyles;
 };
@@ -70,8 +71,9 @@ export const SecondSectionFigureBackgroundStyles = {
   //width: 350,
   //maxHeight: { xs: 233, md: 167 },
   //maxWidth: { xs: 350, md: 250 },
+  maxWidth: { xs: 250, md: "100%" },
   height: "auto",
-  width: 450,
+  width: 400,
   margin: "auto",
 };
 
@@ -100,7 +102,7 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
 
   const SecondSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: "2rem",
+    fontSize: {xs: "1.5rem", md: "2rem"},
     marginBottom: "20px",
     color: "black",
     textAlign: isSmallScreen ? "center" : "left",
@@ -110,8 +112,8 @@ export const useSecondSectionDownloadCVTypographyStyles = () => {
 };
 
 export const useSecondSectionDownloadCVTextStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
+  const isMediumScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
   );
 
   const SecondSectionDownloadCVTextStyles = {
@@ -119,7 +121,7 @@ export const useSecondSectionDownloadCVTextStyles = () => {
     fontWeight: "500",
     fontSize: "0.9rem",
     color: "black",
-    textAlign: isSmallScreen ? "center" : "left",
+    textAlign: isMediumScreen ? "center" : "left",
   };
 
   return SecondSectionDownloadCVTextStyles;

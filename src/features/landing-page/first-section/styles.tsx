@@ -6,7 +6,9 @@ const PRIMARY_DARKER = "#03652e";
 
 export const firstSectionStyles = {
   width: "100%",
+  height: {xs:650, md:400},
   position: "relative",
+  display: "grid",
 
   "&::before": {
     content: '""',
@@ -65,11 +67,11 @@ export const firstSectionFigureBackgroundStyles = {
   //height: 233,
  // width: 350,
   height: "auto",
-  width: 450,
+  width: 350,
   //maxHeight: { xs: 233, md: 167 },
   //maxWidth: { xs: 350, md: 250 },
   maxHeight: { xs: 233, md: 250 },
-  maxWidth: { xs: 400, md: "100%" },
+  maxWidth: { xs: 250, md: "100%" },
 
   margin: "auto",
 };
@@ -105,7 +107,7 @@ export const useFirstSectionDownloadCVTypographyStyles = () => {
 
   const firstSectionDownloadCVTypographyStyles = {
     fontWeight: "600",
-    fontSize: "2rem",
+    fontSize: {xs:"1.5rem", md: "2rem"},
     marginBottom: "40px",
     color: "#FFFFFF",
     textAlign:"center",
