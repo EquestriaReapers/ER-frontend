@@ -59,6 +59,9 @@ const NavBarDesktop = ({ setIsOpen }: Props) => {
         <Link to={`/catalogue`}>
           <Button sx={titleStyles}>Catálogo</Button>
         </Link>
+        <Link to={`/explore-portfolios`}>
+          <Button sx={titleStyles}>Portafolios</Button>
+        </Link>
         {user && (
           <Button onClick={onLogout} sx={titleStyles}>
             Salir

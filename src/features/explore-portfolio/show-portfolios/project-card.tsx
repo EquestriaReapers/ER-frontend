@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import ProjectInfoModal from "./project-info-modal";
+import NoPhotographyIcon from '@mui/icons-material/NoPhotography';
 import { Project } from "../explore-portfolio-context/context";
 import {
   hoveredCardDescriptionStyles,
@@ -59,6 +60,19 @@ function ProjectCard({ project }: Props) {
                   {limitWords(project.description, 40)}
                 </Typography>
               </CardContent>
+            )}
+            {!project.imagePrincipal && !hover && (
+              <Box
+                sx={{
+                  display: "flex",
+                  height: "100%",
+                  width: "100%",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <NoPhotographyIcon sx={{ fontSize: "40px", color: "gray" }} />
+              </Box>
             )}
           </CardMedia>
         </Card>

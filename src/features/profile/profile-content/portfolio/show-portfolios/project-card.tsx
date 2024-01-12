@@ -7,6 +7,7 @@ import {
   Box,
 } from "@mui/material";
 import { Portfolio, Profile } from "core/profiles/types";
+import NoPhotographyIcon from "@mui/icons-material/NoPhotography";
 import { useState } from "react";
 import ProjectInfoModal from "./project-info-modal";
 
@@ -97,6 +98,19 @@ function ProjectCard({ profile, project }: Props) {
                 {limitWords(project.description, 40)}
               </Typography>
             </CardContent>
+          )}
+          {!project.imagePrincipal && !hover && (
+            <Box
+              sx={{
+                display: "flex",
+                height: "100%",
+                width: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <NoPhotographyIcon sx={{ fontSize: "40px", color: "gray" }} />
+            </Box>
           )}
         </CardMedia>
       </Card>

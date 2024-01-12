@@ -40,7 +40,6 @@ export const iconStyles = {
 export const inlineStyles = {
   display: "flex",
   flexWrap: "wrap",
-  p: "15px",
   flexDirection: "row",
 };
 
