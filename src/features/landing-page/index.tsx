@@ -8,6 +8,7 @@ import FirstSection from "./first-section";
 import SecondSection from "./second-section";
 import ThirdSection from "./third-section";
 import FourthSection from "./fourth-section";
+import FifthSection from "./fifth-section";
 
 const LandingPage = () => {
   const LandingPageStyles = useLandingPageContainerStyles();
@@ -20,6 +21,7 @@ const LandingPage = () => {
         <SecondSection />
         <ThirdSection />
         <FourthSection />
+        <FifthSection/>
       </Box>
     </Box>
   );

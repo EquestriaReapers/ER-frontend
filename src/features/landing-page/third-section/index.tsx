@@ -4,7 +4,6 @@ import {
   useInsideFirstSectionStyles,
   firstSectionFigureBoxStyles,
   useFirstSectionFigureStyles,
-  firstSectionFigureBackgroundStyles,
   useFirstSectionDownloadCVSectionStyles,
   useFirstSectionDownloadCVTypographyStyles,
   useButtonStyles,
