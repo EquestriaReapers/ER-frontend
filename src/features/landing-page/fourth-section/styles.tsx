@@ -3,7 +3,6 @@ import { Theme } from "@mui/material";
 
 export const SecondSectionStyles = {
   width: "100%",
-  height: "22%",
   position: "relative",
 
   "&::before": {
@@ -150,7 +149,7 @@ export const useButtonStyles = () => {
   const buttonStyles = {
     fontFamily: "inter",
     borderRadius: "6px",
-    background: '#efb70e',
+    background: "#efb70e",
     fontWeight: "700",
     color: "white",
     textTransform: "capitalize",
@@ -158,7 +157,7 @@ export const useButtonStyles = () => {
     px: 3,
     my: 2,
     "&:hover": {
-      backgroundColor: '#e2ac08',
+      backgroundColor: "#e2ac08",
     },
     "&:disabled": {
       color: "#ffffff",

@@ -6,7 +6,6 @@ const PRIMARY_DARKER = "#03652e";
 
 export const firstSectionStyles = {
   width: "100%",
-  height: "22%",
   position: "relative",
 
   "&::before": {
@@ -73,7 +72,6 @@ export const firstSectionLogoStyles = {
   maxWidth: { xs: 350, md: 250 },
 };
 
-
 export const useFirstSectionDownloadCVSectionStyles = () => {
   const isSmallScreen = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm")
@@ -123,20 +121,20 @@ export const useFirstSectionDownloadCVTextStyles = () => {
 export const useButtonStyles = () => {
   const buttonStyles = {
     fontFamily: "inter",
-  borderRadius: "6px",
-  background: "#007935",
-  fontWeight: "700",
-  color: "white",
-  textTransform: "capitalize",
-  fontSize: "16px",
-  px: 3,
-  my: 2,
-  "&:hover": {
-    backgroundColor: PRIMARY_DARKER,
-  },
-  "&:disabled": {
-    color: "#ffffff",
-  },
+    borderRadius: "6px",
+    background: "#007935",
+    fontWeight: "700",
+    color: "white",
+    textTransform: "capitalize",
+    fontSize: "16px",
+    px: 3,
+    my: 2,
+    "&:hover": {
+      backgroundColor: PRIMARY_DARKER,
+    },
+    "&:disabled": {
+      color: "#ffffff",
+    },
   };
 
   return buttonStyles;
