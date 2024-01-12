@@ -5,6 +5,7 @@ export const SecondSectionStyles = {
   width: "100%",
   position: "relative",
   height:{ xs: "600px", md: "400px" },
+  display: { xs: "grid", md: "flex" },
 
   "&::before": {
     content: '""',
@@ -18,7 +19,7 @@ export const SecondSectionStyles = {
     backgroundPosition: "center",
     filter: "blur(3.3px)",
     zIndex: -1,
-    display: "flex",
+    //display: "flex",
   },
 };
 
@@ -33,7 +34,7 @@ export const useInsideSecondSectionStyles = () => {
   const InsideSecondSectionStyles = {
     width: isMediumScreen ? "90%" : "80%",
     height: "90%",
-    display: isSmallScreen ? "grid" : "flex",
+    display: isMediumScreen ? "grid" : "flex",
     margin: "auto",
     position: "relative",
     zIndex: 1,
@@ -44,7 +45,7 @@ export const useInsideSecondSectionStyles = () => {
 };
 
 export const SecondSectionFigureBoxStyles = {
-  width: "50%",
+  width: {xs: "100%", md:"50%"},
   height: "100%",
   display: "flex",
   alignItems: "center",
@@ -75,8 +76,8 @@ export const SecondSectionFigureBackgroundStyles = {
 };
 
 export const useSecondSectionDownloadCVSectionStyles = () => {
-  const isSmallScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.down("sm")
+  const isMediumScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
   );
 
   const SecondSectionDownloadCVSectionStyles = {
@@ -84,9 +85,9 @@ export const useSecondSectionDownloadCVSectionStyles = () => {
     alignItems:"center",
     justifyContent:"center",
     flexDirection: "column",
-    width: isSmallScreen ? "100%" : "50%",
+    width: isMediumScreen ? "100%" : "50%",
     height: "100%",
-    margin: isSmallScreen ? "auto" : "auto",
+    margin: isMediumScreen ? "auto" : "auto",
   };
 
   return SecondSectionDownloadCVSectionStyles;
