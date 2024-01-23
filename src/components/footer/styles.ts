@@ -74,3 +74,16 @@ export const FooterIconStyles = {
     color: "#050505",
   },
 };
+
+export const FooterThirdLine = {
+  display: "flex",
+  justifyContent: "space-between",
+  flexWrap: "no-wrap",
+  gap: "20px",
+  mb: {
+    xs: 1,
+    sm: 2,
+    md: 3,
+    lg: 3,
+  },
+};

@@ -14,6 +14,7 @@ export const ThirdSectionStyles = {
   backgroundSize: "cover",
   backgroundPosition: "center",
   transform: "scale(1.02)",
+  marginBottom: { xl: "5px" },
 };
 
 export const useInsideThirdSectionStyles = () => {

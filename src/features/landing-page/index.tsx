@@ -15,14 +15,12 @@ const LandingPage = () => {
   const MainContainerStyles = useMainContainerStyles();
 
   return (
-    <Box sx={LandingPageStyles}>
-      <Box sx={MainContainerStyles}>
-        <FirstSection />
-        <SecondSection />
-        <ThirdSection />
-        <FourthSection />
-        <FifthSection />
-      </Box>
+    <Box>
+      <FirstSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection />
     </Box>
   );
 };

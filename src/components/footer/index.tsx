@@ -1,8 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from "@mui/icons-material/X";
 
 import {
   FooterStyles,
@@ -12,6 +12,7 @@ import {
   FooterTextStyles,
   FooterSecondLine,
   FooterIconStyles,
+  FooterThirdLine,
 } from "./styles";
 
 const Footer = () => {
@@ -43,8 +44,13 @@ const Footer = () => {
             <FacebookRoundedIcon sx={FooterIconStyles} />
           </Link>
           <Link href="https://twitter.com/enlaucab">
-            <TwitterIcon sx={FooterIconStyles} />
+            <XIcon sx={FooterIconStyles} />
           </Link>
+        </Box>
+        <Box sx={FooterThirdLine}>
+          <Typography sx={FooterTextStyles}>
+            Universidad Católica Andrés Bello Extensión Guayana
+          </Typography>
         </Box>
       </Box>
     </Box>
