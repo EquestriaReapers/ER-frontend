@@ -69,7 +69,7 @@ const routerConfig: RouteObject[] = [
         element: <ForgotPassword />,
       },
       {
-        path: "/new-password/",
+        path: "/new-password/:token",
         element: <NewPassword />,
       },
       {
