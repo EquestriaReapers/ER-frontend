@@ -7,10 +7,6 @@ export const FooterStyles = {
   display: "flex",
   flexDirection: "column",
   gap: "20px",
-  minHeight: {
-    sm: "100px",
-    md: "inherit",
-  },
 };
 
 export const FooterLineStyles = {
@@ -52,6 +48,7 @@ export const FooterTextStyles = {
   textDecoration: "none",
   "&:hover": {
     color: "#050505",
+    fontWeight: "500",
   },
 };
 

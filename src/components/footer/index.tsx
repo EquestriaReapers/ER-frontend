@@ -20,7 +20,7 @@ const Footer = () => {
 
   return (
     <Box sx={FooterStyles}>
-      <Box sx={FooterLineStyles}></Box>
+      <Box sx={FooterLineStyles} />
       <Box sx={InsideFooterStyles}>
         <Box sx={FooterFirstLineStyles}>
           <Link href="/home" sx={FooterTextStyles}>
@@ -48,7 +48,7 @@ const Footer = () => {
           </Link>
         </Box>
         <Box sx={FooterThirdLine}>
-          <Typography sx={FooterTextStyles}>
+          <Typography sx={{ FooterTextStyles, textAlign: "center", mx: "5px" }}>
             Universidad Católica Andrés Bello Extensión Guayana
           </Typography>
         </Box>
