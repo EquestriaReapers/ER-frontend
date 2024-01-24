@@ -11,7 +11,13 @@ export const skillTitleStyles = {
   backgroundColor: "#A6D6A8",
   marginRight: 2,
   marginBottom: 1,
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  maxWidth: "150px",
+  overflowY: "hidden",
+  textWrap: "nowrap",
 };
+
 export const profileContainer = {
   display: "flex",
   flexWrap: "wrap",
